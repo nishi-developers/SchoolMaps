@@ -9,9 +9,9 @@ inkscapeのSVGファイルを読み込んで、クリックイベントを追加
 import xml.etree.ElementTree as ET
 import os
 
-InputFile = "test.svg"
+InputFile = "map.svg"
 # TempFile = "temp-output.svg"
-OutputFile = "map-data.svg"
+OutputFile = "map-output.svg"
 
 tree = ET.parse(InputFile)
 root = tree.getroot()
@@ -28,9 +28,10 @@ ET.register_namespace("inkscape", "http://www.inkscape.org/namespaces/inkscape")
 def convert(content):
     try:
         label = content.attrib["{http://www.inkscape.org/namespaces/inkscape}label"]
-        print(label)
-        content.attrib.update([("@click", f"showProperty('{label}')")])
-        content.attrib.update([("class", label)])
+        if label != "none":
+            print(label)
+            content.attrib.update([("@click", f"showProperty('{label}')")])
+            content.attrib.update([("class", label)])
     except KeyError:
         pass
     return content

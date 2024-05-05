@@ -3,6 +3,34 @@
         "1A": {
             "name": "1A",
             "desc": "classroom"
+        },
+        "1B": {
+            "name": "1B",
+            "desc": "classroom"
+        },
+        "1C": {
+            "name": "1C",
+            "desc": "classroom"
+        },
+        "1D": {
+            "name": "1D",
+            "desc": "classroom"
+        },
+        "1E": {
+            "name": "1E",
+            "desc": "classroom"
+        },
+        "1F": {
+            "name": "1F",
+            "desc": "classroom"
+        },
+        "1G": {
+            "name": "1G",
+            "desc": "classroom"
+        },
+        "1H": {
+            "name": "1H",
+            "desc": "classroom"
         }
     }
 }

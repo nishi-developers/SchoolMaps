@@ -4,7 +4,7 @@ import PropertyView from '@/components/PropertyView.vue';
 
 const isShowProperty = ref(false)
 const point_PlaceId = ref("")
-const point_Floor = ref()
+const Floor = ref(1)
 
 // ドラッグなどとクリックを判別する
 // <参考>
@@ -16,7 +16,6 @@ function showProperty(id) {
     if (isClick) {
         // alert(id)
         point_PlaceId.value = id
-        point_Floor.value = 1   // 仮の値
         isShowProperty.value = true
     }
 }
@@ -163,9 +162,7 @@ function touch(event, status) {
 // デフォルトのピンチアウトを無効化
 // https://moewe-net.com/js/disable-zoom
 document.body.addEventListener('touchmove', (event) => {
-    if (event.touches.length > 1) {
-        event.preventDefault();
-    }
+    event.preventDefault();
 }, { passive: false });
 </script>
 
@@ -196,49 +193,137 @@ document.body.addEventListener('touchmove', (event) => {
 }
 </style>
 <template>
-    <PropertyView v-if="isShowProperty" :Floor="point_Floor" :PlaceId="point_PlaceId" @hideProperty="hideProperty()" />
+    <PropertyView v-if="isShowProperty" :Floor="Floor" :PlaceId="point_PlaceId" @hideProperty="hideProperty()" />
     <div id="box" @dblclick="resetMoving()">
         <div id="map_content" @mousemove="mouse_moveRotate($event); click_notDetect()" @mousedown="click_Detect()"
             @touchmove="touch($event, 'move'); click_notDetect();" @touchstart="touch($event, 'start'); click_Detect()"
             @wheel="mouse_zoom($event)" draggable="false">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="210mm" height="297mm"
-                viewBox="0 0 210 297" version="1.1" id="map_svg" inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
-                sodipodi:docname="描画.svg" inkscape:export-filename="描画-plane.svg" inkscape:export-xdpi="96"
-                inkscape:export-ydpi="96">
-                <sodipodi:namedview id="namedview7" pagecolor="#ffffff" bordercolor="#111111" borderopacity="1"
-                    inkscape:showInfopageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="1"
-                    inkscape:deskcolor="#d1d1d1" inkscape:document-units="mm" showInfogrid="false"
-                    inkscape:zoom="0.53858859" inkscape:cx="144.82297" inkscape:cy="600.64399"
-                    inkscape:window-width="1014" inkscape:window-height="1032" inkscape:window-x="163"
-                    inkscape:window-y="27" inkscape:window-maximized="0" inkscape:current-layer="layer5" />
-                <defs id="defs2" />
-                <g inkscape:label="れいやー" inkscape:groupmode="layer" id="layer1" class="れいやー">
-                    <rect
-                        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
-                        id="rect234" width="115.93574" height="117.4095" x="54.529099" y="33.405212"
-                        inkscape:label="四角形" @click="showProperty('1A')" class="四角形" />
-                    <g inkscape:groupmode="layer" id="layer2" inkscape:label="れいやー 2" @click="showProperty('れいやー 2')"
-                        class="れいやー 2">
+            <div v-if="Floor == 1">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="210mm" height="297mm"
+                    viewBox="0 0 210 297" version="1.1" id="svg5" inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+                    sodipodi:docname="map.svg" inkscape:export-filename="map-plane.svg" inkscape:export-xdpi="96"
+                    inkscape:export-ydpi="96">
+                    <sodipodi:namedview id="namedview7" pagecolor="#ffffff" bordercolor="#111111" borderopacity="1"
+                        inkscape:showpageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="1"
+                        inkscape:deskcolor="#d1d1d1" inkscape:document-units="mm" showgrid="false" inkscape:zoom="0.5"
+                        inkscape:cx="43" inkscape:cy="639" inkscape:window-width="1233" inkscape:window-height="1000"
+                        inkscape:window-x="671" inkscape:window-y="0" inkscape:window-maximized="0"
+                        inkscape:current-layer="layer1" />
+                    <defs id="defs2">
+                        <rect x="450.70526" y="863.36771" width="100.70789" height="71.483133" id="rect4228" />
+                        <rect x="450.70526" y="863.36774" width="100.70789" height="71.483131" id="rect4228-6" />
+                        <rect x="450.70526" y="863.36774" width="100.70789" height="71.483131" id="rect4228-7" />
+                        <rect x="450.70526" y="863.36774" width="100.70789" height="71.483131" id="rect4228-6-9" />
+                        <rect x="450.70526" y="863.36774" width="100.70789" height="71.483131" id="rect4228-72" />
+                        <rect x="450.70526" y="863.36774" width="100.70789" height="71.483131" id="rect4228-6-5" />
+                        <rect x="450.70526" y="863.36774" width="100.70789" height="71.483131" id="rect4228-7-1" />
+                        <rect x="450.70526" y="863.36774" width="100.70789" height="71.483131" id="rect4228-6-9-7" />
+                    </defs>
+                    <g inkscape:label="none" inkscape:groupmode="layer" id="layer1">
                         <rect
-                            style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
-                            id="rect3079" width="57.476616" height="48.63406" x="24.790791" y="154.74472" />
+                            style="fill:#e6e6e6;fill-opacity:1;stroke:#b3b3b3;stroke-width:1;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+                            id="rect5948" width="210" height="297" x="0" y="0" />
+                        <rect
+                            style="fill:#b3b3b3;fill-opacity:1;stroke:#b3b3b3;stroke-width:1;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+                            id="rect234-1-0-0" width="23.206863" height="14.617966" x="120.27374" y="141.298" />
                     </g>
-                    <g inkscape:groupmode="layer" id="layer3" inkscape:label="1" @click="showProperty('1')" class="1">
-                        <rect style="fill:#000000;stroke-width:2;stroke-linecap:round;stop-color:#000000" id="rect347"
-                            width="37.335236" height="43.230274" x="156.70975" y="221.55516" />
+                    <g inkscape:groupmode="layer" id="layer2" inkscape:label="1A" @click="showProperty('1A')"
+                        class="1A">
+                        <rect
+                            style="fill:#b3e4e5;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+                            id="rect234-1-0-3" width="23.206858" height="25.95689" x="120.27374" y="33.470432" />
+                        <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,7.7978913,-186.63517)"
+                            id="text4226-6-3-6"
+                            style="font-size:28px;line-height:1.4;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans';text-decoration-color:#000000;text-orientation:upright;white-space:pre;shape-inside:url(#rect4228-6-9-7);display:inline;fill:#000000;fill-opacity:1;stroke-width:7.55906;stroke-linejoin:bevel;stop-color:#000000">
+                            <tspan x="450.70508" y="890.94369" id="tspan377">1A</tspan>
+                        </text>
                     </g>
-                    <g inkscape:groupmode="layer" id="layer4" inkscape:label="2" @click="showProperty('2')" class="2">
-                        <rect style="fill:#000000;stroke-width:2;stroke-linecap:round;stop-color:#000000" id="rect345"
-                            width="38.808994" height="47.651554" x="90.881828" y="226.4677" />
+                    <g inkscape:groupmode="layer" id="layer3" inkscape:label="1B" @click="showProperty('1B')"
+                        class="1B">
+                        <rect
+                            style="fill:#b3e4e5;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+                            id="rect234-16-1" width="23.206858" height="25.95689" x="120.27374" y="60.42733" />
+                        <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,7.7978934,-159.67829)"
+                            id="text4226-7-3"
+                            style="font-size:28px;line-height:1.4;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans';text-decoration-color:#000000;text-orientation:upright;white-space:pre;shape-inside:url(#rect4228-7-1);display:inline;fill:#000000;fill-opacity:1;stroke-width:7.55906;stroke-linejoin:bevel;stop-color:#000000">
+                            <tspan x="450.70508" y="890.94369" id="tspan379">1B</tspan>
+                        </text>
                     </g>
-                    <g inkscape:groupmode="layer" id="layer5" inkscape:label="33a" @click="showProperty('33a')"
-                        class="33a">
-                        <rect style="fill:#000000;stroke-width:2;stroke-linecap:round;stop-color:#000000" id="rect343"
-                            width="45.686539" height="44.21278" x="27.510172" y="226.4677" />
+                    <g inkscape:groupmode="layer" id="layer4" inkscape:label="1C" @click="showProperty('1C')"
+                        class="1C">
+                        <rect
+                            style="fill:#b3e4e5;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+                            id="rect234-1-5" width="23.206858" height="25.95689" x="120.27374" y="87.384224" />
+                        <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,7.7978894,-132.72139)"
+                            id="text4226-6-0"
+                            style="font-size:28px;line-height:1.4;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans';text-decoration-color:#000000;text-orientation:upright;white-space:pre;shape-inside:url(#rect4228-6-5);display:inline;fill:#000000;fill-opacity:1;stroke-width:7.55906;stroke-linejoin:bevel;stop-color:#000000">
+                            <tspan x="450.70508" y="890.94369" id="tspan381">1C</tspan>
+                        </text>
                     </g>
-                </g>
-            </svg>
+                    <g inkscape:groupmode="layer" id="layer5" inkscape:label="1D" @click="showProperty('1D')"
+                        class="1D">
+                        <rect
+                            style="fill:#b3e4e5;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+                            id="rect234-3" width="23.206858" height="25.95689" x="120.27374" y="114.34112" />
+                        <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,7.7978913,-105.76451)"
+                            id="text4226-70"
+                            style="font-size:28px;line-height:1.4;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans';text-decoration-color:#000000;text-orientation:upright;white-space:pre;shape-inside:url(#rect4228-72);display:inline;fill:#000000;fill-opacity:1;stroke-width:7.55906;stroke-linejoin:bevel;stop-color:#000000">
+                            <tspan x="450.70508" y="890.94369" id="tspan383">1D</tspan>
+                        </text>
+                    </g>
+                    <g inkscape:groupmode="layer" id="layer6" inkscape:label="1E" @click="showProperty('1E')"
+                        class="1E">
+                        <rect
+                            style="fill:#b3e4e5;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+                            id="rect234-1-0" width="23.206858" height="25.95689" x="120.27374" y="156.91597" />
+                        <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,7.797891,-63.189633)"
+                            id="text4226-6-3"
+                            style="font-size:28px;line-height:1.4;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans';text-decoration-color:#000000;text-orientation:upright;white-space:pre;shape-inside:url(#rect4228-6-9);display:inline;fill:#000000;fill-opacity:1;stroke-width:7.55906;stroke-linejoin:bevel;stop-color:#000000">
+                            <tspan x="450.70508" y="890.94369" id="tspan385">1E</tspan>
+                        </text>
+                    </g>
+                    <g inkscape:groupmode="layer" id="layer7" inkscape:label="1F" @click="showProperty('1F')"
+                        class="1F">
+                        <rect
+                            style="fill:#b3e4e5;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+                            id="rect234-16" width="23.206858" height="25.95689" x="120.27374" y="183.87286" />
+                        <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,7.7978929,-36.232756)"
+                            id="text4226-7"
+                            style="font-size:28px;line-height:1.4;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans';text-decoration-color:#000000;text-orientation:upright;white-space:pre;shape-inside:url(#rect4228-7);display:inline;fill:#000000;fill-opacity:1;stroke-width:7.55906;stroke-linejoin:bevel;stop-color:#000000">
+                            <tspan x="450.70508" y="890.94369" id="tspan387">1F</tspan>
+                        </text>
+                    </g>
+                    <g inkscape:groupmode="layer" id="layer8" inkscape:label="1G" @click="showProperty('1G')"
+                        class="1G">
+                        <rect
+                            style="fill:#b3e4e5;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+                            id="rect234-1" width="23.206858" height="25.95689" x="120.27374" y="210.82976" />
+                        <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,7.7978894,-9.2758522)"
+                            id="text4226-6"
+                            style="font-size:28px;line-height:1.4;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans';text-decoration-color:#000000;text-orientation:upright;white-space:pre;shape-inside:url(#rect4228-6);display:inline;fill:#000000;fill-opacity:1;stroke-width:7.55906;stroke-linejoin:bevel;stop-color:#000000">
+                            <tspan x="450.70508" y="890.94369" id="tspan389">1G</tspan>
+                        </text>
+                    </g>
+                    <g inkscape:groupmode="layer" id="layer9" inkscape:label="1H" @click="showProperty('1H')"
+                        class="1H">
+                        <rect
+                            style="fill:#b3e4e5;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+                            id="rect234" width="23.206858" height="25.95689" x="120.27374" y="237.78665" />
+                        <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,7.7978913,17.681026)"
+                            id="text4226"
+                            style="font-size:28px;line-height:1.4;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans';text-decoration-color:#000000;text-orientation:upright;white-space:pre;shape-inside:url(#rect4228);display:inline;fill:#000000;fill-opacity:1;stroke-width:7.55906;stroke-linejoin:bevel;stop-color:#000000">
+                            <tspan x="450.70508" y="890.94369" id="tspan391">1H</tspan>
+                        </text>
+                    </g>
+                </svg>
+            </div>
+            <div v-else-if="Floor == 2">
+                2f
+            </div>
+            <div v-else-if="Floor == 3">
+                3f
+            </div>
         </div>
     </div>
 </template>
