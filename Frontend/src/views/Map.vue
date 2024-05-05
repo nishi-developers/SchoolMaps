@@ -172,7 +172,13 @@ function touch(event, status) {
                 touch_rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
                 map_Rotate.value += touch_rotate - touch_last_rotate
                 touch_rotated += Math.abs(touch_rotate - touch_last_rotate) //回転した合計量を記録
-                touch_last_rotate = touch_rotate //最終値を更新
+                if (touch_rotated > 500) {
+                    touch_last_rotate = touch_rotate //最終値を更新
+                } else {
+                    touch_last_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
+                    touch_last_rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
+
+                }
                 console.log(touch_zoomed, touch_rotated);
             } else {
                 //zoomモードになっていない場合の初期処理
