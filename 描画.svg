@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="描画.svg"
+   inkscape:export-filename="描画-plane.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#111111"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.53858859"
+     inkscape:cx="144.82297"
+     inkscape:cy="600.64399"
+     inkscape:window-width="1014"
+     inkscape:window-height="1032"
+     inkscape:window-x="163"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer2" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="れいやー"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+       id="rect234"
+       width="115.93574"
+       height="117.4095"
+       x="54.529099"
+       y="33.405212"
+       inkscape:label="四角形" />
+    <g
+       inkscape:groupmode="layer"
+       id="layer2"
+       inkscape:label="れいやー 2">
+      <rect
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
+         id="rect3079"
+         width="57.476616"
+         height="48.63406"
+         x="24.790791"
+         y="154.74472" />
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer3"
+       inkscape:label="1">
+      <rect
+         style="fill:#000000;stroke-width:2;stroke-linecap:round;stop-color:#000000"
+         id="rect347"
+         width="37.335236"
+         height="43.230274"
+         x="156.70975"
+         y="221.55516" />
+      <rect
+         style="fill:#000000;stroke-width:2;stroke-linecap:round;stop-color:#000000"
+         id="rect355"
+         width="0.49125311"
+         height="5.3862906"
+         x="263.31168"
+         y="151.81471" />
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer4"
+       inkscape:label="2">
+      <rect
+         style="fill:#000000;stroke-width:2;stroke-linecap:round;stop-color:#000000"
+         id="rect345"
+         width="38.808994"
+         height="47.651554"
+         x="90.881828"
+         y="226.4677" />
+    </g>
+    <g
+       inkscape:groupmode="layer"
+       id="layer5"
+       inkscape:label="33a">
+      <rect
+         style="fill:#000000;stroke-width:2;stroke-linecap:round;stop-color:#000000"
+         id="rect343"
+         width="45.686539"
+         height="44.21278"
+         x="27.510172"
+         y="226.4677" />
+    </g>
+  </g>
+</svg>
