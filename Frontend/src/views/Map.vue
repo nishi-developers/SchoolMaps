@@ -160,6 +160,7 @@ function touch(event, status) {
     }
 }
 // デフォルトのピンチアウトを無効化
+// <参考>
 // https://moewe-net.com/js/disable-zoom
 document.body.addEventListener('touchmove', (event) => {
     event.preventDefault();
