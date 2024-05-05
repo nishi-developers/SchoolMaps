@@ -197,10 +197,10 @@ document.body.addEventListener('touchmove', (event) => {
 </style>
 <template>
     <PropertyView v-if="isShowProperty" :Floor="point_Floor" :PlaceId="point_PlaceId" @hideProperty="hideProperty()" />
-    <div id="box">
+    <div id="box" @dblclick="resetMoving()">
         <div id="map_content" @mousemove="mouse_moveRotate($event); click_notDetect()" @mousedown="click_Detect()"
-            @dblclick="resetMoving()" @touchmove="touch($event, 'move'); click_notDetect();"
-            @touchstart="touch($event, 'start'); click_Detect()" @wheel="mouse_zoom($event)" draggable="false">
+            @touchmove="touch($event, 'move'); click_notDetect();" @touchstart="touch($event, 'start'); click_Detect()"
+            @wheel="mouse_zoom($event)" draggable="false">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
                 xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="210mm" height="297mm"
                 viewBox="0 0 210 297" version="1.1" id="map_svg" inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
