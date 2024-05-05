@@ -117,33 +117,44 @@ let touch_last_x = 0
 let touch_last_y = 0
 let touch_temp_x = 0
 let touch_temp_y = 0
+let touch_last_finger = 0
 // zoomモード用の変数
 let touch_last_diff = 0
 let touch_diff = 0
 let touch_last_rotate = 0
 let touch_rotate = 0
+// タッチの位置を取得する関数
+// タッチの指が複数ある場合は、それぞれの位置を取得して平均を取る
+function touch_positionAverage(event) {
+    let x = 0
+    let y = 0
+    for (const i of event.changedTouches) {
+        x += i.clientX
+        y += i.clientY
+    }
+    return [
+        x / event.changedTouches.length,
+        y / event.changedTouches.length
+    ]
+}
 function touch(event, status) {
     if (status === 'start') {
-        //moveモードの初期処理
-        touch_last_x = event.changedTouches[0].clientX //押した位置を相対位置の基準にする
-        touch_last_y = event.changedTouches[0].clientY
         // タップし始めは、初期処理をあてるために値を変更
         touch_mode = "none"
+        touch_last_finger = 0
     } else if (status === 'doing') { // 指を動かしたときは、それぞれの処理を行う
         // 指を動かした分だけ位置をずらす
-        // タッチの指が複数ある場合は、それぞれの位置を取得して平均を取る
-        for (const i of event.changedTouches) {
-            touch_temp_x += i.clientX
-            touch_temp_y += i.clientY
+        // 本数が変わった場合は、初期位置を変更(初期処理)
+        if (touch_last_finger != event.changedTouches.length) {
+            [touch_last_x, touch_last_y] = touch_positionAverage(event) //押した位置を相対位置の基準にする
+            touch_last_finger = event.changedTouches.length
         }
-        touch_temp_x = touch_temp_x / event.changedTouches.length
-        touch_temp_y = touch_temp_y / event.changedTouches.length
+        [touch_temp_x, touch_temp_y] = touch_positionAverage(event)
         map_PositionLeft.value += touch_temp_x - touch_last_x // 位置をずらす
         map_PositionTop.value += touch_temp_y - touch_last_y // 位置をずらす
         touch_last_x = touch_temp_x //最終値を更新
         touch_last_y = touch_temp_y //最終値を更新
-        touch_temp_x = 0 //初期化
-        touch_temp_y = 0 //初期化
+
 
         if (event.changedTouches.length === 2) { // タッチの指が2つの場合はzoomモード
             if (touch_mode == "zoom") {
@@ -166,6 +177,7 @@ function touch(event, status) {
         }
     }
 }
+
 // デフォルトのピンチアウトを無効化
 // <参考>
 // https://moewe-net.com/js/disable-zoom
