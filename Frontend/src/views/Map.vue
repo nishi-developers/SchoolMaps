@@ -125,6 +125,7 @@ let touch_rotate = 0
 // タップし始めてどれぐらい動かしたら
 let touch_zoomed = 0
 let touch_rotated = 0
+let touch_acceptRotate = false
 // タッチの位置を取得する関数
 // タッチの指が複数ある場合は、それぞれの位置を取得して平均を取る
 function touch_positionAverage(event) {
@@ -147,6 +148,7 @@ function touch(event, status) {
         // タップし始めてどれぐらい動かしたらをリセット
         touch_zoomed = 0
         touch_rotated = 0
+        touch_acceptRotate = false
     } else if (status === 'doing') { // 指を動かしたときは、それぞれの処理を行う
         // タッチの本数にかかわらず、moveモード
         // 本数が変わった場合は、初期位置を変更(初期処理)
@@ -170,15 +172,15 @@ function touch(event, status) {
                 touch_last_diff = touch_diff //最終値を更新
                 // 2点を結ぶ直線の傾きを計算して、前との差から回転角度を変更
                 touch_rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
-                map_Rotate.value += touch_rotate - touch_last_rotate
                 touch_rotated += Math.abs(touch_rotate - touch_last_rotate) //回転した合計量を記録
-                if (touch_rotated > 500) {
-                    touch_last_rotate = touch_rotate //最終値を更新
-                } else {
-                    touch_last_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
-                    touch_last_rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
-
+                if (touch_rotated > 10 && touch_zoomed < 40) { //ズームをブロックする移動量(要調整)
+                    // あまりズームせずに回転した場合は、指を離すまで回転を許可
+                    touch_acceptRotate = true
                 }
+                if (touch_acceptRotate) {
+                    map_Rotate.value += touch_rotate - touch_last_rotate
+                }
+                touch_last_rotate = touch_rotate //最終値を更新
                 console.log(touch_zoomed, touch_rotated);
             } else {
                 //zoomモードになっていない場合の初期処理
