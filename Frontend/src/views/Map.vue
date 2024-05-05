@@ -217,7 +217,7 @@ document.body.addEventListener('touchmove', (event) => {
                     <rect
                         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
                         id="rect234" width="115.93574" height="117.4095" x="54.529099" y="33.405212"
-                        inkscape:label="四角形" @click="showProperty('四角形')" class="四角形" />
+                        inkscape:label="四角形" @click="showProperty('1A')" class="四角形" />
                     <g inkscape:groupmode="layer" id="layer2" inkscape:label="れいやー 2" @click="showProperty('れいやー 2')"
                         class="れいやー 2">
                         <rect

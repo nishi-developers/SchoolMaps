@@ -1,15 +1,16 @@
 <template>
     <div id="PropertyView" v-if="isShowPropertyView">
-        {{ props.Floor }}
-        {{ props.PlaceId }}
+        name : {{ PlaceInfo[props.Floor][props.PlaceId].name }}<br>
+        description : {{ PlaceInfo[props.Floor][props.PlaceId].desc }}<br>
         <font-awesome-icon id="xmark" @click="closePropertyView()" :icon="['fas', 'xmark']" />
     </div>
 
 </template>
 <script setup>
 import { ref } from 'vue'
-const isShowPropertyView = ref(true)
+import PlaceInfo from '@/assets/PlaceInfo.json'
 
+const isShowPropertyView = ref(true)
 const props = defineProps(["Floor", "PlaceId"])
 const emit = defineEmits(["hideProperty"])
 
