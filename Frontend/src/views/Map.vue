@@ -37,7 +37,6 @@ onMounted(() => {
     // 表示範囲のサイズ(改)
     window_width = window.innerWidth
     window_height = window.innerHeight - getComputedStyle(document.querySelector("*")).getPropertyValue("--header-height").slice(0, -2)// CSSのヘッダー分を引く（CSS変数と同期）
-    console.log(getComputedStyle(document.querySelector("*")).getPropertyValue("--header-height"));
     // 地図のデフォルトサイズを算出
     const map_size_width = Number(document.querySelector("#map_content svg").getAttribute("width").slice(0, -2));
     const map_size_height = Number(document.querySelector("#map_content svg").getAttribute("height").slice(0, -2));
@@ -143,7 +142,7 @@ function touch(event, status) {
         touch_mode = "none"
         touch_last_finger = 0
     } else if (status === 'doing') { // 指を動かしたときは、それぞれの処理を行う
-        // 指を動かした分だけ位置をずらす
+        // タッチの本数にかかわらず、moveモード
         // 本数が変わった場合は、初期位置を変更(初期処理)
         if (touch_last_finger != event.changedTouches.length) {
             [touch_last_x, touch_last_y] = touch_positionAverage(event) //押した位置を相対位置の基準にする
@@ -154,7 +153,6 @@ function touch(event, status) {
         map_PositionTop.value += touch_temp_y - touch_last_y // 位置をずらす
         touch_last_x = touch_temp_x //最終値を更新
         touch_last_y = touch_temp_y //最終値を更新
-
 
         if (event.changedTouches.length === 2) { // タッチの指が2つの場合はzoomモード
             if (touch_mode == "zoom") {
