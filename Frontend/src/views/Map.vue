@@ -1,15 +1,23 @@
 <script setup>
 import { onMounted, ref } from 'vue'
+import PropertyView from '@/components/PropertyView.vue';
+
+const isShowProperty = ref(false)
+const point_PlaceId = ref("")
+const point_Floor = ref()
 
 // ドラッグなどとクリックを判別する
 // <参考>
 // https://qiita.com/_Keitaro_/items/375c5274bebf367f24e0
 // https://qiita.com/KenjiOtsuka/items/da6d2dd2b81fef87e35d
 var isClick = false
-function showInfo(id) {
+function showProperty(id) {
     // クリックされたときに、フラグが立っていたら
     if (isClick) {
-        alert(id)
+        // alert(id)
+        point_PlaceId.value = id
+        point_Floor.value = 1   // 仮の値
+        isShowProperty.value = true
     }
 }
 function click_Detect() {
@@ -19,6 +27,10 @@ function click_Detect() {
 function click_notDetect() {
     // クリックではなくドラックだとわかったときにフラグを解除する
     isClick = false
+}
+
+function hideProperty() {
+    isShowProperty.value = false
 }
 
 const map_DefaultWidth = ref(0)
@@ -60,6 +72,7 @@ function resetMoving() {
     map_PositionTop.value = window_height / 2
     map_ZoomLevel.value = 1
     map_Rotate.value = 0
+    hideProperty()
 }
 
 // PC用
@@ -183,6 +196,7 @@ document.body.addEventListener('touchmove', (event) => {
 }
 </style>
 <template>
+    <PropertyView v-if="isShowProperty" :Floor="point_Floor" :PlaceId="point_PlaceId" @hideProperty="hideProperty()" />
     <div id="box">
         <div id="map_content" @mousemove="mouse_moveRotate($event); click_notDetect()" @mousedown="click_Detect()"
             @dblclick="resetMoving()" @touchmove="touch($event, 'move'); click_notDetect();"
@@ -199,26 +213,27 @@ document.body.addEventListener('touchmove', (event) => {
                     inkscape:window-width="1014" inkscape:window-height="1032" inkscape:window-x="163"
                     inkscape:window-y="27" inkscape:window-maximized="0" inkscape:current-layer="layer5" />
                 <defs id="defs2" />
-                <g inkscape:label="れいやー" inkscape:groupmode="layer" id="layer1" @click="showInfo('れいやー')" class="れいやー">
+                <g inkscape:label="れいやー" inkscape:groupmode="layer" id="layer1" class="れいやー">
                     <rect
                         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
                         id="rect234" width="115.93574" height="117.4095" x="54.529099" y="33.405212"
-                        inkscape:label="四角形" @click="showInfo('四角形')" class="四角形" />
-                    <g inkscape:groupmode="layer" id="layer2" inkscape:label="れいやー 2" @click="showInfo('れいやー 2')"
+                        inkscape:label="四角形" @click="showProperty('四角形')" class="四角形" />
+                    <g inkscape:groupmode="layer" id="layer2" inkscape:label="れいやー 2" @click="showProperty('れいやー 2')"
                         class="れいやー 2">
                         <rect
                             style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
                             id="rect3079" width="57.476616" height="48.63406" x="24.790791" y="154.74472" />
                     </g>
-                    <g inkscape:groupmode="layer" id="layer3" inkscape:label="1" @click="showInfo('1')" class="1">
+                    <g inkscape:groupmode="layer" id="layer3" inkscape:label="1" @click="showProperty('1')" class="1">
                         <rect style="fill:#000000;stroke-width:2;stroke-linecap:round;stop-color:#000000" id="rect347"
                             width="37.335236" height="43.230274" x="156.70975" y="221.55516" />
                     </g>
-                    <g inkscape:groupmode="layer" id="layer4" inkscape:label="2" @click="showInfo('2')" class="2">
+                    <g inkscape:groupmode="layer" id="layer4" inkscape:label="2" @click="showProperty('2')" class="2">
                         <rect style="fill:#000000;stroke-width:2;stroke-linecap:round;stop-color:#000000" id="rect345"
                             width="38.808994" height="47.651554" x="90.881828" y="226.4677" />
                     </g>
-                    <g inkscape:groupmode="layer" id="layer5" inkscape:label="33a" @click="showInfo('33a')" class="33a">
+                    <g inkscape:groupmode="layer" id="layer5" inkscape:label="33a" @click="showProperty('33a')"
+                        class="33a">
                         <rect style="fill:#000000;stroke-width:2;stroke-linecap:round;stop-color:#000000" id="rect343"
                             width="45.686539" height="44.21278" x="27.510172" y="226.4677" />
                     </g>

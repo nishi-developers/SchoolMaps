@@ -29,7 +29,7 @@ def convert(content):
     try:
         label = content.attrib["{http://www.inkscape.org/namespaces/inkscape}label"]
         print(label)
-        content.attrib.update([("@click", f"showInfo('{label}')")])
+        content.attrib.update([("@click", f"showProperty('{label}')")])
         content.attrib.update([("class", label)])
     except KeyError:
         pass
