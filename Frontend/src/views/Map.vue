@@ -110,11 +110,13 @@ function mouse_zoom(event) {
 // https://qiita.com/tonio0720/items/6facacac5db6d68f1a13
 // lastがついてる変数は、直前の値を保存するため
 let touch_mode = ""
-// moveモード用の変数
-// move: 1つの指で移動
+// move: 移動(何本の指でも)
 // zoom: 2つの指でズーム・回転
+// moveモード用の変数
 let touch_last_x = 0
 let touch_last_y = 0
+let touch_temp_x = 0
+let touch_temp_y = 0
 // zoomモード用の変数
 let touch_last_diff = 0
 let touch_diff = 0
@@ -122,23 +124,28 @@ let touch_last_rotate = 0
 let touch_rotate = 0
 function touch(event, status) {
     if (status === 'start') {
-        // タップし始めは、それぞれの初期処理をあてるために値を変更
+        //moveモードの初期処理
+        touch_last_x = event.changedTouches[0].clientX //押した位置を相対位置の基準にする
+        touch_last_y = event.changedTouches[0].clientY
+        // タップし始めは、初期処理をあてるために値を変更
         touch_mode = "none"
-    } else if (status === 'move') { // 指を動かしたときは、それぞれの処理を行う
-        if (event.changedTouches.length === 1) { // タッチの指が1つの場合はmoveモード
-            if (touch_mode === "move") {
-                // すでにmoveモードになっている場合は、指を動かした分だけ位置をずらす
-                map_PositionLeft.value += event.changedTouches[0].clientX - touch_last_x
-                map_PositionTop.value += event.changedTouches[0].clientY - touch_last_y
-                touch_last_x = event.changedTouches[0].clientX //最終値を更新
-                touch_last_y = event.changedTouches[0].clientY //最終値を更新
-            } else {
-                //moveモードになっていない場合の初期処理
-                touch_mode = "move"
-                touch_last_x = event.changedTouches[0].clientX //押した位置を相対位置の基準にする
-                touch_last_y = event.changedTouches[0].clientY
-            }
-        } else if (event.changedTouches.length === 2) { // タッチの指が2つの場合はzoomモード
+    } else if (status === 'doing') { // 指を動かしたときは、それぞれの処理を行う
+        // 指を動かした分だけ位置をずらす
+        // タッチの指が複数ある場合は、それぞれの位置を取得して平均を取る
+        for (const i of event.changedTouches) {
+            touch_temp_x += i.clientX
+            touch_temp_y += i.clientY
+        }
+        touch_temp_x = touch_temp_x / event.changedTouches.length
+        touch_temp_y = touch_temp_y / event.changedTouches.length
+        map_PositionLeft.value += touch_temp_x - touch_last_x // 位置をずらす
+        map_PositionTop.value += touch_temp_y - touch_last_y // 位置をずらす
+        touch_last_x = touch_temp_x //最終値を更新
+        touch_last_y = touch_temp_y //最終値を更新
+        touch_temp_x = 0 //初期化
+        touch_temp_y = 0 //初期化
+
+        if (event.changedTouches.length === 2) { // タッチの指が2つの場合はzoomモード
             if (touch_mode == "zoom") {
                 // すでにzoomモードになっている場合
                 // 指の間隔を計算して、前との差からズームレベルを変更
@@ -197,7 +204,7 @@ document.body.addEventListener('touchmove', (event) => {
     <PropertyView v-if="isShowProperty" :Floor="Floor" :PlaceId="point_PlaceId" @hideProperty="hideProperty()" />
     <div id="box" @dblclick="resetMoving()">
         <div id="map_content" @mousemove="mouse_moveRotate($event); click_notDetect()" @mousedown="click_Detect()"
-            @touchmove="touch($event, 'move'); click_notDetect();" @touchstart="touch($event, 'start'); click_Detect()"
+            @touchmove="touch($event, 'doing'); click_notDetect();" @touchstart="touch($event, 'start'); click_Detect()"
             @wheel="mouse_zoom($event)" draggable="false">
             <div v-if="Floor == 1">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
