@@ -1,0 +1,1 @@
+import{_ as e,o as p,c as t,j as c}from"./index-BELs1EsC.js";const o={},s=c("<h1>Guide</h1><h2>PC</h2><p>ドラッグで移動</p><p>ホイールを押して左右に動かすことで回転</p><p>ホイールでズームイン・アウト</p><p>ダブルクリックでリセット</p><h2>スマホ</h2><p>スワイプで移動</p><p>ピンチイン・アウトでズームイン・アウト</p><p>2本指で回転させて回転</p><p>ダブルタップでリセット</p>",11),n=[s];function _(r,a){return p(),t("div",null,n)}const h=e(o,[["render",_]]);export{h as default};
