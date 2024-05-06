@@ -26,14 +26,31 @@ ET.register_namespace("inkscape", "http://www.inkscape.org/namespaces/inkscape")
 
 
 def convert(content):
+    isLabel = True
+    isId = True
+    textFlag = False
     try:
+        # print(content.tag)
         label = content.attrib["{http://www.inkscape.org/namespaces/inkscape}label"]
-        if label != "none":
+    except KeyError:
+        isLabel = False
+    try:
+        id = content.attrib["id"]
+    except KeyError:
+        isId = False
+    if isId:
+        if (content.tag == "{http://www.w3.org/2000/svg}g") and (("text" in id)):
+            textFlag = True
+            content.attrib.update([("class", "svg-text")])
+            print("text")
+    if isLabel:
+        if (content.tag == "{http://www.w3.org/2000/svg}g") and (
+            not ("none" in label) and not textFlag
+        ):
             print(label)
             content.attrib.update([("@click", f"showProperty('{label}')")])
             content.attrib.update([("class", label)])
-    except KeyError:
-        pass
+
     return content
 
 
