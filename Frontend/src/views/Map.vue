@@ -33,21 +33,15 @@ function hideProperty() {
 }
 
 const map_DefaultWidth = ref(0)
+let map_size_width = 0
+let map_size_height = 0
+let map_size_ratio = 0
 onMounted(() => {
-    // 表示範囲のサイズ(改)
-    window_width = window.innerWidth
-    window_height = window.innerHeight - getComputedStyle(document.querySelector("*")).getPropertyValue("--header-height").slice(0, -2)// CSSのヘッダー分を引く（CSS変数と同期）
     // 地図のデフォルトサイズを算出
-    const map_size_width = Number(document.querySelector("#map_content svg").getAttribute("width").slice(0, -2));
-    const map_size_height = Number(document.querySelector("#map_content svg").getAttribute("height").slice(0, -2));
-    const map_size_ratio = map_size_width / map_size_height
-    if (window_width / map_size_width > window_height / map_size_height) {
-        // 縦幅に合わせる
-        map_DefaultWidth.value = window_height * map_size_ratio
-    } else {
-        // 横幅に合わせる
-        map_DefaultWidth.value = window_width
-    }
+    map_size_width = Number(document.querySelector("#map_content svg").getAttribute("width").slice(0, -2));
+    map_size_height = Number(document.querySelector("#map_content svg").getAttribute("height").slice(0, -2));
+    map_size_ratio = map_size_width / map_size_height
+
     resetMoving() //window_width, window_heightを使うので、ここでリセット
 })
 
@@ -68,6 +62,17 @@ const map_Rotate = ref()
 // リセット(PC・モバイル共通)
 // ダブルクリックでリセット
 function resetMoving() {
+    // 表示範囲のサイズ(改)
+    window_width = window.innerWidth
+    window_height = window.innerHeight - getComputedStyle(document.querySelector("*")).getPropertyValue("--header-height").slice(0, -2)// CSSのヘッダー分を引く（CSS変数と同期）
+    if (window_width / map_size_width > window_height / map_size_height) {
+        // 縦幅に合わせる
+        map_DefaultWidth.value = window_height * map_size_ratio
+    } else {
+        // 横幅に合わせる
+        map_DefaultWidth.value = window_width
+    }
+    // リセット
     map_PositionLeft.value = window_width / 2
     map_PositionTop.value = window_height / 2
     map_ZoomLevel.value = 1
