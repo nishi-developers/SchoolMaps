@@ -45,6 +45,37 @@ onMounted(() => {
     resetMoving() //window_width, window_heightを使うので、ここでリセット
 })
 
+// 慣性スクロール
+let slide_position_lastMovedTime = 0
+let slide_position_speedX = 0 // 1msあたりの移動量
+let slide_position_speedY = 0
+
+function slide_reset() {
+    slide_position_lastMovedTime = 0
+    slide_position_speedX = 0
+    slide_position_speedY = 0
+}
+
+function slide_do() {
+    const position_speedMin = 0.01
+    const position_frictionLevel = 0.95
+    // 速度が0になるまで、位置を変更
+    if (Math.abs(slide_position_speedX) > position_speedMin || Math.abs(slide_position_speedY) > position_speedMin) {
+        // position
+        map_PositionLeft.value += slide_position_speedX * 4
+        map_PositionTop.value += slide_position_speedY * 4
+        slide_position_speedX *= position_frictionLevel
+        slide_position_speedY *= position_frictionLevel
+
+        // 再帰
+        setTimeout(slide_do, 4) // 4msごとに再帰
+        // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、
+        // 4msごとに再帰している
+    } else {
+        slide_reset()
+    }
+}
+
 // 共通の変数
 // 表示範囲のサイズ(仮)
 let window_width = 0
@@ -53,8 +84,13 @@ let window_height = 0
 const map_PositionLeft = ref()
 const map_PositionTop = ref()
 function map_PositionMove(x, y) {
+    slide_reset() //慣性動作中に動かされた場合は、ここでリセットをかける
     map_PositionLeft.value += x
     map_PositionTop.value += y
+    // 速度を計算
+    slide_position_speedX = x / (Date.now() - slide_position_lastMovedTime)
+    slide_position_speedY = y / (Date.now() - slide_position_lastMovedTime)
+    slide_position_lastMovedTime = Date.now()
     return true //将来的に範囲を制限するかもしれないため、trueを返す
 }
 // 地図の倍率
@@ -62,6 +98,7 @@ const map_ZoomLevel = ref()
 const map_ZoomLevelMax = 15
 const map_ZoomLevelMin = 0.1
 function map_Zoom(v) {
+    slide_reset()
     // マップのズームをする関数
     // 範囲内であれば、ズームレベルを変更し、trueを返す
     if (map_ZoomLevel.value + v < map_ZoomLevelMax && map_ZoomLevel.value + v > map_ZoomLevelMin) {
@@ -74,6 +111,7 @@ function map_Zoom(v) {
 // 地図の回転角度
 const map_Rotate = ref()
 function map_Rotating(v) {
+    slide_reset()
     map_Rotate.value += v
 }
 
@@ -95,6 +133,7 @@ function resetMoving() {
     map_PositionTop.value = window_height / 2
     map_ZoomLevel.value = 1
     map_Rotate.value = 0
+    slide_reset()
     hideProperty()
 }
 
@@ -259,8 +298,8 @@ document.body.addEventListener('touchmove', (event) => {
 <template>
     <PropertyView v-if="isShowProperty" :Floor="Floor" :PlaceId="point_PlaceId" @hideProperty="hideProperty()" />
     <div id="box" @dblclick="resetMoving()" @mousemove="mouse_moveRotate($event); click_notDetect()"
-        @mousedown="click_Detect()" @touchmove="touch($event, 'doing'); click_notDetect();"
-        @touchstart="touch($event, 'start'); click_Detect()" @wheel="mouse_zoom($event)">
+        @mousedown="click_Detect()" @mouseup="slide_do()" @touchmove="touch($event, 'doing'); click_notDetect();"
+        @touchstart="touch($event, 'start'); click_Detect()" @touchend="slide_do()" @wheel="mouse_zoom($event)">
         <div id="map_content" draggable="false">
             <div v-if="Floor == 1">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
