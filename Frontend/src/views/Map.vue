@@ -80,7 +80,7 @@ function slide_position_do() {
     if (slide_is_position_do === false) { // 重複実行防止
         slide_is_position_do = true
         const position_speedMin = 0.01
-        const position_frictionLevel = 0.95
+        const position_frictionLevel = 0.9
         // 速度が0になるまで、位置を変更
         if (Math.abs(slide_position_speedX) > position_speedMin || Math.abs(slide_position_speedY) > position_speedMin) {
             map_PositionLeft.value += slide_position_speedX * 4
@@ -101,7 +101,7 @@ function slide_zoom_do() {
     if (slide_is_zoom_do === false) {
         slide_is_zoom_do = true
         const zoom_speedMin = 0.0001
-        const zoom_frictionLevel = 0.999
+        const zoom_frictionLevel = 0.95
         if (Math.abs(slide_zoom_speed) > zoom_speedMin && map_ZoomLevel.value + slide_zoom_speed * 4 < map_ZoomLevelMax && map_ZoomLevel.value + slide_zoom_speed * 4 > map_ZoomLevelMin) {
             map_ZoomLevel.value += slide_zoom_speed * 4
             slide_zoom_speed *= zoom_frictionLevel
@@ -234,7 +234,7 @@ function mouse_moveRotate(event) {
 // https://mebee.info/2022/03/15/post-40363/
 function mouse_zoom(event) {
     var num = 0
-    let map_ZoomLevel_Unit = .06
+    let map_ZoomLevel_Unit = .01
     if (event.wheelDelta + map_ZoomLevel_Unit > 0) {
         num = map_ZoomLevel_Unit
     } else {
