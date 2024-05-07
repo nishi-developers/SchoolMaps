@@ -54,7 +54,6 @@ let slide_zoom_lastMovedTime = 0
 let slide_zoom_speed = 0
 let slide_rotate_lastMovedTime = 0
 let slide_rotate_speed = 0
-
 function slide_reset() { // 慣性をリセット
     slide_position_stop()
     slide_zoom_stop()
@@ -316,7 +315,6 @@ function touch(event, status) {
                         slide_zoom_speed = (touch_diff - touch_last_diff) * .005 / (Date.now() - slide_zoom_lastMovedTime)
                     }
                     slide_zoom_lastMovedTime = Date.now()
-                    console.log(slide_zoom_speed);
                     // 
                     touch_zoomed += Math.abs(touch_diff - touch_last_diff) //ズームした合計量を記録
                     touch_last_diff = touch_diff //最終値を更新
