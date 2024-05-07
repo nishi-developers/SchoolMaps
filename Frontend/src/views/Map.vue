@@ -49,31 +49,41 @@ onMounted(() => {
 let slide_position_lastMovedTime = 0
 let slide_position_speedX = 0 // 1msあたりの移動量
 let slide_position_speedY = 0
+// let slide_zoom_lastMovedTime = 0
+// let slide_zoom_speed = 0
 
 function slide_reset() { // 慣性をリセット
     slide_stop()
     slide_position_lastMovedTime = 0
+    // slide_zoom_lastMovedTime = 0
+
 }
 function slide_stop() { // 慣性を止める
     slide_position_speedX = 0
     slide_position_speedY = 0
+    // slide_zoom_speed = 0
 }
 
 function slide_do() {
     const position_speedMin = 0.01
     const position_frictionLevel = 0.95
+    // const zoom_speedMin = 0.00001
+    // const zoom_frictionLevel = 0.999
+    console.log("slide_do");
     // 速度が0になるまで、位置を変更
-    if (Math.abs(slide_position_speedX) > position_speedMin || Math.abs(slide_position_speedY) > position_speedMin) {
+    if (Math.abs(slide_position_speedX) > position_speedMin || Math.abs(slide_position_speedY) > position_speedMin || Math.abs(slide_zoom_speed) > zoom_speedMin) {
         // position
         map_PositionLeft.value += slide_position_speedX * 4
         map_PositionTop.value += slide_position_speedY * 4
         slide_position_speedX *= position_frictionLevel
         slide_position_speedY *= position_frictionLevel
+        // zoom
+        // map_ZoomLevel.value += slide_zoom_speed * 4
+        // slide_zoom_speed *= zoom_frictionLevel
 
         // 再帰
         setTimeout(slide_do, 4) // 4msごとに再帰
-        // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、
-        // 4msごとに再帰している
+        // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
     } else {
         slide_reset()
     }
@@ -102,13 +112,20 @@ function map_PositionMove(x, y) {
 // 地図の倍率
 const map_ZoomLevel = ref()
 const map_ZoomLevelMax = 15
-const map_ZoomLevelMin = 0.1
+const map_ZoomLevelMin = 0.001
 function map_Zoom(v) {
     slide_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
     // マップのズームをする関数
     // 範囲内であれば、ズームレベルを変更し、trueを返す
     if (map_ZoomLevel.value + v < map_ZoomLevelMax && map_ZoomLevel.value + v > map_ZoomLevelMin) {
         map_ZoomLevel.value += v
+        // 速度を計算
+        // if (slide_zoom_lastMovedTime != 0) {
+        //     slide_zoom_speed = v / (Date.now() - slide_zoom_lastMovedTime)
+        //     // slide_do()
+        // }
+        // slide_zoom_lastMovedTime = Date.now()
+        // console.log(slide_zoom_speed)
         return true
     } else {
         return false
