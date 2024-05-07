@@ -52,6 +52,11 @@ let window_height = 0
 // 地図の位置
 const map_PositionLeft = ref()
 const map_PositionTop = ref()
+function map_PositionMove(x, y) {
+    map_PositionLeft.value += x
+    map_PositionTop.value += y
+    return true //将来的に範囲を制限するかもしれないため、trueを返す
+}
 // 地図の倍率
 const map_ZoomLevel = ref()
 const map_ZoomLevelMax = 15
@@ -103,8 +108,7 @@ function resetMoving() {
 // https://qiita.com/akicho8/items/8522929fa619394ac9f4
 function mouse_moveRotate(event) {
     if (event.buttons == 1) { // 左クリックが押されている場合のみ
-        map_PositionLeft.value += event.movementX
-        map_PositionTop.value += event.movementY
+        map_PositionMove(event.movementX, event.movementY)
     } else if (event.buttons == 4) { // ホイールボタンが押されている場合のみ
         map_Rotating(event.movementX / 5)
     }
@@ -178,8 +182,7 @@ function touch(event, status) {
             touch_last_finger = event.changedTouches.length
         }
         [touch_temp_x, touch_temp_y] = touch_positionAverage(event)
-        map_PositionLeft.value += touch_temp_x - touch_last_x // 位置をずらす
-        map_PositionTop.value += touch_temp_y - touch_last_y // 位置をずらす
+        map_PositionMove(touch_temp_x - touch_last_x, touch_temp_y - touch_last_y) // 位置をずらす
         touch_last_x = touch_temp_x //最終値を更新
         touch_last_y = touch_temp_y //最終値を更新
 
