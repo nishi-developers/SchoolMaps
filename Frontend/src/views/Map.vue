@@ -69,6 +69,28 @@ function slide_rotate_stop() {
     slide_rotate_speed = 0
 }
 
+let is_slide_position_do = false
+function slide_position_do() {
+    if (is_slide_position_do === false) { // 重複実行防止
+        is_slide_position_do = true
+        const position_speedMin = 0.01
+        const position_frictionLevel = 0.95
+        // 速度が0になるまで、位置を変更
+        if (Math.abs(slide_position_speedX) > position_speedMin || Math.abs(slide_position_speedY) > position_speedMin) {
+            map_PositionLeft.value += slide_position_speedX * 4
+            map_PositionTop.value += slide_position_speedY * 4
+            slide_position_speedX *= position_frictionLevel
+            slide_position_speedY *= position_frictionLevel
+            // 再帰
+            setTimeout(function () { is_slide_position_do = false; slide_position_do(); }, 4) // 4msごとに再帰
+            // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
+        } else {
+            is_slide_position_do = false
+            slide_position_stop()
+        }
+    }
+}
+let is_slide_rotate_do = false
 function slide_rotate_do() {
     const rotate_speedMin = 0.01
     const rotate_frictionLevel = 0.999
@@ -81,22 +103,6 @@ function slide_rotate_do() {
         // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
     } else {
         slide_rotate_stop()
-    }
-}
-function slide_position_do() {
-    const position_speedMin = 0.01
-    const position_frictionLevel = 0.95
-    // 速度が0になるまで、位置を変更
-    if (Math.abs(slide_position_speedX) > position_speedMin || Math.abs(slide_position_speedY) > position_speedMin) {
-        map_PositionLeft.value += slide_position_speedX * 4
-        map_PositionTop.value += slide_position_speedY * 4
-        slide_position_speedX *= position_frictionLevel
-        slide_position_speedY *= position_frictionLevel
-        // 再帰
-        setTimeout(slide_position_do, 4) // 4msごとに再帰
-        // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
-    } else {
-        slide_position_stop()
     }
 }
 
