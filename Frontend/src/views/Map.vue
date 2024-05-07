@@ -68,6 +68,9 @@ function map_Zoom(v) {
 }
 // 地図の回転角度
 const map_Rotate = ref()
+function map_Rotating(v) {
+    map_Rotate.value += v
+}
 
 // リセット(PC・モバイル共通)
 // ダブルクリックでリセット
@@ -103,7 +106,7 @@ function mouse_moveRotate(event) {
         map_PositionLeft.value += event.movementX
         map_PositionTop.value += event.movementY
     } else if (event.buttons == 4) { // ホイールボタンが押されている場合のみ
-        map_Rotate.value += (event.movementX / 5)
+        map_Rotating(event.movementX / 5)
     }
 }
 // ホイールによるズーム
@@ -197,7 +200,7 @@ function touch(event, status) {
                     touch_acceptRotate = true
                 }
                 if (touch_acceptRotate) {
-                    map_Rotate.value += touch_rotate - touch_last_rotate
+                    map_Rotating(touch_rotate - touch_last_rotate)
                 }
                 touch_last_rotate = touch_rotate //最終値を更新
             } else {
