@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import PropertyView from '@/components/PropertyView.vue';
+// import { s } from 'vite/dist/node/types.d-aGj9QkWt';
 
 const isShowProperty = ref(false)
 const point_PlaceId = ref("")
@@ -49,15 +50,17 @@ onMounted(() => {
 let slide_position_lastMovedTime = 0
 let slide_position_speedX = 0 // 1msあたりの移動量
 let slide_position_speedY = 0
-// let slide_zoom_lastMovedTime = 0
-// let slide_zoom_speed = 0
+let slide_zoom_lastMovedTime = 0
+let slide_zoom_speed = 0
 let slide_rotate_lastMovedTime = 0
 let slide_rotate_speed = 0
 
 function slide_reset() { // 慣性をリセット
     slide_position_stop()
+    slide_zoom_stop()
     slide_rotate_stop()
     slide_position_lastMovedTime = 0
+    slide_zoom_lastMovedTime = 0
     slide_rotate_lastMovedTime = 0
 
 }
@@ -65,14 +68,17 @@ function slide_position_stop() {
     slide_position_speedX = 0
     slide_position_speedY = 0
 }
+function slide_zoom_stop() {
+    slide_zoom_speed = 0
+}
 function slide_rotate_stop() {
     slide_rotate_speed = 0
 }
 
-let is_slide_position_do = false
+let slide_is_position_do = false
 function slide_position_do() {
-    if (is_slide_position_do === false) { // 重複実行防止
-        is_slide_position_do = true
+    if (slide_is_position_do === false) { // 重複実行防止
+        slide_is_position_do = true
         const position_speedMin = 0.01
         const position_frictionLevel = 0.95
         // 速度が0になるまで、位置を変更
@@ -82,28 +88,46 @@ function slide_position_do() {
             slide_position_speedX *= position_frictionLevel
             slide_position_speedY *= position_frictionLevel
             // 再帰
-            setTimeout(() => { is_slide_position_do = false; slide_position_do(); }, 4) // 4msごとに再帰
+            setTimeout(() => { slide_is_position_do = false; slide_position_do(); }, 4) // 4msごとに再帰
             // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
         } else {
-            is_slide_position_do = false
+            slide_is_position_do = false
             slide_position_stop()
         }
     }
 }
-let is_slide_rotate_do = false
+let slide_is_zoom_do = false
+function slide_zoom_do() {
+    if (slide_is_zoom_do === false) {
+        slide_is_zoom_do = true
+        const zoom_speedMin = 0.01
+        const zoom_frictionLevel = 0.85
+        if (Math.abs(slide_zoom_speed) > zoom_speedMin && map_ZoomLevel.value + slide_zoom_speed * 4 < map_ZoomLevelMax && map_ZoomLevel.value + slide_zoom_speed * 4 > map_ZoomLevelMin) {
+            map_ZoomLevel.value += slide_zoom_speed * 4
+            slide_zoom_speed *= zoom_frictionLevel
+            // 再帰
+            setTimeout(() => { slide_is_zoom_do = false; slide_zoom_do(); }, 4) // 4msごとに再帰
+            // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
+        } else {
+            slide_is_zoom_do = false
+            slide_zoom_stop()
+        }
+    }
+}
+let slide_is_rotate_do = false
 function slide_rotate_do() {
-    if (is_slide_rotate_do === false) { // 重複実行防止
-        is_slide_rotate_do = true
+    if (slide_is_rotate_do === false) { // 重複実行防止
+        slide_is_rotate_do = true
         const rotate_speedMin = 0.01
-        const rotate_frictionLevel = 0.999
+        const rotate_frictionLevel = 0.95
         if (Math.abs(slide_rotate_speed) > rotate_speedMin) {
             map_Rotate.value += slide_rotate_speed * 4
             slide_rotate_speed *= rotate_frictionLevel
             // 再帰
-            setTimeout(() => { is_slide_rotate_do = false; slide_rotate_do(); }, 4) // 4msごとに再帰
+            setTimeout(() => { slide_is_rotate_do = false; slide_rotate_do(); }, 4) // 4msごとに再帰
             // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
         } else {
-            is_slide_rotate_do = false
+            slide_is_rotate_do = false
             slide_rotate_stop()
         }
     }
@@ -134,18 +158,12 @@ const map_ZoomLevel = ref()
 const map_ZoomLevelMax = 15
 const map_ZoomLevelMin = 0.001
 function map_Zoom(v) {
-    // slide_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
     // マップのズームをする関数
+    // ズームの慣性の実装は、PCとスマホで異なるため、それぞれの場所で実装
     // 範囲内であれば、ズームレベルを変更し、trueを返す
     if (map_ZoomLevel.value + v < map_ZoomLevelMax && map_ZoomLevel.value + v > map_ZoomLevelMin) {
+        slide_zoom_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
         map_ZoomLevel.value += v
-        // 速度を計算
-        // if (slide_zoom_lastMovedTime != 0) {
-        //     slide_zoom_speed = v / (Date.now() - slide_zoom_lastMovedTime)
-        //     // slide_do()
-        // }
-        // slide_zoom_lastMovedTime = Date.now()
-        // console.log(slide_zoom_speed)
         return true
     } else {
         return false
@@ -198,7 +216,11 @@ function mouse_moveRotate(event) {
     if (event.buttons == 1) { // 左クリックが押されている場合のみ
         map_PositionMove(event.movementX, event.movementY)
     } else if (event.buttons == 4) { // ホイールボタンが押されている場合のみ
-        map_Rotating(event.movementX / 5)
+        if (event.movementX > 0) {
+            map_Rotating(Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
+        } else {
+            map_Rotating(-Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
+        }
     }
 }
 // ホイールによるズーム
@@ -207,11 +229,16 @@ function mouse_moveRotate(event) {
 // <参考>
 // https://mebee.info/2022/03/15/post-40363/
 function mouse_zoom(event) {
-    let map_ZoomLevel_Unit = .1
+    var num = 0
+    let map_ZoomLevel_Unit = .06
     if (event.wheelDelta + map_ZoomLevel_Unit > 0) {
-        map_Zoom(+map_ZoomLevel_Unit)
+        num = map_ZoomLevel_Unit
     } else {
-        map_Zoom(-map_ZoomLevel_Unit)
+        num = -map_ZoomLevel_Unit
+    }
+    if (map_Zoom(num)) {
+        slide_zoom_speed = num / 5
+        slide_zoom_do()
     }
 }
 
