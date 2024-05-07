@@ -51,41 +51,52 @@ let slide_position_speedX = 0 // 1msあたりの移動量
 let slide_position_speedY = 0
 // let slide_zoom_lastMovedTime = 0
 // let slide_zoom_speed = 0
+let slide_rotate_lastMovedTime = 0
+let slide_rotate_speed = 0
 
 function slide_reset() { // 慣性をリセット
-    slide_stop()
+    slide_position_stop()
+    slide_rotate_stop()
     slide_position_lastMovedTime = 0
-    // slide_zoom_lastMovedTime = 0
+    slide_rotate_lastMovedTime = 0
 
 }
-function slide_stop() { // 慣性を止める
+function slide_position_stop() {
     slide_position_speedX = 0
     slide_position_speedY = 0
-    // slide_zoom_speed = 0
+}
+function slide_rotate_stop() {
+    slide_rotate_speed = 0
 }
 
-function slide_do() {
+function slide_rotate_do() {
+    const rotate_speedMin = 0.01
+    const rotate_frictionLevel = 0.999
+    if (Math.abs(slide_rotate_speed) > rotate_speedMin) {
+        map_Rotate.value += slide_rotate_speed * 4
+        slide_rotate_speed *= rotate_frictionLevel
+
+        // 再帰
+        setTimeout(slide_rotate_do, 4) // 4msごとに再帰
+        // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
+    } else {
+        slide_rotate_stop()
+    }
+}
+function slide_position_do() {
     const position_speedMin = 0.01
     const position_frictionLevel = 0.95
-    // const zoom_speedMin = 0.00001
-    // const zoom_frictionLevel = 0.999
-    console.log("slide_do");
     // 速度が0になるまで、位置を変更
-    if (Math.abs(slide_position_speedX) > position_speedMin || Math.abs(slide_position_speedY) > position_speedMin || Math.abs(slide_zoom_speed) > zoom_speedMin) {
-        // position
+    if (Math.abs(slide_position_speedX) > position_speedMin || Math.abs(slide_position_speedY) > position_speedMin) {
         map_PositionLeft.value += slide_position_speedX * 4
         map_PositionTop.value += slide_position_speedY * 4
         slide_position_speedX *= position_frictionLevel
         slide_position_speedY *= position_frictionLevel
-        // zoom
-        // map_ZoomLevel.value += slide_zoom_speed * 4
-        // slide_zoom_speed *= zoom_frictionLevel
-
         // 再帰
-        setTimeout(slide_do, 4) // 4msごとに再帰
+        setTimeout(slide_position_do, 4) // 4msごとに再帰
         // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
     } else {
-        slide_reset()
+        slide_position_stop()
     }
 }
 
@@ -98,7 +109,7 @@ let window_height = 0
 const map_PositionLeft = ref()
 const map_PositionTop = ref()
 function map_PositionMove(x, y) {
-    slide_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
+    slide_position_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
     map_PositionLeft.value += x
     map_PositionTop.value += y
     // 速度を計算
@@ -114,7 +125,7 @@ const map_ZoomLevel = ref()
 const map_ZoomLevelMax = 15
 const map_ZoomLevelMin = 0.001
 function map_Zoom(v) {
-    slide_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
+    // slide_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
     // マップのズームをする関数
     // 範囲内であれば、ズームレベルを変更し、trueを返す
     if (map_ZoomLevel.value + v < map_ZoomLevelMax && map_ZoomLevel.value + v > map_ZoomLevelMin) {
@@ -134,8 +145,14 @@ function map_Zoom(v) {
 // 地図の回転
 const map_Rotate = ref()
 function map_Rotating(v) {
-    slide_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
     map_Rotate.value += v
+    if (v != 0) { //スマホでは、回転0が多発するため、0の場合は無視
+        slide_rotate_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
+        if (slide_rotate_lastMovedTime != 0) {
+            slide_rotate_speed = v / (Date.now() - slide_rotate_lastMovedTime)
+        }
+        slide_rotate_lastMovedTime = Date.now()
+    }
 }
 
 // リセット(PC・モバイル共通)
@@ -321,8 +338,9 @@ document.body.addEventListener('touchmove', (event) => {
 <template>
     <PropertyView v-if="isShowProperty" :Floor="Floor" :PlaceId="point_PlaceId" @hideProperty="hideProperty()" />
     <div id="box" @dblclick="resetMoving()" @mousemove="mouse_moveRotate($event); click_notDetect()"
-        @mousedown="click_Detect()" @mouseup="slide_do()" @touchmove="touch($event, 'doing'); click_notDetect();"
-        @touchstart="touch($event, 'start'); click_Detect()" @touchend="slide_do()" @wheel="mouse_zoom($event)">
+        @mousedown="click_Detect()" @mouseup="slide_position_do(); slide_rotate_do()"
+        @touchmove="touch($event, 'doing'); click_notDetect();" @touchstart="touch($event, 'start'); click_Detect()"
+        @touchend="slide_position_do(); slide_rotate_do()" @wheel="mouse_zoom($event)">
         <div id="map_content" draggable="false">
             <div v-if="Floor == 1">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
