@@ -57,6 +57,8 @@ const map_ZoomLevel = ref()
 const map_ZoomLevelMax = 15
 const map_ZoomLevelMin = 0.1
 function map_Zoom(v) {
+    // マップのズームをする関数
+    // 範囲内であれば、ズームレベルを変更し、trueを返す
     if (map_ZoomLevel.value + v < map_ZoomLevelMax && map_ZoomLevel.value + v > map_ZoomLevelMin) {
         map_ZoomLevel.value += v
         return true
