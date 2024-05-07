@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import PropertyView from '@/components/PropertyView.vue';
+// import { s } from 'vite/dist/node/types.d-aGj9QkWt';
 
 const isShowProperty = ref(false)
 const point_PlaceId = ref("")
@@ -45,19 +46,144 @@ onMounted(() => {
     resetMoving() //window_width, window_heightを使うので、ここでリセット
 })
 
-// 共通の変数
+// 慣性スクロール
+let slide_position_lastMovedTime = 0
+let slide_position_speedX = 0 // 1msあたりの移動量
+let slide_position_speedY = 0
+let slide_zoom_lastMovedTime = 0
+let slide_zoom_speed = 0
+let slide_rotate_lastMovedTime = 0
+let slide_rotate_speed = 0
+function slide_reset() { // 慣性をリセット
+    slide_position_stop()
+    slide_zoom_stop()
+    slide_rotate_stop()
+    slide_position_lastMovedTime = 0
+    slide_zoom_lastMovedTime = 0
+    slide_rotate_lastMovedTime = 0
+
+}
+function slide_position_stop() {
+    slide_position_speedX = 0
+    slide_position_speedY = 0
+}
+function slide_zoom_stop() {
+    slide_zoom_speed = 0
+}
+function slide_rotate_stop() {
+    slide_rotate_speed = 0
+}
+
+let slide_is_position_do = false
+function slide_position_do() {
+    if (slide_is_position_do === false) { // 重複実行防止
+        slide_is_position_do = true
+        const position_speedMin = 0.01
+        const position_frictionLevel = 0.9
+        // 速度が0になるまで、位置を変更
+        if (Math.abs(slide_position_speedX) > position_speedMin || Math.abs(slide_position_speedY) > position_speedMin) {
+            map_PositionLeft.value += slide_position_speedX * 4
+            map_PositionTop.value += slide_position_speedY * 4
+            slide_position_speedX *= position_frictionLevel
+            slide_position_speedY *= position_frictionLevel
+            // 再帰
+            setTimeout(() => { slide_is_position_do = false; slide_position_do(); }, 4) // 4msごとに再帰
+            // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
+        } else {
+            slide_is_position_do = false
+            slide_position_stop()
+        }
+    }
+}
+let slide_is_zoom_do = false
+function slide_zoom_do() {
+    if (slide_is_zoom_do === false) {
+        slide_is_zoom_do = true
+        const zoom_speedMin = 0.0001
+        const zoom_frictionLevel = 0.95
+        if (Math.abs(slide_zoom_speed) > zoom_speedMin && map_ZoomLevel.value + slide_zoom_speed * 4 < map_ZoomLevelMax && map_ZoomLevel.value + slide_zoom_speed * 4 > map_ZoomLevelMin) {
+            map_ZoomLevel.value += slide_zoom_speed * 4
+            slide_zoom_speed *= zoom_frictionLevel
+            // 再帰
+            setTimeout(() => { slide_is_zoom_do = false; slide_zoom_do(); }, 4) // 4msごとに再帰
+            // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
+        } else {
+            slide_is_zoom_do = false
+            slide_zoom_stop()
+        }
+    }
+}
+let slide_is_rotate_do = false
+function slide_rotate_do() {
+    if (slide_is_rotate_do === false) { // 重複実行防止
+        slide_is_rotate_do = true
+        const rotate_speedMin = 0.01
+        const rotate_frictionLevel = 0.95
+        if (Math.abs(slide_rotate_speed) > rotate_speedMin) {
+            map_Rotate.value += slide_rotate_speed * 4
+            slide_rotate_speed *= rotate_frictionLevel
+            // 再帰
+            setTimeout(() => { slide_is_rotate_do = false; slide_rotate_do(); }, 4) // 4msごとに再帰
+            // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
+        } else {
+            slide_is_rotate_do = false
+            slide_rotate_stop()
+        }
+    }
+}
+
+// 共通の変数と関数
+// 慣性をのせて移動する場合は必ずここの関数を利用する
 // 表示範囲のサイズ(仮)
 let window_width = 0
 let window_height = 0
 // 地図の位置
 const map_PositionLeft = ref()
 const map_PositionTop = ref()
+function map_PositionMove(x, y) {
+    slide_position_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
+    map_PositionLeft.value += x
+    map_PositionTop.value += y
+    // 速度を計算
+    if (slide_position_lastMovedTime != 0) {
+        slide_position_speedX = x / (Date.now() - slide_position_lastMovedTime)
+        slide_position_speedY = y / (Date.now() - slide_position_lastMovedTime)
+    }
+    slide_position_lastMovedTime = Date.now()
+    return true //将来的に範囲を制限するかもしれないため、trueを返す
+}
 // 地図の倍率
 const map_ZoomLevel = ref()
 const map_ZoomLevelMax = 15
-const map_ZoomLevelMin = 0.1
-// 地図の回転角度
+const map_ZoomLevelMin = 0.001
+function map_Zoom(v) {
+    // マップのズームをする関数
+    // ズームの慣性の実装は、PCとスマホで異なるため、それぞれの場所で実装
+    // 範囲内であれば、ズームレベルを変更し、trueを返す
+    if (v != 0) {
+        if (map_ZoomLevel.value + v < map_ZoomLevelMax && map_ZoomLevel.value + v > map_ZoomLevelMin) {
+            slide_zoom_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
+            map_ZoomLevel.value += v
+            return true
+        } else {
+            return false
+        }
+    } else {
+        return false
+    }
+}
+// 地図の回転
 const map_Rotate = ref()
+function map_Rotating(v) {
+    if (v != 0) { //スマホでは、回転0が多発するため、0の場合は無視
+        map_Rotate.value += v
+        slide_rotate_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
+        if (slide_rotate_lastMovedTime != 0) {
+            slide_rotate_speed = v / (Date.now() - slide_rotate_lastMovedTime)
+        }
+        slide_rotate_lastMovedTime = Date.now()
+    }
+}
 
 // リセット(PC・モバイル共通)
 // ダブルクリックでリセット
@@ -77,6 +203,7 @@ function resetMoving() {
     map_PositionTop.value = window_height / 2
     map_ZoomLevel.value = 1
     map_Rotate.value = 0
+    slide_reset()
     hideProperty()
 }
 
@@ -90,10 +217,13 @@ function resetMoving() {
 // https://qiita.com/akicho8/items/8522929fa619394ac9f4
 function mouse_moveRotate(event) {
     if (event.buttons == 1) { // 左クリックが押されている場合のみ
-        map_PositionLeft.value += event.movementX
-        map_PositionTop.value += event.movementY
+        map_PositionMove(event.movementX, event.movementY)
     } else if (event.buttons == 4) { // ホイールボタンが押されている場合のみ
-        map_Rotate.value += (event.movementX / 5)
+        if (event.movementX > 0) {
+            map_Rotating(Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
+        } else {
+            map_Rotating(-Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
+        }
     }
 }
 // ホイールによるズーム
@@ -102,15 +232,16 @@ function mouse_moveRotate(event) {
 // <参考>
 // https://mebee.info/2022/03/15/post-40363/
 function mouse_zoom(event) {
-    let map_ZoomLevel_Unit = .1
+    var num = 0
+    let map_ZoomLevel_Unit = .01
     if (event.wheelDelta + map_ZoomLevel_Unit > 0) {
-        if (map_ZoomLevel.value + map_ZoomLevel_Unit < map_ZoomLevelMax) {
-            map_ZoomLevel.value += map_ZoomLevel_Unit
-        }
+        num = map_ZoomLevel_Unit
     } else {
-        if (map_ZoomLevel.value - map_ZoomLevel_Unit > map_ZoomLevelMin) {
-            map_ZoomLevel.value -= map_ZoomLevel_Unit
-        }
+        num = -map_ZoomLevel_Unit
+    }
+    if (map_Zoom(num)) {
+        slide_zoom_speed = num / 5
+        slide_zoom_do()
     }
 }
 
@@ -169,8 +300,7 @@ function touch(event, status) {
             touch_last_finger = event.changedTouches.length
         }
         [touch_temp_x, touch_temp_y] = touch_positionAverage(event)
-        map_PositionLeft.value += touch_temp_x - touch_last_x // 位置をずらす
-        map_PositionTop.value += touch_temp_y - touch_last_y // 位置をずらす
+        map_PositionMove(touch_temp_x - touch_last_x, touch_temp_y - touch_last_y) // 位置をずらす
         touch_last_x = touch_temp_x //最終値を更新
         touch_last_y = touch_temp_y //最終値を更新
 
@@ -179,8 +309,13 @@ function touch(event, status) {
                 // すでにzoomモードになっている場合
                 // 指の間隔を計算して、前との差からズームレベルを変更
                 touch_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
-                if ((map_ZoomLevel.value + ((touch_diff - touch_last_diff) * .005)) > map_ZoomLevelMin && (map_ZoomLevel.value + ((touch_diff - touch_last_diff) * .005)) < map_ZoomLevelMax) {
-                    map_ZoomLevel.value += (touch_diff - touch_last_diff) * .005
+                if (map_Zoom((touch_diff - touch_last_diff) * .005)) {
+                    // 慣性の実装
+                    if (slide_zoom_lastMovedTime != 0) {
+                        slide_zoom_speed = (touch_diff - touch_last_diff) * .005 / (Date.now() - slide_zoom_lastMovedTime)
+                    }
+                    slide_zoom_lastMovedTime = Date.now()
+                    // 
                     touch_zoomed += Math.abs(touch_diff - touch_last_diff) //ズームした合計量を記録
                     touch_last_diff = touch_diff //最終値を更新
                 }
@@ -192,7 +327,7 @@ function touch(event, status) {
                     touch_acceptRotate = true
                 }
                 if (touch_acceptRotate) {
-                    map_Rotate.value += touch_rotate - touch_last_rotate
+                    map_Rotating(touch_rotate - touch_last_rotate)
                 }
                 touch_last_rotate = touch_rotate //最終値を更新
             } else {
@@ -248,8 +383,9 @@ document.body.addEventListener('touchmove', (event) => {
 <template>
     <PropertyView v-if="isShowProperty" :Floor="Floor" :PlaceId="point_PlaceId" @hideProperty="hideProperty()" />
     <div id="box" @dblclick="resetMoving()" @mousemove="mouse_moveRotate($event); click_notDetect()"
-        @mousedown="click_Detect()" @touchmove="touch($event, 'doing'); click_notDetect();"
-        @touchstart="touch($event, 'start'); click_Detect()" @wheel="mouse_zoom($event)">
+        @mousedown="click_Detect()" @mouseup="slide_position_do(); slide_rotate_do()"
+        @touchmove="touch($event, 'doing'); click_notDetect();" @touchstart="touch($event, 'start'); click_Detect()"
+        @touchend="slide_position_do(); slide_zoom_do(); slide_rotate_do()" @wheel="mouse_zoom($event)">
         <div id="map_content" draggable="false">
             <div v-if="Floor == 1">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
