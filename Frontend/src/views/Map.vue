@@ -100,8 +100,8 @@ let slide_is_zoom_do = false
 function slide_zoom_do() {
     if (slide_is_zoom_do === false) {
         slide_is_zoom_do = true
-        const zoom_speedMin = 0.01
-        const zoom_frictionLevel = 0.85
+        const zoom_speedMin = 0.0001
+        const zoom_frictionLevel = 0.999
         if (Math.abs(slide_zoom_speed) > zoom_speedMin && map_ZoomLevel.value + slide_zoom_speed * 4 < map_ZoomLevelMax && map_ZoomLevel.value + slide_zoom_speed * 4 > map_ZoomLevelMin) {
             map_ZoomLevel.value += slide_zoom_speed * 4
             slide_zoom_speed *= zoom_frictionLevel
@@ -161,10 +161,14 @@ function map_Zoom(v) {
     // マップのズームをする関数
     // ズームの慣性の実装は、PCとスマホで異なるため、それぞれの場所で実装
     // 範囲内であれば、ズームレベルを変更し、trueを返す
-    if (map_ZoomLevel.value + v < map_ZoomLevelMax && map_ZoomLevel.value + v > map_ZoomLevelMin) {
-        slide_zoom_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
-        map_ZoomLevel.value += v
-        return true
+    if (v != 0) {
+        if (map_ZoomLevel.value + v < map_ZoomLevelMax && map_ZoomLevel.value + v > map_ZoomLevelMin) {
+            slide_zoom_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
+            map_ZoomLevel.value += v
+            return true
+        } else {
+            return false
+        }
     } else {
         return false
     }
@@ -172,8 +176,8 @@ function map_Zoom(v) {
 // 地図の回転
 const map_Rotate = ref()
 function map_Rotating(v) {
-    map_Rotate.value += v
     if (v != 0) { //スマホでは、回転0が多発するため、0の場合は無視
+        map_Rotate.value += v
         slide_rotate_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
         if (slide_rotate_lastMovedTime != 0) {
             slide_rotate_speed = v / (Date.now() - slide_rotate_lastMovedTime)
@@ -307,6 +311,13 @@ function touch(event, status) {
                 // 指の間隔を計算して、前との差からズームレベルを変更
                 touch_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
                 if (map_Zoom((touch_diff - touch_last_diff) * .005)) {
+                    // 慣性の実装
+                    if (slide_zoom_lastMovedTime != 0) {
+                        slide_zoom_speed = (touch_diff - touch_last_diff) * .005 / (Date.now() - slide_zoom_lastMovedTime)
+                    }
+                    slide_zoom_lastMovedTime = Date.now()
+                    console.log(slide_zoom_speed);
+                    // 
                     touch_zoomed += Math.abs(touch_diff - touch_last_diff) //ズームした合計量を記録
                     touch_last_diff = touch_diff //最終値を更新
                 }
@@ -376,7 +387,7 @@ document.body.addEventListener('touchmove', (event) => {
     <div id="box" @dblclick="resetMoving()" @mousemove="mouse_moveRotate($event); click_notDetect()"
         @mousedown="click_Detect()" @mouseup="slide_position_do(); slide_rotate_do()"
         @touchmove="touch($event, 'doing'); click_notDetect();" @touchstart="touch($event, 'start'); click_Detect()"
-        @touchend="slide_position_do(); slide_rotate_do()" @wheel="mouse_zoom($event)">
+        @touchend="slide_position_do(); slide_zoom_do(); slide_rotate_do()" @wheel="mouse_zoom($event)">
         <div id="map_content" draggable="false">
             <div v-if="Floor == 1">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
