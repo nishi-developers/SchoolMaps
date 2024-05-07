@@ -56,6 +56,14 @@ const map_PositionTop = ref()
 const map_ZoomLevel = ref()
 const map_ZoomLevelMax = 15
 const map_ZoomLevelMin = 0.1
+function map_Zoom(v) {
+    if (map_ZoomLevel.value + v < map_ZoomLevelMax && map_ZoomLevel.value + v > map_ZoomLevelMin) {
+        map_ZoomLevel.value += v
+        return true
+    } else {
+        return false
+    }
+}
 // 地図の回転角度
 const map_Rotate = ref()
 
@@ -104,13 +112,9 @@ function mouse_moveRotate(event) {
 function mouse_zoom(event) {
     let map_ZoomLevel_Unit = .1
     if (event.wheelDelta + map_ZoomLevel_Unit > 0) {
-        if (map_ZoomLevel.value + map_ZoomLevel_Unit < map_ZoomLevelMax) {
-            map_ZoomLevel.value += map_ZoomLevel_Unit
-        }
+        map_Zoom(+map_ZoomLevel_Unit)
     } else {
-        if (map_ZoomLevel.value - map_ZoomLevel_Unit > map_ZoomLevelMin) {
-            map_ZoomLevel.value -= map_ZoomLevel_Unit
-        }
+        map_Zoom(-map_ZoomLevel_Unit)
     }
 }
 
@@ -179,8 +183,7 @@ function touch(event, status) {
                 // すでにzoomモードになっている場合
                 // 指の間隔を計算して、前との差からズームレベルを変更
                 touch_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
-                if ((map_ZoomLevel.value + ((touch_diff - touch_last_diff) * .005)) > map_ZoomLevelMin && (map_ZoomLevel.value + ((touch_diff - touch_last_diff) * .005)) < map_ZoomLevelMax) {
-                    map_ZoomLevel.value += (touch_diff - touch_last_diff) * .005
+                if (map_Zoom((touch_diff - touch_last_diff) * .005)) {
                     touch_zoomed += Math.abs(touch_diff - touch_last_diff) //ズームした合計量を記録
                     touch_last_diff = touch_diff //最終値を更新
                 }
