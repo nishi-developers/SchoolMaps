@@ -50,8 +50,11 @@ let slide_position_lastMovedTime = 0
 let slide_position_speedX = 0 // 1msあたりの移動量
 let slide_position_speedY = 0
 
-function slide_reset() {
+function slide_reset() { // 慣性をリセット
+    slide_stop()
     slide_position_lastMovedTime = 0
+}
+function slide_stop() { // 慣性を止める
     slide_position_speedX = 0
     slide_position_speedY = 0
 }
@@ -76,7 +79,8 @@ function slide_do() {
     }
 }
 
-// 共通の変数
+// 共通の変数と関数
+// 慣性をのせて移動する場合は必ずここの関数を利用する
 // 表示範囲のサイズ(仮)
 let window_width = 0
 let window_height = 0
@@ -84,12 +88,14 @@ let window_height = 0
 const map_PositionLeft = ref()
 const map_PositionTop = ref()
 function map_PositionMove(x, y) {
-    slide_reset() //慣性動作中に動かされた場合は、ここでリセットをかける
+    slide_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
     map_PositionLeft.value += x
     map_PositionTop.value += y
     // 速度を計算
-    slide_position_speedX = x / (Date.now() - slide_position_lastMovedTime)
-    slide_position_speedY = y / (Date.now() - slide_position_lastMovedTime)
+    if (slide_position_lastMovedTime != 0) {
+        slide_position_speedX = x / (Date.now() - slide_position_lastMovedTime)
+        slide_position_speedY = y / (Date.now() - slide_position_lastMovedTime)
+    }
     slide_position_lastMovedTime = Date.now()
     return true //将来的に範囲を制限するかもしれないため、trueを返す
 }
@@ -98,7 +104,7 @@ const map_ZoomLevel = ref()
 const map_ZoomLevelMax = 15
 const map_ZoomLevelMin = 0.1
 function map_Zoom(v) {
-    slide_reset()
+    slide_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
     // マップのズームをする関数
     // 範囲内であれば、ズームレベルを変更し、trueを返す
     if (map_ZoomLevel.value + v < map_ZoomLevelMax && map_ZoomLevel.value + v > map_ZoomLevelMin) {
@@ -108,10 +114,10 @@ function map_Zoom(v) {
         return false
     }
 }
-// 地図の回転角度
+// 地図の回転
 const map_Rotate = ref()
 function map_Rotating(v) {
-    slide_reset()
+    slide_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
     map_Rotate.value += v
 }
 
