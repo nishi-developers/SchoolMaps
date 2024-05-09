@@ -78,8 +78,14 @@ let slide_is_position_do = false
 function slide_position_do() {
     if (slide_is_position_do === false) { // 重複実行防止
         slide_is_position_do = true
-        const position_speedMin = 0.01
-        const position_frictionLevel = 0.9
+        // mouse
+        let position_speedMin = 0.01
+        let position_frictionLevel = 0.9
+        if (mouseORtouch == "touch") {
+            // touch
+            position_speedMin = 0.01
+            position_frictionLevel = 0.95
+        }
         // 速度が0になるまで、位置を変更
         if (Math.abs(slide_position_speedX) > position_speedMin || Math.abs(slide_position_speedY) > position_speedMin) {
             if (map_PositionRangeCheck(slide_position_speedX * 4, slide_position_speedY * 4)) {
@@ -104,8 +110,14 @@ let slide_is_zoom_do = false
 function slide_zoom_do() {
     if (slide_is_zoom_do === false) {
         slide_is_zoom_do = true
-        const zoom_speedMin = 0.0001
-        const zoom_frictionLevel = 0.95
+        // mouse
+        let zoom_speedMin = 0.0001
+        let zoom_frictionLevel = 0.9
+        if (mouseORtouch == "touch") {
+            // touch
+            zoom_speedMin = 0.0001
+            zoom_frictionLevel = 0.8
+        }
         if (Math.abs(slide_zoom_speed) > zoom_speedMin && map_ZoomLevel.value + slide_zoom_speed * 4 < map_ZoomLevelMax && map_ZoomLevel.value + slide_zoom_speed * 4 > map_ZoomLevelMin) {
             map_ZoomLevel.value += slide_zoom_speed * 4
             slide_zoom_speed *= zoom_frictionLevel
@@ -122,8 +134,14 @@ let slide_is_rotate_do = false
 function slide_rotate_do() {
     if (slide_is_rotate_do === false) { // 重複実行防止
         slide_is_rotate_do = true
-        const rotate_speedMin = 0.01
-        const rotate_frictionLevel = 0.95
+        // mouse
+        let rotate_speedMin = 0.01
+        let rotate_frictionLevel = 0.92
+        if (mouseORtouch == "touch") {
+            // touch
+            rotate_speedMin = 0.01
+            rotate_frictionLevel = 0.95
+        }
         if (Math.abs(slide_rotate_speed) > rotate_speedMin) {
             map_Rotate.value += slide_rotate_speed * 4
             slide_rotate_speed *= rotate_frictionLevel
@@ -239,7 +257,7 @@ function resetMoving() {
 }
 
 
-
+let mouseORtouch = ""
 // PC用
 // ドラッグによる移動と回転
 // フラグを、クリックをし始めたときに立て、離したときに解除する
@@ -249,6 +267,7 @@ function resetMoving() {
 // https://note.com/kabineko/n/n88ec426fff07
 // https://qiita.com/akicho8/items/8522929fa619394ac9f4
 function mouse_moveRotate(event) {
+    mouseORtouch = "mouse"
     if (event.buttons == 1) { // 左クリックが押されている場合のみ
         map_PositionMove(event.movementX, event.movementY)
     } else if (event.buttons == 4) { // ホイールボタンが押されている場合のみ
@@ -265,6 +284,7 @@ function mouse_moveRotate(event) {
 // <参考>
 // https://mebee.info/2022/03/15/post-40363/
 function mouse_zoom(event) {
+    mouseORtouch = "mouse"
     let num = 0
     let map_ZoomLevel_Unit = .01
     if (event.wheelDelta + map_ZoomLevel_Unit > 0) {
@@ -317,6 +337,7 @@ function touch_positionAverage(event) {
     ]
 }
 function touch(event, status) {
+    mouseORtouch = "touch"
     if (status === 'start') {
         // タップし始めは、初期処理をあてるために値を変更
         touch_mode = "none"
