@@ -11,7 +11,7 @@ const Floor = ref(1)
 // <参考>
 // https://qiita.com/_Keitaro_/items/375c5274bebf367f24e0
 // https://qiita.com/KenjiOtsuka/items/da6d2dd2b81fef87e35d
-var isClick = false
+let isClick = false
 function showProperty(id) {
     // クリックされたときに、フラグが立っていたら
     if (isClick) {
@@ -147,19 +147,20 @@ const map_PositionLeft = ref()
 const map_PositionTop = ref()
 function map_PositionRangeCheck(x, y) {
     // 移動先が範囲内かどうかをチェックする関数
-    if (map_PositionLeft.value + x > (map_DefaultWidth.value * map_ZoomLevel.value / 2) + window_width) {
+    // ズームでどうしても範囲外に出てしまうため、戻す動きは制限しない
+    if (x > 0 && map_PositionLeft.value + x > (map_DefaultWidth.value * map_ZoomLevel.value / 2) + window_width) {
         // 右端
         return false
     }
-    else if (map_PositionLeft.value + x < -(map_DefaultWidth.value * map_ZoomLevel.value / 2)) {
+    else if (x < 0 && map_PositionLeft.value + x < -(map_DefaultWidth.value * map_ZoomLevel.value / 2)) {
         // 左端
         return false
     }
-    else if (map_PositionTop.value + y > (((map_DefaultWidth.value / map_size_ratio) * map_ZoomLevel.value) / 2) + window_height) {
+    else if (y > 0 && map_PositionTop.value + y > (((map_DefaultWidth.value / map_size_ratio) * map_ZoomLevel.value) / 2) + window_height) {
         // 下端
         return false
     }
-    else if (map_PositionTop.value + y < -(((map_DefaultWidth.value / map_size_ratio) * map_ZoomLevel.value) / 2)) {
+    else if (y < 0 && map_PositionTop.value + y < (-(((map_DefaultWidth.value / map_size_ratio) * map_ZoomLevel.value) / 2))) {
         // 上端
         return false
     } else {
@@ -220,7 +221,7 @@ function map_Rotating(v) {
 function resetMoving() {
     // 表示範囲のサイズ(改)
     window_width = window.innerWidth
-    window_height = window.innerHeight - getComputedStyle(document.querySelector("*")).getPropertyValue("--header-height").slice(0, -2)// CSSのヘッダー分を引く（CSS変数と同期）
+    window_height = window.innerHeight - Number(getComputedStyle(document.querySelector("*")).getPropertyValue("--header-height").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
     if (window_width / map_size_width > window_height / map_size_height) {
         // 縦幅に合わせる
         map_DefaultWidth.value = window_height * map_size_ratio
@@ -236,6 +237,8 @@ function resetMoving() {
     slide_reset()
     hideProperty()
 }
+
+
 
 // PC用
 // ドラッグによる移動と回転
@@ -262,7 +265,7 @@ function mouse_moveRotate(event) {
 // <参考>
 // https://mebee.info/2022/03/15/post-40363/
 function mouse_zoom(event) {
-    var num = 0
+    let num = 0
     let map_ZoomLevel_Unit = .01
     if (event.wheelDelta + map_ZoomLevel_Unit > 0) {
         num = map_ZoomLevel_Unit
