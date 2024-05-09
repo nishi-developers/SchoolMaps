@@ -82,13 +82,18 @@ function slide_position_do() {
         const position_frictionLevel = 0.9
         // 速度が0になるまで、位置を変更
         if (Math.abs(slide_position_speedX) > position_speedMin || Math.abs(slide_position_speedY) > position_speedMin) {
-            map_PositionLeft.value += slide_position_speedX * 4
-            map_PositionTop.value += slide_position_speedY * 4
-            slide_position_speedX *= position_frictionLevel
-            slide_position_speedY *= position_frictionLevel
-            // 再帰
-            setTimeout(() => { slide_is_position_do = false; slide_position_do(); }, 4) // 4msごとに再帰
-            // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
+            if (map_PositionRangeCheck(slide_position_speedX * 4, slide_position_speedY * 4)) {
+                map_PositionLeft.value += slide_position_speedX * 4
+                map_PositionTop.value += slide_position_speedY * 4
+                slide_position_speedX *= position_frictionLevel
+                slide_position_speedY *= position_frictionLevel
+                // 再帰
+                setTimeout(() => { slide_is_position_do = false; slide_position_do(); }, 4) // 4msごとに再帰
+                // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
+            } else {
+                slide_is_position_do = false
+                slide_position_stop()
+            }
         } else {
             slide_is_position_do = false
             slide_position_stop()
@@ -140,17 +145,42 @@ let window_height = 0
 // 地図の位置
 const map_PositionLeft = ref()
 const map_PositionTop = ref()
+function map_PositionRangeCheck(x, y) {
+    // 移動先が範囲内かどうかをチェックする関数
+    if (map_PositionLeft.value + x > (map_DefaultWidth.value * map_ZoomLevel.value / 2) + window_width) {
+        // 右端
+        return false
+    }
+    else if (map_PositionLeft.value + x < -(map_DefaultWidth.value * map_ZoomLevel.value / 2)) {
+        // 左端
+        return false
+    }
+    else if (map_PositionTop.value + y > (((map_DefaultWidth.value / map_size_ratio) * map_ZoomLevel.value) / 2) + window_height) {
+        // 下端
+        return false
+    }
+    else if (map_PositionTop.value + y < -(((map_DefaultWidth.value / map_size_ratio) * map_ZoomLevel.value) / 2)) {
+        // 上端
+        return false
+    } else {
+        return true
+    }
+}
 function map_PositionMove(x, y) {
     slide_position_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
-    map_PositionLeft.value += x
-    map_PositionTop.value += y
-    // 速度を計算
-    if (slide_position_lastMovedTime != 0) {
-        slide_position_speedX = x / (Date.now() - slide_position_lastMovedTime)
-        slide_position_speedY = y / (Date.now() - slide_position_lastMovedTime)
+    if (map_PositionRangeCheck(x, y)) {
+        map_PositionLeft.value += x
+        map_PositionTop.value += y
+        // 速度を計算
+        if (slide_position_lastMovedTime != 0) {
+            slide_position_speedX = x / (Date.now() - slide_position_lastMovedTime)
+            slide_position_speedY = y / (Date.now() - slide_position_lastMovedTime)
+        }
+        slide_position_lastMovedTime = Date.now()
+        return true //将来的に範囲を制限するかもしれないため、trueを返す
+    } else {
+        return false
     }
-    slide_position_lastMovedTime = Date.now()
-    return true //将来的に範囲を制限するかもしれないため、trueを返す
 }
 // 地図の倍率
 const map_ZoomLevel = ref()
