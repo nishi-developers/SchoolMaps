@@ -39,29 +39,36 @@ if ((route.params.floor != "") && !isNaN(route.params.floor)
 // https://qiita.com/_Keitaro_/items/375c5274bebf367f24e0
 // https://qiita.com/KenjiOtsuka/items/da6d2dd2b81fef87e35d
 let isClick = false
+let isDubleClick = false
 function showProperty(id) {
     // クリックされたときに、フラグが立っていたら
     if (isClick) {
         isClick = false
-        // 存在する場所かどうかをチェック
-        if (Object.keys(PlaceInfo[Floor.value]).includes(id)) {
-            console.log(id);
-            point_PlaceId.value = id
-            changeURL(Floor.value, id);
-            if (isShowProperty.value) {
-                // すでに表示されている場合は、一旦閉じてから開く
-                hideProperty()
-                setTimeout(() => {
-                    isShowProperty.value = true
-                }, 50);
-            } else {
-                // 表示されていない場合は、即時表示
-                isShowProperty.value = true
+        isDubleClick = false
+        // ダブルクリックと判定されるまでの時間を遅らせる
+        setTimeout(() => {
+            if (!isDubleClick) {
+                // 存在する場所かどうかをチェック
+                if (Object.keys(PlaceInfo[Floor.value]).includes(id)) {
+                    console.log(id);
+                    point_PlaceId.value = id
+                    changeURL(Floor.value, id);
+                    if (isShowProperty.value) {
+                        // すでに表示されている場合は、一旦閉じてから開く
+                        hideProperty()
+                        setTimeout(() => {
+                            isShowProperty.value = true
+                        }, 50);
+                    } else {
+                        // 表示されていない場合は、即時表示
+                        isShowProperty.value = true
+                    }
+                    return true //ここは瞬時なので注意
+                } else {
+                    return false
+                }
             }
-            return true //ここは瞬時なので注意
-        } else {
-            return false
-        }
+        }, 200)
     }
 }
 function click_Detect() {
@@ -71,6 +78,10 @@ function click_Detect() {
 function click_notDetect() {
     // クリックではなくドラックだとわかったときにフラグを解除する
     isClick = false
+}
+function click_dubleDetect() {
+    // ダブルクリックが検出されたときにフラグを立てる
+    isDubleClick = true
 }
 
 function hideProperty() {
@@ -528,9 +539,10 @@ document.body.addEventListener('touchmove', (event) => {
                 {{ floor.__FloorName__ }}</li>
         </ul>
     </div>
-    <div id="box" @dblclick="resetMoving()" @mousemove="mouse_moveRotate($event); click_notDetect()"
-        @mousedown="click_Detect()" @mouseup="slide_position_do(); slide_rotate_do()"
-        @touchmove="touch($event, 'doing'); click_notDetect();" @touchstart="touch($event, 'start'); click_Detect()"
+    <div id="box" @dblclick="resetMoving(); click_dubleDetect()"
+        @mousemove="mouse_moveRotate($event); click_notDetect()" @mousedown="click_Detect()"
+        @mouseup="slide_position_do(); slide_rotate_do()" @touchmove="touch($event, 'doing'); click_notDetect();"
+        @touchstart="touch($event, 'start'); click_Detect()"
         @touchend="slide_position_do(); slide_zoom_do(); slide_rotate_do()" @wheel="mouse_zoom($event)">
         <div id="map_content" draggable="false">
             <div v-if="Floor == 0" :class="{ 'selected': 0 == Floor }">
