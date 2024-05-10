@@ -69,7 +69,7 @@ function click_toClose() {
             if (!isDubleClick) {
                 closePropertyView()
             }
-        }, 300)
+        }, 200)
     }
 }
 function click_Detect() {
