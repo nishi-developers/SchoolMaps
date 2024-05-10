@@ -59,12 +59,14 @@ if (window_width < window_height) {
 }
 
 let isClick = false
+let isDubleClick = false
 function click_toClose() {
     // ダブルクリックと判定されるまでの時間を遅らせる
     if (isClick) {
+        isClick = false
+        isDubleClick = false
         setTimeout(() => {
-            if (isClick) {
-                isClick = false
+            if (!isDubleClick) {
                 closePropertyView()
             }
         }, 300)
@@ -80,7 +82,7 @@ function click_notDetect() {
 }
 
 function dubleClick() {
-    isClick = false
+    isDubleClick = true
     // 最大であれば中へ、中であれば最大へ
     if (deviceMode.value == "mobile") {
         if (InfoSize.value == window_height * InfoSizeMiddleRate) {
@@ -167,6 +169,7 @@ function leave() {
     border-radius: 15px;
     position: fixed;
     background-color: rgb(138, 138, 138);
+    cursor: pointer;
 }
 
 #closeSlider.mobile {
