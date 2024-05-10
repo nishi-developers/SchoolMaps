@@ -41,11 +41,6 @@ let map_size_width = 0
 let map_size_height = 0
 let map_size_ratio = 0
 onMounted(() => {
-    // 地図のデフォルトサイズを算出
-    map_size_width = Number(document.querySelector("#map_content svg").getAttribute("width").slice(0, -2));
-    map_size_height = Number(document.querySelector("#map_content svg").getAttribute("height").slice(0, -2));
-    map_size_ratio = map_size_width / map_size_height
-
     resetMoving() //window_width, window_heightを使うので、ここでリセット
 })
 
@@ -240,6 +235,10 @@ function map_Rotating(v) {
 // リセット(PC・モバイル共通)
 // ダブルクリックでリセット
 function resetMoving() {
+    // 地図のデフォルトサイズを算出
+    map_size_width = Number(document.querySelector("#map_content .selected svg").getAttribute("width").slice(0, -2));
+    map_size_height = Number(document.querySelector("#map_content .selected svg").getAttribute("height").slice(0, -2));
+    map_size_ratio = map_size_width / map_size_height
     // 表示範囲のサイズ(改)
     window_width = window.innerWidth
     window_height = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--header-height").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
@@ -412,6 +411,7 @@ document.body.addEventListener('touchmove', (event) => {
     overflow: hidden;
     position: fixed;
     background-color: var(--primaryBgColor);
+    cursor: grab;
 }
 
 #map_content svg {
@@ -424,10 +424,9 @@ document.body.addEventListener('touchmove', (event) => {
     top: v-bind(map_PositionTop + 'px');
     /* 中心を基準にするためtranslate(-50%, -50%) */
     transform: translate(-50%, -50%) rotate(v-bind(map_Rotate + 'deg'));
-    cursor: grab;
 }
 
-#map_content svg:active {
+#box:active {
     cursor: grabbing;
 }
 
@@ -439,9 +438,11 @@ document.body.addEventListener('touchmove', (event) => {
 
 #floorMenu {
     position: absolute;
-    top: calc(var(--header-height) + 20px);
-    right: 20px;
+    top: var(--header-height);
+    right: 0;
+    margin: 10px;
     z-index: 10;
+    cursor: pointer;
 }
 
 #floorMenu ul {
@@ -449,12 +450,20 @@ document.body.addEventListener('touchmove', (event) => {
 }
 
 #floorMenu ul li {
-    border: 1px solid #000;
+    border: 1px solid #000000;
+    border-radius: 20%;
     padding: 5px;
+    margin: 1px 0 1px 0;
+    text-align: center;
+    font-size: 1.2rem;
 }
 
 #floorMenu ul .selected {
-    background-color: #ff0101;
+    background-color: #c5c5c5;
+}
+
+#floorMenu ul .notselected {
+    background-color: #ffffff;
 }
 </style>
 <template>
@@ -462,8 +471,8 @@ document.body.addEventListener('touchmove', (event) => {
     <div id="floorMenu">
         <ul>
             <li v-for="floor, key in PlaceInfo" :key="key" @click="changeFloor(key)"
-                :class="{ 'selected': key == Floor }">
-                {{ floor.__FloorName__ }}{{ key }}</li>
+                :class="key == Floor ? 'selected' : 'notselected'">
+                {{ floor.__FloorName__ }}</li>
         </ul>
     </div>
     <div id="box" @dblclick="resetMoving()" @mousemove="mouse_moveRotate($event); click_notDetect()"
@@ -471,7 +480,7 @@ document.body.addEventListener('touchmove', (event) => {
         @touchmove="touch($event, 'doing'); click_notDetect();" @touchstart="touch($event, 'start'); click_Detect()"
         @touchend="slide_position_do(); slide_zoom_do(); slide_rotate_do()" @wheel="mouse_zoom($event)">
         <div id="map_content" draggable="false">
-            <div v-if="Floor == 0">
+            <div v-if="Floor == 0" :class="{ 'selected': 0 == Floor }">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
                     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="210mm" height="297mm"
                     viewBox="0 0 210 297" version="1.1" id="svg5" inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
@@ -623,13 +632,13 @@ document.body.addEventListener('touchmove', (event) => {
                     </g>
                 </svg>
             </div>
-            <div v-else-if="Floor == 1">
+            <div v-else-if="Floor == 1" :class="{ 'selected': 1 == Floor }">
                 2f
             </div>
-            <div v-else-if="Floor == 2">
+            <div v-else-if="Floor == 2" :class="{ 'selected': 2 == Floor }">
                 3f
             </div>
-            <div v-else-if="Floor == 3">
+            <div v-else-if="Floor == 3" :class="{ 'selected': 3 == Floor }">
                 R
             </div>
         </div>
