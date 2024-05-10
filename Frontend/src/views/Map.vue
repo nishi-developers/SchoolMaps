@@ -49,6 +49,7 @@ function showProperty(id) {
             point_PlaceId.value = id
             isShowProperty.value = true
             changeURL(Floor.value, id);
+            return true
         } else {
             return false
         }
@@ -78,8 +79,8 @@ onMounted(() => {
     if (route.params.id != "") {
         isClick = true
         if (!showProperty(route.params.id)) {
-            Floor.value = 0
-            changeURL(0, null)
+            changeURL(Floor.value, null)
+            console.log("存在しない場所です");
         }
     }
 })
