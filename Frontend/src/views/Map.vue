@@ -2,12 +2,36 @@
 import { onMounted, ref } from 'vue'
 import PropertyView from '@/components/PropertyView.vue';
 import PlaceInfo from '@/assets/PlaceInfo.json'
+import { useRoute } from 'vue-router'
+const route = useRoute()
 
 const isShowProperty = ref(false)
 const point_PlaceId = ref("")
-const Floor = ref(0)
+const Floor = ref()
 function changeFloor(floor) {
     Floor.value = floor
+    changeURL(floor, null);
+}
+
+
+// URL書き換え用関数
+function changeURL(floor, id) {
+    if (id != null) {
+        history.replaceState('', '', `${import.meta.env.BASE_URL}/${floor}/${id}`)
+        history.pushState('', '', `${import.meta.env.BASE_URL}/${floor}/${id}`);
+    }
+    else {
+        history.replaceState('', '', `${import.meta.env.BASE_URL}/${floor}`)
+        history.pushState('', '', `${import.meta.env.BASE_URL}/${floor}`);
+    }
+}
+// パラメーターの取得
+if ((route.params.floor != "") && !isNaN(route.params.floor)
+    && Number(route.params.floor) >= 0 && Number(route.params.floor) <= PlaceInfo.length - 1) {
+    Floor.value = Number(route.params.floor)
+} else {
+    Floor.value = 0
+    changeURL(0, null)
 }
 
 // ドラッグなどとクリックを判別する
@@ -18,13 +42,16 @@ let isClick = false
 function showProperty(id) {
     // クリックされたときに、フラグが立っていたら
     if (isClick) {
-        // alert(id)
+        isClick = false
         // 存在する場所かどうかをチェック
         if (Object.keys(PlaceInfo[Floor.value]).includes(id)) {
+            console.log(id);
             point_PlaceId.value = id
             isShowProperty.value = true
+            changeURL(Floor.value, id);
+        } else {
+            return false
         }
-        console.log(id);
     }
 }
 function click_Detect() {
@@ -38,6 +65,7 @@ function click_notDetect() {
 
 function hideProperty() {
     isShowProperty.value = false
+    changeURL(Floor.value, null)
 }
 
 const map_DefaultWidth = ref(0)
@@ -46,6 +74,14 @@ let map_size_height = 0
 let map_size_ratio = 0
 onMounted(() => {
     resetMoving() //window_width, window_heightを使うので、ここでリセット
+    // パラメーターの取得
+    if (route.params.id != "") {
+        isClick = true
+        if (!showProperty(route.params.id)) {
+            Floor.value = 0
+            changeURL(0, null)
+        }
+    }
 })
 
 // 慣性スクロール
@@ -400,10 +436,13 @@ function touch(event, status) {
 }
 
 // デフォルトのピンチアウトを無効化
+// 1本をブロックすると、プロパティでのスクロールが無効化されるため、2本をブロックする
 // <参考>
 // https://moewe-net.com/js/disable-zoom
 document.body.addEventListener('touchmove', (event) => {
-    event.preventDefault();
+    if (event.touches.length > 1) {
+        event.preventDefault();
+    }
 }, { passive: false });
 </script>
 
@@ -457,9 +496,9 @@ document.body.addEventListener('touchmove', (event) => {
     border: 1px solid #000000;
     border-radius: 20%;
     padding: 5px;
-    margin: 1px 0 1px 0;
+    margin: 2px 0 2px 0;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 #floorMenu ul .selected {

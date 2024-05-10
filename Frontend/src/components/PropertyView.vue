@@ -1,10 +1,32 @@
 <template>
-    <div id="PropertyView" :class="deviceMode" v-if="isShowPropertyView" @mousemove="mouseMove($event)"
-        @mouseup="leave($event)" @touchstart="touchStart($event)" @touchmove="touchMove($event)"
-        @touchend="leave($event)">
-        <div id="closeSlider" :class="deviceMode"></div>
+    <div id="PropertyView" :class="deviceMode" v-if="isShowPropertyView"
+        @mousemove="mouseMove($event); click_notDetect()" @mouseup="leave($event)">
+        <div id="closeSlider" :class="deviceMode" @mousedown="click_Detect()"
+            @touchstart="touchStart($event); click_Detect()" @touchmove="touchMove($event); click_notDetect()"
+            @touchend="leave($event)" @touchcancel="leave($event)" @click="click_toClose()"></div>
         name : {{ PlaceInfo[props.Floor][props.PlaceId].name }}<br>
         description : {{ PlaceInfo[props.Floor][props.PlaceId].desc }}<br>
+        <p>
+            3.
+            141592653589 793238462643 383279502884 197169399375 105820974944 592307816406 286208998628 034825342117
+            067982148086 513282306647 093844609550 582231725359 408128481117 450284102701 938521105559 644622948954
+            930381964428 810975665933 446128475648 233786783165 271201909145 648566923460 348610454326 648213393607
+            260249141273 724587006606 315588174881 520920962829 254091715364 367892590360 011330530548 820466521384
+            146951941511 609433057270 365759591953 092186117381 932611793105 118548074462 379962749567 351885752724
+            891227938183 011949129833 673362440656 643086021394 946395224737 190702 3.
+            141592653589 793238462643 383279502884 197169399375 105820974944 592307816406 286208998628 034825342117
+            067982148086 513282306647 093844609550 582231725359 408128481117 450284102701 938521105559 644622948954
+            930381964428 810975665933 446128475648 233786783165 271201909145 648566923460 348610454326 648213393607
+            260249141273 724587006606 315588174881 520920962829 254091715364 367892590360 011330530548 820466521384
+            146951941511 609433057270 365759591953 092186117381 932611793105 118548074462 379962749567 351885752724
+            891227938183 011949129833 673362440656 643086021394 946395224737 190702 3.
+            141592653589 793238462643 383279502884 197169399375 105820974944 592307816406 286208998628 034825342117
+            067982148086 513282306647 093844609550 582231725359 408128481117 450284102701 938521105559 644622948954
+            930381964428 810975665933 446128475648 233786783165 271201909145 648566923460 348610454326 648213393607
+            260249141273 724587006606 315588174881 520920962829 254091715364 367892590360 011330530548 820466521384
+            146951941511 609433057270 365759591953 092186117381 932611793105 118548074462 379962749567 351885752724
+            891227938183 011949129833 673362440656 643086021394 946395224737 190702
+        </p>
     </div>
 
 </template>
@@ -21,17 +43,37 @@ const deviceMode = ref()
 const window_width = window.innerWidth
 const window_height = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--header-height").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
 const InfoSize = ref(0)
-let InfoSizeRate = 0
+let InfoSizeMiddleRate = 0
+let InfoSizeMaxRate = 0
 if (window_width < window_height) {
     deviceMode.value = "mobile"
-    InfoSizeRate = 3
-    InfoSize.value = window_height / InfoSizeRate
+    InfoSizeMiddleRate = .3
+    InfoSizeMaxRate = .9
+    InfoSize.value = window_height * InfoSizeMiddleRate
 } else {
     deviceMode.value = "pc"
-    InfoSizeRate = 3
-    InfoSize.value = window_width / InfoSizeRate
-
+    InfoSizeMiddleRate = .3
+    InfoSizeMaxRate = .8
+    InfoSize.value = window_width * InfoSizeMiddleRate
 }
+
+let isClick = false
+function click_toClose() {
+    if (isClick) {
+        isClick = false
+        closePropertyView()
+    }
+}
+function click_Detect() {
+    // クリック開始が検出されたときにフラグを立てる
+    isClick = true
+}
+function click_notDetect() {
+    // クリックではなくドラックだとわかったときにフラグを解除する
+    isClick = false
+}
+
+
 
 function closePropertyView() {
     emit("hideProperty")
@@ -75,56 +117,58 @@ function touchMove(event) {
 }
 function leave() {
     if (deviceMode.value == "mobile") {
-        if (InfoSize.value < window_height / InfoSizeRate / 2) {
+        if (InfoSize.value < window_height * InfoSizeMiddleRate / 2) {
+            // 閉じる
             closePropertyView()
-        } else if (InfoSize.value > ((window_height - (window_height / InfoSizeRate)) / 2) + (window_height / InfoSizeRate)) {
-            InfoSize.value = window_height
+        } else if (InfoSize.value > (((window_height * InfoSizeMiddleRate) + (window_height * InfoSizeMaxRate)) / 2)) {
+            // 最大化
+            InfoSize.value = window_height * InfoSizeMaxRate
         } else {
-            InfoSize.value = window_height / InfoSizeRate
+            InfoSize.value = window_height * InfoSizeMiddleRate
         }
     } else {
-        if (InfoSize.value < window_width / InfoSizeRate / 2) {
+        if (InfoSize.value < window_width * InfoSizeMiddleRate / 2) {
+            // 閉じる
             closePropertyView()
-        } else if (InfoSize.value > ((window_width - (window_width / InfoSizeRate)) / 2) + (window_width / InfoSizeRate)) {
-            InfoSize.value = window_width
+        } else if (InfoSize.value > (((window_width * InfoSizeMiddleRate) + (window_width * InfoSizeMaxRate)) / 2)) {
+            // 最大化
+            InfoSize.value = window_width * InfoSizeMaxRate
         } else {
-            InfoSize.value = window_width / InfoSizeRate
+            InfoSize.value = window_width * InfoSizeMiddleRate
         }
-
     }
 }
 </script>
 <style scoped>
 #closeSlider {
-    border-radius: 10px;
-    position: absolute;
+    border-radius: 15px;
+    position: fixed;
     background-color: rgb(138, 138, 138);
 }
 
 #closeSlider.mobile {
     width: 100px;
-    height: 20px;
-    position: absolute;
+    height: 30px;
     left: 50%;
-    top: 0;
-    transform: translate(-50%, 0);
+    bottom: v-bind(InfoSize + "px");
+    transform: translate(-50%, 100%);
 }
 
 #closeSlider.pc {
-    width: 20px;
+    width: 30px;
     height: 100px;
-    right: 0;
-    top: 50%;
-    transform: translate(0, -50%);
+    left: v-bind(InfoSize + "px");
+    top: calc(calc(v-bind(window_height + "px") / 2) + var(--header-height));
+    transform: translate(-100%, -50%);
 }
 
 #PropertyView {
     background-color: #e2e2e2;
     position: absolute;
-    z-index: 10;
+    z-index: 20;
     box-sizing: border-box;
     padding: 20px;
-
+    overflow: scroll;
 }
 
 #PropertyView.mobile {
@@ -136,7 +180,7 @@ function leave() {
 
 #PropertyView.pc {
     width: v-bind(InfoSize + "px");
-    height: 100%;
+    height: calc(100% - var(--header-height));
     bottom: 0;
     border-radius: 0 20px 20px 0;
 }

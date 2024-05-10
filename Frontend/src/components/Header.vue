@@ -17,8 +17,9 @@
     width: 100%;
     height: var(--header-height);
     position: relative;
-    border-bottom: var(--BoderWidth) solid var(--BoderColor);
+    border-bottom: 1px solid var(--BoderColor);
     font-weight: bold;
+    box-sizing: border-box;
 }
 
 #title {
