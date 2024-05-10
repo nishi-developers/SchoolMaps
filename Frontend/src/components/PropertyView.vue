@@ -1,9 +1,10 @@
 <template>
-    <div id="PropertyView" :class="deviceMode" v-if="isShowPropertyView"
-        @mousemove="mouseMove($event); click_notDetect()" @mouseup="leave($event)">
+    <div id="PropertyView" :class="deviceMode" v-if="isShowPropertyView">
         <div id="closeSlider" :class="deviceMode" @mousedown="click_Detect()"
+            @mousemove="mouseMove($event); click_notDetect()" @mouseup="leave($event)"
             @touchstart="touchStart($event); click_Detect()" @touchmove="touchMove($event); click_notDetect()"
-            @touchend="leave($event)" @touchcancel="leave($event)" @click="click_toClose()"></div>
+            @touchend="leave($event)" @touchcancel="leave($event)" @click="click_toClose()" @dblclick="dubleClick()">
+        </div>
         name : {{ PlaceInfo[props.Floor][props.PlaceId].name }}<br>
         description : {{ PlaceInfo[props.Floor][props.PlaceId].desc }}<br>
         <p>
@@ -59,9 +60,14 @@ if (window_width < window_height) {
 
 let isClick = false
 function click_toClose() {
+    // ダブルクリックと判定されるまでの時間を遅らせる
     if (isClick) {
-        isClick = false
-        closePropertyView()
+        setTimeout(() => {
+            if (isClick) {
+                isClick = false
+                closePropertyView()
+            }
+        }, 300)
     }
 }
 function click_Detect() {
@@ -73,6 +79,23 @@ function click_notDetect() {
     isClick = false
 }
 
+function dubleClick() {
+    isClick = false
+    // 最大であれば中へ、中であれば最大へ
+    if (deviceMode.value == "mobile") {
+        if (InfoSize.value == window_height * InfoSizeMiddleRate) {
+            InfoSize.value = window_height * InfoSizeMaxRate
+        } else {
+            InfoSize.value = window_height * InfoSizeMiddleRate
+        }
+    } else {
+        if (InfoSize.value == window_width * InfoSizeMiddleRate) {
+            InfoSize.value = window_width * InfoSizeMaxRate
+        } else {
+            InfoSize.value = window_width * InfoSizeMiddleRate
+        }
+    }
+}
 
 
 function closePropertyView() {
