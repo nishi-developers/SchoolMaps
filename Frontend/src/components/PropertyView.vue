@@ -1,5 +1,6 @@
 <template>
     <div id="PropertyView" v-if="isShowPropertyView">
+        <div id="closeSlider"></div>
         name : {{ PlaceInfo[props.Floor][props.PlaceId].name }}<br>
         description : {{ PlaceInfo[props.Floor][props.PlaceId].desc }}<br>
         <font-awesome-icon id="xmark" @click="closePropertyView()" :icon="['fas', 'xmark']" />
@@ -19,6 +20,18 @@ function closePropertyView() {
 }
 </script>
 <style scoped>
+#closeSlider {
+    width: 100px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: rgb(138, 138, 138);
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
+
+}
+
 #PropertyView {
     background-color: #e2e2e2;
     width: 100%;
@@ -27,6 +40,8 @@ function closePropertyView() {
     bottom: 0;
     z-index: 10;
     border-radius: 20px 20px 0 0;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 #xmark {
