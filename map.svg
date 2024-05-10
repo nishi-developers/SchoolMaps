@@ -28,14 +28,14 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.5"
-     inkscape:cx="297"
-     inkscape:cy="631"
+     inkscape:cx="423"
+     inkscape:cy="503"
      inkscape:window-width="1233"
      inkscape:window-height="1000"
      inkscape:window-x="209"
-     inkscape:window-y="110"
+     inkscape:window-y="0"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer2" />
+     inkscape:current-layer="svg5" />
   <defs
      id="defs2">
     <rect
@@ -87,25 +87,6 @@
        height="71.483131"
        id="rect4228-6-9-7" />
   </defs>
-  <g
-     inkscape:label="none"
-     inkscape:groupmode="layer"
-     id="layer1">
-    <rect
-       style="fill:#e6e6e6;fill-opacity:1;stroke:#b3b3b3;stroke-width:1;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
-       id="rect5948"
-       width="210"
-       height="297"
-       x="0"
-       y="0" />
-    <rect
-       style="fill:#b3b3b3;fill-opacity:1;stroke:#b3b3b3;stroke-width:1;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
-       id="rect234-1-0-0"
-       width="23.206863"
-       height="14.617966"
-       x="120.27374"
-       y="141.298" />
-  </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"

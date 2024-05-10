@@ -1,7 +1,8 @@
 <template>
     <div id="header">
         <div id="title">
-            <RouterLink to="/">西高MAP</RouterLink>
+            <RouterLink to="/"><span id="mainTitle">西高MAP</span><span id="version">(α版)</span></RouterLink>
+
         </div>
         <div id="menu">
             <RouterLink to="/guide">使い方</RouterLink>
@@ -11,24 +12,34 @@
 </template>
 <style scoped>
 #header {
-    background-color: #b8b8b8;
+    background-color: var(--secondaryBgColor);
     /* position: fixed; */
     width: 100%;
     height: var(--header-height);
     position: relative;
+    border-bottom: var(--BoderWidth) solid var(--BoderColor);
+    font-weight: bold;
 }
 
 #title {
-    font-size: 2rem;
     margin-right: 20px;
     position: absolute;
     top: 50%;
     left: 0%;
     transform: translate(0%, -50%);
+    margin: 0 10px;
 }
 
-#title a {
-    margin: 0 10px;
+#title #mainTitle {
+    font-size: 1.5rem;
+    color: var(--primaryBodyColor);
+    vertical-align: middle;
+}
+
+#title #version {
+    font-size: 1rem;
+    color: var(--secondaryBodyColor);
+    vertical-align: middle;
 }
 
 #menu {
@@ -37,6 +48,7 @@
     top: 50%;
     right: 0%;
     transform: translate(0%, -50%);
+    color: var(--primaryBodyColor);
 }
 
 #menu a {

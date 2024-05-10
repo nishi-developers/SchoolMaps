@@ -1,12 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
-  --header-height: 60px; /* Map.vueのJSからも参照されているので注意 */
   margin: 0;
   padding: 0;
+}
+:root {
   font-family: 'Noto Sans', sans-serif;
+  --header-height: 80px; /* Map.vueのJSからも参照されているので注意 */
+  /* Color */
+  /* 本文など */
+  --primaryBodyColor: #2c2c2c;
+  /* アクセント */
+  --secondaryBodyColor: #636363;
+  /* アクセント */
+  --BoderColor: #636363;
+  --BoderWidth: 1px;
+  /* メインの背景色 */
+  --primaryBgColor: #f6fcff;
+  /* ヘッダーなどの背景色 */
+  --secondaryBgColor: #daffff;
 }
 a {
   color: black;
   text-decoration: none;
+}
+html,
+body,
+#app {
+  height: 100%;
+  width: 100%;
+}
+
+/* テキスト共通 */
+.textTitle {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primaryBodyColor);
+  margin-bottom: 1rem;
+}
+.textH {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primaryBodyColor);
+  margin-top: 1rem;
+}
+.textP {
+  font-size: 1rem;
+  color: var(--primaryBodyColor);
 }

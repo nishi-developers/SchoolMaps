@@ -239,7 +239,7 @@ function map_Rotating(v) {
 function resetMoving() {
     // 表示範囲のサイズ(改)
     window_width = window.innerWidth
-    window_height = window.innerHeight - Number(getComputedStyle(document.querySelector("*")).getPropertyValue("--header-height").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
+    window_height = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--header-height").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
     if (window_width / map_size_width > window_height / map_size_height) {
         // 縦幅に合わせる
         map_DefaultWidth.value = window_height * map_size_ratio
@@ -369,7 +369,6 @@ function touch(event, status) {
                         slide_zoom_speed = (touch_diff - touch_last_diff) * .005 / (Date.now() - slide_zoom_lastMovedTime)
                     }
                     slide_zoom_lastMovedTime = Date.now()
-                    // 
                     touch_zoomed += Math.abs(touch_diff - touch_last_diff) //ズームした合計量を記録
                     touch_last_diff = touch_diff //最終値を更新
                 }
@@ -409,11 +408,12 @@ document.body.addEventListener('touchmove', (event) => {
     height: 100%;
     overflow: hidden;
     position: fixed;
+    background-color: var(--primaryBgColor);
 }
 
 #map_content svg {
     position: absolute;
-    background-color: #f0f0f0;
+    /* background-color: #f0f0f0; */
     width: v-bind((map_DefaultWidth * map_ZoomLevel) + 'px');
     height: auto;
     /* height: v-bind(map_ZoomLevel + '%'); */
@@ -450,9 +450,9 @@ document.body.addEventListener('touchmove', (event) => {
                     <sodipodi:namedview id="namedview7" pagecolor="#ffffff" bordercolor="#111111" borderopacity="1"
                         inkscape:showpageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="1"
                         inkscape:deskcolor="#d1d1d1" inkscape:document-units="mm" showgrid="false" inkscape:zoom="0.5"
-                        inkscape:cx="297" inkscape:cy="631" inkscape:window-width="1233" inkscape:window-height="1000"
-                        inkscape:window-x="209" inkscape:window-y="110" inkscape:window-maximized="0"
-                        inkscape:current-layer="layer2" />
+                        inkscape:cx="423" inkscape:cy="503" inkscape:window-width="1233" inkscape:window-height="1000"
+                        inkscape:window-x="209" inkscape:window-y="0" inkscape:window-maximized="0"
+                        inkscape:current-layer="svg5" />
                     <defs id="defs2">
                         <rect x="450.70526" y="863.36771" width="100.70789" height="71.483133" id="rect4228" />
                         <rect x="450.70526" y="863.36774" width="100.70789" height="71.483131" id="rect4228-6" />
@@ -463,14 +463,6 @@ document.body.addEventListener('touchmove', (event) => {
                         <rect x="450.70526" y="863.36774" width="100.70789" height="71.483131" id="rect4228-7-1" />
                         <rect x="450.70526" y="863.36774" width="100.70789" height="71.483131" id="rect4228-6-9-7" />
                     </defs>
-                    <g inkscape:label="none" inkscape:groupmode="layer" id="layer1">
-                        <rect
-                            style="fill:#e6e6e6;fill-opacity:1;stroke:#b3b3b3;stroke-width:1;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
-                            id="rect5948" width="210" height="297" x="0" y="0" />
-                        <rect
-                            style="fill:#b3b3b3;fill-opacity:1;stroke:#b3b3b3;stroke-width:1;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;stop-color:#000000"
-                            id="rect234-1-0-0" width="23.206863" height="14.617966" x="120.27374" y="141.298" />
-                    </g>
                     <g inkscape:groupmode="layer" id="layer2" inkscape:label="1A" @click="showProperty('1A')"
                         class="1A">
                         <rect
