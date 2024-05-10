@@ -47,9 +47,18 @@ function showProperty(id) {
         if (Object.keys(PlaceInfo[Floor.value]).includes(id)) {
             console.log(id);
             point_PlaceId.value = id
-            isShowProperty.value = true
             changeURL(Floor.value, id);
-            return true
+            if (isShowProperty.value) {
+                // すでに表示されている場合は、一旦閉じてから開く
+                hideProperty()
+                setTimeout(() => {
+                    isShowProperty.value = true
+                }, 50);
+            } else {
+                // 表示されていない場合は、即時表示
+                isShowProperty.value = true
+            }
+            return true //ここは瞬時なので注意
         } else {
             return false
         }
