@@ -8,4 +8,12 @@ import Header from './components/Header.vue'
   <RouterView />
 </template>
 
-<style scoped></style>
+<style scoped>
+.background {
+  box-sizing: border-box;
+  background-color: var(--primaryBgColor);
+  width: 100%;
+  height: calc(100% - var(--header-height) - var(--BoderWidth));
+  padding: 15px;
+}
+</style>
