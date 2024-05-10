@@ -1,5 +1,6 @@
-{
-    "1": {
+[
+    {
+        "__FloorName__": "1F",
         "1A": {
             "name": "1A",
             "desc": "classroom"
@@ -32,5 +33,14 @@
             "name": "1H",
             "desc": "classroom"
         }
+    },
+    {
+        "__FloorName__": "2F"
+    },
+    {
+        "__FloorName__": "3F"
+    },
+    {
+        "__FloorName__": "R"
     }
-}
+]
