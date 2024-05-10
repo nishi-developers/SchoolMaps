@@ -32,6 +32,10 @@
         "1H": {
             "name": "1H",
             "desc": "classroom"
+        },
+        "grand": {
+            "name": "校庭",
+            "desc": "ひろーい校庭"
         }
     },
     {

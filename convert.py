@@ -9,7 +9,9 @@ inkscapeのSVGファイルを読み込んで、クリックイベントを追加
 import xml.etree.ElementTree as ET
 import os
 
-InputFile = "map.svg"
+InputFile = (
+    "C://Users//M_Haruki//Projects//WEB//SchoolMap//MapData//2024-05-10//1F-path.svg"
+)
 # TempFile = "temp-output.svg"
 OutputFile = "map-output.svg"
 
