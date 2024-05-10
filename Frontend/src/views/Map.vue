@@ -114,7 +114,7 @@ function slide_zoom_do() {
         slide_is_zoom_do = true
         // mouse
         let zoom_speedMin = 0.0001
-        let zoom_frictionLevel = 0.9
+        let zoom_frictionLevel = 0.8
         if (mouseORtouch == "touch") {
             // touch
             zoom_speedMin = 0.0001
@@ -292,7 +292,7 @@ function mouse_moveRotate(event) {
 function mouse_zoom(event) {
     mouseORtouch = "mouse"
     let num = 0
-    let map_ZoomLevel_Unit = .01
+    let map_ZoomLevel_Unit = .1
     if (event.wheelDelta + map_ZoomLevel_Unit > 0) {
         num = map_ZoomLevel_Unit
     } else {
