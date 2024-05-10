@@ -9,6 +9,7 @@ const isShowProperty = ref(false)
 const point_PlaceId = ref("")
 const Floor = ref()
 function changeFloor(floor) {
+    hideProperty()
     Floor.value = floor
     changeURL(floor, null);
 }
