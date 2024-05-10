@@ -1,11 +1,14 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import PropertyView from '@/components/PropertyView.vue';
-// import { s } from 'vite/dist/node/types.d-aGj9QkWt';
+import PlaceInfo from '@/assets/PlaceInfo.json'
 
 const isShowProperty = ref(false)
 const point_PlaceId = ref("")
-const Floor = ref(1)
+const Floor = ref(0)
+function changeFloor(floor) {
+    Floor.value = floor
+}
 
 // ドラッグなどとクリックを判別する
 // <参考>
@@ -433,15 +436,42 @@ document.body.addEventListener('touchmove', (event) => {
     transform-box: fill-box;
     transform: rotate(v-bind(-map_Rotate + 'deg'));
 }
+
+#floorMenu {
+    position: absolute;
+    top: calc(var(--header-height) + 20px);
+    right: 20px;
+    z-index: 10;
+}
+
+#floorMenu ul {
+    list-style: none;
+}
+
+#floorMenu ul li {
+    border: 1px solid #000;
+    padding: 5px;
+}
+
+#floorMenu ul .selected {
+    background-color: #ff0101;
+}
 </style>
 <template>
     <PropertyView v-if="isShowProperty" :Floor="Floor" :PlaceId="point_PlaceId" @hideProperty="hideProperty()" />
+    <div id="floorMenu">
+        <ul>
+            <li v-for="floor, key in PlaceInfo" :key="key" @click="changeFloor(key)"
+                :class="{ 'selected': key == Floor }">
+                {{ floor.__FloorName__ }}{{ key }}</li>
+        </ul>
+    </div>
     <div id="box" @dblclick="resetMoving()" @mousemove="mouse_moveRotate($event); click_notDetect()"
         @mousedown="click_Detect()" @mouseup="slide_position_do(); slide_rotate_do()"
         @touchmove="touch($event, 'doing'); click_notDetect();" @touchstart="touch($event, 'start'); click_Detect()"
         @touchend="slide_position_do(); slide_zoom_do(); slide_rotate_do()" @wheel="mouse_zoom($event)">
         <div id="map_content" draggable="false">
-            <div v-if="Floor == 1">
+            <div v-if="Floor == 0">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
                     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="210mm" height="297mm"
                     viewBox="0 0 210 297" version="1.1" id="svg5" inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
@@ -593,11 +623,14 @@ document.body.addEventListener('touchmove', (event) => {
                     </g>
                 </svg>
             </div>
-            <div v-else-if="Floor == 2">
+            <div v-else-if="Floor == 1">
                 2f
             </div>
-            <div v-else-if="Floor == 3">
+            <div v-else-if="Floor == 2">
                 3f
+            </div>
+            <div v-else-if="Floor == 3">
+                R
             </div>
         </div>
     </div>
