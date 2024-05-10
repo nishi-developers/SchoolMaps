@@ -9,7 +9,7 @@ const isShowProperty = ref(false)
 const point_PlaceId = ref("")
 const Floor = ref()
 function changeFloor(floor) {
-    hideProperty()
+    hideProperty() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
     Floor.value = floor
     changeURL(floor, null);
 }
