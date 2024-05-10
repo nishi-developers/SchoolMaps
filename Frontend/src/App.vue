@@ -13,7 +13,7 @@ import Header from './components/Header.vue'
   box-sizing: border-box;
   background-color: var(--primaryBgColor);
   width: 100%;
-  height: calc(100% - var(--header-height) - var(--BoderWidth));
+  height: calc(100% - var(--header-height));
   padding: 15px;
 }
 </style>
