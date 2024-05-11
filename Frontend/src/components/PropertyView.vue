@@ -151,6 +151,10 @@ function leave() {
     cursor: pointer;
 }
 
+#closeSlider:active {
+    background-color: rgb(100, 100, 100);
+}
+
 #closeSlider.mobile {
     width: 100px;
     height: 30px;
