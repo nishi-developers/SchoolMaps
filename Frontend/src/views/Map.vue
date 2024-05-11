@@ -2,6 +2,7 @@
 import { onMounted, ref, defineAsyncComponent } from 'vue'
 import PropertyView from '@/components/PropertyView.vue';
 import PlaceInfo from '@/assets/PlaceInfo.json'
+import { event } from 'vue-gtag'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 
@@ -64,6 +65,7 @@ function showProperty(id) {
                 // 存在する場所かどうかをチェック
                 if (Object.keys(PlaceInfo[CurrentFloor.value]).includes(id)) {
                     console.log(id);
+                    event(`open{${CurrentFloor.value}/${id}}`)
                     point_PlaceId.value = id
                     changeURL(CurrentFloor.value, id);
                     if (isShowProperty.value) {
