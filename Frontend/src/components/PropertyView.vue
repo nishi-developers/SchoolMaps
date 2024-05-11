@@ -5,8 +5,16 @@
             @touchstart="touchStart($event); click_Detect()" @touchmove="touchMove($event); click_notDetect()"
             @touchend="leave($event)" @touchcancel="leave($event)" @click="click_toClose()" @dblclick="dubleClick()">
         </div>
-        <p>name : {{ PlaceInfo[props.Floor][props.PlaceId].name }}<br>
-            description : {{ PlaceInfo[props.Floor][props.PlaceId].desc }}</p>
+        <p id="name">{{ PlaceInfo[props.Floor][props.PlaceId].name }}<font-awesome-icon id="linkCopy" @="copyLink()"
+                :icon="['fas', 'link']" /></p>
+        <p>
+            <font-awesome-icon :icon="['fas', 'stairs']" /> {{ PlaceInfo[props.Floor].__FloorDisplayName__
+            }}<span></span>
+            <font-awesome-icon :icon="['fas', 'location-dot']" /> {{ PlaceInfo[props.Floor][props.PlaceId].place }}
+        </p>
+        <p>
+            {{ PlaceInfo[props.Floor][props.PlaceId].desc }}<br>
+        </p>
     </div>
 
 </template>
@@ -142,6 +150,11 @@ function leave() {
         }
     }
 }
+
+function copyLink() {
+    const url = `${location.origin}/${props.Floor}/${props.PlaceId}`
+    navigator.clipboard.writeText(url)
+}
 </script>
 <style scoped>
 #closeSlider {
@@ -176,7 +189,6 @@ function leave() {
     position: absolute;
     z-index: 20;
     box-sizing: border-box;
-    padding: 20px;
     overflow: scroll;
 }
 
@@ -185,6 +197,8 @@ function leave() {
     height: v-bind(InfoSize + "px");
     bottom: 0;
     border-radius: 20px 20px 0 0;
+    padding: 35px 20px 20px 20px;
+
 }
 
 #PropertyView.pc {
@@ -192,9 +206,22 @@ function leave() {
     height: calc(100% - var(--HeaderHeight));
     bottom: 0;
     border-radius: 0 20px 20px 0;
+    padding: 20px 35px 20px 20px;
 }
 
 p {
     color: var(--MainBodyColor);
+    font-size: 1.2rem;
+}
+
+#name {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+#linkCopy {
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 1.2rem;
 }
 </style>
