@@ -54,5 +54,6 @@
 
 #menu a {
     margin: 0 10px;
+    color: var(--MainBodyColor);
 }
 </style>

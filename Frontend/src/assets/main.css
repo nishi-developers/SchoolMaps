@@ -18,7 +18,7 @@
   --SubBaseColor: #ddefff;
 }
 a {
-  color: var(--MainBodyColor);
+  color: var(--AccentBodyColor);
   text-decoration: none;
 }
 html,
