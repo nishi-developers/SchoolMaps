@@ -9,16 +9,20 @@
   font-family: 'Noto Sans', sans-serif;
   --header-height: 80px; /* Map.vueのJSからも参照されているので注意 */
   /* Color */
-  /* 本文など */
-  --MainBodyColor: #2c2c2c;
-  --AccentBodyColor: #9400ff;
+
+  /* テーマ */
   --MainColor: #bee0ff;
   --SubColor: #82c3ff;
+  /* 背景 */
   --MainBaseColor: #f3f9ff;
   --SubBaseColor: #ddefff;
+  /* テキスト */
+  --MainBodyColor: #2c2c2c;
+  --AccentBodyColor: #9400ff;
+  --URLBodyColor: #935cb8;
 }
 a {
-  color: var(--AccentBodyColor);
+  color: var(--URLBodyColor);
   text-decoration: none;
 }
 html,
