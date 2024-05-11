@@ -1,6 +1,7 @@
 [
     {
         "__FloorName__": "1F",
+        "__FloorDisplayName__": "1階",
         "__MapSizeWidth__": 127.85812,
         "__MapSizeHeight__": 291.02832,
         "1A": {
@@ -37,7 +38,11 @@
         },
         "grand": {
             "name": "校庭",
-            "desc": "ひろーい校庭"
+            "desc": "ひろーい校庭",
+            "place": "外",
+            "images": [
+                "grand.png"
+            ]
         }
     },
     {
