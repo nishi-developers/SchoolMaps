@@ -7,7 +7,7 @@
     "icons": [
         {
             "src": "favicon.ico",
-            "sizes": "16x16 24x24 32x32 48x48 64x64 128x128 180x180 256x256 512x512"
+            "sizes": "256x256"
         },
         {
             "src": "img/icons/android-chrome-192x192.png",
