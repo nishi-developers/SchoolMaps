@@ -41,7 +41,8 @@
             "desc": "ひろーい校庭",
             "place": "外",
             "images": [
-                "grand.png"
+                "grand.png",
+                "grandsub.png"
             ]
         }
     },
