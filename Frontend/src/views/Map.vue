@@ -486,7 +486,7 @@ document.body.addEventListener('touchmove', (event) => {
     height: 100%;
     overflow: hidden;
     position: fixed;
-    background-color: var(--primaryBgColor);
+    background-color: var(--MainBaseColor);
     cursor: grab;
 }
 
@@ -526,20 +526,21 @@ document.body.addEventListener('touchmove', (event) => {
 }
 
 #floorMenu ul li {
-    border: 1px solid #000000;
+    border: 1px solid var(--MainBodyColor);
     border-radius: 20%;
     padding: 5px;
     margin: 2px 0 2px 0;
     text-align: center;
     font-size: 1.5rem;
+    color: var(--MainBodyColor)
 }
 
 #floorMenu ul .selected {
-    background-color: #c5c5c5;
+    background-color: var(--SubColor);
 }
 
 #floorMenu ul .notselected {
-    background-color: #ffffff;
+    background-color: var(--MainBaseColor);
 }
 </style>
 <template>

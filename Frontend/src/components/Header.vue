@@ -12,12 +12,12 @@
 </template>
 <style scoped>
 #header {
-    background-color: var(--secondaryBgColor);
+    background-color: var(--MainColor);
     /* position: fixed; */
     width: 100%;
     height: var(--header-height);
     position: relative;
-    border-bottom: 1px solid var(--BoderColor);
+    border-bottom: 1px solid var(--MainBodyColor);
     font-weight: bold;
     box-sizing: border-box;
 }
@@ -33,13 +33,13 @@
 
 #title #mainTitle {
     font-size: 1.5rem;
-    color: var(--primaryBodyColor);
+    color: var(--MainBodyColor);
     vertical-align: middle;
 }
 
 #title #version {
-    font-size: 1rem;
-    color: var(--secondaryBodyColor);
+    font-size: 1.2rem;
+    color: var(--AccentBodyColor);
     vertical-align: middle;
 }
 
@@ -49,7 +49,7 @@
     top: 50%;
     right: 0%;
     transform: translate(0%, -50%);
-    color: var(--primaryBodyColor);
+    color: var(--MainBodyColor);
 }
 
 #menu a {
