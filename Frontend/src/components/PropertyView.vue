@@ -5,8 +5,8 @@
             @touchstart="touchStart($event); click_Detect()" @touchmove="touchMove($event); click_notDetect()"
             @touchend="leave($event)" @touchcancel="leave($event)" @click="click_toClose()" @dblclick="dubleClick()">
         </div>
-        <p id="name">{{ PlaceInfo[props.Floor][props.PlaceId].name }}<font-awesome-icon id="linkCopy" @="copyLink()"
-                :icon="['fas', 'link']" /></p>
+        <p id="name">{{ PlaceInfo[props.Floor][props.PlaceId].name }}<font-awesome-icon id="linkCopy"
+                @click="copyLink()" :icon="['fas', 'link']" /></p>
         <p>
             <font-awesome-icon :icon="['fas', 'stairs']" /> {{ PlaceInfo[props.Floor].__FloorDisplayName__
             }}<span></span>
