@@ -21,7 +21,7 @@
         <p>
             {{ PlaceInfo[props.Floor][props.PlaceId].desc }}<br>
         </p>
-        <div id="imageObjects">
+        <div id="imageObjects" v-if="PlaceInfo[props.Floor][props.PlaceId].images != null">
             <img v-for="img, key in images" :key="key" :style="{ 'min-width': `${img.width}px` }" :src="img.path"
                 alt="画像">
         </div>
@@ -173,21 +173,22 @@ function copyLink() {
     }, 1000)
 }
 
-// 画像の比率を取得してimagesに格納
-var imageObjects = Array
 const imageHeight = 300 // 画像の高さ
+var imageObjects = Array
 const images = ref([])
-for (let i = 0; i < PlaceInfo[props.Floor][props.PlaceId].images.length; i++) {
-    imageObjects[i] = new Image()
-    imageObjects[i].src = `${BASE_URL}/img/places/${PlaceInfo[props.Floor][props.PlaceId].images[i]}`;
-    imageObjects[i].onload = () => {
-        images.value.splice(i, 0, {
-            "path": `${BASE_URL}/img/places/${PlaceInfo[props.Floor][props.PlaceId].images[i]}`,
-            "width": imageObjects[i].naturalWidth / imageObjects[i].naturalHeight * imageHeight,
-        });
+// 画像の比率を取得してimagesに格納
+if (PlaceInfo[props.Floor][props.PlaceId].images != null) {
+    for (let i = 0; i < PlaceInfo[props.Floor][props.PlaceId].images.length; i++) {
+        imageObjects[i] = new Image()
+        imageObjects[i].src = `${BASE_URL}/img/places/${PlaceInfo[props.Floor][props.PlaceId].images[i]}`;
+        imageObjects[i].onload = () => {
+            images.value.splice(i, 0, {
+                "path": `${BASE_URL}/img/places/${PlaceInfo[props.Floor][props.PlaceId].images[i]}`,
+                "width": imageObjects[i].naturalWidth / imageObjects[i].naturalHeight * imageHeight,
+            });
+        }
     }
 }
-
 </script>
 <style scoped>
 #closeSlider {
