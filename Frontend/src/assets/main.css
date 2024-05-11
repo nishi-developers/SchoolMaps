@@ -7,7 +7,7 @@
 }
 :root {
   font-family: 'Noto Sans', sans-serif;
-  --header-height: 80px; /* Map.vueのJSからも参照されているので注意 */
+  --HeaderHeight: 80px; /* Map.vueのJSからも参照されているので注意 */
   /* Color */
 
   /* テーマ */
