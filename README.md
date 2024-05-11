@@ -10,6 +10,8 @@
 名称が初期値かnoneを含むのなら無視される
 ~~一層目のレイヤーのみ適用される~~
 
+PlaceInfo.jsonの__MapSizeHeight__と__MapSizeWidth__に、svgのwidthとheightの値(mmは外す)を書き込む
+
 ## 参考
 
 - a
