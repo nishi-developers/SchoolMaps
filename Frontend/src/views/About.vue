@@ -3,7 +3,11 @@
         <p class="textTitle">このサイトについて</p>
         <p class="textH">西高MAPとは?</p>
         <p class="textP">サークル504によって作成された西高のマップです。</p>
-
+        <p class="textH">アクセス解析ツールについて</p>
+        <p class="textP">
+            地図作成:GoogleMap,OpenStreetMap<br>
+            アイコン:https://icon-rainbow.com/%E7%8F%BE%E5%9C%A8%E5%9C%B0%E3%82%92%E7%A4%BA%E3%81%99%E3%83%9E%E3%83%83%E3%83%97%E3%81%AE%E3%83%94%E3%83%B3%E3%81%AE%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3%E7%B4%A0%E6%9D%90-4/
+        </p>
         <p class="textH">アクセス解析ツールについて</p>
         <p class="textP">
             　当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス(Google Analytics)」を使用しています。
