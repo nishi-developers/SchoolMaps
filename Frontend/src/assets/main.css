@@ -6,9 +6,14 @@
   overflow: hidden;
 }
 :root {
+  /* フォント */
   font-family: 'Noto Sans', sans-serif;
+  /* ヘッダーの高さ */
   --HeaderHeight: 80px; /* Map.vueのJSからも参照されているので注意 */
-  /* Color */
+}
+
+/* 配色 */
+:root {
   /* テーマ */
   --MainColor: #bee0ff;
   --SubColor: #82c3ff;
@@ -20,17 +25,33 @@
   --AccentBodyColor: #9400ff;
   --URLBodyColor: #935cb8;
 }
-a {
-  color: var(--URLBodyColor);
-  text-decoration: none;
+/* ダークモード */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* テーマ */
+    --MainColor: #003365;
+    --SubColor: #0057ad;
+    /* 背景 */
+    --MainBaseColor: #333333;
+    --SubBaseColor: #202020;
+    /* テキスト */
+    --MainBodyColor: #f3f3f3;
+    --AccentBodyColor: #9400ff;
+    --URLBodyColor: #935cb8;
+  }
 }
+
+/* 共通 */
 html,
 body,
 #app {
   height: 100%;
   width: 100%;
 }
-
+a {
+  color: var(--URLBodyColor);
+  text-decoration: none;
+}
 /* テキスト共通 */
 .textTitle {
   font-size: 1.8rem;

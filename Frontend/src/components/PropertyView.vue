@@ -5,8 +5,8 @@
             @touchstart="touchStart($event); click_Detect()" @touchmove="touchMove($event); click_notDetect()"
             @touchend="leave($event)" @touchcancel="leave($event)" @click="click_toClose()" @dblclick="dubleClick()">
         </div>
-        name : {{ PlaceInfo[props.Floor][props.PlaceId].name }}<br>
-        description : {{ PlaceInfo[props.Floor][props.PlaceId].desc }}
+        <p>name : {{ PlaceInfo[props.Floor][props.PlaceId].name }}<br>
+            description : {{ PlaceInfo[props.Floor][props.PlaceId].desc }}</p>
     </div>
 
 </template>
@@ -192,5 +192,9 @@ function leave() {
     height: calc(100% - var(--HeaderHeight));
     bottom: 0;
     border-radius: 0 20px 20px 0;
+}
+
+p {
+    color: var(--MainBodyColor);
 }
 </style>
