@@ -512,6 +512,7 @@ document.body.addEventListener('touchmove', (event) => {
     transform-origin: center center;
     transform-box: fill-box;
     transform: rotate(v-bind(-map_Rotate + 'deg'));
+    color: var(--MainBodyColor);
 }
 
 #floorMenu {
