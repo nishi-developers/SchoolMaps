@@ -9,7 +9,6 @@
   font-family: 'Noto Sans', sans-serif;
   --HeaderHeight: 80px; /* Map.vueのJSからも参照されているので注意 */
   /* Color */
-
   /* テーマ */
   --MainColor: #bee0ff;
   --SubColor: #82c3ff;
