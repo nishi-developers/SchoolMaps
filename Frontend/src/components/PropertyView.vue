@@ -5,16 +5,26 @@
             @touchstart="touchStart($event); click_Detect()" @touchmove="touchMove($event); click_notDetect()"
             @touchend="leave($event)" @touchcancel="leave($event)" @click="click_toClose()" @dblclick="dubleClick()">
         </div>
-        <p id="name">{{ PlaceInfo[props.Floor][props.PlaceId].name }}<font-awesome-icon id="linkCopy"
-                @click="copyLink()" :icon="['fas', 'link']" /></p>
+        <p id="name">{{ PlaceInfo[props.Floor][props.PlaceId].name }}
+            <font-awesome-icon v-if="isNotCopy" id="linkCopy" @click="copyLink()" :icon="['fas', 'link']" />
+            <font-awesome-icon v-else id="linkCopy" @click="copyLink()" :icon="['fas', 'check']" />
+        </p>
         <p>
-            <font-awesome-icon :icon="['fas', 'stairs']" /> {{ PlaceInfo[props.Floor].__FloorDisplayName__
-            }}<span></span>
-            <font-awesome-icon :icon="['fas', 'location-dot']" /> {{ PlaceInfo[props.Floor][props.PlaceId].place }}
+            <span v-if="PlaceInfo[props.Floor].__FloorDisplayName__ != null">
+                <font-awesome-icon :icon="['fas', 'stairs']" /> {{ PlaceInfo[props.Floor].__FloorDisplayName__ }}
+            </span>
+            <span v-if="PlaceInfo[props.Floor][props.PlaceId].place != null">
+                <font-awesome-icon id="locationIcon" :icon="['fas', 'location-dot']" /> {{
+                    PlaceInfo[props.Floor][props.PlaceId].place }}
+            </span>
         </p>
         <p>
             {{ PlaceInfo[props.Floor][props.PlaceId].desc }}<br>
         </p>
+        <div id="imageObjects">
+            <img v-for="img, key in images" :key="key" :style="{ 'min-width': `${img.width}px` }" :src="img.path"
+                alt="画像">
+        </div>
     </div>
 
 </template>
@@ -25,6 +35,7 @@ import PlaceInfo from '@/assets/PlaceInfo.json'
 const isShowPropertyView = ref(true)
 const props = defineProps(["Floor", "PlaceId"])
 const emit = defineEmits(["hideProperty"])
+const BASE_URL = import.meta.env.BASE_URL
 
 // pc or mobile (deviceMode)
 const deviceMode = ref()
@@ -45,6 +56,7 @@ if (window_width < window_height) {
     InfoSize.value = window_width * InfoSizeMiddleRate
 }
 
+// クリック判定
 let isClick = false
 let isDubleClick = false
 function click_toClose() {
@@ -67,7 +79,6 @@ function click_notDetect() {
     // クリックではなくドラックだとわかったときにフラグを解除する
     isClick = false
 }
-
 function dubleClick() {
     isDubleClick = true
     // 最大であれば中へ、中であれば最大へ
@@ -85,11 +96,11 @@ function dubleClick() {
         }
     }
 }
-
-
 function closePropertyView() {
     emit("hideProperty")
 }
+
+// ドラッグ判定
 function mouseMove(event) {
     if (event.buttons == 1) {
         if (deviceMode.value == "mobile") {
@@ -151,10 +162,32 @@ function leave() {
     }
 }
 
+// リンクコピー
+const isNotCopy = ref(true)
 function copyLink() {
-    const url = `${location.origin}/${props.Floor}/${props.PlaceId}`
+    const url = `https://${location.host}${BASE_URL}/${props.Floor}/${props.PlaceId}`
     navigator.clipboard.writeText(url)
+    isNotCopy.value = false
+    setTimeout(() => {
+        isNotCopy.value = true
+    }, 1000)
 }
+
+// 画像の比率を取得してimagesに格納
+var imageObjects = Array
+const imageHeight = 300 // 画像の高さ
+const images = ref([])
+for (let i = 0; i < PlaceInfo[props.Floor][props.PlaceId].images.length; i++) {
+    imageObjects[i] = new Image()
+    imageObjects[i].src = `${BASE_URL}/img/places/${PlaceInfo[props.Floor][props.PlaceId].images[i]}`;
+    imageObjects[i].onload = () => {
+        images.value.splice(i, 0, {
+            "path": `${BASE_URL}/img/places/${PlaceInfo[props.Floor][props.PlaceId].images[i]}`,
+            "width": imageObjects[i].naturalWidth / imageObjects[i].naturalHeight * imageHeight,
+        });
+    }
+}
+
 </script>
 <style scoped>
 #closeSlider {
@@ -217,11 +250,29 @@ p {
 #name {
     font-size: 1.8rem;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 #linkCopy {
     cursor: pointer;
     margin-left: 10px;
     font-size: 1.2rem;
+}
+
+#locationIcon {
+    margin-left: 15px;
+}
+
+#imageObjects {
+    display: flex;
+    overflow: scroll;
+    height: v-bind(imageHeight + "px");
+    margin: 10px;
+}
+
+#imageObjects img {
+    height: 100%;
+    border-radius: 20px;
+    margin: 0 10px;
 }
 </style>
