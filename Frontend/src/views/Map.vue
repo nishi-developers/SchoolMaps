@@ -314,7 +314,7 @@ function resetMoving() {
     map_size_ratio = map_size_width / map_size_height
     // 表示範囲のサイズ(改)
     window_width = window.innerWidth
-    window_height = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--header-height").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
+    window_height = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
     if (window_width / map_size_width > window_height / map_size_height) {
         // 縦幅に合わせる
         map_DefaultWidth.value = window_height * map_size_ratio
@@ -486,7 +486,7 @@ document.body.addEventListener('touchmove', (event) => {
     height: 100%;
     overflow: hidden;
     position: fixed;
-    background-color: var(--primaryBgColor);
+    background-color: var(--MainBaseColor);
     cursor: grab;
 }
 
@@ -514,7 +514,7 @@ document.body.addEventListener('touchmove', (event) => {
 
 #floorMenu {
     position: absolute;
-    top: var(--header-height);
+    top: var(--HeaderHeight);
     right: 0;
     margin: 10px;
     z-index: 10;
@@ -526,20 +526,21 @@ document.body.addEventListener('touchmove', (event) => {
 }
 
 #floorMenu ul li {
-    border: 1px solid #000000;
+    border: 1px solid var(--MainBodyColor);
     border-radius: 20%;
     padding: 5px;
     margin: 2px 0 2px 0;
     text-align: center;
     font-size: 1.5rem;
+    color: var(--MainBodyColor)
 }
 
 #floorMenu ul .selected {
-    background-color: #c5c5c5;
+    background-color: var(--SubColor);
 }
 
 #floorMenu ul .notselected {
-    background-color: #ffffff;
+    background-color: var(--MainBaseColor);
 }
 </style>
 <template>

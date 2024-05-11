@@ -21,7 +21,7 @@ const emit = defineEmits(["hideProperty"])
 // pc or mobile (deviceMode)
 const deviceMode = ref()
 const window_width = window.innerWidth
-const window_height = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--header-height").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
+const window_height = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
 const InfoSize = ref(0)
 let InfoSizeMiddleRate = 0
 let InfoSizeMaxRate = 0
@@ -147,12 +147,12 @@ function leave() {
 #closeSlider {
     border-radius: 15px;
     position: fixed;
-    background-color: rgb(138, 138, 138);
+    background-color: var(--MainColor);
     cursor: pointer;
 }
 
 #closeSlider:active {
-    background-color: rgb(100, 100, 100);
+    background-color: var(--SubColor);
 }
 
 #closeSlider.mobile {
@@ -167,12 +167,12 @@ function leave() {
     width: 30px;
     height: 100px;
     left: v-bind(InfoSize + "px");
-    top: calc(calc(v-bind(window_height + "px") / 2) + var(--header-height));
+    top: calc(calc(v-bind(window_height + "px") / 2) + var(--HeaderHeight));
     transform: translate(-100%, -50%);
 }
 
 #PropertyView {
-    background-color: #e2e2e2;
+    background-color: var(--SubBaseColor);
     position: absolute;
     z-index: 20;
     box-sizing: border-box;
@@ -189,7 +189,7 @@ function leave() {
 
 #PropertyView.pc {
     width: v-bind(InfoSize + "px");
-    height: calc(100% - var(--header-height));
+    height: calc(100% - var(--HeaderHeight));
     bottom: 0;
     border-radius: 0 20px 20px 0;
 }
