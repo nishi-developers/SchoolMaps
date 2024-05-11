@@ -1,6 +1,8 @@
 [
     {
         "__FloorName__": "1F",
+        "__MapSizeWidth__": 127.85812,
+        "__MapSizeHeight__": 291.02832,
         "1A": {
             "name": "1A",
             "desc": "classroom"
@@ -39,12 +41,18 @@
         }
     },
     {
-        "__FloorName__": "2F"
+        "__FloorName__": "2F",
+        "__MapSizeWidth__": 20.766842,
+        "__MapSizeHeight__": 10.944687
     },
     {
-        "__FloorName__": "3F"
+        "__FloorName__": "3F",
+        "__MapSizeWidth__": 20.766842,
+        "__MapSizeHeight__": 10.944687
     },
     {
-        "__FloorName__": "R"
+        "__FloorName__": "R",
+        "__MapSizeWidth__": 20.766842,
+        "__MapSizeHeight__": 10.944687
     }
 ]
