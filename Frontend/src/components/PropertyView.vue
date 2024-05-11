@@ -147,12 +147,12 @@ function leave() {
 #closeSlider {
     border-radius: 15px;
     position: fixed;
-    background-color: rgb(138, 138, 138);
+    background-color: var(--MainColor);
     cursor: pointer;
 }
 
 #closeSlider:active {
-    background-color: rgb(100, 100, 100);
+    background-color: var(--SubColor);
 }
 
 #closeSlider.mobile {
@@ -172,7 +172,7 @@ function leave() {
 }
 
 #PropertyView {
-    background-color: #e2e2e2;
+    background-color: var(--SubBaseColor);
     position: absolute;
     z-index: 20;
     box-sizing: border-box;

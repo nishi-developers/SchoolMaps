@@ -10,18 +10,15 @@
   --header-height: 80px; /* Map.vueのJSからも参照されているので注意 */
   /* Color */
   /* 本文など */
-  --primaryBodyColor: #2c2c2c;
-  /* アクセント */
-  --secondaryBodyColor: #636363;
-  /* アクセント */
-  --BoderColor: #636363;
-  /* メインの背景色 */
-  --primaryBgColor: #f6fcff;
-  /* ヘッダーなどの背景色 */
-  --secondaryBgColor: #daffff;
+  --MainBodyColor: #2c2c2c;
+  --AccentBodyColor: #9400ff;
+  --MainColor: #bee0ff;
+  --SubColor: #82c3ff;
+  --MainBaseColor: #f3f9ff;
+  --SubBaseColor: #ddefff;
 }
 a {
-  color: black;
+  color: var(--MainBodyColor);
   text-decoration: none;
 }
 html,
@@ -35,16 +32,16 @@ body,
 .textTitle {
   font-size: 1.8rem;
   font-weight: bold;
-  color: var(--primaryBodyColor);
+  color: var(--MainBodyColor);
   margin-bottom: 1rem;
 }
 .textH {
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--primaryBodyColor);
+  color: var(--MainBodyColor);
   margin-top: 1rem;
 }
 .textP {
   font-size: 1rem;
-  color: var(--primaryBodyColor);
+  color: var(--MainBodyColor);
 }
