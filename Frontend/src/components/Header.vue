@@ -15,7 +15,7 @@
     background-color: var(--MainColor);
     /* position: fixed; */
     width: 100%;
-    height: var(--header-height);
+    height: var(--HeaderHeight);
     position: relative;
     border-bottom: 1px solid var(--MainBodyColor);
     font-weight: bold;
