@@ -33,24 +33,22 @@ import { ref } from 'vue'
 import PlaceInfo from '@/assets/PlaceInfo.json'
 
 const isShowPropertyView = ref(true)
-const props = defineProps(["Floor", "PlaceId"])
+const props = defineProps(["Floor", "PlaceId", "deviceMode"])
 const emit = defineEmits(["hideProperty"])
 const BASE_URL = import.meta.env.BASE_URL
 
 // pc or mobile (deviceMode)
-const deviceMode = ref()
+const deviceMode = ref(props.deviceMode)
 const window_width = window.innerWidth
 const window_height = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
 const InfoSize = ref(0)
 let InfoSizeMiddleRate = 0
 let InfoSizeMaxRate = 0
-if (window_width < window_height) {
-    deviceMode.value = "mobile"
+if (deviceMode.value == "mobile") {
     InfoSizeMiddleRate = .3
     InfoSizeMaxRate = .9
     InfoSize.value = window_height * InfoSizeMiddleRate
 } else {
-    deviceMode.value = "pc"
     InfoSizeMiddleRate = .3
     InfoSizeMaxRate = .8
     InfoSize.value = window_width * InfoSizeMiddleRate

@@ -1,19 +1,34 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router'
 import Header from './components/Header.vue'
+const route = useRoute()
 </script>
 
 <template>
   <Header />
-  <RouterView />
+  <Transition name="router" mode="out-in">
+    <div :key="route.fullPath" id="view">
+      <!-- https://zenn.dev/marehalo/articles/vue-router-transition -->
+      <RouterView />
+    </div>
+  </Transition>
 </template>
 
 <style scoped>
-.background {
-  box-sizing: border-box;
-  background-color: var(--MainBaseColor);
+#view {
   width: 100%;
-  height: calc(100% - var(--HeaderHeight));
-  padding: 15px;
+  height: 100%;
+}
+
+/* transition */
+.router-enter-active,
+.router-leave-active {
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.router-enter-from,
+.router-leave-to {
+  opacity: 0;
+  transform: translateX(-2%);
 }
 </style>
