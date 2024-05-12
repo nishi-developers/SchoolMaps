@@ -18,9 +18,7 @@
                     PlaceInfo[props.Floor][props.PlaceId].place }}
             </span>
         </p>
-        <p>
-            {{ PlaceInfo[props.Floor][props.PlaceId].desc }}<br>
-        </p>
+        <p v-html="PlaceInfo[props.Floor][props.PlaceId].desc"> </p>
         <div id="imageObjects" v-if="PlaceInfo[props.Floor][props.PlaceId].images != null">
             <img v-for="img, key in images" :key="key" :style="{ 'min-width': `${img.width}px` }" :src="img.path"
                 alt="画像">
