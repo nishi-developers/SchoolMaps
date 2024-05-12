@@ -20,6 +20,18 @@ const router = createRouter({
       name: 'about',
       component: () => import('@/views/About.vue'),
       meta: { title: 'このサイトについて |西高Map', desc: 'このサイトについて' }
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('@/views/Search.vue'),
+      meta: { title: '検索 |西高Map', desc: '検索' }
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: '404',
+      component: () => import('@/views/404.vue'),
+      meta: { title: '404 |西高Map', desc: '404 Not Found' }
     }
   ]
 })
