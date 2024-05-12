@@ -53,6 +53,9 @@ a {
   text-decoration: none;
 }
 /* テキスト共通 */
+.text {
+  overflow: scroll;
+}
 .textTitle {
   font-size: 1.8rem;
   font-weight: bold;
