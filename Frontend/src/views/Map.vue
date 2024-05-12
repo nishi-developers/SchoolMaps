@@ -3,8 +3,9 @@ import { onMounted, ref, defineAsyncComponent } from 'vue'
 import PropertyView from '@/components/PropertyView.vue';
 import PlaceInfo from '@/assets/PlaceInfo.json'
 import { event } from 'vue-gtag'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
+const router = useRouter()
 
 // マップの切り替え
 let MapDataCurrent = null
@@ -529,14 +530,24 @@ document.body.addEventListener('touchmove', (event) => {
 }
 
 #floorMenu ul li {
+    padding: 5px;
+    text-align: center;
+    color: var(--MainBodyColor);
+
+}
+
+#floorMenu ul .search {
+    font-size: 2rem;
+}
+
+#floorMenu ul .floor {
     border: 1px solid var(--MainBodyColor);
     border-radius: 20%;
-    padding: 5px;
-    margin: 2px 0 2px 0;
-    text-align: center;
     font-size: 1.5rem;
-    color: var(--MainBodyColor)
+    margin: 2px 0 2px 0;
 }
+
+
 
 #floorMenu ul .selected {
     background-color: var(--SubColor);
@@ -550,7 +561,9 @@ document.body.addEventListener('touchmove', (event) => {
     <PropertyView v-if="isShowProperty" :Floor="CurrentFloor" :PlaceId="point_PlaceId" @hideProperty="hideProperty()" />
     <div id="floorMenu">
         <ul>
-            <li v-for="floor in PlaceInfoReverse" :key="floor.__key__" @click="changeFloor(floor.__key__)"
+            <li class="search"><font-awesome-icon @click="router.push('search')" :icon="['fas', 'magnifying-glass']" />
+            </li>
+            <li class="floor" v-for="floor in PlaceInfoReverse" :key="floor.__key__" @click="changeFloor(floor.__key__)"
                 :class="floor.__key__ == CurrentFloor ? 'selected' : 'notselected'">
                 {{ floor.__FloorName__ }}</li>
         </ul>

@@ -1,5 +1,5 @@
 <template>
-    <div class="background">
+    <div class="background text">
         <p class="textTitle">使い方</p>
         <p class="textH">PC(マウス)</p>
         <ul class="textP">

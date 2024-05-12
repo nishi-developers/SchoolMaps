@@ -1,5 +1,5 @@
 <template>
-    <div class="background">
+    <div class="background text">
         <p class="textTitle">404 Not Found</p>
         <p class="textH">お探しのページは見つかりませんでした。</p>
         <p class="textP">
