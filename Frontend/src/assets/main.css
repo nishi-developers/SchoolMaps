@@ -52,6 +52,13 @@ a {
   color: var(--URLBodyColor);
   text-decoration: none;
 }
+.background {
+  box-sizing: border-box;
+  background-color: var(--MainBaseColor);
+  width: 100%;
+  height: calc(100% - var(--HeaderHeight));
+  padding: 15px;
+}
 /* テキスト共通 */
 .text {
   overflow: scroll;

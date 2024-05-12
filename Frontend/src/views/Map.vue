@@ -17,11 +17,13 @@ const isShowProperty = ref(false)
 const point_PlaceId = ref("")
 const CurrentFloor = ref()
 function changeFloor(floor) {
-    hideProperty() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
     CurrentFloor.value = floor
+    hideProperty() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
     changeMapData(floor)
     changeURL(floor, null);
 }
+
+
 
 // フロア情報の逆順を作成
 let PlaceInfoReverse = PlaceInfo.slice().reverse()
@@ -46,7 +48,6 @@ if ((route.params.floor != "") && !isNaN(route.params.floor)
     changeFloor(Number(route.params.floor))
 } else {
     changeFloor(0)
-    changeURL(0, null)
 }
 
 // ドラッグなどとクリックを判別する
@@ -68,10 +69,9 @@ function showProperty(id) {
                     console.log(id);
                     event(`open{${CurrentFloor.value}/${id}}`)
                     point_PlaceId.value = id
-                    changeURL(CurrentFloor.value, id);
                     if (isShowProperty.value) {
                         // すでに表示されている場合は、一旦閉じてから開く
-                        hideProperty()
+                        hideProperty(true)
                         setTimeout(() => {
                             isShowProperty.value = true
                         }, 50);
@@ -79,6 +79,7 @@ function showProperty(id) {
                         // 表示されていない場合は、即時表示
                         isShowProperty.value = true
                     }
+                    changeURL(CurrentFloor.value, id); //hideProperty()の後に実行
                     return true //ここは瞬時なので注意
                 } else {
                     return false
@@ -100,12 +101,16 @@ function click_dubleDetect() {
     isDubleClick = true
 }
 
-function hideProperty() {
+function hideProperty(isChangeURL = false) {
     isShowProperty.value = false
-    changeURL(CurrentFloor.value, null)
+    if (isChangeURL) {
+        changeURL(CurrentFloor.value, null)
+    }
 }
 
 const map_DefaultWidth = ref(0)
+// deviceMode
+const deviceMode = ref("")
 let map_size_width = 0
 let map_size_height = 0
 let map_size_ratio = 0
@@ -331,7 +336,12 @@ function resetMoving() {
     map_ZoomLevel.value = 1
     map_Rotate.value = 0
     slide_reset()
-    hideProperty()
+    hideProperty(true)
+    if (window_width < window_height) {
+        deviceMode.value = "mobile"
+    } else {
+        deviceMode.value = "pc"
+    }
 }
 
 
@@ -556,9 +566,35 @@ document.body.addEventListener('touchmove', (event) => {
 #floorMenu ul .notselected {
     background-color: var(--MainBaseColor);
 }
+
+/* Transition */
+.property-pc-enter-active,
+.property-pc-leave-active {
+    transition: opacity .25s ease-out, transform .25s ease-out;
+}
+
+.property-pc-enter-from,
+.property-pc-leave-to {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.property-mobile-enter-active,
+.property-mobile-leave-active {
+    transition: opacity .25s ease-out, transform .25s ease-out;
+}
+
+.property-mobile-enter-from,
+.property-mobile-leave-to {
+    opacity: 0;
+    transform: translateY(+100%);
+}
 </style>
 <template>
-    <PropertyView v-if="isShowProperty" :Floor="CurrentFloor" :PlaceId="point_PlaceId" @hideProperty="hideProperty()" />
+    <Transition :name="`property-${deviceMode}`">
+        <PropertyView v-if="isShowProperty" :Floor="CurrentFloor" :PlaceId="point_PlaceId" :deviceMode="deviceMode"
+            @hideProperty="hideProperty(true)" />
+    </Transition>
     <div id="floorMenu">
         <ul>
             <li class="search"><font-awesome-icon @click="router.push('search')" :icon="['fas', 'magnifying-glass']" />
