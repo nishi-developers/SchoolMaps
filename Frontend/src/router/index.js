@@ -7,31 +7,31 @@ const router = createRouter({
       path: '/:floor?/:id?',
       name: 'map',
       component: () => import('@/views/Map.vue'),
-      meta: { title: '西高Map', desc: 'マップ' }
+      meta: { title: '西高Map' }
     },
     {
       path: '/guide',
       name: 'guide',
       component: () => import('@/views/Guide.vue'),
-      meta: { title: '使い方 |西高Map', desc: '使い方' }
+      meta: { title: '使い方 |西高Map' }
     },
     {
       path: '/about',
       name: 'about',
       component: () => import('@/views/About.vue'),
-      meta: { title: 'このサイトについて |西高Map', desc: 'このサイトについて' }
+      meta: { title: 'このサイトについて |西高Map' }
     },
     {
       path: '/search',
       name: 'search',
       component: () => import('@/views/Search.vue'),
-      meta: { title: '検索 |西高Map', desc: '検索' }
+      meta: { title: '検索 |西高Map' }
     },
     {
       path: '/:pathMatch(.*)*',
       name: '404',
       component: () => import('@/views/404.vue'),
-      meta: { title: '404 |西高Map', desc: '404 Not Found' }
+      meta: { title: '404 |西高Map' }
     }
   ]
 })
@@ -39,9 +39,9 @@ const router = createRouter({
 // titleを後から変更する
 router.afterEach((to) => {
   const TITLE = to.meta.title
-  const DESC = to.meta.desc
+  // const DESC = to.meta.desc
   document.title = TITLE
-  document.querySelector("meta[name='description']").setAttribute('content', DESC)
+  // document.querySelector("meta[name='description']").setAttribute('content', DESC)
 })
 
 export default router

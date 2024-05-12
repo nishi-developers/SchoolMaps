@@ -38,7 +38,7 @@
         },
         "grand": {
             "name": "校庭",
-            "desc": "ひろーい校庭",
+            "desc": "ひろーい校庭<br>運動会や体育祭などが行われる場所",
             "place": "外",
             "images": [
                 "grand.png",
@@ -48,17 +48,47 @@
     },
     {
         "__FloorName__": "2F",
+        "__FloorDisplayName__": "2階",
         "__MapSizeWidth__": 20.766842,
-        "__MapSizeHeight__": 10.944687
+        "__MapSizeHeight__": 10.944687,
+        "grand": {
+            "name": "校庭",
+            "desc": "ひろーい校庭<br>運動会や体育祭などが行われる場所",
+            "place": "外",
+            "images": [
+                "grand.png",
+                "grandsub.png"
+            ]
+        }
     },
     {
         "__FloorName__": "3F",
+        "__FloorDisplayName__": "3階",
         "__MapSizeWidth__": 20.766842,
-        "__MapSizeHeight__": 10.944687
+        "__MapSizeHeight__": 10.944687,
+        "grand": {
+            "name": "校庭",
+            "desc": "ひろーい校庭<br>運動会や体育祭などが行われる場所",
+            "place": "外",
+            "images": [
+                "grand.png",
+                "grandsub.png"
+            ]
+        }
     },
     {
         "__FloorName__": "R",
+        "__FloorDisplayName__": "屋上",
         "__MapSizeWidth__": 20.766842,
-        "__MapSizeHeight__": 10.944687
+        "__MapSizeHeight__": 10.944687,
+        "grand": {
+            "name": "校庭",
+            "desc": "ひろーい校庭<br>運動会や体育祭などが行われる場所qwertyuiopasdfghjklxcvbnm",
+            "place": "外",
+            "images": [
+                "grand.png",
+                "grandsub.png"
+            ]
+        }
     }
 ]
