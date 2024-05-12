@@ -483,7 +483,7 @@ document.body.addEventListener('touchmove', (event) => {
 </script>
 
 
-<style>
+<style scoped>
 #box {
     width: 100%;
     height: 100%;
