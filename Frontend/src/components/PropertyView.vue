@@ -199,7 +199,7 @@ if (PlaceInfo[props.Floor][props.PlaceId].images != null) {
 }
 
 #closeSlider.mobile {
-    width: 100px;
+    width: 200px;
     height: 30px;
     left: 50%;
     bottom: v-bind(InfoSize + "px");
@@ -208,7 +208,7 @@ if (PlaceInfo[props.Floor][props.PlaceId].images != null) {
 
 #closeSlider.pc {
     width: 30px;
-    height: 100px;
+    height: 200px;
     left: v-bind(InfoSize + "px");
     top: calc(calc(v-bind(window_height + "px") / 2) + var(--HeaderHeight));
     transform: translate(-100%, -50%);
