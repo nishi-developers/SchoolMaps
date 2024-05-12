@@ -589,6 +589,17 @@ document.body.addEventListener('touchmove', (event) => {
     opacity: 0;
     transform: translateY(+100%);
 }
+
+.map-enter-active,
+.map-leave-active {
+    transition: opacity .25s ease;
+}
+
+.map-enter-from,
+.map-leave-to {
+    opacity: 0;
+
+}
 </style>
 <template>
     <Transition :name="`property-${deviceMode}`">
@@ -609,8 +620,10 @@ document.body.addEventListener('touchmove', (event) => {
         @mouseup="slide_position_do(); slide_rotate_do()" @touchmove="touch($event, 'doing'); click_notDetect();"
         @touchstart="touch($event, 'start'); click_Detect()"
         @touchend="slide_position_do(); slide_zoom_do(); slide_rotate_do()" @wheel="mouse_zoom($event)">
-        <div id="map_content" draggable="false">
-            <component :is="MapDataCurrent" @showProperty="showProperty" />
+        <div id="map_content" draggable="false" :key="CurrentFloor">
+            <Transition name="map" mode="out-in">
+                <component :is="MapDataCurrent" @showProperty="showProperty" />
+            </Transition>
         </div>
     </div>
 </template>

@@ -273,5 +273,7 @@ p {
     height: 100%;
     border-radius: 20px;
     margin: 0 10px;
+    border: 2px solid var(--SubColor);
+    box-sizing: border-box;
 }
 </style>
