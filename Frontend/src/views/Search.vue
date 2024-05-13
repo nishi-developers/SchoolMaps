@@ -2,10 +2,11 @@
     <div class="background text" id="search">
         <p class="textTitle">マップ検索</p>
         <div class="searchBox">
+            <label for="searchInput" class="sertchIcon"><font-awesome-icon
+                    :icon="['fas', 'magnifying-glass']" /></label>
             <input id="searchInput" type="text" class="searchInput" placeholder="検索" @input="doSearch()"
                 v-model="searchWord" required>
-            <label for="searchInput"><font-awesome-icon :icon="['fas', 'magnifying-glass']" /></label>
-            <font-awesome-icon @click="reserSearch()" :icon="['fas', 'xmark']" />
+            <font-awesome-icon @click="reserSearch()" :icon="['fas', 'xmark']" class="xmark" />
         </div>
         <p>スペースで区切ることでOR検索が可能<br>
             {文字列} → {文字列}を全場所から検索<br>
@@ -137,6 +138,23 @@ function doSearch() {
 p {
     color: var(--MainBodyColor);
 }
+
+.searchBox {
+    border: 1px solid var(--MainBodyColor);
+    height: 30px;
+    width: 80%;
+}
+
+.sertchIcon {
+    height: 100%;
+}
+
+.searchInput {
+    width: 90%;
+    height: 100%;
+    border: none;
+}
+
 
 .place {
     border: 1px solid var(--MainBodyColor);
