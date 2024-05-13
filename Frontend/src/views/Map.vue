@@ -548,7 +548,6 @@ document.body.addEventListener('touchmove', (event) => {
     padding: 5px;
     text-align: center;
     color: var(--MainBodyColor);
-    -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
 #floorMenu ul .search {
