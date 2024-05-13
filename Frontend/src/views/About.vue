@@ -29,7 +29,7 @@
                 rel="noopener noreferrer">「Googleアナリティクス利用規約」</a>もご確認ください。
         </p>
     </div>
-    <p id="version">Version {{ version }}</p>
+    <p id="version">Version: {{ version }}</p>
 </template>
 <style scoped>
 #version {
