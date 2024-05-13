@@ -3,14 +3,16 @@
         <p class="textTitle">このサイトについて</p>
         <p class="textH">西高MAPとは?</p>
         <p class="textP">
-            <a href="https://www.metro.ed.jp/nishi-h/">東京都立西高等学校</a>のマップです。<br>
-            プログラミングサークル504によって作成、運営されています。<br>
+            <b><a href="https://www.metro.ed.jp/nishi-h/">東京都立西高等学校</a></b>のマップです。<br>
+            プログラミングサークル<b>504</b>によって作成、運営されています。<br>
             本サイトに関して、都立西高校へのお問い合わせは行わないでください。
         </p>
         <p class="textH">クレジット</p>
         <p class="textP">
-            地図作成:GoogleMap,OpenStreetMap<br>
-            アイコン:https://icon-rainbow.com/%E7%8F%BE%E5%9C%A8%E5%9C%B0%E3%82%92%E7%A4%BA%E3%81%99%E3%83%9E%E3%83%83%E3%83%97%E3%81%AE%E3%83%94%E3%83%B3%E3%81%AE%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3%E7%B4%A0%E6%9D%90-4/
+            マップ作成:<a href="https://www.google.com/maps">GoogleMap</a>,
+            <a href="https://www.openstreetmap.org/">OpenStreetMap</a>,
+            <a href="https://inkscape.org">Inkscape</a><br>
+            ファビコン:<a href="https://icon-rainbow.com/現在地を示すマップのピンのアイコン素材-4/">Icon-rainbow</a>
         </p>
         <p class="textH">アクセス解析ツールについて</p>
         <p class="textP">
@@ -27,5 +29,20 @@
                 rel="noopener noreferrer">「Googleアナリティクス利用規約」</a>もご確認ください。
         </p>
     </div>
+    <p id="version">Version {{ version }}</p>
 </template>
-<style scoped></style>
+<style scoped>
+#version {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: 1rem;
+    color: var(--AccentBodyColor);
+    background-color: var(--SubBaseColor);
+    padding: 5px;
+}
+</style>
+<script setup>
+const version = import.meta.env.VITE_VERSION;
+console.log(version);
+</script>

@@ -11,12 +11,6 @@
                 <font-awesome-icon :icon="['fas', 'xmark']" />
             </div>
         </div>
-        <p>スペースで区切ることでOR検索が可能<br>
-            {文字列} → {文字列}を全場所から検索<br>
-            name:{文字列} → 名前に{文字列}を含む場所を検索<br>
-            floor:{文字列} → 階に{文字列}を含む場所を検索<br>
-            place:{文字列} → 場所に{文字列}を含む場所を検索<br>
-            desc:{文字列} → 説明に{文字列}を含む場所を検索</p>
         <div class="results">
             <div v-for="place, key in PlaceInfoList" :key="key" @click="move(place.floor, place.id)">
                 <div v-if="place.isShow" class="place">
