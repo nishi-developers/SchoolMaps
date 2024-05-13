@@ -548,7 +548,6 @@ document.body.addEventListener('touchmove', (event) => {
     padding: 5px;
     text-align: center;
     color: var(--MainBodyColor);
-
 }
 
 #floorMenu ul .search {
