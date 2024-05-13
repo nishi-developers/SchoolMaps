@@ -2,11 +2,14 @@
     <div class="background text" id="search">
         <p class="textTitle">マップ検索</p>
         <div class="searchBox">
-            <label for="searchInput" class="searchIcon"><font-awesome-icon
-                    :icon="['fas', 'magnifying-glass']" /></label>
+            <label for="searchInput" class="searchIcon">
+                <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
+            </label>
             <input id="searchInput" type="text" class="searchInput" placeholder="検索" @input="doSearch()"
                 v-model="searchWord" required>
-            <font-awesome-icon @click="reserSearch()" :icon="['fas', 'xmark']" class="searchXmark" />
+            <div class="searchXmark" :class="searchXmarkIsActive" @click="reserSearch()">
+                <font-awesome-icon :icon="['fas', 'xmark']" />
+            </div>
         </div>
         <p>スペースで区切ることでOR検索が可能<br>
             {文字列} → {文字列}を全場所から検索<br>
@@ -14,20 +17,22 @@
             floor:{文字列} → 階に{文字列}を含む場所を検索<br>
             place:{文字列} → 場所に{文字列}を含む場所を検索<br>
             desc:{文字列} → 説明に{文字列}を含む場所を検索</p>
-        <div v-for="place, key in PlaceInfoList" :key="key" @click="move(place.floor, place.id)">
-            <div v-if="place.isShow" class="place">
-                <p class="name">{{ place.name }}</p>
-                <p>
-                    <span class="position" v-if="place.floorName != null">
-                        <font-awesome-icon :icon="['fas', 'stairs']" />
-                        {{ place.floorName }}
-                    </span>
-                    <span class="position" v-if="place.place != null">
-                        <font-awesome-icon id="locationIcon" :icon="['fas', 'location-dot']" />
-                        {{ place.place }}
-                    </span>
-                </p>
-                <p v-html="place.desc" v-if="place.desc != null"></p>
+        <div class="results">
+            <div v-for="place, key in PlaceInfoList" :key="key" @click="move(place.floor, place.id)">
+                <div v-if="place.isShow" class="place">
+                    <p class="name">{{ place.name }}</p>
+                    <p>
+                        <span class="position" v-if="place.floorName != null">
+                            <font-awesome-icon :icon="['fas', 'stairs']" />
+                            {{ place.floorName }}
+                        </span>
+                        <span class="position" v-if="place.place != null">
+                            <font-awesome-icon id="locationIcon" :icon="['fas', 'location-dot']" />
+                            {{ place.place }}
+                        </span>
+                    </p>
+                    <p v-html="place.desc" v-if="place.desc != null"></p>
+                </div>
             </div>
         </div>
     </div>
@@ -65,10 +70,14 @@ function move(floor, id) {
 
 const searchWord = ref('')
 
-
+const searchXmarkIsActive = ref('')
 function reserSearch() {
+    searchXmarkIsActive.value = 'active'
     searchWord.value = ''
     doSearch()
+    setTimeout(() => {
+        searchXmarkIsActive.value = ''
+    }, 150);
 }
 
 function doSearch() {
@@ -140,38 +149,77 @@ p {
 }
 
 .searchBox {
+    --SearchBoxHeight: 40px;
     border: 1px solid var(--MainBodyColor);
     border-radius: 10px;
-    height: 30px;
+    height: var(--SearchBoxHeight);
     width: 100%;
     display: flex;
+    box-sizing: border-box;
+}
+
+.searchBox:hover {
+    border: 2px solid var(--MainBodyColor);
 }
 
 .searchIcon {
     height: 100%;
-    width: auto;
-    font-size: 20px;
+    width: var(--SearchBoxHeight);
+    background-color: var(--SubBaseColor);
+}
+
+.searchIcon svg {
+    height: 80%;
+    width: 80%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--MainBodyColor)
 }
 
 .searchInput {
-    width: 90%;
+    width: calc(100% - var(--SearchBoxHeight)*2);
     height: 100%;
     border: none;
+    font-size: 1.4rem;
+    padding: 1px 5px;
+    color: var(--MainBodyColor);
+    background-color: var(--MainBaseColor);
 }
 
 .searchXmark {
     height: 100%;
-    width: 10%;
+    width: var(--SearchBoxHeight);
+    background-color: var(--SubBaseColor);
+}
+
+.searchXmark.active {
+    background-color: var(--MainColor);
+}
+
+.searchXmark svg {
+    height: calc(var(--SearchBoxHeight)*.5);
+    width: calc(var(--SearchBoxHeight)*.5);
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--MainBodyColor)
 }
 
 
 
 .place {
     border: 1px solid var(--MainBodyColor);
-    margin: 5px;
+    margin: 5px 0;
     padding: 5px;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.place:hover {
+    background-color: var(--SubBaseColor);
 }
 
 .position {
@@ -181,5 +229,9 @@ p {
 .name {
     font-size: 20px;
     font-weight: bold;
+}
+
+.results {
+    margin-top: 10px;
 }
 </style>
