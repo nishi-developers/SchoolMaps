@@ -31,6 +31,7 @@
     margin: 0 10px;
 }
 
+
 #title #mainTitle {
     font-size: 1.5rem;
     color: var(--MainBodyColor);
