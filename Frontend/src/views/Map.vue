@@ -24,7 +24,6 @@ class propertyClass {
         // クリックされたときに、フラグが立っていたら
         // let isClick_ = this.isClick
         // this.isClick = false
-        console.log(property.isClick);
         if (property.isClick) {
             property.isClick = false
             property.isDubleClick = false
@@ -33,7 +32,6 @@ class propertyClass {
                 if (!property.isDubleClick) {
                     // 存在する場所かどうかをチェック
                     if (Object.keys(PlaceInfo[CurrentFloor.value]).includes(id)) {
-                        console.log(id);
                         event(`open{${CurrentFloor.value}/${id}}`)
                         point_PlaceId.value = id
                         if (property.isShowProperty.value) {
@@ -210,7 +208,7 @@ class mapSlideClass {
             }
             // 速度が0になるまで、位置を変更
             if (Math.abs(this.position_speedX) > position_speedMin || Math.abs(this.position_speedY) > position_speedMin) {
-                if (mapMove.map_PositionRangeCheck(this.position_speedX * 4, this.position_speedY * 4)) {
+                if (mapMove.PositionRangeCheck(this.position_speedX * 4, this.position_speedY * 4)) {
                     mapMove.map_PositionLeft.value += this.position_speedX * 4
                     mapMove.map_PositionTop.value += this.position_speedY * 4
                     this.position_speedX *= position_frictionLevel
@@ -239,8 +237,8 @@ class mapSlideClass {
                 zoom_speedMin = 0.0001
                 zoom_frictionLevel = 0.8
             }
-            if (Math.abs(this.zoom_speed) > zoom_speedMin && mapMove.map_ZoomLevel.value + this.zoom_speed * 4 < mapMove.map_ZoomLevelMax && mapMove.map_ZoomLevel.value + this.zoom_speed * 4 > mapMove.map_ZoomLevelMin) {
-                mapMove.map_ZoomLevel.value += this.zoom_speed * 4
+            if (Math.abs(this.zoom_speed) > zoom_speedMin && mapMove.ZoomLevel.value + this.zoom_speed * 4 < mapMove.ZoomLevelMax && mapMove.ZoomLevel.value + this.zoom_speed * 4 > mapMove.ZoomLevelMin) {
+                mapMove.ZoomLevel.value += this.zoom_speed * 4
                 this.zoom_speed *= zoom_frictionLevel
                 // 再帰
                 setTimeout(() => { this.is_zoom_do = false; this.zoom_do(); }, 4) // 4msごとに再帰
@@ -283,37 +281,37 @@ class mapMoveClass {
         this.map_PositionLeft = ref()
         this.map_PositionTop = ref()
         // 地図の倍率
-        this.map_ZoomLevel = ref()
-        this.map_ZoomLevelMax = 15
-        this.map_ZoomLevelMin = 0.001
+        this.ZoomLevel = ref()
+        this.ZoomLevelMax = 15
+        this.ZoomLevelMin = 0.001
         // 地図の回転
         this.map_Rotate = ref()
     }
-    map_PositionRangeCheck(x, y) {
+    PositionRangeCheck(x, y) {
         // 移動先が範囲内かどうかをチェックする関数
         // ズームでどうしても範囲外に出てしまうため、戻す動きは制限しない
-        if (x > 0 && this.map_PositionLeft.value + x > (map_DefaultWidth.value * mapMove.map_ZoomLevel.value / 2) + window_width) {
+        if (x > 0 && this.map_PositionLeft.value + x > (map_DefaultWidth.value * mapMove.ZoomLevel.value / 2) + window_width) {
             // 右端
             return false
         }
-        else if (x < 0 && this.map_PositionLeft.value + x < -(map_DefaultWidth.value * mapMove.map_ZoomLevel.value / 2)) {
+        else if (x < 0 && this.map_PositionLeft.value + x < -(map_DefaultWidth.value * mapMove.ZoomLevel.value / 2)) {
             // 左端
             return false
         }
-        else if (y > 0 && this.map_PositionTop.value + y > (((map_DefaultWidth.value / map_size_ratio) * mapMove.map_ZoomLevel.value) / 2) + window_height) {
+        else if (y > 0 && this.map_PositionTop.value + y > (((map_DefaultWidth.value / map_size_ratio) * mapMove.ZoomLevel.value) / 2) + window_height) {
             // 下端
             return false
         }
-        else if (y < 0 && this.map_PositionTop.value + y < (-(((map_DefaultWidth.value / map_size_ratio) * mapMove.map_ZoomLevel.value) / 2))) {
+        else if (y < 0 && this.map_PositionTop.value + y < (-(((map_DefaultWidth.value / map_size_ratio) * mapMove.ZoomLevel.value) / 2))) {
             // 上端
             return false
         } else {
             return true
         }
     }
-    map_PositionMove(x, y) {
+    PositionMove(x, y) {
         mapSlide.position_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
-        if (this.map_PositionRangeCheck(x, y)) {
+        if (this.PositionRangeCheck(x, y)) {
             this.map_PositionLeft.value += x
             this.map_PositionTop.value += y
             // 速度を計算
@@ -327,14 +325,14 @@ class mapMoveClass {
             return false
         }
     }
-    map_Zoom(v) {
+    Zoom(v) {
         // マップのズームをする関数
         // ズームの慣性の実装は、PCとスマホで異なるため、それぞれの場所で実装
         // 範囲内であれば、ズームレベルを変更し、trueを返す
         if (v != 0) {
-            if (this.map_ZoomLevel.value + v < this.map_ZoomLevelMax && this.map_ZoomLevel.value + v > this.map_ZoomLevelMin) {
+            if (this.ZoomLevel.value + v < this.ZoomLevelMax && this.ZoomLevel.value + v > this.ZoomLevelMin) {
                 mapSlide.zoom_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
-                this.map_ZoomLevel.value += v
+                this.ZoomLevel.value += v
                 return true
             } else {
                 return false
@@ -343,7 +341,7 @@ class mapMoveClass {
             return false
         }
     }
-    map_Rotating(v) {
+    Rotating(v) {
         if (v != 0) { //スマホでは、回転0が多発するため、0の場合は無視
             this.map_Rotate.value += v
             mapSlide.rotate_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
@@ -371,7 +369,7 @@ class mapMoveClass {
         // リセット
         this.map_PositionLeft.value = window_width / 2
         this.map_PositionTop.value = window_height / 2
-        this.map_ZoomLevel.value = 1
+        this.ZoomLevel.value = 1
         this.map_Rotate.value = 0
     }
 }
@@ -408,12 +406,12 @@ class controlMouseClass {
     mouse_moveRotate(event) {
         mouseORtouch = "mouse"
         if (event.buttons === 1) { // 左クリックが押されている場合のみ
-            mapMove.map_PositionMove(event.movementX, event.movementY)
+            mapMove.PositionMove(event.movementX, event.movementY)
         } else if (event.buttons === 4) { // ホイールボタンが押されている場合のみ
             if (event.movementX > 0) {
-                mapMove.map_Rotating(Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
+                mapMove.Rotating(Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
             } else {
-                mapMove.map_Rotating(-Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
+                mapMove.Rotating(-Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
             }
         }
     }
@@ -425,13 +423,13 @@ class controlMouseClass {
     mouse_zoom(event) {
         mouseORtouch = "mouse"
         let num = 0
-        let map_ZoomLevel_Unit = .1
-        if (event.wheelDelta + map_ZoomLevel_Unit > 0) {
-            num = map_ZoomLevel_Unit
+        let ZoomLevel_Unit = .1
+        if (event.wheelDelta + ZoomLevel_Unit > 0) {
+            num = ZoomLevel_Unit
         } else {
-            num = -map_ZoomLevel_Unit
+            num = -ZoomLevel_Unit
         }
-        if (mapMove.map_Zoom(num)) {
+        if (mapMove.Zoom(num)) {
             mapSlide.zoom_speed = num / 5
             mapSlide.zoom_do()
         }
@@ -498,7 +496,7 @@ class controlTouchClass {
                 this.last_finger = event.changedTouches.length
             }
             [this.temp_x, this.temp_y] = this.positionAverage(event)
-            mapMove.map_PositionMove(this.temp_x - this.last_x, this.temp_y - this.last_y) // 位置をずらす
+            mapMove.PositionMove(this.temp_x - this.last_x, this.temp_y - this.last_y) // 位置をずらす
             this.last_x = this.temp_x //最終値を更新
             this.last_y = this.temp_y //最終値を更新
 
@@ -507,7 +505,7 @@ class controlTouchClass {
                     // すでにzoomモードになっている場合
                     // 指の間隔を計算して、前との差からズームレベルを変更
                     this.diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
-                    if (mapMove.map_Zoom((this.diff - this.last_diff) * .005)) {
+                    if (mapMove.Zoom((this.diff - this.last_diff) * .005)) {
                         // 慣性の実装
                         if (mapSlide.zoom_lastMovedTime != 0) {
                             mapSlide.zoom_speed = (this.diff - this.last_diff) * .005 / (Date.now() - mapSlide.zoom_lastMovedTime)
@@ -524,7 +522,7 @@ class controlTouchClass {
                         this.acceptRotate = true
                     }
                     if (this.acceptRotate) {
-                        mapMove.map_Rotating(this.rotate - this.last_rotate)
+                        mapMove.Rotating(this.rotate - this.last_rotate)
                     }
                     this.last_rotate = this.rotate //最終値を更新
                 } else {
@@ -571,7 +569,7 @@ document.body.addEventListener('touchmove', (event) => {
 
 #map_content svg {
     position: absolute;
-    width: v-bind("(map_DefaultWidth * mapMove.map_ZoomLevel.value) + 'px'");
+    width: v-bind("(map_DefaultWidth * mapMove.ZoomLevel.value) + 'px'");
     height: auto;
     left: v-bind("mapMove.map_PositionLeft.value + 'px'");
     top: v-bind("mapMove.map_PositionTop.value + 'px'");
