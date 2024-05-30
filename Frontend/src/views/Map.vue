@@ -551,7 +551,14 @@ document.body.addEventListener('touchmove', (event) => {
 
 </script>
 
-
+<style>
+.svg-text {
+    transform-origin: center center;
+    transform-box: fill-box;
+    transform: rotate(v-bind("- mapMove.map_Rotate.value + 'deg'"));
+    color: var(--MainBodyColor);
+}
+</style>
 <style scoped>
 #box {
     width: 100%;
@@ -574,13 +581,6 @@ document.body.addEventListener('touchmove', (event) => {
 
 #box:active {
     cursor: grabbing;
-}
-
-.svg-text {
-    transform-origin: center center;
-    transform-box: fill-box;
-    transform: rotate(v-bind("- mapMove.map_Rotate.value + 'deg'"));
-    color: var(--MainBodyColor);
 }
 
 #floorMenu {
