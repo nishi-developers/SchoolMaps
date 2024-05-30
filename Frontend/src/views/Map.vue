@@ -281,19 +281,28 @@ class mapMoveClass {
     PositionRangeCheck(x, y) {
         // 移動先が範囲内かどうかをチェックする関数
         // ズームでどうしても範囲外に出てしまうため、戻す動きは制限しない
-        if (x > 0 && this.map_PositionLeft.value + x > (map_DefaultWidth.value * mapMove.ZoomLevel.value / 2) + window_width) {
+        // 中心はマップの中心
+        // 回転を考慮したマップのサイズを算出
+        // Issues #15 に詳細あり
+        let radian = this.map_Rotate.value * (Math.PI / 180);
+        let A = map_DefaultWidth.value
+        let B = map_DefaultWidth.value / map_size_ratio
+        let temp_width = Math.abs(A * Math.cos(radian)) + Math.abs(B * Math.sin(radian))
+        let temp_height = Math.abs(A * Math.sin(radian)) + Math.abs(B * Math.cos(radian))
+        // 範囲内かどうかをチェック
+        if (x > 0 && this.map_PositionLeft.value + x > (temp_width * mapMove.ZoomLevel.value / 2) + window_width) {
             // 右端
             return false
         }
-        else if (x < 0 && this.map_PositionLeft.value + x < -(map_DefaultWidth.value * mapMove.ZoomLevel.value / 2)) {
+        else if (x < 0 && this.map_PositionLeft.value + x < -(temp_width * mapMove.ZoomLevel.value / 2)) {
             // 左端
             return false
         }
-        else if (y > 0 && this.map_PositionTop.value + y > (((map_DefaultWidth.value / map_size_ratio) * mapMove.ZoomLevel.value) / 2) + window_height) {
+        else if (y > 0 && this.map_PositionTop.value + y > ((temp_height * mapMove.ZoomLevel.value) / 2) + window_height) {
             // 下端
             return false
         }
-        else if (y < 0 && this.map_PositionTop.value + y < (-(((map_DefaultWidth.value / map_size_ratio) * mapMove.ZoomLevel.value) / 2))) {
+        else if (y < 0 && this.map_PositionTop.value + y < (-((temp_height * mapMove.ZoomLevel.value) / 2))) {
             // 上端
             return false
         } else {
