@@ -512,10 +512,6 @@ function touch(event, status) {
         }
     }
 }
-function moveSertch() {
-    router.push('/search')
-}
-
 // デフォルトのピンチアウトを無効化
 // 1本をブロックすると、プロパティでのスクロールが無効化されるため、2本以上をブロックする
 // <参考>
@@ -643,7 +639,7 @@ document.body.addEventListener('touchmove', (event) => {
     </Transition>
     <div id="floorMenu">
         <ul>
-            <li class="search"><font-awesome-icon @click="moveSertch()" :icon="['fas', 'magnifying-glass']" />
+            <li class="search"><font-awesome-icon @click="router.push('/search')" :icon="['fas', 'magnifying-glass']" />
             </li>
             <li class="floor" v-for="floor in PlaceInfoReverse" :key="floor.__key__" @click="changeFloor(floor.__key__)"
                 :class="floor.__key__ === CurrentFloor ? 'selected' : 'notselected'">
