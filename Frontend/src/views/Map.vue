@@ -19,7 +19,7 @@ class propertyClass {
         this.isDubleClick = false
         this.isShowProperty = ref(false)
     }
-    showProperty(id) {
+    show(id) {
         // setTimeoutのコールバック関数内でthisを使用するとthisはグローバルオブジェクトを指すため、thisを使う代わりにクラスのプロパティを使う
         // クリックされたときに、フラグが立っていたら
         // let isClick_ = this.isClick
@@ -38,7 +38,7 @@ class propertyClass {
                         point_PlaceId.value = id
                         if (property.isShowProperty.value) {
                             // すでに表示されている場合は、一旦閉じてから開く
-                            property.hideProperty(true)
+                            property.hide(true)
                             setTimeout(() => {
                                 property.isShowProperty.value = true
                             }, 50);
@@ -46,7 +46,7 @@ class propertyClass {
                             // 表示されていない場合は、即時表示
                             property.isShowProperty.value = true
                         }
-                        changeURL(CurrentFloor.value, id); //hideProperty()の後に実行
+                        changeURL(CurrentFloor.value, id); //hide()の後に実行
                         return true //ここは瞬時なので注意
                     } else {
                         return false
@@ -68,7 +68,7 @@ class propertyClass {
         this.isDubleClick = true
     }
 
-    hideProperty(isChangeURL = false) {
+    hide(isChangeURL = false) {
         this.isShowProperty.value = false
         if (isChangeURL) {
             changeURL(CurrentFloor.value, null)
@@ -89,7 +89,7 @@ const point_PlaceId = ref("")
 const CurrentFloor = ref()
 function changeFloor(floor) {
     CurrentFloor.value = floor
-    property.hideProperty() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
+    property.hide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
     changeMapData(floor)
     changeURL(floor, null);
 }
@@ -138,7 +138,7 @@ onMounted(() => {
     // パラメーターの取得
     if (route.params.id != "") {
         property.isClick = true
-        if (!property.showProperty(route.params.id)) {
+        if (!property.show(route.params.id)) {
             changeURL(CurrentFloor.value, null)
         }
     }
@@ -380,7 +380,7 @@ let window_height = 0
 function resetMoving() {
     mapMove.reset()
     mapSlide.reset()
-    property.hideProperty(true)
+    property.hide(true)
     if (window_width < window_height) {
         deviceMode.value = "mobile"
     } else {
@@ -656,7 +656,7 @@ document.body.addEventListener('touchmove', (event) => {
 <template>
     <Transition :name="`property-${deviceMode}`">
         <PropertyView v-if="property.isShowProperty.value" :Floor="CurrentFloor" :PlaceId="point_PlaceId"
-            :deviceMode="deviceMode" @hideProperty="property.hideProperty(true)" />
+            :deviceMode="deviceMode" @hideProperty="property.hide(true)" />
     </Transition>
     <div id="floorMenu">
         <ul>
@@ -676,7 +676,7 @@ document.body.addEventListener('touchmove', (event) => {
         @wheel="controlMouse.mouse_zoom($event)">
         <div id="map_content" draggable="false" :key="CurrentFloor">
             <Transition name="map" mode="out-in">
-                <component :is="MapDataCurrent" @showProperty="property.showProperty" />
+                <component :is="MapDataCurrent" @showProperty="property.show" />
             </Transition>
         </div>
     </div>
