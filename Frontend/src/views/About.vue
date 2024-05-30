@@ -28,6 +28,7 @@
             Googleアナリティクスに関しては、<a href="https://marketingplatform.google.com/about/analytics/terms/jp/" target="_blank"
                 rel="noopener noreferrer">「Googleアナリティクス利用規約」</a>もご確認ください。
         </p>
+        <p id="version-spacer">spacer</p>
     </div>
     <p id="version">Version: {{ version }}</p>
 </template>
@@ -40,6 +41,12 @@
     color: var(--AccentBodyColor);
     background-color: var(--SubBaseColor);
     padding: 5px;
+}
+
+#version-spacer {
+    font-size: 1rem;
+    padding: 5px;
+    opacity: 0;
 }
 </style>
 <script setup>
