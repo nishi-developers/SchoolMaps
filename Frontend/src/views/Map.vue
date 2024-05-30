@@ -562,7 +562,12 @@ document.body.addEventListener('touchmove', (event) => {
 }
 
 svg .selected {
-    fill: var(--SubColor);
+    /* fill: var(--AccentBodyColor); */
+    /* stroke: gray; */
+    /* stroke-width: 5px; */
+    /* opacity: 0; */
+    /* https://front-end-tools.com/generateFilter/ */
+    filter: brightness(150%);
 }
 </style>
 <style scoped>
