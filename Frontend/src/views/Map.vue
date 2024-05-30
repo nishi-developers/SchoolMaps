@@ -7,18 +7,89 @@ import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 
+
+
+class propertyClass {
+    // ドラッグなどとクリックを判別する
+    // <参考>
+    // https://qiita.com/_Keitaro_/items/375c5274bebf367f24e0
+    // https://qiita.com/KenjiOtsuka/items/da6d2dd2b81fef87e35d
+    constructor() {
+        this.isClick = false
+        this.isDubleClick = false
+        this.isShowProperty = ref(false)
+    }
+    showProperty(id) {
+        // setTimeoutのコールバック関数内でthisを使用するとthisはグローバルオブジェクトを指すため、thisを使う代わりにクラスのプロパティを使う
+        // クリックされたときに、フラグが立っていたら
+        // let isClick_ = this.isClick
+        // this.isClick = false
+        console.log(property.isClick);
+        if (property.isClick) {
+            property.isClick = false
+            property.isDubleClick = false
+            // ダブルクリックと判定されるまでの時間を遅らせる
+            setTimeout(() => {
+                if (!property.isDubleClick) {
+                    // 存在する場所かどうかをチェック
+                    if (Object.keys(PlaceInfo[CurrentFloor.value]).includes(id)) {
+                        console.log(id);
+                        event(`open{${CurrentFloor.value}/${id}}`)
+                        point_PlaceId.value = id
+                        if (property.isShowProperty.value) {
+                            // すでに表示されている場合は、一旦閉じてから開く
+                            property.hideProperty(true)
+                            setTimeout(() => {
+                                property.isShowProperty.value = true
+                            }, 50);
+                        } else {
+                            // 表示されていない場合は、即時表示
+                            property.isShowProperty.value = true
+                        }
+                        changeURL(CurrentFloor.value, id); //hideProperty()の後に実行
+                        return true //ここは瞬時なので注意
+                    } else {
+                        return false
+                    }
+                }
+            }, 200)
+        }
+    }
+    click_Detect() {
+        // クリック開始が検出されたときにフラグを立てる
+        this.isClick = true
+    }
+    click_notDetect() {
+        // クリックではなくドラックだとわかったときにフラグを解除する
+        this.isClick = false
+    }
+    click_dubleDetect() {
+        // ダブルクリックが検出されたときにフラグを立てる
+        this.isDubleClick = true
+    }
+
+    hideProperty(isChangeURL = false) {
+        this.isShowProperty.value = false
+        if (isChangeURL) {
+            changeURL(CurrentFloor.value, null)
+        }
+    }
+}
+let property = new propertyClass()
+
+
+
 // マップの切り替え
 let MapDataCurrent = null
 function changeMapData(floor) {
     MapDataCurrent = defineAsyncComponent(() => import(`@/assets/floors/${floor}.vue`))
 }
 
-const isShowProperty = ref(false)
 const point_PlaceId = ref("")
 const CurrentFloor = ref()
 function changeFloor(floor) {
     CurrentFloor.value = floor
-    hideProperty() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
+    property.hideProperty() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
     changeMapData(floor)
     changeURL(floor, null);
 }
@@ -52,63 +123,6 @@ if ((route.params.floor != "") && !isNaN(route.params.floor)
     changeFloor(0)
 }
 
-// ドラッグなどとクリックを判別する
-// <参考>
-// https://qiita.com/_Keitaro_/items/375c5274bebf367f24e0
-// https://qiita.com/KenjiOtsuka/items/da6d2dd2b81fef87e35d
-let isClick = false
-let isDubleClick = false
-function showProperty(id) {
-    // クリックされたときに、フラグが立っていたら
-    if (isClick) {
-        isClick = false
-        isDubleClick = false
-        // ダブルクリックと判定されるまでの時間を遅らせる
-        setTimeout(() => {
-            if (!isDubleClick) {
-                // 存在する場所かどうかをチェック
-                if (Object.keys(PlaceInfo[CurrentFloor.value]).includes(id)) {
-                    console.log(id);
-                    event(`open{${CurrentFloor.value}/${id}}`)
-                    point_PlaceId.value = id
-                    if (isShowProperty.value) {
-                        // すでに表示されている場合は、一旦閉じてから開く
-                        hideProperty(true)
-                        setTimeout(() => {
-                            isShowProperty.value = true
-                        }, 50);
-                    } else {
-                        // 表示されていない場合は、即時表示
-                        isShowProperty.value = true
-                    }
-                    changeURL(CurrentFloor.value, id); //hideProperty()の後に実行
-                    return true //ここは瞬時なので注意
-                } else {
-                    return false
-                }
-            }
-        }, 200)
-    }
-}
-function click_Detect() {
-    // クリック開始が検出されたときにフラグを立てる
-    isClick = true
-}
-function click_notDetect() {
-    // クリックではなくドラックだとわかったときにフラグを解除する
-    isClick = false
-}
-function click_dubleDetect() {
-    // ダブルクリックが検出されたときにフラグを立てる
-    isDubleClick = true
-}
-
-function hideProperty(isChangeURL = false) {
-    isShowProperty.value = false
-    if (isChangeURL) {
-        changeURL(CurrentFloor.value, null)
-    }
-}
 
 const map_DefaultWidth = ref(0)
 // deviceMode
@@ -116,16 +130,18 @@ const deviceMode = ref("")
 let map_size_width = 0
 let map_size_height = 0
 let map_size_ratio = 0
+
+
+
 onMounted(() => {
     resetMoving() //window_width, window_heightを使うので、ここでリセット
     // パラメーターの取得
     if (route.params.id != "") {
-        isClick = true
-        if (!showProperty(route.params.id)) {
+        property.isClick = true
+        if (!property.showProperty(route.params.id)) {
             changeURL(CurrentFloor.value, null)
         }
     }
-
 })
 
 /*
@@ -364,7 +380,7 @@ let window_height = 0
 function resetMoving() {
     mapMove.reset()
     mapSlide.reset()
-    hideProperty(true)
+    property.hideProperty(true)
     if (window_width < window_height) {
         deviceMode.value = "mobile"
     } else {
@@ -639,8 +655,8 @@ document.body.addEventListener('touchmove', (event) => {
 </style>
 <template>
     <Transition :name="`property-${deviceMode}`">
-        <PropertyView v-if="isShowProperty" :Floor="CurrentFloor" :PlaceId="point_PlaceId" :deviceMode="deviceMode"
-            @hideProperty="hideProperty(true)" />
+        <PropertyView v-if="property.isShowProperty.value" :Floor="CurrentFloor" :PlaceId="point_PlaceId"
+            :deviceMode="deviceMode" @hideProperty="property.hideProperty(true)" />
     </Transition>
     <div id="floorMenu">
         <ul>
@@ -651,16 +667,16 @@ document.body.addEventListener('touchmove', (event) => {
                 {{ floor.__FloorName__ }}</li>
         </ul>
     </div>
-    <div id="box" @dblclick="resetMoving(); click_dubleDetect()"
-        @mousemove="controlMouse.mouse_moveRotate($event); click_notDetect()" @mousedown="click_Detect()"
-        @mouseup="mapSlide.position_do(); mapSlide.rotate_do()"
-        @touchmove="controlTouch.touch($event, 'doing'); click_notDetect();"
-        @touchstart="controlTouch.touch($event, 'start'); click_Detect()"
+    <div id="box" @dblclick="resetMoving(); property.click_dubleDetect()"
+        @mousemove="controlMouse.mouse_moveRotate($event); property.click_notDetect()"
+        @mousedown="property.click_Detect()" @mouseup="mapSlide.position_do(); mapSlide.rotate_do()"
+        @touchmove="controlTouch.touch($event, 'doing'); property.click_notDetect();"
+        @touchstart="controlTouch.touch($event, 'start'); property.click_Detect()"
         @touchend="mapSlide.position_do(); mapSlide.zoom_do(); mapSlide.rotate_do()"
         @wheel="controlMouse.mouse_zoom($event)">
         <div id="map_content" draggable="false" :key="CurrentFloor">
             <Transition name="map" mode="out-in">
-                <component :is="MapDataCurrent" @showProperty="showProperty" />
+                <component :is="MapDataCurrent" @showProperty="property.showProperty" />
             </Transition>
         </div>
     </div>
