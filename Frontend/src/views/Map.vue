@@ -129,13 +129,7 @@ onMounted(() => {
 class mapSlideClass {
     // 慣性スクロール
     constructor() {
-        this.position_lastMovedTime = 0
-        this.position_speedX = 0 // 1msあたりの移動量
-        this.position_speedY = 0
-        this.zoom_lastMovedTime = 0
-        this.zoom_speed = 0
-        this.rotate_lastMovedTime = 0
-        this.rotate_speed = 0
+        this.reset()
         // 重複実行防止のフラグ
         this.is_position_do = false
         this.is_zoom_do = false
@@ -149,14 +143,14 @@ class mapSlideClass {
         this.zoom_lastMovedTime = 0
         this.rotate_lastMovedTime = 0
     }
-    position_stop() {
+    position_stop() { //positionのみリセット
         this.position_speedX = 0
         this.position_speedY = 0
     }
-    zoom_stop() {
+    zoom_stop() { //zoomのみリセット
         this.zoom_speed = 0
     }
-    rotate_stop() {
+    rotate_stop() { //rotateのみリセット
         this.rotate_speed = 0
     }
     position_do() {
@@ -239,7 +233,6 @@ class mapSlideClass {
 }
 let mapSlide = new mapSlideClass()
 
-// 共通の変数と関数
 // 慣性をのせて移動する場合は必ずここの関数を利用する
 // 表示範囲のサイズ(仮)
 let window_width = 0
