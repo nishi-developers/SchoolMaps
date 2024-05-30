@@ -123,7 +123,7 @@
                 d="M 16.0004 113.084 L 19.8427 113.084 L 19.8427 120.055 L 16.0004 120.055 Z" />
         </g>
         <g inkscape:groupmode="layer" id="layer30" inkscape:label="audiovisual_hall"
-            @click="showProperty('audiovisual_hall')" class="audiovisual_hall">
+            @click="showProperty('audiovisual_hall')" :class="{ 'selected': props.selectedID == 'audiovisual_hall' }">
             <path id="rect2280"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 75.0536 8.34935 L 93.9851 8.34935 L 93.9851 37.0072 L 75.0536 37.0072 Z" />
@@ -149,7 +149,7 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer31" inkscape:label="nishi_hall" @click="showProperty('nishi_hall')"
-            class="nishi_hall">
+            :class="{ 'selected': props.selectedID == 'nishi_hall' }">
             <path id="rect2278"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 98.5625 5.91297 L 114.16 5.91297 L 114.16 25.6859 L 98.5625 25.6859 Z" />
@@ -171,7 +171,7 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer18" inkscape:label="WC" style="display:inline"
-            @click="showProperty('WC')" class="WC">
+            @click="showProperty('WC')" :class="{ 'selected': props.selectedID == 'WC' }">
             <path id="rect4041"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 100.505 78.7892 L 109.599 78.7892 L 109.599 85.1318 L 100.505 85.1318 Z" />
@@ -238,7 +238,8 @@
                     id="path1147" />
             </g>
         </g>
-        <g inkscape:groupmode="layer" id="layer9" inkscape:label="pool" @click="showProperty('pool')" class="pool">
+        <g inkscape:groupmode="layer" id="layer9" inkscape:label="pool" @click="showProperty('pool')"
+            :class="{ 'selected': props.selectedID == 'pool' }">
             <path id="rect2111"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 96.1562 109.52 L 123.041 109.52 L 123.041 151.755 L 96.1562 151.755 Z" />
@@ -254,7 +255,8 @@
                     id="path1155" />
             </g>
         </g>
-        <g inkscape:groupmode="layer" id="layer10" inkscape:label="1A" @click="showProperty('1A')" class="1A">
+        <g inkscape:groupmode="layer" id="layer10" inkscape:label="1A" @click="showProperty('1A')"
+            :class="{ 'selected': props.selectedID == '1A' }">
             <path id="rect3373-1-7-8"
                 style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.495067"
                 d="M 79.5066 122.118 L 88.0927 122.118 L 88.0927 131.608 L 79.5066 131.608 Z" />
@@ -269,7 +271,8 @@
                     id="path1161" />
             </g>
         </g>
-        <g inkscape:groupmode="layer" id="layer11" inkscape:label="1B" @click="showProperty('1B')" class="1B">
+        <g inkscape:groupmode="layer" id="layer11" inkscape:label="1B" @click="showProperty('1B')"
+            :class="{ 'selected': props.selectedID == '1B' }">
             <path id="rect3373-3-1"
                 style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.495067"
                 d="M 70.4306 122.118 L 79.0167 122.118 L 79.0167 131.608 L 70.4306 131.608 Z" />
@@ -284,7 +287,8 @@
                     id="path1167" />
             </g>
         </g>
-        <g inkscape:groupmode="layer" id="layer12" inkscape:label="1C" @click="showProperty('1C')" class="1C">
+        <g inkscape:groupmode="layer" id="layer12" inkscape:label="1C" @click="showProperty('1C')"
+            :class="{ 'selected': props.selectedID == '1C' }">
             <path id="rect3373-1-70"
                 style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.495067"
                 d="M 61.3546 122.118 L 69.9407 122.118 L 69.9407 131.608 L 61.3546 131.608 Z" />
@@ -299,7 +303,8 @@
                     id="path1173" />
             </g>
         </g>
-        <g inkscape:groupmode="layer" id="layer13" inkscape:label="1D" @click="showProperty('1D')" class="1D">
+        <g inkscape:groupmode="layer" id="layer13" inkscape:label="1D" @click="showProperty('1D')"
+            :class="{ 'selected': props.selectedID == '1D' }">
             <path id="rect3373-8"
                 style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.495067"
                 d="M 52.2785 122.118 L 60.8646 122.118 L 60.8646 131.608 L 52.2785 131.608 Z" />
@@ -314,7 +319,8 @@
                     id="path1179" />
             </g>
         </g>
-        <g inkscape:groupmode="layer" id="layer14" inkscape:label="1E" @click="showProperty('1E')" class="1E">
+        <g inkscape:groupmode="layer" id="layer14" inkscape:label="1E" @click="showProperty('1E')"
+            :class="{ 'selected': props.selectedID == '1E' }">
             <path id="rect3373-1-7"
                 style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.495067"
                 d="M 37.9699 122.118 L 46.556 122.118 L 46.556 131.608 L 37.9699 131.608 Z" />
@@ -329,7 +335,8 @@
                     id="path1185" />
             </g>
         </g>
-        <g inkscape:groupmode="layer" id="layer15" inkscape:label="1F" @click="showProperty('1F')" class="1F">
+        <g inkscape:groupmode="layer" id="layer15" inkscape:label="1F" @click="showProperty('1F')"
+            :class="{ 'selected': props.selectedID == '1F' }">
             <path id="rect3373-3"
                 style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.495067"
                 d="M 28.8939 122.118 L 37.48 122.118 L 37.48 131.608 L 28.8939 131.608 Z" />
@@ -344,7 +351,8 @@
                     id="path1191" />
             </g>
         </g>
-        <g inkscape:groupmode="layer" id="layer16" inkscape:label="1G" @click="showProperty('1G')" class="1G">
+        <g inkscape:groupmode="layer" id="layer16" inkscape:label="1G" @click="showProperty('1G')"
+            :class="{ 'selected': props.selectedID == '1G' }">
             <path id="rect3373-1"
                 style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.495067"
                 d="M 19.8179 122.118 L 28.404 122.118 L 28.404 131.608 L 19.8179 131.608 Z" />
@@ -359,7 +367,8 @@
                     id="path1197" />
             </g>
         </g>
-        <g inkscape:groupmode="layer" id="layer17" inkscape:label="1H" @click="showProperty('1H')" class="1H">
+        <g inkscape:groupmode="layer" id="layer17" inkscape:label="1H" @click="showProperty('1H')"
+            :class="{ 'selected': props.selectedID == '1H' }">
             <path id="rect3373"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.495067"
                 d="M 10.7419 122.118 L 19.3279 122.118 L 19.3279 131.608 L 10.7419 131.608 Z" />
@@ -374,7 +383,8 @@
                     id="path1203" />
             </g>
         </g>
-        <g inkscape:groupmode="layer" id="layer5" inkscape:label="gym" @click="showProperty('gym')" class="gym">
+        <g inkscape:groupmode="layer" id="layer5" inkscape:label="gym" @click="showProperty('gym')"
+            :class="{ 'selected': props.selectedID == 'gym' }">
             <path id="rect2109"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 92.7694 153.448 L 123.041 153.448 L 123.041 203.876 L 92.7694 203.876 Z" />
@@ -393,7 +403,8 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer6" inkscape:label="martial_arts_field"
-            @click="showProperty('martial_arts_field')" class="martial_arts_field">
+            @click="showProperty('martial_arts_field')"
+            :class="{ 'selected': props.selectedID == 'martial_arts_field' }">
             <path id="rect2101"
                 style="fill:#999999;fill-opacity:1;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-dasharray:none;stroke-opacity:1;stroke-width:0.499999"
                 d="M 92.7694 208.216 L 92.7694 250.299 L 113.954 250.299 L 113.954 239.523 L 123.164 239.523 L 123.164 208.216 L 113.954 208.216 Z" />
@@ -412,7 +423,7 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer7" inkscape:label="tennis" @click="showProperty('tennis')"
-            class="tennis">
+            :class="{ 'selected': props.selectedID == 'tennis' }">
             <path id="rect2098"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 59.7816 252.89 L 123.685 252.89 L 123.685 286.538 L 59.7816 286.538 Z" />
@@ -438,7 +449,7 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer8" inkscape:label="handball" @click="showProperty('handball')"
-            class="handball">
+            :class="{ 'selected': props.selectedID == 'handball' }">
             <path id="rect2037"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.5"
                 d="M 13.3871 252.89 L 57.5114 252.89 L 57.5114 286.788 L 13.3871 286.788 Z" />
@@ -471,7 +482,8 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer19" inkscape:label="the_student_council_room"
-            @click="showProperty('the_student_council_room')" class="the_student_council_room">
+            @click="showProperty('the_student_council_room')"
+            :class="{ 'selected': props.selectedID == 'the_student_council_room' }">
             <path id="rect3494"
                 style="fill:#999999;fill-opacity:1;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-dasharray:none;stroke-opacity:1;stroke-width:0.499999"
                 d="M 11.1501 90.3161 L 11.1501 103.528 L 22.5675 103.528 L 32.1261 103.528 L 32.1261 93.0622 L 22.5675 93.0622 L 22.5675 90.3161 Z" />
@@ -493,7 +505,7 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer20" inkscape:label="janitorial_room"
-            @click="showProperty('janitorial_room')" class="janitorial_room">
+            @click="showProperty('janitorial_room')" :class="{ 'selected': props.selectedID == 'janitorial_room' }">
             <path id="rect3492"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 32.6273 93.0622 L 46.3087 93.0622 L 46.3087 103.528 L 32.6273 103.528 Z" />
@@ -512,7 +524,8 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer21" inkscape:label="corporate_planning_office"
-            @click="showProperty('corporate_planning_office')" class="corporate_planning_office">
+            @click="showProperty('corporate_planning_office')"
+            :class="{ 'selected': props.selectedID == 'corporate_planning_office' }">
             <path id="rect3509"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 51.6494 88.0597 L 75.6694 88.0597 L 75.6694 96.7343 L 51.6494 96.7343 Z" />
@@ -537,7 +550,7 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer22" inkscape:label="principals_office"
-            @click="showProperty('principals_office')" class="principals_office">
+            @click="showProperty('principals_office')" :class="{ 'selected': props.selectedID == 'principals_office' }">
             <path id="rect3607"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 76.1738 88.0599 L 91.5007 88.0599 L 91.5007 96.7654 L 76.1738 96.7654 Z" />
@@ -556,7 +569,7 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer23" inkscape:label="health_room" @click="showProperty('health_room')"
-            class="health_room">
+            :class="{ 'selected': props.selectedID == 'health_room' }">
             <path id="rect3715"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 95.3028 88.0621 L 107.885 88.0621 L 107.885 96.7654 L 95.3028 96.7654 Z" />
@@ -575,7 +588,8 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer24" inkscape:label="japanese_style_room"
-            @click="showProperty('japanese_style_room')" class="japanese_style_room">
+            @click="showProperty('japanese_style_room')"
+            :class="{ 'selected': props.selectedID == 'japanese_style_room' }">
             <path id="rect3721-3"
                 style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 112.738 88.0438 L 121.888 88.0438 L 121.888 96.7654 L 112.738 96.7654 Z" />
@@ -591,7 +605,8 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer25" inkscape:label="home_economics_room"
-            @click="showProperty('home_economics_room')" class="home_economics_room">
+            @click="showProperty('home_economics_room')"
+            :class="{ 'selected': props.selectedID == 'home_economics_room' }">
             <path id="rect4073"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 113.586 68.1904 L 122.647 68.1904 L 122.647 84.8788 L 113.586 84.8788 Z" />
@@ -616,7 +631,7 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer26" inkscape:label="food_class" @click="showProperty('food_class')"
-            class="food_class">
+            :class="{ 'selected': props.selectedID == 'food_class' }">
             <path id="rect4071"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 113.583 39.5637 L 122.785 39.5637 L 122.785 63.745 L 113.583 63.745 Z" />
@@ -638,7 +653,7 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer27" inkscape:label="pc_room" @click="showProperty('pc_room')"
-            class="pc_room">
+            :class="{ 'selected': props.selectedID == 'pc_room' }">
             <path id="rect3857"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 77.5 61.4679 L 86.7077 61.4679 L 86.7077 79.6379 L 77.5 79.6379 Z" />
@@ -657,7 +672,7 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer28" inkscape:label="ll_room" @click="showProperty('ll_room')"
-            class="ll_room">
+            :class="{ 'selected': props.selectedID == 'll_room' }">
             <path id="rect3857-0"
                 style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 77.5 39.5389 L 86.7077 39.5389 L 86.7077 57.7088 L 77.5 57.7088 Z" />
@@ -676,7 +691,7 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer29" inkscape:label="fountain" @click="showProperty('fountain')"
-            class="fountain">
+            :class="{ 'selected': props.selectedID == 'fountain' }">
             <path id="path2276"
                 style="opacity:1;fill:#999999;stroke:#000000;stroke-width:0.499999;paint-order:stroke fill markers;stop-color:#000000"
                 d="m 67.447281,71.941963 a 2.5,2.5 0 0 1 -2.5,2.5 2.5,2.5 0 0 1 -2.5,-2.5 2.5,2.5 0 0 1 2.5,-2.5 2.5,2.5 0 0 1 2.5,2.5 z" />
@@ -695,7 +710,7 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer4" inkscape:label="grand" style="display:inline"
-            @click="showProperty('grand')" class="grand" :class="{ 'selected': props.selectedID == 'grand' }">
+            @click="showProperty('grand')" :class="{ 'selected': props.selectedID == 'grand' }">
             <path id="rect1771"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.5"
                 d="M 13.6371 142.359 L 88.9217 142.359 L 88.9217 251.232 L 13.6371 251.232 Z" />
@@ -711,7 +726,7 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer3" inkscape:label="students_entrance"
-            @click="showProperty('students_entrance')" class="students_entrance">
+            @click="showProperty('students_entrance')" :class="{ 'selected': props.selectedID == 'students_entrance' }">
             <path id="rect3466"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 20.3428 111.605 L 46.059 111.605 L 46.059 120.056 L 20.3428 120.056 Z" />
@@ -730,7 +745,7 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer35" inkscape:label="teachers_entrance"
-            @click="showProperty('teachers_entrance')" class="teachers_entrance">
+            @click="showProperty('teachers_entrance')" :class="{ 'selected': props.selectedID == 'teachers_entrance' }">
             <path id="rect3712"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
                 d="M 48.7835 79.0393 L 72.4637 79.0393 L 72.4637 84.8819 L 48.7835 84.8819 Z" />
@@ -751,7 +766,6 @@
     </svg>
 </template>
 <script setup>
-// import { ref } from 'vue'
 const props = defineProps(["selectedID"])
 const emit = defineEmits(["showProperty"])
 function showProperty(id) {
