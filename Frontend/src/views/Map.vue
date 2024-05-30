@@ -160,6 +160,12 @@ zoom
 control
 move
 slide
+
+階
+floor
+
+プロパティ
+property
 */
 
 
@@ -558,12 +564,10 @@ document.body.addEventListener('touchmove', (event) => {
 
 #map_content svg {
     position: absolute;
-    /* background-color: #f0f0f0; */
     width: v-bind("(map_DefaultWidth * mapMove.map_ZoomLevel.value) + 'px'");
     height: auto;
     left: v-bind("mapMove.map_PositionLeft.value + 'px'");
     top: v-bind("mapMove.map_PositionTop.value + 'px'");
-    /* 中心を基準にするためtranslate(-50%, -50%) */
     transform: translate(-50%, -50%) rotate(v-bind("mapMove.map_Rotate.value + 'deg'"));
 
 }
