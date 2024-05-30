@@ -487,7 +487,7 @@ function moveSertch() {
 }
 
 // デフォルトのピンチアウトを無効化
-// 1本をブロックすると、プロパティでのスクロールが無効化されるため、2本をブロックする
+// 1本をブロックすると、プロパティでのスクロールが無効化されるため、2本以上をブロックする
 // <参考>
 // https://moewe-net.com/js/disable-zoom
 document.body.addEventListener('touchmove', (event) => {
