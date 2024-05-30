@@ -447,28 +447,28 @@ class controlTouchClass {
     // https://qiita.com/tonio0720/items/6facacac5db6d68f1a13
     constructor() {
         // lastがついてる変数は、直前の値を保存するため
-        this.touch_mode = ""
+        this.mode = ""
         // move: 移動(何本の指でも)
         // zoom: 2つの指でズーム・回転
         // moveモード用の変数
-        this.touch_last_x = 0
-        this.touch_last_y = 0
-        this.touch_temp_x = 0
-        this.touch_temp_y = 0
-        this.touch_last_finger = 0
+        this.last_x = 0
+        this.last_y = 0
+        this.temp_x = 0
+        this.temp_y = 0
+        this.last_finger = 0
         // zoomモード用の変数
-        this.touch_last_diff = 0
-        this.touch_diff = 0
-        this.touch_last_rotate = 0
-        this.touch_rotate = 0
+        this.last_diff = 0
+        this.diff = 0
+        this.last_rotate = 0
+        this.rotate = 0
         // タップし始めてどれぐらい動かしたら
-        this.touch_zoomed = 0
-        this.touch_rotated = 0
-        this.touch_acceptRotate = false
+        this.zoomed = 0
+        this.rotated = 0
+        this.acceptRotate = false
     }
     // タッチの位置を取得する関数
     // タッチの指が複数ある場合は、それぞれの位置を取得して平均を取る
-    touch_positionAverage(event) {
+    positionAverage(event) {
         let x = 0
         let y = 0
         for (const i of event.changedTouches) {
@@ -484,54 +484,54 @@ class controlTouchClass {
         mouseORtouch = "touch"
         if (status === 'start') {
             // タップし始めは、初期処理をあてるために値を変更
-            this.touch_mode = "none"
-            this.touch_last_finger = 0
+            this.mode = "none"
+            this.last_finger = 0
             // タップし始めてどれぐらい動かしたらをリセット
-            this.touch_zoomed = 0
-            this.touch_rotated = 0
-            this.touch_acceptRotate = false
+            this.zoomed = 0
+            this.rotated = 0
+            this.acceptRotate = false
         } else if (status === 'doing') { // 指を動かしたときは、それぞれの処理を行う
             // タッチの本数にかかわらず、moveモード
             // 本数が変わった場合は、初期位置を変更(初期処理)
-            if (this.touch_last_finger != event.changedTouches.length) {
-                [this.touch_last_x, this.touch_last_y] = this.touch_positionAverage(event) //押した位置を相対位置の基準にする
-                this.touch_last_finger = event.changedTouches.length
+            if (this.last_finger != event.changedTouches.length) {
+                [this.last_x, this.last_y] = this.positionAverage(event) //押した位置を相対位置の基準にする
+                this.last_finger = event.changedTouches.length
             }
-            [this.touch_temp_x, this.touch_temp_y] = this.touch_positionAverage(event)
-            mapMove.map_PositionMove(this.touch_temp_x - this.touch_last_x, this.touch_temp_y - this.touch_last_y) // 位置をずらす
-            this.touch_last_x = this.touch_temp_x //最終値を更新
-            this.touch_last_y = this.touch_temp_y //最終値を更新
+            [this.temp_x, this.temp_y] = this.positionAverage(event)
+            mapMove.map_PositionMove(this.temp_x - this.last_x, this.temp_y - this.last_y) // 位置をずらす
+            this.last_x = this.temp_x //最終値を更新
+            this.last_y = this.temp_y //最終値を更新
 
             if (event.changedTouches.length === 2) { // タッチの指が2つの場合はzoomモード
-                if (this.touch_mode === "zoom") {
+                if (this.mode === "zoom") {
                     // すでにzoomモードになっている場合
                     // 指の間隔を計算して、前との差からズームレベルを変更
-                    this.touch_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
-                    if (mapMove.map_Zoom((this.touch_diff - this.touch_last_diff) * .005)) {
+                    this.diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
+                    if (mapMove.map_Zoom((this.diff - this.last_diff) * .005)) {
                         // 慣性の実装
                         if (mapSlide.zoom_lastMovedTime != 0) {
-                            mapSlide.zoom_speed = (this.touch_diff - this.touch_last_diff) * .005 / (Date.now() - mapSlide.zoom_lastMovedTime)
+                            mapSlide.zoom_speed = (this.diff - this.last_diff) * .005 / (Date.now() - mapSlide.zoom_lastMovedTime)
                         }
                         mapSlide.zoom_lastMovedTime = Date.now()
-                        this.touch_zoomed += Math.abs(this.touch_diff - this.touch_last_diff) //ズームした合計量を記録
-                        this.touch_last_diff = this.touch_diff //最終値を更新
+                        this.zoomed += Math.abs(this.diff - this.last_diff) //ズームした合計量を記録
+                        this.last_diff = this.diff //最終値を更新
                     }
                     // 2点を結ぶ直線の傾きを計算して、前との差から回転角度を変更
-                    this.touch_rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
-                    this.touch_rotated += Math.abs(this.touch_rotate - this.touch_last_rotate) //回転した合計量を記録
-                    if (this.touch_rotated > 10 && this.touch_zoomed < 40) { //ズームをブロックする移動量(要調整)
+                    this.rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
+                    this.rotated += Math.abs(this.rotate - this.last_rotate) //回転した合計量を記録
+                    if (this.rotated > 10 && this.zoomed < 40) { //ズームをブロックする移動量(要調整)
                         // あまりズームせずに回転した場合は、指を離すまで回転を許可
-                        this.touch_acceptRotate = true
+                        this.acceptRotate = true
                     }
-                    if (this.touch_acceptRotate) {
-                        mapMove.map_Rotating(this.touch_rotate - this.touch_last_rotate)
+                    if (this.acceptRotate) {
+                        mapMove.map_Rotating(this.rotate - this.last_rotate)
                     }
-                    this.touch_last_rotate = this.touch_rotate //最終値を更新
+                    this.last_rotate = this.rotate //最終値を更新
                 } else {
                     //zoomモードになっていない場合の初期処理
-                    this.touch_mode = "zoom"
-                    this.touch_last_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
-                    this.touch_last_rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
+                    this.mode = "zoom"
+                    this.last_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
+                    this.last_rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
                 }
             }
         }
