@@ -359,8 +359,6 @@ let mapMove = new mapMoveClass()
 let window_width = 0
 let window_height = 0
 
-
-
 // リセット(PC・モバイル共通)
 // ダブルクリックでリセット
 function resetMoving() {
@@ -374,47 +372,51 @@ function resetMoving() {
     }
 }
 
-
 let mouseORtouch = ""
-// PC用
-// ドラッグによる移動と回転
-// フラグを、クリックをし始めたときに立て、離したときに解除する
-// フラグが立っている間にマウスが動けば、その分だけ移動させる
-// <参考>
-// https://scrapbox.io/svg-wiki/%E3%83%9E%E3%82%A6%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%8F%E3%82%8B%E3%82%84%E3%81%A4%E3%81%AE%E5%AE%9F%E8%A3%85
-// https://note.com/kabineko/n/n88ec426fff07
-// https://qiita.com/akicho8/items/8522929fa619394ac9f4
-function mouse_moveRotate(event) {
-    mouseORtouch = "mouse"
-    if (event.buttons === 1) { // 左クリックが押されている場合のみ
-        mapMove.map_PositionMove(event.movementX, event.movementY)
-    } else if (event.buttons === 4) { // ホイールボタンが押されている場合のみ
-        if (event.movementX > 0) {
-            mapMove.map_Rotating(Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
+
+class controlMouseClass {
+    // PC用
+    // ドラッグによる移動と回転
+    // フラグを、クリックをし始めたときに立て、離したときに解除する
+    // フラグが立っている間にマウスが動けば、その分だけ移動させる
+    // <参考>
+    // https://scrapbox.io/svg-wiki/%E3%83%9E%E3%82%A6%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%8F%E3%82%8B%E3%82%84%E3%81%A4%E3%81%AE%E5%AE%9F%E8%A3%85
+    // https://note.com/kabineko/n/n88ec426fff07
+    // https://qiita.com/akicho8/items/8522929fa619394ac9f4
+    mouse_moveRotate(event) {
+        mouseORtouch = "mouse"
+        if (event.buttons === 1) { // 左クリックが押されている場合のみ
+            mapMove.map_PositionMove(event.movementX, event.movementY)
+        } else if (event.buttons === 4) { // ホイールボタンが押されている場合のみ
+            if (event.movementX > 0) {
+                mapMove.map_Rotating(Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
+            } else {
+                mapMove.map_Rotating(-Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
+            }
+        }
+    }
+    // ホイールによるズーム
+    // ホイールを上に回すと、一定の割合でズームイン
+    // ホイールを下に回すと、一定の割合でズームアウト
+    // <参考>
+    // https://mebee.info/2022/03/15/post-40363/
+    mouse_zoom(event) {
+        mouseORtouch = "mouse"
+        let num = 0
+        let map_ZoomLevel_Unit = .1
+        if (event.wheelDelta + map_ZoomLevel_Unit > 0) {
+            num = map_ZoomLevel_Unit
         } else {
-            mapMove.map_Rotating(-Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
+            num = -map_ZoomLevel_Unit
+        }
+        if (mapMove.map_Zoom(num)) {
+            mapSlide.zoom_speed = num / 5
+            mapSlide.zoom_do()
         }
     }
 }
-// ホイールによるズーム
-// ホイールを上に回すと、一定の割合でズームイン
-// ホイールを下に回すと、一定の割合でズームアウト
-// <参考>
-// https://mebee.info/2022/03/15/post-40363/
-function mouse_zoom(event) {
-    mouseORtouch = "mouse"
-    let num = 0
-    let map_ZoomLevel_Unit = .1
-    if (event.wheelDelta + map_ZoomLevel_Unit > 0) {
-        num = map_ZoomLevel_Unit
-    } else {
-        num = -map_ZoomLevel_Unit
-    }
-    if (mapMove.map_Zoom(num)) {
-        mapSlide.zoom_speed = num / 5
-        mapSlide.zoom_do()
-    }
-}
+let controlMouse = new controlMouseClass()
+
 
 // モバイル用
 // タッチによる操作(移動とズーム共通)
@@ -649,10 +651,11 @@ document.body.addEventListener('touchmove', (event) => {
         </ul>
     </div>
     <div id="box" @dblclick="resetMoving(); click_dubleDetect()"
-        @mousemove="mouse_moveRotate($event); click_notDetect()" @mousedown="click_Detect()"
+        @mousemove="controlMouse.mouse_moveRotate($event); click_notDetect()" @mousedown="click_Detect()"
         @mouseup="mapSlide.position_do(); mapSlide.rotate_do()" @touchmove="touch($event, 'doing'); click_notDetect();"
         @touchstart="touch($event, 'start'); click_Detect()"
-        @touchend="mapSlide.position_do(); mapSlide.zoom_do(); mapSlide.rotate_do()" @wheel="mouse_zoom($event)">
+        @touchend="mapSlide.position_do(); mapSlide.zoom_do(); mapSlide.rotate_do()"
+        @wheel="controlMouse.mouse_zoom($event)">
         <div id="map_content" draggable="false" :key="CurrentFloor">
             <Transition name="map" mode="out-in">
                 <component :is="MapDataCurrent" @showProperty="showProperty" />
