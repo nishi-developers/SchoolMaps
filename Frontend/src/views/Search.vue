@@ -7,9 +7,9 @@
             </label>
             <input id="searchInput" type="text" class="searchInput" placeholder="検索" @input="doSearch()"
                 v-model="searchWord" required>
-            <div class="searchXmark" :class="searchXmarkIsActive" @click="reserSearch()">
+            <label for="searchInput" class="searchXmark" :class="searchXmarkIsActive" @click="resetSearch()">
                 <font-awesome-icon :icon="['fas', 'xmark']" />
-            </div>
+            </label>
         </div>
         <div class="results">
             <div v-for="place, key in PlaceInfoList" :key="key" @click="move(place.floor, place.id)">
@@ -65,7 +65,7 @@ function move(floor, id) {
 const searchWord = ref('')
 
 const searchXmarkIsActive = ref('')
-function reserSearch() {
+function resetSearch() {
     searchXmarkIsActive.value = 'active'
     searchWord.value = ''
     doSearch()
