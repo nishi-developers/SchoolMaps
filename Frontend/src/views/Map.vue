@@ -417,101 +417,106 @@ class controlMouseClass {
 }
 let controlMouse = new controlMouseClass()
 
-
-// モバイル用
-// タッチによる操作(移動とズーム共通)
-// <参考>
-// https://qiita.com/shigeta1019/items/23a78e5d00d641b0384c
-// https://qiita.com/tonio0720/items/6facacac5db6d68f1a13
-// lastがついてる変数は、直前の値を保存するため
-let touch_mode = ""
-// move: 移動(何本の指でも)
-// zoom: 2つの指でズーム・回転
-// moveモード用の変数
-let touch_last_x = 0
-let touch_last_y = 0
-let touch_temp_x = 0
-let touch_temp_y = 0
-let touch_last_finger = 0
-// zoomモード用の変数
-let touch_last_diff = 0
-let touch_diff = 0
-let touch_last_rotate = 0
-let touch_rotate = 0
-// タップし始めてどれぐらい動かしたら
-let touch_zoomed = 0
-let touch_rotated = 0
-let touch_acceptRotate = false
-// タッチの位置を取得する関数
-// タッチの指が複数ある場合は、それぞれの位置を取得して平均を取る
-function touch_positionAverage(event) {
-    let x = 0
-    let y = 0
-    for (const i of event.changedTouches) {
-        x += i.clientX
-        y += i.clientY
+class controlTouchClass {
+    // モバイル用
+    // タッチによる操作(移動とズーム共通)
+    // <参考>
+    // https://qiita.com/shigeta1019/items/23a78e5d00d641b0384c
+    // https://qiita.com/tonio0720/items/6facacac5db6d68f1a13
+    constructor() {
+        // lastがついてる変数は、直前の値を保存するため
+        this.touch_mode = ""
+        // move: 移動(何本の指でも)
+        // zoom: 2つの指でズーム・回転
+        // moveモード用の変数
+        this.touch_last_x = 0
+        this.touch_last_y = 0
+        this.touch_temp_x = 0
+        this.touch_temp_y = 0
+        this.touch_last_finger = 0
+        // zoomモード用の変数
+        this.touch_last_diff = 0
+        this.touch_diff = 0
+        this.touch_last_rotate = 0
+        this.touch_rotate = 0
+        // タップし始めてどれぐらい動かしたら
+        this.touch_zoomed = 0
+        this.touch_rotated = 0
+        this.touch_acceptRotate = false
     }
-    return [
-        x / event.changedTouches.length,
-        y / event.changedTouches.length
-    ]
-}
-function touch(event, status) {
-    mouseORtouch = "touch"
-    if (status === 'start') {
-        // タップし始めは、初期処理をあてるために値を変更
-        touch_mode = "none"
-        touch_last_finger = 0
-        // タップし始めてどれぐらい動かしたらをリセット
-        touch_zoomed = 0
-        touch_rotated = 0
-        touch_acceptRotate = false
-    } else if (status === 'doing') { // 指を動かしたときは、それぞれの処理を行う
-        // タッチの本数にかかわらず、moveモード
-        // 本数が変わった場合は、初期位置を変更(初期処理)
-        if (touch_last_finger != event.changedTouches.length) {
-            [touch_last_x, touch_last_y] = touch_positionAverage(event) //押した位置を相対位置の基準にする
-            touch_last_finger = event.changedTouches.length
+    // タッチの位置を取得する関数
+    // タッチの指が複数ある場合は、それぞれの位置を取得して平均を取る
+    touch_positionAverage(event) {
+        let x = 0
+        let y = 0
+        for (const i of event.changedTouches) {
+            x += i.clientX
+            y += i.clientY
         }
-        [touch_temp_x, touch_temp_y] = touch_positionAverage(event)
-        mapMove.map_PositionMove(touch_temp_x - touch_last_x, touch_temp_y - touch_last_y) // 位置をずらす
-        touch_last_x = touch_temp_x //最終値を更新
-        touch_last_y = touch_temp_y //最終値を更新
+        return [
+            x / event.changedTouches.length,
+            y / event.changedTouches.length
+        ]
+    }
+    touch(event, status) {
+        mouseORtouch = "touch"
+        if (status === 'start') {
+            // タップし始めは、初期処理をあてるために値を変更
+            this.touch_mode = "none"
+            this.touch_last_finger = 0
+            // タップし始めてどれぐらい動かしたらをリセット
+            this.touch_zoomed = 0
+            this.touch_rotated = 0
+            this.touch_acceptRotate = false
+        } else if (status === 'doing') { // 指を動かしたときは、それぞれの処理を行う
+            // タッチの本数にかかわらず、moveモード
+            // 本数が変わった場合は、初期位置を変更(初期処理)
+            if (this.touch_last_finger != event.changedTouches.length) {
+                [this.touch_last_x, this.touch_last_y] = this.touch_positionAverage(event) //押した位置を相対位置の基準にする
+                this.touch_last_finger = event.changedTouches.length
+            }
+            [this.touch_temp_x, this.touch_temp_y] = this.touch_positionAverage(event)
+            mapMove.map_PositionMove(this.touch_temp_x - this.touch_last_x, this.touch_temp_y - this.touch_last_y) // 位置をずらす
+            this.touch_last_x = this.touch_temp_x //最終値を更新
+            this.touch_last_y = this.touch_temp_y //最終値を更新
 
-        if (event.changedTouches.length === 2) { // タッチの指が2つの場合はzoomモード
-            if (touch_mode === "zoom") {
-                // すでにzoomモードになっている場合
-                // 指の間隔を計算して、前との差からズームレベルを変更
-                touch_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
-                if (mapMove.map_Zoom((touch_diff - touch_last_diff) * .005)) {
-                    // 慣性の実装
-                    if (mapSlide.zoom_lastMovedTime != 0) {
-                        mapSlide.zoom_speed = (touch_diff - touch_last_diff) * .005 / (Date.now() - mapSlide.zoom_lastMovedTime)
+            if (event.changedTouches.length === 2) { // タッチの指が2つの場合はzoomモード
+                if (this.touch_mode === "zoom") {
+                    // すでにzoomモードになっている場合
+                    // 指の間隔を計算して、前との差からズームレベルを変更
+                    this.touch_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
+                    if (mapMove.map_Zoom((this.touch_diff - this.touch_last_diff) * .005)) {
+                        // 慣性の実装
+                        if (mapSlide.zoom_lastMovedTime != 0) {
+                            mapSlide.zoom_speed = (this.touch_diff - this.touch_last_diff) * .005 / (Date.now() - mapSlide.zoom_lastMovedTime)
+                        }
+                        mapSlide.zoom_lastMovedTime = Date.now()
+                        this.touch_zoomed += Math.abs(this.touch_diff - this.touch_last_diff) //ズームした合計量を記録
+                        this.touch_last_diff = this.touch_diff //最終値を更新
                     }
-                    mapSlide.zoom_lastMovedTime = Date.now()
-                    touch_zoomed += Math.abs(touch_diff - touch_last_diff) //ズームした合計量を記録
-                    touch_last_diff = touch_diff //最終値を更新
+                    // 2点を結ぶ直線の傾きを計算して、前との差から回転角度を変更
+                    this.touch_rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
+                    this.touch_rotated += Math.abs(this.touch_rotate - this.touch_last_rotate) //回転した合計量を記録
+                    if (this.touch_rotated > 10 && this.touch_zoomed < 40) { //ズームをブロックする移動量(要調整)
+                        // あまりズームせずに回転した場合は、指を離すまで回転を許可
+                        this.touch_acceptRotate = true
+                    }
+                    if (this.touch_acceptRotate) {
+                        mapMove.map_Rotating(this.touch_rotate - this.touch_last_rotate)
+                    }
+                    this.touch_last_rotate = this.touch_rotate //最終値を更新
+                } else {
+                    //zoomモードになっていない場合の初期処理
+                    this.touch_mode = "zoom"
+                    this.touch_last_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
+                    this.touch_last_rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
                 }
-                // 2点を結ぶ直線の傾きを計算して、前との差から回転角度を変更
-                touch_rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
-                touch_rotated += Math.abs(touch_rotate - touch_last_rotate) //回転した合計量を記録
-                if (touch_rotated > 10 && touch_zoomed < 40) { //ズームをブロックする移動量(要調整)
-                    // あまりズームせずに回転した場合は、指を離すまで回転を許可
-                    touch_acceptRotate = true
-                }
-                if (touch_acceptRotate) {
-                    mapMove.map_Rotating(touch_rotate - touch_last_rotate)
-                }
-                touch_last_rotate = touch_rotate //最終値を更新
-            } else {
-                //zoomモードになっていない場合の初期処理
-                touch_mode = "zoom"
-                touch_last_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
-                touch_last_rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
             }
         }
     }
 }
+let controlTouch = new controlTouchClass()
+
 // デフォルトのピンチアウトを無効化
 // 1本をブロックすると、プロパティでのスクロールが無効化されるため、2本以上をブロックする
 // <参考>
@@ -648,8 +653,9 @@ document.body.addEventListener('touchmove', (event) => {
     </div>
     <div id="box" @dblclick="resetMoving(); click_dubleDetect()"
         @mousemove="controlMouse.mouse_moveRotate($event); click_notDetect()" @mousedown="click_Detect()"
-        @mouseup="mapSlide.position_do(); mapSlide.rotate_do()" @touchmove="touch($event, 'doing'); click_notDetect();"
-        @touchstart="touch($event, 'start'); click_Detect()"
+        @mouseup="mapSlide.position_do(); mapSlide.rotate_do()"
+        @touchmove="controlTouch.touch($event, 'doing'); click_notDetect();"
+        @touchstart="controlTouch.touch($event, 'start'); click_Detect()"
         @touchend="mapSlide.position_do(); mapSlide.zoom_do(); mapSlide.rotate_do()"
         @wheel="controlMouse.mouse_zoom($event)">
         <div id="map_content" draggable="false" :key="CurrentFloor">
