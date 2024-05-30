@@ -246,7 +246,6 @@ class mapMoveClass {
         // 地図の回転
         this.map_Rotate = ref()
     }
-
     map_PositionRangeCheck(x, y) {
         // 移動先が範囲内かどうかをチェックする関数
         // ズームでどうしても範囲外に出てしまうため、戻す動きは制限しない
@@ -285,7 +284,6 @@ class mapMoveClass {
             return false
         }
     }
-
     map_Zoom(v) {
         // マップのズームをする関数
         // ズームの慣性の実装は、PCとスマホで異なるため、それぞれの場所で実装
@@ -302,7 +300,6 @@ class mapMoveClass {
             return false
         }
     }
-
     map_Rotating(v) {
         if (v != 0) { //スマホでは、回転0が多発するため、0の場合は無視
             this.map_Rotate.value += v
