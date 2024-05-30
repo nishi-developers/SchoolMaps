@@ -511,13 +511,13 @@ document.body.addEventListener('touchmove', (event) => {
 #map_content svg {
     position: absolute;
     /* background-color: #f0f0f0; */
-    width: v-bind((map_DefaultWidth * map_ZoomLevel) + 'px');
+    width: v-bind("(map_DefaultWidth * map_ZoomLevel) + 'px'");
     height: auto;
-    /* height: v-bind(map_ZoomLevel + '%'); */
-    left: v-bind(map_PositionLeft + 'px');
-    top: v-bind(map_PositionTop + 'px');
+    left: v-bind("map_PositionLeft + 'px'");
+    top: v-bind("map_PositionTop + 'px'");
     /* 中心を基準にするためtranslate(-50%, -50%) */
-    transform: translate(-50%, -50%) rotate(v-bind(map_Rotate + 'deg'));
+    transform: translate(-50%, -50%) rotate(v-bind("map_Rotate + 'deg'"));
+
 }
 
 #box:active {
@@ -527,7 +527,7 @@ document.body.addEventListener('touchmove', (event) => {
 .svg-text {
     transform-origin: center center;
     transform-box: fill-box;
-    transform: rotate(v-bind(-map_Rotate + 'deg'));
+    transform: rotate(v-bind("- map_Rotate + 'deg'"));
     color: var(--MainBodyColor);
 }
 
