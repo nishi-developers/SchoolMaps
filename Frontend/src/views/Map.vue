@@ -7,6 +7,8 @@ import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 
+const selectedId = ref("")
+
 class propertyClass {
     // ドラッグなどとクリックを判別する
     // <参考>
@@ -42,6 +44,7 @@ class propertyClass {
                             // 表示されていない場合は、即時表示
                             property.isShowProperty.value = true
                         }
+                        selectedId.value = id
                         changeURL(CurrentFloor.value, id); //hide()の後に実行
                         return true //ここは瞬時なので注意
                     } else {
@@ -66,6 +69,7 @@ class propertyClass {
 
     hide(isChangeURL = false) {
         this.isShowProperty.value = false
+        selectedId.value = ""
         if (isChangeURL) {
             changeURL(CurrentFloor.value, null)
         }
@@ -556,6 +560,10 @@ document.body.addEventListener('touchmove', (event) => {
     transform: rotate(v-bind("- mapMove.map_Rotate.value + 'deg'"));
     color: var(--MainBodyColor);
 }
+
+svg .selected {
+    fill: var(--SubColor);
+}
 </style>
 <style scoped>
 #box {
@@ -678,7 +686,7 @@ document.body.addEventListener('touchmove', (event) => {
         @wheel="controlMouse.mouse_zoom($event)">
         <div id="map_content" draggable="false" :key="CurrentFloor">
             <Transition name="map" mode="out-in">
-                <component :is="MapDataCurrent" @showProperty="property.show" />
+                <component :is="MapDataCurrent" :selectedID="selectedId" @showProperty="property.show" />
             </Transition>
         </div>
     </div>

@@ -695,7 +695,7 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer4" inkscape:label="grand" style="display:inline"
-            @click="showProperty('grand')" class="grand">
+            @click="showProperty('grand')" class="grand" :class="{ 'selected': props.selectedID == 'grand' }">
             <path id="rect1771"
                 style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.5"
                 d="M 13.6371 142.359 L 88.9217 142.359 L 88.9217 251.232 L 13.6371 251.232 Z" />
@@ -751,6 +751,8 @@
     </svg>
 </template>
 <script setup>
+// import { ref } from 'vue'
+const props = defineProps(["selectedID"])
 const emit = defineEmits(["showProperty"])
 function showProperty(id) {
     emit('showProperty', id)
