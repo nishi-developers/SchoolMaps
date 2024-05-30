@@ -313,6 +313,27 @@ class mapMoveClass {
             mapSlide.rotate_lastMovedTime = Date.now()
         }
     }
+    reset() {
+        // 地図のデフォルトサイズを算出
+        map_size_width = PlaceInfo[CurrentFloor.value].__MapSizeWidth__
+        map_size_height = PlaceInfo[CurrentFloor.value].__MapSizeHeight__
+        map_size_ratio = map_size_width / map_size_height
+        // 表示範囲のサイズ(改)
+        window_width = window.innerWidth
+        window_height = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
+        if (window_width / map_size_width > window_height / map_size_height) {
+            // 縦幅に合わせる
+            map_DefaultWidth.value = window_height * map_size_ratio
+        } else {
+            // 横幅に合わせる
+            map_DefaultWidth.value = window_width
+        }
+        // リセット
+        this.map_PositionLeft.value = window_width / 2
+        this.map_PositionTop.value = window_height / 2
+        this.map_ZoomLevel.value = 1
+        this.map_Rotate.value = 0
+    }
 }
 let mapMove = new mapMoveClass()
 // 慣性をのせて移動する場合は必ずここの関数を利用する
@@ -325,25 +346,7 @@ let window_height = 0
 // リセット(PC・モバイル共通)
 // ダブルクリックでリセット
 function resetMoving() {
-    // 地図のデフォルトサイズを算出
-    map_size_width = PlaceInfo[CurrentFloor.value].__MapSizeWidth__
-    map_size_height = PlaceInfo[CurrentFloor.value].__MapSizeHeight__
-    map_size_ratio = map_size_width / map_size_height
-    // 表示範囲のサイズ(改)
-    window_width = window.innerWidth
-    window_height = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
-    if (window_width / map_size_width > window_height / map_size_height) {
-        // 縦幅に合わせる
-        map_DefaultWidth.value = window_height * map_size_ratio
-    } else {
-        // 横幅に合わせる
-        map_DefaultWidth.value = window_width
-    }
-    // リセット
-    mapMove.map_PositionLeft.value = window_width / 2
-    mapMove.map_PositionTop.value = window_height / 2
-    mapMove.map_ZoomLevel.value = 1
-    mapMove.map_Rotate.value = 0
+    mapMove.reset()
     mapSlide.reset()
     hideProperty(true)
     if (window_width < window_height) {
