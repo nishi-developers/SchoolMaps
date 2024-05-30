@@ -127,6 +127,27 @@ onMounted(() => {
     }
 
 })
+
+/*
+語録
+
+動かし方
+mouse
+touch
+
+動く要素
+position
+rotate
+zoom
+
+順番
+control
+move
+slide
+*/
+
+
+
 class mapSlideClass {
     // 慣性スクロール
     constructor() {
