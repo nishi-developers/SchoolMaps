@@ -7,8 +7,6 @@ import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 
-
-
 class propertyClass {
     // ドラッグなどとクリックを判別する
     // <参考>
@@ -75,8 +73,6 @@ class propertyClass {
 }
 let property = new propertyClass()
 
-
-
 // マップの切り替え
 let MapDataCurrent = null
 function changeMapData(floor) {
@@ -91,8 +87,6 @@ function changeFloor(floor) {
     changeMapData(floor)
     changeURL(floor, null);
 }
-
-
 
 // フロア情報の逆順を作成
 let PlaceInfoReverse = PlaceInfo.slice().reverse()
@@ -121,15 +115,12 @@ if ((route.params.floor != "") && !isNaN(route.params.floor)
     changeFloor(0)
 }
 
-
 const map_DefaultWidth = ref(0)
 // deviceMode
 const deviceMode = ref("")
 let map_size_width = 0
 let map_size_height = 0
 let map_size_ratio = 0
-
-
 
 onMounted(() => {
     resetMoving() //window_width, window_heightを使うので、ここでリセット
