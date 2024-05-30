@@ -7,6 +7,11 @@
             プログラミングサークル<b>504</b>によって作成、運営されています。<br>
             本サイトに関して、都立西高校へのお問い合わせは行わないでください。
         </p>
+        <p class="textH">マップデータについて</p>
+        <p class="textP">
+            マップデータの著作権は制作者に帰属します。<br>
+            マップデータのダウンロード・無断転載・再配布は禁止します。
+        </p>
         <p class="textH">クレジット</p>
         <p class="textP">
             マップ作成:<a href="https://www.google.com/maps">GoogleMap</a>,
