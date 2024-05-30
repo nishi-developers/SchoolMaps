@@ -159,7 +159,6 @@ class mapSlideClass {
     rotate_stop() {
         this.rotate_speed = 0
     }
-
     position_do() {
         if (this.is_position_do === false) { // 重複実行防止
             this.is_position_do = true
