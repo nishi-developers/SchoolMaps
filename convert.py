@@ -51,7 +51,9 @@ def convert(content):
         ):
             print(label)
             content.attrib.update([("@click", f"showProperty('{label}')")])
-            content.attrib.update([("class", label)])
+            content.attrib.update(
+                [(":class", "{ 'selected': props.selectedID == '" + label + "' }")]
+            )
 
     return content
 
