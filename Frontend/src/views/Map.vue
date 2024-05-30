@@ -160,7 +160,7 @@ class mapSlideClass {
             // mouse
             let position_speedMin = 0.01
             let position_frictionLevel = 0.9
-            if (mouseORtouch == "touch") {
+            if (mouseORtouch === "touch") {
                 // touch
                 position_speedMin = 0.01
                 position_frictionLevel = 0.95
@@ -191,7 +191,7 @@ class mapSlideClass {
             // mouse
             let zoom_speedMin = 0.0001
             let zoom_frictionLevel = 0.8
-            if (mouseORtouch == "touch") {
+            if (mouseORtouch === "touch") {
                 // touch
                 zoom_speedMin = 0.0001
                 zoom_frictionLevel = 0.8
@@ -214,7 +214,7 @@ class mapSlideClass {
             // mouse
             let rotate_speedMin = 0.01
             let rotate_frictionLevel = 0.92
-            if (mouseORtouch == "touch") {
+            if (mouseORtouch === "touch") {
                 // touch
                 rotate_speedMin = 0.01
                 rotate_frictionLevel = 0.95
@@ -365,9 +365,9 @@ let mouseORtouch = ""
 // https://qiita.com/akicho8/items/8522929fa619394ac9f4
 function mouse_moveRotate(event) {
     mouseORtouch = "mouse"
-    if (event.buttons == 1) { // 左クリックが押されている場合のみ
+    if (event.buttons === 1) { // 左クリックが押されている場合のみ
         mapMove.map_PositionMove(event.movementX, event.movementY)
-    } else if (event.buttons == 4) { // ホイールボタンが押されている場合のみ
+    } else if (event.buttons === 4) { // ホイールボタンが押されている場合のみ
         if (event.movementX > 0) {
             mapMove.map_Rotating(Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
         } else {
@@ -456,7 +456,7 @@ function touch(event, status) {
         touch_last_y = touch_temp_y //最終値を更新
 
         if (event.changedTouches.length === 2) { // タッチの指が2つの場合はzoomモード
-            if (touch_mode == "zoom") {
+            if (touch_mode === "zoom") {
                 // すでにzoomモードになっている場合
                 // 指の間隔を計算して、前との差からズームレベルを変更
                 touch_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
@@ -623,7 +623,7 @@ document.body.addEventListener('touchmove', (event) => {
             <li class="search"><font-awesome-icon @click="moveSertch()" :icon="['fas', 'magnifying-glass']" />
             </li>
             <li class="floor" v-for="floor in PlaceInfoReverse" :key="floor.__key__" @click="changeFloor(floor.__key__)"
-                :class="floor.__key__ == CurrentFloor ? 'selected' : 'notselected'">
+                :class="floor.__key__ === CurrentFloor ? 'selected' : 'notselected'">
                 {{ floor.__FloorName__ }}</li>
         </ul>
     </div>
