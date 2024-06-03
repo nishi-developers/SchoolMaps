@@ -554,20 +554,48 @@ document.body.addEventListener('touchmove', (event) => {
 </script>
 
 <style>
-.svg-text {
+/* マップのスタイル */
+
+/* マップのルート */
+#map_content svg {
+    /* 要検討 */
+    fill: #8a7b7b;
+    stroke: #000000;
+    stroke-width: 1;
+}
+
+/* ルート以下の子要素に対して */
+#map_content svg>* {
+    stroke-width: .5;
+}
+
+/* オブジェクト(部屋) */
+#map_content svg .svg-object {}
+
+/* 選択された */
+#map_content svg .svg-object.selected {
+    /* 要検討 */
+    fill: var(--AccentBodyColor);
+
+}
+
+/* 選択されていない */
+#map_content svg .svg-object:not(.selected) {
+    /* 要検討 */
+    fill: #d8d8d8;
+}
+
+/* テキスト */
+#map_content svg .svg-text {
     transform-origin: center center;
     transform-box: fill-box;
     transform: rotate(v-bind("- mapMove.map_Rotate.value + 'deg'"));
     color: var(--MainBodyColor);
-}
+    font-size: 1rem;
 
-svg .selected {
-    /* fill: var(--AccentBodyColor); */
-    /* stroke: gray; */
-    /* stroke-width: 5px; */
-    /* opacity: 0; */
-    /* https://front-end-tools.com/generateFilter/ */
-    filter: brightness(150%);
+    /* 要検討 */
+    fill: var(--MainBodyColor);
+    stroke-width: 0;
 }
 </style>
 <style scoped>

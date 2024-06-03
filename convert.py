@@ -54,7 +54,12 @@ def convert(content):
             content.attrib.update(
                 [(":class", "{ 'selected': props.selectedID == '" + label + "' }")]
             )
-
+            content.attrib.update([("class", "svg-object")])
+    # 全style属性を削除
+    try:
+        del content.attrib["style"]
+    except KeyError:
+        pass
     return content
 
 
