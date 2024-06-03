@@ -12,6 +12,8 @@
 
 PlaceInfo.jsonの__MapSizeHeight__と__MapSizeWidth__に、svgのwidthとheightの値(mmは外す)を書き込む
 
+svgのスタイルはすべて削除されるため、色とかはcssで指定する
+
 ## 参考
 
 <https://www.google.com/maps/>
