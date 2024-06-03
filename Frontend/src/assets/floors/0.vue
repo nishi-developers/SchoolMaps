@@ -15,16 +15,14 @@
             <rect x="387.81921" y="249.95888" width="51.987732" height="23.518541" id="rect2999" />
             <rect x="262.13342" y="687.02557" width="205.25488" height="110.75822" id="rect2566" />
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath413">
-                <rect style="fill:#999999;stroke:#b3b3b3;stroke-width:1;stop-color:#000000" id="rect415"
-                    width="68.038559" height="159.65727" x="73.196716" y="64.845413" transform="rotate(20)" />
+                <rect id="rect415" width="68.038559" height="159.65727" x="73.196716" y="64.845413"
+                    transform="rotate(20)" />
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath435">
-                <rect style="fill:#999999;stroke:#b3b3b3;stroke-width:1;stop-color:#000000" id="rect437" width="112.2"
-                    height="169.86316" x="-47.936844" y="81.978951" />
+                <rect id="rect437" width="112.2" height="169.86316" x="-47.936844" y="81.978951" />
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath1766">
-                <rect style="opacity:1;fill:#999999;stroke:#b3b3b3;stroke-width:1;stop-color:#000000" id="rect1768"
-                    width="138.04213" height="298.68192" x="0" y="40.77401" transform="rotate(20)" />
+                <rect id="rect1768" width="138.04213" height="298.68192" x="0" y="40.77401" transform="rotate(20)" />
             </clipPath>
             <rect x="262.13342" y="687.02557" width="205.25488" height="110.75822" id="rect2566-0" />
             <rect x="262.13342" y="687.02557" width="205.25488" height="110.75822" id="rect2566-0-3" />
@@ -60,76 +58,36 @@
         </defs>
         <g inkscape:groupmode="layer" id="layer33" inkscape:label="none_base">
             <path id="rect2366"
-                style="display:inline;fill:#f3feff;fill-opacity:1;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-dasharray:none;stroke-opacity:1;stroke-width:0.499999"
                 d="M 53.0731 0.270996 L 53.0731 65.0572 L 17.0433 65.0572 L 17.0433 78.6869 L 0.249982 78.7329 L 0.249982 290.778 L 127.608 290.778 L 127.608 28.3664 L 115.609 28.3664 C 115.681 20.7986 115.754 12.9051 115.826 5.33726 Z" />
             <path id="rect2282"
-                style="fill:#999999;fill-opacity:1;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-dasharray:none;stroke-opacity:1;stroke-width:0.499999"
                 d="M 77.5 39.5389 L 77.5 84.8819 L 72.4637 84.8819 L 72.4637 79.0393 L 48.7835 79.0393 L 48.7835 84.8819 L 28.9118 84.8819 L 28.9118 90.3161 L 11.1501 90.3161 L 11.1501 103.528 L 46.3087 103.528 L 46.3087 111.605 L 20.3428 111.605 L 20.3428 113.084 L 10.7418 113.084 L 10.7418 131.608 L 51.6494 131.608 L 88.0927 131.608 L 88.0927 127.063 L 95.2442 127.063 L 95.2442 112.343 L 95.0333 112.343 L 95.0008 96.7654 L 121.888 96.7654 L 121.888 84.9139 L 122.647 84.8788 L 122.941 48.437 L 122.941 39.5637 L 109.769 39.5637 L 109.769 47.3627 L 89.6585 47.3627 L 89.6585 39.5864 Z M 90.9173 59.6131 L 109.599 59.6131 L 109.599 78.7892 L 90.9173 78.7892 Z M 91.5007 96.7654 L 91.5224 112.343 L 78.6142 112.343 L 78.6142 120.647 L 51.6494 120.555 L 51.6494 113.084 L 51.6494 111.605 L 51.6494 97.0149 Z" />
         </g>
         <g inkscape:groupmode="layer" id="layer2" inkscape:label="none_others">
-            <path id="rect3721"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 108.385 88.0438 L 112.238 88.0438 L 112.238 96.7654 L 108.385 96.7654 Z" />
-            <path id="rect3855"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 77.5 80.1406 L 86.7077 80.1406 L 86.7077 84.8819 L 77.5 84.8819 Z" />
-            <path id="rect4033"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 77.5 58.2049 L 86.7077 58.2049 L 86.7077 61.0214 L 77.5 61.0214 Z" />
-            <path id="rect4043"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 90.9173 78.7892 L 95.5008 78.7892 L 95.5008 85.1318 L 90.9173 85.1318 Z" />
-            <path id="rect4045"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 96.0135 78.7892 L 99.9928 78.7892 L 99.9928 85.1318 L 96.0135 85.1318 Z" />
-            <path id="rect4047-8"
-                style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 95.8501 47.3627 L 100.315 47.3627 L 100.315 53.1763 L 95.8501 53.1763 Z" />
-            <path id="rect4075"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 113.582 63.745 L 122.785 63.745 L 122.785 67.7297 L 113.582 67.7297 Z" />
-            <path id="rect2209"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 7.49649 204.932 L 12.2818 204.932 L 12.2818 286.788 L 7.49649 286.788 Z" />
-            <path id="rect2211"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 2.58395 144.385 L 9.88916 144.385 L 9.88916 196.796 L 2.58395 196.796 Z" />
-            <path id="rect2213"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 3.14828 113.949 L 5.57986 113.949 L 5.57986 137.484 L 3.14828 137.484 Z" />
-            <path id="rect2215"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 7.57723 113.699 L 10.1392 113.699 L 10.1392 133.836 L 7.57723 133.836 Z" />
-            <path id="rect2217"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 21.2983 137.734 L 30.9632 137.734 L 30.9632 141.161 L 21.2983 141.161 Z" />
+            <path id="rect3721" d="M 108.385 88.0438 L 112.238 88.0438 L 112.238 96.7654 L 108.385 96.7654 Z" />
+            <path id="rect3855" d="M 77.5 80.1406 L 86.7077 80.1406 L 86.7077 84.8819 L 77.5 84.8819 Z" />
+            <path id="rect4033" d="M 77.5 58.2049 L 86.7077 58.2049 L 86.7077 61.0214 L 77.5 61.0214 Z" />
+            <path id="rect4043" d="M 90.9173 78.7892 L 95.5008 78.7892 L 95.5008 85.1318 L 90.9173 85.1318 Z" />
+            <path id="rect4045" d="M 96.0135 78.7892 L 99.9928 78.7892 L 99.9928 85.1318 L 96.0135 85.1318 Z" />
+            <path id="rect4047-8" d="M 95.8501 47.3627 L 100.315 47.3627 L 100.315 53.1763 L 95.8501 53.1763 Z" />
+            <path id="rect4075" d="M 113.582 63.745 L 122.785 63.745 L 122.785 67.7297 L 113.582 67.7297 Z" />
+            <path id="rect2209" d="M 7.49649 204.932 L 12.2818 204.932 L 12.2818 286.788 L 7.49649 286.788 Z" />
+            <path id="rect2211" d="M 2.58395 144.385 L 9.88916 144.385 L 9.88916 196.796 L 2.58395 196.796 Z" />
+            <path id="rect2213" d="M 3.14828 113.949 L 5.57986 113.949 L 5.57986 137.484 L 3.14828 137.484 Z" />
+            <path id="rect2215" d="M 7.57723 113.699 L 10.1392 113.699 L 10.1392 133.836 L 7.57723 133.836 Z" />
+            <path id="rect2217" d="M 21.2983 137.734 L 30.9632 137.734 L 30.9632 141.161 L 21.2983 141.161 Z" />
             <path id="rect2219"
-                style="fill:#999999;fill-opacity:1;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-dasharray:none;stroke-opacity:1;stroke-width:0.499999"
                 d="M 23.585 68.3635 L 23.585 82.0614 L 47.2879 82.0614 C 47.2879 82.0614 47.1556 68.2992 47.2879 68.3635 Z" />
-            <path id="rect2294"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 8.2211 94.0625 L 9.92197 94.0625 L 9.92197 103.528 L 8.2211 103.528 Z" />
-            <path id="rect2296"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 10.172 86.8469 L 27.8835 86.8469 L 27.8835 89.2725 L 10.172 89.2725 Z" />
-            <path id="rect3501"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 85.3834 112.343 L 91.2767 112.343 L 91.2767 120.577 L 85.3834 120.577 Z" />
-            <path id="rect3501-1"
-                style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 36.9233 84.8818 L 44.6229 84.8818 L 44.6229 90.0661 L 36.9233 90.0661 Z" />
-            <path id="rect3473"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 16.0004 113.084 L 19.8427 113.084 L 19.8427 120.055 L 16.0004 120.055 Z" />
+            <path id="rect2294" d="M 8.2211 94.0625 L 9.92197 94.0625 L 9.92197 103.528 L 8.2211 103.528 Z" />
+            <path id="rect2296" d="M 10.172 86.8469 L 27.8835 86.8469 L 27.8835 89.2725 L 10.172 89.2725 Z" />
+            <path id="rect3501" d="M 85.3834 112.343 L 91.2767 112.343 L 91.2767 120.577 L 85.3834 120.577 Z" />
+            <path id="rect3501-1" d="M 36.9233 84.8818 L 44.6229 84.8818 L 44.6229 90.0661 L 36.9233 90.0661 Z" />
+            <path id="rect3473" d="M 16.0004 113.084 L 19.8427 113.084 L 19.8427 120.055 L 16.0004 120.055 Z" />
         </g>
         <g inkscape:groupmode="layer" id="layer30" inkscape:label="audiovisual_hall"
-            @click="showProperty('audiovisual_hall')" :class="{ 'selected': props.selectedID == 'audiovisual_hall' }">
-            <path id="rect2280"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 75.0536 8.34935 L 93.9851 8.34935 L 93.9851 37.0072 L 75.0536 37.0072 Z" />
-            <g aria-label="視聴覚 ホール" id="text2564-3-7-2-5"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:20px;line-height:1.2;paint-order:stroke fill markers;shape-inside:url(#rect2566-5-4-6-4);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            @click="showProperty('audiovisual_hall')" :class="{ 'selected': props.selectedID == 'audiovisual_hall' }"
+            class="svg-object">
+            <path id="rect2280" d="M 75.0536 8.34935 L 93.9851 8.34935 L 93.9851 37.0072 L 75.0536 37.0072 Z" />
+            <g aria-label="視聴覚 ホール" id="text2564-3-7-2-5" class="svg-text">
                 <path
                     d="M 78.039 17.0221 C 78.1493 17.0359 78.1562 17.0772 78.0597 17.1461 L 78.0597 17.8903 L 78.5145 17.8903 L 78.5971 17.8076 L 78.9072 18.0763 L 78.8245 18.1383 C 78.604 18.5517 78.3491 18.9169 78.0597 19.2339 L 78.0597 19.3166 C 78.3491 19.4268 78.6247 19.5715 78.8865 19.7506 L 78.6385 20.164 C 78.4731 19.9987 78.2802 19.8471 78.0597 19.7093 L 78.0597 21.7763 L 77.6463 21.7763 L 77.6463 19.6473 C 77.4534 19.8402 77.2329 20.0262 76.9848 20.2054 L 76.7988 19.7713 C 77.4465 19.3579 77.9288 18.8618 78.2457 18.283 L 76.9642 18.283 L 76.9642 17.8903 L 77.6463 17.8903 L 77.6463 17.0221 Z M 80.3335 20.0607 L 79.9614 20.0607 L 79.9614 20.2467 C 79.9614 21.046 79.486 21.5559 78.5351 21.7763 L 78.3904 21.3423 C 79.1621 21.1493 79.548 20.7979 79.548 20.2881 L 79.548 20.0607 L 79.3206 20.0607 L 79.1139 20.0607 L 79.1139 17.2082 L 81.305 17.2082 L 81.305 20.0607 L 80.7469 20.0607 L 80.7469 21.1149 C 80.7469 21.2251 80.7951 21.2803 80.8916 21.2803 L 81.0776 21.2803 C 81.1465 21.2803 81.1879 21.2389 81.2016 21.1562 L 81.2636 20.7842 L 81.6771 20.8875 C 81.6357 21.4112 81.4704 21.673 81.181 21.673 L 80.7262 21.673 C 80.4644 21.673 80.3335 21.549 80.3335 21.3009 Z M 79.5273 18.0143 L 80.8916 18.0143 L 80.8916 17.6009 L 79.5273 17.6009 Z M 79.5273 18.7998 L 80.8916 18.7998 L 80.8916 18.407 L 79.5273 18.407 Z M 79.5273 19.668 L 80.8916 19.668 L 80.8916 19.1925 L 79.5273 19.1925 Z"
                     id="path1097" />
@@ -149,13 +107,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer31" inkscape:label="nishi_hall" @click="showProperty('nishi_hall')"
-            :class="{ 'selected': props.selectedID == 'nishi_hall' }">
-            <path id="rect2278"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 98.5625 5.91297 L 114.16 5.91297 L 114.16 25.6859 L 98.5625 25.6859 Z" />
-            <g aria-label="西高会館" id="text2564-3-7-2-5-5"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:14px;line-height:1.2;paint-order:stroke fill markers;shape-inside:url(#rect2566-5-4-6-4-1);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == 'nishi_hall' }" class="svg-object">
+            <path id="rect2278" d="M 98.5625 5.91297 L 114.16 5.91297 L 114.16 25.6859 L 98.5625 25.6859 Z" />
+            <g aria-label="西高会館" id="text2564-3-7-2-5-5" class="svg-text">
                 <path
                     d="M 101.514 16.1755 C 101.581 16.1755 101.63 16.0887 101.658 15.915 L 101.861 16.0308 L 101.861 15.4375 L 101.239 15.4375 L 101.239 16.0597 C 101.239 16.1369 101.273 16.1755 101.34 16.1755 Z M 101.861 16.2768 C 101.813 16.3925 101.726 16.4504 101.601 16.4504 L 101.195 16.4504 C 101.031 16.4504 100.949 16.3684 100.949 16.2044 L 100.949 15.4375 L 100.501 15.4375 C 100.52 15.9681 100.318 16.3829 99.8932 16.6819 L 99.6906 16.4215 C 100.057 16.1996 100.231 15.8716 100.212 15.4375 L 99.6617 15.4375 L 99.6617 16.9423 L 101.861 16.9423 Z M 100.212 14.6417 L 99.1553 14.6417 L 99.1553 14.3668 L 102.353 14.3668 L 102.353 14.6417 L 101.239 14.6417 L 101.239 15.1626 L 102.15 15.1626 L 102.15 17.362 L 101.861 17.362 L 101.861 17.2173 L 99.6617 17.2173 L 99.6617 17.362 L 99.3723 17.362 L 99.3723 15.1626 L 100.212 15.1626 Z M 100.501 14.6417 L 100.501 15.1626 L 100.949 15.1626 L 100.949 14.6417 Z"
                     id="path1111" />
@@ -170,23 +124,13 @@
                     id="path1117" />
             </g>
         </g>
-        <g inkscape:groupmode="layer" id="layer18" inkscape:label="WC" style="display:inline"
-            @click="showProperty('WC')" :class="{ 'selected': props.selectedID == 'WC' }">
-            <path id="rect4041"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 100.505 78.7892 L 109.599 78.7892 L 109.599 85.1318 L 100.505 85.1318 Z" />
-            <path id="rect4047"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 90.8853 47.3627 L 95.3501 47.3627 L 95.3501 53.1763 L 90.8853 53.1763 Z" />
-            <path id="rect3479"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 78.6142 112.343 L 84.8836 112.343 L 84.8836 120.577 L 78.6142 120.577 Z" />
-            <path id="rect3507"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 10.7418 113.084 L 15.5008 113.084 L 15.5008 120.046 L 10.7418 120.046 Z" />
-            <g aria-label="WC" id="text6240"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:10px;line-height:1.4;opacity:1;paint-order:stroke fill markers;shape-inside:url(#rect6242);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+        <g inkscape:groupmode="layer" id="layer18" inkscape:label="WC" @click="showProperty('WC')"
+            :class="{ 'selected': props.selectedID == 'WC' }" class="svg-object">
+            <path id="rect4041" d="M 100.505 78.7892 L 109.599 78.7892 L 109.599 85.1318 L 100.505 85.1318 Z" />
+            <path id="rect4047" d="M 90.8853 47.3627 L 95.3501 47.3627 L 95.3501 53.1763 L 90.8853 53.1763 Z" />
+            <path id="rect3479" d="M 78.6142 112.343 L 84.8836 112.343 L 84.8836 120.577 L 78.6142 120.577 Z" />
+            <path id="rect3507" d="M 10.7418 113.084 L 15.5008 113.084 L 15.5008 120.046 L 10.7418 120.046 Z" />
+            <g aria-label="WC" id="text6240" class="svg-text">
                 <path
                     d="M 13.5194 115.62 L 13.0167 117.509 L 12.776 117.509 L 12.4082 116.271 C 12.3923 116.222 12.3773 116.171 12.3632 116.12 C 12.3509 116.067 12.3394 116.021 12.3288 115.983 C 12.32 115.942 12.3147 115.914 12.3129 115.898 C 12.3112 115.921 12.3015 115.97 12.2838 116.046 C 12.2662 116.12 12.2459 116.198 12.223 116.279 L 11.8658 117.509 L 11.625 117.509 L 11.125 115.62 L 11.3737 115.62 L 11.6674 116.774 C 11.6885 116.855 11.7062 116.933 11.7203 117.009 C 11.7361 117.085 11.7485 117.157 11.7573 117.224 C 11.7661 117.155 11.7794 117.08 11.797 116.999 C 11.8146 116.918 11.8349 116.838 11.8579 116.761 L 12.1912 115.62 L 12.4373 115.62 L 12.7839 116.768 C 12.8086 116.85 12.8298 116.931 12.8474 117.012 C 12.865 117.093 12.8783 117.164 12.8871 117.224 C 12.8941 117.158 12.9056 117.088 12.9215 117.012 C 12.9391 116.934 12.9585 116.854 12.9797 116.771 L 13.2707 115.62 Z"
                     id="path1124" />
@@ -194,9 +138,7 @@
                     d="M 14.5936 115.803 C 14.3908 115.803 14.2312 115.871 14.1147 116.006 C 13.9983 116.142 13.9401 116.328 13.9401 116.565 C 13.9401 116.799 13.9939 116.985 14.1015 117.123 C 14.2109 117.259 14.374 117.327 14.591 117.327 C 14.6721 117.327 14.7497 117.32 14.8238 117.306 C 14.8979 117.291 14.9711 117.274 15.0434 117.253 L 15.0434 117.459 C 14.9729 117.486 14.8997 117.505 14.8238 117.517 C 14.7497 117.53 14.6607 117.536 14.5566 117.536 C 14.3643 117.536 14.2038 117.496 14.0751 117.417 C 13.9463 117.337 13.8493 117.224 13.784 117.078 C 13.7205 116.932 13.6888 116.76 13.6888 116.562 C 13.6888 116.372 13.7232 116.204 13.792 116.059 C 13.8625 115.913 13.9657 115.799 14.1015 115.718 C 14.2373 115.635 14.4023 115.594 14.5963 115.594 C 14.7956 115.594 14.9693 115.631 15.1175 115.705 L 15.0223 115.906 C 14.9641 115.879 14.8988 115.856 14.8265 115.835 C 14.7559 115.813 14.6783 115.803 14.5936 115.803 Z"
                     id="path1126" />
             </g>
-            <g aria-label="WC" id="text6240-8"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:10px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect6242-3);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            <g aria-label="WC" id="text6240-8" class="svg-text">
                 <path
                     d="M 82.147 115.515 L 81.6443 117.404 L 81.4036 117.404 L 81.0358 116.166 C 81.0199 116.117 81.0049 116.066 80.9908 116.015 C 80.9785 115.962 80.967 115.916 80.9564 115.878 C 80.9476 115.837 80.9423 115.809 80.9405 115.793 C 80.9388 115.816 80.9291 115.865 80.9114 115.941 C 80.8938 116.015 80.8735 116.093 80.8506 116.174 L 80.4934 117.404 L 80.2526 117.404 L 79.7526 115.515 L 80.0013 115.515 L 80.295 116.669 C 80.3161 116.75 80.3338 116.828 80.3479 116.904 C 80.3637 116.98 80.3761 117.051 80.3849 117.118 C 80.3937 117.05 80.407 116.975 80.4246 116.894 C 80.4422 116.812 80.4625 116.733 80.4855 116.655 L 80.8188 115.515 L 81.0649 115.515 L 81.4115 116.663 C 81.4362 116.745 81.4574 116.826 81.475 116.907 C 81.4926 116.988 81.5059 117.059 81.5147 117.118 C 81.5217 117.053 81.5332 116.983 81.5491 116.907 C 81.5667 116.829 81.5861 116.749 81.6073 116.666 L 81.8983 115.515 Z"
                     id="path1129" />
@@ -204,12 +146,8 @@
                     d="M 83.2212 115.698 C 83.0184 115.698 82.8588 115.766 82.7423 115.901 C 82.6259 116.037 82.5677 116.223 82.5677 116.46 C 82.5677 116.694 82.6215 116.88 82.7291 117.018 C 82.8385 117.154 83.0016 117.222 83.2186 117.222 C 83.2997 117.222 83.3773 117.215 83.4514 117.201 C 83.5255 117.186 83.5987 117.169 83.671 117.148 L 83.671 117.354 C 83.6005 117.38 83.5273 117.4 83.4514 117.412 C 83.3773 117.425 83.2883 117.431 83.1842 117.431 C 82.9919 117.431 82.8314 117.391 82.7027 117.312 C 82.5739 117.232 82.4769 117.119 82.4116 116.973 C 82.3481 116.827 82.3164 116.655 82.3164 116.457 C 82.3164 116.267 82.3508 116.099 82.4196 115.954 C 82.4901 115.808 82.5933 115.694 82.7291 115.613 C 82.8649 115.53 83.0299 115.489 83.2239 115.489 C 83.4232 115.489 83.5969 115.526 83.7451 115.6 L 83.6499 115.801 C 83.5917 115.774 83.5264 115.751 83.4541 115.729 C 83.3835 115.708 83.3059 115.698 83.2212 115.698 Z"
                     id="path1131" />
             </g>
-            <path id="rect3479-6"
-                style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 28.9118 84.8818 L 36.4107 84.8818 L 36.4107 90.0661 L 28.9118 90.0661 Z" />
-            <g aria-label="WC" id="text6240-8-5"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:10px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect6242-3-6);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            <path id="rect3479-6" d="M 28.9118 84.8818 L 36.4107 84.8818 L 36.4107 90.0661 L 28.9118 90.0661 Z" />
+            <g aria-label="WC" id="text6240-8-5" class="svg-text">
                 <path
                     d="M 33.0593 86.5293 L 32.5566 88.4184 L 32.3159 88.4184 L 31.9481 87.1802 C 31.9322 87.1308 31.9172 87.0805 31.9031 87.0294 C 31.8908 86.9765 31.8793 86.9306 31.8687 86.8918 C 31.8599 86.8512 31.8546 86.823 31.8528 86.8071 C 31.8511 86.8301 31.8414 86.8795 31.8237 86.9553 C 31.8061 87.0294 31.7858 87.107 31.7629 87.1881 L 31.4057 88.4184 L 31.1649 88.4184 L 30.6649 86.5293 L 30.9136 86.5293 L 31.2073 87.6829 C 31.2284 87.764 31.2461 87.8425 31.2602 87.9184 C 31.276 87.9942 31.2884 88.0657 31.2972 88.1327 C 31.306 88.0639 31.3193 87.9889 31.3369 87.9078 C 31.3545 87.8267 31.3748 87.7473 31.3978 87.6697 L 31.7311 86.5293 L 31.9772 86.5293 L 32.3238 87.6776 C 32.3485 87.7588 32.3697 87.8399 32.3873 87.921 C 32.4049 88.0022 32.4182 88.0727 32.427 88.1327 C 32.434 88.0674 32.4455 87.9969 32.4614 87.921 C 32.479 87.8434 32.4984 87.7632 32.5196 87.6803 L 32.8106 86.5293 Z"
                     id="path1135" />
@@ -217,9 +155,7 @@
                     d="M 34.1335 86.7119 C 33.9307 86.7119 33.7711 86.7798 33.6546 86.9156 C 33.5382 87.0514 33.48 87.2375 33.48 87.4739 C 33.48 87.7085 33.5338 87.8946 33.6414 88.0322 C 33.7508 88.168 33.9139 88.2359 34.1309 88.2359 C 34.212 88.2359 34.2896 88.2288 34.3637 88.2147 C 34.4378 88.2006 34.511 88.183 34.5833 88.1618 L 34.5833 88.3682 C 34.5128 88.3946 34.4396 88.414 34.3637 88.4264 C 34.2896 88.4387 34.2006 88.4449 34.0965 88.4449 C 33.9042 88.4449 33.7437 88.4052 33.615 88.3258 C 33.4862 88.2465 33.3892 88.1336 33.3239 87.9872 C 33.2604 87.8408 33.2287 87.6688 33.2287 87.4712 C 33.2287 87.2807 33.2631 87.1132 33.3319 86.9685 C 33.4024 86.8221 33.5056 86.7084 33.6414 86.6272 C 33.7772 86.5443 33.9422 86.5029 34.1362 86.5029 C 34.3355 86.5029 34.5092 86.5399 34.6574 86.614 L 34.5622 86.8151 C 34.504 86.7886 34.4387 86.7648 34.3664 86.7436 C 34.2958 86.7225 34.2182 86.7119 34.1335 86.7119 Z"
                     id="path1137" />
             </g>
-            <g aria-label="WC" id="text6240-8-5-5"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:10px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect6242-3-6-9);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            <g aria-label="WC" id="text6240-8-5-5" class="svg-text">
                 <path
                     d="M 105.45 81.0158 L 104.948 82.9049 L 104.707 82.9049 L 104.339 81.6667 C 104.323 81.6173 104.308 81.567 104.294 81.5159 C 104.282 81.463 104.27 81.4171 104.26 81.3783 C 104.251 81.3377 104.245 81.3095 104.244 81.2936 C 104.242 81.3166 104.232 81.366 104.215 81.4418 C 104.197 81.5159 104.177 81.5935 104.154 81.6746 L 103.797 82.9049 L 103.556 82.9049 L 103.056 81.0158 L 103.304 81.0158 L 103.598 82.1694 C 103.619 82.2505 103.637 82.329 103.651 82.4049 C 103.667 82.4807 103.679 82.5522 103.688 82.6192 C 103.697 82.5504 103.71 82.4754 103.728 82.3943 C 103.745 82.3132 103.766 82.2338 103.789 82.1562 L 104.122 81.0158 L 104.368 81.0158 L 104.715 82.1641 C 104.739 82.2453 104.761 82.3264 104.778 82.4075 C 104.796 82.4887 104.809 82.5592 104.818 82.6192 C 104.825 82.5539 104.836 82.4834 104.852 82.4075 C 104.87 82.3299 104.889 82.2497 104.91 82.1668 L 105.202 81.0158 Z"
                     id="path1140" />
@@ -227,9 +163,7 @@
                     d="M 106.524 81.1984 C 106.322 81.1984 106.162 81.2663 106.046 81.4021 C 105.929 81.5379 105.871 81.724 105.871 81.9604 C 105.871 82.195 105.925 82.3811 106.032 82.5187 C 106.142 82.6545 106.305 82.7224 106.522 82.7224 C 106.603 82.7224 106.681 82.7153 106.755 82.7012 C 106.829 82.6871 106.902 82.6695 106.974 82.6483 L 106.974 82.8547 C 106.904 82.8811 106.83 82.9005 106.755 82.9129 C 106.681 82.9252 106.591 82.9314 106.487 82.9314 C 106.295 82.9314 106.135 82.8917 106.006 82.8123 C 105.877 82.733 105.78 82.6201 105.715 82.4737 C 105.651 82.3273 105.62 82.1553 105.62 81.9577 C 105.62 81.7672 105.654 81.5997 105.723 81.455 C 105.793 81.3086 105.896 81.1949 106.032 81.1137 C 106.168 81.0308 106.333 80.9894 106.527 80.9894 C 106.726 80.9894 106.9 81.0264 107.048 81.1005 L 106.953 81.3016 C 106.895 81.2751 106.83 81.2513 106.757 81.2301 C 106.687 81.209 106.609 81.1984 106.524 81.1984 Z"
                     id="path1142" />
             </g>
-            <g aria-label="WC" id="text6240-8-5-5-4"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:10px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect6242-3-6-9-5);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            <g aria-label="WC" id="text6240-8-5-5-4" class="svg-text">
                 <path
                     d="M 93.5158 49.3248 L 93.0131 51.2139 L 92.7724 51.2139 L 92.4046 49.9757 C 92.3887 49.9263 92.3737 49.876 92.3596 49.8249 C 92.3473 49.772 92.3358 49.7261 92.3252 49.6873 C 92.3164 49.6467 92.3111 49.6185 92.3093 49.6026 C 92.3076 49.6256 92.2979 49.675 92.2802 49.7508 C 92.2626 49.8249 92.2423 49.9025 92.2194 49.9836 L 91.8622 51.2139 L 91.6214 51.2139 L 91.1214 49.3248 L 91.3701 49.3248 L 91.6638 50.4784 C 91.6849 50.5595 91.7026 50.638 91.7167 50.7139 C 91.7325 50.7897 91.7449 50.8612 91.7537 50.9282 C 91.7625 50.8594 91.7758 50.7844 91.7934 50.7033 C 91.811 50.6222 91.8313 50.5428 91.8543 50.4652 L 92.1876 49.3248 L 92.4337 49.3248 L 92.7803 50.4731 C 92.805 50.5543 92.8262 50.6354 92.8438 50.7165 C 92.8614 50.7977 92.8747 50.8682 92.8835 50.9282 C 92.8905 50.8629 92.902 50.7924 92.9179 50.7165 C 92.9355 50.6389 92.9549 50.5587 92.9761 50.4758 L 93.2671 49.3248 Z"
                     id="path1145" />
@@ -239,13 +173,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer9" inkscape:label="pool" @click="showProperty('pool')"
-            :class="{ 'selected': props.selectedID == 'pool' }">
-            <path id="rect2111"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 96.1562 109.52 L 123.041 109.52 L 123.041 151.755 L 96.1562 151.755 Z" />
-            <g aria-label="プール" id="text2564-3-7-2"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:28px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect2566-5-4-6);stop-color:#000000;stroke-width:0.49999837008000003;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == 'pool' }" class="svg-object">
+            <path id="rect2111" d="M 96.1562 109.52 L 123.041 109.52 L 123.041 151.755 L 96.1562 151.755 Z" />
+            <g aria-label="プール" id="text2564-3-7-2" class="svg-text">
                 <path
                     d="M 104.925 128.337 C 105.079 128.337 105.205 128.289 105.301 128.192 C 105.398 128.096 105.446 127.97 105.446 127.816 C 105.446 127.662 105.398 127.536 105.301 127.44 C 105.205 127.343 105.079 127.295 104.925 127.295 C 104.771 127.295 104.645 127.343 104.549 127.44 C 104.452 127.536 104.404 127.662 104.404 127.816 C 104.404 127.97 104.452 128.096 104.549 128.192 C 104.645 128.289 104.771 128.337 104.925 128.337 Z M 104.925 128.626 C 104.693 128.626 104.5 128.549 104.346 128.395 C 104.192 128.24 104.115 128.047 104.115 127.816 C 104.115 127.584 104.192 127.391 104.346 127.237 C 104.5 127.083 104.693 127.006 104.925 127.006 C 105.156 127.006 105.349 127.083 105.504 127.237 C 105.658 127.391 105.735 127.584 105.735 127.816 C 105.735 128.047 105.658 128.24 105.504 128.395 C 105.349 128.549 105.156 128.626 104.925 128.626 Z M 99.7449 129.002 L 99.7449 128.366 L 104.028 128.366 L 104.78 128.916 C 104.684 131.25 103.362 132.774 100.816 133.488 L 100.295 132.851 C 102.706 132.292 103.97 131.009 104.086 129.002 Z"
                     id="path1151" />
@@ -256,13 +186,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer10" inkscape:label="1A" @click="showProperty('1A')"
-            :class="{ 'selected': props.selectedID == '1A' }">
-            <path id="rect3373-1-7-8"
-                style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.495067"
-                d="M 79.5066 122.118 L 88.0927 122.118 L 88.0927 131.608 L 79.5066 131.608 Z" />
-            <g aria-label="1A" id="text5816-20"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:16px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-8);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == '1A' }" class="svg-object">
+            <path id="rect3373-1-7-8" d="M 79.5066 122.118 L 88.0927 122.118 L 88.0927 131.608 L 79.5066 131.608 Z" />
+            <g aria-label="1A" id="text5816-20" class="svg-text">
                 <path
                     d="M 82.5529 128.381 L 82.1888 128.381 L 82.1888 126.268 C 82.1888 126.147 82.1902 126.049 82.193 125.976 C 82.1959 125.903 82.2001 125.827 82.2057 125.748 C 82.1606 125.793 82.1183 125.831 82.0787 125.862 C 82.0421 125.893 81.9969 125.932 81.9433 125.98 L 81.6215 126.243 L 81.4268 125.993 L 82.2438 125.358 L 82.5529 125.358 Z"
                     id="path1159" />
@@ -272,13 +198,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer11" inkscape:label="1B" @click="showProperty('1B')"
-            :class="{ 'selected': props.selectedID == '1B' }">
-            <path id="rect3373-3-1"
-                style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.495067"
-                d="M 70.4306 122.118 L 79.0167 122.118 L 79.0167 131.608 L 70.4306 131.608 Z" />
-            <g aria-label="1B" id="text5816-8"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:16px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-9);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == '1B' }" class="svg-object">
+            <path id="rect3373-3-1" d="M 70.4306 122.118 L 79.0167 122.118 L 79.0167 131.608 L 70.4306 131.608 Z" />
+            <g aria-label="1B" id="text5816-8" class="svg-text">
                 <path
                     d="M 73.5657 128.374 L 73.2016 128.374 L 73.2016 126.262 C 73.2016 126.141 73.203 126.043 73.2059 125.97 C 73.2087 125.896 73.2129 125.82 73.2186 125.741 C 73.1734 125.786 73.1311 125.824 73.0916 125.855 C 73.0549 125.887 73.0097 125.926 72.9561 125.974 L 72.6344 126.236 L 72.4396 125.987 L 73.2567 125.352 L 73.5657 125.352 Z"
                     id="path1165" />
@@ -288,13 +210,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer12" inkscape:label="1C" @click="showProperty('1C')"
-            :class="{ 'selected': props.selectedID == '1C' }">
-            <path id="rect3373-1-70"
-                style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.495067"
-                d="M 61.3546 122.118 L 69.9407 122.118 L 69.9407 131.608 L 61.3546 131.608 Z" />
-            <g aria-label="1C" id="text5816-4"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:16px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-31);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == '1C' }" class="svg-object">
+            <path id="rect3373-1-70" d="M 61.3546 122.118 L 69.9407 122.118 L 69.9407 131.608 L 61.3546 131.608 Z" />
+            <g aria-label="1C" id="text5816-4" class="svg-text">
                 <path
                     d="M 64.4792 128.374 L 64.1151 128.374 L 64.1151 126.262 C 64.1151 126.141 64.1165 126.043 64.1194 125.97 C 64.1222 125.896 64.1264 125.82 64.1321 125.741 C 64.0869 125.786 64.0446 125.824 64.0051 125.855 C 63.9684 125.887 63.9232 125.926 63.8696 125.974 L 63.5479 126.236 L 63.3531 125.987 L 64.1702 125.352 L 64.4792 125.352 Z"
                     id="path1171" />
@@ -304,13 +222,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer13" inkscape:label="1D" @click="showProperty('1D')"
-            :class="{ 'selected': props.selectedID == '1D' }">
-            <path id="rect3373-8"
-                style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.495067"
-                d="M 52.2785 122.118 L 60.8646 122.118 L 60.8646 131.608 L 52.2785 131.608 Z" />
-            <g aria-label="1D" id="text5816-07"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:16px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-3);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == '1D' }" class="svg-object">
+            <path id="rect3373-8" d="M 52.2785 122.118 L 60.8646 122.118 L 60.8646 131.608 L 52.2785 131.608 Z" />
+            <g aria-label="1D" id="text5816-07" class="svg-text">
                 <path
                     d="M 55.2592 128.374 L 54.8951 128.374 L 54.8951 126.262 C 54.8951 126.141 54.8965 126.043 54.8993 125.97 C 54.9021 125.896 54.9064 125.82 54.912 125.741 C 54.8669 125.786 54.8245 125.824 54.785 125.855 C 54.7483 125.887 54.7032 125.926 54.6496 125.974 L 54.3278 126.236 L 54.1331 125.987 L 54.9501 125.352 L 55.2592 125.352 Z"
                     id="path1177" />
@@ -320,13 +234,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer14" inkscape:label="1E" @click="showProperty('1E')"
-            :class="{ 'selected': props.selectedID == '1E' }">
-            <path id="rect3373-1-7"
-                style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.495067"
-                d="M 37.9699 122.118 L 46.556 122.118 L 46.556 131.608 L 37.9699 131.608 Z" />
-            <g aria-label="1E" id="text5816-0"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:16px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-6);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == '1E' }" class="svg-object">
+            <path id="rect3373-1-7" d="M 37.9699 122.118 L 46.556 122.118 L 46.556 131.608 L 37.9699 131.608 Z" />
+            <g aria-label="1E" id="text5816-0" class="svg-text">
                 <path
                     d="M 41.3168 128.374 L 40.9527 128.374 L 40.9527 126.262 C 40.9527 126.14 40.9541 126.043 40.9569 125.97 C 40.9597 125.896 40.964 125.82 40.9696 125.741 C 40.9245 125.786 40.8821 125.824 40.8426 125.855 C 40.8059 125.886 40.7608 125.926 40.7072 125.974 L 40.3854 126.236 L 40.1907 125.987 L 41.0077 125.352 L 41.3168 125.352 Z"
                     id="path1183" />
@@ -336,13 +246,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer15" inkscape:label="1F" @click="showProperty('1F')"
-            :class="{ 'selected': props.selectedID == '1F' }">
-            <path id="rect3373-3"
-                style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.495067"
-                d="M 28.8939 122.118 L 37.48 122.118 L 37.48 131.608 L 28.8939 131.608 Z" />
-            <g aria-label="1F" id="text5816-2"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:16px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-0);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == '1F' }" class="svg-object">
+            <path id="rect3373-3" d="M 28.8939 122.118 L 37.48 122.118 L 37.48 131.608 L 28.8939 131.608 Z" />
+            <g aria-label="1F" id="text5816-2" class="svg-text">
                 <path
                     d="M 32.2407 128.374 L 31.8766 128.374 L 31.8766 126.262 C 31.8766 126.14 31.878 126.043 31.8808 125.97 C 31.8837 125.896 31.8879 125.82 31.8935 125.741 C 31.8484 125.786 31.8061 125.824 31.7665 125.855 C 31.7299 125.886 31.6847 125.926 31.6311 125.974 L 31.3093 126.236 L 31.1146 125.987 L 31.9316 125.352 L 32.2407 125.352 Z"
                     id="path1189" />
@@ -352,13 +258,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer16" inkscape:label="1G" @click="showProperty('1G')"
-            :class="{ 'selected': props.selectedID == '1G' }">
-            <path id="rect3373-1"
-                style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.495067"
-                d="M 19.8179 122.118 L 28.404 122.118 L 28.404 131.608 L 19.8179 131.608 Z" />
-            <g aria-label="1G" id="text5816-5"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:16px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-2);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == '1G' }" class="svg-object">
+            <path id="rect3373-1" d="M 19.8179 122.118 L 28.404 122.118 L 28.404 131.608 L 19.8179 131.608 Z" />
+            <g aria-label="1G" id="text5816-5" class="svg-text">
                 <path
                     d="M 22.8303 128.374 L 22.4662 128.374 L 22.4662 126.262 C 22.4662 126.14 22.4676 126.043 22.4705 125.97 C 22.4733 125.896 22.4775 125.82 22.4832 125.741 C 22.438 125.786 22.3957 125.824 22.3562 125.855 C 22.3195 125.886 22.2743 125.926 22.2207 125.974 L 21.899 126.236 L 21.7042 125.987 L 22.5213 125.352 L 22.8303 125.352 Z"
                     id="path1195" />
@@ -368,13 +270,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer17" inkscape:label="1H" @click="showProperty('1H')"
-            :class="{ 'selected': props.selectedID == '1H' }">
-            <path id="rect3373"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.495067"
-                d="M 10.7419 122.118 L 19.3279 122.118 L 19.3279 131.608 L 10.7419 131.608 Z" />
-            <g aria-label="1H" id="text5816"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:16px;line-height:1.4;opacity:1;paint-order:stroke fill markers;shape-inside:url(#rect5818);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == '1H' }" class="svg-object">
+            <path id="rect3373" d="M 10.7419 122.118 L 19.3279 122.118 L 19.3279 131.608 L 10.7419 131.608 Z" />
+            <g aria-label="1H" id="text5816" class="svg-text">
                 <path
                     d="M 13.7775 128.374 L 13.4134 128.374 L 13.4134 126.262 C 13.4134 126.14 13.4148 126.043 13.4176 125.97 C 13.4205 125.896 13.4247 125.82 13.4303 125.741 C 13.3852 125.786 13.3429 125.824 13.3033 125.855 C 13.2667 125.886 13.2215 125.926 13.1679 125.974 L 12.8461 126.236 L 12.6514 125.987 L 13.4684 125.352 L 13.7775 125.352 Z"
                     id="path1201" />
@@ -384,13 +282,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer5" inkscape:label="gym" @click="showProperty('gym')"
-            :class="{ 'selected': props.selectedID == 'gym' }">
-            <path id="rect2109"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 92.7694 153.448 L 123.041 153.448 L 123.041 203.876 L 92.7694 203.876 Z" />
-            <g aria-label="体育館" id="text2564-3-7"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:28px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect2566-5-4);stop-color:#000000;stroke-width:0.49999837008000003;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == 'gym' }" class="svg-object">
+            <path id="rect2109" d="M 92.7694 153.448 L 123.041 153.448 L 123.041 203.876 L 92.7694 203.876 Z" />
+            <g aria-label="体育館" id="text2564-3-7" class="svg-text">
                 <path
                     d="M 98.7605 180.239 C 99.7058 179.37 100.4 178.406 100.844 177.345 L 99.0209 177.345 L 99.0209 176.795 L 100.989 176.795 L 100.989 175.348 L 101.539 175.348 C 101.693 175.367 101.703 175.425 101.568 175.522 L 101.568 176.795 L 103.651 176.795 L 103.651 177.345 L 101.741 177.345 C 102.05 178.271 102.744 179.235 103.825 180.239 L 103.42 180.817 C 102.59 179.988 101.973 179.149 101.568 178.3 L 101.568 179.978 L 102.407 179.978 L 102.407 180.528 L 101.568 180.528 L 101.568 181.946 L 100.989 181.946 L 100.989 180.528 L 100.236 180.528 L 100.236 179.978 L 100.989 179.978 L 100.989 178.3 C 100.526 179.322 99.9277 180.152 99.1945 180.788 Z M 98.992 175.695 C 98.8955 176.197 98.7605 176.67 98.5868 177.113 C 98.7412 177.171 98.7412 177.239 98.5868 177.316 L 98.5868 182.004 L 98.0081 182.004 L 98.0081 178.387 C 97.873 178.676 97.6994 178.927 97.4872 179.139 L 97.082 178.618 C 97.738 177.731 98.1913 176.631 98.4421 175.319 L 99.0788 175.551 C 99.1752 175.628 99.1463 175.676 98.992 175.695 Z"
                     id="path1207" />
@@ -404,13 +298,10 @@
         </g>
         <g inkscape:groupmode="layer" id="layer6" inkscape:label="martial_arts_field"
             @click="showProperty('martial_arts_field')"
-            :class="{ 'selected': props.selectedID == 'martial_arts_field' }">
+            :class="{ 'selected': props.selectedID == 'martial_arts_field' }" class="svg-object">
             <path id="rect2101"
-                style="fill:#999999;fill-opacity:1;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-dasharray:none;stroke-opacity:1;stroke-width:0.499999"
                 d="M 92.7694 208.216 L 92.7694 250.299 L 113.954 250.299 L 113.954 239.523 L 123.164 239.523 L 123.164 208.216 L 113.954 208.216 Z" />
-            <g aria-label="武道場" id="text2564-3"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:28px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect2566-5);stop-color:#000000;stroke-width:0.49999837008000003;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            <g aria-label="武道場" id="text2564-3" class="svg-text">
                 <path
                     d="M 101.918 228.23 C 101.976 229.87 102.333 231.008 102.989 231.645 C 103.066 231.722 103.124 231.693 103.163 231.558 L 103.279 231.008 L 103.857 231.326 L 103.713 232.021 C 103.558 232.638 103.172 232.696 102.555 232.195 C 101.725 231.346 101.301 230.034 101.282 228.259 L 97.3171 228.375 L 97.3171 227.738 L 101.224 227.651 L 101.166 225.973 L 101.774 225.973 C 101.986 225.992 102.005 226.06 101.832 226.175 L 101.861 227.622 L 103.77 227.535 L 103.77 228.172 Z M 102.729 227.42 C 102.536 227.169 102.304 226.918 102.034 226.667 L 102.584 226.262 C 102.816 226.416 103.057 226.658 103.307 226.986 Z M 98.0985 227.072 L 98.0985 226.436 L 100.587 226.436 L 100.587 227.072 Z M 97.838 232.368 C 97.8187 232.503 97.7705 232.532 97.6933 232.455 L 97.4329 231.674 L 98.0696 231.616 L 98.0696 228.953 L 98.6194 228.953 C 98.7737 228.973 98.7834 229.031 98.6483 229.127 L 98.6483 231.529 L 99.3429 231.413 L 99.3429 228.548 L 99.8927 228.548 C 100.047 228.568 100.057 228.625 99.9216 228.722 L 99.9216 229.474 L 101.05 229.474 L 101.05 230.024 L 99.9216 230.024 L 99.9216 231.297 L 101.34 231.008 L 101.34 231.587 Z"
                     id="path1214" />
@@ -423,13 +314,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer7" inkscape:label="tennis" @click="showProperty('tennis')"
-            :class="{ 'selected': props.selectedID == 'tennis' }">
-            <path id="rect2098"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 59.7816 252.89 L 123.685 252.89 L 123.685 286.538 L 59.7816 286.538 Z" />
-            <g aria-label="テニスコート" id="text2564-1-1"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:16px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect2566-0-3);stop-color:#000000;stroke-width:0.49999837008000003;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == 'tennis' }" class="svg-object">
+            <path id="rect2098" d="M 59.7816 252.89 L 123.685 252.89 L 123.685 286.538 L 59.7816 286.538 Z" />
+            <g aria-label="テニスコート" id="text2564-1-1" class="svg-text">
                 <path
                     d="M 81.1995 269.499 L 79.5459 269.499 L 79.5459 269.135 L 82.9359 269.135 L 82.9359 269.499 L 81.5799 269.499 L 81.5799 269.714 C 81.5799 270.408 81.3318 270.982 80.8357 271.434 L 80.505 271.185 C 80.968 270.822 81.1995 270.331 81.1995 269.714 Z M 80.1412 268.49 L 80.1412 268.126 L 82.3406 268.126 L 82.3406 268.49 Z"
                     id="path1222" />
@@ -449,13 +336,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer8" inkscape:label="handball" @click="showProperty('handball')"
-            :class="{ 'selected': props.selectedID == 'handball' }">
-            <path id="rect2037"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.5"
-                d="M 13.3871 252.89 L 57.5114 252.89 L 57.5114 286.788 L 13.3871 286.788 Z" />
-            <g aria-label="ハンドボールコート" id="text2564-1"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:16px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect2566-0);stop-color:#000000;stroke-width:0.49999837008000003;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == 'handball' }" class="svg-object">
+            <path id="rect2037" d="M 13.3871 252.89 L 57.5114 252.89 L 57.5114 286.788 L 13.3871 286.788 Z" />
+            <g aria-label="ハンドボールコート" id="text2564-1" class="svg-text">
                 <path
                     d="M 20.1696 271.244 C 19.8939 270.373 19.5357 269.679 19.0947 269.161 L 19.442 268.896 C 19.9932 269.591 20.3845 270.324 20.616 271.096 Z M 18.1852 269.277 C 18.2734 269.332 18.2624 269.381 18.1521 269.425 C 17.9537 270.12 17.634 270.754 17.193 271.327 L 16.8127 271.079 C 17.2977 270.495 17.6229 269.833 17.7883 269.095 Z"
                     id="path1236" />
@@ -483,13 +366,10 @@
         </g>
         <g inkscape:groupmode="layer" id="layer19" inkscape:label="the_student_council_room"
             @click="showProperty('the_student_council_room')"
-            :class="{ 'selected': props.selectedID == 'the_student_council_room' }">
+            :class="{ 'selected': props.selectedID == 'the_student_council_room' }" class="svg-object">
             <path id="rect3494"
-                style="fill:#999999;fill-opacity:1;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-dasharray:none;stroke-opacity:1;stroke-width:0.499999"
                 d="M 11.1501 90.3161 L 11.1501 103.528 L 22.5675 103.528 L 32.1261 103.528 L 32.1261 93.0622 L 22.5675 93.0622 L 22.5675 90.3161 Z" />
-            <g aria-label="生徒会室" id="text5816-2-5-2"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:12px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-0-0-1);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            <g aria-label="生徒会室" id="text5816-2-5-2" class="svg-text">
                 <path
                     d="M 16.2864 95.8492 C 16.2781 95.8906 16.2533 95.9857 16.212 96.1345 L 16.7825 96.1345 L 16.7825 95.5144 L 17.0181 95.5144 C 17.0843 95.5226 17.0884 95.5475 17.0305 95.5888 L 17.0305 96.1345 L 18.0475 96.1345 L 18.0475 96.3701 L 17.0305 96.3701 L 17.0305 96.9406 L 17.8987 96.9406 L 17.8987 97.1763 L 17.0305 97.1763 L 17.0305 97.908 L 18.2088 97.908 L 18.2088 98.1437 L 15.4926 98.1437 L 15.4926 97.908 L 16.7825 97.908 L 16.7825 97.1763 L 15.9515 97.1763 L 15.9515 96.9406 L 16.7825 96.9406 L 16.7825 96.3701 L 16.1376 96.3701 C 16.0383 96.6265 15.8895 96.8538 15.6911 97.0523 L 15.505 96.8538 C 15.8027 96.5644 15.9805 96.1841 16.0383 95.7128 L 16.2988 95.7748 C 16.3484 95.7914 16.3443 95.8162 16.2864 95.8492 Z"
                     id="path1255" />
@@ -505,13 +385,10 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer20" inkscape:label="janitorial_room"
-            @click="showProperty('janitorial_room')" :class="{ 'selected': props.selectedID == 'janitorial_room' }">
-            <path id="rect3492"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 32.6273 93.0622 L 46.3087 93.0622 L 46.3087 103.528 L 32.6273 103.528 Z" />
-            <g aria-label="用務室" id="text5816-2-5"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:12px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-0-0);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            @click="showProperty('janitorial_room')" :class="{ 'selected': props.selectedID == 'janitorial_room' }"
+            class="svg-object">
+            <path id="rect3492" d="M 32.6273 93.0622 L 46.3087 93.0622 L 46.3087 103.528 L 32.6273 103.528 Z" />
+            <g aria-label="用務室" id="text5816-2-5" class="svg-text">
                 <path
                     d="M 37.2666 98.6857 L 36.4604 98.6857 L 36.4604 99.6283 L 36.2124 99.6283 L 36.2124 98.6857 L 35.4682 98.6857 C 35.4517 99.1157 35.3235 99.4588 35.0837 99.7151 L 34.8853 99.5167 C 35.1086 99.2686 35.2202 98.9792 35.2202 98.6485 L 35.2202 97.061 L 37.5146 97.061 L 37.5146 99.4298 C 37.5146 99.5621 37.4485 99.6283 37.3162 99.6283 L 36.9689 99.6283 L 36.9069 99.3554 L 37.2169 99.3554 C 37.25 99.3554 37.2666 99.3389 37.2666 99.3058 Z M 35.4682 97.9912 L 35.4682 98.4501 L 36.2124 98.4501 L 36.2124 97.9912 Z M 35.4682 97.2966 L 35.4682 97.7555 L 36.2124 97.7555 L 36.2124 97.2966 Z M 36.4604 97.9912 L 36.4604 98.4501 L 37.2666 98.4501 L 37.2666 97.9912 Z M 36.4604 97.2966 L 36.4604 97.7555 L 37.2666 97.7555 L 37.2666 97.2966 Z"
                     id="path1265" />
@@ -525,13 +402,9 @@
         </g>
         <g inkscape:groupmode="layer" id="layer21" inkscape:label="corporate_planning_office"
             @click="showProperty('corporate_planning_office')"
-            :class="{ 'selected': props.selectedID == 'corporate_planning_office' }">
-            <path id="rect3509"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 51.6494 88.0597 L 75.6694 88.0597 L 75.6694 96.7343 L 51.6494 96.7343 Z" />
-            <g aria-label="経営企画室" id="text5816-2-3-7-5"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:12px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-0-9-8-5);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == 'corporate_planning_office' }" class="svg-object">
+            <path id="rect3509" d="M 51.6494 88.0597 L 75.6694 88.0597 L 75.6694 96.7343 L 51.6494 96.7343 Z" />
+            <g aria-label="経営企画室" id="text5816-2-3-7-5" class="svg-text">
                 <path
                     d="M 56.0753 91.4791 L 56.1745 91.5535 C 56.3068 91.3468 56.4143 91.1483 56.497 90.9582 L 56.7326 91.0946 C 56.774 91.1277 56.7616 91.1483 56.6954 91.1566 C 56.5962 91.3302 56.4805 91.508 56.3482 91.6899 L 56.5218 91.8387 C 56.6376 91.6982 56.7533 91.5287 56.8691 91.3302 L 57.0799 91.4667 C 57.1295 91.4997 57.1213 91.5204 57.0551 91.5287 C 56.8567 91.7933 56.6582 92.0372 56.4598 92.2604 L 56.8691 92.2356 L 56.7575 92.0372 L 56.9683 91.9504 C 57.0758 92.0909 57.1709 92.2811 57.2536 92.5209 L 57.0055 92.6201 L 56.9435 92.4341 L 56.6706 92.4588 L 56.6706 93.8231 L 56.4226 93.8231 L 56.4226 92.4837 L 56.0009 92.4961 C 55.9926 92.5539 55.972 92.5663 55.9389 92.5333 L 55.8769 92.2604 L 56.1746 92.2604 L 56.373 92.0372 L 55.9265 91.6899 Z M 57.1915 92.2232 C 57.4561 92.124 57.638 92.033 57.7372 91.9504 C 57.5967 91.8015 57.4768 91.6114 57.3776 91.3798 L 57.2039 91.3798 L 57.2039 91.1442 L 58.3325 91.1442 L 58.3697 91.107 L 58.5682 91.2682 L 58.5062 91.3178 C 58.4318 91.5328 58.2995 91.7395 58.1093 91.938 C 58.2333 92.0206 58.4607 92.1033 58.7914 92.186 L 58.7046 92.4588 C 58.3325 92.3431 58.0762 92.2232 57.9357 92.0992 C 57.762 92.248 57.5512 92.3679 57.3031 92.4588 Z M 57.1047 93.7239 L 57.1047 93.4882 L 57.7868 93.4882 L 57.7868 92.9549 L 57.2783 92.9549 L 57.2783 92.7193 L 57.7868 92.7193 L 57.7868 92.372 L 58.0225 92.372 C 58.0886 92.3803 58.0928 92.4051 58.0349 92.4464 L 58.0349 92.7193 L 58.5806 92.7193 L 58.5806 92.9549 L 58.0349 92.9549 L 58.0349 93.4882 L 58.6922 93.4882 L 58.6922 93.7239 Z M 57.6256 91.3798 C 57.7 91.5535 57.7992 91.694 57.9233 91.8015 C 58.0308 91.6858 58.1258 91.5452 58.2085 91.3798 Z M 56.2738 92.8433 C 56.2655 93.05 56.2241 93.2857 56.1497 93.5503 L 55.9017 93.4634 C 55.9678 93.2154 56.0092 92.9673 56.0257 92.7193 L 56.2986 92.7813 C 56.3234 92.8144 56.3151 92.8351 56.2738 92.8433 Z M 56.9931 92.7069 C 57.0758 92.8557 57.1337 93.0459 57.1667 93.2774 L 56.9187 93.3394 C 56.8856 93.1079 56.836 92.9177 56.7698 92.7689 Z"
                     id="path1273" />
@@ -550,13 +423,10 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer22" inkscape:label="principals_office"
-            @click="showProperty('principals_office')" :class="{ 'selected': props.selectedID == 'principals_office' }">
-            <path id="rect3607"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 76.1738 88.0599 L 91.5007 88.0599 L 91.5007 96.7654 L 76.1738 96.7654 Z" />
-            <g aria-label="校長室" id="text5816-2-3-7-8"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:12px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-0-9-8-1-6);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            @click="showProperty('principals_office')" :class="{ 'selected': props.selectedID == 'principals_office' }"
+            class="svg-object">
+            <path id="rect3607" d="M 76.1738 88.0599 L 91.5007 88.0599 L 91.5007 96.7654 L 76.1738 96.7654 Z" />
+            <g aria-label="校長室" id="text5816-2-3-7-8" class="svg-text">
                 <path
                     d="M 79.9677 93.8057 L 79.7196 93.8057 L 79.7196 92.4539 C 79.6452 92.644 79.5336 92.8383 79.3848 93.0368 L 79.2112 92.8135 C 79.4757 92.4828 79.6411 92.1438 79.7072 91.7965 L 79.2732 91.7965 L 79.2732 91.5609 L 79.7196 91.5609 L 79.7196 90.9532 L 79.9553 90.9532 C 80.0214 90.9614 80.0256 90.9862 79.9677 91.0276 L 79.9677 91.5609 L 80.2902 91.5609 L 80.2902 91.7965 L 79.9677 91.7965 L 79.9677 92.2306 C 80.1661 92.3712 80.3108 92.4993 80.4018 92.6151 L 80.2282 92.8507 C 80.1455 92.735 80.0587 92.6275 79.9677 92.5283 Z M 81.1831 93.26 C 81.0343 93.4336 80.7449 93.6197 80.315 93.8181 L 80.2033 93.5453 C 80.5589 93.413 80.8276 93.2559 81.0095 93.074 C 80.902 92.9334 80.7945 92.768 80.687 92.5779 L 80.8855 92.4414 C 80.993 92.6316 81.0839 92.7722 81.1583 92.8631 C 81.2079 92.8053 81.2865 92.6316 81.394 92.3422 L 81.6544 92.4787 C 81.704 92.5035 81.6875 92.5283 81.6048 92.5531 C 81.5304 92.735 81.4394 92.9003 81.3319 93.0492 C 81.5056 93.1897 81.766 93.3303 82.1133 93.4708 L 81.9645 93.7437 C 81.5841 93.5701 81.3237 93.4088 81.1831 93.26 Z M 81.0467 92.0446 C 81.1128 92.0942 81.0963 92.1149 80.9971 92.1066 C 80.8648 92.2389 80.6829 92.3753 80.4514 92.5159 L 80.2902 92.2802 C 80.5051 92.181 80.6953 92.0404 80.8607 91.8585 Z M 80.4638 91.7097 L 80.4638 91.4741 L 81.0591 91.4741 L 81.0591 90.9532 L 81.2947 90.9532 C 81.3609 90.9614 81.365 90.9862 81.3072 91.0276 L 81.3072 91.4741 L 82.0141 91.4741 L 82.0141 91.7097 Z M 81.4808 91.8337 C 81.7454 91.9826 81.9397 92.1149 82.0637 92.2306 L 81.8901 92.4539 C 81.7578 92.3298 81.5759 92.1975 81.3444 92.057 Z"
                     id="path1285" />
@@ -569,13 +439,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer23" inkscape:label="health_room" @click="showProperty('health_room')"
-            :class="{ 'selected': props.selectedID == 'health_room' }">
-            <path id="rect3715"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 95.3028 88.0621 L 107.885 88.0621 L 107.885 96.7654 L 95.3028 96.7654 Z" />
-            <g aria-label="保健室" id="text5816-2-3-7-8-1"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:12px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-0-9-8-1-6-8);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == 'health_room' }" class="svg-object">
+            <path id="rect3715" d="M 95.3028 88.0621 L 107.885 88.0621 L 107.885 96.7654 L 95.3028 96.7654 Z" />
+            <g aria-label="保健室" id="text5816-2-3-7-8-1" class="svg-text">
                 <path
                     d="M 98.6482 92.9841 C 98.4745 93.2239 98.2141 93.4554 97.8668 93.6787 L 97.7304 93.381 C 98.0859 93.2239 98.3877 92.9759 98.6358 92.6369 L 97.7428 92.6369 L 97.7428 92.4012 L 98.6482 92.4012 L 98.6482 92.0292 L 98.2761 92.0292 L 98.2761 92.1408 L 98.0281 92.1408 L 98.0281 91.1114 L 99.4915 91.1114 L 99.4915 92.1284 L 99.2435 92.1284 L 99.2435 92.0292 L 98.8962 92.0292 L 98.8962 92.4012 L 99.8016 92.4012 L 99.8016 92.6369 L 98.921 92.6369 C 99.1525 92.9593 99.4709 93.2033 99.876 93.3686 L 99.7892 93.6539 C 99.4419 93.5216 99.1443 93.2942 98.8962 92.9717 L 98.8962 93.8399 L 98.6482 93.8399 Z M 97.842 91.1362 C 97.8172 91.3181 97.7511 91.5331 97.6436 91.7811 L 97.6808 91.8059 C 97.7139 91.839 97.7015 91.8597 97.6436 91.8679 L 97.6436 93.8399 L 97.3955 93.8399 L 97.3955 92.2648 C 97.3294 92.3723 97.2508 92.4715 97.1599 92.5625 L 96.9987 92.3144 C 97.2963 92.025 97.4989 91.5785 97.6064 90.975 L 97.8792 91.0742 C 97.9123 91.1072 97.8999 91.1279 97.842 91.1362 Z M 98.2761 91.347 L 98.2761 91.7935 L 99.2435 91.7935 L 99.2435 91.347 Z"
                     id="path1293" />
@@ -589,13 +455,9 @@
         </g>
         <g inkscape:groupmode="layer" id="layer24" inkscape:label="japanese_style_room"
             @click="showProperty('japanese_style_room')"
-            :class="{ 'selected': props.selectedID == 'japanese_style_room' }">
-            <path id="rect3721-3"
-                style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 112.738 88.0438 L 121.888 88.0438 L 121.888 96.7654 L 112.738 96.7654 Z" />
-            <g aria-label="和室" id="text5816-2-3-7-8-1-7"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:12px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-0-9-8-1-6-8-6);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == 'japanese_style_room' }" class="svg-object">
+            <path id="rect3721-3" d="M 112.738 88.0438 L 121.888 88.0438 L 121.888 96.7654 L 112.738 96.7654 Z" />
+            <g aria-label="和室" id="text5816-2-3-7-8-1-7" class="svg-text">
                 <path
                     d="M 114.374 92.0758 L 114.374 91.8401 L 114.956 91.8401 L 114.956 91.4557 C 114.75 91.4887 114.589 91.5094 114.473 91.5177 L 114.374 91.2944 C 114.795 91.2531 115.171 91.1704 115.502 91.0464 L 115.651 91.2696 C 115.659 91.3275 115.634 91.3399 115.577 91.3068 L 115.205 91.406 L 115.205 91.8401 L 115.763 91.8401 L 115.763 92.0758 L 115.205 92.0758 L 115.205 92.3362 C 115.453 92.4437 115.643 92.576 115.775 92.7331 L 115.614 92.9687 C 115.465 92.8034 115.329 92.6794 115.205 92.5967 L 115.205 93.8245 L 114.956 93.8245 L 114.956 92.6339 C 114.832 92.8819 114.675 93.101 114.485 93.2912 L 114.299 93.068 C 114.605 92.7786 114.82 92.4478 114.944 92.0758 Z M 115.887 91.4185 L 117.065 91.4185 L 117.065 93.6881 L 116.817 93.6881 L 116.817 93.5268 L 116.135 93.5268 L 116.135 93.7625 L 115.887 93.7625 Z M 116.135 91.6541 L 116.135 93.2912 L 116.817 93.2912 L 116.817 91.6541 Z"
                     id="path1301" />
@@ -606,13 +468,9 @@
         </g>
         <g inkscape:groupmode="layer" id="layer25" inkscape:label="home_economics_room"
             @click="showProperty('home_economics_room')"
-            :class="{ 'selected': props.selectedID == 'home_economics_room' }">
-            <path id="rect4073"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 113.586 68.1904 L 122.647 68.1904 L 122.647 84.8788 L 113.586 84.8788 Z" />
-            <g aria-label="家庭科 教室" id="text5816-2-3-7-8-1-7-8"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:12px;line-height:1.2;paint-order:stroke fill markers;shape-inside:url(#rect5818-0-9-8-1-6-8-6-6);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == 'home_economics_room' }" class="svg-object">
+            <path id="rect4073" d="M 113.586 68.1904 L 122.647 68.1904 L 122.647 84.8788 L 113.586 84.8788 Z" />
+            <g aria-label="家庭科 教室" id="text5816-2-3-7-8-1-7-8" class="svg-text">
                 <path
                     d="M 115.065 75.0382 C 114.693 75.369 114.259 75.6294 113.763 75.8196 L 113.651 75.5715 C 114.189 75.3979 114.639 75.1375 115.003 74.7902 C 114.978 74.7488 114.949 74.7075 114.916 74.6662 C 114.544 74.9556 114.185 75.1499 113.837 75.2491 L 113.738 75.0258 C 114.135 74.9183 114.478 74.7488 114.768 74.5173 C 114.734 74.4677 114.697 74.4347 114.656 74.4181 C 114.35 74.6083 114.032 74.7323 113.701 74.7902 L 113.614 74.5545 C 114.077 74.4884 114.466 74.3354 114.78 74.0957 L 113.974 74.0957 L 113.974 73.86 L 115.834 73.86 L 115.834 74.0957 L 115.09 74.0957 C 115.024 74.1701 114.937 74.2445 114.83 74.3189 C 114.97 74.4099 115.082 74.5091 115.164 74.6166 C 115.462 74.4512 115.673 74.2982 115.797 74.1577 L 116.033 74.3313 C 116.066 74.3809 116.049 74.4016 115.983 74.3933 C 115.785 74.5173 115.57 74.6331 115.338 74.7406 C 115.553 75.0217 115.859 75.2656 116.256 75.4723 L 116.082 75.7452 C 115.743 75.5054 115.483 75.2573 115.301 75.001 C 115.342 75.3318 115.334 75.5715 115.276 75.7204 C 115.226 75.8527 115.115 75.9188 114.941 75.9188 L 114.619 75.9188 L 114.569 75.646 L 114.854 75.646 C 114.978 75.646 115.049 75.5922 115.065 75.4847 C 115.082 75.3607 115.082 75.2119 115.065 75.0382 Z M 115.028 73.4011 L 116.206 73.4011 L 116.206 74.0461 L 115.958 74.0461 L 115.958 73.6368 L 113.837 73.6368 L 113.837 74.0461 L 113.589 74.0461 L 113.589 73.4011 L 114.743 73.4011 L 114.743 73.1283 L 115.016 73.1283 C 115.082 73.1366 115.086 73.1614 115.028 73.2027 Z"
                     id="path1307" />
@@ -631,13 +489,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer26" inkscape:label="food_class" @click="showProperty('food_class')"
-            :class="{ 'selected': props.selectedID == 'food_class' }">
-            <path id="rect4071"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 113.583 39.5637 L 122.785 39.5637 L 122.785 63.745 L 113.583 63.745 Z" />
-            <g aria-label="食物 教室" id="text5816-2-3-7-8-1-7-8-3"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:12px;line-height:1.2;paint-order:stroke fill markers;shape-inside:url(#rect5818-0-9-8-1-6-8-6-6-2);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == 'food_class' }" class="svg-object">
+            <path id="rect4071" d="M 113.583 39.5637 L 122.785 39.5637 L 122.785 63.745 L 113.583 63.745 Z" />
+            <g aria-label="食物 教室" id="text5816-2-3-7-8-1-7-8-3" class="svg-text">
                 <path
                     d="M 116.764 50.8278 C 116.351 50.9022 115.937 50.9683 115.524 51.0262 C 115.516 51.0923 115.495 51.1048 115.462 51.0634 L 115.388 50.7409 L 115.797 50.7162 L 115.797 49.1163 C 115.623 49.2072 115.458 49.2816 115.301 49.3395 L 115.202 49.0791 C 115.846 48.8806 116.264 48.5871 116.454 48.1985 L 116.789 48.2357 C 116.822 48.2688 116.81 48.2894 116.752 48.2977 L 116.752 48.3349 C 117.041 48.6574 117.475 48.8889 118.054 49.0294 L 117.905 49.2899 C 117.798 49.2734 117.632 49.2155 117.409 49.1163 L 117.409 50.0836 L 117.57 49.9224 L 117.794 50.1457 C 117.802 50.187 117.781 50.1994 117.732 50.1829 L 117.136 50.5673 C 117.293 50.6748 117.579 50.7492 117.992 50.7906 L 117.88 51.051 C 117.161 50.9849 116.702 50.6789 116.504 50.1332 L 116.045 50.1332 L 116.045 50.6914 L 116.764 50.6045 Z M 116.739 50.1332 C 116.772 50.2242 116.847 50.3275 116.963 50.4433 L 117.347 50.1332 Z M 117.161 49.9348 L 117.161 49.7116 L 116.045 49.7116 L 116.045 49.9348 Z M 116.045 49.5131 L 117.161 49.5131 L 117.161 49.2899 L 116.045 49.2899 Z M 116.591 48.4713 C 116.409 48.7111 116.161 48.9178 115.846 49.0914 L 116.491 49.0914 L 116.491 48.769 L 116.727 48.769 C 116.793 48.7773 116.797 48.8021 116.739 48.8434 L 116.739 49.0914 L 117.36 49.0914 C 117.112 48.9757 116.855 48.769 116.591 48.4713 Z"
                     id="path1319" />
@@ -653,13 +507,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer27" inkscape:label="pc_room" @click="showProperty('pc_room')"
-            :class="{ 'selected': props.selectedID == 'pc_room' }">
-            <path id="rect3857"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 77.5 61.4679 L 86.7077 61.4679 L 86.7077 79.6379 L 77.5 79.6379 Z" />
-            <g aria-label="PC室" id="text5816-2-3-7-8-1-3"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:12px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-0-9-8-1-6-8-8);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == 'pc_room' }" class="svg-object">
+            <path id="rect3857" d="M 77.5 61.4679 L 86.7077 61.4679 L 86.7077 79.6379 L 77.5 79.6379 Z" />
+            <g aria-label="PC室" id="text5816-2-3-7-8-1-3" class="svg-text">
                 <path
                     d="M 79.3934 69.4764 C 79.6898 69.4764 79.9057 69.5346 80.0411 69.651 C 80.1766 69.7674 80.2443 69.9315 80.2443 70.1432 C 80.2443 70.268 80.2158 70.3855 80.1586 70.4956 C 80.1036 70.6035 80.0094 70.6914 79.876 70.7591 C 79.7448 70.8268 79.566 70.8607 79.3395 70.8607 L 79.0791 70.8607 L 79.0791 71.7434 L 78.7934 71.7434 L 78.7934 69.4764 Z M 79.368 69.7209 L 79.0791 69.7209 L 79.0791 70.6162 L 79.3077 70.6162 C 79.5236 70.6162 79.6845 70.5813 79.7903 70.5115 C 79.8962 70.4416 79.9491 70.3231 79.9491 70.1559 C 79.9491 70.0098 79.9014 69.9008 79.8062 69.8288 C 79.7131 69.7569 79.567 69.7209 79.368 69.7209 Z"
                     id="path1329" />
@@ -672,13 +522,9 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer28" inkscape:label="ll_room" @click="showProperty('ll_room')"
-            :class="{ 'selected': props.selectedID == 'll_room' }">
-            <path id="rect3857-0"
-                style="fill:#999999;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 77.5 39.5389 L 86.7077 39.5389 L 86.7077 57.7088 L 77.5 57.7088 Z" />
-            <g aria-label="LL室" id="text5816-2-3-7-8-1-3-3"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:12px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-0-9-8-1-6-8-8-8);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            :class="{ 'selected': props.selectedID == 'll_room' }" class="svg-object">
+            <path id="rect3857-0" d="M 77.5 39.5389 L 86.7077 39.5389 L 86.7077 57.7088 L 77.5 57.7088 Z" />
+            <g aria-label="LL室" id="text5816-2-3-7-8-1-3-3" class="svg-text">
                 <path
                     d="M 79.0934 49.8144 L 79.0934 47.5474 L 79.3792 47.5474 L 79.3792 49.5604 L 80.3698 49.5604 L 80.3698 49.8144 Z"
                     id="path1337" />
@@ -691,13 +537,10 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer29" inkscape:label="fountain" @click="showProperty('fountain')"
-            :class="{ 'selected': props.selectedID == 'fountain' }">
+            :class="{ 'selected': props.selectedID == 'fountain' }" class="svg-object">
             <path id="path2276"
-                style="opacity:1;fill:#999999;stroke:#000000;stroke-width:0.499999;paint-order:stroke fill markers;stop-color:#000000"
                 d="m 67.447281,71.941963 a 2.5,2.5 0 0 1 -2.5,2.5 2.5,2.5 0 0 1 -2.5,-2.5 2.5,2.5 0 0 1 2.5,-2.5 2.5,2.5 0 0 1 2.5,2.5 z" />
-            <g aria-label="愛の泉" id="text2997"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:12px;line-height:1.4;opacity:1;paint-order:stroke fill markers;shape-inside:url(#rect2999);stop-color:#000000;stroke-width:0.49999837008000003;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            <g aria-label="愛の泉" id="text2997" class="svg-text">
                 <path
                     d="M 61.828 67.7349 C 61.4972 67.8838 61.0549 67.9871 60.5009 68.045 L 60.4389 67.7969 C 60.8523 67.7887 61.245 67.7267 61.6171 67.6109 C 61.4848 67.5365 61.3608 67.4331 61.245 67.3009 C 61.0962 67.4083 60.8812 67.4993 60.6001 67.5737 L 60.5133 67.3629 C 60.9019 67.2802 61.1872 67.1231 61.3691 66.8916 C 61.2616 66.8833 61.2078 66.8254 61.2078 66.7179 L 61.2078 66.2963 L 61.4063 66.2963 C 61.4807 66.2963 61.4848 66.3211 61.4187 66.3707 L 61.4187 66.6063 C 61.4187 66.6642 61.4476 66.6931 61.5055 66.6931 L 62.0884 66.6931 C 62.1215 66.6931 62.138 66.6766 62.138 66.6435 L 62.1504 66.4823 L 62.3613 66.5319 L 62.3489 66.7303 C 62.3406 66.8378 62.2703 66.8916 62.138 66.8916 L 61.6295 66.8916 C 61.6047 66.9412 61.5675 66.9908 61.5179 67.0404 L 62.4109 67.0404 L 62.4605 67.0032 L 62.6589 67.152 L 62.5845 67.2016 C 62.4274 67.3587 62.2579 67.491 62.076 67.5985 C 62.3654 67.6977 62.7251 67.7473 63.155 67.7473 L 63.0434 68.0202 C 62.5225 67.9788 62.1173 67.8838 61.828 67.7349 Z M 62.6837 65.5025 C 61.89 65.5687 61.2037 65.6141 60.6249 65.6389 L 60.5505 65.4281 C 61.336 65.395 62.0264 65.3413 62.6217 65.2669 L 62.7705 65.4529 C 62.8201 65.5108 62.7912 65.5273 62.6837 65.5025 Z M 62.7333 66.8544 C 62.6093 66.6807 62.4894 66.5443 62.3737 66.4451 L 62.5597 66.3211 C 62.6589 66.3955 62.7912 66.5278 62.9566 66.7179 Z M 61.7411 66.6063 C 61.675 66.474 61.6171 66.3831 61.5675 66.3335 L 61.7783 66.2467 C 61.8445 66.3128 61.9106 66.3955 61.9768 66.4947 Z M 61.0094 65.9862 C 60.9681 65.9118 60.9102 65.8374 60.8358 65.763 L 61.0962 65.6762 C 61.1706 65.7506 61.2326 65.825 61.2823 65.8994 Z M 62.8325 66.5319 L 62.8325 66.2095 L 60.6373 66.2095 L 60.6373 66.5691 L 60.3893 66.5691 L 60.3893 66.011 L 62.1504 66.011 C 62.2331 65.9035 62.3116 65.7547 62.3861 65.5645 L 62.6217 65.6637 C 62.7044 65.6968 62.6961 65.7258 62.5969 65.7506 C 62.539 65.8415 62.477 65.9283 62.4109 66.011 L 63.0806 66.011 L 63.0806 66.5319 Z M 61.8404 67.5117 C 61.9975 67.429 62.1339 67.3381 62.2496 67.2388 L 61.4311 67.2388 C 61.5551 67.3629 61.6915 67.4538 61.8404 67.5117 Z M 61.6791 65.9738 C 61.613 65.8581 61.551 65.7712 61.4931 65.7134 L 61.7535 65.6389 C 61.8362 65.7216 61.9024 65.8043 61.952 65.887 Z M 61.0838 66.4823 C 61.1252 66.5236 61.1086 66.5484 61.0342 66.5567 C 60.9681 66.689 60.8854 66.8172 60.7862 66.9412 L 60.5877 66.8048 C 60.7117 66.6725 60.8068 66.5319 60.873 66.3831 Z"
                     id="path1345" />
@@ -709,14 +552,10 @@
                     id="path1349" />
             </g>
         </g>
-        <g inkscape:groupmode="layer" id="layer4" inkscape:label="grand" style="display:inline"
-            @click="showProperty('grand')" :class="{ 'selected': props.selectedID == 'grand' }">
-            <path id="rect1771"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.5"
-                d="M 13.6371 142.359 L 88.9217 142.359 L 88.9217 251.232 L 13.6371 251.232 Z" />
-            <g aria-label="校庭" id="text2564"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:28px;line-height:1.4;opacity:1;paint-order:stroke fill markers;shape-inside:url(#rect2566);stop-color:#000000;stroke-width:0.49999837008000003;text-orientation:upright;white-space:pre"
-                class="svg-text">
+        <g inkscape:groupmode="layer" id="layer4" inkscape:label="grand" @click="showProperty('grand')"
+            :class="{ 'selected': props.selectedID == 'grand' }" class="svg-object">
+            <path id="rect1771" d="M 13.6371 142.359 L 88.9217 142.359 L 88.9217 251.232 L 13.6371 251.232 Z" />
+            <g aria-label="校庭" id="text2564" class="svg-text">
                 <path
                     d="M 45.99 200.123 L 45.4112 200.123 L 45.4112 196.969 C 45.2376 197.413 44.9771 197.866 44.6298 198.329 L 44.2247 197.808 C 44.8421 197.036 45.2279 196.245 45.3822 195.435 L 44.3694 195.435 L 44.3694 194.885 L 45.4112 194.885 L 45.4112 193.467 L 45.961 193.467 C 46.1154 193.487 46.125 193.544 45.99 193.641 L 45.99 194.885 L 46.7424 194.885 L 46.7424 195.435 L 45.99 195.435 L 45.99 196.448 C 46.453 196.776 46.7906 197.075 47.0028 197.345 L 46.5977 197.895 C 46.4047 197.625 46.2022 197.374 45.99 197.142 Z M 48.826 198.85 C 48.4787 199.255 47.8035 199.689 46.8002 200.152 L 46.5398 199.515 C 47.3694 199.207 47.9964 198.84 48.4208 198.416 C 48.17 198.088 47.9192 197.702 47.6684 197.258 L 48.1314 196.94 C 48.3822 197.384 48.5944 197.712 48.7681 197.924 C 48.8838 197.789 49.0671 197.384 49.3179 196.708 L 49.9256 197.027 C 50.0414 197.085 50.0028 197.142 49.8099 197.2 C 49.6362 197.625 49.424 198.011 49.1732 198.358 C 49.5784 198.686 50.1861 199.014 50.9964 199.342 L 50.6491 199.978 C 49.7616 199.573 49.1539 199.197 48.826 198.85 Z M 48.5076 196.014 C 48.662 196.13 48.6234 196.178 48.3919 196.159 C 48.0832 196.467 47.6588 196.786 47.1186 197.114 L 46.7424 196.564 C 47.244 196.332 47.6877 196.004 48.0736 195.58 Z M 47.1475 195.233 L 47.1475 194.683 L 48.5366 194.683 L 48.5366 193.467 L 49.0864 193.467 C 49.2407 193.487 49.2504 193.544 49.1153 193.641 L 49.1153 194.683 L 50.7649 194.683 L 50.7649 195.233 Z M 49.5205 195.522 C 50.1379 195.869 50.5912 196.178 50.8806 196.448 L 50.4755 196.969 C 50.1668 196.679 49.7424 196.371 49.2022 196.043 Z"
                     id="path1353" />
@@ -726,13 +565,10 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer3" inkscape:label="students_entrance"
-            @click="showProperty('students_entrance')" :class="{ 'selected': props.selectedID == 'students_entrance' }">
-            <path id="rect3466"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 20.3428 111.605 L 46.059 111.605 L 46.059 120.056 L 20.3428 120.056 Z" />
-            <g aria-label="昇降口" id="text5816-2-3"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:12px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-0-9);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            @click="showProperty('students_entrance')" :class="{ 'selected': props.selectedID == 'students_entrance' }"
+            class="svg-object">
+            <path id="rect3466" d="M 20.3428 111.605 L 46.059 111.605 L 46.059 120.056 L 20.3428 120.056 Z" />
+            <g aria-label="昇降口" id="text5816-2-3" class="svg-text">
                 <path
                     d="M 30.8506 116.277 L 31.5823 116.277 L 31.5823 116.475 L 30.8506 116.475 L 30.8506 117.256 L 30.6025 117.256 L 30.6025 116.475 L 29.8832 116.475 C 29.8749 116.921 29.5483 117.182 28.9034 117.256 L 28.829 117.008 C 29.3664 116.959 29.6351 116.781 29.6351 116.475 L 28.8414 116.475 L 28.8414 116.277 L 29.6475 116.277 L 29.6475 116.028 C 29.4574 116.053 29.2631 116.07 29.0646 116.078 L 29.0274 115.855 C 29.4739 115.838 29.8914 115.78 30.28 115.681 L 30.4165 115.917 C 30.433 115.958 30.4041 115.966 30.3297 115.942 C 30.1891 115.966 30.0444 115.987 29.8956 116.004 L 29.8956 116.277 L 30.6025 116.277 L 30.6025 115.718 L 30.8382 115.718 C 30.9043 115.727 30.9084 115.751 30.8506 115.793 Z M 29.3871 114.714 L 29.3871 114.949 L 30.9498 114.949 L 30.9498 114.714 Z M 29.3871 115.396 L 30.9498 115.396 L 30.9498 115.148 L 29.3871 115.148 Z M 29.139 114.515 L 31.1978 114.515 L 31.1978 115.594 L 29.139 115.594 Z"
                     id="path1359" />
@@ -745,13 +581,10 @@
             </g>
         </g>
         <g inkscape:groupmode="layer" id="layer35" inkscape:label="teachers_entrance"
-            @click="showProperty('teachers_entrance')" :class="{ 'selected': props.selectedID == 'teachers_entrance' }">
-            <path id="rect3712"
-                style="fill:#999999;opacity:1;paint-order:stroke fill markers;stop-color:#000000;stroke:#000000;stroke-width:0.499999"
-                d="M 48.7835 79.0393 L 72.4637 79.0393 L 72.4637 84.8819 L 48.7835 84.8819 Z" />
-            <g aria-label="昇降口" id="text5816-2-3-7"
-                style="-inkscape-font-specification:'Noto Sans';display:inline;font-family:'Noto Sans';font-size:12px;line-height:1.4;paint-order:stroke fill markers;shape-inside:url(#rect5818-0-9-8);stop-color:#000000;stroke-width:0.49999837008000003;text-align:center;text-orientation:upright;white-space:pre"
-                class="svg-text">
+            @click="showProperty('teachers_entrance')" :class="{ 'selected': props.selectedID == 'teachers_entrance' }"
+            class="svg-object">
+            <path id="rect3712" d="M 48.7835 79.0393 L 72.4637 79.0393 L 72.4637 84.8819 L 48.7835 84.8819 Z" />
+            <g aria-label="昇降口" id="text5816-2-3-7" class="svg-text">
                 <path
                     d="M 58.2733 82.4069 L 59.005 82.4069 L 59.005 82.6054 L 58.2733 82.6054 L 58.2733 83.3867 L 58.0252 83.3867 L 58.0252 82.6054 L 57.3059 82.6054 C 57.2976 83.0518 56.971 83.3123 56.3261 83.3867 L 56.2517 83.1387 C 56.7891 83.089 57.0578 82.9113 57.0578 82.6054 L 56.2641 82.6054 L 56.2641 82.4069 L 57.0702 82.4069 L 57.0702 82.1589 C 56.8801 82.1837 56.6858 82.2002 56.4873 82.2085 L 56.4501 81.9852 C 56.8966 81.9687 57.3141 81.9108 57.7027 81.8116 L 57.8392 82.0473 C 57.8557 82.0886 57.8268 82.0969 57.7524 82.072 C 57.6118 82.0968 57.4671 82.1175 57.3183 82.1341 L 57.3183 82.4069 L 58.0252 82.4069 L 58.0252 81.8488 L 58.2609 81.8488 C 58.327 81.8571 58.3311 81.8819 58.2733 81.9232 Z M 56.8098 80.8442 L 56.8098 81.0799 L 58.3725 81.0799 L 58.3725 80.8442 Z M 56.8098 81.5264 L 58.3725 81.5264 L 58.3725 81.2783 L 56.8098 81.2783 Z M 56.5617 80.6458 L 58.6205 80.6458 L 58.6205 81.7248 L 56.5617 81.7248 Z"
                     id="path1367" />
