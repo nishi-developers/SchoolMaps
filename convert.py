@@ -9,19 +9,24 @@ inkscapeのSVGファイルを読み込んで、クリックイベントを追加
 import xml.etree.ElementTree as ET
 import copy
 import os
-import re
+
+PlaceInfoLabels = []
 
 # ファイルのパス
 
 InputFilePath = input("InputFilePath: ")
 if InputFilePath == "":
-    InputFilePath = "C://Users//M_Haruki//Projects//WEB//SchoolMap//MapData//2024-06-07//1F-path.svg"
+    InputFilePath = "map.svg"
 
 TempFile = "temp-output.svg"
 
 OutputFilePath = input("OutputFilePath: ")
 if OutputFilePath == "":
     OutputFilePath = "map-output.vue"
+
+PlaceInfoFilePath = input("PlaceInfoFilePath: ")
+if PlaceInfoFilePath == "":
+    PlaceInfoFilePath = "place-info.json"
 
 tree = ET.parse(InputFilePath)
 root = tree.getroot()
@@ -68,7 +73,7 @@ def convert(content):
                 [(":class", "{ 'selected': props.selectedID == '" + label + "' }")]
             )
             content.attrib.update([("class", "svg-object")])
-
+            PlaceInfoLabels.append(label)
     # 全style属性を削除
     try:
         del content.attrib["style"]
@@ -138,3 +143,19 @@ with open(OutputFilePath, mode="w", encoding="utf-8") as f:
     f.write("<template>\n" + file + "\n</template>" + VUE)
 # tempファイルを削除
 os.remove(TempFile)
+
+PlaceInfo = """
+    {
+        "__FloorName__": "",
+        "__FloorDisplayName__": "",
+        "__MapSizeWidth__": ,
+        "__MapSizeHeight__": ,
+    """
+for i in PlaceInfoLabels:
+    PlaceInfo += '"' + i + '": {"name": "' + i + '", "description": ""},\n'
+
+PlaceInfo += "}"
+
+# ファイルに書き出し
+with open(PlaceInfoFilePath, mode="w", encoding="utf-8") as f:
+    f.write(PlaceInfo)
