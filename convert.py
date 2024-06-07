@@ -12,13 +12,18 @@ import os
 import re
 
 # ファイルのパス
-InputFile = (
-    "C://Users//M_Haruki//Projects//WEB//SchoolMap//MapData//2024-05-10//1F-path.svg"
-)
-TempFile = "temp-output.svg"
-OutputFile = "map-output.vue"
 
-tree = ET.parse(InputFile)
+InputFilePath = input("InputFilePath: ")
+if InputFilePath == "":
+    InputFilePath = "C://Users//M_Haruki//Projects//WEB//SchoolMap//MapData//2024-06-07//1F-path.svg"
+
+TempFile = "temp-output.svg"
+
+OutputFilePath = input("OutputFilePath: ")
+if OutputFilePath == "":
+    OutputFilePath = "map-output.vue"
+
+tree = ET.parse(InputFilePath)
 root = tree.getroot()
 
 ET.register_namespace("", "http://www.w3.org/2000/svg")
@@ -53,7 +58,7 @@ def convert(content):
         if (id != None and (("text" in id))) or (label != None and (("text" in label))):
             content.attrib.update([("class", "svg-text")])
         # "floor"がidに含まれていれば、廊下などとしてクラスを追加
-        elif id != None and (("floor" in id)):
+        elif id != None and (("floor" in label)):
             content.attrib.update([("class", "svg-floor")])
         # それ以外の場合、オブジェクトとしてクリックイベントを追加
         elif label != None:
@@ -129,7 +134,7 @@ function showProperty(id) {
 </script>"""
 
 # ファイルに書き出し
-with open(OutputFile, mode="w", encoding="utf-8") as f:
+with open(OutputFilePath, mode="w", encoding="utf-8") as f:
     f.write("<template>\n" + file + "\n</template>" + VUE)
 # tempファイルを削除
 os.remove(TempFile)
