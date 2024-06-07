@@ -22,7 +22,7 @@
             <li>バーをダブルタップで最大化・最小化</li>
         </ul>
         <p class="textH">検索画面</p>
-        <p>スペースで区切ることでOR検索が可能</p>
+        <p class="textP">スペースで区切ることでOR検索が可能</p>
         <table id="search">
             <thead>
                 <tr>
