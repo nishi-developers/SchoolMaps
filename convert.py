@@ -7,13 +7,16 @@ inkscapeのSVGファイルを読み込んで、クリックイベントを追加
 """
 
 import xml.etree.ElementTree as ET
+import copy
 import os
+import re
 
+# ファイルのパス
 InputFile = (
     "C://Users//M_Haruki//Projects//WEB//SchoolMap//MapData//2024-05-10//1F-path.svg"
 )
-# TempFile = "temp-output.svg"
-OutputFile = "map-output.svg"
+TempFile = "temp-output.svg"
+OutputFile = "map-output.vue"
 
 tree = ET.parse(InputFile)
 root = tree.getroot()
@@ -23,61 +26,110 @@ ET.register_namespace("sodipodi", "http://sodipodi.sourceforge.net/DTD/sodipodi-
 ET.register_namespace("inkscape", "http://www.inkscape.org/namespaces/inkscape")
 
 
-# svgのidを変更
-# root.attrib.update([("id", "map_svg")])
-
-
 def convert(content):
-    isLabel = True
-    isId = True
-    textFlag = False
+    """
+    id : inkscapeが自動的に付与する固有のid
+    label : inkscapeのオブジェクトにユーザーが付与した名称
+    """
+    # 属性を取得
+    # label属性を取得
     try:
-        # print(content.tag)
         label = content.attrib["{http://www.inkscape.org/namespaces/inkscape}label"]
     except KeyError:
-        isLabel = False
+        label = None
+    # id属性を取得
     try:
         id = content.attrib["id"]
     except KeyError:
-        isId = False
-    if isId:
-        if (content.tag == "{http://www.w3.org/2000/svg}g") and (("text" in id)):
-            textFlag = True
+        id = None
+
+    # 加工
+    if (
+        not ((label != None) and "none" in label)
+    ) and (  # noneがlabelに含まれていないか
+        content.tag == "{http://www.w3.org/2000/svg}g"  # グループかどうか
+    ):
+        # "text"がラベルかidに含まれて入れば、テキストとしてクラスを追加
+        if (id != None and (("text" in id))) or (label != None and (("text" in label))):
             content.attrib.update([("class", "svg-text")])
-            print("text")
-    if isLabel:
-        if (content.tag == "{http://www.w3.org/2000/svg}g") and (
-            not ("none" in label) and not textFlag
-        ):
-            print(label)
+        # "floor"がidに含まれていれば、廊下などとしてクラスを追加
+        elif id != None and (("floor" in id)):
+            content.attrib.update([("class", "svg-floor")])
+        # それ以外の場合、オブジェクトとしてクリックイベントを追加
+        elif label != None:
+            # print(label)
             content.attrib.update([("@click", f"showProperty('{label}')")])
             content.attrib.update(
                 [(":class", "{ 'selected': props.selectedID == '" + label + "' }")]
             )
             content.attrib.update([("class", "svg-object")])
+
     # 全style属性を削除
     try:
         del content.attrib["style"]
     except KeyError:
         pass
+
+    # inkscape固有の属性を削除(inkscapeとsodipodiの属性を削除)
+    content_attrib_sub = copy.deepcopy(content.attrib)
+    for i in content_attrib_sub:
+        if (
+            ("{http://www.inkscape.org/namespaces/inkscape}" in i)
+            or ("{http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd}" in i)
+            or ("sodipodi" in i)
+            or ("inkscape" in i)
+        ):
+            del content.attrib[i]
+
+    # return
     return content
 
 
+# 3階層までの要素を変換
 for child in root:
     child = convert(child)
     for child2 in child:
         child2 = convert(child2)
         for child3 in child2:
             child3 = convert(child3)
+
+
+# tempファイルに書き出し
 tree.write(
-    OutputFile,
+    TempFile,
     encoding="utf-8",
     xml_declaration=False,
 )
 
-# with open(TempFile, encoding="utf-8") as f:
-#     file = f.read()
-# with open(OutputFile, mode="w", encoding="utf-8") as f:
-#     f.write("<template>\n" + file + "\n</template>")
+# tempファイルを読み込み
+with open(TempFile, encoding="utf-8") as f:
+    file = f.read()
 
-# os.remove(TempFile)
+# いい感じに不要な情報を削除(inkscapeとsodipodi)
+editfile = list(map(lambda x: x + ">", file.split(">")))
+editfile2 = list(map(lambda x: x + '" ', editfile[0].split('" ')))
+editfile2_ = []
+for i in editfile2:
+    if (not ("inkscape" in i)) and (not ("sodipodi" in i)):
+        editfile2_.append(i)
+editfile[0] = "".join(editfile2_) + ">"
+if "sodipodi" in editfile[1]:
+    editfile.pop(1)
+file = "".join(editfile)
+file = file.replace(">>", ">")
+
+
+VUE = """
+<script setup>
+const props = defineProps(["selectedID"])
+const emit = defineEmits(["showProperty"])
+function showProperty(id) {
+    emit('showProperty', id)
+}
+</script>"""
+
+# ファイルに書き出し
+with open(OutputFile, mode="w", encoding="utf-8") as f:
+    f.write("<template>\n" + file + "\n</template>" + VUE)
+# tempファイルを削除
+os.remove(TempFile)
