@@ -144,6 +144,7 @@ with open(OutputFilePath, mode="w", encoding="utf-8") as f:
 # tempファイルを削除
 os.remove(TempFile)
 
+# PlaceInfoの作成
 PlaceInfo = """
     {
         "__FloorName__": "",
@@ -153,7 +154,6 @@ PlaceInfo = """
     """
 for i in PlaceInfoLabels:
     PlaceInfo += '"' + i + '": {"name": "' + i + '", "description": ""},\n'
-
 PlaceInfo += "}"
 
 # ファイルに書き出し
