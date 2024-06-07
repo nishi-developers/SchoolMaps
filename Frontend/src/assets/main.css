@@ -34,6 +34,7 @@
   --MapObjectColor: var(--SubBaseColor);
   --MapObjectSelectColor: var(--SubColor);
   --MapBorderColor: #242424;
+  background-color: var(--MainBaseColor);
 }
 /* ダークモード */
 @media (prefers-color-scheme: dark) {
