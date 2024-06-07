@@ -588,7 +588,7 @@ document.body.addEventListener('touchmove', (event) => {
 /* 廊下 */
 #map_content svg .svg-floor {
     /* 要検討 */
-    fill: #d8d8d8;
+    fill: #bbbbbb;
 }
 
 /* テキスト */
