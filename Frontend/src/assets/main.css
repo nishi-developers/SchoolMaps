@@ -28,6 +28,12 @@
   --MainBodyColor: #3d3d3d;
   --AccentBodyColor: #9400ff;
   --URLBodyColor: #935cb8;
+  /* マップ */
+  --MapBaseColor: #eeeeee;
+  --MapFloorClor: #bebebe;
+  --MapObjectColor: var(--SubBaseColor);
+  --MapObjectSelectColor: var(--SubColor);
+  --MapBorderColor: #242424;
 }
 /* ダークモード */
 @media (prefers-color-scheme: dark) {
@@ -42,6 +48,12 @@
     --MainBodyColor: #f3f3f3;
     --AccentBodyColor: #9400ff;
     --URLBodyColor: #935cb8;
+    /* マップ */
+    --MapBaseColor: #050505;
+    --MapFloorClor: #424242;
+    --MapObjectColor: var(--SubBaseColor);
+    --MapObjectSelectColor: var(--SubColor);
+    --MapBorderColor: #d6d6d6;
   }
 }
 

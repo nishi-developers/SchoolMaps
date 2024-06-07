@@ -559,8 +559,8 @@ document.body.addEventListener('touchmove', (event) => {
 /* マップのルート */
 #map_content svg {
     /* 要検討 */
-    fill: #8a7b7b;
-    stroke: #000000;
+    fill: var(--MapBaseColor);
+    stroke: var(--MapBorderColor);
     stroke-width: 1;
 }
 
@@ -570,25 +570,22 @@ document.body.addEventListener('touchmove', (event) => {
 }
 
 /* オブジェクト(部屋) */
-#map_content svg .svg-object {}
+/* #map_content svg .svg-object {} */
 
 /* 選択された */
 #map_content svg .svg-object.selected {
-    /* 要検討 */
-    fill: var(--AccentBodyColor);
+    fill: var(--MapObjectSelectColor);
 
 }
 
 /* 選択されていない */
 #map_content svg .svg-object:not(.selected) {
-    /* 要検討 */
-    fill: #d8d8d8;
+    fill: var(--MapObjectColor);
 }
 
 /* 廊下 */
 #map_content svg .svg-floor {
-    /* 要検討 */
-    fill: #bbbbbb;
+    fill: var(--MapFloorClor);
 }
 
 /* テキスト */
@@ -596,10 +593,7 @@ document.body.addEventListener('touchmove', (event) => {
     transform-origin: center center;
     transform-box: fill-box;
     transform: rotate(v-bind("- mapMove.map_Rotate.value + 'deg'"));
-    color: var(--MainBodyColor);
     font-size: 1rem;
-
-    /* 要検討 */
     fill: var(--MainBodyColor);
     stroke-width: 0;
 }
