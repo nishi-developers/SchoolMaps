@@ -525,6 +525,7 @@ class controlTouchClass {
         ]
     }
     touch(event, status) {
+        console.log(event.changedTouches.length);
         this.touchPosition(event)
         mouseORtouch = "touch"
         if (status === 'start') {
@@ -551,7 +552,7 @@ class controlTouchClass {
                 if (this.mode === "zoom") {
                     // すでにzoomモードになっている場合
                     // 指の間隔を計算して、前との差からズームレベルを変更
-                    this.diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
+                    this.diff = Math.sqrt((this.touch_place[0].x - this.touch_place[1].x) ** 2 + (this.touch_place[0].y - this.touch_place[1].y) ** 2)
                     if (mapMove.Zoom((this.diff - this.last_diff) * .005)) {
                         // 慣性の実装
                         if (mapSlide.zoom_lastMovedTime != 0) {
@@ -562,7 +563,7 @@ class controlTouchClass {
                         this.last_diff = this.diff //最終値を更新
                     }
                     // 2点を結ぶ直線の傾きを計算して、前との差から回転角度を変更
-                    this.rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
+                    this.rotate = (Math.atan2((this.touch_place[1].y - this.touch_place[0].y), (this.touch_place[1].x - this.touch_place[0].x))) * (180 / Math.PI)
                     this.rotated += Math.abs(this.rotate - this.last_rotate) //回転した合計量を記録
                     if (this.rotated > 10 && this.zoomed < 40) { //ズームをブロックする移動量(要調整)
                         // あまりズームせずに回転した場合は、指を離すまで回転を許可
@@ -575,8 +576,8 @@ class controlTouchClass {
                 } else {
                     //zoomモードになっていない場合の初期処理
                     this.mode = "zoom"
-                    this.last_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
-                    this.last_rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
+                    this.last_diff = Math.sqrt((this.touch_place[0].x - this.touch_place[1].x) ** 2 + (this.touch_place[0].y - this.touch_place[1].y) ** 2)
+                    this.last_rotate = (Math.atan2((this.touch_place[1].y - this.touch_place[0].y), (this.touch_place[1].x - this.touch_place[0].x))) * (180 / Math.PI)
                 }
             }
         }
