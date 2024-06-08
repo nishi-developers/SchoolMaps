@@ -472,7 +472,9 @@ class controlTouchClass {
         // this.touch_place_last = []
         // this.touch_finger = 0
     }
-
+    positionLength(x1, y1, x2, y2) {
+        return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+    }
     // タッチの位置を取得する関数
     // タッチの指が複数ある場合は、それぞれの位置を取得して平均を取る
     positionAverage(event) {
@@ -488,7 +490,7 @@ class controlTouchClass {
         ]
     }
     touch(event, status) {
-        console.log(event.changedTouches.length);
+        // console.log(event.changedTouches.length);
         mouseORtouch = "touch"
         if (status === 'start') {
             // タップし始めは、初期処理をあてるために値を変更
@@ -500,12 +502,13 @@ class controlTouchClass {
             this.acceptRotate = false
         } else if (status === 'doing') { // 指を動かしたときは、それぞれの処理を行う
             // タッチの本数にかかわらず、moveモード
-            // 本数が変わった場合は、初期位置を変更(初期処理)
-            if (this.last_finger != event.changedTouches.length) {
+            // 本数が変わった場合、もしくは距離が飛んだ場合は、初期位置を変更(初期処理)
+            [this.temp_x, this.temp_y] = this.positionAverage(event)
+            console.log(this.positionLength(this.last_x, this.last_y, this.temp_x, this.temp_y));
+            if (this.last_finger != event.changedTouches.length || this.positionLength(this.last_x, this.last_y, this.temp_x, this.temp_y) > 50) {
                 [this.last_x, this.last_y] = this.positionAverage(event) //押した位置を相対位置の基準にする
                 this.last_finger = event.changedTouches.length
             }
-            [this.temp_x, this.temp_y] = this.positionAverage(event)
             mapMove.PositionMove(this.temp_x - this.last_x, this.temp_y - this.last_y) // 位置をずらす
             this.last_x = this.temp_x //最終値を更新
             this.last_y = this.temp_y //最終値を更新
@@ -514,7 +517,8 @@ class controlTouchClass {
                 if (this.mode === "zoom") {
                     // すでにzoomモードになっている場合
                     // 指の間隔を計算して、前との差からズームレベルを変更
-                    this.diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
+                    this.diff = this.positionLength(event.changedTouches[0].clientX, event.changedTouches[0].clientY, event.changedTouches[1].clientX, event.changedTouches[1].clientY)
+                    // this.diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
                     if (mapMove.Zoom((this.diff - this.last_diff) * .005)) {
                         // 慣性の実装
                         if (mapSlide.zoom_lastMovedTime != 0) {
@@ -538,7 +542,8 @@ class controlTouchClass {
                 } else {
                     //zoomモードになっていない場合の初期処理
                     this.mode = "zoom"
-                    this.last_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
+                    this.last_diff = this.positionLength(event.changedTouches[0].clientX, event.changedTouches[0].clientY, event.changedTouches[1].clientX, event.changedTouches[1].clientY)
+                    // this.last_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
                     this.last_rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
                 }
             }
