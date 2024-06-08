@@ -467,6 +467,48 @@ class controlTouchClass {
         this.zoomed = 0
         this.rotated = 0
         this.acceptRotate = false
+        // タッチの位置
+        this.touch_place = []
+        this.touch_place_last = []
+        this.touch_finger = 0
+    }
+    positionLength(x1, y1, x2, y2) {
+        return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+    }
+    touchPosition(event) {
+        // タッチされた位置の順番を補正して、touch_placeに保存する関数
+        // 2本以上でタッチすると、0番目と1番目の指が逆になることがあるため、順番を補正する
+
+        // 本数が変わった場合は、初期処理
+        if (this.touch_finger != event.changedTouches.length) {
+            this.touch_place_last = []
+            for (var i = 0; i < event.changedTouches.length; i++) {
+                this.touch_place_last.push([0, 0])
+                this.touch_place.push([])
+            }
+            this.touch_finger = event.changedTouches.length
+        }
+        // 前回の位置との差を計算して、最近値をとった点を調べる
+        let min_num = 0
+        let min_len = null
+        let len = 0
+        for (var touchFingNum = 0; touchFingNum < event.changedTouches.length; touchFingNum++) {
+            min_num = 0
+            min_len = null
+            for (var lastFingNum = 0; lastFingNum < this.touch_place_last.length; lastFingNum++) {
+                if (this.touch_place_last[lastFingNum] != null) {
+                    len = this.positionLength(event.changedTouches[touchFingNum].clientX, event.changedTouches[touchFingNum].clientY, this.touch_place_last[lastFingNum][0], this.touch_place_last[lastFingNum][1])
+                    if (min_len === null || len < min_len) {
+                        min_num = lastFingNum
+                        min_len = len
+                    }
+                }
+            }
+            this.touch_place[min_num] = { x: event.changedTouches[touchFingNum].clientX, y: event.changedTouches[touchFingNum].clientY }
+            this.touch_place_last[min_num] = null
+        }
+        this.touch_place_last = JSON.parse(JSON.stringify(this.touch_place))
+        // console.log(this.touch_place);
     }
     // タッチの位置を取得する関数
     // タッチの指が複数ある場合は、それぞれの位置を取得して平均を取る
@@ -483,6 +525,7 @@ class controlTouchClass {
         ]
     }
     touch(event, status) {
+        this.touchPosition(event)
         mouseORtouch = "touch"
         if (status === 'start') {
             // タップし始めは、初期処理をあてるために値を変更
