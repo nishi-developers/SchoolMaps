@@ -491,7 +491,6 @@ class controlTouchClass {
         ]
     }
     touch(event, status) {
-        console.log(event.changedTouches.length);
         mouseORtouch = "touch"
         if (status === 'start') {
             // タップし始めは、初期処理をあてるために値を変更
