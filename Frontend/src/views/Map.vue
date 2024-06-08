@@ -472,6 +472,7 @@ class controlTouchClass {
         // this.touch_place_last = []
         // this.touch_finger = 0
     }
+    // 2点間の距離を計算する関数
     positionLength(x1, y1, x2, y2) {
         return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
     }
