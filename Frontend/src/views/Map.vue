@@ -467,6 +467,48 @@ class controlTouchClass {
         this.zoomed = 0
         this.rotated = 0
         this.acceptRotate = false
+        // タッチの位置
+        this.touch_place = []
+        this.touch_place_last = []
+        this.touch_finger = 0
+    }
+    positionLength(x1, y1, x2, y2) {
+        return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+    }
+    touchPosition(event) {
+        // タッチされた位置の順番を補正して、touch_placeに保存する関数
+        // 2本以上でタッチすると、0番目と1番目の指が逆になることがあるため、順番を補正する
+
+        // 本数が変わった場合は、初期処理
+        if (this.touch_finger != event.changedTouches.length) {
+            this.touch_place_last = []
+            for (var i = 0; i < event.changedTouches.length; i++) {
+                this.touch_place_last.push([0, 0])
+                this.touch_place.push([])
+            }
+            this.touch_finger = event.changedTouches.length
+        }
+        // 前回の位置との差を計算して、最近値をとった点を調べる
+        let min_num = 0
+        let min_len = null
+        let len = 0
+        for (var touchFingNum = 0; touchFingNum < event.changedTouches.length; touchFingNum++) {
+            min_num = 0
+            min_len = null
+            for (var lastFingNum = 0; lastFingNum < this.touch_place_last.length; lastFingNum++) {
+                if (this.touch_place_last[lastFingNum] != null) {
+                    len = this.positionLength(event.changedTouches[touchFingNum].clientX, event.changedTouches[touchFingNum].clientY, this.touch_place_last[lastFingNum][0], this.touch_place_last[lastFingNum][1])
+                    if (min_len === null || len < min_len) {
+                        min_num = lastFingNum
+                        min_len = len
+                    }
+                }
+            }
+            this.touch_place[min_num] = { x: event.changedTouches[touchFingNum].clientX, y: event.changedTouches[touchFingNum].clientY }
+            this.touch_place_last[min_num] = null
+        }
+        this.touch_place_last = JSON.parse(JSON.stringify(this.touch_place))
+        // console.log(this.touch_place);
     }
     // タッチの位置を取得する関数
     // タッチの指が複数ある場合は、それぞれの位置を取得して平均を取る
@@ -483,6 +525,8 @@ class controlTouchClass {
         ]
     }
     touch(event, status) {
+        console.log(event.changedTouches.length);
+        this.touchPosition(event)
         mouseORtouch = "touch"
         if (status === 'start') {
             // タップし始めは、初期処理をあてるために値を変更
@@ -508,7 +552,7 @@ class controlTouchClass {
                 if (this.mode === "zoom") {
                     // すでにzoomモードになっている場合
                     // 指の間隔を計算して、前との差からズームレベルを変更
-                    this.diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
+                    this.diff = Math.sqrt((this.touch_place[0].x - this.touch_place[1].x) ** 2 + (this.touch_place[0].y - this.touch_place[1].y) ** 2)
                     if (mapMove.Zoom((this.diff - this.last_diff) * .005)) {
                         // 慣性の実装
                         if (mapSlide.zoom_lastMovedTime != 0) {
@@ -519,7 +563,7 @@ class controlTouchClass {
                         this.last_diff = this.diff //最終値を更新
                     }
                     // 2点を結ぶ直線の傾きを計算して、前との差から回転角度を変更
-                    this.rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
+                    this.rotate = (Math.atan2((this.touch_place[1].y - this.touch_place[0].y), (this.touch_place[1].x - this.touch_place[0].x))) * (180 / Math.PI)
                     this.rotated += Math.abs(this.rotate - this.last_rotate) //回転した合計量を記録
                     if (this.rotated > 10 && this.zoomed < 40) { //ズームをブロックする移動量(要調整)
                         // あまりズームせずに回転した場合は、指を離すまで回転を許可
@@ -532,8 +576,8 @@ class controlTouchClass {
                 } else {
                     //zoomモードになっていない場合の初期処理
                     this.mode = "zoom"
-                    this.last_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
-                    this.last_rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
+                    this.last_diff = Math.sqrt((this.touch_place[0].x - this.touch_place[1].x) ** 2 + (this.touch_place[0].y - this.touch_place[1].y) ** 2)
+                    this.last_rotate = (Math.atan2((this.touch_place[1].y - this.touch_place[0].y), (this.touch_place[1].x - this.touch_place[0].x))) * (180 / Math.PI)
                 }
             }
         }
