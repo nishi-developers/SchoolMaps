@@ -490,7 +490,7 @@ class controlTouchClass {
         ]
     }
     touch(event, status) {
-        // console.log(event.changedTouches.length);
+        console.log(event.changedTouches.length);
         mouseORtouch = "touch"
         if (status === 'start') {
             // タップし始めは、初期処理をあてるために値を変更
@@ -504,7 +504,6 @@ class controlTouchClass {
             // タッチの本数にかかわらず、moveモード
             // 本数が変わった場合、もしくは距離が飛んだ場合は、初期位置を変更(初期処理)
             [this.temp_x, this.temp_y] = this.positionAverage(event)
-            console.log(this.positionLength(this.last_x, this.last_y, this.temp_x, this.temp_y));
             if (this.last_finger != event.changedTouches.length || this.positionLength(this.last_x, this.last_y, this.temp_x, this.temp_y) > 50) {
                 [this.last_x, this.last_y] = this.positionAverage(event) //押した位置を相対位置の基準にする
                 this.last_finger = event.changedTouches.length
