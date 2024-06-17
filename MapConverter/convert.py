@@ -12,21 +12,25 @@ import os
 
 PlaceInfoLabels = []
 
-# ファイルのパス
+# ファイルのパスを取得
 
-InputFilePath = input("InputFilePath: ")
+InputFilePath = input("InputFilePath(svg): ")
 if InputFilePath == "":
     InputFilePath = "map.svg"
 
-TempFile = "temp-output.svg"
+TemplateFilePath = input("TemplateFilePath(vue): ")
+if TemplateFilePath == "":
+    TemplateFilePath = "template.vue"
 
-OutputFilePath = input("OutputFilePath: ")
+OutputFilePath = input("OutputFilePath(vue): ")
 if OutputFilePath == "":
-    OutputFilePath = "map-output.vue"
+    OutputFilePath = "out/map-output.vue"
 
-PlaceInfoFilePath = input("PlaceInfoFilePath: ")
+PlaceInfoFilePath = input("PlaceInfoFilePath(json): ")
 if PlaceInfoFilePath == "":
-    PlaceInfoFilePath = "place-info.json"
+    PlaceInfoFilePath = "out/place-info.json"
+
+# SVGファイルを読み込み
 
 tree = ET.parse(InputFilePath)
 root = tree.getroot()
@@ -36,6 +40,7 @@ ET.register_namespace("sodipodi", "http://sodipodi.sourceforge.net/DTD/sodipodi-
 ET.register_namespace("inkscape", "http://www.inkscape.org/namespaces/inkscape")
 
 
+# 変換用の関数
 def convert(content):
     """
     id : inkscapeが自動的に付与する固有のid
@@ -91,7 +96,6 @@ def convert(content):
         ):
             del content.attrib[i]
 
-    # return
     return content
 
 
@@ -103,17 +107,8 @@ for child in root:
         for child3 in child2:
             child3 = convert(child3)
 
-
-# tempファイルに書き出し
-tree.write(
-    TempFile,
-    encoding="utf-8",
-    xml_declaration=False,
-)
-
-# tempファイルを読み込み
-with open(TempFile, encoding="utf-8") as f:
-    file = f.read()
+# 文字列に変換
+file = ET.tostring(root, encoding="utf-8", xml_declaration=False).decode("utf-8")
 
 # いい感じに不要な情報を削除(inkscapeとsodipodi)
 editfile = list(map(lambda x: x + ">", file.split(">")))
@@ -129,20 +124,17 @@ file = "".join(editfile)
 file = file.replace(">>", ">")
 
 
-VUE = """
-<script setup>
-const props = defineProps(["selectedID"])
-const emit = defineEmits(["showProperty"])
-function showProperty(id) {
-    emit('showProperty', id)
-}
-</script>"""
+# テンプレートファイルを読み出し
+with open("template.vue", encoding="utf-8") as f:
+    TEMPLATE = f.read()
 
 # ファイルに書き出し
 with open(OutputFilePath, mode="w", encoding="utf-8") as f:
-    f.write("<template>\n" + file + "\n</template>" + VUE)
-# tempファイルを削除
-os.remove(TempFile)
+    f.write(
+        TEMPLATE.replace(
+            "<template></template>", "<template>\n" + file + "\n</template>"
+        )
+    )
 
 # PlaceInfoの作成
 PlaceInfo = """

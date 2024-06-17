@@ -35,8 +35,27 @@
 
 ### コンバート
 
-convert.pyを実行して、vue形式に変換する
-この際に不要な要素は削除されるが、svgには個人情報が含まれ兼ねないので、目を通すこと
+[convert.py](MapConverter\convert.py)を実行して、利用可能なvue形式に変換する
+この際に不要な要素は削除されるが、svgには個人情報が含まる場合があるので、目を通すこと
+
+#### InputFilePath
+
+入力するマップデータのsvgファイルパス
+
+#### TemplateFilePath
+
+テンプレートになるVueファイルのパス
+指定するファイルの`<template></template>`の部分がエクスポート用のSVGに変換される
+
+#### OutputFilePath
+
+出力するマップデータのvueのファイルパス
+ファイル名を直せば、そのまま使える
+
+#### PlaceInfoFilePath
+
+出力するデータ入力用のJSONファイルのパス
+このデータを改変、入力して用いる
 
 ### データの書き込み
 
