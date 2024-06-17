@@ -46,27 +46,27 @@
             ]
         },
         "audiovisual_hall": {
-            "name": "audiovisual_hall",
+            "name": "視聴覚ホール",
             "description": ""
         },
         "nishi_hall": {
-            "name": "nishi_hall",
+            "name": "西高会館",
             "description": ""
         },
         "WC": {
-            "name": "WC",
+            "name": "トイレ",
             "description": ""
         },
         "pool": {
-            "name": "pool",
+            "name": "プール",
             "description": ""
         },
         "gym": {
-            "name": "gym",
+            "name": "体育館",
             "description": ""
         },
         "martial_arts_field": {
-            "name": "martial_arts_field",
+            "name": "武道場",
             "description": ""
         },
         "tennis": {
