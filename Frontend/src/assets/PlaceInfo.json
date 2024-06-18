@@ -78,56 +78,56 @@
             "description": ""
         },
         "the_student_council_room": {
-            "name": "the_student_council_room",
+            "name": "生徒会室",
             "description": ""
         },
         "janitorial_room": {
-            "name": "janitorial_room",
+            "name": "用務室",
             "description": ""
         },
         "corporate_planning_office": {
-            "name": "corporate_planning_office",
+            "name": "経営企画室",
             "description": ""
         },
         "principals_office": {
-            "name": "principals_office",
+            "name": "校長室",
             "description": ""
         },
         "health_room": {
-            "name": "health_room",
+            "name": "保健室",
             "description": ""
         },
         "japanese_style_room": {
-            "name": "japanese_style_room",
+            "name": "和室",
             "description": ""
         },
         "home_economics_room": {
-            "name": "home_economics_room",
+            "name": "家庭科教室",
             "description": ""
         },
         "food_class": {
-            "name": "food_class",
+            "name": "食物教室",
             "description": ""
         },
         "pc_room": {
-            "name": "pc_room",
+            "name": "PC室",
             "description": ""
         },
         "ll_room": {
-            "name": "ll_room",
+            "name": "LL室",
             "description": ""
         },
         "fountain": {
-            "name": "fountain",
+            "name": "愛の泉",
             "description": ""
         },
         "students_entrance": {
-            "name": "students_entrance",
-            "description": ""
+            "name": "昇降口",
+            "description": "生徒用"
         },
         "teachers_entrance": {
-            "name": "teachers_entrance",
-            "description": ""
+            "name": "昇降口",
+            "description": "教員用"
         }
     },
     {
