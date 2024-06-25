@@ -112,6 +112,42 @@ export default defineConfig({
         ],
         start_url: './index.html',
         theme_color: '#bee0ff'
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,txt,png,svg,json}'],
+        runtimeCaching: [
+          // フォントのキャッシュはランタイムキャッシュで設定
+          // キャッシュの種類:https://kawadev.net/vue-pwa-cache/
+          // https://vite-pwa-org.netlify.app/workbox/generate-sw.html#background-sync
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'gstatic-fonts-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          }
+        ]
       }
     })
   ],
