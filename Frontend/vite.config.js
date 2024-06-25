@@ -9,16 +9,16 @@ export default defineConfig({
     vue(),
     VitePWA({
       registerType: 'autoUpdate',
-      injectregister:"script",
+      injectregister: 'script',
       devOptions: {
         enabled: true
       },
       manifest: {
-        name: '西高Map',
-        theme_color: '#bee0ff',
+        // https://developer.mozilla.org/en-US/docs/Web/Manifest
         background_color: '#f3f9ff',
+        categories: ['education', 'navigation', 'utilities'],
+        description: '東京都立西高等学校の非公式マップ',
         display: 'standalone',
-        start_url: './index.html',
         icons: [
           {
             src: 'favicon.ico',
@@ -93,7 +93,25 @@ export default defineConfig({
             src: 'img/icons/safari-pinned-tab.svg',
             sizes: '11x16'
           }
-        ]
+        ],
+        name: '西高Map',
+        short_name: '西高Map',
+        shortcuts: [
+          {
+            name: '使い方',
+            url: '/guide'
+          },
+          {
+            name: 'このサイトについて',
+            url: '/about'
+          },
+          {
+            name: '検索',
+            url: '/search'
+          }
+        ],
+        start_url: './index.html',
+        theme_color: '#bee0ff'
       }
     })
   ],
