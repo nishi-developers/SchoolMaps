@@ -8,6 +8,7 @@ const route = useRoute()
 const router = useRouter()
 
 const selectedId = ref("")
+const isShowWrapper = ref(true)
 
 class propertyClass {
     // ドラッグなどとクリックを判別する
@@ -19,7 +20,7 @@ class propertyClass {
         this.isDubleClick = false
         this.isShowProperty = ref(false)
     }
-    show(id) {
+    show(mouseEvent) {
         // setTimeoutのコールバック関数内でthisを使用するとthisはグローバルオブジェクトを指すため、thisを使う代わりにクラスのプロパティを使う
         // クリックされたときに、フラグが立っていたら
         // let isClick_ = this.isClick
@@ -30,26 +31,37 @@ class propertyClass {
             // ダブルクリックと判定されるまでの時間を遅らせる
             setTimeout(() => {
                 if (!property.isDubleClick) {
-                    // 存在する場所かどうかをチェック
-                    if (Object.keys(PlaceInfo[CurrentFloor.value]).includes(id)) {
-                        event(`open{${CurrentFloor.value}/${id}}`)
-                        point_PlaceId.value = id
-                        if (property.isShowProperty.value) {
-                            // すでに表示されている場合は、一旦閉じてから開く
-                            property.hide(true)
-                            setTimeout(() => {
-                                property.isShowProperty.value = true
-                            }, 50);
-                        } else {
-                            // 表示されていない場合は、即時表示
-                            property.isShowProperty.value = true
+                    // idを取得
+                    isShowWrapper.value = false
+                    setTimeout(() => {
+                        const clickedObject = document.elementFromPoint(mouseEvent.clientX, mouseEvent.clientY);
+                        if (clickedObject.getAttribute('placeid') == null) {
+                            isShowWrapper.value = true
+                            return
                         }
-                        selectedId.value = id
-                        changeURL(CurrentFloor.value, id); //hide()の後に実行
-                        return true //ここは瞬時なので注意
-                    } else {
-                        return false
-                    }
+                        const id = clickedObject.getAttribute('placeid')
+                        isShowWrapper.value = true
+                        // 存在する場所かどうかをチェック
+                        if (Object.keys(PlaceInfo[CurrentFloor.value]).includes(id)) {
+                            event(`open{${CurrentFloor.value}/${id}}`)
+                            point_PlaceId.value = id
+                            if (property.isShowProperty.value) {
+                                // すでに表示されている場合は、一旦閉じてから開く
+                                property.hide(true)
+                                setTimeout(() => {
+                                    property.isShowProperty.value = true
+                                }, 50);
+                            } else {
+                                // 表示されていない場合は、即時表示
+                                property.isShowProperty.value = true
+                            }
+                            selectedId.value = id
+                            changeURL(CurrentFloor.value, id); //hide()の後に実行
+                            return true //ここは瞬時なので注意
+                        } else {
+                            return false
+                        }
+                    }, 0);
                 }
             }, 200)
         }
@@ -561,6 +573,7 @@ document.body.addEventListener('touchmove', (event) => {
     }
 }, { passive: false });
 
+
 </script>
 
 <style>
@@ -583,18 +596,18 @@ document.body.addEventListener('touchmove', (event) => {
 /* #map_content svg .svg-object {} */
 
 /* 選択された */
-#map_content svg .svg-object.selected {
+#map_content svg .place.selected {
     fill: var(--MapObjectSelectColor);
 
 }
 
 /* 選択されていない */
-#map_content svg .svg-object:not(.selected) {
+#map_content svg .place:not(.selected) {
     fill: var(--MapObjectColor);
 }
 
 /* 廊下 */
-#map_content svg .svg-floor {
+#map_content svg :not(.place) {
     fill: var(--MapFloorClor);
 }
 
@@ -609,6 +622,15 @@ document.body.addEventListener('touchmove', (event) => {
 }
 </style>
 <style scoped>
+#wrapperBox {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    cursor: grab;
+    z-index: 2;
+}
+
 #box {
     width: 100%;
     height: 100%;
@@ -616,6 +638,7 @@ document.body.addEventListener('touchmove', (event) => {
     position: fixed;
     background-color: var(--MainBaseColor);
     cursor: grab;
+    z-index: 1;
 }
 
 #map_content svg {
@@ -707,6 +730,7 @@ document.body.addEventListener('touchmove', (event) => {
 }
 </style>
 <template>
+    {{ log }}
     <Transition :name="`property-${deviceMode}`">
         <PropertyView v-if="property.isShowProperty.value" :Floor="CurrentFloor" :PlaceId="point_PlaceId"
             :deviceMode="deviceMode" @hideProperty="property.hide(true)" />
@@ -720,16 +744,18 @@ document.body.addEventListener('touchmove', (event) => {
                 {{ floor.__FloorName__ }}</li>
         </ul>
     </div>
-    <div id="box" @dblclick="resetMoving(); property.click_dubleDetect()"
+    <div v-if="isShowWrapper" id="wrapperBox" @click="property.show($event)"
+        @dblclick="resetMoving(); property.click_dubleDetect()"
         @mousemove="controlMouse.mouse_moveRotate($event); property.click_notDetect()"
         @mousedown="property.click_Detect()" @mouseup="mapSlide.position_do(); mapSlide.rotate_do()"
         @touchmove="controlTouch.touch($event, 'doing'); property.click_notDetect();"
         @touchstart="controlTouch.touch($event, 'start'); property.click_Detect()"
         @touchend="mapSlide.position_do(); mapSlide.zoom_do(); mapSlide.rotate_do()"
-        @wheel="controlMouse.mouse_zoom($event)">
+        @wheel="controlMouse.mouse_zoom($event)"></div>
+    <div id="box">
         <div id="map_content" draggable="false" :key="CurrentFloor">
             <Transition name="map" mode="out-in">
-                <component :is="MapDataCurrent" :selectedID="selectedId" @showProperty="property.show" />
+                <component :is="MapDataCurrent" :selectedID="selectedId" />
             </Transition>
         </div>
     </div>

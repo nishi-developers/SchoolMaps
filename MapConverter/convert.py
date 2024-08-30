@@ -7,8 +7,6 @@ inkscapeのSVGファイルを読み込んで、クリックイベントを追加
 """
 
 import xml.etree.ElementTree as ET
-import copy
-import os
 
 PlaceInfoLabels = []
 
@@ -36,93 +34,37 @@ tree = ET.parse(InputFilePath)
 root = tree.getroot()
 
 ET.register_namespace("", "http://www.w3.org/2000/svg")
-ET.register_namespace("sodipodi", "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd")
-ET.register_namespace("inkscape", "http://www.inkscape.org/namespaces/inkscape")
 
-
-# 変換用の関数
-def convert(content):
-    """
-    id : inkscapeが自動的に付与する固有のid
-    label : inkscapeのオブジェクトにユーザーが付与した名称
-    """
-    # 属性を取得
-    # label属性を取得
-    try:
-        label = content.attrib["{http://www.inkscape.org/namespaces/inkscape}label"]
-    except KeyError:
-        label = None
-    # id属性を取得
-    try:
-        id = content.attrib["id"]
-    except KeyError:
-        id = None
-
-    # 加工
-    if (
-        not ((label != None) and "none" in label)
-    ) and (  # noneがlabelに含まれていないか
-        content.tag == "{http://www.w3.org/2000/svg}g"  # グループかどうか
-    ):
-        # "text"がラベルかidに含まれて入れば、テキストとしてクラスを追加
-        if (id != None and (("text" in id))) or (label != None and (("text" in label))):
-            content.attrib.update([("class", "svg-text")])
-        # "floor"がidに含まれていれば、廊下などとしてクラスを追加
-        elif id != None and (("floor" in label)):
-            content.attrib.update([("class", "svg-floor")])
-        # それ以外の場合、オブジェクトとしてクリックイベントを追加
-        elif label != None:
-            # print(label)
-            content.attrib.update([("@click", f"showProperty('{label}')")])
-            content.attrib.update(
-                [(":class", "{ 'selected': props.selectedID == '" + label + "' }")]
-            )
-            content.attrib.update([("class", "svg-object")])
-            PlaceInfoLabels.append(label)
+for child in root:
     # 全style属性を削除
     try:
-        del content.attrib["style"]
+        del child.attrib["style"]
     except KeyError:
         pass
-
-    # inkscape固有の属性を削除(inkscapeとsodipodiの属性を削除)
-    content_attrib_sub = copy.deepcopy(content.attrib)
-    for i in content_attrib_sub:
-        if (
-            ("{http://www.inkscape.org/namespaces/inkscape}" in i)
-            or ("{http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd}" in i)
-            or ("sodipodi" in i)
-            or ("inkscape" in i)
-        ):
-            del content.attrib[i]
-
-    return content
-
-
-# 3階層までの要素を変換
-for child in root:
-    child = convert(child)
-    for child2 in child:
-        child2 = convert(child2)
-        for child3 in child2:
-            child3 = convert(child3)
+    # 属性を取得
+    # id属性を取得
+    try:
+        id = child.attrib["id"]
+    except KeyError:
+        id = None
+    # "-"以下はid重複防止用なので削除
+    if id != None:
+        placeid = id.split("-")[0]
+    # "none"ではない場合
+    if placeid != "none":
+        # 属性を追加
+        child.attrib["placeid"] = placeid
+        child.attrib.update(
+            [(":class", "{ 'selected': props.selectedID == '" + placeid + "' }")]
+        )
+        # PlaceInfoLabelsに追加
+        if placeid not in PlaceInfoLabels:
+            PlaceInfoLabels.append(placeid)
+        # class属性を追加
+        child.attrib.update([("class", "place")])
 
 # 文字列に変換
 file = ET.tostring(root, encoding="utf-8", xml_declaration=False).decode("utf-8")
-
-# いい感じに不要な情報を削除(inkscapeとsodipodi)
-editfile = list(map(lambda x: x + ">", file.split(">")))
-editfile2 = list(map(lambda x: x + '" ', editfile[0].split('" ')))
-editfile2_ = []
-for i in editfile2:
-    if (not ("inkscape" in i)) and (not ("sodipodi" in i)):
-        editfile2_.append(i)
-editfile[0] = "".join(editfile2_) + ">"
-if "sodipodi" in editfile[1]:
-    editfile.pop(1)
-file = "".join(editfile)
-file = file.replace(">>", ">")
-
 
 # テンプレートファイルを読み出し
 with open("template.vue", encoding="utf-8") as f:
@@ -141,8 +83,8 @@ PlaceInfo = """
     {
         "__FloorName__": "",
         "__FloorDisplayName__": "",
-        "__MapSizeWidth__": ,
-        "__MapSizeHeight__": ,
+        "__MapSizeWidth__": 0,
+        "__MapSizeHeight__": 0,
     """
 for i in PlaceInfoLabels:
     PlaceInfo += '"' + i + '": {"name": "' + i + '", "description": ""},\n'
