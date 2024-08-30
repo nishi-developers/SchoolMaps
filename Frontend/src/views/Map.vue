@@ -606,19 +606,24 @@ document.body.addEventListener('touchmove', (event) => {
     fill: var(--MapObjectColor);
 }
 
-/* 廊下 */
-#map_content svg :not(.place) {
+/* 他の場所 */
+#map_content svg .none {
     fill: var(--MapFloorClor);
 }
 
+#map_content svg .base {
+    fill: var(--MapBaseColor);
+}
+
 /* テキスト */
-#map_content svg .svg-text {
+#map_content svg .label {
     transform-origin: center center;
     transform-box: fill-box;
     transform: rotate(v-bind("- mapMove.map_Rotate.value + 'deg'"));
     font-size: 1rem;
     fill: var(--MainBodyColor);
     stroke-width: 0;
+    pointer-events: none;
 }
 </style>
 <style scoped>
@@ -730,7 +735,6 @@ document.body.addEventListener('touchmove', (event) => {
 }
 </style>
 <template>
-    {{ log }}
     <Transition :name="`property-${deviceMode}`">
         <PropertyView v-if="property.isShowProperty.value" :Floor="CurrentFloor" :PlaceId="point_PlaceId"
             :deviceMode="deviceMode" @hideProperty="property.hide(true)" />

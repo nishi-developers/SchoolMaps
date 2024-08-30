@@ -51,7 +51,13 @@ for child in root:
     if id != None:
         placeid = id.split("-")[0]
     # "none"ではない場合
-    if placeid != "none":
+    if placeid == "none":
+        child.attrib.update([("class", "none")])
+    elif placeid == "base":
+        child.attrib.update([("class", "base")])
+    elif placeid == "label":
+        child.attrib.update([("class", "label")])
+    else:
         # 属性を追加
         child.attrib["placeid"] = placeid
         child.attrib.update(

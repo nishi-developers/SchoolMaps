@@ -1,126 +1,37 @@
-{
-    "__FloorName__": "",
-    "__FloorDisplayName__": "",
-    "__MapSizeWidth__": 0,
-    "__MapSizeHeight__": 0,
-    "audiovisual_hall": {
-        "name": "audiovisual_hall",
-        "description": ""
-    },
-    "nishi_hall": {
-        "name": "nishi_hall",
-        "description": ""
-    },
-    "WC": {
-        "name": "WC",
-        "description": ""
-    },
-    "pool": {
-        "name": "pool",
-        "description": ""
-    },
-    "1A": {
-        "name": "1A",
-        "description": ""
-    },
-    "1B": {
-        "name": "1B",
-        "description": ""
-    },
-    "1C": {
-        "name": "1C",
-        "description": ""
-    },
-    "1D": {
-        "name": "1D",
-        "description": ""
-    },
-    "1E": {
-        "name": "1E",
-        "description": ""
-    },
-    "1F": {
-        "name": "1F",
-        "description": ""
-    },
-    "1G": {
-        "name": "1G",
-        "description": ""
-    },
-    "1H": {
-        "name": "1H",
-        "description": ""
-    },
-    "gym": {
-        "name": "gym",
-        "description": ""
-    },
-    "martial_arts_field": {
-        "name": "martial_arts_field",
-        "description": ""
-    },
-    "tennis": {
-        "name": "tennis",
-        "description": ""
-    },
-    "handball": {
-        "name": "handball",
-        "description": ""
-    },
-    "the_student_council_room": {
-        "name": "the_student_council_room",
-        "description": ""
-    },
-    "janitorial_room": {
-        "name": "janitorial_room",
-        "description": ""
-    },
-    "corporate_planning_office": {
-        "name": "corporate_planning_office",
-        "description": ""
-    },
-    "principals_office": {
-        "name": "principals_office",
-        "description": ""
-    },
-    "health_room": {
-        "name": "health_room",
-        "description": ""
-    },
-    "japanese_style_room": {
-        "name": "japanese_style_room",
-        "description": ""
-    },
-    "home_economics_room": {
-        "name": "home_economics_room",
-        "description": ""
-    },
-    "food_class": {
-        "name": "food_class",
-        "description": ""
-    },
-    "pc_room": {
-        "name": "pc_room",
-        "description": ""
-    },
-    "ll_room": {
-        "name": "ll_room",
-        "description": ""
-    },
-    "fountain": {
-        "name": "fountain",
-        "description": ""
-    },
-    "grand": {
-        "name": "grand",
-        "description": ""
-    },
-    "students_entrance": {
-        "name": "students_entrance",
-        "description": ""
-    },
-    "teachers_entrance": {
-        "name": "teachers_entrance",
-        "description": ""
-    },
+
+    {
+        "__FloorName__": "",
+        "__FloorDisplayName__": "",
+        "__MapSizeWidth__": 0,
+        "__MapSizeHeight__": 0,
+    "audiovisual_hall": {"name": "audiovisual_hall", "description": ""},
+"nishi_hall": {"name": "nishi_hall", "description": ""},
+"WC": {"name": "WC", "description": ""},
+"pool": {"name": "pool", "description": ""},
+"1A": {"name": "1A", "description": ""},
+"1B": {"name": "1B", "description": ""},
+"1C": {"name": "1C", "description": ""},
+"1D": {"name": "1D", "description": ""},
+"1E": {"name": "1E", "description": ""},
+"1F": {"name": "1F", "description": ""},
+"1G": {"name": "1G", "description": ""},
+"1H": {"name": "1H", "description": ""},
+"gym": {"name": "gym", "description": ""},
+"martial_arts_field": {"name": "martial_arts_field", "description": ""},
+"tennis": {"name": "tennis", "description": ""},
+"handball": {"name": "handball", "description": ""},
+"the_student_council_room": {"name": "the_student_council_room", "description": ""},
+"janitorial_room": {"name": "janitorial_room", "description": ""},
+"corporate_planning_office": {"name": "corporate_planning_office", "description": ""},
+"principals_office": {"name": "principals_office", "description": ""},
+"health_room": {"name": "health_room", "description": ""},
+"japanese_style_room": {"name": "japanese_style_room", "description": ""},
+"home_economics_room": {"name": "home_economics_room", "description": ""},
+"food_class": {"name": "food_class", "description": ""},
+"pc_room": {"name": "pc_room", "description": ""},
+"ll_room": {"name": "ll_room", "description": ""},
+"fountain": {"name": "fountain", "description": ""},
+"grand": {"name": "grand", "description": ""},
+"students_entrance": {"name": "students_entrance", "description": ""},
+"teachers_entrance": {"name": "teachers_entrance", "description": ""},
 }
