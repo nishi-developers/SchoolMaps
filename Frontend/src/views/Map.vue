@@ -20,7 +20,44 @@ class propertyClass {
         this.isDubleClick = false
         this.isShowProperty = ref(false)
     }
-    show(mouseEvent) {
+
+    show(id) {
+        // setTimeoutのコールバック関数内でthisを使用するとthisはグローバルオブジェクトを指すため、thisを使う代わりにクラスのプロパティを使う
+        // クリックされたときに、フラグが立っていたら
+        // let isClick_ = this.isClick
+        // this.isClick = false
+        if (property.isClick) {
+            property.isClick = false
+            property.isDubleClick = false
+            // ダブルクリックと判定されるまでの時間を遅らせる
+            setTimeout(() => {
+                if (!property.isDubleClick) {
+                    // 存在する場所かどうかをチェック
+                    if (Object.keys(PlaceInfo[CurrentFloor.value]).includes(id)) {
+                        event(`open{${CurrentFloor.value}/${id}}`)
+                        point_PlaceId.value = id
+                        if (property.isShowProperty.value) {
+                            // すでに表示されている場合は、一旦閉じてから開く
+                            property.hide(true)
+                            setTimeout(() => {
+                                property.isShowProperty.value = true
+                            }, 50);
+                        } else {
+                            // 表示されていない場合は、即時表示
+                            property.isShowProperty.value = true
+                        }
+                        selectedId.value = id
+                        changeURL(CurrentFloor.value, id); //hide()の後に実行
+                        return true //ここは瞬時なので注意
+                    } else {
+                        return false
+                    }
+                }
+            }, 200)
+        }
+    }
+
+    mouseShow(mouseEvent) {
         // setTimeoutのコールバック関数内でthisを使用するとthisはグローバルオブジェクトを指すため、thisを使う代わりにクラスのプロパティを使う
         // クリックされたときに、フラグが立っていたら
         // let isClick_ = this.isClick
@@ -782,7 +819,7 @@ watch(selectedId, (newVal, oldVal) => {
                 {{ floor.__FloorName__ }}</li>
         </ul>
     </div>
-    <div v-if="isShowWrapper" id="wrapperBox" @click="property.show($event)"
+    <div v-if="isShowWrapper" id="wrapperBox" @click="property.mouseShow($event)"
         @dblclick="resetMoving(); property.click_dubleDetect()"
         @mousemove="controlMouse.mouse_moveRotate($event); property.click_notDetect()"
         @mousedown="property.click_Detect()" @mouseup="mapSlide.position_do(); mapSlide.rotate_do()"
