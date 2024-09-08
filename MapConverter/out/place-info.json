@@ -1,37 +1,130 @@
-
-    {
-        "__FloorName__": "",
-        "__FloorDisplayName__": "",
-        "__MapSizeWidth__": 0,
-        "__MapSizeHeight__": 0,
-    "defs2": {"name": "defs2", "description": ""},
-"tyurosu": {"name": "tyurosu", "description": ""},
-"ice": {"name": "ice", "description": ""},
-"audiovisual_hall": {"name": "audiovisual_hall", "description": ""},
-"1A": {"name": "1A", "description": ""},
-"1B": {"name": "1B", "description": ""},
-"1C": {"name": "1C", "description": ""},
-"1D": {"name": "1D", "description": ""},
-"1E": {"name": "1E", "description": ""},
-"1F": {"name": "1F", "description": ""},
-"1G": {"name": "1G", "description": ""},
-"1H": {"name": "1H", "description": ""},
-"gym": {"name": "gym", "description": ""},
-"wc": {"name": "wc", "description": ""},
-"info": {"name": "info", "description": ""},
-"stair": {"name": "stair", "description": ""},
-"ev": {"name": "ev", "description": ""},
-"tidimi": {"name": "tidimi", "description": ""},
-"yakisoba": {"name": "yakisoba", "description": ""},
-"martial_arts_field": {"name": "martial_arts_field", "description": ""},
-"tennis": {"name": "tennis", "description": ""},
-"handball": {"name": "handball", "description": ""},
-"the_student_council_room": {"name": "the_student_council_room", "description": ""},
-"health_room": {"name": "health_room", "description": ""},
-"japanese_style_room": {"name": "japanese_style_room", "description": ""},
-"home_economics_room": {"name": "home_economics_room", "description": ""},
-"food_class": {"name": "food_class", "description": ""},
-"grand": {"name": "grand", "description": ""},
-"entrance": {"name": "entrance", "description": ""},
-"frankfurt": {"name": "frankfurt", "description": ""},
-"outside_stage": {"name": "outside_stage", "description": ""}}
+{
+    "__FloorName__": "",
+    "__FloorDisplayName__": "",
+    "__MapSizeWidth__": 0,
+    "__MapSizeHeight__": 0,
+    "defs2": {
+        "name": "defs2",
+        "description": ""
+    },
+    "tyurosu": {
+        "name": "tyurosu",
+        "description": ""
+    },
+    "ice": {
+        "name": "ice",
+        "description": ""
+    },
+    "audiovisual_hall": {
+        "name": "audiovisual_hall",
+        "description": ""
+    },
+    "1A": {
+        "name": "1A",
+        "description": ""
+    },
+    "1B": {
+        "name": "1B",
+        "description": ""
+    },
+    "1C": {
+        "name": "1C",
+        "description": ""
+    },
+    "1D": {
+        "name": "1D",
+        "description": ""
+    },
+    "1E": {
+        "name": "1E",
+        "description": ""
+    },
+    "1F": {
+        "name": "1F",
+        "description": ""
+    },
+    "1G": {
+        "name": "1G",
+        "description": ""
+    },
+    "1H": {
+        "name": "1H",
+        "description": ""
+    },
+    "gym": {
+        "name": "gym",
+        "description": ""
+    },
+    "wc": {
+        "name": "wc",
+        "description": ""
+    },
+    "info": {
+        "name": "info",
+        "description": ""
+    },
+    "stair": {
+        "name": "stair",
+        "description": ""
+    },
+    "ev": {
+        "name": "ev",
+        "description": ""
+    },
+    "tidimi": {
+        "name": "tidimi",
+        "description": ""
+    },
+    "yakisoba": {
+        "name": "yakisoba",
+        "description": ""
+    },
+    "martial_arts_field": {
+        "name": "martial_arts_field",
+        "description": ""
+    },
+    "tennis": {
+        "name": "tennis",
+        "description": ""
+    },
+    "handball": {
+        "name": "handball",
+        "description": ""
+    },
+    "the_student_council_room": {
+        "name": "the_student_council_room",
+        "description": ""
+    },
+    "health_room": {
+        "name": "health_room",
+        "description": ""
+    },
+    "japanese_style_room": {
+        "name": "japanese_style_room",
+        "description": ""
+    },
+    "home_economics_room": {
+        "name": "home_economics_room",
+        "description": ""
+    },
+    "food_class": {
+        "name": "food_class",
+        "description": ""
+    },
+    "grand": {
+        "name": "grand",
+        "description": ""
+    },
+    "entrance": {
+        "name": "entrance",
+        "description": ""
+    },
+    "frankfurt": {
+        "name": "frankfurt",
+        "description": ""
+    },
+    "outside_stage": {
+        "name": "outside_stage",
+        "description": ""
+    }
+}
