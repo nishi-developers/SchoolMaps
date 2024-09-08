@@ -1,9 +1,7 @@
 """
-Inkscape SVGでエクスポート
-
-inkscapeのSVGファイルを読み込んで、クリックイベントを追加するスクリプト
-@click属性を追加
-クラス属性を追加
+SVGファイルを読み込み、Vueファイルに変換するスクリプト
+- Style属性を削除
+- PlaceInfoの雛形を作成
 """
 
 import xml.etree.ElementTree as ET
@@ -50,24 +48,16 @@ for child in root:
     # "-"以下はid重複防止用なので削除
     if id != None:
         placeid = id.split("-")[0]
-    # "none"ではない場合
-    if placeid == "none":
-        child.attrib.update([("class", "none")])
-    elif placeid == "base":
-        child.attrib.update([("class", "base")])
-    elif placeid == "label":
-        child.attrib.update([("class", "label")])
-    else:
-        # 属性を追加
-        child.attrib["placeid"] = placeid
-        child.attrib.update(
-            [(":class", "{ 'selected': props.selectedID == '" + placeid + "' }")]
-        )
-        # PlaceInfoLabelsに追加
-        if placeid not in PlaceInfoLabels:
-            PlaceInfoLabels.append(placeid)
-        # class属性を追加
-        child.attrib.update([("class", "place")])
+        # placeの場合
+        if (
+            placeid != None
+            and placeid != "none"
+            and placeid != "base"
+            and placeid != "label"
+        ):
+            # PlaceInfoLabelsに追加
+            if placeid not in PlaceInfoLabels:
+                PlaceInfoLabels.append(placeid)
 
 # 文字列に変換
 file = ET.tostring(root, encoding="utf-8", xml_declaration=False).decode("utf-8")
@@ -94,7 +84,10 @@ PlaceInfo = """
     """
 for i in PlaceInfoLabels:
     PlaceInfo += '"' + i + '": {"name": "' + i + '", "description": ""},\n'
+# 最後の,を削除
+PlaceInfo = PlaceInfo[:-2]
 PlaceInfo += "}"
+
 
 # ファイルに書き出し
 with open(PlaceInfoFilePath, mode="w", encoding="utf-8") as f:
