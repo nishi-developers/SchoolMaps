@@ -575,8 +575,6 @@ document.body.addEventListener('touchmove', (event) => {
 
 // IDに基づくマップデータの加工
 function setMapData() {
-    console.log("setMapData");
-
     // マップデータの取得
     const mapSvg = document.querySelector("#map_content svg")
     mapSvg.querySelectorAll("path").forEach((element) => {
