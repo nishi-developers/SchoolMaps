@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, defineAsyncComponent } from 'vue'
+import { onMounted, ref, defineAsyncComponent, watch } from 'vue'
 import PropertyView from '@/components/PropertyView.vue';
 import PlaceInfo from '@/assets/PlaceInfo.json'
 import { event } from 'vue-gtag'
@@ -573,7 +573,43 @@ document.body.addEventListener('touchmove', (event) => {
     }
 }, { passive: false });
 
+// IDに基づくマップデータの加工
+function setMapData() {
+    console.log("setMapData");
 
+    // マップデータの取得
+    const mapSvg = document.querySelector("#map_content svg")
+    mapSvg.querySelectorAll("path").forEach((element) => {
+        if (element.id.includes("none")) {
+            element.classList.add("none")
+        } else if (element.id.includes("base")) {
+            element.classList.add("base")
+        } else if (element.id.includes("label")) {
+            element.classList.add("label")
+        } else {
+            element.classList.add("place")
+            // "-"以下はid重複防止用なので削除
+            element.setAttribute("placeid", element.id.split("-")[0])
+        }
+    })
+}
+
+// setTimeout(() => {
+//     setMapData()
+// }, 1000);
+
+watch(selectedId, (newVal, oldVal) => {
+    if (newVal != "") {
+        document.querySelectorAll(`[placeid="${newVal}"]`).forEach((element) => {
+            element.classList.add("selected")
+        })
+    }
+    if (oldVal != "") {
+        document.querySelectorAll(`[placeid="${oldVal}"]`).forEach((element) => {
+            element.classList.remove("selected")
+        })
+    }
+})
 </script>
 
 <style>
@@ -759,7 +795,7 @@ document.body.addEventListener('touchmove', (event) => {
     <div id="box">
         <div id="map_content" draggable="false" :key="CurrentFloor">
             <Transition name="map" mode="out-in">
-                <component :is="MapDataCurrent" :selectedID="selectedId" />
+                <component :is="MapDataCurrent" @mounted="setMapData" />
             </Transition>
         </div>
     </div>
