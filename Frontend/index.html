@@ -9,7 +9,13 @@
   <meta name="robots" content="noindex,nofollow,noarchive" />
   <meta name="theme-color" content="#bee0ff">
   <title>西高Map</title>
-  <script src="/registerSW.js"></script>
+  <link rel="manifest" href="./manifest.json">
+  <script>
+    // ServiceWorkerの登録
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./service-worker.js')
+    }
+  </script>
 </head>
 
 <body>
