@@ -35,7 +35,10 @@
         </p>
         <br id="version-spacer">
     </div>
-    <p id="version">Version: {{ version }}</p>
+    <p id="version">
+        SystemVersion: {{ sysVersion }}<br>
+        MapVersion: {{ mapVersion }}
+    </p>
 </template>
 <style scoped>
 #version {
@@ -46,16 +49,17 @@
     color: var(--AccentBodyColor);
     background-color: var(--SubBaseColor);
     padding: 5px;
+    text-align: right;
 }
 
 #version-spacer {
     bottom: 0;
-    font-size: 1rem;
+    font-size: 2rem;
     padding: 5px;
     opacity: 0;
 }
 </style>
 <script setup>
-const version = import.meta.env.VITE_VERSION;
-console.log(version);
+const sysVersion = import.meta.env.VITE_SYS_VERSION;
+const mapVersion = import.meta.env.VITE_MAP_VERSION;
 </script>
