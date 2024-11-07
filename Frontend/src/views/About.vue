@@ -60,6 +60,19 @@
 }
 </style>
 <script setup>
-const sysVersion = import.meta.env.VITE_SYS_VERSION;
-const mapVersion = import.meta.env.VITE_MAP_VERSION;
+
+// ServiceWorkerからバージョン情報を取得
+import { ref } from "vue";
+const sysVersion = ref("loading...");
+const mapVersion = ref("loading...");
+
+navigator.serviceWorker.ready.then((registration) => {
+    registration.active.postMessage({ type: "GET_VERSION" });
+});
+navigator.serviceWorker.addEventListener("message", (event) => {
+    if (event.data.type === "VERSION") {
+        sysVersion.value = event.data.sys;
+        mapVersion.value = event.data.map;
+    }
+});
 </script>
