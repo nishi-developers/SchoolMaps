@@ -1,6 +1,8 @@
+// self.importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js')
+
 const SYS_VERSION = '0.1.0'
 const MAP_VERSION = '0.1.0'
-const DEBUG_UUID = 'lawkfjqw'
+const DEBUG_UUID = 'lawkfja5'
 
 // バージョン情報を返す
 self.addEventListener('message', (event) => {
@@ -13,6 +15,8 @@ self.addEventListener('message', (event) => {
 // https://qiita.com/OMOIKANESAN/items/13a3dde525e33eb608ae
 
 const urlsToCache = [
+  '/',
+  '/SchoolMap/0',
   'index.html',
   'manifest.json',
   'static/assets/0.js',
@@ -81,6 +85,23 @@ self.addEventListener('activate', (event) => {
             return caches.delete(key)
           })
       )
+    })
+  )
+})
+
+// リソースフェッチ時のキャッシュロード処理
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.match(event.request).then((response) => {
+        return (
+          response ||
+          fetch(event.request).then((response) => {
+            cache.put(event.request, response.clone())
+            return response
+          })
+        )
+      })
     })
   )
 })
