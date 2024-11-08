@@ -655,6 +655,8 @@ function wrapEvent(name, event) {
     switch (name) {
         case "click":
             property.mouseShow(event)
+            // MapMove.move("position", 100, 0)
+            // MapMove.slide("position")
             break;
         case "dblclick":
             resetMoving();
