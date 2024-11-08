@@ -524,12 +524,12 @@ class controlTouchClass {
         // this.touch_finger = 0
     }
     // 2点間の距離を計算する関数
-    positionLength(x1, y1, x2, y2) {
+    #positionLength(x1, y1, x2, y2) {
         return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
     }
     // タッチの位置を取得する関数
     // タッチの指が複数ある場合は、それぞれの位置を取得して平均を取る
-    positionAverage(event) {
+    #positionAverage(event) {
         let x = 0
         let y = 0
         for (const i of event.changedTouches) {
@@ -554,9 +554,9 @@ class controlTouchClass {
         } else if (status === 'doing') { // 指を動かしたときは、それぞれの処理を行う
             // タッチの本数にかかわらず、moveモード
             // 本数が変わった場合、もしくは距離が飛んだ場合は、初期位置を変更(初期処理)
-            [this.temp_x, this.temp_y] = this.positionAverage(event)
-            if (this.last_finger != event.changedTouches.length || this.positionLength(this.last_x, this.last_y, this.temp_x, this.temp_y) > 50) {
-                [this.last_x, this.last_y] = this.positionAverage(event) //押した位置を相対位置の基準にする
+            [this.temp_x, this.temp_y] = this.#positionAverage(event)
+            if (this.last_finger != event.changedTouches.length || this.#positionLength(this.last_x, this.last_y, this.temp_x, this.temp_y) > 50) {
+                [this.last_x, this.last_y] = this.#positionAverage(event) //押した位置を相対位置の基準にする
                 this.last_finger = event.changedTouches.length
             }
             mapMove.PositionMove(this.temp_x - this.last_x, this.temp_y - this.last_y) // 位置をずらす
@@ -567,7 +567,7 @@ class controlTouchClass {
                 if (this.mode === "zoom") {
                     // すでにzoomモードになっている場合
                     // 指の間隔を計算して、前との差からズームレベルを変更
-                    this.diff = this.positionLength(event.changedTouches[0].clientX, event.changedTouches[0].clientY, event.changedTouches[1].clientX, event.changedTouches[1].clientY)
+                    this.diff = this.#positionLength(event.changedTouches[0].clientX, event.changedTouches[0].clientY, event.changedTouches[1].clientX, event.changedTouches[1].clientY)
                     // this.diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
                     if (mapMove.Zoom((this.diff - this.last_diff) * .005)) {
                         // 慣性の実装
@@ -592,7 +592,7 @@ class controlTouchClass {
                 } else {
                     //zoomモードになっていない場合の初期処理
                     this.mode = "zoom"
-                    this.last_diff = this.positionLength(event.changedTouches[0].clientX, event.changedTouches[0].clientY, event.changedTouches[1].clientX, event.changedTouches[1].clientY)
+                    this.last_diff = this.#positionLength(event.changedTouches[0].clientX, event.changedTouches[0].clientY, event.changedTouches[1].clientX, event.changedTouches[1].clientY)
                     // this.last_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
                     this.last_rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
                 }
@@ -655,23 +655,24 @@ function wrapEvent(name, event) {
     switch (name) {
         case "click":
             property.mouseShow(event)
-            // MapMove.move("position", 100, 0)
-            // MapMove.slide("position")
             break;
         case "dblclick":
             resetMoving();
             property.click_dubleDetect()
             break;
         case "mousemove":
-            controlMouse.mouse_moveRotate(event);
+            // controlMouse.mouse_moveRotate(event);
+            MapMoveByMouse.move(event)
             property.click_notDetect();
             break;
         case "mousedown":
             property.click_Detect();
             break;
         case "mouseup":
-            mapSlide.position_do();
-            mapSlide.rotate_do();
+            // mapSlide.position_do();
+            // mapSlide.rotate_do();
+            MapMove.slide("position")
+            MapMove.slide("rotate")
             break;
         case "touchmove":
             controlTouch.touch(event, 'doing');
@@ -687,7 +688,8 @@ function wrapEvent(name, event) {
             mapSlide.rotate_do();
             break;
         case "wheel":
-            controlMouse.mouse_zoom(event)
+            // controlMouse.mouse_zoom(event)
+            MapMoveByMouse.wheel(event)
             break;
         default:
             break;
@@ -713,7 +715,6 @@ class MapMoveClass {
             isDo: false,
         }
     }
-
     constructor() {
         this.mapStatus = ref({
             position: {
@@ -748,24 +749,22 @@ class MapMoveClass {
                 break;
         }
     }
-
-    #slideAddSpeed(init, delta) {
-        // 速度を加算する関数
-        // 速度が0に近づくように、加算する
-        if (init > 0) {
-            init -= delta
-            if (init < 0) {
-                init = 0
-            }
-        } else {
-            init += delta
-            if (init > 0) {
-                init = 0
-            }
-        }
-        return init
-    }
-
+    // #slideAddSpeed(init, delta) {
+    //     // 速度を加算する関数
+    //     // 速度が0に近づくように、加算する
+    //     if (init > 0) {
+    //         init -= delta
+    //         if (init < 0) {
+    //             init = 0
+    //         }
+    //     } else {
+    //         init += delta
+    //         if (init > 0) {
+    //             init = 0
+    //         }
+    //     }
+    //     return init
+    // }
     slide(target) {
         if (this.#slideData[target].isDo) {
             // 重複実行防止
@@ -774,16 +773,18 @@ class MapMoveClass {
         this.#slideData[target].isDo = true
         // 設定値
         const frictionConfig = {
-            position: 0.001,
-            zoom: 0.001,
-            rotate: 0.001,
+            position: 0.9,
+            zoom: 0.9,
+            rotate: 0.9,
+            min: 0.001
         }
+
         // 速度が0になるまで、変更
         // 範囲内かのチェックは、省略
         if (
-            (target === "position" && (Math.abs(this.#slideData.position.speedX) > 0 || Math.abs(this.#slideData.position.speedY) > 0))
-            || (target === "zoom" && Math.abs(this.#slideData.zoom.speed) > 0)
-            || (target === "rotate" && Math.abs(this.#slideData.rotate.speed) > 0)
+            (target === "position" && (Math.abs(this.#slideData.position.speedX) > frictionConfig.min || Math.abs(this.#slideData.position.speedY) > frictionConfig.min))
+            || (target === "zoom" && Math.abs(this.#slideData.zoom.speed) > frictionConfig.min)
+            || (target === "rotate" && Math.abs(this.#slideData.rotate.speed) > frictionConfig.min)
         ) {
             switch (target) {
                 case "position":
@@ -791,18 +792,18 @@ class MapMoveClass {
                     this.mapStatus.value.position.top += this.#slideData.position.speedY
                     // this.#slideData.position.speedX -= frictionConfig.position
                     // this.#slideData.position.speedY -= frictionConfig.position
-                    this.#slideData.position.speedX = this.#slideAddSpeed(this.#slideData.position.speedX, frictionConfig.position)
-                    this.#slideData.position.speedY = this.#slideAddSpeed(this.#slideData.position.speedY, frictionConfig.position)
+                    this.#slideData.position.speedX *= frictionConfig.position
+                    this.#slideData.position.speedY *= frictionConfig.position
                     break;
                 case "zoom":
                     this.mapStatus.value.zoom += this.#slideData.zoom.speed
                     // this.#slideData.zoom.speed -= frictionConfig.zoom
-                    this.#slideData.zoom.speed = this.#slideAddSpeed(this.#slideData.zoom.speed, frictionConfig.zoom)
+                    this.#slideData.zoom.speed *= frictionConfig.zoom
                     break;
                 case "rotate":
                     this.mapStatus.value.rotate += this.#slideData.rotate.speed
                     // this.#slideData.rotate.speed -= frictionConfig.rotate
-                    this.#slideData.rotate.speed = this.#slideAddSpeed(this.#slideData.rotate.speed, frictionConfig.rotate)
+                    this.#slideData.rotate.speed *= frictionConfig.rotate
                     break;
             }
             // 再帰
@@ -815,7 +816,6 @@ class MapMoveClass {
             this.#slide_reset(target)
         }
     }
-
     move(target, x, y = 0) {
         //スマホでは、0が多発するため、0の場合は無視
         if (x === 0 && y === 0) {
@@ -851,7 +851,6 @@ class MapMoveClass {
                 break;
         }
     }
-
     reset() {
         this.#slide_reset()
         // 要修正
@@ -876,7 +875,37 @@ class MapMoveClass {
         this.mapStatus.value.rotate = 0
     }
 }
-let MapMove = new MapMoveClass()
+const MapMove = new MapMoveClass()
+
+class MapMoveByMouseClass {
+    constructor() {
+    }
+    move(event) {
+        // マウスの移動による操作
+        if (event.buttons === 1) { // 左クリックが押されている場合のみ
+            MapMove.move("position", event.movementX, event.movementY)
+        } else if (event.buttons === 4) { // ホイールボタンが押されている場合のみ
+            if (event.movementX > 0) {
+                MapMove.move("rotate", Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
+            } else {
+                MapMove.move("rotate", -Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
+            }
+        }
+    }
+    wheel(event) {
+        // マウスのホイールによる操作
+        let num = 0
+        let unit = 0.1
+        if (event.wheelDelta + unit > 0) {
+            num = unit
+        } else {
+            num = -unit
+        }
+        MapMove.move("zoom", num)
+        MapMove.slide("zoom")
+    }
+}
+const MapMoveByMouse = new MapMoveByMouseClass()
 
 // watch(MapMove.mapStatus, (newVal, oldVal) => {
 //     console.log(newVal);
@@ -928,7 +957,8 @@ let MapMove = new MapMoveClass()
 #map_content svg .label {
     transform-origin: center center;
     transform-box: fill-box;
-    transform: rotate(v-bind("- mapMove.map_Rotate.value + 'deg'"));
+    /* transform: rotate(v-bind("- mapMove.map_Rotate.value + 'deg'")); */
+    transform: rotate(v-bind("- MapMove.mapStatus.value.rotate + 'deg'"));
     font-size: 1rem;
     fill: var(--MainBodyColor);
     stroke-width: 0;
@@ -957,11 +987,15 @@ let MapMove = new MapMoveClass()
 
 #map_content svg {
     position: absolute;
-    width: v-bind("(map_DefaultWidth * mapMove.ZoomLevel.value) + 'px'");
+    /* width: v-bind("(map_DefaultWidth * mapMove.ZoomLevel.value) + 'px'"); */
+    width: v-bind("(map_DefaultWidth * MapMove.mapStatus.value.zoom) + 'px'");
     height: auto;
-    left: v-bind("mapMove.map_PositionLeft.value + 'px'");
-    top: v-bind("mapMove.map_PositionTop.value + 'px'");
-    transform: translate(-50%, -50%) rotate(v-bind("mapMove.map_Rotate.value + 'deg'"));
+    /* left: v-bind("mapMove.map_PositionLeft.value + 'px'"); */
+    left: v-bind("MapMove.mapStatus.value.position.left + 'px'");
+    /* top: v-bind("mapMove.map_PositionTop.value + 'px'"); */
+    top: v-bind("MapMove.mapStatus.value.position.top + 'px'");
+    /* transform: translate(-50%, -50%) rotate(v-bind("mapMove.map_Rotate.value + 'deg'")); */
+    transform: translate(-50%, -50%) rotate(v-bind("MapMove.mapStatus.value.rotate + 'deg'"));
 
 }
 
