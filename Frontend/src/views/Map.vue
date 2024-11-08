@@ -7,6 +7,8 @@ import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 
+
+
 const selectedId = ref("")
 const isShowWrapper = ref(true)
 
@@ -645,6 +647,48 @@ watch(selectedId, (newVal, oldVal) => {
         })
     }
 })
+
+
+function wrapEvent(name, event) {
+    switch (name) {
+        case "click":
+            property.mouseShow(event)
+            break;
+        case "dblclick":
+            resetMoving();
+            property.click_dubleDetect()
+            break;
+        case "mousemove":
+            controlMouse.mouse_moveRotate(event);
+            property.click_notDetect();
+            break;
+        case "mousedown":
+            property.click_Detect();
+            break;
+        case "mouseup":
+            mapSlide.position_do();
+            mapSlide.rotate_do();
+            break;
+        case "touchmove":
+            controlTouch.touch(event, 'doing');
+            property.click_notDetect();
+            break;
+        case "touchstart":
+            controlTouch.touch(event, 'start');
+            property.click_Detect();
+            break;
+        case "touchend":
+            mapSlide.position_do();
+            mapSlide.zoom_do();
+            mapSlide.rotate_do();
+            break;
+        case "wheel":
+            controlMouse.mouse_zoom(event)
+            break;
+        default:
+            break;
+    }
+}
 </script>
 
 <style>
@@ -819,14 +863,11 @@ watch(selectedId, (newVal, oldVal) => {
                 {{ floor.__FloorShortName__ }}</li>
         </ul>
     </div>
-    <div v-if="isShowWrapper" id="wrapperBox" @click="property.mouseShow($event)"
-        @dblclick="resetMoving(); property.click_dubleDetect()"
-        @mousemove="controlMouse.mouse_moveRotate($event); property.click_notDetect()"
-        @mousedown="property.click_Detect()" @mouseup="mapSlide.position_do(); mapSlide.rotate_do()"
-        @touchmove="controlTouch.touch($event, 'doing'); property.click_notDetect();"
-        @touchstart="controlTouch.touch($event, 'start'); property.click_Detect()"
-        @touchend="mapSlide.position_do(); mapSlide.zoom_do(); mapSlide.rotate_do()"
-        @wheel="controlMouse.mouse_zoom($event)"></div>
+    <div v-if="isShowWrapper" id="wrapperBox" @click="wrapEvent('click', $event)"
+        @dblclick="wrapEvent('dblclick', $event)" @mousemove="wrapEvent('mousemove', $event)"
+        @mousedown="wrapEvent('mousedown', $event)" @mouseup="wrapEvent('mouseup', $event)"
+        @touchmove="wrapEvent('touchmove', $event)" @touchstart="wrapEvent('touchstart', $event)"
+        @touchend="wrapEvent('touchend', $event)" @wheel="wrapEvent('wheel', $event)"></div>
     <div id="box">
         <div id="map_content" draggable="false" :key="CurrentFloor">
             <Transition name="map" mode="out-in">
