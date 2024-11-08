@@ -816,7 +816,7 @@ watch(selectedId, (newVal, oldVal) => {
             </li>
             <li class="floor" v-for="floor in PlaceInfoReverse" :key="floor.__key__" @click="changeFloor(floor.__key__)"
                 :class="floor.__key__ === CurrentFloor ? 'selected' : 'notselected'">
-                {{ floor.__FloorName__ }}</li>
+                {{ floor.__FloorShortName__ }}</li>
         </ul>
     </div>
     <div v-if="isShowWrapper" id="wrapperBox" @click="property.mouseShow($event)"
