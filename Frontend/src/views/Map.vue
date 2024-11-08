@@ -449,49 +449,6 @@ function resetMoving() {
 
 let mouseORtouch = ""
 
-class controlMouseClass {
-    // PC用
-    // ドラッグによる移動と回転
-    // フラグを、クリックをし始めたときに立て、離したときに解除する
-    // フラグが立っている間にマウスが動けば、その分だけ移動させる
-    // <参考>
-    // https://scrapbox.io/svg-wiki/%E3%83%9E%E3%82%A6%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%8F%E3%82%8B%E3%82%84%E3%81%A4%E3%81%AE%E5%AE%9F%E8%A3%85
-    // https://note.com/kabineko/n/n88ec426fff07
-    // https://qiita.com/akicho8/items/8522929fa619394ac9f4
-    mouse_moveRotate(event) {
-        mouseORtouch = "mouse"
-        if (event.buttons === 1) { // 左クリックが押されている場合のみ
-            mapMove.PositionMove(event.movementX, event.movementY)
-        } else if (event.buttons === 4) { // ホイールボタンが押されている場合のみ
-            if (event.movementX > 0) {
-                mapMove.Rotating(Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
-            } else {
-                mapMove.Rotating(-Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
-            }
-        }
-    }
-    // ホイールによるズーム
-    // ホイールを上に回すと、一定の割合でズームイン
-    // ホイールを下に回すと、一定の割合でズームアウト
-    // <参考>
-    // https://mebee.info/2022/03/15/post-40363/
-    mouse_zoom(event) {
-        mouseORtouch = "mouse"
-        let num = 0
-        let ZoomLevel_Unit = .1
-        if (event.wheelDelta + ZoomLevel_Unit > 0) {
-            num = ZoomLevel_Unit
-        } else {
-            num = -ZoomLevel_Unit
-        }
-        if (mapMove.Zoom(num)) {
-            mapSlide.zoom_speed = num / 5
-            mapSlide.zoom_do()
-        }
-    }
-}
-let controlMouse = new controlMouseClass()
-
 class controlTouchClass {
     // モバイル用
     // タッチによる操作(移動とズーム共通)
@@ -562,7 +519,6 @@ class controlTouchClass {
             mapMove.PositionMove(this.temp_x - this.last_x, this.temp_y - this.last_y) // 位置をずらす
             this.last_x = this.temp_x //最終値を更新
             this.last_y = this.temp_y //最終値を更新
-
             if (event.changedTouches.length === 2) { // タッチの指が2つの場合はzoomモード
                 if (this.mode === "zoom") {
                     // すでにzoomモードになっている場合
@@ -749,22 +705,6 @@ class MapMoveClass {
                 break;
         }
     }
-    // #slideAddSpeed(init, delta) {
-    //     // 速度を加算する関数
-    //     // 速度が0に近づくように、加算する
-    //     if (init > 0) {
-    //         init -= delta
-    //         if (init < 0) {
-    //             init = 0
-    //         }
-    //     } else {
-    //         init += delta
-    //         if (init > 0) {
-    //             init = 0
-    //         }
-    //     }
-    //     return init
-    // }
     slide(target) {
         if (this.#slideData[target].isDo) {
             // 重複実行防止
@@ -778,8 +718,7 @@ class MapMoveClass {
             rotate: 0.9,
             min: 0.001
         }
-
-        // 速度が0になるまで、変更
+        // 速度が小さくなるまで、変更
         // 範囲内かのチェックは、省略
         if (
             (target === "position" && (Math.abs(this.#slideData.position.speedX) > frictionConfig.min || Math.abs(this.#slideData.position.speedY) > frictionConfig.min))
@@ -906,11 +845,6 @@ class MapMoveByMouseClass {
     }
 }
 const MapMoveByMouse = new MapMoveByMouseClass()
-
-// watch(MapMove.mapStatus, (newVal, oldVal) => {
-//     console.log(newVal);
-
-// }, { deep: true })
 
 </script>
 
