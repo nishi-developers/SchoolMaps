@@ -649,6 +649,8 @@ watch(selectedId, (newVal, oldVal) => {
 })
 
 
+// NEW
+
 function wrapEvent(name, event) {
     switch (name) {
         case "click":
@@ -689,6 +691,170 @@ function wrapEvent(name, event) {
             break;
     }
 }
+
+class MapMoveClass {
+    #slideData = {
+        position: {
+            speedX: 0,
+            speedY: 0,
+            lastMovedTime: 0,
+            isDo: false,
+        },
+        zoom: {
+            speed: 0,
+            lastMovedTime: 0,
+            isDo: false,
+        },
+        rotate: {
+            speed: 0,
+            lastMovedTime: 0,
+            isDo: false,
+        }
+    }
+
+    constructor() {
+        this.mapStatus = ref({
+            position: {
+                left: 0,
+                top: 0,
+            },
+            zoom: 0,
+            rotate: 0,
+        })
+        this.#slide_reset()
+    }
+    #slide_reset(target = "") {
+        // 慣性をリセット
+        switch (target) {
+            case "position":
+                this.#slideData.position.speedX = 0
+                this.#slideData.position.speedY = 0
+                break;
+            case "zoom":
+                this.#slideData.zoom.speed = 0
+                break;
+            case "rotate":
+                this.#slideData.rotate.speed = 0
+                break;
+            default:
+                this.#slide_reset("position")
+                this.#slide_reset("zoom")
+                this.#slide_reset("rotate")
+                this.#slideData.position.lastMovedTime = 0
+                this.#slideData.zoom.lastMovedTime = 0
+                this.#slideData.rotate.lastMovedTime = 0
+                break;
+        }
+    }
+
+    #slide(target) {
+        if (this.#slide[target].isDo) {
+            // 重複実行防止
+            return
+        }
+        this.#slide[target].isDo = true
+        // 設定値
+        const frictionConfig = {
+            position: 0.01,
+            zoom: 0.001,
+            rotate: 0.01,
+        }
+        // 速度が0になるまで、変更
+        // 範囲内かのチェックは、省略
+        if (
+            (target === "position" && (Math.abs(this.#slideData.position.speedX) > 0 || Math.abs(this.#slideData.position.speedY) > 0))
+            || (target === "zoom" && Math.abs(this.#slideData.zoom.speed) > 0)
+            || (target === "rotate" && Math.abs(this.#slideData.rotate.speed) > 0)
+        ) {
+            switch (target) {
+                case "position":
+                    this.mapStatus.position.left += this.#slideData.position.speedX
+                    this.mapStatus.position.top += this.#slideData.position.speedY
+                    this.#slideData.position.speedX -= frictionConfig.position
+                    this.#slideData.position.speedY -= frictionConfig.position
+                    break;
+                case "zoom":
+                    this.mapStatus.zoom += this.#slideData.zoom.speed
+                    this.#slideData.zoom.speed -= frictionConfig.zoom
+                    break;
+                case "rotate":
+                    this.mapStatus.rotate += this.#slideData.rotate.speed
+                    this.#slideData.rotate.speed -= frictionConfig.rotate
+                    break;
+            }
+            // 再帰
+            setTimeout(() => {
+                this.#slide[target].isDo = false
+                this.#slide(target)
+            }, 4)
+        } else {
+            this.#slide[target].isDo = false
+            this.#slide_reset(target)
+        }
+    }
+
+    move(target, x, y = 0) {
+        //スマホでは、0が多発するため、0の場合は無視
+        if (x === 0 && y === 0) {
+            return
+        }
+        this.#slide_reset(target)
+        switch (target) {
+            case "position":
+                this.mapStatus.position.left += x
+                this.mapStatus.position.top += y
+                // 速度を計算
+                if (this.#slideData.position.lastMovedTime !== 0) {
+                    this.#slideData.position.speedX = x / (Date.now() - this.#slideData.position.lastMovedTime)
+                    this.#slideData.position.speedY = y / (Date.now() - this.#slideData.position.lastMovedTime)
+                }
+                this.#slideData.position.lastMovedTime = Date.now()
+                break;
+            case "zoom":
+                this.mapStatus.zoom += x
+                // 速度を計算
+                if (this.#slideData.zoom.lastMovedTime !== 0) {
+                    this.#slideData.zoom.speed = x / (Date.now() - this.#slideData.zoom.lastMovedTime)
+                }
+                this.#slideData.zoom.lastMovedTime = Date.now()
+                break;
+            case "rotate":
+                this.mapStatus.rotate += x
+                // 速度を計算
+                if (this.#slideData.rotate.lastMovedTime !== 0) {
+                    this.#slideData.rotate.speed = x / (Date.now() - this.#slideData.rotate.lastMovedTime)
+                }
+                this.#slideData.rotate.lastMovedTime = Date.now()
+                break;
+        }
+    }
+
+    reset() {
+        this.#slide_reset()
+        // 要修正
+        // 地図のデフォルトサイズを算出
+        map_size_width = PlaceInfo[CurrentFloor.value].__MapSizeWidth__
+        map_size_height = PlaceInfo[CurrentFloor.value].__MapSizeHeight__
+        map_size_ratio = map_size_width / map_size_height
+        // 表示範囲のサイズ(改)
+        window_width = window.innerWidth
+        window_height = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
+        if (window_width / map_size_width > window_height / map_size_height) {
+            // 縦幅に合わせる
+            map_DefaultWidth.value = window_height * map_size_ratio
+        } else {
+            // 横幅に合わせる
+            map_DefaultWidth.value = window_width
+        }
+        // リセット
+        this.mapStatus.position.left = window_width / 2
+        this.mapStatus.position.top = window_height / 2
+        this.mapStatus.zoom = 1
+        this.mapStatus.rotate = 0
+    }
+}
+let MapMove = new MapMoveClass()
+
 </script>
 
 <style>
