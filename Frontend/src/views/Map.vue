@@ -608,6 +608,7 @@ watch(selectedId, (newVal, oldVal) => {
 // NEW
 
 function wrapEvent(name, event) {
+    // ラッパーに関するイベントをすべてまとめ、分岐させる
     switch (name) {
         case "click":
             property.mouseShow(event)
@@ -706,6 +707,8 @@ class MapMoveClass {
         }
     }
     slide(target) {
+        // 慣性スクロール
+        // この関数を外部から呼び出すと、慣性スクロールが開始する
         if (this.#slideData[target].isDo) {
             // 重複実行防止
             return
@@ -756,6 +759,8 @@ class MapMoveClass {
         }
     }
     move(target, x, y = 0) {
+        // マップのあらゆる移動を行う関数
+        // 慣性スクロールに関しては初速の計算のみを行う
         //スマホでは、0が多発するため、0の場合は無視
         if (x === 0 && y === 0) {
             return
