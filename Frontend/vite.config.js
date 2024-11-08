@@ -175,6 +175,6 @@ export default ({ mode }) => {
         }
       }
     },
-    base: 'SchoolMap'
+    base: '/SchoolMap'
   })
 }
