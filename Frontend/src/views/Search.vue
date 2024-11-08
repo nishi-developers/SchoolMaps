@@ -47,7 +47,7 @@ for (let floorId = 0; floorId < PlaceInfo.length; floorId++) {
             PlaceInfoList.push({
                 id: PlaceInfoKeys[idNum],
                 floor: floorId,
-                floorName: PlaceInfo[floorId].__FloorDisplayName__,
+                floorName: PlaceInfo[floorId].__FloorFullName__,
                 name: PlaceInfo[floorId][PlaceInfoKeys[idNum]].name,
                 desc: PlaceInfo[floorId][PlaceInfoKeys[idNum]].desc,
                 place: PlaceInfo[floorId][PlaceInfoKeys[idNum]].place,
