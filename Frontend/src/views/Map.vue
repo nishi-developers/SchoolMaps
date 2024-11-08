@@ -747,17 +747,34 @@ class MapMoveClass {
         }
     }
 
-    #slide(target) {
-        if (this.#slide[target].isDo) {
+    #slideAddSpeed(init, delta) {
+        // 速度を加算する関数
+        // 速度が0に近づくように、加算する
+        if (init > 0) {
+            init -= delta
+            if (init < 0) {
+                init = 0
+            }
+        } else {
+            init += delta
+            if (init > 0) {
+                init = 0
+            }
+        }
+        return init
+    }
+
+    slide(target) {
+        if (this.#slideData[target].isDo) {
             // 重複実行防止
             return
         }
-        this.#slide[target].isDo = true
+        this.#slideData[target].isDo = true
         // 設定値
         const frictionConfig = {
-            position: 0.01,
+            position: 0.001,
             zoom: 0.001,
-            rotate: 0.01,
+            rotate: 0.001,
         }
         // 速度が0になるまで、変更
         // 範囲内かのチェックは、省略
@@ -768,27 +785,31 @@ class MapMoveClass {
         ) {
             switch (target) {
                 case "position":
-                    this.mapStatus.position.left += this.#slideData.position.speedX
-                    this.mapStatus.position.top += this.#slideData.position.speedY
-                    this.#slideData.position.speedX -= frictionConfig.position
-                    this.#slideData.position.speedY -= frictionConfig.position
+                    this.mapStatus.value.position.left += this.#slideData.position.speedX
+                    this.mapStatus.value.position.top += this.#slideData.position.speedY
+                    // this.#slideData.position.speedX -= frictionConfig.position
+                    // this.#slideData.position.speedY -= frictionConfig.position
+                    this.#slideData.position.speedX = this.#slideAddSpeed(this.#slideData.position.speedX, frictionConfig.position)
+                    this.#slideData.position.speedY = this.#slideAddSpeed(this.#slideData.position.speedY, frictionConfig.position)
                     break;
                 case "zoom":
-                    this.mapStatus.zoom += this.#slideData.zoom.speed
-                    this.#slideData.zoom.speed -= frictionConfig.zoom
+                    this.mapStatus.value.zoom += this.#slideData.zoom.speed
+                    // this.#slideData.zoom.speed -= frictionConfig.zoom
+                    this.#slideData.zoom.speed = this.#slideAddSpeed(this.#slideData.zoom.speed, frictionConfig.zoom)
                     break;
                 case "rotate":
-                    this.mapStatus.rotate += this.#slideData.rotate.speed
-                    this.#slideData.rotate.speed -= frictionConfig.rotate
+                    this.mapStatus.value.rotate += this.#slideData.rotate.speed
+                    // this.#slideData.rotate.speed -= frictionConfig.rotate
+                    this.#slideData.rotate.speed = this.#slideAddSpeed(this.#slideData.rotate.speed, frictionConfig.rotate)
                     break;
             }
             // 再帰
             setTimeout(() => {
-                this.#slide[target].isDo = false
-                this.#slide(target)
+                this.#slideData[target].isDo = false
+                this.slide(target)
             }, 4)
         } else {
-            this.#slide[target].isDo = false
+            this.#slideData[target].isDo = false
             this.#slide_reset(target)
         }
     }
@@ -801,8 +822,8 @@ class MapMoveClass {
         this.#slide_reset(target)
         switch (target) {
             case "position":
-                this.mapStatus.position.left += x
-                this.mapStatus.position.top += y
+                this.mapStatus.value.position.left += x
+                this.mapStatus.value.position.top += y
                 // 速度を計算
                 if (this.#slideData.position.lastMovedTime !== 0) {
                     this.#slideData.position.speedX = x / (Date.now() - this.#slideData.position.lastMovedTime)
@@ -811,7 +832,7 @@ class MapMoveClass {
                 this.#slideData.position.lastMovedTime = Date.now()
                 break;
             case "zoom":
-                this.mapStatus.zoom += x
+                this.mapStatus.value.zoom += x
                 // 速度を計算
                 if (this.#slideData.zoom.lastMovedTime !== 0) {
                     this.#slideData.zoom.speed = x / (Date.now() - this.#slideData.zoom.lastMovedTime)
@@ -819,7 +840,7 @@ class MapMoveClass {
                 this.#slideData.zoom.lastMovedTime = Date.now()
                 break;
             case "rotate":
-                this.mapStatus.rotate += x
+                this.mapStatus.value.rotate += x
                 // 速度を計算
                 if (this.#slideData.rotate.lastMovedTime !== 0) {
                     this.#slideData.rotate.speed = x / (Date.now() - this.#slideData.rotate.lastMovedTime)
@@ -847,13 +868,18 @@ class MapMoveClass {
             map_DefaultWidth.value = window_width
         }
         // リセット
-        this.mapStatus.position.left = window_width / 2
-        this.mapStatus.position.top = window_height / 2
-        this.mapStatus.zoom = 1
-        this.mapStatus.rotate = 0
+        this.mapStatus.value.position.left = window_width / 2
+        this.mapStatus.value.position.top = window_height / 2
+        this.mapStatus.value.zoom = 1
+        this.mapStatus.value.rotate = 0
     }
 }
 let MapMove = new MapMoveClass()
+
+// watch(MapMove.mapStatus, (newVal, oldVal) => {
+//     console.log(newVal);
+
+// }, { deep: true })
 
 </script>
 
