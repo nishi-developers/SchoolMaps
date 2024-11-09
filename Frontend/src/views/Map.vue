@@ -130,9 +130,6 @@ if ((route.params.floor != "") && !isNaN(route.params.floor)
 const map_DefaultWidth = ref(0)
 // deviceMode
 const deviceMode = ref("")
-let map_size_width = 0
-let map_size_height = 0
-let map_size_ratio = 0
 
 onMounted(() => {
     resetMoving() //window_width, window_heightを使うので、ここでリセット
@@ -371,19 +368,15 @@ class MapMoveClass {
                 case "position":
                     this.mapStatus.value.position.left += this.#slideData.position.speedX
                     this.mapStatus.value.position.top += this.#slideData.position.speedY
-                    // this.#slideData.position.speedX -= frictionConfig.position
-                    // this.#slideData.position.speedY -= frictionConfig.position
                     this.#slideData.position.speedX *= frictionConfig.position
                     this.#slideData.position.speedY *= frictionConfig.position
                     break;
                 case "zoom":
                     this.mapStatus.value.zoom += this.#slideData.zoom.speed
-                    // this.#slideData.zoom.speed -= frictionConfig.zoom
                     this.#slideData.zoom.speed *= frictionConfig.zoom
                     break;
                 case "rotate":
                     this.mapStatus.value.rotate += this.#slideData.rotate.speed
-                    // this.#slideData.rotate.speed -= frictionConfig.rotate
                     this.#slideData.rotate.speed *= frictionConfig.rotate
                     break;
             }
