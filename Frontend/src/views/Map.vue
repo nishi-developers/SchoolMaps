@@ -632,17 +632,22 @@ function wrapEvent(name, event) {
             MapMove.slide("rotate")
             break;
         case "touchmove":
-            controlTouch.touch(event, 'doing');
+            // controlTouch.touch(event, 'doing');
+            MapMoveByTouch.do(event)
             property.click_notDetect();
             break;
         case "touchstart":
-            controlTouch.touch(event, 'start');
+            // controlTouch.touch(event, 'start');
+            MapMoveByTouch.start(event)
             property.click_Detect();
             break;
         case "touchend":
-            mapSlide.position_do();
-            mapSlide.zoom_do();
-            mapSlide.rotate_do();
+            // mapSlide.position_do();
+            // mapSlide.zoom_do();
+            // mapSlide.rotate_do();
+            MapMove.slide("position")
+            MapMove.slide("zoom")
+            MapMove.slide("rotate")
             break;
         case "wheel":
             // controlMouse.mouse_zoom(event)
@@ -725,9 +730,9 @@ class MapMoveClass {
         this.#slideData[target].isDo = true
         // 設定値
         const frictionConfig = {
-            position: 0.9,
-            zoom: 0.9,
-            rotate: 0.9,
+            position: 0.95,
+            zoom: 0.95,
+            rotate: 0.95,
             min: 0.001
         }
         // 速度が小さくなるまで、変更
@@ -769,10 +774,11 @@ class MapMoveClass {
     }
     move(target, x, y = 0) {
         // マップのあらゆる移動を行う関数
+        // 範囲内かのチェックは、省略
         // 慣性スクロールに関しては初速の計算のみを行う
         //スマホでは、0が多発するため、0の場合は無視
         if (x === 0 && y === 0) {
-            return
+            return false
         }
         this.#slide_reset(target)
         switch (target) {
@@ -803,6 +809,7 @@ class MapMoveClass {
                 this.#slideData.rotate.lastMovedTime = Date.now()
                 break;
         }
+        return true
     }
     reset() {
         this.#slide_reset()
@@ -861,6 +868,102 @@ class MapMoveByMouseClass {
 }
 const MapMoveByMouse = new MapMoveByMouseClass()
 
+class MapMoveByTouchClass {
+    #isZoomRotate = false
+    #last = {
+        x: 0,
+        y: 0,
+        fingerNum: 0,
+        rotate: 0,
+        length: 0
+    }
+    // 回転やズームの制限をするため
+    // タップし始めてどれぐらい動かしたか
+    #moveRestriction = {
+        zoomed: 0,
+        rotated: 0,
+        acceptRotate: false,
+    }
+    constructor() {
+    }
+    #positionLength(x1, y1, x2, y2) {
+        // 2点間の距離を計算する関数
+        return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+    }
+    #positionAverage(event) {
+        // タッチの位置を取得する関数
+        // タッチの指が複数ある場合は、それぞれの位置を取得して平均を取る
+        let x = 0
+        let y = 0
+        for (const i of event.changedTouches) {
+            x += i.clientX
+            y += i.clientY
+        }
+        return [x / event.changedTouches.length, y / event.changedTouches.length]
+    }
+    start() {
+        // タップし始めは、初期処理をあてるために値を変更
+        this.#isZoomRotate = false
+        this.#last.fingerNum = 0
+        // タップし始めてどれぐらい動かしたらをリセット
+        this.#moveRestriction.zoomed = 0
+        this.#moveRestriction.rotated = 0
+        this.#moveRestriction.acceptRotate = false
+    }
+    do(event) {
+        // タッチの本数にかかわらず、positionモード
+        // 本数が変わった場合、もしくは距離が飛んだ場合は、初期位置を変更(初期処理)
+        {
+            let now = {
+                x: this.#positionAverage(event)[0],
+                y: this.#positionAverage(event)[1]
+            }
+            if (this.#last.fingerNum != event.changedTouches.length || this.#positionLength(this.#last.x, this.#last.y, now.x, now.y) > 50) {
+                [this.#last.x, this.#last.y] = this.#positionAverage(event) //押した位置を相対位置の基準にする
+                this.#last.fingerNum = event.changedTouches.length
+            }
+            MapMove.move("position", now.x - this.#last.x, now.y - this.#last.y) // 位置をずらす
+            this.#last.x = now.x //最終値を更新
+            this.#last.y = now.y  //最終値を更新
+        }
+        {
+            if (event.changedTouches.length === 2) { // タッチの指が2つの場合はzoomモード
+                if (this.#isZoomRotate) {
+                    // すでにzoomRotateモードになっている場合
+                    // zoom
+                    // 指の間隔を計算して、前との差からズームレベルを変更
+                    let length = this.#positionLength(event.changedTouches[0].clientX, event.changedTouches[0].clientY, event.changedTouches[1].clientX, event.changedTouches[1].clientY)
+                    if (MapMove.move("zoom", (length - this.#last.length) * .005)) {
+                        this.#moveRestriction.zoomed += Math.abs(length - this.#last.length) //ズームした合計量を記録
+                        this.#last.length = length //最終値を更新
+                    }
+                    // rotate
+                    // 2点を結ぶ直線の傾きを計算して、前との差から回転角度を変更
+                    let rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
+                    this.#moveRestriction.rotated += Math.abs(rotate - this.#last.rotate) //回転した合計量を記録
+                    if (this.#moveRestriction.rotated > 20 && this.#moveRestriction.zoomed < 20) { //ズームをブロックする移動量(値のバランスは要調整)
+                        // あまりズームせずに回転した場合は、指を離すまで回転を許可
+                        this.#moveRestriction.acceptRotate = true
+                    }
+                    if (this.#moveRestriction.acceptRotate) {
+                        if (MapMove.move("rotate", rotate - this.#last.rotate)) {
+                            this.#last.rotate = rotate //最終値を更新
+                        }
+                    }
+                } else {
+                    //zoomRotateモードになっていない場合の初期処理
+                    this.#isZoomRotate = true
+                    this.#last.length = this.#positionLength(event.changedTouches[0].clientX, event.changedTouches[0].clientY, event.changedTouches[1].clientX, event.changedTouches[1].clientY)
+                    this.#last.rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
+                }
+            }
+        }
+    }
+}
+const MapMoveByTouch = new MapMoveByTouchClass()
+
+
+const log = ref("LogArea")
 </script>
 
 <style>
@@ -1027,6 +1130,7 @@ const MapMoveByMouse = new MapMoveByMouseClass()
 }
 </style>
 <template>
+    {{ log }}
     <Transition :name="`property-${deviceMode}`">
         <PropertyView v-if="property.isShowProperty.value" :Floor="CurrentFloor" :PlaceId="point_PlaceId"
             :deviceMode="deviceMode" @hideProperty="property.hide(true)" />
