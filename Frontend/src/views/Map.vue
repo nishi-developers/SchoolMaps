@@ -672,7 +672,16 @@ class MapMoveClass {
             isDo: false,
         }
     }
-    constructor() {
+    constructor(mapWidth, mapHeight, windowWidth, windowHeight) {
+        this.mapSize = {
+            width: mapWidth,
+            height: mapHeight,
+            ratio: mapWidth / mapHeight
+        }
+        this.windowSize = {
+            width: windowWidth,
+            height: windowHeight
+        }
         this.mapStatus = ref({
             position: {
                 left: 0,
@@ -799,12 +808,12 @@ class MapMoveClass {
         this.#slide_reset()
         // 要修正
         // 地図のデフォルトサイズを算出
-        map_size_width = PlaceInfo[CurrentFloor.value].__MapSizeWidth__
-        map_size_height = PlaceInfo[CurrentFloor.value].__MapSizeHeight__
+        map_size_width = this.mapSize.width
+        map_size_height = this.mapSize.height
         map_size_ratio = map_size_width / map_size_height
         // 表示範囲のサイズ(改)
-        window_width = window.innerWidth
-        window_height = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
+        window_width = this.windowSize.width
+        window_height = this.windowSize.height
         if (window_width / map_size_width > window_height / map_size_height) {
             // 縦幅に合わせる
             map_DefaultWidth.value = window_height * map_size_ratio
@@ -819,7 +828,12 @@ class MapMoveClass {
         this.mapStatus.value.rotate = 0
     }
 }
-const MapMove = new MapMoveClass()
+const MapMove = new MapMoveClass(
+    PlaceInfo[CurrentFloor.value].__MapSizeWidth__,
+    PlaceInfo[CurrentFloor.value].__MapSizeHeight__,
+    window.innerWidth,
+    window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
+)
 
 class MapMoveByMouseClass {
     constructor() {
