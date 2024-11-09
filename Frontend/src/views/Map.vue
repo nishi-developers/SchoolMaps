@@ -43,6 +43,8 @@ class propertyClass {
 
     mouseShow(mouseEvent) {
         // idを取得
+        // ラッパーを非表示にして、クリックされた場所を取得(その際に一瞬時間がかかるため、setTimeoutで遅延)
+        // setTimeoutのコールバック関数内でthisを使用するとthisはグローバルオブジェクトを指すため、thisを使う代わりにクラスのプロパティを使う
         isShowWrapper.value = false
         setTimeout(() => {
             const clickedObject = document.elementFromPoint(mouseEvent.clientX, mouseEvent.clientY);
@@ -580,6 +582,11 @@ class MapMoveByTouchClass {
 }
 const MapMoveByTouch = new MapMoveByTouchClass()
 
+// class PropertyClass {
+//     constructor() {
+//         this.showProperty = ref(false)
+//     }
+// }
 
 const log = ref("LogArea")
 </script>
