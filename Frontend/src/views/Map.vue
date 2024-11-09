@@ -13,10 +13,6 @@ const selectedId = ref("")
 const isShowWrapper = ref(true)
 
 class propertyClass {
-    // ドラッグなどとクリックを判別する
-    // <参考>
-    // https://qiita.com/_Keitaro_/items/375c5274bebf367f24e0
-    // https://qiita.com/KenjiOtsuka/items/da6d2dd2b81fef87e35d
     constructor() {
         this.isShowProperty = ref(false)
     }
@@ -482,6 +478,7 @@ function wrapEvent(name, event) {
             MapMoveByMouse.move(event)
             break;
         case "mousedown":
+            // 要削除
             break;
         case "mouseup":
             MapMove.slide("position")
@@ -505,7 +502,6 @@ function wrapEvent(name, event) {
         default:
             break;
     }
-    log.value = isSingleClick
 }
 
 class MapMoveClass {
