@@ -469,7 +469,7 @@ function wrapEvent(name, event) {
             setTimeout(() => {
                 if (isSingleClick) {
                     // シングルクリックの検出
-                    property.show(event.target.getAttribute("placeid"))
+                    property.mouseShow(event)
                 }
             }, 200)
             break;
