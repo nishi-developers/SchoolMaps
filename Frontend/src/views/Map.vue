@@ -168,223 +168,6 @@ floor
 property
 */
 
-
-
-class mapSlideClass {
-    // 慣性スクロール
-    constructor() {
-        this.reset()
-        // 重複実行防止のフラグ
-        this.is_position_do = false
-        this.is_zoom_do = false
-        this.is_rotate_do = false
-    }
-    reset() { // 慣性をリセット
-        this.position_stop()
-        this.zoom_stop()
-        this.rotate_stop()
-        this.position_lastMovedTime = 0
-        this.zoom_lastMovedTime = 0
-        this.rotate_lastMovedTime = 0
-    }
-    position_stop() { //positionのみリセット
-        this.position_speedX = 0
-        this.position_speedY = 0
-    }
-    zoom_stop() { //zoomのみリセット
-        this.zoom_speed = 0
-    }
-    rotate_stop() { //rotateのみリセット
-        this.rotate_speed = 0
-    }
-    position_do() {
-        if (this.is_position_do === false) { // 重複実行防止
-            this.is_position_do = true
-            // mouse
-            let position_speedMin = 0.01
-            let position_frictionLevel = 0.9
-            if (mouseORtouch === "touch") {
-                // touch
-                position_speedMin = 0.01
-                position_frictionLevel = 0.95
-            }
-            // 速度が0になるまで、位置を変更
-            if (Math.abs(this.position_speedX) > position_speedMin || Math.abs(this.position_speedY) > position_speedMin) {
-                if (mapMove.PositionRangeCheck(this.position_speedX * 4, this.position_speedY * 4)) {
-                    mapMove.map_PositionLeft.value += this.position_speedX * 4
-                    mapMove.map_PositionTop.value += this.position_speedY * 4
-                    this.position_speedX *= position_frictionLevel
-                    this.position_speedY *= position_frictionLevel
-                    // 再帰
-                    setTimeout(() => { this.is_position_do = false; this.position_do(); }, 4) // 4msごとに再帰
-                    // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
-                } else {
-                    this.is_position_do = false
-                    this.position_stop()
-                }
-            } else {
-                this.is_position_do = false
-                this.position_stop()
-            }
-        }
-    }
-    zoom_do() {
-        if (this.is_zoom_do === false) {
-            this.is_zoom_do = true
-            // mouse
-            let zoom_speedMin = 0.0001
-            let zoom_frictionLevel = 0.8
-            if (mouseORtouch === "touch") {
-                // touch
-                zoom_speedMin = 0.0001
-                zoom_frictionLevel = 0.8
-            }
-            if (Math.abs(this.zoom_speed) > zoom_speedMin && mapMove.ZoomLevel.value + this.zoom_speed * 4 < mapMove.ZoomLevelMax && mapMove.ZoomLevel.value + this.zoom_speed * 4 > mapMove.ZoomLevelMin) {
-                mapMove.ZoomLevel.value += this.zoom_speed * 4
-                this.zoom_speed *= zoom_frictionLevel
-                // 再帰
-                setTimeout(() => { this.is_zoom_do = false; this.zoom_do(); }, 4) // 4msごとに再帰
-                // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
-            } else {
-                this.is_zoom_do = false
-                this.zoom_stop()
-            }
-        }
-    }
-    rotate_do() {
-        if (this.is_rotate_do === false) { // 重複実行防止
-            this.is_rotate_do = true
-            // mouse
-            let rotate_speedMin = 0.01
-            let rotate_frictionLevel = 0.92
-            if (mouseORtouch === "touch") {
-                // touch
-                rotate_speedMin = 0.01
-                rotate_frictionLevel = 0.95
-            }
-            if (Math.abs(this.rotate_speed) > rotate_speedMin) {
-                mapMove.map_Rotate.value += this.rotate_speed * 4
-                this.rotate_speed *= rotate_frictionLevel
-                // 再帰
-                setTimeout(() => { this.is_rotate_do = false; this.rotate_do(); }, 4) // 4msごとに再帰
-                // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
-            } else {
-                this.is_rotate_do = false
-                this.rotate_stop()
-            }
-        }
-    }
-}
-let mapSlide = new mapSlideClass()
-
-class mapMoveClass {
-    constructor() {
-        // 地図の位置
-        this.map_PositionLeft = ref()
-        this.map_PositionTop = ref()
-        // 地図の倍率
-        this.ZoomLevel = ref()
-        this.ZoomLevelMax = 15
-        this.ZoomLevelMin = 0.001
-        // 地図の回転
-        this.map_Rotate = ref()
-    }
-    PositionRangeCheck(x, y) {
-        // 移動先が範囲内かどうかをチェックする関数
-        // ズームでどうしても範囲外に出てしまうため、戻す動きは制限しない
-        // 中心はマップの中心
-        // 回転を考慮したマップのサイズを算出
-        // Issues #15 に詳細あり
-        let radian = this.map_Rotate.value * (Math.PI / 180);
-        let A = map_DefaultWidth.value
-        let B = map_DefaultWidth.value / map_size_ratio
-        let temp_width = Math.abs(A * Math.cos(radian)) + Math.abs(B * Math.sin(radian))
-        let temp_height = Math.abs(A * Math.sin(radian)) + Math.abs(B * Math.cos(radian))
-        // 範囲内かどうかをチェック
-        if (x > 0 && this.map_PositionLeft.value + x > (temp_width * mapMove.ZoomLevel.value / 2) + window_width) {
-            // 右端
-            return false
-        }
-        else if (x < 0 && this.map_PositionLeft.value + x < -(temp_width * mapMove.ZoomLevel.value / 2)) {
-            // 左端
-            return false
-        }
-        else if (y > 0 && this.map_PositionTop.value + y > ((temp_height * mapMove.ZoomLevel.value) / 2) + window_height) {
-            // 下端
-            return false
-        }
-        else if (y < 0 && this.map_PositionTop.value + y < (-((temp_height * mapMove.ZoomLevel.value) / 2))) {
-            // 上端
-            return false
-        } else {
-            return true
-        }
-    }
-    PositionMove(x, y) {
-        mapSlide.position_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
-        if (this.PositionRangeCheck(x, y)) {
-            this.map_PositionLeft.value += x
-            this.map_PositionTop.value += y
-            // 速度を計算
-            if (mapSlide.position_lastMovedTime != 0) {
-                mapSlide.position_speedX = x / (Date.now() - mapSlide.position_lastMovedTime)
-                mapSlide.position_speedY = y / (Date.now() - mapSlide.position_lastMovedTime)
-            }
-            mapSlide.position_lastMovedTime = Date.now()
-            return true //将来的に範囲を制限するかもしれないため、trueを返す
-        } else {
-            return false
-        }
-    }
-    Zoom(v) {
-        // マップのズームをする関数
-        // ズームの慣性の実装は、PCとスマホで異なるため、それぞれの場所で実装
-        // 範囲内であれば、ズームレベルを変更し、trueを返す
-        if (v != 0) {
-            if (this.ZoomLevel.value + v < this.ZoomLevelMax && this.ZoomLevel.value + v > this.ZoomLevelMin) {
-                mapSlide.zoom_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
-                this.ZoomLevel.value += v
-                return true
-            } else {
-                return false
-            }
-        } else {
-            return false
-        }
-    }
-    Rotating(v) {
-        if (v != 0) { //スマホでは、回転0が多発するため、0の場合は無視
-            this.map_Rotate.value += v
-            mapSlide.rotate_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
-            if (mapSlide.rotate_lastMovedTime != 0) {
-                mapSlide.rotate_speed = v / (Date.now() - mapSlide.rotate_lastMovedTime)
-            }
-            mapSlide.rotate_lastMovedTime = Date.now()
-        }
-    }
-    reset() {
-        // 地図のデフォルトサイズを算出
-        map_size_width = PlaceInfo[CurrentFloor.value].__MapSizeWidth__
-        map_size_height = PlaceInfo[CurrentFloor.value].__MapSizeHeight__
-        map_size_ratio = map_size_width / map_size_height
-        // 表示範囲のサイズ(改)
-        window_width = window.innerWidth
-        window_height = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
-        if (window_width / map_size_width > window_height / map_size_height) {
-            // 縦幅に合わせる
-            map_DefaultWidth.value = window_height * map_size_ratio
-        } else {
-            // 横幅に合わせる
-            map_DefaultWidth.value = window_width
-        }
-        // リセット
-        this.map_PositionLeft.value = window_width / 2
-        this.map_PositionTop.value = window_height / 2
-        this.ZoomLevel.value = 1
-        this.map_Rotate.value = 0
-    }
-}
-let mapMove = new mapMoveClass()
 // 慣性をのせて移動する場合は必ずここの関数を利用する
 // 表示範囲のサイズ(仮)
 let window_width = 0
@@ -393,8 +176,7 @@ let window_height = 0
 // リセット(PC・モバイル共通)
 // ダブルクリックでリセット
 function resetMoving() {
-    mapMove.reset()
-    mapSlide.reset()
+    MapMove.reset()
     property.hide(true)
     if (window_width < window_height) {
         deviceMode.value = "mobile"
@@ -402,9 +184,6 @@ function resetMoving() {
         deviceMode.value = "pc"
     }
 }
-
-let mouseORtouch = ""
-
 
 // デフォルトのピンチアウトを無効化
 // 1本をブロックすると、プロパティでのスクロールが無効化されるため、2本以上をブロックする
@@ -855,7 +634,6 @@ const log = ref("LogArea")
 #map_content svg .label {
     transform-origin: center center;
     transform-box: fill-box;
-    /* transform: rotate(v-bind("- mapMove.map_Rotate.value + 'deg'")); */
     transform: rotate(v-bind("- MapMove.mapStatus.value.rotate + 'deg'"));
     font-size: 1rem;
     fill: var(--MainBodyColor);
@@ -885,14 +663,10 @@ const log = ref("LogArea")
 
 #map_content svg {
     position: absolute;
-    /* width: v-bind("(map_DefaultWidth * mapMove.ZoomLevel.value) + 'px'"); */
     width: v-bind("(map_DefaultWidth * MapMove.mapStatus.value.zoom) + 'px'");
     height: auto;
-    /* left: v-bind("mapMove.map_PositionLeft.value + 'px'"); */
     left: v-bind("MapMove.mapStatus.value.position.left + 'px'");
-    /* top: v-bind("mapMove.map_PositionTop.value + 'px'"); */
     top: v-bind("MapMove.mapStatus.value.position.top + 'px'");
-    /* transform: translate(-50%, -50%) rotate(v-bind("mapMove.map_Rotate.value + 'deg'")); */
     transform: translate(-50%, -50%) rotate(v-bind("MapMove.mapStatus.value.rotate + 'deg'"));
 
 }
