@@ -18,104 +18,65 @@ class propertyClass {
     // https://qiita.com/_Keitaro_/items/375c5274bebf367f24e0
     // https://qiita.com/KenjiOtsuka/items/da6d2dd2b81fef87e35d
     constructor() {
-        this.isClick = false
-        this.isDubleClick = false
         this.isShowProperty = ref(false)
     }
 
     show(id) {
-        // setTimeoutのコールバック関数内でthisを使用するとthisはグローバルオブジェクトを指すため、thisを使う代わりにクラスのプロパティを使う
-        // クリックされたときに、フラグが立っていたら
-        // let isClick_ = this.isClick
-        // this.isClick = false
-        if (property.isClick) {
-            property.isClick = false
-            property.isDubleClick = false
-            // ダブルクリックと判定されるまでの時間を遅らせる
-            setTimeout(() => {
-                if (!property.isDubleClick) {
-                    // 存在する場所かどうかをチェック
-                    if (Object.keys(PlaceInfo[CurrentFloor.value]).includes(id)) {
-                        event(`open{${CurrentFloor.value}/${id}}`)
-                        point_PlaceId.value = id
-                        if (property.isShowProperty.value) {
-                            // すでに表示されている場合は、一旦閉じてから開く
-                            property.hide(true)
-                            setTimeout(() => {
-                                property.isShowProperty.value = true
-                            }, 50);
-                        } else {
-                            // 表示されていない場合は、即時表示
-                            property.isShowProperty.value = true
-                        }
-                        selectedId.value = id
-                        changeURL(CurrentFloor.value, id); //hide()の後に実行
-                        return true //ここは瞬時なので注意
-                    } else {
-                        return false
-                    }
-                }
-            }, 200)
+
+        // 存在する場所かどうかをチェック
+        if (Object.keys(PlaceInfo[CurrentFloor.value]).includes(id)) {
+            event(`open{${CurrentFloor.value}/${id}}`)
+            point_PlaceId.value = id
+            if (property.isShowProperty.value) {
+                // すでに表示されている場合は、一旦閉じてから開く
+                property.hide(true)
+                setTimeout(() => {
+                    property.isShowProperty.value = true
+                }, 50);
+            } else {
+                // 表示されていない場合は、即時表示
+                property.isShowProperty.value = true
+            }
+            selectedId.value = id
+            changeURL(CurrentFloor.value, id); //hide()の後に実行
+            return true //ここは瞬時なので注意
+        } else {
+            return false
         }
     }
 
     mouseShow(mouseEvent) {
-        // setTimeoutのコールバック関数内でthisを使用するとthisはグローバルオブジェクトを指すため、thisを使う代わりにクラスのプロパティを使う
-        // クリックされたときに、フラグが立っていたら
-        // let isClick_ = this.isClick
-        // this.isClick = false
-        if (property.isClick) {
-            property.isClick = false
-            property.isDubleClick = false
-            // ダブルクリックと判定されるまでの時間を遅らせる
-            setTimeout(() => {
-                if (!property.isDubleClick) {
-                    // idを取得
-                    isShowWrapper.value = false
+        // idを取得
+        isShowWrapper.value = false
+        setTimeout(() => {
+            const clickedObject = document.elementFromPoint(mouseEvent.clientX, mouseEvent.clientY);
+            if (clickedObject.getAttribute('placeid') == null) {
+                isShowWrapper.value = true
+                return
+            }
+            const id = clickedObject.getAttribute('placeid')
+            isShowWrapper.value = true
+            // 存在する場所かどうかをチェック
+            if (Object.keys(PlaceInfo[CurrentFloor.value]).includes(id)) {
+                event(`open{${CurrentFloor.value}/${id}}`)
+                point_PlaceId.value = id
+                if (property.isShowProperty.value) {
+                    // すでに表示されている場合は、一旦閉じてから開く
+                    property.hide(true)
                     setTimeout(() => {
-                        const clickedObject = document.elementFromPoint(mouseEvent.clientX, mouseEvent.clientY);
-                        if (clickedObject.getAttribute('placeid') == null) {
-                            isShowWrapper.value = true
-                            return
-                        }
-                        const id = clickedObject.getAttribute('placeid')
-                        isShowWrapper.value = true
-                        // 存在する場所かどうかをチェック
-                        if (Object.keys(PlaceInfo[CurrentFloor.value]).includes(id)) {
-                            event(`open{${CurrentFloor.value}/${id}}`)
-                            point_PlaceId.value = id
-                            if (property.isShowProperty.value) {
-                                // すでに表示されている場合は、一旦閉じてから開く
-                                property.hide(true)
-                                setTimeout(() => {
-                                    property.isShowProperty.value = true
-                                }, 50);
-                            } else {
-                                // 表示されていない場合は、即時表示
-                                property.isShowProperty.value = true
-                            }
-                            selectedId.value = id
-                            changeURL(CurrentFloor.value, id); //hide()の後に実行
-                            return true //ここは瞬時なので注意
-                        } else {
-                            return false
-                        }
-                    }, 0);
+                        property.isShowProperty.value = true
+                    }, 50);
+                } else {
+                    // 表示されていない場合は、即時表示
+                    property.isShowProperty.value = true
                 }
-            }, 200)
-        }
-    }
-    click_Detect() {
-        // クリック開始が検出されたときにフラグを立てる
-        this.isClick = true
-    }
-    click_notDetect() {
-        // クリックではなくドラックだとわかったときにフラグを解除する
-        this.isClick = false
-    }
-    click_dubleDetect() {
-        // ダブルクリックが検出されたときにフラグを立てる
-        this.isDubleClick = true
+                selectedId.value = id
+                changeURL(CurrentFloor.value, id); //hide()の後に実行
+                return true //ここは瞬時なので注意
+            } else {
+                return false
+            }
+        }, 0);
     }
 
     hide(isChangeURL = false) {
@@ -181,7 +142,6 @@ onMounted(() => {
     resetMoving() //window_width, window_heightを使うので、ここでリセット
     // パラメーターの取得
     if (route.params.id != "") {
-        property.isClick = true
         if (!property.show(route.params.id)) {
             changeURL(CurrentFloor.value, null)
         }
@@ -499,55 +459,53 @@ watch(selectedId, (newVal, oldVal) => {
 
 // NEW
 
+let isSingleClick
 function wrapEvent(name, event) {
     // ラッパーに関するイベントをすべてまとめ、分岐させる
     switch (name) {
         case "click":
-            property.mouseShow(event)
+            isSingleClick = true
+            // property.mouseShow(event)
+            setTimeout(() => {
+                if (isSingleClick) {
+                    // シングルクリックの検出
+                    property.show(event.target.getAttribute("placeid"))
+                }
+            }, 200)
             break;
         case "dblclick":
+            isSingleClick = false
             resetMoving();
-            property.click_dubleDetect()
             break;
         case "mousemove":
-            // controlMouse.mouse_moveRotate(event);
+            isSingleClick = false
             MapMoveByMouse.move(event)
-            property.click_notDetect();
             break;
         case "mousedown":
-            property.click_Detect();
             break;
         case "mouseup":
-            // mapSlide.position_do();
-            // mapSlide.rotate_do();
             MapMove.slide("position")
             MapMove.slide("rotate")
             break;
         case "touchmove":
-            // controlTouch.touch(event, 'doing');
+            isSingleClick = false
             MapMoveByTouch.do(event)
-            property.click_notDetect();
             break;
         case "touchstart":
-            // controlTouch.touch(event, 'start');
             MapMoveByTouch.start(event)
-            property.click_Detect();
             break;
         case "touchend":
-            // mapSlide.position_do();
-            // mapSlide.zoom_do();
-            // mapSlide.rotate_do();
             MapMove.slide("position")
             MapMove.slide("zoom")
             MapMove.slide("rotate")
             break;
         case "wheel":
-            // controlMouse.mouse_zoom(event)
             MapMoveByMouse.wheel(event)
             break;
         default:
             break;
     }
+    log.value = isSingleClick
 }
 
 class MapMoveClass {
