@@ -807,16 +807,12 @@ class MapMoveClass {
     reset() {
         this.#slide_reset()
         // 要修正
-        // 地図のデフォルトサイズを算出
-        map_size_width = this.mapSize.width
-        map_size_height = this.mapSize.height
-        map_size_ratio = map_size_width / map_size_height
         // 表示範囲のサイズ(改)
         window_width = this.windowSize.width
         window_height = this.windowSize.height
-        if (window_width / map_size_width > window_height / map_size_height) {
+        if (window_width / this.mapSize.width > window_height / this.mapSize.height) {
             // 縦幅に合わせる
-            map_DefaultWidth.value = window_height * map_size_ratio
+            map_DefaultWidth.value = window_height * this.mapSize.ratio
         } else {
             // 横幅に合わせる
             map_DefaultWidth.value = window_width
