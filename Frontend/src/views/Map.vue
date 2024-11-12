@@ -3,8 +3,7 @@ import { onMounted, ref, defineAsyncComponent, watch } from 'vue'
 import PropertyView from '@/components/PropertyView.vue';
 import PlaceInfo from '@/assets/PlaceInfo.json'
 import { event } from 'vue-gtag'
-import { useRoute, useRouter } from 'vue-router'
-const route = useRoute()
+import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const isShowWrapper = ref(true)
@@ -16,15 +15,15 @@ class propertyClass {
 
     isPlaceExist(id) {
         // 存在する場所かどうかをチェック
-        // resolveUrl()で確実に使用されるため、this.propertyShowではチェックしない
+        // resolveUrl()で確実に使用されるため、this.showではチェックしない
         return Object.keys(PlaceInfo[currentFloor.value]).includes(id)
     }
 
-    propertyShow(id) {
+    show(id) {
         event(`open{${currentFloor.value}/${id}}`)
         if (this.isShowProperty.value) {
             // すでに表示されている場合は、一旦閉じてから開く
-            this.propertyHide()
+            this.hide()
             setTimeout(() => {
                 property.isShowProperty.value = true
             }, 500);
@@ -34,7 +33,7 @@ class propertyClass {
         }
         currentPlaceId.value = id
     }
-    propertyShowByUser(mouseEvent) {
+    showByUser(mouseEvent) {
         // idを取得
         // ラッパーを非表示にして、クリックされた場所を取得(その際に一瞬時間がかかるため、setTimeoutで遅延)
         // setTimeoutのコールバック関数内でthisを使用するとthisはグローバルオブジェクトを指すため、thisを使う代わりにクラスのプロパティを使う
@@ -51,7 +50,7 @@ class propertyClass {
         }, 0);
     }
 
-    propertyHide() {
+    hide() {
         currentPlaceId.value = ""
         this.isShowProperty.value = false
     }
@@ -162,18 +161,18 @@ class SetupClass {
         // プロパティの表示
         if (id != "" && id != null) {
             if (property.isPlaceExist(id)) {
-                property.propertyShow(id)
+                property.show(id)
             } else {
                 this.changeURL(currentFloor.value, null)
             }
         } else {
-            property.propertyHide()
+            property.hide()
         }
     }
 
     changeFloor(floor) {
         currentFloor.value = floor
-        property.propertyHide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
+        property.hide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
         this.mapDataCurrent = defineAsyncComponent(() => import(`@/assets/floors/${floor}.vue`))
     }
 
@@ -233,7 +232,7 @@ function wrapEvent(name, event) {
             setTimeout(() => {
                 if (isSingleClick) {
                     // シングルクリックの検出
-                    property.propertyShowByUser(event)
+                    property.showByUser(event)
                 }
             }, 200)
             break;
