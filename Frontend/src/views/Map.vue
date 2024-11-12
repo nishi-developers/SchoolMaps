@@ -16,15 +16,15 @@ class propertyClass {
 
     isPlaceExist(id) {
         // 存在する場所かどうかをチェック
-        // resolveUrl()で確実に使用されるため、this.showではチェックしない
+        // resolveUrl()で確実に使用されるため、this.propertyShowではチェックしない
         return Object.keys(PlaceInfo[currentFloor.value]).includes(id)
     }
 
-    show(id) {
+    propertyShow(id) {
         event(`open{${currentFloor.value}/${id}}`)
         if (this.isShowProperty.value) {
             // すでに表示されている場合は、一旦閉じてから開く
-            this.hide()
+            this.propertyHide()
             setTimeout(() => {
                 property.isShowProperty.value = true
             }, 500);
@@ -34,7 +34,7 @@ class propertyClass {
         }
         currentPlaceId.value = id
     }
-    mouseShow(mouseEvent) {
+    propertyShowByUser(mouseEvent) {
         // idを取得
         // ラッパーを非表示にして、クリックされた場所を取得(その際に一瞬時間がかかるため、setTimeoutで遅延)
         // setTimeoutのコールバック関数内でthisを使用するとthisはグローバルオブジェクトを指すため、thisを使う代わりにクラスのプロパティを使う
@@ -51,7 +51,7 @@ class propertyClass {
         }, 0);
     }
 
-    hide() {
+    propertyHide() {
         currentPlaceId.value = ""
         this.isShowProperty.value = false
     }
@@ -162,18 +162,18 @@ class SetupClass {
         // プロパティの表示
         if (id != "" && id != null) {
             if (property.isPlaceExist(id)) {
-                property.show(id)
+                property.propertyShow(id)
             } else {
                 this.changeURL(currentFloor.value, null)
             }
         } else {
-            property.hide()
+            property.propertyHide()
         }
     }
 
     changeFloor(floor) {
         currentFloor.value = floor
-        property.hide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
+        property.propertyHide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
         this.mapDataCurrent = defineAsyncComponent(() => import(`@/assets/floors/${floor}.vue`))
     }
 
@@ -230,11 +230,10 @@ function wrapEvent(name, event) {
     switch (name) {
         case "click":
             isSingleClick = true
-            // property.mouseShow(event)
             setTimeout(() => {
                 if (isSingleClick) {
                     // シングルクリックの検出
-                    property.mouseShow(event)
+                    property.propertyShowByUser(event)
                 }
             }, 200)
             break;
