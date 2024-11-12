@@ -175,6 +175,7 @@ export default ({ mode }) => {
         }
       }
     },
-    base: '/SchoolMap'
+    // ルートの場合は"/"、サブディレクトリの場合は"/サブディレクトリ名/"
+    base: '/SchoolMap/'
   })
 }
