@@ -26,7 +26,7 @@ class propertyClass {
             this.hide()
             setTimeout(() => {
                 property.isShowProperty.value = true
-            }, 500);
+            }, 100);
         } else {
             // 表示されていない場合は、即時表示
             this.isShowProperty.value = true
