@@ -58,9 +58,6 @@ class propertyClass {
 }
 let property = new propertyClass()
 
-
-// マップの切り替え
-
 const currentPlaceId = ref("")
 
 
@@ -68,13 +65,6 @@ window.addEventListener('popstate', (event) => {
     Setup.resolveUrl()
 });
 
-// パラメーターの取得
-// if ((route.params.floor != "") && !isNaN(route.params.floor)
-//     && Number(route.params.floor) >= 0 && Number(route.params.floor) <= PlaceInfo.length - 1) {
-//     changeFloor(Number(route.params.floor))
-// } else {
-//     changeFloor(0)
-// }
 
 const map_DefaultWidth = ref(0)
 // deviceMode
@@ -82,13 +72,6 @@ const deviceMode = ref("")
 
 onMounted(() => {
     resetMoving() //window_width, window_heightを使うので、ここでリセット
-    // パラメーターの取得
-    // if (route.params.id != "") {
-    //     if (!property.show(route.params.id)) {
-    //         Setup.changeURL(currentFloor.value, null)
-    //     }
-    // }
-
     Setup.onMounted()
 })
 
@@ -144,27 +127,18 @@ class SetupClass {
         // URLの変更
         if (id != null) {
             history.pushState(history.state, '', `${import.meta.env.BASE_URL}/${floor}/${id}`);
-            // router.push(`/${floor}/${id}`)
-            // router.replace(`/${floor}/${id}`)
         }
         else {
             history.pushState(history.state, '', `${import.meta.env.BASE_URL}/${floor}`);
-            // router.push(`/${floor}`)
-            // router.replace(`/${floor}`)
         }
-        // setTimeout(() => {
-        //     this.resolveUrl()
-        // }, 1000);
         this.resolveUrl()
     }
 
     resolveUrl() {
         // onMount以降に実行しなければならない
-
         // URLの解決
         let floor
         let id
-
         // 要改善
         if (import.meta.env.BASE_URL != "/") {
             // ベースURLがある場合
@@ -466,6 +440,7 @@ class MapMoveClass {
     }
 }
 const MapMove = new MapMoveClass(
+    // 要修正
     // PlaceInfo[Setup.currentFloor.value].__MapSizeWidth__,
     // PlaceInfo[Setup.currentFloor.value].__MapSizeHeight__,
     PlaceInfo[0].__MapSizeWidth__,
@@ -598,13 +573,6 @@ class MapMoveByTouchClass {
 }
 const MapMoveByTouch = new MapMoveByTouchClass()
 
-
-
-// class PropertyClass {
-//     constructor() {
-//         this.showProperty = ref(false)
-//     }
-// }
 
 const log = ref("LogArea")
 </script>
@@ -768,7 +736,7 @@ const log = ref("LogArea")
 }
 </style>
 <template>
-    <div v-if="property.isShowProperty.value">{{ log }}</div>
+    {{ log }}
     <Transition :name="`property-${deviceMode}`">
         <PropertyView v-if="property.isShowProperty.value" :Floor="currentFloor" :PlaceId="currentPlaceId"
             :deviceMode="deviceMode" @hideProperty="Setup.changeURL(currentFloor, null)" />
