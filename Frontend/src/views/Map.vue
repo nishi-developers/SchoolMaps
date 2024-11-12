@@ -12,13 +12,11 @@ class propertyClass {
     constructor() {
         this.isShowProperty = ref(false)
     }
-
     isPlaceExist(id) {
         // 存在する場所かどうかをチェック
         // resolveUrl()で確実に使用されるため、this.showではチェックしない
         return Object.keys(PlaceInfo[currentFloor.value]).includes(id)
     }
-
     show(id) {
         event(`open{${currentFloor.value}/${id}}`)
         if (this.isShowProperty.value) {
@@ -49,7 +47,6 @@ class propertyClass {
             Setup.changeURL(currentFloor.value, id)
         }, 0);
     }
-
     hide() {
         currentPlaceId.value = ""
         this.isShowProperty.value = false
@@ -81,12 +78,10 @@ class SetupClass {
         this.placeInfoReverse = this.#createPlaceInfo()
         this.mapDataCurrent = null
     }
-
     onMounted() {
         // マウント時の処理
         this.resolveUrl()
     }
-
     // URL解決の手順
     // 1. いかなる場合も、変更があった場合は、URLを変更する
     // 2. resolveUrl()を実行する
@@ -125,10 +120,10 @@ class SetupClass {
     changeURL(floor, id) {
         // URLの変更
         if (id != null) {
-            history.pushState(history.state, '', `${import.meta.env.BASE_URL}/${floor}/${id}`);
+            history.pushState(history.state, '', `${import.meta.env.BASE_URL}${floor}/${id}`);
         }
         else {
-            history.pushState(history.state, '', `${import.meta.env.BASE_URL}/${floor}`);
+            history.pushState(history.state, '', `${import.meta.env.BASE_URL}${floor}`);
         }
         this.resolveUrl()
     }
@@ -147,6 +142,12 @@ class SetupClass {
             floor = location.pathname.split("/")[1]
             id = location.pathname.split("/")[2]
         }
+        if (floor == null) {
+            floor = ""
+        }
+        if (id == null) {
+            id = ""
+        }
 
         // フロアの変更
         if (floor != currentFloor.value) {
@@ -159,7 +160,7 @@ class SetupClass {
         }
 
         // プロパティの表示
-        if (id != "" && id != null) {
+        if (id != "") {
             if (property.isPlaceExist(id)) {
                 property.show(id)
             } else {
