@@ -198,16 +198,19 @@ function resetMoving() {
 
 
 watch(currentPlaceId, (newVal, oldVal) => {
+    document.querySelectorAll(`.place.selected`).forEach((element) => {
+        element.classList.remove("selected")
+    })
     if (newVal != "") {
         document.querySelectorAll(`[placeid="${newVal}"]`).forEach((element) => {
             element.classList.add("selected")
         })
     }
-    if (oldVal != "") {
-        document.querySelectorAll(`[placeid="${oldVal}"]`).forEach((element) => {
-            element.classList.remove("selected")
-        })
-    }
+    // if (oldVal != "") {
+    //     document.querySelectorAll(`[placeid="${oldVal}"]`).forEach((element) => {
+    //         element.classList.remove("selected")
+    //     })
+    // }
 })
 
 
