@@ -7,8 +7,6 @@ import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 
-
-
 const isShowWrapper = ref(true)
 
 class propertyClass {
@@ -67,7 +65,7 @@ const currentPlaceId = ref("")
 
 
 window.addEventListener('popstate', (event) => {
-    alert("ブラウザバック(進むも)検知")
+    Setup.resolveUrl()
 });
 
 // パラメーターの取得
