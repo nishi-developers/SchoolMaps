@@ -9,7 +9,6 @@ const router = useRouter()
 
 
 
-const selectedId = ref("")
 const isShowWrapper = ref(true)
 
 class propertyClass {
@@ -17,30 +16,26 @@ class propertyClass {
         this.isShowProperty = ref(false)
     }
 
-    show(id) {
-
+    isPlaceExist(id) {
         // 存在する場所かどうかをチェック
-        if (Object.keys(PlaceInfo[CurrentFloor.value]).includes(id)) {
-            event(`open{${CurrentFloor.value}/${id}}`)
-            point_PlaceId.value = id
-            if (property.isShowProperty.value) {
-                // すでに表示されている場合は、一旦閉じてから開く
-                property.hide(true)
-                setTimeout(() => {
-                    property.isShowProperty.value = true
-                }, 50);
-            } else {
-                // 表示されていない場合は、即時表示
-                property.isShowProperty.value = true
-            }
-            selectedId.value = id
-            changeURL(CurrentFloor.value, id); //hide()の後に実行
-            return true //ここは瞬時なので注意
-        } else {
-            return false
-        }
+        // resolveUrl()で確実に使用されるため、this.showではチェックしない
+        return Object.keys(PlaceInfo[currentFloor.value]).includes(id)
     }
 
+    show(id) {
+        event(`open{${currentFloor.value}/${id}}`)
+        if (this.isShowProperty.value) {
+            // すでに表示されている場合は、一旦閉じてから開く
+            this.hide()
+            setTimeout(() => {
+                property.isShowProperty.value = true
+            }, 500);
+        } else {
+            // 表示されていない場合は、即時表示
+            this.isShowProperty.value = true
+        }
+        currentPlaceId.value = id
+    }
     mouseShow(mouseEvent) {
         // idを取得
         // ラッパーを非表示にして、クリックされた場所を取得(その際に一瞬時間がかかるため、setTimeoutで遅延)
@@ -54,80 +49,34 @@ class propertyClass {
             }
             const id = clickedObject.getAttribute('placeid')
             isShowWrapper.value = true
-            // 存在する場所かどうかをチェック
-            if (Object.keys(PlaceInfo[CurrentFloor.value]).includes(id)) {
-                event(`open{${CurrentFloor.value}/${id}}`)
-                point_PlaceId.value = id
-                if (property.isShowProperty.value) {
-                    // すでに表示されている場合は、一旦閉じてから開く
-                    property.hide(true)
-                    setTimeout(() => {
-                        property.isShowProperty.value = true
-                    }, 50);
-                } else {
-                    // 表示されていない場合は、即時表示
-                    property.isShowProperty.value = true
-                }
-                selectedId.value = id
-                changeURL(CurrentFloor.value, id); //hide()の後に実行
-                return true //ここは瞬時なので注意
-            } else {
-                return false
-            }
+            Setup.changeURL(currentFloor.value, id)
         }, 0);
     }
 
-    hide(isChangeURL = false) {
+    hide() {
+        currentPlaceId.value = ""
         this.isShowProperty.value = false
-        selectedId.value = ""
-        if (isChangeURL) {
-            changeURL(CurrentFloor.value, null)
-        }
     }
 }
 let property = new propertyClass()
 
+
 // マップの切り替え
-let MapDataCurrent = null
-function changeMapData(floor) {
-    MapDataCurrent = defineAsyncComponent(() => import(`@/assets/floors/${floor}.vue`))
-}
 
-const point_PlaceId = ref("")
-const CurrentFloor = ref()
-function changeFloor(floor) {
-    CurrentFloor.value = floor
-    property.hide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
-    changeMapData(floor)
-    changeURL(floor, null);
-}
+const currentPlaceId = ref("")
 
-// フロア情報の逆順を作成
-let PlaceInfoReverse = PlaceInfo.slice().reverse()
-for (let i = 0; i < PlaceInfoReverse.length; i++) {
-    PlaceInfoReverse[i]["__key__"] = PlaceInfoReverse.length - 1 - i
-}
 
-// URL書き換え用関数
-function changeURL(floor, id) {
-    if (id != null) {
-        // router.replace(`${import.meta.env.BASE_URL}/${floor}/${id}`)
-        // history.replaceState('', '', `${import.meta.env.BASE_URL}/${floor}/${id}`)
-        history.pushState('', '', `${import.meta.env.BASE_URL}/${floor}/${id}`);
-    }
-    else {
-        // router.replace(`${import.meta.env.BASE_URL}/${floor}`)
-        // history.replaceState('', '', `${import.meta.env.BASE_URL}/${floor}`)
-        history.pushState('', '', `${import.meta.env.BASE_URL}/${floor}`);
-    }
-}
+window.addEventListener('popstate', (event) => {
+    alert("ブラウザバック(進むも)検知")
+});
+
 // パラメーターの取得
-if ((route.params.floor != "") && !isNaN(route.params.floor)
-    && Number(route.params.floor) >= 0 && Number(route.params.floor) <= PlaceInfo.length - 1) {
-    changeFloor(Number(route.params.floor))
-} else {
-    changeFloor(0)
-}
+// if ((route.params.floor != "") && !isNaN(route.params.floor)
+//     && Number(route.params.floor) >= 0 && Number(route.params.floor) <= PlaceInfo.length - 1) {
+//     changeFloor(Number(route.params.floor))
+// } else {
+//     changeFloor(0)
+// }
 
 const map_DefaultWidth = ref(0)
 // deviceMode
@@ -136,36 +85,128 @@ const deviceMode = ref("")
 onMounted(() => {
     resetMoving() //window_width, window_heightを使うので、ここでリセット
     // パラメーターの取得
-    if (route.params.id != "") {
-        if (!property.show(route.params.id)) {
-            changeURL(CurrentFloor.value, null)
-        }
-    }
+    // if (route.params.id != "") {
+    //     if (!property.show(route.params.id)) {
+    //         Setup.changeURL(currentFloor.value, null)
+    //     }
+    // }
+
+    Setup.onMounted()
 })
 
-/*
-語録
+const currentFloor = ref()
 
-動かし方
-mouse
-touch
+class SetupClass {
+    constructor() {
+        this.placeInfoReverse = this.#createPlaceInfo()
+        this.mapDataCurrent = null
+    }
 
-動く要素
-position
-rotate
-zoom
+    onMounted() {
+        // マウント時の処理
+        this.resolveUrl()
+    }
 
-順番
-control
-move
-slide
+    // URL解決の手順
+    // 1. いかなる場合も、変更があった場合は、URLを変更する
+    // 2. resolveUrl()を実行する
+    // 3. resolveUrl()によって各関係関数が実行される
+    // 先に変数などを変更しないこと
 
-階
-floor
+    setMapData() {
+        // IDに基づくマップデータの加工(CSSのクラスを追加)
+        // マップデータの取得
+        const mapSvg = document.querySelector("#map_content svg")
+        mapSvg.querySelectorAll("path").forEach((element) => {
+            if (element.id.includes("none")) {
+                element.classList.add("none")
+            } else if (element.id.includes("base")) {
+                element.classList.add("base")
+            } else if (element.id.includes("label")) {
+                element.classList.add("label")
+            } else {
+                element.classList.add("place")
+                // "-"以下はid重複防止用なので削除
+                element.setAttribute("placeid", element.id.split("-")[0])
+            }
+        })
+        tempMarkCurrentPlaceId()
+    }
 
-プロパティ
-property
-*/
+    #createPlaceInfo() {
+        // フロア情報の逆順を作成
+        let result = PlaceInfo.slice().reverse()
+        for (let i = 0; i < result.length; i++) {
+            result[i]["__key__"] = result.length - 1 - i
+        }
+        return result
+    }
+
+    changeURL(floor, id) {
+        // URLの変更
+        if (id != null) {
+            history.pushState(history.state, '', `${import.meta.env.BASE_URL}/${floor}/${id}`);
+            // router.push(`/${floor}/${id}`)
+            // router.replace(`/${floor}/${id}`)
+        }
+        else {
+            history.pushState(history.state, '', `${import.meta.env.BASE_URL}/${floor}`);
+            // router.push(`/${floor}`)
+            // router.replace(`/${floor}`)
+        }
+        // setTimeout(() => {
+        //     this.resolveUrl()
+        // }, 1000);
+        this.resolveUrl()
+    }
+
+    resolveUrl() {
+        // onMount以降に実行しなければならない
+
+        // URLの解決
+        let floor
+        let id
+
+        // 要改善
+        if (import.meta.env.BASE_URL != "/") {
+            // ベースURLがある場合
+            floor = location.pathname.split("/")[2]
+            id = location.pathname.split("/")[3]
+        } else {
+            floor = location.pathname.split("/")[1]
+            id = location.pathname.split("/")[2]
+        }
+
+        // フロアの変更
+        if (floor != currentFloor.value) {
+            if ((floor != "") && !isNaN(floor)
+                && Number(floor) >= 0 && Number(floor) <= PlaceInfo.length - 1) {
+                this.changeFloor(Number(floor))
+            } else {
+                this.changeFloor(0)
+            }
+        }
+
+        // プロパティの表示
+        if (id != "" && id != null) {
+            if (property.isPlaceExist(id)) {
+                property.show(id)
+            } else {
+                this.changeURL(currentFloor.value, null)
+            }
+        } else {
+            property.hide()
+        }
+    }
+
+    changeFloor(floor) {
+        currentFloor.value = floor
+        property.hide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
+        this.mapDataCurrent = defineAsyncComponent(() => import(`@/assets/floors/${floor}.vue`))
+    }
+
+}
+const Setup = new SetupClass()
 
 // 慣性をのせて移動する場合は必ずここの関数を利用する
 // 表示範囲のサイズ(仮)
@@ -176,7 +217,6 @@ let window_height = 0
 // ダブルクリックでリセット
 function resetMoving() {
     MapMove.reset()
-    property.hide(true)
     if (window_width < window_height) {
         deviceMode.value = "mobile"
     } else {
@@ -184,40 +224,8 @@ function resetMoving() {
     }
 }
 
-// デフォルトのピンチアウトを無効化
-// 1本をブロックすると、プロパティでのスクロールが無効化されるため、2本以上をブロックする
-// <参考>
-// https://moewe-net.com/js/disable-zoom
-document.body.addEventListener('touchmove', (event) => {
-    if (event.touches.length > 1) {
-        event.preventDefault();
-    }
-}, { passive: false });
 
-// IDに基づくマップデータの加工
-function setMapData() {
-    // マップデータの取得
-    const mapSvg = document.querySelector("#map_content svg")
-    mapSvg.querySelectorAll("path").forEach((element) => {
-        if (element.id.includes("none")) {
-            element.classList.add("none")
-        } else if (element.id.includes("base")) {
-            element.classList.add("base")
-        } else if (element.id.includes("label")) {
-            element.classList.add("label")
-        } else {
-            element.classList.add("place")
-            // "-"以下はid重複防止用なので削除
-            element.setAttribute("placeid", element.id.split("-")[0])
-        }
-    })
-}
-
-// setTimeout(() => {
-//     setMapData()
-// }, 1000);
-
-watch(selectedId, (newVal, oldVal) => {
+watch(currentPlaceId, (newVal, oldVal) => {
     if (newVal != "") {
         document.querySelectorAll(`[placeid="${newVal}"]`).forEach((element) => {
             element.classList.add("selected")
@@ -230,6 +238,14 @@ watch(selectedId, (newVal, oldVal) => {
     }
 })
 
+
+function tempMarkCurrentPlaceId() {
+    // 仮の関数
+    // 現在の場所をマークする
+    document.querySelectorAll(`[placeid="${currentPlaceId.value}"]`).forEach((element) => {
+        element.classList.add("selected")
+    })
+}
 
 // NEW
 
@@ -452,8 +468,10 @@ class MapMoveClass {
     }
 }
 const MapMove = new MapMoveClass(
-    PlaceInfo[CurrentFloor.value].__MapSizeWidth__,
-    PlaceInfo[CurrentFloor.value].__MapSizeHeight__,
+    // PlaceInfo[Setup.currentFloor.value].__MapSizeWidth__,
+    // PlaceInfo[Setup.currentFloor.value].__MapSizeHeight__,
+    PlaceInfo[0].__MapSizeWidth__,
+    PlaceInfo[0].__MapSizeHeight__,
     window.innerWidth,
     window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
 )
@@ -581,6 +599,8 @@ class MapMoveByTouchClass {
     }
 }
 const MapMoveByTouch = new MapMoveByTouchClass()
+
+
 
 // class PropertyClass {
 //     constructor() {
@@ -750,17 +770,18 @@ const log = ref("LogArea")
 }
 </style>
 <template>
-    {{ log }}
+    <div v-if="property.isShowProperty.value">{{ log }}</div>
     <Transition :name="`property-${deviceMode}`">
-        <PropertyView v-if="property.isShowProperty.value" :Floor="CurrentFloor" :PlaceId="point_PlaceId"
-            :deviceMode="deviceMode" @hideProperty="property.hide(true)" />
+        <PropertyView v-if="property.isShowProperty.value" :Floor="currentFloor" :PlaceId="currentPlaceId"
+            :deviceMode="deviceMode" @hideProperty="Setup.changeURL(currentFloor, null)" />
     </Transition>
     <div id="floorMenu">
         <ul>
             <li class="search"><font-awesome-icon @click="router.push('/search')" :icon="['fas', 'magnifying-glass']" />
             </li>
-            <li class="floor" v-for="floor in PlaceInfoReverse" :key="floor.__key__" @click="changeFloor(floor.__key__)"
-                :class="floor.__key__ === CurrentFloor ? 'selected' : 'notselected'">
+            <li class="floor" v-for="floor in Setup.placeInfoReverse" :key="floor.__key__"
+                @click="Setup.changeURL(floor.__key__, null)"
+                :class="floor.__key__ === currentFloor ? 'selected' : 'notselected'">
                 {{ floor.__FloorShortName__ }}</li>
         </ul>
     </div>
@@ -770,9 +791,9 @@ const log = ref("LogArea")
         @touchmove="wrapEvent('touchmove', $event)" @touchstart="wrapEvent('touchstart', $event)"
         @touchend="wrapEvent('touchend', $event)" @wheel="wrapEvent('wheel', $event)"></div>
     <div id="box">
-        <div id="map_content" draggable="false" :key="CurrentFloor">
+        <div id="map_content" draggable="false" :key="currentFloor">
             <Transition name="map" mode="out-in">
-                <component :is="MapDataCurrent" @mounted="setMapData" />
+                <component :is="Setup.mapDataCurrent" @mounted="Setup.setMapData" />
             </Transition>
         </div>
     </div>
