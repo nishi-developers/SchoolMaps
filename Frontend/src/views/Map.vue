@@ -31,7 +31,6 @@ let Setup = new class {
         this.mapDataCurrent = null
     }
     // URL解決:いかなる場合も、変更があった場合は、URLを変更する
-
     setMapData() {
         // IDに基づくマップデータの加工(CSSのクラスを追加)
         // マップデータの取得
