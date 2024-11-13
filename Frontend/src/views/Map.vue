@@ -57,7 +57,7 @@ let property = new propertyClass()
 const currentPlaceId = ref("")
 
 
-window.addEventListener('popstate', (event) => {
+window.addEventListener('popstate', () => {
     Setup.resolveUrl()
 });
 
@@ -101,7 +101,7 @@ class SetupClass {
                 element.setAttribute("placeid", element.id.split("-")[0])
             }
         })
-        tempMarkCurrentPlaceId()
+        resolveMapPlaceClass()
     }
 
     #createPlaceInfo() {
@@ -192,24 +192,19 @@ function resetMoving() {
 }
 
 
-watch(currentPlaceId, (newVal, oldVal) => {
+watch(currentPlaceId, () => {
+    resolveMapPlaceClass()
+})
+
+function resolveMapPlaceClass() {
     document.querySelectorAll(`.place.selected`).forEach((element) => {
         element.classList.remove("selected")
     })
-    if (newVal != "") {
-        document.querySelectorAll(`[placeid="${newVal}"]`).forEach((element) => {
+    if (currentPlaceId.value != "") {
+        document.querySelectorAll(`[placeid="${currentPlaceId.value}"]`).forEach((element) => {
             element.classList.add("selected")
         })
     }
-})
-
-
-function tempMarkCurrentPlaceId() {
-    // 仮の関数
-    // 現在の場所をマークする
-    document.querySelectorAll(`[placeid="${currentPlaceId.value}"]`).forEach((element) => {
-        element.classList.add("selected")
-    })
 }
 
 // NEW
@@ -742,9 +737,9 @@ const log = ref("LogArea")
     </div>
     <div v-if="isShowWrapper" id="wrapperBox" @click="wrapEvent('click', $event)"
         @dblclick="wrapEvent('dblclick', $event)" @mousemove="wrapEvent('mousemove', $event)"
-        @mouseup="wrapEvent('mouseup', $event)"
-        @touchmove="wrapEvent('touchmove', $event)" @touchstart="wrapEvent('touchstart', $event)"
-        @touchend="wrapEvent('touchend', $event)" @wheel="wrapEvent('wheel', $event)"></div>
+        @mouseup="wrapEvent('mouseup', $event)" @touchmove="wrapEvent('touchmove', $event)"
+        @touchstart="wrapEvent('touchstart', $event)" @touchend="wrapEvent('touchend', $event)"
+        @wheel="wrapEvent('wheel', $event)"></div>
     <div id="box">
         <div id="map_content" draggable="false" :key="currentFloor">
             <Transition name="map" mode="out-in">
