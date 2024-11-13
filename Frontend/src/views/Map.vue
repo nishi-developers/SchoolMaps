@@ -3,648 +3,570 @@ import { onMounted, ref, defineAsyncComponent, watch } from 'vue'
 import PropertyView from '@/components/PropertyView.vue';
 import PlaceInfo from '@/assets/PlaceInfo.json'
 import { event } from 'vue-gtag'
-import { useRoute, useRouter } from 'vue-router'
-const route = useRoute()
+import { useRouter } from 'vue-router'
 const router = useRouter()
 
-const selectedId = ref("")
-const isShowWrapper = ref(true)
-
-class propertyClass {
-    // ドラッグなどとクリックを判別する
-    // <参考>
-    // https://qiita.com/_Keitaro_/items/375c5274bebf367f24e0
-    // https://qiita.com/KenjiOtsuka/items/da6d2dd2b81fef87e35d
-    constructor() {
-        this.isClick = false
-        this.isDubleClick = false
-        this.isShowProperty = ref(false)
-    }
-
-    show(id) {
-        // setTimeoutのコールバック関数内でthisを使用するとthisはグローバルオブジェクトを指すため、thisを使う代わりにクラスのプロパティを使う
-        // クリックされたときに、フラグが立っていたら
-        // let isClick_ = this.isClick
-        // this.isClick = false
-        if (property.isClick) {
-            property.isClick = false
-            property.isDubleClick = false
-            // ダブルクリックと判定されるまでの時間を遅らせる
-            setTimeout(() => {
-                if (!property.isDubleClick) {
-                    // 存在する場所かどうかをチェック
-                    if (Object.keys(PlaceInfo[CurrentFloor.value]).includes(id)) {
-                        event(`open{${CurrentFloor.value}/${id}}`)
-                        point_PlaceId.value = id
-                        if (property.isShowProperty.value) {
-                            // すでに表示されている場合は、一旦閉じてから開く
-                            property.hide(true)
-                            setTimeout(() => {
-                                property.isShowProperty.value = true
-                            }, 50);
-                        } else {
-                            // 表示されていない場合は、即時表示
-                            property.isShowProperty.value = true
-                        }
-                        selectedId.value = id
-                        changeURL(CurrentFloor.value, id); //hide()の後に実行
-                        return true //ここは瞬時なので注意
-                    } else {
-                        return false
-                    }
-                }
-            }, 200)
-        }
-    }
-
-    mouseShow(mouseEvent) {
-        // setTimeoutのコールバック関数内でthisを使用するとthisはグローバルオブジェクトを指すため、thisを使う代わりにクラスのプロパティを使う
-        // クリックされたときに、フラグが立っていたら
-        // let isClick_ = this.isClick
-        // this.isClick = false
-        if (property.isClick) {
-            property.isClick = false
-            property.isDubleClick = false
-            // ダブルクリックと判定されるまでの時間を遅らせる
-            setTimeout(() => {
-                if (!property.isDubleClick) {
-                    // idを取得
-                    isShowWrapper.value = false
-                    setTimeout(() => {
-                        const clickedObject = document.elementFromPoint(mouseEvent.clientX, mouseEvent.clientY);
-                        if (clickedObject.getAttribute('placeid') == null) {
-                            isShowWrapper.value = true
-                            return
-                        }
-                        const id = clickedObject.getAttribute('placeid')
-                        isShowWrapper.value = true
-                        // 存在する場所かどうかをチェック
-                        if (Object.keys(PlaceInfo[CurrentFloor.value]).includes(id)) {
-                            event(`open{${CurrentFloor.value}/${id}}`)
-                            point_PlaceId.value = id
-                            if (property.isShowProperty.value) {
-                                // すでに表示されている場合は、一旦閉じてから開く
-                                property.hide(true)
-                                setTimeout(() => {
-                                    property.isShowProperty.value = true
-                                }, 50);
-                            } else {
-                                // 表示されていない場合は、即時表示
-                                property.isShowProperty.value = true
-                            }
-                            selectedId.value = id
-                            changeURL(CurrentFloor.value, id); //hide()の後に実行
-                            return true //ここは瞬時なので注意
-                        } else {
-                            return false
-                        }
-                    }, 0);
-                }
-            }, 200)
-        }
-    }
-    click_Detect() {
-        // クリック開始が検出されたときにフラグを立てる
-        this.isClick = true
-    }
-    click_notDetect() {
-        // クリックではなくドラックだとわかったときにフラグを解除する
-        this.isClick = false
-    }
-    click_dubleDetect() {
-        // ダブルクリックが検出されたときにフラグを立てる
-        this.isDubleClick = true
-    }
-
-    hide(isChangeURL = false) {
-        this.isShowProperty.value = false
-        selectedId.value = ""
-        if (isChangeURL) {
-            changeURL(CurrentFloor.value, null)
-        }
-    }
-}
-let property = new propertyClass()
-
-// マップの切り替え
-let MapDataCurrent = null
-function changeMapData(floor) {
-    MapDataCurrent = defineAsyncComponent(() => import(`@/assets/floors/${floor}.vue`))
-}
-
-const point_PlaceId = ref("")
-const CurrentFloor = ref()
-function changeFloor(floor) {
-    CurrentFloor.value = floor
-    property.hide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
-    changeMapData(floor)
-    changeURL(floor, null);
-}
-
-// フロア情報の逆順を作成
-let PlaceInfoReverse = PlaceInfo.slice().reverse()
-for (let i = 0; i < PlaceInfoReverse.length; i++) {
-    PlaceInfoReverse[i]["__key__"] = PlaceInfoReverse.length - 1 - i
-}
-
-// URL書き換え用関数
-function changeURL(floor, id) {
-    if (id != null) {
-        // router.replace(`${import.meta.env.BASE_URL}/${floor}/${id}`)
-        // history.replaceState('', '', `${import.meta.env.BASE_URL}/${floor}/${id}`)
-        history.pushState('', '', `${import.meta.env.BASE_URL}/${floor}/${id}`);
-    }
-    else {
-        // router.replace(`${import.meta.env.BASE_URL}/${floor}`)
-        // history.replaceState('', '', `${import.meta.env.BASE_URL}/${floor}`)
-        history.pushState('', '', `${import.meta.env.BASE_URL}/${floor}`);
-    }
-}
-// パラメーターの取得
-if ((route.params.floor != "") && !isNaN(route.params.floor)
-    && Number(route.params.floor) >= 0 && Number(route.params.floor) <= PlaceInfo.length - 1) {
-    changeFloor(Number(route.params.floor))
-} else {
-    changeFloor(0)
-}
-
-const map_DefaultWidth = ref(0)
-// deviceMode
+// ref
+const currentPlaceId = ref("")
+const currentFloor = ref()
+const mapDefaultWidth = ref(0)
 const deviceMode = ref("")
-let map_size_width = 0
-let map_size_height = 0
-let map_size_ratio = 0
 
+// hook
 onMounted(() => {
-    resetMoving() //window_width, window_heightを使うので、ここでリセット
-    // パラメーターの取得
-    if (route.params.id != "") {
-        property.isClick = true
-        if (!property.show(route.params.id)) {
-            changeURL(CurrentFloor.value, null)
-        }
-    }
+    Setup.resolveUrl()
+    Control.resetMove() // 処理内容的にURL解決が先
+})
+window.addEventListener('popstate', () => {
+    Setup.resolveUrl()
+});
+watch(currentPlaceId, () => {
+    Setup.resolveMapPlaceClass()
 })
 
-/*
-語録
-
-動かし方
-mouse
-touch
-
-動く要素
-position
-rotate
-zoom
-
-順番
-control
-move
-slide
-
-階
-floor
-
-プロパティ
-property
-*/
-
-
-
-class mapSlideClass {
-    // 慣性スクロール
+// SetupClass
+let Setup = new class {
     constructor() {
-        this.reset()
-        // 重複実行防止のフラグ
-        this.is_position_do = false
-        this.is_zoom_do = false
-        this.is_rotate_do = false
+        this.placeInfoReverse = this.#createPlaceInfo()
+        this.mapDataCurrent = null
     }
-    reset() { // 慣性をリセット
-        this.position_stop()
-        this.zoom_stop()
-        this.rotate_stop()
-        this.position_lastMovedTime = 0
-        this.zoom_lastMovedTime = 0
-        this.rotate_lastMovedTime = 0
-    }
-    position_stop() { //positionのみリセット
-        this.position_speedX = 0
-        this.position_speedY = 0
-    }
-    zoom_stop() { //zoomのみリセット
-        this.zoom_speed = 0
-    }
-    rotate_stop() { //rotateのみリセット
-        this.rotate_speed = 0
-    }
-    position_do() {
-        if (this.is_position_do === false) { // 重複実行防止
-            this.is_position_do = true
-            // mouse
-            let position_speedMin = 0.01
-            let position_frictionLevel = 0.9
-            if (mouseORtouch === "touch") {
-                // touch
-                position_speedMin = 0.01
-                position_frictionLevel = 0.95
-            }
-            // 速度が0になるまで、位置を変更
-            if (Math.abs(this.position_speedX) > position_speedMin || Math.abs(this.position_speedY) > position_speedMin) {
-                if (mapMove.PositionRangeCheck(this.position_speedX * 4, this.position_speedY * 4)) {
-                    mapMove.map_PositionLeft.value += this.position_speedX * 4
-                    mapMove.map_PositionTop.value += this.position_speedY * 4
-                    this.position_speedX *= position_frictionLevel
-                    this.position_speedY *= position_frictionLevel
-                    // 再帰
-                    setTimeout(() => { this.is_position_do = false; this.position_do(); }, 4) // 4msごとに再帰
-                    // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
-                } else {
-                    this.is_position_do = false
-                    this.position_stop()
-                }
+    // URL解決:いかなる場合も、変更があった場合は、URLを変更する
+    setMapData() {
+        // IDに基づくマップデータの加工(CSSのクラスを追加)
+        // マップデータの取得
+        const mapSvg = document.querySelector("#map_content svg")
+        mapSvg.querySelectorAll("path").forEach((element) => {
+            if (element.id.includes("none")) {
+                element.classList.add("none")
+            } else if (element.id.includes("base")) {
+                element.classList.add("base")
+            } else if (element.id.includes("label")) {
+                element.classList.add("label")
             } else {
-                this.is_position_do = false
-                this.position_stop()
+                element.classList.add("place")
+                // "-"以下はid重複防止用なので削除
+                element.setAttribute("placeid", element.id.split("-")[0])
+            }
+        })
+        Setup.resolveMapPlaceClass() //thisは使えない
+    }
+    #createPlaceInfo() {
+        // フロア情報の逆順を作成
+        let result = PlaceInfo.slice().reverse()
+        for (let i = 0; i < result.length; i++) {
+            result[i]["__key__"] = result.length - 1 - i
+        }
+        return result
+    }
+    changeURL(floor, id) {
+        // URLの変更
+        if (id != null) {
+            history.pushState(history.state, '', `${import.meta.env.BASE_URL}${floor}/${id}`);
+        }
+        else {
+            history.pushState(history.state, '', `${import.meta.env.BASE_URL}${floor}`);
+        }
+        this.resolveUrl()
+    }
+    resolveUrl() {
+        // onMount以降に実行しなければならない
+        // URLの解決
+        let floor
+        let id
+        if (import.meta.env.BASE_URL != "/") {
+            // ベースURLがある場合
+            floor = location.pathname.split("/")[2]
+            id = location.pathname.split("/")[3]
+        } else {
+            // ベースURLがない場合
+            floor = location.pathname.split("/")[1]
+            id = location.pathname.split("/")[2]
+        }
+        if (floor == null) {
+            floor = ""
+        }
+        if (id == null) {
+            id = ""
+        }
+        // フロアの変更
+        if (floor != currentFloor.value) {
+            if ((floor != "") && !isNaN(floor)
+                && Number(floor) >= 0 && Number(floor) <= PlaceInfo.length - 1) {
+                this.changeFloor(Number(floor))
+            } else {
+                this.changeFloor(0)
             }
         }
-    }
-    zoom_do() {
-        if (this.is_zoom_do === false) {
-            this.is_zoom_do = true
-            // mouse
-            let zoom_speedMin = 0.0001
-            let zoom_frictionLevel = 0.8
-            if (mouseORtouch === "touch") {
-                // touch
-                zoom_speedMin = 0.0001
-                zoom_frictionLevel = 0.8
-            }
-            if (Math.abs(this.zoom_speed) > zoom_speedMin && mapMove.ZoomLevel.value + this.zoom_speed * 4 < mapMove.ZoomLevelMax && mapMove.ZoomLevel.value + this.zoom_speed * 4 > mapMove.ZoomLevelMin) {
-                mapMove.ZoomLevel.value += this.zoom_speed * 4
-                this.zoom_speed *= zoom_frictionLevel
-                // 再帰
-                setTimeout(() => { this.is_zoom_do = false; this.zoom_do(); }, 4) // 4msごとに再帰
-                // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
+        // プロパティの表示
+        if (id != "") {
+            if (Property.isPlaceExist(id)) {
+                Property.show(id)
             } else {
-                this.is_zoom_do = false
-                this.zoom_stop()
+                this.changeURL(currentFloor.value, null)
             }
+        } else {
+            Property.hide()
         }
     }
-    rotate_do() {
-        if (this.is_rotate_do === false) { // 重複実行防止
-            this.is_rotate_do = true
-            // mouse
-            let rotate_speedMin = 0.01
-            let rotate_frictionLevel = 0.92
-            if (mouseORtouch === "touch") {
-                // touch
-                rotate_speedMin = 0.01
-                rotate_frictionLevel = 0.95
-            }
-            if (Math.abs(this.rotate_speed) > rotate_speedMin) {
-                mapMove.map_Rotate.value += this.rotate_speed * 4
-                this.rotate_speed *= rotate_frictionLevel
-                // 再帰
-                setTimeout(() => { this.is_rotate_do = false; this.rotate_do(); }, 4) // 4msごとに再帰
-                // ブラウザの制限により、再帰のsetTimeoutは最小4msのタイムアウトを強制されるため、4msごとに再帰している
-            } else {
-                this.is_rotate_do = false
-                this.rotate_stop()
-            }
+    changeFloor(floor) {
+        currentFloor.value = floor
+        Property.hide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
+        this.mapDataCurrent = defineAsyncComponent(() => import(`@/assets/floors/${floor}.vue`))
+    }
+    windowSize = {
+        get width() {
+            return window.innerWidth;
+        },
+        get height() {
+            return window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
+        }
+    }
+    mapSize = {
+        get width() {
+            return PlaceInfo[Number(currentFloor.value)].__MapSizeWidth__;
+        },
+        get height() {
+            return PlaceInfo[Number(currentFloor.value)].__MapSizeHeight__;
+        }
+    }
+    SetDeviceMode() {
+        if (this.windowSize.width < this.windowSize.height) {
+            deviceMode.value = "mobile"
+        } else {
+            deviceMode.value = "pc"
+        }
+    }
+    resolveMapPlaceClass() {
+        document.querySelectorAll(`.place.selected`).forEach((element) => {
+            element.classList.remove("selected")
+        })
+        if (currentPlaceId.value != "") {
+            document.querySelectorAll(`[placeid="${currentPlaceId.value}"]`).forEach((element) => {
+                element.classList.add("selected")
+            })
         }
     }
 }
-let mapSlide = new mapSlideClass()
 
-class mapMoveClass {
+// PropertyClass
+const isShowWrapper = ref(true)
+const isShowProperty = ref(false)
+let Property = new class {
+    isPlaceExist(id) {
+        // 存在する場所かどうかをチェック
+        // resolveUrl()で確実に使用されるため、this.showではチェックしない
+        return Object.keys(PlaceInfo[currentFloor.value]).includes(id)
+    }
+    show(id) {
+        event(`open{${currentFloor.value}/${id}}`)
+        if (isShowProperty.value) {
+            // すでに表示されている場合は、一旦閉じてから開く
+            this.hide()
+            setTimeout(() => {
+                isShowProperty.value = true
+            }, 0);
+        } else {
+            // 表示されていない場合は、即時表示
+            isShowProperty.value = true
+        }
+        currentPlaceId.value = id
+    }
+    showByUser(mouseEvent) {
+        // idを取得
+        // ラッパーを非表示にして、クリックされた場所を取得(その際に一瞬時間がかかるため、setTimeoutで遅延)
+        // setTimeoutのコールバック関数内でthisを使用するとthisはグローバルオブジェクトを指すため、thisを使う代わりにクラスのプロパティを使う
+        isShowWrapper.value = false
+        setTimeout(() => {
+            const clickedObject = document.elementFromPoint(mouseEvent.clientX, mouseEvent.clientY);
+            if (clickedObject.getAttribute('placeid') == null) {
+                isShowWrapper.value = true
+                return
+            }
+            const id = clickedObject.getAttribute('placeid')
+            isShowWrapper.value = true
+            Setup.changeURL(currentFloor.value, id)
+        }, 0);
+    }
+    hide() {
+        currentPlaceId.value = ""
+        isShowProperty.value = false
+    }
+}
+
+// MapMoveClass
+const mapStatus = ref({
+    position: {
+        left: 0,
+        top: 0,
+    },
+    zoom: 0,
+    rotate: 0,
+})
+const mapStatusZoomLimit = {
+    min: 0.5,
+    max: 10,
+}
+watch(() => mapStatus.value, () => {
+    // 範囲制限
+    // position
+    let radian = mapStatus.value.rotate * Math.PI / 180
+    let defaultWidth = mapDefaultWidth.value
+    let defaultHeight = mapDefaultWidth.value * (Setup.mapSize.height / Setup.mapSize.width)
+    let realWidth = (Math.abs(defaultWidth * Math.cos(radian)) + Math.abs(defaultHeight * Math.sin(radian))) * mapStatus.value.zoom
+    let realHeight = (Math.abs(defaultWidth * Math.sin(radian)) + Math.abs(defaultHeight * Math.cos(radian))) * mapStatus.value.zoom
+    if (mapStatus.value.position.left > realWidth / 2 + Setup.windowSize.width) {
+        mapStatus.value.position.left = realWidth / 2 + Setup.windowSize.width
+    } else if (mapStatus.value.position.left < -realWidth / 2) {
+        mapStatus.value.position.left = -realWidth / 2
+    }
+    if (mapStatus.value.position.top > realHeight / 2 + Setup.windowSize.height) {
+        mapStatus.value.position.top = realHeight / 2 + Setup.windowSize.height
+    } else if (mapStatus.value.position.top < -realHeight / 2) {
+        mapStatus.value.position.top = -realHeight / 2
+    }
+    // zoom
+    if (mapStatus.value.zoom < mapStatusZoomLimit.min) {
+        mapStatus.value.zoom = mapStatusZoomLimit.min
+    } else if (mapStatus.value.zoom > mapStatusZoomLimit.max) {
+        mapStatus.value.zoom = mapStatusZoomLimit.max
+    }
+    // rotate
+    if (mapStatus.value.rotate < -180) {
+        mapStatus.value.rotate += 360
+    } else if (mapStatus.value.rotate > 180) {
+        mapStatus.value.rotate -= 360
+    }
+}, { deep: true })
+let MapMove = new class {
+    #slideData = {
+        position: {
+            speedX: 0,
+            speedY: 0,
+            lastMovedTime: 0,
+            isDo: false,
+        },
+        zoom: {
+            speed: 0,
+            lastMovedTime: 0,
+            isDo: false,
+        },
+        rotate: {
+            speed: 0,
+            lastMovedTime: 0,
+            isDo: false,
+        }
+    }
     constructor() {
-        // 地図の位置
-        this.map_PositionLeft = ref()
-        this.map_PositionTop = ref()
-        // 地図の倍率
-        this.ZoomLevel = ref()
-        this.ZoomLevelMax = 15
-        this.ZoomLevelMin = 0.001
-        // 地図の回転
-        this.map_Rotate = ref()
+        this.#slide_reset()
     }
-    PositionRangeCheck(x, y) {
-        // 移動先が範囲内かどうかをチェックする関数
-        // ズームでどうしても範囲外に出てしまうため、戻す動きは制限しない
-        // 中心はマップの中心
-        // 回転を考慮したマップのサイズを算出
-        // Issues #15 に詳細あり
-        let radian = this.map_Rotate.value * (Math.PI / 180);
-        let A = map_DefaultWidth.value
-        let B = map_DefaultWidth.value / map_size_ratio
-        let temp_width = Math.abs(A * Math.cos(radian)) + Math.abs(B * Math.sin(radian))
-        let temp_height = Math.abs(A * Math.sin(radian)) + Math.abs(B * Math.cos(radian))
-        // 範囲内かどうかをチェック
-        if (x > 0 && this.map_PositionLeft.value + x > (temp_width * mapMove.ZoomLevel.value / 2) + window_width) {
-            // 右端
-            return false
-        }
-        else if (x < 0 && this.map_PositionLeft.value + x < -(temp_width * mapMove.ZoomLevel.value / 2)) {
-            // 左端
-            return false
-        }
-        else if (y > 0 && this.map_PositionTop.value + y > ((temp_height * mapMove.ZoomLevel.value) / 2) + window_height) {
-            // 下端
-            return false
-        }
-        else if (y < 0 && this.map_PositionTop.value + y < (-((temp_height * mapMove.ZoomLevel.value) / 2))) {
-            // 上端
-            return false
-        } else {
-            return true
+    #slide_reset(target = "") {
+        // 慣性をリセット
+        switch (target) {
+            case "position":
+                this.#slideData.position.speedX = 0
+                this.#slideData.position.speedY = 0
+                break;
+            case "zoom":
+                this.#slideData.zoom.speed = 0
+                break;
+            case "rotate":
+                this.#slideData.rotate.speed = 0
+                break;
+            default:
+                this.#slide_reset("position")
+                this.#slide_reset("zoom")
+                this.#slide_reset("rotate")
+                this.#slideData.position.lastMovedTime = 0
+                this.#slideData.zoom.lastMovedTime = 0
+                this.#slideData.rotate.lastMovedTime = 0
+                break;
         }
     }
-    PositionMove(x, y) {
-        mapSlide.position_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
-        if (this.PositionRangeCheck(x, y)) {
-            this.map_PositionLeft.value += x
-            this.map_PositionTop.value += y
-            // 速度を計算
-            if (mapSlide.position_lastMovedTime != 0) {
-                mapSlide.position_speedX = x / (Date.now() - mapSlide.position_lastMovedTime)
-                mapSlide.position_speedY = y / (Date.now() - mapSlide.position_lastMovedTime)
+    slide(target) {
+        // 慣性スクロール
+        // この関数を外部から呼び出すと、慣性スクロールが開始する
+        if (this.#slideData[target].isDo) {
+            // 重複実行防止
+            return
+        }
+        this.#slideData[target].isDo = true
+        // 設定値
+        const frictionConfig = {
+            position: 0.95,
+            zoom: 0.95,
+            rotate: 0.95,
+            min: 0.001
+        }
+        // 速度が小さくなるまで、変更
+        // 範囲内かのチェックは、省略
+        if (
+            (target === "position" && (Math.abs(this.#slideData.position.speedX) > frictionConfig.min || Math.abs(this.#slideData.position.speedY) > frictionConfig.min))
+            || (target === "zoom" && Math.abs(this.#slideData.zoom.speed) > frictionConfig.min)
+            || (target === "rotate" && Math.abs(this.#slideData.rotate.speed) > frictionConfig.min)
+        ) {
+            switch (target) {
+                case "position":
+                    mapStatus.value.position.left += this.#slideData.position.speedX
+                    mapStatus.value.position.top += this.#slideData.position.speedY
+                    this.#slideData.position.speedX *= frictionConfig.position
+                    this.#slideData.position.speedY *= frictionConfig.position
+                    break;
+                case "zoom":
+                    mapStatus.value.zoom += this.#slideData.zoom.speed
+                    this.#slideData.zoom.speed *= frictionConfig.zoom
+                    break;
+                case "rotate":
+                    mapStatus.value.rotate += this.#slideData.rotate.speed
+                    this.#slideData.rotate.speed *= frictionConfig.rotate
+                    break;
             }
-            mapSlide.position_lastMovedTime = Date.now()
-            return true //将来的に範囲を制限するかもしれないため、trueを返す
+            // 再帰
+            setTimeout(() => {
+                this.#slideData[target].isDo = false
+                this.slide(target)
+            }, 4)
         } else {
-            return false
+            this.#slideData[target].isDo = false
+            this.#slide_reset(target)
         }
     }
-    Zoom(v) {
-        // マップのズームをする関数
-        // ズームの慣性の実装は、PCとスマホで異なるため、それぞれの場所で実装
-        // 範囲内であれば、ズームレベルを変更し、trueを返す
-        if (v != 0) {
-            if (this.ZoomLevel.value + v < this.ZoomLevelMax && this.ZoomLevel.value + v > this.ZoomLevelMin) {
-                mapSlide.zoom_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
-                this.ZoomLevel.value += v
-                return true
-            } else {
-                return false
-            }
-        } else {
+    move(target, x, y = 0) {
+        // マップのあらゆる移動を行う関数
+        // 範囲内かのチェックは、省略 要修正
+        // 慣性スクロールに関しては初速の計算のみを行う
+        //スマホでは、0が多発するため、0の場合は無視
+        if (x === 0 && y === 0) {
             return false
         }
-    }
-    Rotating(v) {
-        if (v != 0) { //スマホでは、回転0が多発するため、0の場合は無視
-            this.map_Rotate.value += v
-            mapSlide.rotate_stop() //慣性動作中に動かされた場合は、ここでリセットをかける
-            if (mapSlide.rotate_lastMovedTime != 0) {
-                mapSlide.rotate_speed = v / (Date.now() - mapSlide.rotate_lastMovedTime)
-            }
-            mapSlide.rotate_lastMovedTime = Date.now()
+        this.#slide_reset(target)
+        switch (target) {
+            case "position":
+                mapStatus.value.position.left += x
+                mapStatus.value.position.top += y
+                // 速度を計算
+                if (this.#slideData.position.lastMovedTime !== 0) {
+                    this.#slideData.position.speedX = x / (Date.now() - this.#slideData.position.lastMovedTime)
+                    this.#slideData.position.speedY = y / (Date.now() - this.#slideData.position.lastMovedTime)
+                }
+                this.#slideData.position.lastMovedTime = Date.now()
+                break;
+            case "zoom":
+                mapStatus.value.zoom += x
+                // 速度を計算
+                if (this.#slideData.zoom.lastMovedTime !== 0) {
+                    this.#slideData.zoom.speed = x / (Date.now() - this.#slideData.zoom.lastMovedTime)
+                }
+                this.#slideData.zoom.lastMovedTime = Date.now()
+                break;
+            case "rotate":
+                mapStatus.value.rotate += x
+                // 速度を計算
+                if (this.#slideData.rotate.lastMovedTime !== 0) {
+                    this.#slideData.rotate.speed = x / (Date.now() - this.#slideData.rotate.lastMovedTime)
+                }
+                this.#slideData.rotate.lastMovedTime = Date.now()
+                break;
         }
+        return true
     }
     reset() {
-        // 地図のデフォルトサイズを算出
-        map_size_width = PlaceInfo[CurrentFloor.value].__MapSizeWidth__
-        map_size_height = PlaceInfo[CurrentFloor.value].__MapSizeHeight__
-        map_size_ratio = map_size_width / map_size_height
+        this.#slide_reset()
+        // 要修正
         // 表示範囲のサイズ(改)
-        window_width = window.innerWidth
-        window_height = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
-        if (window_width / map_size_width > window_height / map_size_height) {
+        if (Setup.windowSize.width / Setup.mapSize.width > Setup.windowSize.height / Setup.mapSize.height) {
             // 縦幅に合わせる
-            map_DefaultWidth.value = window_height * map_size_ratio
+            mapDefaultWidth.value = Setup.windowSize.height * (Setup.mapSize.width / Setup.mapSize.height)
         } else {
             // 横幅に合わせる
-            map_DefaultWidth.value = window_width
+            mapDefaultWidth.value = Setup.windowSize.width
         }
         // リセット
-        this.map_PositionLeft.value = window_width / 2
-        this.map_PositionTop.value = window_height / 2
-        this.ZoomLevel.value = 1
-        this.map_Rotate.value = 0
-    }
-}
-let mapMove = new mapMoveClass()
-// 慣性をのせて移動する場合は必ずここの関数を利用する
-// 表示範囲のサイズ(仮)
-let window_width = 0
-let window_height = 0
-
-// リセット(PC・モバイル共通)
-// ダブルクリックでリセット
-function resetMoving() {
-    mapMove.reset()
-    mapSlide.reset()
-    property.hide(true)
-    if (window_width < window_height) {
-        deviceMode.value = "mobile"
-    } else {
-        deviceMode.value = "pc"
+        mapStatus.value.position.left = Setup.windowSize.width / 2
+        mapStatus.value.position.top = Setup.windowSize.height / 2
+        mapStatus.value.zoom = 1
+        mapStatus.value.rotate = 0
     }
 }
 
-let mouseORtouch = ""
-
-class controlMouseClass {
-    // PC用
-    // ドラッグによる移動と回転
-    // フラグを、クリックをし始めたときに立て、離したときに解除する
-    // フラグが立っている間にマウスが動けば、その分だけ移動させる
-    // <参考>
-    // https://scrapbox.io/svg-wiki/%E3%83%9E%E3%82%A6%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%8F%E3%82%8B%E3%82%84%E3%81%A4%E3%81%AE%E5%AE%9F%E8%A3%85
-    // https://note.com/kabineko/n/n88ec426fff07
-    // https://qiita.com/akicho8/items/8522929fa619394ac9f4
-    mouse_moveRotate(event) {
-        mouseORtouch = "mouse"
+// MapMoveByMouseClass
+let MapMoveByMouse = new class {
+    move(event) {
+        // マウスの移動による操作
         if (event.buttons === 1) { // 左クリックが押されている場合のみ
-            mapMove.PositionMove(event.movementX, event.movementY)
+            MapMove.move("position", event.movementX, event.movementY)
         } else if (event.buttons === 4) { // ホイールボタンが押されている場合のみ
             if (event.movementX > 0) {
-                mapMove.Rotating(Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
+                MapMove.move("rotate", Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
             } else {
-                mapMove.Rotating(-Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
+                MapMove.move("rotate", -Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
             }
         }
     }
-    // ホイールによるズーム
-    // ホイールを上に回すと、一定の割合でズームイン
-    // ホイールを下に回すと、一定の割合でズームアウト
-    // <参考>
-    // https://mebee.info/2022/03/15/post-40363/
-    mouse_zoom(event) {
-        mouseORtouch = "mouse"
+    wheel(event) {
+        // マウスのホイールによる操作
         let num = 0
-        let ZoomLevel_Unit = .1
-        if (event.wheelDelta + ZoomLevel_Unit > 0) {
-            num = ZoomLevel_Unit
+        let unit = 0.1
+        if (event.wheelDelta + unit > 0) {
+            num = unit
         } else {
-            num = -ZoomLevel_Unit
+            num = -unit
         }
-        if (mapMove.Zoom(num)) {
-            mapSlide.zoom_speed = num / 5
-            mapSlide.zoom_do()
-        }
+        MapMove.move("zoom", num)
+        MapMove.slide("zoom")
     }
 }
-let controlMouse = new controlMouseClass()
 
-class controlTouchClass {
-    // モバイル用
-    // タッチによる操作(移動とズーム共通)
-    // <参考>
-    // https://qiita.com/shigeta1019/items/23a78e5d00d641b0384c
-    // https://qiita.com/tonio0720/items/6facacac5db6d68f1a13
-    constructor() {
-        // lastがついてる変数は、直前の値を保存するため
-        this.mode = ""
-        // move: 移動(何本の指でも)
-        // zoom: 2つの指でズーム・回転
-        // moveモード用の変数
-        this.last_x = 0
-        this.last_y = 0
-        this.temp_x = 0
-        this.temp_y = 0
-        this.last_finger = 0
-        // zoomモード用の変数
-        this.last_diff = 0
-        this.diff = 0
-        this.last_rotate = 0
-        this.rotate = 0
-        // タップし始めてどれぐらい動かしたら
-        this.zoomed = 0
-        this.rotated = 0
-        this.acceptRotate = false
-        // // タッチの位置
-        // this.touch_place = []
-        // this.touch_place_last = []
-        // this.touch_finger = 0
+// MapMoveByTouchClass
+let MapMoveByTouch = new class {
+    #isZoomRotate = false
+    #last = {
+        x: 0,
+        y: 0,
+        fingerNum: 0,
+        rotate: 0,
+        length: 0
     }
-    // 2点間の距離を計算する関数
-    positionLength(x1, y1, x2, y2) {
+    // 回転やズームの制限をするため
+    // タップし始めてどれぐらい動かしたか
+    #moveRestriction = {
+        zoomed: 0,
+        rotated: 0,
+        acceptRotate: false,
+    }
+    #positionLength(x1, y1, x2, y2) {
+        // 2点間の距離を計算する関数
         return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
     }
-    // タッチの位置を取得する関数
-    // タッチの指が複数ある場合は、それぞれの位置を取得して平均を取る
-    positionAverage(event) {
+    #positionAverage(event) {
+        // タッチの位置を取得する関数
+        // タッチの指が複数ある場合は、それぞれの位置を取得して平均を取る
         let x = 0
         let y = 0
         for (const i of event.changedTouches) {
             x += i.clientX
             y += i.clientY
         }
-        return [
-            x / event.changedTouches.length,
-            y / event.changedTouches.length
-        ]
+        return [x / event.changedTouches.length, y / event.changedTouches.length]
     }
-    touch(event, status) {
-        mouseORtouch = "touch"
-        if (status === 'start') {
-            // タップし始めは、初期処理をあてるために値を変更
-            this.mode = "none"
-            this.last_finger = 0
-            // タップし始めてどれぐらい動かしたらをリセット
-            this.zoomed = 0
-            this.rotated = 0
-            this.acceptRotate = false
-        } else if (status === 'doing') { // 指を動かしたときは、それぞれの処理を行う
-            // タッチの本数にかかわらず、moveモード
-            // 本数が変わった場合、もしくは距離が飛んだ場合は、初期位置を変更(初期処理)
-            [this.temp_x, this.temp_y] = this.positionAverage(event)
-            if (this.last_finger != event.changedTouches.length || this.positionLength(this.last_x, this.last_y, this.temp_x, this.temp_y) > 50) {
-                [this.last_x, this.last_y] = this.positionAverage(event) //押した位置を相対位置の基準にする
-                this.last_finger = event.changedTouches.length
+    start() {
+        // タップし始めは、初期処理をあてるために値を変更
+        this.#isZoomRotate = false
+        this.#last.fingerNum = 0
+        // タップし始めてどれぐらい動かしたらをリセット
+        this.#moveRestriction.zoomed = 0
+        this.#moveRestriction.rotated = 0
+        this.#moveRestriction.acceptRotate = false
+    }
+    do(event) {
+        // タッチの本数にかかわらず、positionモード
+        // 本数が変わった場合、もしくは距離が飛んだ場合は、初期位置を変更(初期処理)
+        {
+            let now = {
+                x: this.#positionAverage(event)[0],
+                y: this.#positionAverage(event)[1]
             }
-            mapMove.PositionMove(this.temp_x - this.last_x, this.temp_y - this.last_y) // 位置をずらす
-            this.last_x = this.temp_x //最終値を更新
-            this.last_y = this.temp_y //最終値を更新
-
+            if (this.#last.fingerNum != event.changedTouches.length || this.#positionLength(this.#last.x, this.#last.y, now.x, now.y) > 50) {
+                [this.#last.x, this.#last.y] = this.#positionAverage(event) //押した位置を相対位置の基準にする
+                this.#last.fingerNum = event.changedTouches.length
+            }
+            MapMove.move("position", now.x - this.#last.x, now.y - this.#last.y) // 位置をずらす
+            this.#last.x = now.x //最終値を更新
+            this.#last.y = now.y  //最終値を更新
+        }
+        {
             if (event.changedTouches.length === 2) { // タッチの指が2つの場合はzoomモード
-                if (this.mode === "zoom") {
-                    // すでにzoomモードになっている場合
+                if (this.#isZoomRotate) {
+                    // すでにzoomRotateモードになっている場合
+                    // zoom
                     // 指の間隔を計算して、前との差からズームレベルを変更
-                    this.diff = this.positionLength(event.changedTouches[0].clientX, event.changedTouches[0].clientY, event.changedTouches[1].clientX, event.changedTouches[1].clientY)
-                    // this.diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
-                    if (mapMove.Zoom((this.diff - this.last_diff) * .005)) {
-                        // 慣性の実装
-                        if (mapSlide.zoom_lastMovedTime != 0) {
-                            mapSlide.zoom_speed = (this.diff - this.last_diff) * .005 / (Date.now() - mapSlide.zoom_lastMovedTime)
-                        }
-                        mapSlide.zoom_lastMovedTime = Date.now()
-                        this.zoomed += Math.abs(this.diff - this.last_diff) //ズームした合計量を記録
-                        this.last_diff = this.diff //最終値を更新
+                    let length = this.#positionLength(event.changedTouches[0].clientX, event.changedTouches[0].clientY, event.changedTouches[1].clientX, event.changedTouches[1].clientY)
+                    if (MapMove.move("zoom", (length - this.#last.length) * .005)) {
+                        this.#moveRestriction.zoomed += Math.abs(length - this.#last.length) //ズームした合計量を記録
+                        this.#last.length = length //最終値を更新
                     }
+                    // rotate
                     // 2点を結ぶ直線の傾きを計算して、前との差から回転角度を変更
-                    this.rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
-                    this.rotated += Math.abs(this.rotate - this.last_rotate) //回転した合計量を記録
-                    if (this.rotated > 10 && this.zoomed < 40) { //ズームをブロックする移動量(要調整)
+                    let rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
+                    this.#moveRestriction.rotated += Math.abs(rotate - this.#last.rotate) //回転した合計量を記録
+                    if (this.#moveRestriction.rotated > 20 && this.#moveRestriction.zoomed < 20) { //ズームをブロックする移動量(値のバランスは要調整)
                         // あまりズームせずに回転した場合は、指を離すまで回転を許可
-                        this.acceptRotate = true
+                        this.#moveRestriction.acceptRotate = true
                     }
-                    if (this.acceptRotate) {
-                        mapMove.Rotating(this.rotate - this.last_rotate)
+                    if (this.#moveRestriction.acceptRotate) {
+                        if (MapMove.move("rotate", rotate - this.#last.rotate)) {
+                            this.#last.rotate = rotate //最終値を更新
+                        }
                     }
-                    this.last_rotate = this.rotate //最終値を更新
                 } else {
-                    //zoomモードになっていない場合の初期処理
-                    this.mode = "zoom"
-                    this.last_diff = this.positionLength(event.changedTouches[0].clientX, event.changedTouches[0].clientY, event.changedTouches[1].clientX, event.changedTouches[1].clientY)
-                    // this.last_diff = Math.sqrt((event.changedTouches[0].clientX - event.changedTouches[1].clientX) ** 2 + (event.changedTouches[0].clientY - event.changedTouches[1].clientY) ** 2)
-                    this.last_rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
+                    //zoomRotateモードになっていない場合の初期処理
+                    this.#isZoomRotate = true
+                    this.#last.length = this.#positionLength(event.changedTouches[0].clientX, event.changedTouches[0].clientY, event.changedTouches[1].clientX, event.changedTouches[1].clientY)
+                    this.#last.rotate = (Math.atan2((event.changedTouches[1].clientY - event.changedTouches[0].clientY), (event.changedTouches[1].clientX - event.changedTouches[0].clientX))) * (180 / Math.PI)
                 }
             }
         }
     }
 }
-let controlTouch = new controlTouchClass()
 
-// デフォルトのピンチアウトを無効化
-// 1本をブロックすると、プロパティでのスクロールが無効化されるため、2本以上をブロックする
-// <参考>
-// https://moewe-net.com/js/disable-zoom
-document.body.addEventListener('touchmove', (event) => {
-    if (event.touches.length > 1) {
-        event.preventDefault();
-    }
-}, { passive: false });
-
-// IDに基づくマップデータの加工
-function setMapData() {
-    // マップデータの取得
-    const mapSvg = document.querySelector("#map_content svg")
-    mapSvg.querySelectorAll("path").forEach((element) => {
-        if (element.id.includes("none")) {
-            element.classList.add("none")
-        } else if (element.id.includes("base")) {
-            element.classList.add("base")
-        } else if (element.id.includes("label")) {
-            element.classList.add("label")
-        } else {
-            element.classList.add("place")
-            // "-"以下はid重複防止用なので削除
-            element.setAttribute("placeid", element.id.split("-")[0])
+// ControlClass
+let Control = new class {
+    #isSingleClick = false
+    #isAlreadyMoved = false //マウス使用時のみ、移動したかどうか
+    wrapEvent(name, event) {
+        // ラッパーに関するイベントをすべてまとめ、分岐させる
+        switch (name) {
+            case "click":
+                this.#isSingleClick = true
+                if (!this.#isAlreadyMoved) {
+                    setTimeout(() => {
+                        if (this.#isSingleClick) {
+                            // シングルクリックの検出
+                            Property.showByUser(event)
+                        }
+                    }, 200)
+                }
+                break;
+            case "dblclick":
+                this.#isSingleClick = false
+                this.resetMove();
+                break;
+            case "mousedown":
+                this.#isAlreadyMoved = false
+                break;
+            case "mousemove":
+                MapMoveByMouse.move(event)
+                if (event.buttons != 0) {
+                    this.#isAlreadyMoved = true
+                }
+                break;
+            case "mouseup":
+                MapMove.slide("position")
+                MapMove.slide("rotate")
+                break;
+            case "touchmove":
+                this.#isSingleClick = false
+                MapMoveByTouch.do(event)
+                break;
+            case "touchstart":
+                MapMoveByTouch.start(event)
+                break;
+            case "touchend":
+                MapMove.slide("position")
+                MapMove.slide("zoom")
+                MapMove.slide("rotate")
+                break;
+            case "wheel":
+                MapMoveByMouse.wheel(event)
+                break;
+            default:
+                break;
         }
-    })
+    }
+    resetMove() {
+        Setup.SetDeviceMode()
+        MapMove.reset()
+    }
 }
-
-// setTimeout(() => {
-//     setMapData()
-// }, 1000);
-
-watch(selectedId, (newVal, oldVal) => {
-    if (newVal != "") {
-        document.querySelectorAll(`[placeid="${newVal}"]`).forEach((element) => {
-            element.classList.add("selected")
-        })
-    }
-    if (oldVal != "") {
-        document.querySelectorAll(`[placeid="${oldVal}"]`).forEach((element) => {
-            element.classList.remove("selected")
-        })
-    }
-})
 </script>
 
 <style>
@@ -690,7 +612,7 @@ watch(selectedId, (newVal, oldVal) => {
 #map_content svg .label {
     transform-origin: center center;
     transform-box: fill-box;
-    transform: rotate(v-bind("- mapMove.map_Rotate.value + 'deg'"));
+    transform: rotate(v-bind("- mapStatus.rotate + 'deg'"));
     font-size: 1rem;
     fill: var(--MainBodyColor);
     stroke-width: 0;
@@ -719,11 +641,11 @@ watch(selectedId, (newVal, oldVal) => {
 
 #map_content svg {
     position: absolute;
-    width: v-bind("(map_DefaultWidth * mapMove.ZoomLevel.value) + 'px'");
+    width: v-bind("(mapDefaultWidth * mapStatus.zoom) + 'px'");
     height: auto;
-    left: v-bind("mapMove.map_PositionLeft.value + 'px'");
-    top: v-bind("mapMove.map_PositionTop.value + 'px'");
-    transform: translate(-50%, -50%) rotate(v-bind("mapMove.map_Rotate.value + 'deg'"));
+    left: v-bind("mapStatus.position.left + 'px'");
+    top: v-bind("mapStatus.position.top + 'px'");
+    transform: translate(-50%, -50%) rotate(v-bind("mapStatus.rotate + 'deg'"));
 
 }
 
@@ -774,7 +696,7 @@ watch(selectedId, (newVal, oldVal) => {
 /* Transition */
 .property-pc-enter-active,
 .property-pc-leave-active {
-    transition: opacity .25s ease-out, transform .25s ease-out;
+    transition: opacity .2s ease-out, transform .2s ease-out;
 }
 
 .property-pc-enter-from,
@@ -785,7 +707,7 @@ watch(selectedId, (newVal, oldVal) => {
 
 .property-mobile-enter-active,
 .property-mobile-leave-active {
-    transition: opacity .25s ease-out, transform .25s ease-out;
+    transition: opacity .2s ease-out, transform .2s ease-out;
 }
 
 .property-mobile-enter-from,
@@ -796,7 +718,7 @@ watch(selectedId, (newVal, oldVal) => {
 
 .map-enter-active,
 .map-leave-active {
-    transition: opacity .25s ease;
+    transition: opacity .2s ease;
 }
 
 .map-enter-from,
@@ -807,30 +729,28 @@ watch(selectedId, (newVal, oldVal) => {
 </style>
 <template>
     <Transition :name="`property-${deviceMode}`">
-        <PropertyView v-if="property.isShowProperty.value" :Floor="CurrentFloor" :PlaceId="point_PlaceId"
-            :deviceMode="deviceMode" @hideProperty="property.hide(true)" />
+        <PropertyView v-if="isShowProperty" :Floor="currentFloor" :PlaceId="currentPlaceId" :deviceMode="deviceMode"
+            @hideProperty="Setup.changeURL(currentFloor, null)" />
     </Transition>
     <div id="floorMenu">
         <ul>
             <li class="search"><font-awesome-icon @click="router.push('/search')" :icon="['fas', 'magnifying-glass']" />
             </li>
-            <li class="floor" v-for="floor in PlaceInfoReverse" :key="floor.__key__" @click="changeFloor(floor.__key__)"
-                :class="floor.__key__ === CurrentFloor ? 'selected' : 'notselected'">
-                {{ floor.__FloorName__ }}</li>
+            <li class="floor" v-for="floor in Setup.placeInfoReverse" :key="floor.__key__"
+                @click="Setup.changeURL(floor.__key__, null)"
+                :class="floor.__key__ === currentFloor ? 'selected' : 'notselected'">
+                {{ floor.__FloorShortName__ }}</li>
         </ul>
     </div>
-    <div v-if="isShowWrapper" id="wrapperBox" @click="property.mouseShow($event)"
-        @dblclick="resetMoving(); property.click_dubleDetect()"
-        @mousemove="controlMouse.mouse_moveRotate($event); property.click_notDetect()"
-        @mousedown="property.click_Detect()" @mouseup="mapSlide.position_do(); mapSlide.rotate_do()"
-        @touchmove="controlTouch.touch($event, 'doing'); property.click_notDetect();"
-        @touchstart="controlTouch.touch($event, 'start'); property.click_Detect()"
-        @touchend="mapSlide.position_do(); mapSlide.zoom_do(); mapSlide.rotate_do()"
-        @wheel="controlMouse.mouse_zoom($event)"></div>
+    <div v-if="isShowWrapper" id="wrapperBox" @click="Control.wrapEvent('click', $event)"
+        @dblclick="Control.wrapEvent('dblclick', $event)" @mousedown="Control.wrapEvent('mousedown', $event)"
+        @mousemove="Control.wrapEvent('mousemove', $event)" @mouseup="Control.wrapEvent('mouseup', $event)"
+        @touchmove="Control.wrapEvent('touchmove', $event)" @touchstart="Control.wrapEvent('touchstart', $event)"
+        @touchend="Control.wrapEvent('touchend', $event)" @wheel="Control.wrapEvent('wheel', $event)"></div>
     <div id="box">
-        <div id="map_content" draggable="false" :key="CurrentFloor">
+        <div id="map_content" draggable="false" :key="currentFloor">
             <Transition name="map" mode="out-in">
-                <component :is="MapDataCurrent" @mounted="setMapData" />
+                <component :is="Setup.mapDataCurrent" @mounted="Setup.setMapData" />
             </Transition>
         </div>
     </div>
