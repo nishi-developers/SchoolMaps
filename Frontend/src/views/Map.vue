@@ -7,11 +7,9 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const isShowWrapper = ref(true)
+const isShowProperty = ref(false)
 
 let Property = new class {
-    constructor() {
-        this.isShowProperty = ref(false)
-    }
     isPlaceExist(id) {
         // 存在する場所かどうかをチェック
         // resolveUrl()で確実に使用されるため、this.showではチェックしない
@@ -19,15 +17,15 @@ let Property = new class {
     }
     show(id) {
         event(`open{${currentFloor.value}/${id}}`)
-        if (this.isShowProperty.value) {
+        if (isShowProperty.value) {
             // すでに表示されている場合は、一旦閉じてから開く
             this.hide()
             setTimeout(() => {
-                Property.isShowProperty.value = true
+                isShowProperty.value = true
             }, 0);
         } else {
             // 表示されていない場合は、即時表示
-            this.isShowProperty.value = true
+            isShowProperty.value = true
         }
         currentPlaceId.value = id
     }
@@ -49,7 +47,7 @@ let Property = new class {
     }
     hide() {
         currentPlaceId.value = ""
-        this.isShowProperty.value = false
+        isShowProperty.value = false
     }
 }
 
@@ -260,6 +258,15 @@ function wrapEvent(name, event) {
     }
 }
 
+const mapStatus = ref({
+    position: {
+        left: 0,
+        top: 0,
+    },
+    zoom: 0,
+    rotate: 0,
+})
+
 let MapMove = new class {
     #slideData = {
         position: {
@@ -280,14 +287,6 @@ let MapMove = new class {
         }
     }
     constructor() {
-        this.mapStatus = ref({
-            position: {
-                left: 0,
-                top: 0,
-            },
-            zoom: 0,
-            rotate: 0,
-        })
         this.#slide_reset()
     }
     #slide_reset(target = "") {
@@ -337,17 +336,17 @@ let MapMove = new class {
         ) {
             switch (target) {
                 case "position":
-                    this.mapStatus.value.position.left += this.#slideData.position.speedX
-                    this.mapStatus.value.position.top += this.#slideData.position.speedY
+                    mapStatus.value.position.left += this.#slideData.position.speedX
+                    mapStatus.value.position.top += this.#slideData.position.speedY
                     this.#slideData.position.speedX *= frictionConfig.position
                     this.#slideData.position.speedY *= frictionConfig.position
                     break;
                 case "zoom":
-                    this.mapStatus.value.zoom += this.#slideData.zoom.speed
+                    mapStatus.value.zoom += this.#slideData.zoom.speed
                     this.#slideData.zoom.speed *= frictionConfig.zoom
                     break;
                 case "rotate":
-                    this.mapStatus.value.rotate += this.#slideData.rotate.speed
+                    mapStatus.value.rotate += this.#slideData.rotate.speed
                     this.#slideData.rotate.speed *= frictionConfig.rotate
                     break;
             }
@@ -372,8 +371,8 @@ let MapMove = new class {
         this.#slide_reset(target)
         switch (target) {
             case "position":
-                this.mapStatus.value.position.left += x
-                this.mapStatus.value.position.top += y
+                mapStatus.value.position.left += x
+                mapStatus.value.position.top += y
                 // 速度を計算
                 if (this.#slideData.position.lastMovedTime !== 0) {
                     this.#slideData.position.speedX = x / (Date.now() - this.#slideData.position.lastMovedTime)
@@ -382,7 +381,7 @@ let MapMove = new class {
                 this.#slideData.position.lastMovedTime = Date.now()
                 break;
             case "zoom":
-                this.mapStatus.value.zoom += x
+                mapStatus.value.zoom += x
                 // 速度を計算
                 if (this.#slideData.zoom.lastMovedTime !== 0) {
                     this.#slideData.zoom.speed = x / (Date.now() - this.#slideData.zoom.lastMovedTime)
@@ -390,7 +389,7 @@ let MapMove = new class {
                 this.#slideData.zoom.lastMovedTime = Date.now()
                 break;
             case "rotate":
-                this.mapStatus.value.rotate += x
+                mapStatus.value.rotate += x
                 // 速度を計算
                 if (this.#slideData.rotate.lastMovedTime !== 0) {
                     this.#slideData.rotate.speed = x / (Date.now() - this.#slideData.rotate.lastMovedTime)
@@ -412,10 +411,10 @@ let MapMove = new class {
             map_DefaultWidth.value = Setup.windowSize.width
         }
         // リセット
-        this.mapStatus.value.position.left = Setup.windowSize.width / 2
-        this.mapStatus.value.position.top = Setup.windowSize.height / 2
-        this.mapStatus.value.zoom = 1
-        this.mapStatus.value.rotate = 0
+        mapStatus.value.position.left = Setup.windowSize.width / 2
+        mapStatus.value.position.top = Setup.windowSize.height / 2
+        mapStatus.value.zoom = 1
+        mapStatus.value.rotate = 0
     }
 }
 
@@ -584,7 +583,7 @@ const log = ref("LogArea")
 #map_content svg .label {
     transform-origin: center center;
     transform-box: fill-box;
-    transform: rotate(v-bind("- MapMove.mapStatus.value.rotate + 'deg'"));
+    transform: rotate(v-bind("- mapStatus.rotate + 'deg'"));
     font-size: 1rem;
     fill: var(--MainBodyColor);
     stroke-width: 0;
@@ -613,11 +612,11 @@ const log = ref("LogArea")
 
 #map_content svg {
     position: absolute;
-    width: v-bind("(map_DefaultWidth * MapMove.mapStatus.value.zoom) + 'px'");
+    width: v-bind("(map_DefaultWidth * mapStatus.zoom) + 'px'");
     height: auto;
-    left: v-bind("MapMove.mapStatus.value.position.left + 'px'");
-    top: v-bind("MapMove.mapStatus.value.position.top + 'px'");
-    transform: translate(-50%, -50%) rotate(v-bind("MapMove.mapStatus.value.rotate + 'deg'"));
+    left: v-bind("mapStatus.position.left + 'px'");
+    top: v-bind("mapStatus.position.top + 'px'");
+    transform: translate(-50%, -50%) rotate(v-bind("mapStatus.rotate + 'deg'"));
 
 }
 
@@ -702,8 +701,8 @@ const log = ref("LogArea")
 <template>
     {{ log }}
     <Transition :name="`property-${deviceMode}`">
-        <PropertyView v-if="Property.isShowProperty.value" :Floor="currentFloor" :PlaceId="currentPlaceId"
-            :deviceMode="deviceMode" @hideProperty="Setup.changeURL(currentFloor, null)" />
+        <PropertyView v-if="isShowProperty" :Floor="currentFloor" :PlaceId="currentPlaceId" :deviceMode="deviceMode"
+            @hideProperty="Setup.changeURL(currentFloor, null)" />
     </Transition>
     <div id="floorMenu">
         <ul>
