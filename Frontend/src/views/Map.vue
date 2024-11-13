@@ -66,8 +66,9 @@ const map_DefaultWidth = ref(0)
 const deviceMode = ref("")
 
 onMounted(() => {
-    resetMoving() //window_width, window_heightを使うので、ここでリセット
+    // url解決が先
     Setup.resolveUrl()
+    resetMoving() //window_width, window_heightを使うので、ここでリセット
 })
 
 const currentFloor = ref()
@@ -171,10 +172,10 @@ let Setup = new class {
     }
     mapSize = {
         get width() {
-            return PlaceInfo[0].__MapSizeWidth__;
+            return PlaceInfo[Number(currentFloor.value)].__MapSizeWidth__;
         },
         get height() {
-            return PlaceInfo[0].__MapSizeHeight__;
+            return PlaceInfo[Number(currentFloor.value)].__MapSizeHeight__;
         }
     }
 }
@@ -410,18 +411,16 @@ let MapMove = new class {
         this.#slide_reset()
         // 要修正
         // 表示範囲のサイズ(改)
-        let window_width = Setup.windowSize.width
-        let window_height = Setup.windowSize.height
-        if (window_width / Setup.mapSize.width > window_height / Setup.mapSize.height) {
+        if (Setup.windowSize.width / Setup.mapSize.width > Setup.windowSize.height / Setup.mapSize.height) {
             // 縦幅に合わせる
-            map_DefaultWidth.value = window_height * (Setup.mapSize.width / Setup.mapSize.height)
+            map_DefaultWidth.value = Setup.windowSize.height * (Setup.mapSize.width / Setup.mapSize.height)
         } else {
             // 横幅に合わせる
-            map_DefaultWidth.value = window_width
+            map_DefaultWidth.value = Setup.windowSize.width
         }
         // リセット
-        this.mapStatus.value.position.left = window_width / 2
-        this.mapStatus.value.position.top = window_height / 2
+        this.mapStatus.value.position.left = Setup.windowSize.width / 2
+        this.mapStatus.value.position.top = Setup.windowSize.height / 2
         this.mapStatus.value.zoom = 1
         this.mapStatus.value.rotate = 0
     }
