@@ -6,54 +6,9 @@ import { event } from 'vue-gtag'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
-const isShowWrapper = ref(true)
-const isShowProperty = ref(false)
-
-let Property = new class {
-    isPlaceExist(id) {
-        // 存在する場所かどうかをチェック
-        // resolveUrl()で確実に使用されるため、this.showではチェックしない
-        return Object.keys(PlaceInfo[currentFloor.value]).includes(id)
-    }
-    show(id) {
-        event(`open{${currentFloor.value}/${id}}`)
-        if (isShowProperty.value) {
-            // すでに表示されている場合は、一旦閉じてから開く
-            this.hide()
-            setTimeout(() => {
-                isShowProperty.value = true
-            }, 0);
-        } else {
-            // 表示されていない場合は、即時表示
-            isShowProperty.value = true
-        }
-        currentPlaceId.value = id
-    }
-    showByUser(mouseEvent) {
-        // idを取得
-        // ラッパーを非表示にして、クリックされた場所を取得(その際に一瞬時間がかかるため、setTimeoutで遅延)
-        // setTimeoutのコールバック関数内でthisを使用するとthisはグローバルオブジェクトを指すため、thisを使う代わりにクラスのプロパティを使う
-        isShowWrapper.value = false
-        setTimeout(() => {
-            const clickedObject = document.elementFromPoint(mouseEvent.clientX, mouseEvent.clientY);
-            if (clickedObject.getAttribute('placeid') == null) {
-                isShowWrapper.value = true
-                return
-            }
-            const id = clickedObject.getAttribute('placeid')
-            isShowWrapper.value = true
-            Setup.changeURL(currentFloor.value, id)
-        }, 0);
-    }
-    hide() {
-        currentPlaceId.value = ""
-        isShowProperty.value = false
-    }
-}
-
 const currentPlaceId = ref("")
 const currentFloor = ref()
-const map_DefaultWidth = ref(0)
+const mapDefaultWidth = ref(0)
 const deviceMode = ref("")
 
 onMounted(() => {
@@ -66,6 +21,84 @@ window.addEventListener('popstate', () => {
 });
 
 
+// リセット(PC・モバイル共通)
+// ダブルクリックでリセット
+function resetMoving() {
+    MapMove.reset()
+    Setup.SetDeviceMode()
+}
+
+
+watch(currentPlaceId, () => {
+    resolveMapPlaceClass()
+})
+
+function resolveMapPlaceClass() {
+    document.querySelectorAll(`.place.selected`).forEach((element) => {
+        element.classList.remove("selected")
+    })
+    if (currentPlaceId.value != "") {
+        document.querySelectorAll(`[placeid="${currentPlaceId.value}"]`).forEach((element) => {
+            element.classList.add("selected")
+        })
+    }
+}
+
+let isSingleClick = false
+let isAlreadyMoved = false //マウス使用時のみ、移動したかどうか
+function wrapEvent(name, event) {
+    // ラッパーに関するイベントをすべてまとめ、分岐させる
+    switch (name) {
+        case "click":
+            isSingleClick = true
+            if (!isAlreadyMoved) {
+                setTimeout(() => {
+                    if (isSingleClick) {
+                        // シングルクリックの検出
+                        Property.showByUser(event)
+                    }
+                }, 200)
+            }
+            break;
+        case "dblclick":
+            isSingleClick = false
+            resetMoving();
+            break;
+        case "mousedown":
+            isAlreadyMoved = false
+            break;
+        case "mousemove":
+            MapMoveByMouse.move(event)
+            if (event.buttons != 0) {
+                isAlreadyMoved = true
+            }
+            break;
+        case "mouseup":
+            MapMove.slide("position")
+            MapMove.slide("rotate")
+            break;
+        case "touchmove":
+            isSingleClick = false
+            MapMoveByTouch.do(event)
+            break;
+        case "touchstart":
+            MapMoveByTouch.start(event)
+            break;
+        case "touchend":
+            MapMove.slide("position")
+            MapMove.slide("zoom")
+            MapMove.slide("rotate")
+            break;
+        case "wheel":
+            MapMoveByMouse.wheel(event)
+            break;
+        default:
+            break;
+    }
+}
+
+
+// SetupClass
 let Setup = new class {
     constructor() {
         this.placeInfoReverse = this.#createPlaceInfo()
@@ -180,84 +213,52 @@ let Setup = new class {
     }
 }
 
-// リセット(PC・モバイル共通)
-// ダブルクリックでリセット
-function resetMoving() {
-    MapMove.reset()
-    Setup.SetDeviceMode()
-}
-
-
-watch(currentPlaceId, () => {
-    resolveMapPlaceClass()
-})
-
-function resolveMapPlaceClass() {
-    document.querySelectorAll(`.place.selected`).forEach((element) => {
-        element.classList.remove("selected")
-    })
-    if (currentPlaceId.value != "") {
-        document.querySelectorAll(`[placeid="${currentPlaceId.value}"]`).forEach((element) => {
-            element.classList.add("selected")
-        })
+// PropertyClass
+const isShowWrapper = ref(true)
+const isShowProperty = ref(false)
+let Property = new class {
+    isPlaceExist(id) {
+        // 存在する場所かどうかをチェック
+        // resolveUrl()で確実に使用されるため、this.showではチェックしない
+        return Object.keys(PlaceInfo[currentFloor.value]).includes(id)
+    }
+    show(id) {
+        event(`open{${currentFloor.value}/${id}}`)
+        if (isShowProperty.value) {
+            // すでに表示されている場合は、一旦閉じてから開く
+            this.hide()
+            setTimeout(() => {
+                isShowProperty.value = true
+            }, 0);
+        } else {
+            // 表示されていない場合は、即時表示
+            isShowProperty.value = true
+        }
+        currentPlaceId.value = id
+    }
+    showByUser(mouseEvent) {
+        // idを取得
+        // ラッパーを非表示にして、クリックされた場所を取得(その際に一瞬時間がかかるため、setTimeoutで遅延)
+        // setTimeoutのコールバック関数内でthisを使用するとthisはグローバルオブジェクトを指すため、thisを使う代わりにクラスのプロパティを使う
+        isShowWrapper.value = false
+        setTimeout(() => {
+            const clickedObject = document.elementFromPoint(mouseEvent.clientX, mouseEvent.clientY);
+            if (clickedObject.getAttribute('placeid') == null) {
+                isShowWrapper.value = true
+                return
+            }
+            const id = clickedObject.getAttribute('placeid')
+            isShowWrapper.value = true
+            Setup.changeURL(currentFloor.value, id)
+        }, 0);
+    }
+    hide() {
+        currentPlaceId.value = ""
+        isShowProperty.value = false
     }
 }
 
-// NEW
-
-let isSingleClick = false
-let isAlreadyMoved = false //マウス使用時のみ、移動したかどうか
-function wrapEvent(name, event) {
-    // ラッパーに関するイベントをすべてまとめ、分岐させる
-    switch (name) {
-        case "click":
-            isSingleClick = true
-            if (!isAlreadyMoved) {
-                setTimeout(() => {
-                    if (isSingleClick) {
-                        // シングルクリックの検出
-                        Property.showByUser(event)
-                    }
-                }, 200)
-            }
-            break;
-        case "dblclick":
-            isSingleClick = false
-            resetMoving();
-            break;
-        case "mousedown":
-            isAlreadyMoved = false
-            break;
-        case "mousemove":
-            MapMoveByMouse.move(event)
-            if (event.buttons != 0) {
-                isAlreadyMoved = true
-            }
-            break;
-        case "mouseup":
-            MapMove.slide("position")
-            MapMove.slide("rotate")
-            break;
-        case "touchmove":
-            isSingleClick = false
-            MapMoveByTouch.do(event)
-            break;
-        case "touchstart":
-            MapMoveByTouch.start(event)
-            break;
-        case "touchend":
-            MapMove.slide("position")
-            MapMove.slide("zoom")
-            MapMove.slide("rotate")
-            break;
-        case "wheel":
-            MapMoveByMouse.wheel(event)
-            break;
-        default:
-            break;
-    }
-}
-
+// MapMoveClass
 const mapStatus = ref({
     position: {
         left: 0,
@@ -266,7 +267,6 @@ const mapStatus = ref({
     zoom: 0,
     rotate: 0,
 })
-
 let MapMove = new class {
     #slideData = {
         position: {
@@ -405,10 +405,10 @@ let MapMove = new class {
         // 表示範囲のサイズ(改)
         if (Setup.windowSize.width / Setup.mapSize.width > Setup.windowSize.height / Setup.mapSize.height) {
             // 縦幅に合わせる
-            map_DefaultWidth.value = Setup.windowSize.height * (Setup.mapSize.width / Setup.mapSize.height)
+            mapDefaultWidth.value = Setup.windowSize.height * (Setup.mapSize.width / Setup.mapSize.height)
         } else {
             // 横幅に合わせる
-            map_DefaultWidth.value = Setup.windowSize.width
+            mapDefaultWidth.value = Setup.windowSize.width
         }
         // リセット
         mapStatus.value.position.left = Setup.windowSize.width / 2
@@ -418,6 +418,7 @@ let MapMove = new class {
     }
 }
 
+// MapMoveByMouseClass
 let MapMoveByMouse = new class {
     move(event) {
         // マウスの移動による操作
@@ -445,6 +446,7 @@ let MapMoveByMouse = new class {
     }
 }
 
+// MapMoveByTouchClass
 let MapMoveByTouch = new class {
     #isZoomRotate = false
     #last = {
@@ -535,9 +537,6 @@ let MapMoveByTouch = new class {
         }
     }
 }
-
-
-const log = ref("LogArea")
 </script>
 
 <style>
@@ -612,7 +611,7 @@ const log = ref("LogArea")
 
 #map_content svg {
     position: absolute;
-    width: v-bind("(map_DefaultWidth * mapStatus.zoom) + 'px'");
+    width: v-bind("(mapDefaultWidth * mapStatus.zoom) + 'px'");
     height: auto;
     left: v-bind("mapStatus.position.left + 'px'");
     top: v-bind("mapStatus.position.top + 'px'");
@@ -699,7 +698,6 @@ const log = ref("LogArea")
 }
 </style>
 <template>
-    {{ log }}
     <Transition :name="`property-${deviceMode}`">
         <PropertyView v-if="isShowProperty" :Floor="currentFloor" :PlaceId="currentPlaceId" :deviceMode="deviceMode"
             @hideProperty="Setup.changeURL(currentFloor, null)" />
