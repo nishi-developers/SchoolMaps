@@ -24,7 +24,7 @@ class propertyClass {
             this.hide()
             setTimeout(() => {
                 property.isShowProperty.value = true
-            }, 100);
+            }, 0);
         } else {
             // 表示されていない場合は、即時表示
             this.isShowProperty.value = true
@@ -68,7 +68,7 @@ const deviceMode = ref("")
 
 onMounted(() => {
     resetMoving() //window_width, window_heightを使うので、ここでリセット
-    Setup.onMounted()
+    Setup.resolveUrl()
 })
 
 const currentFloor = ref()
@@ -77,10 +77,6 @@ class SetupClass {
     constructor() {
         this.placeInfoReverse = this.#createPlaceInfo()
         this.mapDataCurrent = null
-    }
-    onMounted() {
-        // マウント時の処理
-        this.resolveUrl()
     }
     // URL解決の手順
     // 1. いかなる場合も、変更があった場合は、URLを変更する
