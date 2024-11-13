@@ -54,15 +54,8 @@ let Property = new class {
 }
 
 const currentPlaceId = ref("")
-
-
-window.addEventListener('popstate', () => {
-    Setup.resolveUrl()
-});
-
-
+const currentFloor = ref()
 const map_DefaultWidth = ref(0)
-// deviceMode
 const deviceMode = ref("")
 
 onMounted(() => {
@@ -70,8 +63,10 @@ onMounted(() => {
     Setup.resolveUrl()
     resetMoving() //window_width, window_heightを使うので、ここでリセット
 })
+window.addEventListener('popstate', () => {
+    Setup.resolveUrl()
+});
 
-const currentFloor = ref()
 
 let Setup = new class {
     constructor() {
@@ -178,22 +173,20 @@ let Setup = new class {
             return PlaceInfo[Number(currentFloor.value)].__MapSizeHeight__;
         }
     }
+    SetDeviceMode() {
+        if (this.windowSize.width < this.windowSize.height) {
+            deviceMode.value = "mobile"
+        } else {
+            deviceMode.value = "pc"
+        }
+    }
 }
-
-
-// 慣性をのせて移動する場合は必ずここの関数を利用する
-// 表示範囲のサイズ(仮)
-
 
 // リセット(PC・モバイル共通)
 // ダブルクリックでリセット
 function resetMoving() {
     MapMove.reset()
-    if (Setup.windowSize.width < Setup.windowSize.height) {
-        deviceMode.value = "mobile"
-    } else {
-        deviceMode.value = "pc"
-    }
+    Setup.SetDeviceMode()
 }
 
 
@@ -427,8 +420,6 @@ let MapMove = new class {
 }
 
 let MapMoveByMouse = new class {
-    constructor() {
-    }
     move(event) {
         // マウスの移動による操作
         if (event.buttons === 1) { // 左クリックが押されている場合のみ
@@ -470,8 +461,6 @@ let MapMoveByTouch = new class {
         zoomed: 0,
         rotated: 0,
         acceptRotate: false,
-    }
-    constructor() {
     }
     #positionLength(x1, y1, x2, y2) {
         // 2点間の距離を計算する関数
