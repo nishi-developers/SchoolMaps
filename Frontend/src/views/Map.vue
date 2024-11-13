@@ -172,7 +172,6 @@ class SetupClass {
         property.hide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
         this.mapDataCurrent = defineAsyncComponent(() => import(`@/assets/floors/${floor}.vue`))
     }
-
 }
 const Setup = new SetupClass()
 
@@ -202,11 +201,6 @@ watch(currentPlaceId, (newVal, oldVal) => {
             element.classList.add("selected")
         })
     }
-    // if (oldVal != "") {
-    //     document.querySelectorAll(`[placeid="${oldVal}"]`).forEach((element) => {
-    //         element.classList.remove("selected")
-    //     })
-    // }
 })
 
 
@@ -240,9 +234,6 @@ function wrapEvent(name, event) {
         case "mousemove":
             isSingleClick = false
             MapMoveByMouse.move(event)
-            break;
-        case "mousedown":
-            // 要削除
             break;
         case "mouseup":
             MapMove.slide("position")
@@ -751,7 +742,7 @@ const log = ref("LogArea")
     </div>
     <div v-if="isShowWrapper" id="wrapperBox" @click="wrapEvent('click', $event)"
         @dblclick="wrapEvent('dblclick', $event)" @mousemove="wrapEvent('mousemove', $event)"
-        @mousedown="wrapEvent('mousedown', $event)" @mouseup="wrapEvent('mouseup', $event)"
+        @mouseup="wrapEvent('mouseup', $event)"
         @touchmove="wrapEvent('touchmove', $event)" @touchstart="wrapEvent('touchstart', $event)"
         @touchend="wrapEvent('touchend', $event)" @wheel="wrapEvent('wheel', $event)"></div>
     <div id="box">
