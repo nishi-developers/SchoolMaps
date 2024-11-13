@@ -6,97 +6,23 @@ import { event } from 'vue-gtag'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
+// ref
 const currentPlaceId = ref("")
 const currentFloor = ref()
 const mapDefaultWidth = ref(0)
 const deviceMode = ref("")
 
+// hook
 onMounted(() => {
-    // url解決が先
     Setup.resolveUrl()
-    resetMoving() //window_width, window_heightを使うので、ここでリセット
+    Control.resetMove() // 処理内容的にURL解決が先
 })
 window.addEventListener('popstate', () => {
     Setup.resolveUrl()
 });
-
-
-// リセット(PC・モバイル共通)
-// ダブルクリックでリセット
-function resetMoving() {
-    MapMove.reset()
-    Setup.SetDeviceMode()
-}
-
-
 watch(currentPlaceId, () => {
-    resolveMapPlaceClass()
+    Setup.resolveMapPlaceClass()
 })
-
-function resolveMapPlaceClass() {
-    document.querySelectorAll(`.place.selected`).forEach((element) => {
-        element.classList.remove("selected")
-    })
-    if (currentPlaceId.value != "") {
-        document.querySelectorAll(`[placeid="${currentPlaceId.value}"]`).forEach((element) => {
-            element.classList.add("selected")
-        })
-    }
-}
-
-let isSingleClick = false
-let isAlreadyMoved = false //マウス使用時のみ、移動したかどうか
-function wrapEvent(name, event) {
-    // ラッパーに関するイベントをすべてまとめ、分岐させる
-    switch (name) {
-        case "click":
-            isSingleClick = true
-            if (!isAlreadyMoved) {
-                setTimeout(() => {
-                    if (isSingleClick) {
-                        // シングルクリックの検出
-                        Property.showByUser(event)
-                    }
-                }, 200)
-            }
-            break;
-        case "dblclick":
-            isSingleClick = false
-            resetMoving();
-            break;
-        case "mousedown":
-            isAlreadyMoved = false
-            break;
-        case "mousemove":
-            MapMoveByMouse.move(event)
-            if (event.buttons != 0) {
-                isAlreadyMoved = true
-            }
-            break;
-        case "mouseup":
-            MapMove.slide("position")
-            MapMove.slide("rotate")
-            break;
-        case "touchmove":
-            isSingleClick = false
-            MapMoveByTouch.do(event)
-            break;
-        case "touchstart":
-            MapMoveByTouch.start(event)
-            break;
-        case "touchend":
-            MapMove.slide("position")
-            MapMove.slide("zoom")
-            MapMove.slide("rotate")
-            break;
-        case "wheel":
-            MapMoveByMouse.wheel(event)
-            break;
-        default:
-            break;
-    }
-}
-
 
 // SetupClass
 let Setup = new class {
@@ -123,7 +49,7 @@ let Setup = new class {
                 element.setAttribute("placeid", element.id.split("-")[0])
             }
         })
-        resolveMapPlaceClass()
+        Setup.resolveMapPlaceClass() //thisは使えない
     }
     #createPlaceInfo() {
         // フロア情報の逆順を作成
@@ -209,6 +135,16 @@ let Setup = new class {
             deviceMode.value = "mobile"
         } else {
             deviceMode.value = "pc"
+        }
+    }
+    resolveMapPlaceClass() {
+        document.querySelectorAll(`.place.selected`).forEach((element) => {
+            element.classList.remove("selected")
+        })
+        if (currentPlaceId.value != "") {
+            document.querySelectorAll(`[placeid="${currentPlaceId.value}"]`).forEach((element) => {
+                element.classList.add("selected")
+            })
         }
     }
 }
@@ -537,6 +473,66 @@ let MapMoveByTouch = new class {
         }
     }
 }
+
+// ControlClass
+let Control = new class {
+    #isSingleClick = false
+    #isAlreadyMoved = false //マウス使用時のみ、移動したかどうか
+    wrapEvent(name, event) {
+        // ラッパーに関するイベントをすべてまとめ、分岐させる
+        switch (name) {
+            case "click":
+                this.#isSingleClick = true
+                if (!this.#isAlreadyMoved) {
+                    setTimeout(() => {
+                        if (this.#isSingleClick) {
+                            // シングルクリックの検出
+                            Property.showByUser(event)
+                        }
+                    }, 200)
+                }
+                break;
+            case "dblclick":
+                this.#isSingleClick = false
+                this.resetMove();
+                break;
+            case "mousedown":
+                this.#isAlreadyMoved = false
+                break;
+            case "mousemove":
+                MapMoveByMouse.move(event)
+                if (event.buttons != 0) {
+                    this.#isAlreadyMoved = true
+                }
+                break;
+            case "mouseup":
+                MapMove.slide("position")
+                MapMove.slide("rotate")
+                break;
+            case "touchmove":
+                this.#isSingleClick = false
+                MapMoveByTouch.do(event)
+                break;
+            case "touchstart":
+                MapMoveByTouch.start(event)
+                break;
+            case "touchend":
+                MapMove.slide("position")
+                MapMove.slide("zoom")
+                MapMove.slide("rotate")
+                break;
+            case "wheel":
+                MapMoveByMouse.wheel(event)
+                break;
+            default:
+                break;
+        }
+    }
+    resetMove() {
+        Setup.SetDeviceMode()
+        MapMove.reset()
+    }
+}
 </script>
 
 <style>
@@ -712,11 +708,11 @@ let MapMoveByTouch = new class {
                 {{ floor.__FloorShortName__ }}</li>
         </ul>
     </div>
-    <div v-if="isShowWrapper" id="wrapperBox" @click="wrapEvent('click', $event)"
-        @dblclick="wrapEvent('dblclick', $event)" @mousedown="wrapEvent('mousedown', $event)"
-        @mousemove="wrapEvent('mousemove', $event)" @mouseup="wrapEvent('mouseup', $event)"
-        @touchmove="wrapEvent('touchmove', $event)" @touchstart="wrapEvent('touchstart', $event)"
-        @touchend="wrapEvent('touchend', $event)" @wheel="wrapEvent('wheel', $event)"></div>
+    <div v-if="isShowWrapper" id="wrapperBox" @click="Control.wrapEvent('click', $event)"
+        @dblclick="Control.wrapEvent('dblclick', $event)" @mousedown="Control.wrapEvent('mousedown', $event)"
+        @mousemove="Control.wrapEvent('mousemove', $event)" @mouseup="Control.wrapEvent('mouseup', $event)"
+        @touchmove="Control.wrapEvent('touchmove', $event)" @touchstart="Control.wrapEvent('touchstart', $event)"
+        @touchend="Control.wrapEvent('touchend', $event)" @wheel="Control.wrapEvent('wheel', $event)"></div>
     <div id="box">
         <div id="map_content" draggable="false" :key="currentFloor">
             <Transition name="map" mode="out-in">
