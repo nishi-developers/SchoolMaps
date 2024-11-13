@@ -202,6 +202,41 @@ const mapStatus = ref({
     zoom: 0,
     rotate: 0,
 })
+const mapStatusZoomLimit = {
+    min: 0.5,
+    max: 10,
+}
+watch(() => mapStatus.value, () => {
+    // 範囲制限
+    // position
+    let radian = mapStatus.value.rotate * Math.PI / 180
+    let defaultWidth = mapDefaultWidth.value
+    let defaultHeight = mapDefaultWidth.value * (Setup.mapSize.height / Setup.mapSize.width)
+    let realWidth = (Math.abs(defaultWidth * Math.cos(radian)) + Math.abs(defaultHeight * Math.sin(radian))) * mapStatus.value.zoom
+    let realHeight = (Math.abs(defaultWidth * Math.sin(radian)) + Math.abs(defaultHeight * Math.cos(radian))) * mapStatus.value.zoom
+    if (mapStatus.value.position.left > realWidth / 2 + Setup.windowSize.width) {
+        mapStatus.value.position.left = realWidth / 2 + Setup.windowSize.width
+    } else if (mapStatus.value.position.left < -realWidth / 2) {
+        mapStatus.value.position.left = -realWidth / 2
+    }
+    if (mapStatus.value.position.top > realHeight / 2 + Setup.windowSize.height) {
+        mapStatus.value.position.top = realHeight / 2 + Setup.windowSize.height
+    } else if (mapStatus.value.position.top < -realHeight / 2) {
+        mapStatus.value.position.top = -realHeight / 2
+    }
+    // zoom
+    if (mapStatus.value.zoom < mapStatusZoomLimit.min) {
+        mapStatus.value.zoom = mapStatusZoomLimit.min
+    } else if (mapStatus.value.zoom > mapStatusZoomLimit.max) {
+        mapStatus.value.zoom = mapStatusZoomLimit.max
+    }
+    // rotate
+    if (mapStatus.value.rotate < -180) {
+        mapStatus.value.rotate += 360
+    } else if (mapStatus.value.rotate > 180) {
+        mapStatus.value.rotate -= 360
+    }
+}, { deep: true })
 let MapMove = new class {
     #slideData = {
         position: {
