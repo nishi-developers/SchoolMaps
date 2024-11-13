@@ -8,7 +8,7 @@ const router = useRouter()
 
 const isShowWrapper = ref(true)
 
-class PropertyClass {
+let Property = new class {
     constructor() {
         this.isShowProperty = ref(false)
     }
@@ -52,7 +52,6 @@ class PropertyClass {
         this.isShowProperty.value = false
     }
 }
-let Property = new PropertyClass()
 
 const currentPlaceId = ref("")
 
@@ -73,16 +72,12 @@ onMounted(() => {
 
 const currentFloor = ref()
 
-class SetupClass {
+let Setup = new class {
     constructor() {
         this.placeInfoReverse = this.#createPlaceInfo()
         this.mapDataCurrent = null
     }
-    // URL解決の手順
-    // 1. いかなる場合も、変更があった場合は、URLを変更する
-    // 2. resolveUrl()を実行する
-    // 3. resolveUrl()によって各関係関数が実行される
-    // 先に変数などを変更しないこと
+    // URL解決:いかなる場合も、変更があった場合は、URLを変更する
 
     setMapData() {
         // IDに基づくマップデータの加工(CSSのクラスを追加)
@@ -183,7 +178,6 @@ class SetupClass {
         }
     }
 }
-const Setup = new SetupClass()
 
 
 // 慣性をのせて移動する場合は必ずここの関数を利用する
@@ -264,7 +258,7 @@ function wrapEvent(name, event) {
     }
 }
 
-class MapMoveClass {
+let MapMove = new class {
     #slideData = {
         position: {
             speedX: 0,
@@ -424,9 +418,8 @@ class MapMoveClass {
         this.mapStatus.value.rotate = 0
     }
 }
-const MapMove = new MapMoveClass()
 
-class MapMoveByMouseClass {
+let MapMoveByMouse = new class {
     constructor() {
     }
     move(event) {
@@ -454,9 +447,8 @@ class MapMoveByMouseClass {
         MapMove.slide("zoom")
     }
 }
-const MapMoveByMouse = new MapMoveByMouseClass()
 
-class MapMoveByTouchClass {
+let MapMoveByTouch = new class {
     #isZoomRotate = false
     #last = {
         x: 0,
@@ -548,7 +540,6 @@ class MapMoveByTouchClass {
         }
     }
 }
-const MapMoveByTouch = new MapMoveByTouchClass()
 
 
 const log = ref("LogArea")
