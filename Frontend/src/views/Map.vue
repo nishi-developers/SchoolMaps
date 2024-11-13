@@ -213,26 +213,34 @@ function resolveMapPlaceClass() {
 
 // NEW
 
-let isSingleClick
+let isSingleClick = false
+let isAlreadyMoved = false //マウス使用時のみ、移動したかどうか
 function wrapEvent(name, event) {
     // ラッパーに関するイベントをすべてまとめ、分岐させる
     switch (name) {
         case "click":
             isSingleClick = true
-            setTimeout(() => {
-                if (isSingleClick) {
-                    // シングルクリックの検出
-                    Property.showByUser(event)
-                }
-            }, 200)
+            if (!isAlreadyMoved) {
+                setTimeout(() => {
+                    if (isSingleClick) {
+                        // シングルクリックの検出
+                        Property.showByUser(event)
+                    }
+                }, 200)
+            }
             break;
         case "dblclick":
             isSingleClick = false
             resetMoving();
             break;
+        case "mousedown":
+            isAlreadyMoved = false
+            break;
         case "mousemove":
-            isSingleClick = false
             MapMoveByMouse.move(event)
+            if (event.buttons != 0) {
+                isAlreadyMoved = true
+            }
             break;
         case "mouseup":
             MapMove.slide("position")
@@ -672,7 +680,7 @@ const log = ref("LogArea")
 /* Transition */
 .property-pc-enter-active,
 .property-pc-leave-active {
-    transition: opacity .25s ease-out, transform .25s ease-out;
+    transition: opacity .2s ease-out, transform .2s ease-out;
 }
 
 .property-pc-enter-from,
@@ -683,7 +691,7 @@ const log = ref("LogArea")
 
 .property-mobile-enter-active,
 .property-mobile-leave-active {
-    transition: opacity .25s ease-out, transform .25s ease-out;
+    transition: opacity .2s ease-out, transform .2s ease-out;
 }
 
 .property-mobile-enter-from,
@@ -694,7 +702,7 @@ const log = ref("LogArea")
 
 .map-enter-active,
 .map-leave-active {
-    transition: opacity .25s ease;
+    transition: opacity .2s ease;
 }
 
 .map-enter-from,
@@ -720,10 +728,10 @@ const log = ref("LogArea")
         </ul>
     </div>
     <div v-if="isShowWrapper" id="wrapperBox" @click="wrapEvent('click', $event)"
-        @dblclick="wrapEvent('dblclick', $event)" @mousemove="wrapEvent('mousemove', $event)"
-        @mouseup="wrapEvent('mouseup', $event)" @touchmove="wrapEvent('touchmove', $event)"
-        @touchstart="wrapEvent('touchstart', $event)" @touchend="wrapEvent('touchend', $event)"
-        @wheel="wrapEvent('wheel', $event)"></div>
+        @dblclick="wrapEvent('dblclick', $event)" @mousedown="wrapEvent('mousedown', $event)"
+        @mousemove="wrapEvent('mousemove', $event)" @mouseup="wrapEvent('mouseup', $event)"
+        @touchmove="wrapEvent('touchmove', $event)" @touchstart="wrapEvent('touchstart', $event)"
+        @touchend="wrapEvent('touchend', $event)" @wheel="wrapEvent('wheel', $event)"></div>
     <div id="box">
         <div id="map_content" draggable="false" :key="currentFloor">
             <Transition name="map" mode="out-in">
