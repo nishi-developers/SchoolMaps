@@ -8,7 +8,7 @@ const router = useRouter()
 
 const isShowWrapper = ref(true)
 
-class propertyClass {
+class PropertyClass {
     constructor() {
         this.isShowProperty = ref(false)
     }
@@ -23,7 +23,7 @@ class propertyClass {
             // すでに表示されている場合は、一旦閉じてから開く
             this.hide()
             setTimeout(() => {
-                property.isShowProperty.value = true
+                Property.isShowProperty.value = true
             }, 0);
         } else {
             // 表示されていない場合は、即時表示
@@ -52,7 +52,7 @@ class propertyClass {
         this.isShowProperty.value = false
     }
 }
-let property = new propertyClass()
+let Property = new PropertyClass()
 
 const currentPlaceId = ref("")
 
@@ -152,18 +152,18 @@ class SetupClass {
         }
         // プロパティの表示
         if (id != "") {
-            if (property.isPlaceExist(id)) {
-                property.show(id)
+            if (Property.isPlaceExist(id)) {
+                Property.show(id)
             } else {
                 this.changeURL(currentFloor.value, null)
             }
         } else {
-            property.hide()
+            Property.hide()
         }
     }
     changeFloor(floor) {
         currentFloor.value = floor
-        property.hide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
+        Property.hide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
         this.mapDataCurrent = defineAsyncComponent(() => import(`@/assets/floors/${floor}.vue`))
     }
     windowSize = {
@@ -228,7 +228,7 @@ function wrapEvent(name, event) {
             setTimeout(() => {
                 if (isSingleClick) {
                     // シングルクリックの検出
-                    property.showByUser(event)
+                    Property.showByUser(event)
                 }
             }, 200)
             break;
@@ -715,7 +715,7 @@ const log = ref("LogArea")
 <template>
     {{ log }}
     <Transition :name="`property-${deviceMode}`">
-        <PropertyView v-if="property.isShowProperty.value" :Floor="currentFloor" :PlaceId="currentPlaceId"
+        <PropertyView v-if="Property.isShowProperty.value" :Floor="currentFloor" :PlaceId="currentPlaceId"
             :deviceMode="deviceMode" @hideProperty="Setup.changeURL(currentFloor, null)" />
     </Transition>
     <div id="floorMenu">
