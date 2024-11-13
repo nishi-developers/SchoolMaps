@@ -103,7 +103,6 @@ class SetupClass {
         })
         resolveMapPlaceClass()
     }
-
     #createPlaceInfo() {
         // フロア情報の逆順を作成
         let result = PlaceInfo.slice().reverse()
@@ -112,7 +111,6 @@ class SetupClass {
         }
         return result
     }
-
     changeURL(floor, id) {
         // URLの変更
         if (id != null) {
@@ -123,18 +121,17 @@ class SetupClass {
         }
         this.resolveUrl()
     }
-
     resolveUrl() {
         // onMount以降に実行しなければならない
         // URLの解決
         let floor
         let id
-        // 要改善
         if (import.meta.env.BASE_URL != "/") {
             // ベースURLがある場合
             floor = location.pathname.split("/")[2]
             id = location.pathname.split("/")[3]
         } else {
+            // ベースURLがない場合
             floor = location.pathname.split("/")[1]
             id = location.pathname.split("/")[2]
         }
@@ -144,7 +141,6 @@ class SetupClass {
         if (id == null) {
             id = ""
         }
-
         // フロアの変更
         if (floor != currentFloor.value) {
             if ((floor != "") && !isNaN(floor)
@@ -154,7 +150,6 @@ class SetupClass {
                 this.changeFloor(0)
             }
         }
-
         // プロパティの表示
         if (id != "") {
             if (property.isPlaceExist(id)) {
@@ -166,25 +161,40 @@ class SetupClass {
             property.hide()
         }
     }
-
     changeFloor(floor) {
         currentFloor.value = floor
         property.hide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
         this.mapDataCurrent = defineAsyncComponent(() => import(`@/assets/floors/${floor}.vue`))
     }
+    windowSize = {
+        get width() {
+            return window.innerWidth;
+        },
+        get height() {
+            return window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
+        }
+    }
+    mapSize = {
+        get width() {
+            return PlaceInfo[0].__MapSizeWidth__;
+        },
+        get height() {
+            return PlaceInfo[0].__MapSizeHeight__;
+        }
+    }
 }
 const Setup = new SetupClass()
 
+
 // 慣性をのせて移動する場合は必ずここの関数を利用する
 // 表示範囲のサイズ(仮)
-let window_width = 0
-let window_height = 0
+
 
 // リセット(PC・モバイル共通)
 // ダブルクリックでリセット
 function resetMoving() {
     MapMove.reset()
-    if (window_width < window_height) {
+    if (Setup.windowSize.width < Setup.windowSize.height) {
         deviceMode.value = "mobile"
     } else {
         deviceMode.value = "pc"
@@ -273,16 +283,7 @@ class MapMoveClass {
             isDo: false,
         }
     }
-    constructor(mapWidth, mapHeight, windowWidth, windowHeight) {
-        this.mapSize = {
-            width: mapWidth,
-            height: mapHeight,
-            ratio: mapWidth / mapHeight
-        }
-        this.windowSize = {
-            width: windowWidth,
-            height: windowHeight
-        }
+    constructor() {
         this.mapStatus = ref({
             position: {
                 left: 0,
@@ -407,11 +408,11 @@ class MapMoveClass {
         this.#slide_reset()
         // 要修正
         // 表示範囲のサイズ(改)
-        window_width = this.windowSize.width
-        window_height = this.windowSize.height
-        if (window_width / this.mapSize.width > window_height / this.mapSize.height) {
+        let window_width = Setup.windowSize.width
+        let window_height = Setup.windowSize.height
+        if (window_width / Setup.mapSize.width > window_height / Setup.mapSize.height) {
             // 縦幅に合わせる
-            map_DefaultWidth.value = window_height * this.mapSize.ratio
+            map_DefaultWidth.value = window_height * (Setup.mapSize.width / Setup.mapSize.height)
         } else {
             // 横幅に合わせる
             map_DefaultWidth.value = window_width
@@ -423,15 +424,7 @@ class MapMoveClass {
         this.mapStatus.value.rotate = 0
     }
 }
-const MapMove = new MapMoveClass(
-    // 要修正
-    // PlaceInfo[Setup.currentFloor.value].__MapSizeWidth__,
-    // PlaceInfo[Setup.currentFloor.value].__MapSizeHeight__,
-    PlaceInfo[0].__MapSizeWidth__,
-    PlaceInfo[0].__MapSizeHeight__,
-    window.innerWidth,
-    window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
-)
+const MapMove = new MapMoveClass()
 
 class MapMoveByMouseClass {
     constructor() {
