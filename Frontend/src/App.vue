@@ -2,12 +2,21 @@
 import { RouterView, useRoute } from 'vue-router'
 import Header from './components/Header.vue'
 const route = useRoute()
+
+// デフォルトのピンチアウトを無効化
+// 1本をブロックすると、プロパティでのスクロールが無効化されるため、2本以上をブロックする
+// <参考> https://moewe-net.com/js/disable-zoom
+document.body.addEventListener('touchmove', (event) => {
+  if (event.touches.length > 1) {
+    event.preventDefault();
+  }
+}, { passive: false });
 </script>
 
 <template>
   <Header />
   <Transition name="router" mode="out-in">
-    <div :key="route.fullPath" id="view">
+    <div :key="route.name" id="view">
       <!-- https://zenn.dev/marehalo/articles/vue-router-transition -->
       <RouterView />
     </div>

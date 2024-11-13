@@ -10,8 +10,8 @@
             <font-awesome-icon v-else id="linkCopy" @click="copyLink()" :icon="['fas', 'check']" />
         </p>
         <p>
-            <span v-if="PlaceInfo[props.Floor].__FloorDisplayName__ != null">
-                <font-awesome-icon :icon="['fas', 'stairs']" /> {{ PlaceInfo[props.Floor].__FloorDisplayName__ }}
+            <span v-if="PlaceInfo[props.Floor].__FloorFullName__ != null">
+                <font-awesome-icon :icon="['fas', 'stairs']" /> {{ PlaceInfo[props.Floor].__FloorFullName__ }}
             </span>
             <span v-if="PlaceInfo[props.Floor][props.PlaceId].place != null">
                 <font-awesome-icon id="locationIcon" :icon="['fas', 'location-dot']" /> {{
