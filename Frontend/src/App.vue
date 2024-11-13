@@ -16,7 +16,7 @@ document.body.addEventListener('touchmove', (event) => {
 <template>
   <Header />
   <Transition name="router" mode="out-in">
-    <div :key="route.fullPath" id="view">
+    <div :key="route.name" id="view">
       <!-- https://zenn.dev/marehalo/articles/vue-router-transition -->
       <RouterView />
     </div>
