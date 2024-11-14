@@ -1,0 +1,50 @@
+{
+    "grand": {
+        "floor": 0,
+        "name": "校庭",
+        "words": "グランド トラック",
+        "desc": "広い校庭"
+    },
+    "1a": {
+        "floor": 0,
+        "name": "1A",
+        "words": "普通教室",
+        "desc": ""
+    },
+    "1b": {
+        "floor": 0,
+        "name": "1B",
+        "words": "普通教室",
+        "desc": ""
+    },
+    "1c": {
+        "floor": 0,
+        "name": "1C",
+        "words": "普通教室",
+        "desc": ""
+    },
+    "1d": {
+        "floor": 0,
+        "name": "1D",
+        "words": "普通教室",
+        "desc": ""
+    },
+    "1e": {
+        "floor": 0,
+        "name": "1E",
+        "words": "普通教室",
+        "desc": ""
+    },
+    "1f": {
+        "floor": 0,
+        "name": "1F",
+        "words": "普通教室",
+        "desc": ""
+    },
+    "1g": {
+        "floor": 0,
+        "name": "1G",
+        "words": "普通教室",
+        "desc": ""
+    }
+}
