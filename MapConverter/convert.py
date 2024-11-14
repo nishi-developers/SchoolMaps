@@ -22,9 +22,9 @@ OutputFilePath = input("OutputFilePath(vue): ")
 if OutputFilePath == "":
     OutputFilePath = "out/map-output.vue"
 
-PlaceInfoFilePath = input("PlaceInfoFilePath(json): ")
-if PlaceInfoFilePath == "":
-    PlaceInfoFilePath = "out/place-info.json"
+# FloorInfoFilePath = input("FloorInfoFilePath(json): ")
+# if FloorInfoFilePath == "":
+#     FloorInfoFilePath = "out/FloorInfo.json"
 
 # SVGファイルを読み込み
 
@@ -75,20 +75,20 @@ with open(OutputFilePath, mode="w", encoding="utf-8") as f:
     )
 
 # PlaceInfoの作成
-PlaceInfo = """
-    {
-        "__FloorName__": "",
-        "__FloorDisplayName__": "",
-        "__MapSizeWidth__": 0,
-        "__MapSizeHeight__": 0,
-    """
-for i in PlaceInfoLabels:
-    PlaceInfo += '"' + i + '": {"name": "' + i + '", "description": ""},\n'
-# 最後の,を削除
-PlaceInfo = PlaceInfo[:-2]
-PlaceInfo += "}"
+# PlaceInfo = """
+#     {
+#         "__FloorName__": "",
+#         "__FloorDisplayName__": "",
+#         "__MapSizeWidth__": 0,
+#         "__MapSizeHeight__": 0,
+#     """
+# for i in PlaceInfoLabels:
+#     PlaceInfo += '"' + i + '": {"name": "' + i + '", "description": ""},\n'
+# # 最後の,を削除
+# PlaceInfo = PlaceInfo[:-2]
+# PlaceInfo += "}"
 
 
-# ファイルに書き出し
-with open(PlaceInfoFilePath, mode="w", encoding="utf-8") as f:
-    f.write(PlaceInfo)
+# # ファイルに書き出し
+# with open(FloorInfoFilePath, mode="w", encoding="utf-8") as f:
+#     f.write(PlaceInfo)
