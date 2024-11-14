@@ -1,0 +1,26 @@
+[
+    {
+        "__FloorShortName__": "1F",
+        "__FloorFullName__": "1階",
+        "__MapSizeWidth__": 127.85812,
+        "__MapSizeHeight__": 291.02832
+    },
+    {
+        "__FloorShortName__": "2F",
+        "__FloorFullName__": "2階",
+        "__MapSizeWidth__": 20.766842,
+        "__MapSizeHeight__": 10.944687
+    },
+    {
+        "__FloorShortName__": "3F",
+        "__FloorFullName__": "3階",
+        "__MapSizeWidth__": 20.766842,
+        "__MapSizeHeight__": 10.944687
+    },
+    {
+        "__FloorShortName__": "R",
+        "__FloorFullName__": "屋上",
+        "__MapSizeWidth__": 20.766842,
+        "__MapSizeHeight__": 10.944687
+    }
+]

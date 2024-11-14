@@ -2,6 +2,7 @@
 import { onMounted, ref, defineAsyncComponent, watch } from 'vue'
 import PropertyView from '@/components/PropertyView.vue';
 import PlaceInfo from '@/assets/PlaceInfo.json'
+import FloorInfo from '@/assets/FloorInfo.json'
 import { event } from 'vue-gtag'
 import { useRouter } from 'vue-router'
 const router = useRouter()
@@ -52,7 +53,7 @@ let Setup = new class {
     }
     #createPlaceInfo() {
         // フロア情報の逆順を作成
-        let result = PlaceInfo.slice().reverse()
+        let result = FloorInfo.slice().reverse()
         for (let i = 0; i < result.length; i++) {
             result[i]["__key__"] = result.length - 1 - i
         }
@@ -91,7 +92,7 @@ let Setup = new class {
         // フロアの変更
         if (floor != currentFloor.value) {
             if ((floor != "") && !isNaN(floor)
-                && Number(floor) >= 0 && Number(floor) <= PlaceInfo.length - 1) {
+                && Number(floor) >= 0 && Number(floor) <= FloorInfo.length - 1) {
                 this.changeFloor(Number(floor))
             } else {
                 this.changeFloor(0)
@@ -123,10 +124,10 @@ let Setup = new class {
     }
     mapSize = {
         get width() {
-            return PlaceInfo[Number(currentFloor.value)].__MapSizeWidth__;
+            return FloorInfo[Number(currentFloor.value)].__MapSizeWidth__;
         },
         get height() {
-            return PlaceInfo[Number(currentFloor.value)].__MapSizeHeight__;
+            return FloorInfo[Number(currentFloor.value)].__MapSizeHeight__;
         }
     }
     SetDeviceMode() {
