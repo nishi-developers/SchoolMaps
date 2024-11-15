@@ -1,8 +1,10 @@
 <template>
     <div id="header">
         <div id="title">
-            <RouterLink to="/"><span id="mainTitle">西高MAP</span><span id="version">(α版)</span></RouterLink>
-
+            <RouterLink to="/">
+                <span id="mainTitle">西高MAP</span>
+                <!-- <span id="version">(α版)</span> -->
+            </RouterLink>
         </div>
         <div id="menu">
             <RouterLink to="/guide">使い方</RouterLink>
