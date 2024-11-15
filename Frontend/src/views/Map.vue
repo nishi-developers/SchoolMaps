@@ -511,41 +511,20 @@ let MapMoveByTouch = new class {
 
 // ControlClass
 let Control = new class {
-    #isSingleClick = false
-    #isAlreadyMoved = false //マウス使用時のみ、移動したかどうか
     wrapEvent(name, event) {
         // ラッパーに関するイベントをすべてまとめ、分岐させる
         switch (name) {
             case "click":
-                this.#isSingleClick = true
-                if (!this.#isAlreadyMoved) {
-                    setTimeout(() => {
-                        if (this.#isSingleClick) {
-                            // シングルクリックの検出
-                            Property.showByUser(event)
-                        }
-                    }, 200)
-                }
-                break;
-            case "dblclick":
-                this.#isSingleClick = false
-                this.resetMove();
-                break;
-            case "mousedown":
-                this.#isAlreadyMoved = false
+                Property.showByUser(event)
                 break;
             case "mousemove":
                 MapMoveByMouse.move(event)
-                if (event.buttons != 0) {
-                    this.#isAlreadyMoved = true
-                }
                 break;
             case "mouseup":
                 MapMove.slide("position")
                 MapMove.slide("rotate")
                 break;
             case "touchmove":
-                this.#isSingleClick = false
                 MapMoveByTouch.do(event)
                 break;
             case "touchstart":
@@ -673,7 +652,7 @@ let Control = new class {
     color: var(--MainBodyColor);
 }
 
-#floorMenu ul .search {
+#floorMenu ul .func {
     font-size: 2rem;
 }
 
@@ -695,9 +674,13 @@ let Control = new class {
 }
 
 /* Transition */
+#PropertyView {
+    --property-transition-length: 0.2s;
+}
+
 .property-pc-enter-active,
 .property-pc-leave-active {
-    transition: opacity .2s ease-out, transform .2s ease-out;
+    transition: opacity var(--property-transition-length) ease-out, transform var(--property-transition-length) ease-out;
 }
 
 .property-pc-enter-from,
@@ -708,7 +691,7 @@ let Control = new class {
 
 .property-mobile-enter-active,
 .property-mobile-leave-active {
-    transition: opacity .2s ease-out, transform .2s ease-out;
+    transition: opacity var(--property-transition-length) ease-out, transform var(--property-transition-length) ease-out;
 }
 
 .property-mobile-enter-from,
@@ -735,7 +718,9 @@ let Control = new class {
     </Transition>
     <div id="floorMenu">
         <ul>
-            <li class="search"><font-awesome-icon @click="router.push('/search')" :icon="['fas', 'magnifying-glass']" />
+            <li class="func"><font-awesome-icon @click="router.push('/search')" :icon="['fas', 'magnifying-glass']" />
+            </li>
+            <li class="func"><font-awesome-icon @click="Control.resetMove()" :icon="['fas', 'expand']" />
             </li>
             <li class="floor" v-for="floor in Setup.placeInfoReverse" :key="floor.__key__"
                 @click="Setup.changeURL(floor.__key__, null)"
@@ -744,7 +729,6 @@ let Control = new class {
         </ul>
     </div>
     <div v-if="isShowWrapper" id="wrapperBox" @click="Control.wrapEvent('click', $event)"
-        @dblclick="Control.wrapEvent('dblclick', $event)" @mousedown="Control.wrapEvent('mousedown', $event)"
         @mousemove="Control.wrapEvent('mousemove', $event)" @mouseup="Control.wrapEvent('mouseup', $event)"
         @touchmove="Control.wrapEvent('touchmove', $event)" @touchstart="Control.wrapEvent('touchstart', $event)"
         @touchend="Control.wrapEvent('touchend', $event)" @wheel="Control.wrapEvent('wheel', $event)"></div>
