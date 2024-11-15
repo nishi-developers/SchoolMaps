@@ -293,9 +293,9 @@ let MapMove = new class {
         this.#slideData[target].isDo = true
         // 設定値
         const frictionConfig = {
-            position: 0.95,
-            zoom: 0.95,
-            rotate: 0.95,
+            position: 0.97,
+            zoom: 0.97,
+            rotate: 0.97,
             min: 0.001
         }
         // 速度が小さくなるまで、変更
@@ -511,14 +511,23 @@ let MapMoveByTouch = new class {
 
 // ControlClass
 let Control = new class {
+    #isAlreadyMoved = false //マウス使用時のみ、移動したかどうか
     wrapEvent(name, event) {
         // ラッパーに関するイベントをすべてまとめ、分岐させる
         switch (name) {
             case "click":
-                Property.showByUser(event)
+                if (!this.#isAlreadyMoved) {
+                    Property.showByUser(event)
+                }
                 break;
             case "mousemove":
                 MapMoveByMouse.move(event)
+                if (event.buttons != 0) {
+                    this.#isAlreadyMoved = true
+                }
+                break;
+            case "mousedown":
+                this.#isAlreadyMoved = false
                 break;
             case "mouseup":
                 MapMove.slide("position")
@@ -729,9 +738,10 @@ let Control = new class {
         </ul>
     </div>
     <div v-if="isShowWrapper" id="wrapperBox" @click="Control.wrapEvent('click', $event)"
-        @mousemove="Control.wrapEvent('mousemove', $event)" @mouseup="Control.wrapEvent('mouseup', $event)"
-        @touchmove="Control.wrapEvent('touchmove', $event)" @touchstart="Control.wrapEvent('touchstart', $event)"
-        @touchend="Control.wrapEvent('touchend', $event)" @wheel="Control.wrapEvent('wheel', $event)"></div>
+        @mousemove="Control.wrapEvent('mousemove', $event)" @mousedown="Control.wrapEvent('mousedown', $event)"
+        @mouseup="Control.wrapEvent('mouseup', $event)" @touchmove="Control.wrapEvent('touchmove', $event)"
+        @touchstart="Control.wrapEvent('touchstart', $event)" @touchend="Control.wrapEvent('touchend', $event)"
+        @wheel="Control.wrapEvent('wheel', $event)"></div>
     <div id="box">
         <div id="map_content" draggable="false" :key="currentFloor">
             <Transition name="map" mode="out-in">
