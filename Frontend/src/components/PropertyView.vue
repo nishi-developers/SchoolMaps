@@ -9,18 +9,18 @@
             @touchend="PropertyCtrl.wrapEvent('touchend', $event)"
             @touchcancel="PropertyCtrl.wrapEvent('touchcancel', $event)">
         </div>
-        <p id="name">{{ PlaceInfo[props.Floor][props.PlaceId].name }}
+        <p id="name">{{ PlaceInfo[props.PlaceId].name }}
             <font-awesome-icon v-if="!isCopy" id="linkCopy" @click="copyLink()" :icon="['fas', 'link']" />
             <font-awesome-icon v-else id="linkCopy" @click="copyLink()" :icon="['fas', 'check']" />
             <span v-if="isCopy" id="linkCopied">リンクをコピーしました</span>
         </p>
         <p>
-            <span v-if="PlaceInfo[props.Floor].__FloorFullName__ != null">
-                <font-awesome-icon :icon="['fas', 'location-dot']" /> {{ PlaceInfo[props.Floor].__FloorFullName__ }}
+            <span v-if="FloorInfo[props.Floor].__FloorFullName__ != null">
+                <font-awesome-icon :icon="['fas', 'location-dot']" /> {{ FloorInfo[props.Floor].__FloorFullName__ }}
             </span>
         </p>
-        <p v-html="PlaceInfo[props.Floor][props.PlaceId].desc"> </p>
-        <div id="imageObjects" v-if="PlaceInfo[props.Floor][props.PlaceId].images != null">
+        <p v-html="PlaceInfo[props.PlaceId].desc"> </p>
+        <div id="imageObjects" v-if="PlaceInfo[props.PlaceId].images != null">
         </div>
     </div>
 
@@ -28,6 +28,7 @@
 <script setup>
 import { onMounted, ref, watch } from 'vue'
 import PlaceInfo from '@/assets/PlaceInfo.json'
+import FloorInfo from '@/assets/FloorInfo.json'
 
 // 入出力
 const props = defineProps(["Floor", "PlaceId", "deviceMode"])
@@ -186,13 +187,13 @@ let ImageCtrl = new class {
     #imagesWidth = []
     constructor() {
         // 画像の読み込み
-        if (PlaceInfo[props.Floor][props.PlaceId].images != null) {
-            for (let i = 0; i < PlaceInfo[props.Floor][props.PlaceId].images.length; i++) {
+        if (PlaceInfo[props.PlaceId].images != null) {
+            for (let i = 0; i < PlaceInfo[props.PlaceId].images.length; i++) {
                 this.#imageObjects[i] = new Image()
-                this.#imageObjects[i].src = `${BASE_URL}img/places/${PlaceInfo[props.Floor][props.PlaceId].images[i]}`;
+                this.#imageObjects[i].src = `${BASE_URL}img/places/${PlaceInfo[props.PlaceId].images[i]}`;
                 this.#imageObjects[i].onload = () => {
                     this.#imagesWidth.push(this.#imageObjects[i].naturalWidth / this.#imageObjects[i].naturalHeight * imageHeight)
-                    if (this.#imagesWidth.length == PlaceInfo[props.Floor][props.PlaceId].images.length) {
+                    if (this.#imagesWidth.length == PlaceInfo[props.PlaceId].images.length) {
                         // 全ての画像の読み込みが完了したら
                         imageIsReady.value.image_onload = true
                     }
