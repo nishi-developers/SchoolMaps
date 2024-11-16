@@ -5,9 +5,9 @@
             <label for="searchInput" class="searchIcon">
                 <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
             </label>
-            <input id="searchInput" type="text" class="searchInput" placeholder="検索" @input="doSearch()"
-                v-model="searchWord" required>
-            <label for="searchInput" class="searchXmark" :class="searchXmarkIsActive" @click="resetSearch()">
+            <input id="searchInput" type="text" class="searchInput" placeholder="検索" v-model="searchWord" required>
+            <label for="searchInput" class="searchXmark" :class="[searchXmarkIsActive ? 'active' : '']"
+                @mousedown="resetSearch()" @touchstart="resetSearch()">
                 <font-awesome-icon :icon="['fas', 'xmark']" />
             </label>
         </div>
@@ -29,12 +29,17 @@
                 </div>
             </div>
         </div>
+        <p>メンテナンス中</p>
     </div>
 </template>
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
+
+function move(floor, id) {
+    router.push(`${floor}/${id}`)
+}
 
 // 配列の整理
 import PlaceInfo from '@/assets/PlaceInfo.json'
@@ -57,20 +62,15 @@ for (let floorId = 0; floorId < PlaceInfo.length; floorId++) {
     }
 }
 
-function move(floor, id) {
-    router.push(`${floor}/${id}`)
-}
-
-
 const searchWord = ref('')
 
-const searchXmarkIsActive = ref('')
+const searchXmarkIsActive = ref(false)
 function resetSearch() {
-    searchXmarkIsActive.value = 'active'
+    searchXmarkIsActive.value = true
     searchWord.value = ''
     doSearch()
     setTimeout(() => {
-        searchXmarkIsActive.value = ''
+        searchXmarkIsActive.value = false
     }, 150);
 }
 
@@ -144,7 +144,7 @@ p {
 
 .searchBox {
     --SearchBoxHeight: 40px;
-    border: 1px solid var(--MainBodyColor);
+    border: 2px solid var(--MainBodyColor);
     border-radius: 10px;
     height: var(--SearchBoxHeight);
     width: 100%;
@@ -152,23 +152,14 @@ p {
     box-sizing: border-box;
 }
 
-.searchBox:hover {
-    border: 2px solid var(--MainBodyColor);
-}
-
 .searchIcon {
     height: 100%;
+    font-size: 1.5rem;
     width: var(--SearchBoxHeight);
     background-color: var(--SubBaseColor);
-}
-
-.searchIcon svg {
-    height: 80%;
-    width: 80%;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: var(--MainBodyColor)
 }
 
