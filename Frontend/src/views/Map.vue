@@ -156,7 +156,7 @@ let Property = new class {
     isPlaceExist(id) {
         // 存在する場所かどうかをチェック
         // resolveUrl()で確実に使用されるため、this.showではチェックしない
-        return Object.keys(PlaceInfo[currentFloor.value]).includes(id)
+        return Object.keys(PlaceInfo).includes(id)
     }
     show(id) {
         event(`open{${currentFloor.value}/${id}}`)
