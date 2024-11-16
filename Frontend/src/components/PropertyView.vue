@@ -1,13 +1,15 @@
 <template>
-    <div id="PropertyView" :class="deviceMode" v-if="isShowPropertyView">
-        <div id="closeSlider" :class="deviceMode" @mousedown="click_Detect()"
-            @mousemove="mouseMove($event); click_notDetect()" @mouseup="leave($event)"
-            @touchstart="touchStart($event); click_Detect()" @touchmove="touchMove($event); click_notDetect()"
-            @touchend="leave($event)" @touchcancel="leave($event)" @click="click_toClose()" @dblclick="dubleClick()">
+    <div id="PropertyView" :class="deviceMode">
+        <div id="closeSlider" :class="deviceMode" @click="Control.wrapEvent('click', $event)"
+            @mousemove="Control.wrapEvent('mousemove', $event)" @mousedown="Control.wrapEvent('mousedown', $event)"
+            @mouseup="Control.wrapEvent('mouseup', $event)" @touchmove="Control.wrapEvent('touchmove', $event)"
+            @touchstart="Control.wrapEvent('touchstart', $event)" @touchend="Control.wrapEvent('touchend', $event)"
+            @touchcancel="Control.wrapEvent('touchcancel', $event)">
         </div>
         <p id="name">{{ PlaceInfo[props.Floor][props.PlaceId].name }}
-            <font-awesome-icon v-if="isNotCopy" id="linkCopy" @click="copyLink()" :icon="['fas', 'link']" />
+            <font-awesome-icon v-if="!isCopy" id="linkCopy" @click="copyLink()" :icon="['fas', 'link']" />
             <font-awesome-icon v-else id="linkCopy" @click="copyLink()" :icon="['fas', 'check']" />
+            <span v-if="isCopy" id="linkCopied">リンクをコピーしました</span>
         </p>
         <p>
             <span v-if="PlaceInfo[props.Floor].__FloorFullName__ != null">
@@ -30,10 +32,52 @@
 import { ref } from 'vue'
 import PlaceInfo from '@/assets/PlaceInfo.json'
 
-const isShowPropertyView = ref(true)
+// 入出力
 const props = defineProps(["Floor", "PlaceId", "deviceMode"])
 const emit = defineEmits(["hideProperty"])
 const BASE_URL = import.meta.env.BASE_URL
+
+let Control = new class {
+    #isAlreadyMoved = false //マウス使用時のみ、移動したかどうか
+    wrapEvent(name, event) {
+        // ラッパーに関するイベントをすべてまとめ、分岐させる
+        switch (name) {
+            case "click":
+                if (!this.#isAlreadyMoved) {
+                    closePropertyView()
+                }
+                break;
+            case "mousemove":
+                mouseMove(event);
+                if (event.buttons != 0) {
+                    this.#isAlreadyMoved = true
+                }
+                break;
+            case "mousedown":
+                this.#isAlreadyMoved = false
+                break;
+            case "mouseup":
+                leave(event)
+                break;
+            case "touchmove":
+                touchMove(event);
+                break;
+            case "touchstart":
+                touchStart(event);
+                break;
+            case "touchend":
+                leave(event)
+                break;
+            case "touchcancel":
+                leave(event)
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+
 
 // pc or mobile (deviceMode)
 const deviceMode = ref(props.deviceMode)
@@ -52,46 +96,6 @@ if (deviceMode.value == "mobile") {
     InfoSize.value = window_width * InfoSizeMiddleRate
 }
 
-// クリック判定
-let isClick = false
-let isDubleClick = false
-function click_toClose() {
-    // ダブルクリックと判定されるまでの時間を遅らせる
-    if (isClick) {
-        isClick = false
-        isDubleClick = false
-        setTimeout(() => {
-            if (!isDubleClick) {
-                closePropertyView()
-            }
-        }, 200)
-    }
-}
-function click_Detect() {
-    // クリック開始が検出されたときにフラグを立てる
-    isClick = true
-}
-function click_notDetect() {
-    // クリックではなくドラックだとわかったときにフラグを解除する
-    isClick = false
-}
-function dubleClick() {
-    isDubleClick = true
-    // 最大であれば中へ、中であれば最大へ
-    if (deviceMode.value == "mobile") {
-        if (InfoSize.value == window_height * InfoSizeMiddleRate) {
-            InfoSize.value = window_height * InfoSizeMaxRate
-        } else {
-            InfoSize.value = window_height * InfoSizeMiddleRate
-        }
-    } else {
-        if (InfoSize.value == window_width * InfoSizeMiddleRate) {
-            InfoSize.value = window_width * InfoSizeMaxRate
-        } else {
-            InfoSize.value = window_width * InfoSizeMiddleRate
-        }
-    }
-}
 function closePropertyView() {
     emit("hideProperty")
 }
@@ -159,18 +163,18 @@ function leave() {
 }
 
 // リンクコピー
-const isNotCopy = ref(true)
+const isCopy = ref(false)
 function copyLink() {
-    const url = `https://${location.host}${BASE_URL}/${props.Floor}/${props.PlaceId}`
+    const url = `${location.protocol}//${location.host}${BASE_URL}${props.Floor}/${props.PlaceId}`
     navigator.clipboard.writeText(url)
-    isNotCopy.value = false
+    isCopy.value = true
     setTimeout(() => {
-        isNotCopy.value = true
-    }, 1000)
+        isCopy.value = false
+    }, 2000)
 }
 
 const imageHeight = 300 // 画像の高さ
-var imageObjects = Array
+let imageObjects = Array
 const images = ref([])
 // 画像の比率を取得してimagesに格納
 if (PlaceInfo[props.Floor][props.PlaceId].images != null) {
@@ -254,6 +258,11 @@ p {
     cursor: pointer;
     margin-left: 10px;
     font-size: 1.2rem;
+}
+
+#linkCopied {
+    font-size: 0.8rem;
+    margin-left: 5px;
 }
 
 #locationIcon {
