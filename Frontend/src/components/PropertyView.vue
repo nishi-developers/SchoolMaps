@@ -13,11 +13,7 @@
         </p>
         <p>
             <span v-if="PlaceInfo[props.Floor].__FloorFullName__ != null">
-                <font-awesome-icon :icon="['fas', 'stairs']" /> {{ PlaceInfo[props.Floor].__FloorFullName__ }}
-            </span>
-            <span v-if="PlaceInfo[props.Floor][props.PlaceId].place != null">
-                <font-awesome-icon id="locationIcon" :icon="['fas', 'location-dot']" /> {{
-                    PlaceInfo[props.Floor][props.PlaceId].place }}
+                <font-awesome-icon :icon="['fas', 'location-dot']" /> {{ PlaceInfo[props.Floor].__FloorFullName__ }}
             </span>
         </p>
         <p v-html="PlaceInfo[props.Floor][props.PlaceId].desc"> </p>
@@ -77,6 +73,21 @@ let Control = new class {
     }
 }
 
+
+// リンクコピー
+const isCopy = ref(false)
+function copyLink() {
+    const url = `${location.protocol}//${location.host}${BASE_URL}${props.Floor}/${props.PlaceId}`
+    if (!navigator.clipboard) {
+        alert("リンクのコピーに対応していません");
+        return;
+    }
+    navigator.clipboard.writeText(url)
+    isCopy.value = true
+    setTimeout(() => {
+        isCopy.value = false
+    }, 2000)
+}
 
 
 // pc or mobile (deviceMode)
@@ -162,16 +173,6 @@ function leave() {
     }
 }
 
-// リンクコピー
-const isCopy = ref(false)
-function copyLink() {
-    const url = `${location.protocol}//${location.host}${BASE_URL}${props.Floor}/${props.PlaceId}`
-    navigator.clipboard.writeText(url)
-    isCopy.value = true
-    setTimeout(() => {
-        isCopy.value = false
-    }, 2000)
-}
 
 const imageHeight = 300 // 画像の高さ
 let imageObjects = Array
@@ -180,13 +181,16 @@ const images = ref([])
 if (PlaceInfo[props.Floor][props.PlaceId].images != null) {
     for (let i = 0; i < PlaceInfo[props.Floor][props.PlaceId].images.length; i++) {
         imageObjects[i] = new Image()
-        imageObjects[i].src = `${BASE_URL}/img/places/${PlaceInfo[props.Floor][props.PlaceId].images[i]}`;
+        imageObjects[i].src = `${BASE_URL}img/places/${PlaceInfo[props.Floor][props.PlaceId].images[i]}`;
         imageObjects[i].onload = () => {
             images.value.splice(i, 0, {
-                "path": `${BASE_URL}/img/places/${PlaceInfo[props.Floor][props.PlaceId].images[i]}`,
+                "path": `${BASE_URL}img/places/${PlaceInfo[props.Floor][props.PlaceId].images[i]}`,
                 "width": imageObjects[i].naturalWidth / imageObjects[i].naturalHeight * imageHeight,
             });
         }
+        // onMounted(() => {
+        //     document.getElementById("temp").appendChild(imageObjects[i])
+        // })
     }
 }
 </script>
@@ -263,10 +267,6 @@ p {
 #linkCopied {
     font-size: 0.8rem;
     margin-left: 5px;
-}
-
-#locationIcon {
-    margin-left: 15px;
 }
 
 #imageObjects {
