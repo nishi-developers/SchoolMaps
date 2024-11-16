@@ -188,6 +188,7 @@ if (PlaceInfo[props.Floor][props.PlaceId].images != null) {
                 "width": imageObjects[i].naturalWidth / imageObjects[i].naturalHeight * imageHeight,
             });
         }
+        // imageObjectsで画像をロードしているから、それをそのままDOMに追加したい
         // onMounted(() => {
         //     document.getElementById("temp").appendChild(imageObjects[i])
         // })
