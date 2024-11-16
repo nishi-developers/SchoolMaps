@@ -544,6 +544,11 @@ let Control = new class {
                 MapMove.slide("zoom")
                 MapMove.slide("rotate")
                 break;
+            case "touchcancel":
+                MapMove.slide("position")
+                MapMove.slide("zoom")
+                MapMove.slide("rotate")
+                break;
             case "wheel":
                 MapMoveByMouse.wheel(event)
                 break;
@@ -741,7 +746,7 @@ let Control = new class {
         @mousemove="Control.wrapEvent('mousemove', $event)" @mousedown="Control.wrapEvent('mousedown', $event)"
         @mouseup="Control.wrapEvent('mouseup', $event)" @touchmove="Control.wrapEvent('touchmove', $event)"
         @touchstart="Control.wrapEvent('touchstart', $event)" @touchend="Control.wrapEvent('touchend', $event)"
-        @wheel="Control.wrapEvent('wheel', $event)"></div>
+        @touchcancel="Control.wrapEvent('touchcancel', $event)" @wheel="Control.wrapEvent('wheel', $event)"></div>
     <div id="box">
         <div id="map_content" draggable="false" :key="currentFloor">
             <Transition name="map" mode="out-in">
