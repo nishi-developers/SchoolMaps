@@ -1,10 +1,13 @@
 <template>
-    <div id="PropertyView" :class="deviceMode">
-        <div id="closeSlider" :class="deviceMode" @click="Control.wrapEvent('click', $event)"
-            @mousemove="Control.wrapEvent('mousemove', $event)" @mousedown="Control.wrapEvent('mousedown', $event)"
-            @mouseup="Control.wrapEvent('mouseup', $event)" @touchmove="Control.wrapEvent('touchmove', $event)"
-            @touchstart="Control.wrapEvent('touchstart', $event)" @touchend="Control.wrapEvent('touchend', $event)"
-            @touchcancel="Control.wrapEvent('touchcancel', $event)">
+    <div id="PropertyView" :class="props.deviceMode">
+        <div id="closeSlider" :class="props.deviceMode" @click="PropertyCtrl.wrapEvent('click', $event)"
+            @mousemove="PropertyCtrl.wrapEvent('mousemove', $event)"
+            @mousedown="PropertyCtrl.wrapEvent('mousedown', $event)"
+            @mouseup="PropertyCtrl.wrapEvent('mouseup', $event)"
+            @touchmove="PropertyCtrl.wrapEvent('touchmove', $event)"
+            @touchstart="PropertyCtrl.wrapEvent('touchstart', $event)"
+            @touchend="PropertyCtrl.wrapEvent('touchend', $event)"
+            @touchcancel="PropertyCtrl.wrapEvent('touchcancel', $event)">
         </div>
         <p id="name">{{ PlaceInfo[props.Floor][props.PlaceId].name }}
             <font-awesome-icon v-if="!isCopy" id="linkCopy" @click="copyLink()" :icon="['fas', 'link']" />
@@ -18,33 +21,49 @@
         </p>
         <p v-html="PlaceInfo[props.Floor][props.PlaceId].desc"> </p>
         <div id="imageObjects" v-if="PlaceInfo[props.Floor][props.PlaceId].images != null">
-            <img v-for="img, key in images" :key="key" :style="{ 'min-width': `${img.width}px` }" :src="img.path"
-                alt="画像">
         </div>
     </div>
 
 </template>
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import PlaceInfo from '@/assets/PlaceInfo.json'
 
 // 入出力
 const props = defineProps(["Floor", "PlaceId", "deviceMode"])
 const emit = defineEmits(["hideProperty"])
 const BASE_URL = import.meta.env.BASE_URL
+// ウィンドウサイズ
+const windowWidth = window.innerWidth
+const windowHeight = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
 
-let Control = new class {
+// プロパティビュー
+const PropertySize = ref(0)
+let PropertyCtrl = new class {
+    #PropertySizeMiddleRate
+    #PropertySizeMaxRate
+    constructor() {
+        if (props.deviceMode == "mobile") {
+            this.#PropertySizeMiddleRate = .3
+            this.#PropertySizeMaxRate = .9
+            PropertySize.value = windowHeight * this.#PropertySizeMiddleRate
+        } else {
+            this.#PropertySizeMiddleRate = .3
+            this.#PropertySizeMaxRate = .8
+            PropertySize.value = windowWidth * this.#PropertySizeMiddleRate
+        }
+    }
     #isAlreadyMoved = false //マウス使用時のみ、移動したかどうか
     wrapEvent(name, event) {
         // ラッパーに関するイベントをすべてまとめ、分岐させる
         switch (name) {
             case "click":
                 if (!this.#isAlreadyMoved) {
-                    closePropertyView()
+                    this.closeProperty()
                 }
                 break;
             case "mousemove":
-                mouseMove(event);
+                this.#mouseMove(event);
                 if (event.buttons != 0) {
                     this.#isAlreadyMoved = true
                 }
@@ -53,26 +72,93 @@ let Control = new class {
                 this.#isAlreadyMoved = false
                 break;
             case "mouseup":
-                leave(event)
+                this.#leave(event)
                 break;
             case "touchmove":
-                touchMove(event);
+                this.#touchMove(event);
                 break;
             case "touchstart":
-                touchStart(event);
+                this.#touchStart(event);
                 break;
             case "touchend":
-                leave(event)
+                this.#leave(event)
                 break;
             case "touchcancel":
-                leave(event)
+                this.#leave(event)
                 break;
             default:
                 break;
         }
     }
-}
+    closeProperty() {
+        emit("hideProperty")
+    }
+    // ドラッグ判定
+    #mouseMove(event) {
+        // マウスでドラッグ中の処理
+        if (event.buttons == 1) {
+            if (props.deviceMode == "mobile") {
+                if (PropertySize.value - event.movementY > 0 && PropertySize.value - event.movementY < windowHeight)
+                    PropertySize.value -= event.movementY;
+            } else {
+                if (PropertySize.value + event.movementX > 0 && PropertySize.value + event.movementX < windowWidth)
+                    PropertySize.value += event.movementX;
+            }
+        }
+    }
+    #touchLast = 0;
+    #touchStart(event) {
+        // タッチでドラッグ開始時の処理
+        if (event.changedTouches.length === 1) {
+            if (props.deviceMode == "mobile") {
+                this.#touchLast = event.changedTouches[0].clientY;
+            } else {
+                this.#touchLast = event.changedTouches[0].clientX;
+            }
+        }
+    }
+    #touchMove(event) {
+        // タッチでドラッグ中の処理
+        if (event.changedTouches.length === 1) {
+            if (props.deviceMode == "mobile") {
+                const Y = this.#touchLast - event.changedTouches[0].clientY
+                this.#touchLast = event.changedTouches[0].clientY
+                if (PropertySize.value + Y > 0 && PropertySize.value + Y < windowHeight)
+                    PropertySize.value += Y;
+            } else {
+                const X = this.#touchLast - event.changedTouches[0].clientX
+                this.#touchLast = event.changedTouches[0].clientX
+                if (PropertySize.value - X > 0 && PropertySize.value - X < windowWidth)
+                    PropertySize.value -= X;
+            }
+        }
+    }
+    #leave() {
+        // ドラッグ終了時の処理(マウスとタッチで共通)
+        if (props.deviceMode == "mobile") {
+            if (PropertySize.value < windowHeight * this.#PropertySizeMiddleRate / 2) {
+                // 閉じる
+                this.closeProperty()
+            } else if (PropertySize.value > (((windowHeight * this.#PropertySizeMiddleRate) + (windowHeight * this.#PropertySizeMaxRate)) / 2)) {
+                // 最大化
+                PropertySize.value = windowHeight * this.#PropertySizeMaxRate
+            } else {
+                PropertySize.value = windowHeight * this.#PropertySizeMiddleRate
+            }
+        } else {
+            if (PropertySize.value < windowWidth * this.#PropertySizeMiddleRate / 2) {
+                // 閉じる
+                this.closeProperty()
+            } else if (PropertySize.value > (((windowWidth * this.#PropertySizeMiddleRate) + (windowWidth * this.#PropertySizeMaxRate)) / 2)) {
+                // 最大化
+                PropertySize.value = windowWidth * this.#PropertySizeMaxRate
+            } else {
+                PropertySize.value = windowWidth * this.#PropertySizeMiddleRate
+            }
+        }
+    }
 
+}
 
 // リンクコピー
 const isCopy = ref(false)
@@ -89,111 +175,52 @@ function copyLink() {
     }, 2000)
 }
 
-
-// pc or mobile (deviceMode)
-const deviceMode = ref(props.deviceMode)
-const window_width = window.innerWidth
-const window_height = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
-const InfoSize = ref(0)
-let InfoSizeMiddleRate = 0
-let InfoSizeMaxRate = 0
-if (deviceMode.value == "mobile") {
-    InfoSizeMiddleRate = .3
-    InfoSizeMaxRate = .9
-    InfoSize.value = window_height * InfoSizeMiddleRate
-} else {
-    InfoSizeMiddleRate = .3
-    InfoSizeMaxRate = .8
-    InfoSize.value = window_width * InfoSizeMiddleRate
-}
-
-function closePropertyView() {
-    emit("hideProperty")
-}
-
-// ドラッグ判定
-function mouseMove(event) {
-    if (event.buttons == 1) {
-        if (deviceMode.value == "mobile") {
-            if (InfoSize.value - event.movementY > 0 && InfoSize.value - event.movementY < window_height)
-                InfoSize.value -= event.movementY;
-        } else {
-            if (InfoSize.value + event.movementX > 0 && InfoSize.value + event.movementX < window_width)
-                InfoSize.value += event.movementX;
+// 画像
+const imageIsReady = ref({
+    image_onload: false,
+    dom_onmount: false
+})
+const imageHeight = 300
+let ImageCtrl = new class {
+    #imageObjects = []
+    #imagesWidth = []
+    constructor() {
+        // 画像の読み込み
+        if (PlaceInfo[props.Floor][props.PlaceId].images != null) {
+            for (let i = 0; i < PlaceInfo[props.Floor][props.PlaceId].images.length; i++) {
+                this.#imageObjects[i] = new Image()
+                this.#imageObjects[i].src = `${BASE_URL}img/places/${PlaceInfo[props.Floor][props.PlaceId].images[i]}`;
+                this.#imageObjects[i].onload = () => {
+                    this.#imagesWidth.push(this.#imageObjects[i].naturalWidth / this.#imageObjects[i].naturalHeight * imageHeight)
+                    if (this.#imagesWidth.length == PlaceInfo[props.Floor][props.PlaceId].images.length) {
+                        // 全ての画像の読み込みが完了したら
+                        imageIsReady.value.image_onload = true
+                    }
+                }
+            }
+        }
+    }
+    show() {
+        for (let i = 0; i < this.#imageObjects.length; i++) {
+            this.#imageObjects[i].style.minWidth = `${this.#imagesWidth[i]}px`
+            this.#imageObjects[i].classList.add("image")
+            document.getElementById("imageObjects").appendChild(this.#imageObjects[i])
         }
     }
 }
-let touchLast = 0;
-function touchStart(event) {
-    if (event.changedTouches.length === 1) {
-        if (deviceMode.value == "mobile") {
-            touchLast = event.changedTouches[0].clientY;
-        } else {
-            touchLast = event.changedTouches[0].clientX;
-        }
+onMounted(() => {
+    // DOMがマウントされたら
+    imageIsReady.value.dom_onmount = true
+})
+watch(imageIsReady, (newVal) => {
+    // 画像の読み込みが完了したら画像を表示
+    if (newVal.image_onload && newVal.dom_onmount) {
+        ImageCtrl.show()
     }
-}
-function touchMove(event) {
-    if (event.changedTouches.length === 1) {
-        if (deviceMode.value == "mobile") {
-            const Y = touchLast - event.changedTouches[0].clientY
-            touchLast = event.changedTouches[0].clientY
-            if (InfoSize.value + Y > 0 && InfoSize.value + Y < window_height)
-                InfoSize.value += Y;
-        } else {
-            const X = touchLast - event.changedTouches[0].clientX
-            touchLast = event.changedTouches[0].clientX
-            if (InfoSize.value - X > 0 && InfoSize.value - X < window_width)
-                InfoSize.value -= X;
-        }
-    }
-
-}
-function leave() {
-    if (deviceMode.value == "mobile") {
-        if (InfoSize.value < window_height * InfoSizeMiddleRate / 2) {
-            // 閉じる
-            closePropertyView()
-        } else if (InfoSize.value > (((window_height * InfoSizeMiddleRate) + (window_height * InfoSizeMaxRate)) / 2)) {
-            // 最大化
-            InfoSize.value = window_height * InfoSizeMaxRate
-        } else {
-            InfoSize.value = window_height * InfoSizeMiddleRate
-        }
-    } else {
-        if (InfoSize.value < window_width * InfoSizeMiddleRate / 2) {
-            // 閉じる
-            closePropertyView()
-        } else if (InfoSize.value > (((window_width * InfoSizeMiddleRate) + (window_width * InfoSizeMaxRate)) / 2)) {
-            // 最大化
-            InfoSize.value = window_width * InfoSizeMaxRate
-        } else {
-            InfoSize.value = window_width * InfoSizeMiddleRate
-        }
-    }
-}
-
-
-const imageHeight = 300 // 画像の高さ
-let imageObjects = Array
-const images = ref([])
-// 画像の比率を取得してimagesに格納
-if (PlaceInfo[props.Floor][props.PlaceId].images != null) {
-    for (let i = 0; i < PlaceInfo[props.Floor][props.PlaceId].images.length; i++) {
-        imageObjects[i] = new Image()
-        imageObjects[i].src = `${BASE_URL}img/places/${PlaceInfo[props.Floor][props.PlaceId].images[i]}`;
-        imageObjects[i].onload = () => {
-            images.value.splice(i, 0, {
-                "path": `${BASE_URL}img/places/${PlaceInfo[props.Floor][props.PlaceId].images[i]}`,
-                "width": imageObjects[i].naturalWidth / imageObjects[i].naturalHeight * imageHeight,
-            });
-        }
-        // imageObjectsで画像をロードしているから、それをそのままDOMに追加したい
-        // onMounted(() => {
-        //     document.getElementById("temp").appendChild(imageObjects[i])
-        // })
-    }
-}
+}, {
+    immediate: true,
+    deep: true
+})
 </script>
 <style scoped>
 #closeSlider {
@@ -211,15 +238,15 @@ if (PlaceInfo[props.Floor][props.PlaceId].images != null) {
     width: 200px;
     height: 30px;
     left: 50%;
-    bottom: v-bind(InfoSize + "px");
+    bottom: v-bind(PropertySize + "px");
     transform: translate(-50%, 100%);
 }
 
 #closeSlider.pc {
     width: 30px;
     height: 200px;
-    left: v-bind(InfoSize + "px");
-    top: calc(calc(v-bind(window_height + "px") / 2) + var(--HeaderHeight));
+    left: v-bind(PropertySize + "px");
+    top: calc(calc(v-bind(windowHeight + "px") / 2) + var(--HeaderHeight));
     transform: translate(-100%, -50%);
 }
 
@@ -233,7 +260,7 @@ if (PlaceInfo[props.Floor][props.PlaceId].images != null) {
 
 #PropertyView.mobile {
     width: 100%;
-    height: v-bind(InfoSize + "px");
+    height: v-bind(PropertySize + "px");
     bottom: 0;
     border-radius: 20px 20px 0 0;
     padding: 35px 20px 20px 20px;
@@ -241,7 +268,7 @@ if (PlaceInfo[props.Floor][props.PlaceId].images != null) {
 }
 
 #PropertyView.pc {
-    width: v-bind(InfoSize + "px");
+    width: v-bind(PropertySize + "px");
     height: calc(100% - var(--HeaderHeight));
     bottom: 0;
     border-radius: 0 20px 20px 0;
@@ -276,7 +303,8 @@ p {
     height: v-bind(imageHeight + "px");
     margin: 10px;
 }
-
+</style>
+<style>
 #imageObjects img {
     height: 100%;
     border-radius: 20px;
