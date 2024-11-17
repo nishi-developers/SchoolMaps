@@ -12,19 +12,15 @@
             </label>
         </div>
         <div class="results">
-            <div v-for="place, key in searchResults" :key="key" @click="move(place.floor, place.id)" class="place">
-                <p class="name">{{ place.name }}</p>
+            <div v-for="id, key in searchResultsId" :key="key" @click="move(PlaceInfo[id].floor, id)" class="place">
+                <p class="name">{{ PlaceInfo[id].name }}</p>
                 <p>
-                    <span class="position" v-if="place.floorName != null">
-                        <font-awesome-icon :icon="['fas', 'stairs']" />
-                        {{ place.floorName }}
-                    </span>
-                    <span class="position" v-if="place.place != null">
-                        <font-awesome-icon id="locationIcon" :icon="['fas', 'location-dot']" />
-                        {{ place.place }}
+                    <span class="position">
+                        <font-awesome-icon :icon="['fas', 'location-dot']" />
+                        {{ FloorInfo[PlaceInfo[id].floor].__FloorFullName__ }}
                     </span>
                 </p>
-                <p v-html="place.desc" v-if="place.desc != null"></p>
+                <!-- <p v-html="PlaceInfo[id].desc" v-if="PlaceInfo[id].desc != null"></p> -->
             </div>
         </div>
     </div>
@@ -40,6 +36,7 @@ function move(floor, id) {
 
 // 配列の整理
 import PlaceInfo from '@/assets/PlaceInfo.json'
+import FloorInfo from '@/assets/FloorInfo.json'
 
 //idとwordsを紐付けた連想配列を作成
 // 小文字で検索するために全て小文字に変換
@@ -50,26 +47,21 @@ for (let key of Object.keys(PlaceInfo)) {
 
 // 検索機能
 const searchWord = ref('')
-// const searchResults = ref([])
-let searchResultsId = new Set(Object.keys(PlaceInfoWords))
+const searchResultsId = ref(new Set(Object.keys(PlaceInfoWords)))
 watch(searchWord, () => {
     if (searchWord.value == '') {
-        searchResultsId = new Set(Object.keys(PlaceInfoWords))
+        searchResultsId.value = new Set(Object.keys(PlaceInfoWords))
     } else {
-        searchResultsId = new Set()
+        searchResultsId.value = new Set()
         // 検索ワードを半角・全角スペースで分割
         let searchWords = searchWord.value.toLowerCase().split(/( |　)/)
+        searchWords = searchWords.filter((value) => value != ' ' && value != '　' && value != '')
+        // 検索ワードを含むものを検索
         for (let aSearchWords of searchWords) {
-            // 検索ワードを含むものを検索
-            Object.keys(PlaceInfoWords).filter((key) => PlaceInfoWords[key].includes(aSearchWords)).forEach((key) => searchResultsId.add(key))
+            Object.keys(PlaceInfoWords).filter((key) => PlaceInfoWords[key].includes(aSearchWords)).forEach((key) => searchResultsId.value.add(key))
         }
     }
-    // // 表示
-    // for (let id of searchResultsId) {
-    //     searchResults.value.push(PlaceInfo[id])
-    // }
 }, { immediate: true })
-
 
 // xマーク
 const searchXmarkIsActive = ref(false)
