@@ -33,7 +33,7 @@
     </div>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
@@ -43,98 +43,121 @@ function move(floor, id) {
 
 // 配列の整理
 import PlaceInfo from '@/assets/PlaceInfo.json'
-let PlaceInfoKeys = []
-let PlaceInfoList = []
-for (let floorId = 0; floorId < PlaceInfo.length; floorId++) {
-    PlaceInfoKeys = Object.keys(PlaceInfo[floorId]).filter((key) => !key.includes("__"))
-    for (let idNum = 0; idNum < PlaceInfoKeys.length; idNum++) {
-        if (!PlaceInfoKeys[idNum].includes("__")) {
-            PlaceInfoList.push({
-                id: PlaceInfoKeys[idNum],
-                floor: floorId,
-                floorName: PlaceInfo[floorId].__FloorFullName__,
-                name: PlaceInfo[floorId][PlaceInfoKeys[idNum]].name,
-                desc: PlaceInfo[floorId][PlaceInfoKeys[idNum]].desc,
-                place: PlaceInfo[floorId][PlaceInfoKeys[idNum]].place,
-                isShow: true
-            })
-        }
-    }
+
+//idとwordsを紐付けた連想配列を作成
+// 小文字で検索するために全て小文字に変換
+let PlaceInfoWords = {}
+for (let key of Object.keys(PlaceInfo)) {
+    PlaceInfoWords[key] = (PlaceInfo[key].words + " " + key + " " + PlaceInfo[key].name).toLowerCase()
 }
+console.log(PlaceInfoWords);
+
+// for (let floorId = 0; floorId < PlaceInfo.length; floorId++) {
+//     PlaceInfoKeys = Object.keys(PlaceInfo[floorId]).filter((key) => !key.includes("__"))
+//     for (let idNum = 0; idNum < PlaceInfoKeys.length; idNum++) {
+//         if (!PlaceInfoKeys[idNum].includes("__")) {
+//             PlaceInfoList.push({
+//                 id: PlaceInfoKeys[idNum],
+//                 floor: floorId,
+//                 floorName: PlaceInfo[floorId].__FloorFullName__,
+//                 name: PlaceInfo[floorId][PlaceInfoKeys[idNum]].name,
+//                 desc: PlaceInfo[floorId][PlaceInfoKeys[idNum]].desc,
+//                 place: PlaceInfo[floorId][PlaceInfoKeys[idNum]].place,
+//                 isShow: true
+//             })
+//         }
+//     }
+// }
 
 const searchWord = ref('')
+const searchResultsId = ref(new Set(Object.keys(PlaceInfoWords)))
+watch(searchWord, () => {
+    if (searchWord.value == '') {
+        searchResultsId.value = new Set(Object.keys(PlaceInfoWords))
+    } else {
+        searchResultsId.value = new Set()
+        // 検索ワードを半角・全角スペースで分割
+        let searchWords = searchWord.value.toLowerCase().split(/( |　)/)
+        for (let aSearchWords of searchWords) {
+            // 検索ワードを含むものを検索
+            Object.keys(PlaceInfoWords).filter((key) => PlaceInfoWords[key].includes(aSearchWords)).forEach((key) => searchResultsId.value.add(key))
+        }
+    }
+    console.log(searchResultsId.value);
+})
+
 
 const searchXmarkIsActive = ref(false)
 function resetSearch() {
     searchXmarkIsActive.value = true
     searchWord.value = ''
-    doSearch()
+    // doSearch()
     setTimeout(() => {
         searchXmarkIsActive.value = false
     }, 150);
 }
 
-function doSearch() {
-    // 検索ワードを処理しやすい形式に変換
-    // 小文字で検索するために全て小文字に変換
-    const searchList = searchWord.value.split(' ')
-    for (let i = 0; i < searchList.length; i++) {
-        if (searchList[i].split(":", 2).length == 2) {
-            searchList[i] = searchList[i].split(":", 2)
-        } else {
-            searchList[i] = ["normal", searchList[i]]
-        }
-        searchList[i][1] = searchList[i][1].toLowerCase()
-    }
-    console.log(searchList);
-    // 一旦全て非表示にする
-    for (let i = 0; i < PlaceInfoList.length; i++) {
-        PlaceInfoList[i].isShow = false
-    }
-    for (let i = 0; i < searchList.length; i++) {
-        switch (searchList[i][0]) {
-            case "normal":
-                for (let j = 0; j < PlaceInfoList.length; j++) {
-                    if ((PlaceInfoList[j].name != null && PlaceInfoList[j].name.toLowerCase().includes(searchList[i][1])) ||
-                        (PlaceInfoList[j].floorName != null && PlaceInfoList[j].floorName.toLowerCase().includes(searchList[i][1])) ||
-                        (PlaceInfoList[j].place != null && PlaceInfoList[j].place.toLowerCase().includes(searchList[i][1])) ||
-                        (PlaceInfoList[j].desc != null && PlaceInfoList[j].desc.toLowerCase().includes(searchList[i][1]))) {
-                        PlaceInfoList[j].isShow = true
-                    }
-                    console.log(searchList[i][1]);
-                }
-                break;
-            case "name":
-                for (let j = 0; j < PlaceInfoList.length; j++) {
-                    if (PlaceInfoList[j].name != null && PlaceInfoList[j].name.toLowerCase().includes(searchList[i][1])) {
-                        PlaceInfoList[j].isShow = true
-                    }
-                }
-                break;
-            case "floor":
-                for (let j = 0; j < PlaceInfoList.length; j++) {
-                    if (PlaceInfoList[j].floorName != null && PlaceInfoList[j].floorName.toLowerCase().includes(searchList[i][1])) {
-                        PlaceInfoList[j].isShow = true
-                    }
-                }
-                break;
-            case "place":
-                for (let j = 0; j < PlaceInfoList.length; j++) {
-                    if (PlaceInfoList[j].place != null && PlaceInfoList[j].place.toLowerCase().includes(searchList[i][1])) {
-                        PlaceInfoList[j].isShow = true
-                    }
-                }
-                break;
-            case "desc":
-                for (let j = 0; j < PlaceInfoList.length; j++) {
-                    if (PlaceInfoList[j].desc != null && PlaceInfoList[j].desc.toLowerCase().includes(searchList[i][1])) {
-                        PlaceInfoList[j].isShow = true
-                    }
-                }
-                break;
-        }
-    }
-}
+// function doSearch() {
+//     // 検索ワードを処理しやすい形式に変換
+//     // 小文字で検索するために全て小文字に変換
+//     const searchList = searchWord.value.split(' ')
+//     for (let i = 0; i < searchList.length; i++) {
+//         if (searchList[i].split(":", 2).length == 2) {
+//             searchList[i] = searchList[i].split(":", 2)
+//         } else {
+//             searchList[i] = ["normal", searchList[i]]
+//         }
+//         searchList[i][1] = searchList[i][1].toLowerCase()
+//     }
+//     console.log(searchList);
+//     // 一旦全て非表示にする
+//     for (let i = 0; i < PlaceInfoList.length; i++) {
+//         PlaceInfoList[i].isShow = false
+//     }
+//     for (let i = 0; i < searchList.length; i++) {
+//         switch (searchList[i][0]) {
+//             case "normal":
+//                 for (let j = 0; j < PlaceInfoList.length; j++) {
+//                     if ((PlaceInfoList[j].name != null && PlaceInfoList[j].name.toLowerCase().includes(searchList[i][1])) ||
+//                         (PlaceInfoList[j].floorName != null && PlaceInfoList[j].floorName.toLowerCase().includes(searchList[i][1])) ||
+//                         (PlaceInfoList[j].place != null && PlaceInfoList[j].place.toLowerCase().includes(searchList[i][1])) ||
+//                         (PlaceInfoList[j].desc != null && PlaceInfoList[j].desc.toLowerCase().includes(searchList[i][1]))) {
+//                         PlaceInfoList[j].isShow = true
+//                     }
+//                     console.log(searchList[i][1]);
+//                 }
+//                 break;
+//             case "name":
+//                 for (let j = 0; j < PlaceInfoList.length; j++) {
+//                     if (PlaceInfoList[j].name != null && PlaceInfoList[j].name.toLowerCase().includes(searchList[i][1])) {
+//                         PlaceInfoList[j].isShow = true
+//                     }
+//                 }
+//                 break;
+//             case "floor":
+//                 for (let j = 0; j < PlaceInfoList.length; j++) {
+//                     if (PlaceInfoList[j].floorName != null && PlaceInfoList[j].floorName.toLowerCase().includes(searchList[i][1])) {
+//                         PlaceInfoList[j].isShow = true
+//                     }
+//                 }
+//                 break;
+//             case "place":
+//                 for (let j = 0; j < PlaceInfoList.length; j++) {
+//                     if (PlaceInfoList[j].place != null && PlaceInfoList[j].place.toLowerCase().includes(searchList[i][1])) {
+//                         PlaceInfoList[j].isShow = true
+//                     }
+//                 }
+//                 break;
+//             case "desc":
+//                 for (let j = 0; j < PlaceInfoList.length; j++) {
+//                     if (PlaceInfoList[j].desc != null && PlaceInfoList[j].desc.toLowerCase().includes(searchList[i][1])) {
+//                         PlaceInfoList[j].isShow = true
+//                     }
+//                 }
+//                 break;
+//         }
+//     }
+// }
 
 </script>
 <style scoped>
