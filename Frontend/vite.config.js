@@ -8,8 +8,18 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
 
+  // index.htmlに環境変数を書き出す
+  // https://qiita.com/JotarO_Oyanagi/items/45227341a3465dec58fe
+  // https://dev.classmethod.jp/articles/vite-index-html-read-env-variables/
+  const env = loadEnv(mode, process.cwd())
+  const htmlPlugin = () => ({
+    name: 'html-transform',
+    transformIndexHtml: (html) => html.replace(/%(.*?)%/g, (match, p1) => env[p1] ?? match)
+  })
+
   return defineConfig({
     plugins: [
+      htmlPlugin(),
       vue(),
       VitePWA({
         version: process.env.VITE_SYS_VERSION + ':' + process.env.VITE_MAP_VERSION,
