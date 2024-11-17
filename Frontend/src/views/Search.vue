@@ -5,137 +5,94 @@
             <label for="searchInput" class="searchIcon">
                 <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
             </label>
-            <input id="searchInput" type="text" class="searchInput" placeholder="検索" @input="doSearch()"
-                v-model="searchWord" required>
-            <label for="searchInput" class="searchXmark" :class="searchXmarkIsActive" @click="resetSearch()">
+            <input id="searchInput" type="text" class="searchInput" placeholder="検索" v-model="searchWord" required>
+            <label for="searchInput" class="searchXmark" :class="[searchXmarkIsActive ? 'active' : '']"
+                @mousedown="resetSearch()" @touchstart="resetSearch()">
                 <font-awesome-icon :icon="['fas', 'xmark']" />
             </label>
         </div>
+        <p>URLをコピーすることで、検索結果を共有できます。</p>
         <div class="results">
-            <div v-for="place, key in PlaceInfoList" :key="key" @click="move(place.floor, place.id)">
-                <div v-if="place.isShow" class="place">
-                    <p class="name">{{ place.name }}</p>
-                    <p>
-                        <span class="position" v-if="place.floorName != null">
-                            <font-awesome-icon :icon="['fas', 'stairs']" />
-                            {{ place.floorName }}
-                        </span>
-                        <span class="position" v-if="place.place != null">
-                            <font-awesome-icon id="locationIcon" :icon="['fas', 'location-dot']" />
-                            {{ place.place }}
-                        </span>
-                    </p>
-                    <p v-html="place.desc" v-if="place.desc != null"></p>
-                </div>
+            <div v-for="id, key in searchResultsId" :key="key" @click="move(PlaceInfo[id].floor, id)" class="place">
+                <p class="name">{{ PlaceInfo[id].name }}</p>
+                <p>
+                    <span class="position">
+                        <font-awesome-icon :icon="['fas', 'location-dot']" />
+                        {{ FloorInfo[PlaceInfo[id].floor].fullName }}
+                    </span>
+                </p>
+                <!-- <p v-html="PlaceInfo[id].desc" v-if="PlaceInfo[id].desc != null"></p> -->
             </div>
         </div>
     </div>
 </template>
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-const router = useRouter()
-
-// 配列の整理
 import PlaceInfo from '@/assets/PlaceInfo.json'
-let PlaceInfoKeys = []
-let PlaceInfoList = []
-for (let floorId = 0; floorId < PlaceInfo.length; floorId++) {
-    PlaceInfoKeys = Object.keys(PlaceInfo[floorId]).filter((key) => !key.includes("__"))
-    for (let idNum = 0; idNum < PlaceInfoKeys.length; idNum++) {
-        if (!PlaceInfoKeys[idNum].includes("__")) {
-            PlaceInfoList.push({
-                id: PlaceInfoKeys[idNum],
-                floor: floorId,
-                floorName: PlaceInfo[floorId].__FloorFullName__,
-                name: PlaceInfo[floorId][PlaceInfoKeys[idNum]].name,
-                desc: PlaceInfo[floorId][PlaceInfoKeys[idNum]].desc,
-                place: PlaceInfo[floorId][PlaceInfoKeys[idNum]].place,
-                isShow: true
-            })
+import FloorInfo from '@/assets/FloorInfo.json'
+import { ref, watch } from 'vue'
+import router from '@/router';
+
+//idとwordsを紐付けた連想配列を作成
+// 小文字で検索するために全て小文字に変換
+let PlaceInfoWords = {}
+for (let key of Object.keys(PlaceInfo)) {
+    PlaceInfoWords[key] = (PlaceInfo[key].words + " " + key + " " + PlaceInfo[key].name).toLowerCase()
+}
+
+// 検索機能について
+// 基本的にsearchWordを変更すると検索が行われる
+// URLからの場合も、searchWordを変更することで検索が行われる
+
+// URLから検索ワードを取得
+window.addEventListener('popstate', () => {
+    // ブラウザバック時にURLから検索ワードを取得
+    searchWord.value = decordUrl()
+});
+function decordUrl() {
+    // URLの切り出しとデコードまで行う
+    return decodeURIComponent(location.pathname.slice(18))
+}
+function encordUrl(word) {
+    // URLをエンコードして、変更まで行う
+    word = encodeURIComponent(word)
+    history.pushState(history.state, '', `${import.meta.env.BASE_URL}search/${word}`);
+}
+
+// 検索機能
+const searchWord = ref(decordUrl())
+const searchResultsId = ref(new Set(Object.keys(PlaceInfoWords))) // ここでURLからの場合は検索結果を変更する
+watch(searchWord, () => {
+    // URLを変更
+    encordUrl(searchWord.value)
+    // 検索
+    if (searchWord.value == '') {
+        searchResultsId.value = new Set(Object.keys(PlaceInfoWords))
+    } else {
+        searchResultsId.value = new Set()
+        // 検索ワードを半角・全角スペースで分割
+        let searchWords = searchWord.value.toLowerCase().split(/( |　)/)
+        searchWords = searchWords.filter((value) => value != ' ' && value != '　' && value != '')
+        // 検索ワードを含むものを検索
+        for (let aSearchWords of searchWords) {
+            Object.keys(PlaceInfoWords).filter((key) => PlaceInfoWords[key].includes(aSearchWords)).forEach((key) => searchResultsId.value.add(key))
         }
     }
-}
+}, { immediate: true })
 
+// ページ遷移
 function move(floor, id) {
-    router.push(`${floor}/${id}`)
+    router.push(`/${floor}/${id}`)
 }
 
-
-const searchWord = ref('')
-
-const searchXmarkIsActive = ref('')
+// xマーク
+const searchXmarkIsActive = ref(false)
 function resetSearch() {
-    searchXmarkIsActive.value = 'active'
+    searchXmarkIsActive.value = true
     searchWord.value = ''
-    doSearch()
     setTimeout(() => {
-        searchXmarkIsActive.value = ''
+        searchXmarkIsActive.value = false
     }, 150);
 }
-
-function doSearch() {
-    // 検索ワードを処理しやすい形式に変換
-    // 小文字で検索するために全て小文字に変換
-    const searchList = searchWord.value.split(' ')
-    for (let i = 0; i < searchList.length; i++) {
-        if (searchList[i].split(":", 2).length == 2) {
-            searchList[i] = searchList[i].split(":", 2)
-        } else {
-            searchList[i] = ["normal", searchList[i]]
-        }
-        searchList[i][1] = searchList[i][1].toLowerCase()
-    }
-    console.log(searchList);
-    // 一旦全て非表示にする
-    for (let i = 0; i < PlaceInfoList.length; i++) {
-        PlaceInfoList[i].isShow = false
-    }
-    for (let i = 0; i < searchList.length; i++) {
-        switch (searchList[i][0]) {
-            case "normal":
-                for (let j = 0; j < PlaceInfoList.length; j++) {
-                    if ((PlaceInfoList[j].name != null && PlaceInfoList[j].name.toLowerCase().includes(searchList[i][1])) ||
-                        (PlaceInfoList[j].floorName != null && PlaceInfoList[j].floorName.toLowerCase().includes(searchList[i][1])) ||
-                        (PlaceInfoList[j].place != null && PlaceInfoList[j].place.toLowerCase().includes(searchList[i][1])) ||
-                        (PlaceInfoList[j].desc != null && PlaceInfoList[j].desc.toLowerCase().includes(searchList[i][1]))) {
-                        PlaceInfoList[j].isShow = true
-                    }
-                    console.log(searchList[i][1]);
-                }
-                break;
-            case "name":
-                for (let j = 0; j < PlaceInfoList.length; j++) {
-                    if (PlaceInfoList[j].name != null && PlaceInfoList[j].name.toLowerCase().includes(searchList[i][1])) {
-                        PlaceInfoList[j].isShow = true
-                    }
-                }
-                break;
-            case "floor":
-                for (let j = 0; j < PlaceInfoList.length; j++) {
-                    if (PlaceInfoList[j].floorName != null && PlaceInfoList[j].floorName.toLowerCase().includes(searchList[i][1])) {
-                        PlaceInfoList[j].isShow = true
-                    }
-                }
-                break;
-            case "place":
-                for (let j = 0; j < PlaceInfoList.length; j++) {
-                    if (PlaceInfoList[j].place != null && PlaceInfoList[j].place.toLowerCase().includes(searchList[i][1])) {
-                        PlaceInfoList[j].isShow = true
-                    }
-                }
-                break;
-            case "desc":
-                for (let j = 0; j < PlaceInfoList.length; j++) {
-                    if (PlaceInfoList[j].desc != null && PlaceInfoList[j].desc.toLowerCase().includes(searchList[i][1])) {
-                        PlaceInfoList[j].isShow = true
-                    }
-                }
-                break;
-        }
-    }
-}
-
 </script>
 <style scoped>
 p {
@@ -144,7 +101,7 @@ p {
 
 .searchBox {
     --SearchBoxHeight: 40px;
-    border: 1px solid var(--MainBodyColor);
+    border: 2px solid var(--MainBodyColor);
     border-radius: 10px;
     height: var(--SearchBoxHeight);
     width: 100%;
@@ -152,23 +109,14 @@ p {
     box-sizing: border-box;
 }
 
-.searchBox:hover {
-    border: 2px solid var(--MainBodyColor);
-}
-
 .searchIcon {
     height: 100%;
+    font-size: 1.5rem;
     width: var(--SearchBoxHeight);
     background-color: var(--SubBaseColor);
-}
-
-.searchIcon svg {
-    height: 80%;
-    width: 80%;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: var(--MainBodyColor)
 }
 
