@@ -1,10 +1,10 @@
 <template>
     <div id="header">
         <div id="title">
-            <RouterLink to="/">
+            <div @click="toTop()">
                 <span id="mainTitle">西高MAP</span>
                 <!-- <span id="version">(α版)</span> -->
-            </RouterLink>
+            </div>
         </div>
         <div id="menu">
             <RouterLink to="/guide">使い方</RouterLink>
@@ -12,6 +12,18 @@
         </div>
     </div>
 </template>
+<script setup>
+import router from '@/router';
+import { useRoute } from 'vue-router';
+const route = useRoute();
+
+function toTop() {
+    // mapページ以外の場合はmapページに遷移
+    if (route.name != 'map') {
+        router.push({ name: 'map' });
+    }
+}
+</script>
 <style scoped>
 #header {
     background-color: var(--MainColor);
@@ -31,6 +43,7 @@
     left: 0%;
     transform: translate(0%, -50%);
     margin: 0 10px;
+    cursor: pointer;
 }
 
 

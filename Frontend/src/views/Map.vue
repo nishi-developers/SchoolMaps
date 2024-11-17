@@ -4,8 +4,7 @@ import PropertyView from '@/components/PropertyView.vue';
 import PlaceInfo from '@/assets/PlaceInfo.json'
 import FloorInfo from '@/assets/FloorInfo.json'
 import { event } from 'vue-gtag'
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import router from '@/router';
 
 // ref
 const currentPlaceId = ref("")

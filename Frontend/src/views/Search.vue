@@ -30,8 +30,7 @@
 import PlaceInfo from '@/assets/PlaceInfo.json'
 import FloorInfo from '@/assets/FloorInfo.json'
 import { ref, watch } from 'vue'
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import router from '@/router';
 
 //idとwordsを紐付けた連想配列を作成
 // 小文字で検索するために全て小文字に変換
