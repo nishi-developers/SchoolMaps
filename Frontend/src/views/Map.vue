@@ -124,10 +124,10 @@ let Setup = new class {
     }
     mapSize = {
         get width() {
-            return FloorInfo[Number(currentFloor.value)].__MapSizeWidth__;
+            return FloorInfo[Number(currentFloor.value)].mapWidth;
         },
         get height() {
-            return FloorInfo[Number(currentFloor.value)].__MapSizeHeight__;
+            return FloorInfo[Number(currentFloor.value)].mapHeight;
         }
     }
     SetDeviceMode() {
@@ -739,7 +739,7 @@ let Control = new class {
             <li class="floor" v-for="floor in Setup.placeInfoReverse" :key="floor.__key__"
                 @click="Setup.changeURL(floor.__key__, null)"
                 :class="floor.__key__ === currentFloor ? 'selected' : 'notselected'">
-                {{ floor.__FloorShortName__ }}</li>
+                {{ floor.shortName }}</li>
         </ul>
     </div>
     <div v-if="isShowWrapper" id="wrapperBox" @click="Control.wrapEvent('click', $event)"
