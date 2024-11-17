@@ -1,0 +1,26 @@
+[
+    {
+        "shortName": "1F",
+        "fullName": "1階",
+        "mapWidth": 127.85812,
+        "mapHeight": 291.02832
+    },
+    {
+        "shortName": "2F",
+        "fullName": "2階",
+        "mapWidth": 20.766842,
+        "mapHeight": 10.944687
+    },
+    {
+        "shortName": "3F",
+        "fullName": "3階",
+        "mapWidth": 20.766842,
+        "mapHeight": 10.944687
+    },
+    {
+        "shortName": "R",
+        "fullName": "屋上",
+        "mapWidth": 20.766842,
+        "mapHeight": 10.944687
+    }
+]

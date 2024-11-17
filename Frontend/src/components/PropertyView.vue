@@ -1,190 +1,227 @@
 <template>
-    <div id="PropertyView" :class="deviceMode" v-if="isShowPropertyView">
-        <div id="closeSlider" :class="deviceMode" @mousedown="click_Detect()"
-            @mousemove="mouseMove($event); click_notDetect()" @mouseup="leave($event)"
-            @touchstart="touchStart($event); click_Detect()" @touchmove="touchMove($event); click_notDetect()"
-            @touchend="leave($event)" @touchcancel="leave($event)" @click="click_toClose()" @dblclick="dubleClick()">
+    <div id="PropertyView" :class="props.deviceMode">
+        <div id="closeSlider" :class="props.deviceMode" @click="PropertyCtrl.wrapEvent('click', $event)"
+            @mousemove="PropertyCtrl.wrapEvent('mousemove', $event)"
+            @mousedown="PropertyCtrl.wrapEvent('mousedown', $event)"
+            @mouseup="PropertyCtrl.wrapEvent('mouseup', $event)"
+            @touchmove="PropertyCtrl.wrapEvent('touchmove', $event)"
+            @touchstart="PropertyCtrl.wrapEvent('touchstart', $event)"
+            @touchend="PropertyCtrl.wrapEvent('touchend', $event)"
+            @touchcancel="PropertyCtrl.wrapEvent('touchcancel', $event)">
         </div>
-        <p id="name">{{ PlaceInfo[props.Floor][props.PlaceId].name }}
-            <font-awesome-icon v-if="isNotCopy" id="linkCopy" @click="copyLink()" :icon="['fas', 'link']" />
+        <p id="name">{{ PlaceInfo[props.PlaceId].name }}
+            <font-awesome-icon v-if="!isCopy" id="linkCopy" @click="copyLink()" :icon="['fas', 'link']" />
             <font-awesome-icon v-else id="linkCopy" @click="copyLink()" :icon="['fas', 'check']" />
+            <span v-if="isCopy" id="linkCopied">リンクをコピーしました</span>
         </p>
         <p>
-            <span v-if="PlaceInfo[props.Floor].__FloorFullName__ != null">
-                <font-awesome-icon :icon="['fas', 'stairs']" /> {{ PlaceInfo[props.Floor].__FloorFullName__ }}
-            </span>
-            <span v-if="PlaceInfo[props.Floor][props.PlaceId].place != null">
-                <font-awesome-icon id="locationIcon" :icon="['fas', 'location-dot']" /> {{
-                    PlaceInfo[props.Floor][props.PlaceId].place }}
+            <span v-if="FloorInfo[props.Floor].fullName != null">
+                <font-awesome-icon :icon="['fas', 'location-dot']" /> {{ FloorInfo[props.Floor].fullName }}
             </span>
         </p>
-        <p v-html="PlaceInfo[props.Floor][props.PlaceId].desc"> </p>
-        <div id="imageObjects" v-if="PlaceInfo[props.Floor][props.PlaceId].images != null">
-            <img v-for="img, key in images" :key="key" :style="{ 'min-width': `${img.width}px` }" :src="img.path"
-                alt="画像">
+        <p v-html="PlaceInfo[props.PlaceId].desc"> </p>
+        <div id="imageObjects" v-if="PlaceInfo[props.PlaceId].images != null">
         </div>
     </div>
 
 </template>
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import PlaceInfo from '@/assets/PlaceInfo.json'
+import FloorInfo from '@/assets/FloorInfo.json'
 
-const isShowPropertyView = ref(true)
+// 入出力
 const props = defineProps(["Floor", "PlaceId", "deviceMode"])
 const emit = defineEmits(["hideProperty"])
 const BASE_URL = import.meta.env.BASE_URL
+// ウィンドウサイズ
+const windowWidth = window.innerWidth
+const windowHeight = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
 
-// pc or mobile (deviceMode)
-const deviceMode = ref(props.deviceMode)
-const window_width = window.innerWidth
-const window_height = window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
-const InfoSize = ref(0)
-let InfoSizeMiddleRate = 0
-let InfoSizeMaxRate = 0
-if (deviceMode.value == "mobile") {
-    InfoSizeMiddleRate = .3
-    InfoSizeMaxRate = .9
-    InfoSize.value = window_height * InfoSizeMiddleRate
-} else {
-    InfoSizeMiddleRate = .3
-    InfoSizeMaxRate = .8
-    InfoSize.value = window_width * InfoSizeMiddleRate
-}
-
-// クリック判定
-let isClick = false
-let isDubleClick = false
-function click_toClose() {
-    // ダブルクリックと判定されるまでの時間を遅らせる
-    if (isClick) {
-        isClick = false
-        isDubleClick = false
-        setTimeout(() => {
-            if (!isDubleClick) {
-                closePropertyView()
+// プロパティビュー
+const PropertySize = ref(0)
+let PropertyCtrl = new class {
+    #PropertySizeMiddleRate
+    #PropertySizeMaxRate
+    constructor() {
+        if (props.deviceMode == "mobile") {
+            this.#PropertySizeMiddleRate = .3
+            this.#PropertySizeMaxRate = .9
+            PropertySize.value = windowHeight * this.#PropertySizeMiddleRate
+        } else {
+            this.#PropertySizeMiddleRate = .3
+            this.#PropertySizeMaxRate = .8
+            PropertySize.value = windowWidth * this.#PropertySizeMiddleRate
+        }
+    }
+    #isAlreadyMoved = false //マウス使用時のみ、移動したかどうか
+    wrapEvent(name, event) {
+        // ラッパーに関するイベントをすべてまとめ、分岐させる
+        switch (name) {
+            case "click":
+                if (!this.#isAlreadyMoved) {
+                    this.closeProperty()
+                }
+                break;
+            case "mousemove":
+                this.#mouseMove(event);
+                if (event.buttons != 0) {
+                    this.#isAlreadyMoved = true
+                }
+                break;
+            case "mousedown":
+                this.#isAlreadyMoved = false
+                break;
+            case "mouseup":
+                this.#leave(event)
+                break;
+            case "touchmove":
+                this.#touchMove(event);
+                break;
+            case "touchstart":
+                this.#touchStart(event);
+                break;
+            case "touchend":
+                this.#leave(event)
+                break;
+            case "touchcancel":
+                this.#leave(event)
+                break;
+            default:
+                break;
+        }
+    }
+    closeProperty() {
+        emit("hideProperty")
+    }
+    // ドラッグ判定
+    #mouseMove(event) {
+        // マウスでドラッグ中の処理
+        if (event.buttons == 1) {
+            if (props.deviceMode == "mobile") {
+                if (PropertySize.value - event.movementY > 0 && PropertySize.value - event.movementY < windowHeight)
+                    PropertySize.value -= event.movementY;
+            } else {
+                if (PropertySize.value + event.movementX > 0 && PropertySize.value + event.movementX < windowWidth)
+                    PropertySize.value += event.movementX;
             }
-        }, 200)
-    }
-}
-function click_Detect() {
-    // クリック開始が検出されたときにフラグを立てる
-    isClick = true
-}
-function click_notDetect() {
-    // クリックではなくドラックだとわかったときにフラグを解除する
-    isClick = false
-}
-function dubleClick() {
-    isDubleClick = true
-    // 最大であれば中へ、中であれば最大へ
-    if (deviceMode.value == "mobile") {
-        if (InfoSize.value == window_height * InfoSizeMiddleRate) {
-            InfoSize.value = window_height * InfoSizeMaxRate
-        } else {
-            InfoSize.value = window_height * InfoSizeMiddleRate
-        }
-    } else {
-        if (InfoSize.value == window_width * InfoSizeMiddleRate) {
-            InfoSize.value = window_width * InfoSizeMaxRate
-        } else {
-            InfoSize.value = window_width * InfoSizeMiddleRate
         }
     }
-}
-function closePropertyView() {
-    emit("hideProperty")
-}
-
-// ドラッグ判定
-function mouseMove(event) {
-    if (event.buttons == 1) {
-        if (deviceMode.value == "mobile") {
-            if (InfoSize.value - event.movementY > 0 && InfoSize.value - event.movementY < window_height)
-                InfoSize.value -= event.movementY;
-        } else {
-            if (InfoSize.value + event.movementX > 0 && InfoSize.value + event.movementX < window_width)
-                InfoSize.value += event.movementX;
+    #touchLast = 0;
+    #touchStart(event) {
+        // タッチでドラッグ開始時の処理
+        if (event.changedTouches.length === 1) {
+            if (props.deviceMode == "mobile") {
+                this.#touchLast = event.changedTouches[0].clientY;
+            } else {
+                this.#touchLast = event.changedTouches[0].clientX;
+            }
         }
     }
-}
-let touchLast = 0;
-function touchStart(event) {
-    if (event.changedTouches.length === 1) {
-        if (deviceMode.value == "mobile") {
-            touchLast = event.changedTouches[0].clientY;
-        } else {
-            touchLast = event.changedTouches[0].clientX;
+    #touchMove(event) {
+        // タッチでドラッグ中の処理
+        if (event.changedTouches.length === 1) {
+            if (props.deviceMode == "mobile") {
+                const Y = this.#touchLast - event.changedTouches[0].clientY
+                this.#touchLast = event.changedTouches[0].clientY
+                if (PropertySize.value + Y > 0 && PropertySize.value + Y < windowHeight)
+                    PropertySize.value += Y;
+            } else {
+                const X = this.#touchLast - event.changedTouches[0].clientX
+                this.#touchLast = event.changedTouches[0].clientX
+                if (PropertySize.value - X > 0 && PropertySize.value - X < windowWidth)
+                    PropertySize.value -= X;
+            }
         }
     }
-}
-function touchMove(event) {
-    if (event.changedTouches.length === 1) {
-        if (deviceMode.value == "mobile") {
-            const Y = touchLast - event.changedTouches[0].clientY
-            touchLast = event.changedTouches[0].clientY
-            if (InfoSize.value + Y > 0 && InfoSize.value + Y < window_height)
-                InfoSize.value += Y;
+    #leave() {
+        // ドラッグ終了時の処理(マウスとタッチで共通)
+        if (props.deviceMode == "mobile") {
+            if (PropertySize.value < windowHeight * this.#PropertySizeMiddleRate / 2) {
+                // 閉じる
+                this.closeProperty()
+            } else if (PropertySize.value > (((windowHeight * this.#PropertySizeMiddleRate) + (windowHeight * this.#PropertySizeMaxRate)) / 2)) {
+                // 最大化
+                PropertySize.value = windowHeight * this.#PropertySizeMaxRate
+            } else {
+                PropertySize.value = windowHeight * this.#PropertySizeMiddleRate
+            }
         } else {
-            const X = touchLast - event.changedTouches[0].clientX
-            touchLast = event.changedTouches[0].clientX
-            if (InfoSize.value - X > 0 && InfoSize.value - X < window_width)
-                InfoSize.value -= X;
+            if (PropertySize.value < windowWidth * this.#PropertySizeMiddleRate / 2) {
+                // 閉じる
+                this.closeProperty()
+            } else if (PropertySize.value > (((windowWidth * this.#PropertySizeMiddleRate) + (windowWidth * this.#PropertySizeMaxRate)) / 2)) {
+                // 最大化
+                PropertySize.value = windowWidth * this.#PropertySizeMaxRate
+            } else {
+                PropertySize.value = windowWidth * this.#PropertySizeMiddleRate
+            }
         }
     }
 
-}
-function leave() {
-    if (deviceMode.value == "mobile") {
-        if (InfoSize.value < window_height * InfoSizeMiddleRate / 2) {
-            // 閉じる
-            closePropertyView()
-        } else if (InfoSize.value > (((window_height * InfoSizeMiddleRate) + (window_height * InfoSizeMaxRate)) / 2)) {
-            // 最大化
-            InfoSize.value = window_height * InfoSizeMaxRate
-        } else {
-            InfoSize.value = window_height * InfoSizeMiddleRate
-        }
-    } else {
-        if (InfoSize.value < window_width * InfoSizeMiddleRate / 2) {
-            // 閉じる
-            closePropertyView()
-        } else if (InfoSize.value > (((window_width * InfoSizeMiddleRate) + (window_width * InfoSizeMaxRate)) / 2)) {
-            // 最大化
-            InfoSize.value = window_width * InfoSizeMaxRate
-        } else {
-            InfoSize.value = window_width * InfoSizeMiddleRate
-        }
-    }
 }
 
 // リンクコピー
-const isNotCopy = ref(true)
+const isCopy = ref(false)
 function copyLink() {
-    const url = `https://${location.host}${BASE_URL}/${props.Floor}/${props.PlaceId}`
+    const url = `${location.protocol}//${location.host}${BASE_URL}${props.Floor}/${props.PlaceId}`
+    if (!navigator.clipboard) {
+        alert("リンクのコピーに対応していません");
+        return;
+    }
     navigator.clipboard.writeText(url)
-    isNotCopy.value = false
+    isCopy.value = true
     setTimeout(() => {
-        isNotCopy.value = true
-    }, 1000)
+        isCopy.value = false
+    }, 2000)
 }
 
-const imageHeight = 300 // 画像の高さ
-var imageObjects = Array
-const images = ref([])
-// 画像の比率を取得してimagesに格納
-if (PlaceInfo[props.Floor][props.PlaceId].images != null) {
-    for (let i = 0; i < PlaceInfo[props.Floor][props.PlaceId].images.length; i++) {
-        imageObjects[i] = new Image()
-        imageObjects[i].src = `${BASE_URL}/img/places/${PlaceInfo[props.Floor][props.PlaceId].images[i]}`;
-        imageObjects[i].onload = () => {
-            images.value.splice(i, 0, {
-                "path": `${BASE_URL}/img/places/${PlaceInfo[props.Floor][props.PlaceId].images[i]}`,
-                "width": imageObjects[i].naturalWidth / imageObjects[i].naturalHeight * imageHeight,
-            });
+// 画像
+const imageIsReady = ref({
+    image_onload: false,
+    dom_onmount: false
+})
+const imageHeight = 300
+let ImageCtrl = new class {
+    #imageObjects = []
+    #imagesWidth = []
+    constructor() {
+        // 画像の読み込み
+        if (PlaceInfo[props.PlaceId].images != null) {
+            for (let i = 0; i < PlaceInfo[props.PlaceId].images.length; i++) {
+                this.#imageObjects[i] = new Image()
+                this.#imageObjects[i].src = `${BASE_URL}img/places/${PlaceInfo[props.PlaceId].images[i]}`;
+                this.#imageObjects[i].onload = () => {
+                    this.#imagesWidth.push(this.#imageObjects[i].naturalWidth / this.#imageObjects[i].naturalHeight * imageHeight)
+                    if (this.#imagesWidth.length == PlaceInfo[props.PlaceId].images.length) {
+                        // 全ての画像の読み込みが完了したら
+                        imageIsReady.value.image_onload = true
+                    }
+                }
+            }
+        }
+    }
+    show() {
+        for (let i = 0; i < this.#imageObjects.length; i++) {
+            this.#imageObjects[i].style.minWidth = `${this.#imagesWidth[i]}px`
+            this.#imageObjects[i].classList.add("image")
+            document.getElementById("imageObjects").appendChild(this.#imageObjects[i])
         }
     }
 }
+onMounted(() => {
+    // DOMがマウントされたら
+    imageIsReady.value.dom_onmount = true
+})
+watch(imageIsReady, (newVal) => {
+    // 画像の読み込みが完了したら画像を表示
+    if (newVal.image_onload && newVal.dom_onmount) {
+        ImageCtrl.show()
+    }
+}, {
+    immediate: true,
+    deep: true
+})
 </script>
 <style scoped>
 #closeSlider {
@@ -202,15 +239,15 @@ if (PlaceInfo[props.Floor][props.PlaceId].images != null) {
     width: 200px;
     height: 30px;
     left: 50%;
-    bottom: v-bind(InfoSize + "px");
+    bottom: v-bind(PropertySize + "px");
     transform: translate(-50%, 100%);
 }
 
 #closeSlider.pc {
     width: 30px;
     height: 200px;
-    left: v-bind(InfoSize + "px");
-    top: calc(calc(v-bind(window_height + "px") / 2) + var(--HeaderHeight));
+    left: v-bind(PropertySize + "px");
+    top: calc(calc(v-bind(windowHeight + "px") / 2) + var(--HeaderHeight));
     transform: translate(-100%, -50%);
 }
 
@@ -224,7 +261,7 @@ if (PlaceInfo[props.Floor][props.PlaceId].images != null) {
 
 #PropertyView.mobile {
     width: 100%;
-    height: v-bind(InfoSize + "px");
+    height: v-bind(PropertySize + "px");
     bottom: 0;
     border-radius: 20px 20px 0 0;
     padding: 35px 20px 20px 20px;
@@ -232,7 +269,7 @@ if (PlaceInfo[props.Floor][props.PlaceId].images != null) {
 }
 
 #PropertyView.pc {
-    width: v-bind(InfoSize + "px");
+    width: v-bind(PropertySize + "px");
     height: calc(100% - var(--HeaderHeight));
     bottom: 0;
     border-radius: 0 20px 20px 0;
@@ -256,8 +293,9 @@ p {
     font-size: 1.2rem;
 }
 
-#locationIcon {
-    margin-left: 15px;
+#linkCopied {
+    font-size: 0.8rem;
+    margin-left: 5px;
 }
 
 #imageObjects {
@@ -266,7 +304,8 @@ p {
     height: v-bind(imageHeight + "px");
     margin: 10px;
 }
-
+</style>
+<style>
 #imageObjects img {
     height: 100%;
     border-radius: 20px;
