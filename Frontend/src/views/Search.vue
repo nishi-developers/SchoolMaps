@@ -26,23 +26,22 @@
     </div>
 </template>
 <script setup>
+import PlaceInfo from '@/assets/PlaceInfo.json'
+import FloorInfo from '@/assets/FloorInfo.json'
 import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-
-function move(floor, id) {
-    router.push(`${floor}/${id}`)
-}
-
-// 配列の整理
-import PlaceInfo from '@/assets/PlaceInfo.json'
-import FloorInfo from '@/assets/FloorInfo.json'
 
 //idとwordsを紐付けた連想配列を作成
 // 小文字で検索するために全て小文字に変換
 let PlaceInfoWords = {}
 for (let key of Object.keys(PlaceInfo)) {
     PlaceInfoWords[key] = (PlaceInfo[key].words + " " + key + " " + PlaceInfo[key].name).toLowerCase()
+}
+
+// ページ遷移
+function move(floor, id) {
+    router.push(`${floor}/${id}`)
 }
 
 // 検索機能
