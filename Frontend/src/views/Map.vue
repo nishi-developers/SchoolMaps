@@ -156,7 +156,7 @@ let Property = new class {
     isPlaceExist(id) {
         // 存在する場所かどうかをチェック
         // resolveUrl()で確実に使用されるため、this.showではチェックしない
-        return Object.keys(PlaceInfo[currentFloor.value]).includes(id)
+        return Object.keys(PlaceInfo).includes(id)
     }
     show(id) {
         event(`open{${currentFloor.value}/${id}}`)
@@ -293,9 +293,9 @@ let MapMove = new class {
         this.#slideData[target].isDo = true
         // 設定値
         const frictionConfig = {
-            position: 0.95,
-            zoom: 0.95,
-            rotate: 0.95,
+            position: 0.97,
+            zoom: 0.97,
+            rotate: 0.97,
             min: 0.001
         }
         // 速度が小さくなるまで、変更
@@ -511,28 +511,14 @@ let MapMoveByTouch = new class {
 
 // ControlClass
 let Control = new class {
-    #isSingleClick = false
     #isAlreadyMoved = false //マウス使用時のみ、移動したかどうか
     wrapEvent(name, event) {
         // ラッパーに関するイベントをすべてまとめ、分岐させる
         switch (name) {
             case "click":
-                this.#isSingleClick = true
                 if (!this.#isAlreadyMoved) {
-                    setTimeout(() => {
-                        if (this.#isSingleClick) {
-                            // シングルクリックの検出
-                            Property.showByUser(event)
-                        }
-                    }, 200)
+                    Property.showByUser(event)
                 }
-                break;
-            case "dblclick":
-                this.#isSingleClick = false
-                this.resetMove();
-                break;
-            case "mousedown":
-                this.#isAlreadyMoved = false
                 break;
             case "mousemove":
                 MapMoveByMouse.move(event)
@@ -540,18 +526,25 @@ let Control = new class {
                     this.#isAlreadyMoved = true
                 }
                 break;
+            case "mousedown":
+                this.#isAlreadyMoved = false
+                break;
             case "mouseup":
                 MapMove.slide("position")
                 MapMove.slide("rotate")
                 break;
             case "touchmove":
-                this.#isSingleClick = false
                 MapMoveByTouch.do(event)
                 break;
             case "touchstart":
                 MapMoveByTouch.start(event)
                 break;
             case "touchend":
+                MapMove.slide("position")
+                MapMove.slide("zoom")
+                MapMove.slide("rotate")
+                break;
+            case "touchcancel":
                 MapMove.slide("position")
                 MapMove.slide("zoom")
                 MapMove.slide("rotate")
@@ -673,7 +666,7 @@ let Control = new class {
     color: var(--MainBodyColor);
 }
 
-#floorMenu ul .search {
+#floorMenu ul .func {
     font-size: 2rem;
 }
 
@@ -695,9 +688,13 @@ let Control = new class {
 }
 
 /* Transition */
+#PropertyView {
+    --property-transition-length: 0.2s;
+}
+
 .property-pc-enter-active,
 .property-pc-leave-active {
-    transition: opacity .2s ease-out, transform .2s ease-out;
+    transition: opacity var(--property-transition-length) ease-out, transform var(--property-transition-length) ease-out;
 }
 
 .property-pc-enter-from,
@@ -708,7 +705,7 @@ let Control = new class {
 
 .property-mobile-enter-active,
 .property-mobile-leave-active {
-    transition: opacity .2s ease-out, transform .2s ease-out;
+    transition: opacity var(--property-transition-length) ease-out, transform var(--property-transition-length) ease-out;
 }
 
 .property-mobile-enter-from,
@@ -735,7 +732,9 @@ let Control = new class {
     </Transition>
     <div id="floorMenu">
         <ul>
-            <li class="search"><font-awesome-icon @click="router.push('/search')" :icon="['fas', 'magnifying-glass']" />
+            <li class="func"><font-awesome-icon @click="router.push('/search')" :icon="['fas', 'magnifying-glass']" />
+            </li>
+            <li class="func"><font-awesome-icon @click="Control.resetMove()" :icon="['fas', 'expand']" />
             </li>
             <li class="floor" v-for="floor in Setup.placeInfoReverse" :key="floor.__key__"
                 @click="Setup.changeURL(floor.__key__, null)"
@@ -744,10 +743,10 @@ let Control = new class {
         </ul>
     </div>
     <div v-if="isShowWrapper" id="wrapperBox" @click="Control.wrapEvent('click', $event)"
-        @dblclick="Control.wrapEvent('dblclick', $event)" @mousedown="Control.wrapEvent('mousedown', $event)"
-        @mousemove="Control.wrapEvent('mousemove', $event)" @mouseup="Control.wrapEvent('mouseup', $event)"
-        @touchmove="Control.wrapEvent('touchmove', $event)" @touchstart="Control.wrapEvent('touchstart', $event)"
-        @touchend="Control.wrapEvent('touchend', $event)" @wheel="Control.wrapEvent('wheel', $event)"></div>
+        @mousemove="Control.wrapEvent('mousemove', $event)" @mousedown="Control.wrapEvent('mousedown', $event)"
+        @mouseup="Control.wrapEvent('mouseup', $event)" @touchmove="Control.wrapEvent('touchmove', $event)"
+        @touchstart="Control.wrapEvent('touchstart', $event)" @touchend="Control.wrapEvent('touchend', $event)"
+        @touchcancel="Control.wrapEvent('touchcancel', $event)" @wheel="Control.wrapEvent('wheel', $event)"></div>
     <div id="box">
         <div id="map_content" draggable="false" :key="currentFloor">
             <Transition name="map" mode="out-in">
