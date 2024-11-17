@@ -11,6 +11,7 @@
                 <font-awesome-icon :icon="['fas', 'xmark']" />
             </label>
         </div>
+        <p>URLをコピーすることで、検索結果を共有できます。</p>
         <div class="results">
             <div v-for="id, key in searchResultsId" :key="key" @click="move(PlaceInfo[id].floor, id)" class="place">
                 <p class="name">{{ PlaceInfo[id].name }}</p>
@@ -39,15 +40,32 @@ for (let key of Object.keys(PlaceInfo)) {
     PlaceInfoWords[key] = (PlaceInfo[key].words + " " + key + " " + PlaceInfo[key].name).toLowerCase()
 }
 
-// ページ遷移
-function move(floor, id) {
-    router.push(`${floor}/${id}`)
+// 検索機能について
+// 基本的にsearchWordを変更すると検索が行われる
+// URLからの場合も、searchWordを変更することで検索が行われる
+
+// URLから検索ワードを取得
+window.addEventListener('popstate', () => {
+    // ブラウザバック時にURLから検索ワードを取得
+    searchWord.value = decordUrl()
+});
+function decordUrl() {
+    // URLの切り出しとデコードまで行う
+    return decodeURIComponent(location.pathname.slice(18))
+}
+function encordUrl(word) {
+    // URLをエンコードして、変更まで行う
+    word = encodeURIComponent(word)
+    history.pushState(history.state, '', `${import.meta.env.BASE_URL}search/${word}`);
 }
 
 // 検索機能
-const searchWord = ref('')
-const searchResultsId = ref(new Set(Object.keys(PlaceInfoWords)))
+const searchWord = ref(decordUrl())
+const searchResultsId = ref(new Set(Object.keys(PlaceInfoWords))) // ここでURLからの場合は検索結果を変更する
 watch(searchWord, () => {
+    // URLを変更
+    encordUrl(searchWord.value)
+    // 検索
     if (searchWord.value == '') {
         searchResultsId.value = new Set(Object.keys(PlaceInfoWords))
     } else {
@@ -61,6 +79,11 @@ watch(searchWord, () => {
         }
     }
 }, { immediate: true })
+
+// ページ遷移
+function move(floor, id) {
+    router.push(`/${floor}/${id}`)
+}
 
 // xマーク
 const searchXmarkIsActive = ref(false)
