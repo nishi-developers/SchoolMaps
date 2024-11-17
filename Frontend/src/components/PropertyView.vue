@@ -15,8 +15,8 @@
             <span v-if="isCopy" id="linkCopied">リンクをコピーしました</span>
         </p>
         <p>
-            <span v-if="FloorInfo[props.Floor].__FloorFullName__ != null">
-                <font-awesome-icon :icon="['fas', 'location-dot']" /> {{ FloorInfo[props.Floor].__FloorFullName__ }}
+            <span v-if="FloorInfo[props.Floor].fullName != null">
+                <font-awesome-icon :icon="['fas', 'location-dot']" /> {{ FloorInfo[props.Floor].fullName }}
             </span>
         </p>
         <p v-html="PlaceInfo[props.PlaceId].desc"> </p>

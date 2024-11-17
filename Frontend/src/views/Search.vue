@@ -17,7 +17,7 @@
                 <p>
                     <span class="position">
                         <font-awesome-icon :icon="['fas', 'location-dot']" />
-                        {{ FloorInfo[PlaceInfo[id].floor].__FloorFullName__ }}
+                        {{ FloorInfo[PlaceInfo[id].floor].fullName }}
                     </span>
                 </p>
                 <!-- <p v-html="PlaceInfo[id].desc" v-if="PlaceInfo[id].desc != null"></p> -->
