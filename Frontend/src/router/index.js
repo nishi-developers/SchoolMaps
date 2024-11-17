@@ -23,7 +23,7 @@ const router = createRouter({
       meta: { title: 'このサイトについて |西高Map' }
     },
     {
-      path: '/search',
+      path: '/search/:searchWord?',
       name: 'search',
       component: () => import('@/views/Search.vue'),
       meta: { title: '検索 |西高Map' }
