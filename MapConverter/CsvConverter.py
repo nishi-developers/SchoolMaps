@@ -21,13 +21,13 @@ Converted = {}
 for i in range(1, len(PlaceInfo) - 1):
     images = []
     for j in range(len(PlaceInfo[i]) - 5):
-        images.append(PlaceInfo[i][5+j])
+        images.append(PlaceInfo[i][5 + j])
     Converted[PlaceInfo[i][0]] = {
         "floor": int(PlaceInfo[i][1]),
         "name": PlaceInfo[i][2],
         "words": PlaceInfo[i][3],
         "desc": PlaceInfo[i][4],
-        "images": images
+        "images": images,
     }
 
 # ファイルに書き出し
