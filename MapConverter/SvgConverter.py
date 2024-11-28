@@ -1,7 +1,5 @@
 """
-SVGファイルを読み込み、Vueファイルに変換するスクリプト
-- Style属性を削除
-- PlaceInfoの雛形を作成
+SVGファイルを読み込み、Style属性を削除して、Vueファイルに変換するスクリプト
 """
 
 import xml.etree.ElementTree as ET
@@ -27,15 +25,6 @@ for child in root:
         del child.attrib["style"]
     except KeyError:
         pass
-    # 属性を取得
-    # id属性を取得
-    try:
-        id = child.attrib["id"]
-    except KeyError:
-        id = None
-    # "-"以下はid重複防止用なので削除
-    if id != None:
-        placeid = id.split("-")[0]
 
 # 文字列に変換
 file = ET.tostring(root, encoding="utf-8", xml_declaration=False).decode("utf-8")
