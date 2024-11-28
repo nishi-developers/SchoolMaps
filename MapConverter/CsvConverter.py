@@ -1,12 +1,7 @@
 import json, csv
 
-InputFilePath = input("InputFilePath(csv): ")
-if InputFilePath == "":
-    InputFilePath = "PlaceInfo.csv"
-
-OutputFilePath = input("OutputFilePath(json): ")
-if OutputFilePath == "":
-    OutputFilePath = "out/PlaceInfo.json"
+InputFilePath = "in-out/input.csv"
+OutputFilePath = "in-out/output.json"
 
 # CSVファイルを読み込み
 PlaceInfo = []
@@ -21,7 +16,8 @@ Converted = {}
 for i in range(1, len(PlaceInfo) - 1):
     images = []
     for j in range(len(PlaceInfo[i]) - 5):
-        images.append(PlaceInfo[i][5 + j])
+        if PlaceInfo[i][5 + j] != "":
+            images.append(PlaceInfo[i][5 + j])
     Converted[PlaceInfo[i][0]] = {
         "floor": int(PlaceInfo[i][1]),
         "name": PlaceInfo[i][2],
