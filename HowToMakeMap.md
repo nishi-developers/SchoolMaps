@@ -33,18 +33,18 @@
 - 位置の目安としておく場合はnone
 - 例えば、タップして情報を表示できない場所には`none-0`,`none-1`などといった感じでidを振れば良い
 
-### 作成方法の例
+### SVGデータ 作成方法の例
 
 1. AffinityDesigner2で、パスや短形ツールを駆使して、地図データを作成する
 2. 要素の名称を変更して、placeIdをつける
 3. SVGでエクスポートする
-4. このままではidがgタグについてしまうので、`SvgConverterForAffinity.py`を利用してidを正しくつける
+4. このままではidがgタグについてしまうので、[SvgConverterForAffinity.py](MapConverter\SvgConverterForAffinity.py)を利用してidを正しくつける
 5. Inkscapeで開き、グループ化を解除(ワンクリックでungroupできる)
 6. 全オブジェクトをパス化し、余分な範囲を削除
 7. Inkscapeで拡張機能を利用してtransformを削除
 8. PlaneSVGでエクスポート
 9. 手動で不要なタグを削除(`<svg></svg>`外のタグなど)
-10. `SvgConverter.py`を利用して、styleを削除し、vueファイルに加工
+10. [SvgConverter.py](MapConverter\SvgConverter.py)を利用して、styleを削除し、vueファイルに加工
 
 ### Inkscapeの拡張機能を利用したtransformの削除
 
@@ -78,11 +78,11 @@
 }
 ```
 
-### 作成方法の例
+### PlaceInfo.json 作成方法の例
 
 1. Excelで`id(unique),floor,name,words,desc,images`を1行目にした表を作成し、情報を入力していく
 2. CSV(UTF-8)にエクスポート
-3. `CsvConverter.py`を利用してJSONに変換
+3. [CsvConverter.py](MapConverter\CsvConverter.py)を利用してJSONに変換
 
 ```csv:PlaceInfocsv(一部例)
 id(unique),floor,name,words,desc,,
