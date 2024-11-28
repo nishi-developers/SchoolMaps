@@ -40,7 +40,7 @@
 3. SVGでエクスポートする
 4. このままではidがgタグについてしまうので、`SvgConverterForAffinity.py`を利用してidを正しくつける
 5. Inkscapeで開き、グループ化を解除(ワンクリックでungroupできる)
-6. 全オブジェクトをパス化
+6. 全オブジェクトをパス化し、余分な範囲を削除
 7. Inkscapeで拡張機能を利用してtransformを削除
 8. PlaneSVGでエクスポート
 9. 手動で不要なタグを削除(`<svg></svg>`外のタグなど)
