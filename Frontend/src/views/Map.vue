@@ -38,6 +38,8 @@ let Setup = new class {
         mapSvg.querySelectorAll("path").forEach((element) => {
             if (element.id.includes("none")) {
                 element.classList.add("none")
+            } else if (element.id.includes("enclosure")) {
+                element.classList.add("enclosure")
             } else if (element.id.includes("base")) {
                 element.classList.add("base")
             } else if (element.id.includes("label")) {
@@ -575,7 +577,7 @@ let Control = new class {
 
 /* ルート以下の子要素に対して */
 #map_content svg>* {
-    stroke-width: .5;
+    stroke-width: 2.0;
 }
 
 /* オブジェクト(部屋) */
@@ -594,7 +596,11 @@ let Control = new class {
 
 /* 他の場所 */
 #map_content svg .none {
-    fill: var(--MapFloorClor);
+    fill: var(--MapNoneColor);
+}
+
+#map_content svg .enclosure {
+    fill: var(--MapEnclosureColor);
 }
 
 #map_content svg .base {

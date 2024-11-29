@@ -30,7 +30,8 @@
   --URLBodyColor: #935cb8;
   /* マップ */
   --MapBaseColor: #eeeeee;
-  --MapFloorClor: #bebebe;
+  --MapEnclosureColor: #e0e0e0;
+  --MapNoneColor: #bebebe;
   --MapObjectColor: var(--SubBaseColor);
   --MapObjectSelectColor: var(--SubColor);
   --MapBorderColor: #242424;
@@ -51,7 +52,7 @@
     --URLBodyColor: #935cb8;
     /* マップ */
     --MapBaseColor: #050505;
-    --MapFloorClor: #424242;
+    --MapNoneColor: #424242;
     --MapObjectColor: var(--SubBaseColor);
     --MapObjectSelectColor: var(--SubColor);
     --MapBorderColor: #d6d6d6;
