@@ -799,5 +799,12 @@
         "words": "",
         "desc": "第一講義準備室",
         "images": []
+    },
+    "laputa": {
+        "floor": 2,
+        "name": "ラピュタ",
+        "words": "",
+        "desc": "",
+        "images": []
     }
 }

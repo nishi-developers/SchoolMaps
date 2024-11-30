@@ -13,7 +13,7 @@ with open(InputFilePath, "r", encoding="utf-8") as f:
 # 変換
 Converted = {}
 # 最初の行を削除
-for i in range(1, len(PlaceInfo) - 1):
+for i in range(1, len(PlaceInfo)):
     images = []
     for j in range(len(PlaceInfo[i]) - 5):
         if PlaceInfo[i][5 + j] != "":
