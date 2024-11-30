@@ -48,6 +48,12 @@ let Setup = new class {
                 element.classList.add("place")
                 // "-"以下はid重複防止用なので削除
                 element.setAttribute("placeid", element.id.split("-")[0])
+                // ラベルをSVGに追加
+                let pathElement = element.getBBox();
+                let centerX = pathElement.x + pathElement.width / 2;
+                let centerY = pathElement.y + pathElement.height / 2;
+                // mapSvg.insertAdjacentHTML('beforeend', `<circle cx="${centerX}" cy="${centerY}" r="5" fill="red" />`);
+                mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" font-size="80" class="label added">${PlaceInfo[element.id].name}<text/>`);
             }
         })
         Setup.resolveMapPlaceClass() //thisは使えない
@@ -609,13 +615,13 @@ let Control = new class {
 
 /* テキスト */
 #map_content svg .label {
-    transform-origin: center center;
     transform-box: fill-box;
-    transform: rotate(v-bind("- mapStatus.rotate + 'deg'"));
-    font-size: 1rem;
+    transform: rotate(v-bind("- mapStatus.rotate + 'deg'")) translate(-50%, +50%);
+    transform-origin: 0% 100%;
     fill: var(--MainBodyColor);
     stroke-width: 0;
     pointer-events: none;
+    font-size: 2rem;
 }
 </style>
 <style scoped>
