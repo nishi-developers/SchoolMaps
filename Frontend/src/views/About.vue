@@ -1,5 +1,5 @@
 <template>
-    <div class="background text">
+    <div class="background text widthLimit">
         <p class="textTitle">このサイトについて</p>
         <p class="textH">西高MAPとは?</p>
         <p class="textP">

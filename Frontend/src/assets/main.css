@@ -23,15 +23,15 @@
   --SubColor: #82c3ff;
   /* 背景 */
   --MainBaseColor: #f3f9ff;
-  --SubBaseColor: #ddefff;
+  --SubBaseColor: #d4ebff;
   /* テキスト */
   --MainBodyColor: #3d3d3d;
   --AccentBodyColor: #9400ff;
   --URLBodyColor: #935cb8;
   /* マップ */
-  --MapBaseColor: #eeeeee;
-  --MapEnclosureColor: #e0e0e0;
-  --MapNoneColor: #bebebe;
+  --MapBaseColor: #f3f3f3;
+  --MapEnclosureColor: #cfcfcf;
+  --MapNoneColor: #adadad;
   --MapObjectColor: var(--SubBaseColor);
   --MapObjectSelectColor: var(--SubColor);
   --MapBorderColor: #242424;
@@ -76,6 +76,11 @@ a {
   width: 100%;
   height: calc(100% - var(--HeaderHeight));
   padding: 15px;
+}
+
+.background.widthLimit {
+  max-width: 800px;
+  margin: 0 auto;
 }
 /* テキスト共通 */
 .text {

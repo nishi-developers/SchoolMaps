@@ -1,11 +1,12 @@
 <template>
-    <div class="background text" id="search">
+    <div class="background text widthLimit" id="search">
         <p class="textTitle">マップ検索</p>
         <div class="searchBox">
             <label for="searchInput" class="searchIcon">
                 <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
             </label>
-            <input id="searchInput" type="text" class="searchInput" placeholder="検索" v-model="searchWord" required>
+            <input id="searchInput" type="text" class="searchInput" placeholder="検索ワードを入力" v-model="searchWord"
+                required>
             <label for="searchInput" class="searchXmark" :class="[searchXmarkIsActive ? 'active' : '']"
                 @mousedown="resetSearch()" @touchstart="resetSearch()">
                 <font-awesome-icon :icon="['fas', 'xmark']" />
@@ -14,14 +15,18 @@
         <p>URLをコピーすることで、検索結果を共有できます。</p>
         <div class="results">
             <div v-for="id, key in searchResultsId" :key="key" @click="move(PlaceInfo[id].floor, id)" class="place">
-                <p class="name">{{ PlaceInfo[id].name }}</p>
+                <!-- <p class="name">{{ PlaceInfo[id].name }}</p>
                 <p>
                     <span class="position">
                         <font-awesome-icon :icon="['fas', 'location-dot']" />
                         {{ FloorInfo[PlaceInfo[id].floor].fullName }}
                     </span>
-                </p>
-                <!-- <p v-html="PlaceInfo[id].desc" v-if="PlaceInfo[id].desc != null"></p> -->
+                </p> -->
+                <span class="name">{{ PlaceInfo[id].name }}</span>
+                <span class="position">
+                    <font-awesome-icon :icon="['fas', 'location-dot']" />
+                    {{ FloorInfo[PlaceInfo[id].floor].fullName }}
+                </span>
             </div>
         </div>
     </div>
@@ -101,8 +106,8 @@ p {
 
 .searchBox {
     --SearchBoxHeight: 40px;
-    border: 2px solid var(--MainBodyColor);
-    border-radius: 10px;
+    /* border: 1px solid var(--MainBodyColor); */
+    border-radius: 5px;
     height: var(--SearchBoxHeight);
     width: 100%;
     display: flex;
@@ -127,7 +132,7 @@ p {
     font-size: 1.4rem;
     padding: 1px 5px;
     color: var(--MainBodyColor);
-    background-color: var(--MainBaseColor);
+    background-color: var(--SubBaseColor);
 }
 
 .searchXmark {
@@ -153,25 +158,28 @@ p {
 
 
 .place {
-    border: 1px solid var(--MainBodyColor);
+    border-bottom: 2px solid var(--MainColor);
     margin: 5px 0;
     padding: 5px;
-    border-radius: 10px;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--MainBodyColor);
 }
 
 .place:hover {
     background-color: var(--SubBaseColor);
 }
 
-.position {
-    margin: 0 5px 0 5px;
-}
-
 .name {
     font-size: 20px;
-    font-weight: bold;
 }
+
+.position {
+    font-size: 15px;
+}
+
 
 .results {
     margin-top: 10px;
