@@ -1,5 +1,5 @@
 <template>
-    <div class="background text">
+    <div class="background text widthLimit">
         <p class="textTitle">使い方</p>
         <p class="textH">Map (PC・マウス)</p>
         <ul class="textP">
