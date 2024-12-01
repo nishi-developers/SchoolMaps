@@ -53,7 +53,7 @@ let Setup = new class {
                 let centerX = pathElement.x + pathElement.width / 2;
                 let centerY = pathElement.y + pathElement.height / 2;
                 // mapSvg.insertAdjacentHTML('beforeend', `<circle cx="${centerX}" cy="${centerY}" r="5" fill="red" />`);
-                mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" font-size="80" class="label added">${PlaceInfo[element.id].name}<text/>`);
+                mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" class="label added">${PlaceInfo[element.id].name}<text/>`);
             }
         })
         Setup.resolveMapPlaceClass() //thisは使えない
@@ -616,8 +616,8 @@ let Control = new class {
 /* テキスト */
 #map_content svg .label {
     transform-box: fill-box;
-    transform: rotate(v-bind("- mapStatus.rotate + 'deg'")) translate(-50%, +50%);
-    transform-origin: 0% 100%;
+    transform: rotate(v-bind("- mapStatus.rotate + 'deg'")) translate(-50%, +25%);
+    transform-origin: 0% 80%;
     fill: var(--MainBodyColor);
     stroke-width: 0;
     pointer-events: none;
