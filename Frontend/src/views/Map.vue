@@ -11,6 +11,7 @@ const currentPlaceId = ref("")
 const currentFloor = ref()
 const mapDefaultWidth = ref(0)
 const deviceMode = ref("")
+const labelOpacity = ref(1)
 
 // hook
 onMounted(() => {
@@ -622,6 +623,7 @@ let Control = new class {
     stroke-width: 0;
     pointer-events: none;
     font-size: 2rem;
+    opacity: v-bind("labelOpacity");
 }
 </style>
 <style scoped>
@@ -669,26 +671,32 @@ let Control = new class {
 
 #floorMenu ul {
     list-style: none;
+    width: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 #floorMenu ul li {
     padding: 5px;
     text-align: center;
     color: var(--MainBodyColor);
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-#floorMenu ul .func {
+#floorMenu ul li.func {
     font-size: 2rem;
 }
 
-#floorMenu ul .floor {
+#floorMenu ul li.floor {
     border: 1px solid var(--MainBodyColor);
     border-radius: 20%;
     font-size: 1.5rem;
     margin: 2px 0 2px 0;
 }
-
-
 
 #floorMenu ul .selected {
     background-color: var(--SubColor);
@@ -746,6 +754,11 @@ let Control = new class {
             <li class="func"><font-awesome-icon @click="router.push('/search')" :icon="['fas', 'magnifying-glass']" />
             </li>
             <li class="func"><font-awesome-icon @click="Control.resetMove()" :icon="['fas', 'expand']" />
+            </li>
+            <li class="func" v-if="labelOpacity == 0"><font-awesome-icon @click="labelOpacity = 1"
+                    :icon="['fas', 'heading']" />
+            </li>
+            <li class="func" v-else><font-awesome-icon @click="labelOpacity = 0" :icon="['fas', 'text-slash']" />
             </li>
             <li class="floor" v-for="floor in Setup.placeInfoReverse" :key="floor.__key__"
                 @click="Setup.changeURL(floor.__key__, null)"
