@@ -31,7 +31,7 @@ function toTop() {
     width: 100%;
     height: var(--HeaderHeight);
     position: relative;
-    border-bottom: 1px solid var(--MainBodyColor);
+    /* border-bottom: 1px solid var(--MainBodyColor); */
     font-weight: bold;
     box-sizing: border-box;
 }
