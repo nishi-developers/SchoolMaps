@@ -164,7 +164,7 @@ let PropertyCtrl = new class {
 // リンク共有
 function shareLink() {
     try {
-        navigator.share({ title: `西高マップ-${PlaceInfo[props.PlaceId].name}`, url: location.href })
+        navigator.share({ title: `西高マップ @${PlaceInfo[props.PlaceId].name}`, url: location.href })
     } catch (e) {
         if (navigator.clipboard) {
             navigator.clipboard.writeText(location.href)
