@@ -10,9 +10,9 @@
             @touchcancel="PropertyCtrl.wrapEvent('touchcancel', $event)">
         </div>
         <p id="name">{{ PlaceInfo[props.PlaceId].name }}
-            <font-awesome-icon v-if="!isCopy" id="linkCopy" @click="copyLink()" :icon="['fas', 'link']" />
-            <font-awesome-icon v-else id="linkCopy" @click="copyLink()" :icon="['fas', 'check']" />
-            <span v-if="isCopy" id="linkCopied">リンクをコピーしました</span>
+            <span @click="shareLink()" id="linkShare">
+                <font-awesome-icon :icon="['fas', 'share-from-square']" />共有
+            </span>
         </p>
         <p>
             <span v-if="FloorInfo[props.Floor].fullName != null">
@@ -161,19 +161,18 @@ let PropertyCtrl = new class {
 
 }
 
-// リンクコピー
-const isCopy = ref(false)
-function copyLink() {
-    const url = `${location.protocol}//${location.host}${BASE_URL}${props.Floor}/${props.PlaceId}`
-    if (!navigator.clipboard) {
-        alert("リンクのコピーに対応していません");
-        return;
+// リンク共有
+function shareLink() {
+    try {
+        navigator.share({ title: `西高マップ-${PlaceInfo[props.PlaceId].name}`, url: location.href })
+    } catch (e) {
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(location.href)
+            alert("リンクをコピーしました")
+        } else {
+            alert("リンクのコピー及び共有に対応していません")
+        }
     }
-    navigator.clipboard.writeText(url)
-    isCopy.value = true
-    setTimeout(() => {
-        isCopy.value = false
-    }, 2000)
 }
 
 // 画像
@@ -287,15 +286,10 @@ p {
     margin-bottom: 10px;
 }
 
-#linkCopy {
+#linkShare {
     cursor: pointer;
     margin-left: 10px;
-    font-size: 1.2rem;
-}
-
-#linkCopied {
-    font-size: 0.8rem;
-    margin-left: 5px;
+    font-size: 1rem;
 }
 
 #imageObjects {
