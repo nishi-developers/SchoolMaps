@@ -7,21 +7,16 @@
             </label>
             <input id="searchInput" type="text" class="searchInput" placeholder="検索ワードを入力" v-model="searchWord"
                 required>
-            <label for="searchInput" class="searchXmark" :class="[searchXmarkIsActive ? 'active' : '']"
+            <label for="searchInput" class="searchFunc" :class="[searchXmarkIsActive ? 'active' : '']"
                 @mousedown="resetSearch()" @touchstart="resetSearch()">
                 <font-awesome-icon :icon="['fas', 'xmark']" />
             </label>
+            <label class="searchFunc" @click="shareLink()">
+                <font-awesome-icon :icon="['fas', 'share-from-square']" />
+            </label>
         </div>
-        <p>URLをコピーすることで、検索結果を共有できます。</p>
         <div class="results">
             <div v-for="id, key in searchResultsId" :key="key" @click="move(PlaceInfo[id].floor, id)" class="place">
-                <!-- <p class="name">{{ PlaceInfo[id].name }}</p>
-                <p>
-                    <span class="position">
-                        <font-awesome-icon :icon="['fas', 'location-dot']" />
-                        {{ FloorInfo[PlaceInfo[id].floor].fullName }}
-                    </span>
-                </p> -->
                 <span class="name">{{ PlaceInfo[id].name }}</span>
                 <span class="position">
                     <font-awesome-icon :icon="['fas', 'location-dot']" />
@@ -98,6 +93,20 @@ function resetSearch() {
         searchXmarkIsActive.value = false
     }, 150);
 }
+
+// リンク共有
+function shareLink() {
+    try {
+        navigator.share({ title: `西高マップ-検索「${searchWord.value}」`, url: location.href })
+    } catch (e) {
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(location.href)
+            alert("リンクをコピーしました")
+        } else {
+            alert("リンクのコピー及び共有に対応していません")
+        }
+    }
+}
 </script>
 <style scoped>
 p {
@@ -135,17 +144,17 @@ p {
     background-color: var(--SubBaseColor);
 }
 
-.searchXmark {
+.searchFunc {
     height: 100%;
     width: var(--SearchBoxHeight);
     background-color: var(--SubBaseColor);
 }
 
-.searchXmark.active {
+.searchFunc.active {
     background-color: var(--MainColor);
 }
 
-.searchXmark svg {
+.searchFunc svg {
     height: calc(var(--SearchBoxHeight)*.5);
     width: calc(var(--SearchBoxHeight)*.5);
     position: relative;
@@ -155,6 +164,11 @@ p {
     color: var(--MainBodyColor)
 }
 
+#linkShare {
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 1rem;
+}
 
 
 .place {
