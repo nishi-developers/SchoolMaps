@@ -60,10 +60,7 @@
         "name": "校庭",
         "words": "グランド グラウンド トラック",
         "desc": "広い校庭",
-        "images": [
-            "grand.png",
-            "grandsub.png"
-        ]
+        "images": []
     },
     "tennis_court": {
         "floor": 0,
@@ -112,7 +109,9 @@
         "name": "愛の泉",
         "words": "",
         "desc": "",
-        "images": []
+        "images": [
+            "fountain-87KPE1Vq.webp"
+        ]
     },
     "bicycle_parking_1st_0": {
         "floor": 0,
@@ -203,7 +202,9 @@
         "name": "プール下ピロティ",
         "words": "",
         "desc": "",
-        "images": []
+        "images": [
+            "pilotis-kZRaRnHs.webp"
+        ]
     },
     "training_room": {
         "floor": 0,
@@ -224,49 +225,67 @@
         "name": "西門",
         "words": "",
         "desc": "",
-        "images": []
+        "images": [
+            "gate_west_1-6G2EaBq6.webp"
+        ]
     },
     "gate_west_2": {
         "floor": 0,
         "name": "西門(校庭)",
         "words": "普段は閉門されている",
         "desc": "",
-        "images": []
+        "images": [
+            "gate_west_2-39A51R8u.webp",
+            "gate_west_2-NHvb5xm3.webp"
+        ]
     },
     "gate_north_0": {
         "floor": 0,
         "name": "正門",
         "words": "北側の門",
         "desc": "",
-        "images": []
+        "images": [
+            "gate_north_0-1ZftrcP4.webp",
+            "gate_north_0-AHGmB7D0.webp"
+        ]
     },
     "gate_east_0": {
         "floor": 0,
         "name": "東門",
         "words": "普段は閉門されている",
         "desc": "",
-        "images": []
+        "images": [
+            "gate_east_0-qAB23K19.webp",
+            "gate_east_0-JqRhs34H.webp"
+        ]
     },
     "gate_nishi_hall_0": {
         "floor": 0,
         "name": "西高会館ゲート",
         "words": "普段は閉門されている",
         "desc": "",
-        "images": []
+        "images": [
+            "gate_nishi_hall_0-7BfkEqJ3.webp",
+            "gate_nishi_hall_0-aCc5V363.webp"
+        ]
     },
     "gate_nishi_hall_1": {
         "floor": 0,
         "name": "西高会館ゲート",
         "words": "普段は閉門されている",
         "desc": "",
-        "images": []
+        "images": [
+            "gate_nishi_hall_1-7mVe6x20.webp"
+        ]
     },
     "straight_course": {
         "floor": 0,
         "name": "直線トラック",
         "words": "",
         "desc": "",
-        "images": []
+        "images": [
+            "straight_course-k0DNpn6R.webp"
+        ]
     },
     "students_entrance": {
         "floor": 0,
