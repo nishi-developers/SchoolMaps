@@ -115,7 +115,6 @@ p {
 
 .searchBox {
     --SearchBoxHeight: 40px;
-    /* border: 1px solid var(--MainBodyColor); */
     border-radius: 5px;
     height: var(--SearchBoxHeight);
     width: 100%;
@@ -142,6 +141,7 @@ p {
     padding: 1px 5px;
     color: var(--MainBodyColor);
     background-color: var(--SubBaseColor);
+    border-radius: 0;
 }
 
 .searchFunc {
@@ -184,6 +184,7 @@ p {
 
 .place:hover {
     background-color: var(--SubBaseColor);
+    border-radius: 5px;
 }
 
 .name {

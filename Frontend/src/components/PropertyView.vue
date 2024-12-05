@@ -20,7 +20,7 @@
             </span>
         </p>
         <p v-html="PlaceInfo[props.PlaceId].desc"> </p>
-        <div id="imageObjects" v-if="PlaceInfo[props.PlaceId].images != null">
+        <div id="imageObjects" v-if="PlaceInfo[props.PlaceId].images != (null || '')">
         </div>
     </div>
 
