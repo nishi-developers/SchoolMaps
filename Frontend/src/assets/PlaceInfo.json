@@ -226,10 +226,38 @@
         "desc": "",
         "images": []
     },
+    "gate_west_2": {
+        "floor": 0,
+        "name": "西門(校庭)",
+        "words": "普段は閉門されている",
+        "desc": "",
+        "images": []
+    },
     "gate_north_0": {
         "floor": 0,
         "name": "正門",
-        "words": "",
+        "words": "北側の門",
+        "desc": "",
+        "images": []
+    },
+    "gate_east_0": {
+        "floor": 0,
+        "name": "東門",
+        "words": "普段は閉門されている",
+        "desc": "",
+        "images": []
+    },
+    "gate_nishi_hall_0": {
+        "floor": 0,
+        "name": "西高会館ゲート",
+        "words": "普段は閉門されている",
+        "desc": "",
+        "images": []
+    },
+    "gate_nishi_hall_1": {
+        "floor": 0,
+        "name": "西高会館ゲート",
+        "words": "普段は閉門されている",
         "desc": "",
         "images": []
     },

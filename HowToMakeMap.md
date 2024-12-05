@@ -37,9 +37,9 @@
 
 1. AffinityDesigner2で、パスや短形ツールを駆使して、地図データを作成する
 2. 要素の名称を変更して、placeIdをつける
-3. SVGでエクスポートする
+3. SVGでエクスポートする(グループは解除する)
 4. このままではidがgタグについてしまうので、[SvgConverterForAffinity.py](MapConverter\SvgConverterForAffinity.py)を利用してidを正しくつける
-5. Inkscapeで開き、グループ化を解除(ワンクリックでungroupできる)
+5. Inkscapeで開き、グループ化を解除(全選択、ワンクリックでungroupできる)
 6. 全オブジェクトをパス化し、余分な範囲を削除
 7. Inkscapeで拡張機能を利用してtransformを削除
 8. PlaneSVGでエクスポート
