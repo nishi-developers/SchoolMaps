@@ -617,13 +617,24 @@ let Control = new class {
 /* テキスト */
 #map_content svg .label {
     transform-box: fill-box;
+    transform-origin: 0 80%;
     transform: rotate(v-bind("- mapStatus.rotate + 'deg'")) translate(-50%, +25%);
-    transform-origin: 0% 80%;
+    transform: translate(-50%, +25%);
     fill: var(--MainBodyColor);
     stroke-width: 0;
     pointer-events: none;
     font-size: 2rem;
     opacity: v-bind("labelOpacity");
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+
+    /* webkitのみ */
+    /* webkitでは"transform-box"が適用されず、文字の逆回転が正常にできない */
+    /* そのため、ラベルの回転防止(=文字の逆回転)は無効化する */
+    #map_content svg .label {
+        transform: translate(-50%, +25%);
+    }
 }
 </style>
 <style scoped>
@@ -653,7 +664,6 @@ let Control = new class {
     left: v-bind("mapStatus.position.left + 'px'");
     top: v-bind("mapStatus.position.top + 'px'");
     transform: translate(-50%, -50%) rotate(v-bind("mapStatus.rotate + 'deg'"));
-
 }
 
 #box:active {
