@@ -75,7 +75,7 @@ let Setup = new class {
         else {
             history.pushState(history.state, '', `${import.meta.env.BASE_URL}${floor}`);
         }
-        this.resolveUrl()
+        Setup.resolveUrl() // PropertyViewからの呼び出しのため、thisを使わない
     }
     resolveUrl() {
         // onMount以降に実行しなければならない
@@ -757,7 +757,7 @@ let Control = new class {
 <template>
     <Transition :name="`property-${deviceMode}`">
         <PropertyView v-if="isShowProperty" :Floor="currentFloor" :PlaceId="currentPlaceId" :deviceMode="deviceMode"
-            @hideProperty="Setup.changeURL(currentFloor, null)" />
+            @hideProperty="Setup.changeURL(currentFloor, null)" @jump="Setup.changeURL" />
     </Transition>
     <div id="floorMenu">
         <ul>
