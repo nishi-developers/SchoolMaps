@@ -2,7 +2,7 @@
     <div id="header">
         <div id="title">
             <div @click="toTop()">
-                <span id="mainTitle">西高MAP</span>
+                <span id="mainTitle">西高マップ</span>
                 <!-- <span id="version">(α版)</span> -->
             </div>
         </div>

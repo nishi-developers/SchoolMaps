@@ -1,16 +1,16 @@
 <template>
     <div class="background text widthLimit">
         <p class="textTitle">このサイトについて</p>
-        <p class="textH">西高MAPとは?</p>
+        <p class="textH">西高マップとは</p>
         <p class="textP">
-            <b><a href="https://www.metro.ed.jp/nishi-h/">東京都立西高等学校</a></b>のマップです。<br>
+            <b><a href="https://www.metro.ed.jp/nishi-h/">東京都立西高等学校</a></b>の校内マップです。<br>
             <!-- プログラミングサークル<b>504</b>によって作成、運営されています。<br> -->
             本サイトに関して、都立西高校へのお問い合わせは行わないでください。
         </p>
         <p class="textH">マップデータについて</p>
         <p class="textP">
             マップデータの著作権は制作者に帰属します。<br>
-            マップデータのダウンロード・無断転載・再配布は禁止します。
+            マップデータのダウンロード・転載・再配布は禁止します。
         </p>
         <p class="textH">アクセス解析ツールについて</p>
         <p class="textP">
