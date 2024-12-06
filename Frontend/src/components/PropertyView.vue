@@ -19,7 +19,7 @@
                 <font-awesome-icon :icon="['fas', 'location-dot']" /> {{ FloorInfo[props.Floor].fullName }}
             </span>
         </p>
-        <p v-html="PlaceInfo[props.PlaceId].desc"> </p>
+        <p>{{ PlaceInfo[props.PlaceId].desc }}</p>
         <div id="imageObjects" v-if="PlaceInfo[props.PlaceId].images != (null || '')">
         </div>
     </div>

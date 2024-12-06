@@ -59,22 +59,30 @@
         "floor": 0,
         "name": "校庭",
         "words": "グランド グラウンド トラック",
-        "desc": "広い校庭",
-        "images": []
+        "desc": "",
+        "images": [
+            "grand-kZRaRnHs.webp"
+        ]
     },
     "tennis_court": {
         "floor": 0,
         "name": "テニスコート",
         "words": "",
         "desc": "",
-        "images": []
+        "images": [
+            "tennis_court-1ZftrcP4.webp",
+            "tennis_court-AHGmB7D0.webp",
+            "tennis_court-6G2EaBq6.webp"
+        ]
     },
     "handball_court": {
         "floor": 0,
         "name": "ハンドボールコート",
         "words": "",
         "desc": "",
-        "images": []
+        "images": [
+            "handball_court-7mVe6x20.webp"
+        ]
     },
     "audiovisual_hall_1f": {
         "floor": 0,
@@ -188,14 +196,18 @@
         "name": "部室棟",
         "words": "",
         "desc": "",
-        "images": []
+        "images": [
+            "clubroom_building_0_1f-qAB23K19.webp"
+        ]
     },
     "clubroom_building_1": {
         "floor": 0,
         "name": "部室棟",
         "words": "",
         "desc": "",
-        "images": []
+        "images": [
+            "clubroom_building_1-39A51R8u.webp"
+        ]
     },
     "pilotis": {
         "floor": 0,
@@ -218,7 +230,10 @@
         "name": "西門",
         "words": "",
         "desc": "",
-        "images": []
+        "images": [
+            "gate_west_0-7BfkEqJ3.webp",
+            "gate_west_0-aCc5V363.webp"
+        ]
     },
     "gate_west_1": {
         "floor": 0,
@@ -232,8 +247,8 @@
     "gate_west_2": {
         "floor": 0,
         "name": "西門(校庭)",
-        "words": "普段は閉門されている",
-        "desc": "",
+        "words": "",
+        "desc": "普段は閉門されている",
         "images": [
             "gate_west_2-39A51R8u.webp",
             "gate_west_2-NHvb5xm3.webp"
@@ -242,8 +257,8 @@
     "gate_north_0": {
         "floor": 0,
         "name": "正門",
-        "words": "北側の門",
-        "desc": "",
+        "words": "",
+        "desc": "北側の門",
         "images": [
             "gate_north_0-1ZftrcP4.webp",
             "gate_north_0-AHGmB7D0.webp"
@@ -252,8 +267,8 @@
     "gate_east_0": {
         "floor": 0,
         "name": "東門",
-        "words": "普段は閉門されている",
-        "desc": "",
+        "words": "",
+        "desc": "普段は閉門されている",
         "images": [
             "gate_east_0-qAB23K19.webp",
             "gate_east_0-JqRhs34H.webp"
@@ -262,8 +277,8 @@
     "gate_nishi_hall_0": {
         "floor": 0,
         "name": "西高会館ゲート",
-        "words": "普段は閉門されている",
-        "desc": "",
+        "words": "",
+        "desc": "普段は閉門されている",
         "images": [
             "gate_nishi_hall_0-7BfkEqJ3.webp",
             "gate_nishi_hall_0-aCc5V363.webp"
@@ -272,8 +287,8 @@
     "gate_nishi_hall_1": {
         "floor": 0,
         "name": "西高会館ゲート",
-        "words": "普段は閉門されている",
-        "desc": "",
+        "words": "",
+        "desc": "普段は閉門されている",
         "images": [
             "gate_nishi_hall_1-7mVe6x20.webp"
         ]
