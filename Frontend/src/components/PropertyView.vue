@@ -19,7 +19,7 @@
                 <font-awesome-icon :icon="['fas', 'location-dot']" /> {{ FloorInfo[props.Floor].fullName }}
             </span>
         </p>
-        <p>{{ PlaceInfo[props.PlaceId].desc }}</p>
+        <p v-html="description" id="desc"></p>
         <div id="imageObjects" v-if="PlaceInfo[props.PlaceId].images != (null || '')">
         </div>
     </div>
@@ -29,10 +29,11 @@
 import { onMounted, ref, watch } from 'vue'
 import PlaceInfo from '@/assets/PlaceInfo.json'
 import FloorInfo from '@/assets/FloorInfo.json'
+import router from '@/router';
 
 // 入出力
 const props = defineProps(["Floor", "PlaceId", "deviceMode"])
-const emit = defineEmits(["hideProperty"])
+const emit = defineEmits(["hideProperty", "jump"])
 const BASE_URL = import.meta.env.BASE_URL
 // ウィンドウサイズ
 const windowWidth = window.innerWidth
@@ -175,6 +176,50 @@ function shareLink() {
     }
 }
 
+// Description
+// jump
+// [校庭](grand)というように囲まれた部分をリンクとして扱う
+// bold
+// **bold**というように囲まれた部分を太字として扱う
+// new line
+// /nという文字列を改行として扱う
+
+const description = ref("")
+let descArray = PlaceInfo[props.PlaceId].desc.split(/(\[.+?\]\(.+?\)|\/n|\*\*.+?\*\*)/);
+console.log(descArray);
+
+let jumpLinks = []; // リンクのイベントを登録するための配列
+descArray = descArray.map((item) => {
+    if (item.match(/(\*\*.+?\*\*)/)) {
+        return `<b>${item.slice(2, -2)}</b>`;
+    } else if (item.match(/\/n/)) {
+        return "<br>";
+    } else if (item.match(/\[.+?\]\(.+?\)/)) {
+        // jump機能
+        let textMatch = item.match(/\[.+?\]/);
+        let placeidMatch = item.match(/\(.+?\)/);
+        if (textMatch && placeidMatch) {
+            let text = textMatch[0].slice(1, -1);
+            let placeid = placeidMatch[0].slice(1, -1);
+            jumpLinks.push(placeid);
+            return `<a disabled="disabled" id='jumplink-${jumpLinks.length - 1}'>${text}</a>`;
+        } else {
+            return item;
+        }
+    }
+    return item;
+});
+description.value = descArray.join("");
+onMounted(() => {
+    // リンクのクリックイベントを登録
+    for (let i = 0; i < jumpLinks.length; i++) {
+        document.getElementById(`jumplink-${i}`).addEventListener("click", () => {
+            emit("jump", PlaceInfo[jumpLinks[i]].floor, jumpLinks[i])
+        });
+    }
+});
+
+
 // 画像
 const imageIsReady = ref({
     image_onload: false,
@@ -292,6 +337,11 @@ p {
     font-size: 1rem;
 }
 
+#desc {
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
 #imageObjects {
     display: flex;
     overflow: scroll;
@@ -306,5 +356,9 @@ p {
     margin: 0 10px;
     border: 2px solid var(--SubColor);
     box-sizing: border-box;
+}
+
+#desc b {
+    font-weight: 1000;
 }
 </style>
