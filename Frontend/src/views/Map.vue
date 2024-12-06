@@ -101,9 +101,9 @@ let Setup = new class {
         if (floor != currentFloor.value) {
             if ((floor != "") && !isNaN(floor)
                 && Number(floor) >= 0 && Number(floor) <= FloorInfo.length - 1) {
-                this.changeFloor(Number(floor))
+                this.#changeFloor(Number(floor))
             } else {
-                this.changeFloor(0)
+                this.#changeFloor(0)
             }
         }
         // プロパティの表示
@@ -117,7 +117,7 @@ let Setup = new class {
             Property.hide()
         }
     }
-    changeFloor(floor) {
+    #changeFloor(floor) {
         currentFloor.value = floor
         Property.hide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
         this.mapDataCurrent = defineAsyncComponent(() => import(`@/assets/floors/${floor}.vue`))
