@@ -12,13 +12,6 @@
             マップデータの著作権は制作者に帰属します。<br>
             マップデータのダウンロード・無断転載・再配布は禁止します。
         </p>
-        <p class="textH">クレジット</p>
-        <p class="textP">
-            マップ作成:<a href="https://www.google.com/maps">GoogleMap</a>,
-            <a href="https://www.openstreetmap.org/">OpenStreetMap</a>,
-            <a href="https://inkscape.org">Inkscape</a><br>
-            ファビコン:<a href="https://icon-rainbow.com/現在地を示すマップのピンのアイコン素材-4/">Icon-rainbow</a>
-        </p>
         <p class="textH">アクセス解析ツールについて</p>
         <p class="textP">
             　当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス(Google Analytics)」を使用しています。
