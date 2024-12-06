@@ -20,7 +20,8 @@
             </span>
         </p>
         <p v-html="description" id="desc"></p>
-        <div id="imageObjects" v-if="PlaceInfo[props.PlaceId].images != (null || '')">
+        <div :id="`imageObjects-${props.PlaceId}`" class="imageObjects"
+            v-if="PlaceInfo[props.PlaceId].images != (null || '')">
         </div>
     </div>
 
@@ -251,19 +252,13 @@ let ImageCtrl = new class {
         for (let i = 0; i < this.#imageObjects.length; i++) {
             this.#imageObjects[i].style.minWidth = `${this.#imagesWidth[i]}px`
             this.#imageObjects[i].classList.add("image")
-            document.getElementById("imageObjects").appendChild(this.#imageObjects[i])
-            document.getElementById("imageObjects").classList.add("image-container");
+            // `imageObjects-${props.PlaceId}`にしているのは、新しいPropertyViewではなく、閉じかけのPropertyViewの方に画像が表示されるのを防ぐため
+            document.getElementById(`imageObjects-${props.PlaceId}`).appendChild(this.#imageObjects[i])
         }
     }
 }
 onMounted(() => {
-    // DOMがマウントされたら
-    // 250ms以上のtimeoutが必須だが、原因は不明
-    // 無いと、画像のある場所を何度も切り替えると、画像が表示されなくなる
-    // DOMの安定化を待つための処置?
-    setTimeout(() => {
-        imageIsReady.value.dom_onmount = true
-    }, 250)
+    imageIsReady.value.dom_onmount = true
 })
 watch(imageIsReady, (newVal) => {
     // 画像の読み込みが完了したら画像を表示
@@ -351,7 +346,7 @@ p {
     font-size: 1.2rem;
 }
 
-#imageObjects {
+.imageObjects {
     display: flex;
     overflow: scroll;
     height: v-bind(imageHeight + "px");
@@ -359,7 +354,7 @@ p {
 }
 </style>
 <style>
-#imageObjects img {
+.imageObjects img {
     height: 100%;
     border-radius: 20px;
     margin: 0 10px;
