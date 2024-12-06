@@ -757,7 +757,8 @@ let Control = new class {
 <template>
     <Transition :name="`property-${deviceMode}`">
         <PropertyView v-if="isShowProperty" :Floor="currentFloor" :PlaceId="currentPlaceId" :deviceMode="deviceMode"
-            @hideProperty="Setup.changeURL(currentFloor, null)" @jump="Setup.changeURL" />
+            :key="currentFloor + '-' + currentPlaceId" @hideProperty="Setup.changeURL(currentFloor, null)"
+            @jump="Setup.changeURL" />
     </Transition>
     <div id="floorMenu">
         <ul>

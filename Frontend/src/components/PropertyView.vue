@@ -29,7 +29,6 @@
 import { onMounted, ref, watch } from 'vue'
 import PlaceInfo from '@/assets/PlaceInfo.json'
 import FloorInfo from '@/assets/FloorInfo.json'
-import router from '@/router';
 
 // 入出力
 const props = defineProps(["Floor", "PlaceId", "deviceMode"])
@@ -177,6 +176,7 @@ function shareLink() {
 }
 
 // Description
+
 // jump
 // [校庭](grand)というように囲まれた部分をリンクとして扱う
 // bold
@@ -186,8 +186,6 @@ function shareLink() {
 
 const description = ref("")
 let descArray = PlaceInfo[props.PlaceId].desc.split(/(\[.+?\]\(.+?\)|\/n|\*\*.+?\*\*)/);
-console.log(descArray);
-
 let jumpLinks = []; // リンクのイベントを登録するための配列
 descArray = descArray.map((item) => {
     if (item.match(/(\*\*.+?\*\*)/)) {
@@ -201,8 +199,13 @@ descArray = descArray.map((item) => {
         if (textMatch && placeidMatch) {
             let text = textMatch[0].slice(1, -1);
             let placeid = placeidMatch[0].slice(1, -1);
-            jumpLinks.push(placeid);
-            return `<a disabled="disabled" id='jumplink-${jumpLinks.length - 1}'>${text}</a>`;
+            // 紐づけに、配列の順番などではなくuuidを用いるのは、同じjumpがjump先にもある場合に、(DOMの更新のラグ?のせいか)aタグのidが重複してバグるのを防ぐため
+            let uuid = Math.random().toString(32).substring(2); // 簡易的にユニークなIDを生成
+            jumpLinks.push({
+                id: uuid,
+                placeid: placeid
+            });
+            return `<a disabled="disabled" id='jumplink-${uuid}'>${text}</a>`;
         } else {
             return item;
         }
@@ -213,12 +216,11 @@ description.value = descArray.join("");
 onMounted(() => {
     // リンクのクリックイベントを登録
     for (let i = 0; i < jumpLinks.length; i++) {
-        document.getElementById(`jumplink-${i}`).addEventListener("click", () => {
-            emit("jump", PlaceInfo[jumpLinks[i]].floor, jumpLinks[i])
+        document.getElementById(`jumplink-${jumpLinks[i].id}`).addEventListener("click", () => {
+            emit("jump", PlaceInfo[jumpLinks[i].placeid].floor, jumpLinks[i].placeid)
         });
     }
 });
-
 
 // 画像
 const imageIsReady = ref({
@@ -250,17 +252,24 @@ let ImageCtrl = new class {
             this.#imageObjects[i].style.minWidth = `${this.#imagesWidth[i]}px`
             this.#imageObjects[i].classList.add("image")
             document.getElementById("imageObjects").appendChild(this.#imageObjects[i])
+            document.getElementById("imageObjects").classList.add("image-container");
         }
     }
 }
 onMounted(() => {
     // DOMがマウントされたら
-    imageIsReady.value.dom_onmount = true
+    // 250ms以上のtimeoutが必須だが、原因は不明
+    // 無いと、画像のある場所を何度も切り替えると、画像が表示されなくなる
+    // DOMの安定化を待つための処置?
+    setTimeout(() => {
+        imageIsReady.value.dom_onmount = true
+    }, 250)
 })
 watch(imageIsReady, (newVal) => {
     // 画像の読み込みが完了したら画像を表示
     if (newVal.image_onload && newVal.dom_onmount) {
         ImageCtrl.show()
+        console.log("show");
     }
 }, {
     immediate: true,
@@ -360,5 +369,9 @@ p {
 
 #desc b {
     font-weight: 1000;
+}
+
+#desc a {
+    cursor: pointer;
 }
 </style>

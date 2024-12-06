@@ -88,35 +88,35 @@
         "floor": 0,
         "name": "視聴覚ホール",
         "words": "",
-        "desc": "",
+        "desc": "[2階](audiovisual_hall_2f)",
         "images": []
     },
     "nishi_hall_1f": {
         "floor": 0,
         "name": "西高会館",
         "words": "",
-        "desc": "",
+        "desc": "[2階](nishi_hall_2f)/n[3階](nishi_hall_3f)",
         "images": []
     },
     "gym_1f": {
         "floor": 0,
         "name": "体育館",
         "words": "",
-        "desc": "",
+        "desc": "[2階](gym_2f)",
         "images": []
     },
     "martial_arts_field_1f": {
         "floor": 0,
         "name": "武道場",
         "words": "",
-        "desc": "",
+        "desc": "[2階](martial_arts_field_2f)",
         "images": []
     },
     "fountain": {
         "floor": 0,
         "name": "愛の泉",
         "words": "",
-        "desc": "",
+        "desc": "西高のシンボルともいえる**愛の泉**。/n西高には愛の泉に関する様々な噂がある。",
         "images": [
             "fountain-87KPE1Vq.webp"
         ]
@@ -195,7 +195,7 @@
         "floor": 0,
         "name": "部室棟",
         "words": "",
-        "desc": "",
+        "desc": "[2階](clubroom_building_0_2f)",
         "images": [
             "clubroom_building_0_1f-qAB23K19.webp"
         ]
@@ -239,7 +239,7 @@
         "floor": 0,
         "name": "西門",
         "words": "",
-        "desc": "",
+        "desc": "[こちらの西門](gate_west_0)の方が多く利用されている。",
         "images": [
             "gate_west_1-6G2EaBq6.webp"
         ]
@@ -248,7 +248,7 @@
         "floor": 0,
         "name": "西門(校庭)",
         "words": "",
-        "desc": "普段は閉門されている",
+        "desc": "普段は閉門されている。",
         "images": [
             "gate_west_2-39A51R8u.webp",
             "gate_west_2-NHvb5xm3.webp"
@@ -258,7 +258,7 @@
         "floor": 0,
         "name": "正門",
         "words": "",
-        "desc": "北側の門",
+        "desc": "",
         "images": [
             "gate_north_0-1ZftrcP4.webp",
             "gate_north_0-AHGmB7D0.webp"
@@ -268,7 +268,7 @@
         "floor": 0,
         "name": "東門",
         "words": "",
-        "desc": "普段は閉門されている",
+        "desc": "普段は閉門されている。",
         "images": [
             "gate_east_0-qAB23K19.webp",
             "gate_east_0-JqRhs34H.webp"
@@ -278,7 +278,7 @@
         "floor": 0,
         "name": "西高会館ゲート",
         "words": "",
-        "desc": "普段は閉門されている",
+        "desc": "普段は閉門されている。",
         "images": [
             "gate_nishi_hall_0-7BfkEqJ3.webp",
             "gate_nishi_hall_0-aCc5V363.webp"
@@ -288,7 +288,7 @@
         "floor": 0,
         "name": "西高会館ゲート",
         "words": "",
-        "desc": "普段は閉門されている",
+        "desc": "普段は閉門されている。",
         "images": [
             "gate_nishi_hall_1-7mVe6x20.webp"
         ]
@@ -481,35 +481,35 @@
         "floor": 1,
         "name": "部室棟",
         "words": "",
-        "desc": "",
+        "desc": "[1階](clubroom_building_0_1f)",
         "images": []
     },
     "audiovisual_hall_2f": {
         "floor": 1,
         "name": "視聴覚ホール",
         "words": "",
-        "desc": "",
+        "desc": "[1階](audiovisual_hall_1f)",
         "images": []
     },
     "nishi_hall_2f": {
         "floor": 1,
         "name": "西高会館",
         "words": "",
-        "desc": "",
+        "desc": "[1階](nishi_hall_1f)/n[3階](nishi_hall_3f)",
         "images": []
     },
     "gym_2f": {
         "floor": 1,
         "name": "体育館",
         "words": "",
-        "desc": "",
+        "desc": "[1階](gym_1f)",
         "images": []
     },
     "martial_arts_field_2f": {
         "floor": 1,
         "name": "武道場",
         "words": "",
-        "desc": "",
+        "desc": "[1階](martial_arts_field_1f)",
         "images": []
     },
     "pool": {
@@ -740,7 +740,7 @@
         "floor": 2,
         "name": "西高会館",
         "words": "",
-        "desc": "",
+        "desc": "[1階](nishi_hall_1f)/n[2階](nishi_hall_2f)",
         "images": []
     },
     "physics_experiment_room": {
@@ -859,7 +859,7 @@
         "floor": 2,
         "name": "PTA印刷室",
         "words": "",
-        "desc": "第一講義準備室",
+        "desc": "第一講義準備室。",
         "images": []
     },
     "laputa": {
