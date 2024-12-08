@@ -264,7 +264,6 @@ watch(imageIsReady, (newVal) => {
     // 画像の読み込みが完了したら画像を表示
     if (newVal.image_onload && newVal.dom_onmount) {
         ImageCtrl.show()
-        console.log("show");
     }
 }, {
     immediate: true,
