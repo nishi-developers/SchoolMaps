@@ -1,8 +1,8 @@
 <template>
     <svg xmlns="http://www.w3.org/2000/svg" width="1991.3167" height="4493.0317" viewBox="0 0 1991.3167 4493.0317"
         version="1.1" xml:space="preserve"
-        style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" id="svg54">
-        <defs id="defs54" />
+        style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" id="svg57">
+        <defs id="defs57" />
         <path
             d="m 1822.4991,407.8607 h 168.8176 v 4085.171 H 0.00118 V 1131.161 H 271.41314 V 937.3392 H 842.21229 V 0 h 980.28681 z"
             id="base" />
@@ -37,7 +37,11 @@
         <path id="none-handball_court" d="M 878.89119,3891.448 H 1909.9941 v 536.733 H 878.89119 Z" />
         <path id="none-fountain"
             d="m 1064.624,1061.134 a 43.502323,43.502323 0 0 1 -43.5024,43.5024 43.502323,43.502323 0 0 1 -43.50231,-43.5024 43.502323,43.502323 0 0 1 43.50231,-43.5023 43.502323,43.502323 0 0 1 43.5024,43.5023 z" />
-        <path id="none-gate_north_0" d="m 886.54909,112.02899 v -15.696 h 157.16821 v 15.696 z" />
+        <path id="none-gate_north_0" d="M 886.55219,112.029 V 96.333 h 157.17001 v 15.696 z" />
+        <path id="none-gate_east_0" d="m 1973.5622,1600.248 h -15.7 v -50.31 h 15.7 z" />
+        <path id="none-gate_nishi_hall_0" d="M 1525.8122,29.072 V 13.376 h 31.2 v 15.696 z" />
+        <path id="none-gate_nishi_hall_1" d="M 1675.6622,29.072 V 13.376 h 19 v 15.696 z" />
+        <path id="none-gate_west_2" d="m 25.71519,3137.108 h -15.696 v -50.31 h 15.696 z" />
         <path id="book_vault" d="m 1223.4742,1127.855 h 159.195 v 135.8622 h -159.195 z" />
         <path id="chemistry_experiment_preparation_room" d="m 1171.7228,1304.6613 h 51.7406 v 140.2293 h -51.7406 z" />
         <path id="chemistry_experiment_room" d="m 1223.478,1304.6613 h 200.1387 v 140.2293 H 1223.478 Z" />
