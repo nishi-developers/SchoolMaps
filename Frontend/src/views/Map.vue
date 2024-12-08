@@ -128,6 +128,9 @@ let Setup = new class {
         },
         get height() {
             return window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
+        },
+        get headerHeight() {
+            return Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))
         }
     }
     mapSize = {
@@ -211,11 +214,19 @@ const mapStatus = ref({
     zoom: 0,
     rotate: 0,
 })
+const oldMapStatus = ref({
+    position: {
+        left: 0,
+        top: 0,
+    },
+    zoom: 0,
+    rotate: 0,
+})
 const mapStatusZoomLimit = {
     min: 0.5,
     max: 10,
 }
-watch(() => mapStatus.value, () => {
+watch(mapStatus, () => {
     // 範囲制限
     // position
     let radian = mapStatus.value.rotate * Math.PI / 180
@@ -245,6 +256,27 @@ watch(() => mapStatus.value, () => {
     } else if (mapStatus.value.rotate > 180) {
         mapStatus.value.rotate -= 360
     }
+    // 中心点の移動
+    // zoom
+    if (mapStatus.value.zoom !== oldMapStatus.value.zoom) {
+        // y軸の移動
+        let oldRealHeight = (Math.abs(defaultWidth * Math.sin(radian)) + Math.abs(defaultHeight * Math.cos(radian))) * oldMapStatus.value.zoom
+        let mapTop = mapStatus.value.position.top - realHeight / 2
+        let oldMapTop = oldMapStatus.value.position.top - oldRealHeight / 2
+        let mapTopDiff = mapTop - oldMapTop
+        let mapTopDiffFromCenter = mapTopDiff * (((MapMove.moveCenter.y - oldMapStatus.value.position.top)) / (realHeight / 2))
+        mapStatus.value.position.top += mapTopDiffFromCenter
+        // x軸の移動
+        let oldRealWidth = (Math.abs(defaultWidth * Math.cos(radian)) + Math.abs(defaultHeight * Math.sin(radian))) * oldMapStatus.value.zoom
+        let mapLeft = mapStatus.value.position.left - realWidth / 2
+        let oldMapLeft = oldMapStatus.value.position.left - oldRealWidth / 2
+        let mapLeftDiff = mapLeft - oldMapLeft
+        let mapLeftDiffFromCenter = mapLeftDiff * (((MapMove.moveCenter.x - oldMapStatus.value.position.left)) / (realWidth / 2))
+        mapStatus.value.position.left += mapLeftDiffFromCenter
+    }
+
+    // oldMapStatusの更新
+    oldMapStatus.value = JSON.parse(JSON.stringify(mapStatus.value))
 }, { deep: true })
 let MapMove = new class {
     #slideData = {
@@ -267,6 +299,7 @@ let MapMove = new class {
     }
     constructor() {
         this.#slide_reset()
+        // 回転やズームの中心点
         this.moveCenter = {
             x: 0,
             y: 0
@@ -425,7 +458,7 @@ let MapMoveByMouse = new class {
             num = -unit
         }
         MapMove.moveCenter.x = event.clientX
-        MapMove.moveCenter.y = event.clientY
+        MapMove.moveCenter.y = event.clientY - Setup.windowSize.headerHeight
         MapMove.move("zoom", num)
         MapMove.slide("zoom")
     }
@@ -491,7 +524,7 @@ let MapMoveByTouch = new class {
         {
             if (event.changedTouches.length === 2) { // タッチの指が2つの場合はzoomモード
                 MapMove.moveCenter.x = this.#positionAverage(event)[0]
-                MapMove.moveCenter.y = this.#positionAverage(event)[1]
+                MapMove.moveCenter.y = this.#positionAverage(event)[1] - Setup.windowSize.headerHeight
                 if (this.#isZoomRotate) {
                     // すでにzoomRotateモードになっている場合
                     // zoom
