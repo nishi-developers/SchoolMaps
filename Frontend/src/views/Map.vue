@@ -267,6 +267,10 @@ let MapMove = new class {
     }
     constructor() {
         this.#slide_reset()
+        this.moveCenter = {
+            x: 0,
+            y: 0
+        }
     }
     #slide_reset(target = "") {
         // 慣性をリセット
@@ -341,7 +345,6 @@ let MapMove = new class {
     }
     move(target, x, y = 0) {
         // マップのあらゆる移動を行う関数
-        // 範囲内かのチェックは、省略 要修正
         // 慣性スクロールに関しては初速の計算のみを行う
         //スマホでは、0が多発するため、0の場合は無視
         if (x === 0 && y === 0) {
@@ -380,7 +383,6 @@ let MapMove = new class {
     }
     reset() {
         this.#slide_reset()
-        // 要修正
         // 表示範囲のサイズ(改)
         if (Setup.windowSize.width / Setup.mapSize.width > Setup.windowSize.height / Setup.mapSize.height) {
             // 縦幅に合わせる
@@ -404,6 +406,8 @@ let MapMoveByMouse = new class {
         if (event.buttons === 1) { // 左クリックが押されている場合のみ
             MapMove.move("position", event.movementX, event.movementY)
         } else if (event.buttons === 4) { // ホイールボタンが押されている場合のみ
+            MapMove.moveCenter.x = window.innerWidth / 2
+            MapMove.moveCenter.y = window.innerHeight / 2
             if (event.movementX > 0) {
                 MapMove.move("rotate", Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
             } else {
@@ -420,6 +424,8 @@ let MapMoveByMouse = new class {
         } else {
             num = -unit
         }
+        MapMove.moveCenter.x = event.clientX
+        MapMove.moveCenter.y = event.clientY
         MapMove.move("zoom", num)
         MapMove.slide("zoom")
     }
@@ -484,6 +490,8 @@ let MapMoveByTouch = new class {
         }
         {
             if (event.changedTouches.length === 2) { // タッチの指が2つの場合はzoomモード
+                MapMove.moveCenter.x = this.#positionAverage(event)[0]
+                MapMove.moveCenter.y = this.#positionAverage(event)[1]
                 if (this.#isZoomRotate) {
                     // すでにzoomRotateモードになっている場合
                     // zoom
