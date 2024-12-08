@@ -213,6 +213,7 @@ const mapStatus = ref({
     },
     zoom: 0,
     rotate: 0,
+    isReset: false
 })
 const oldMapStatus = ref({
     position: {
@@ -221,6 +222,7 @@ const oldMapStatus = ref({
     },
     zoom: 0,
     rotate: 0,
+    isReset: false
 })
 const mapStatusZoomLimit = {
     min: 0.5,
@@ -258,23 +260,27 @@ watch(mapStatus, () => {
     }
     // 中心点の移動
     // zoom
-    if (mapStatus.value.zoom !== oldMapStatus.value.zoom) {
-        // y軸の移動
-        let oldRealHeight = (Math.abs(defaultWidth * Math.sin(radian)) + Math.abs(defaultHeight * Math.cos(radian))) * oldMapStatus.value.zoom
-        let mapTop = mapStatus.value.position.top - realHeight / 2
-        let oldMapTop = oldMapStatus.value.position.top - oldRealHeight / 2
-        let mapTopDiff = mapTop - oldMapTop
-        let mapTopDiffFromCenter = mapTopDiff * (((MapMove.moveCenter.y - oldMapStatus.value.position.top)) / (realHeight / 2))
-        mapStatus.value.position.top += mapTopDiffFromCenter
-        // x軸の移動
-        let oldRealWidth = (Math.abs(defaultWidth * Math.cos(radian)) + Math.abs(defaultHeight * Math.sin(radian))) * oldMapStatus.value.zoom
-        let mapLeft = mapStatus.value.position.left - realWidth / 2
-        let oldMapLeft = oldMapStatus.value.position.left - oldRealWidth / 2
-        let mapLeftDiff = mapLeft - oldMapLeft
-        let mapLeftDiffFromCenter = mapLeftDiff * (((MapMove.moveCenter.x - oldMapStatus.value.position.left)) / (realWidth / 2))
-        mapStatus.value.position.left += mapLeftDiffFromCenter
+    if (!mapStatus.value.isReset) {
+        if (mapStatus.value.zoom !== oldMapStatus.value.zoom) {
+            // y軸の移動
+            let oldRealHeight = (Math.abs(defaultWidth * Math.sin(radian)) + Math.abs(defaultHeight * Math.cos(radian))) * oldMapStatus.value.zoom
+            let mapTop = mapStatus.value.position.top - realHeight / 2
+            let oldMapTop = oldMapStatus.value.position.top - oldRealHeight / 2
+            let mapTopDiff = mapTop - oldMapTop
+            let mapTopDiffFromCenter = mapTopDiff * (((MapMove.moveCenter.y - oldMapStatus.value.position.top)) / (realHeight / 2))
+            mapStatus.value.position.top += mapTopDiffFromCenter
+            // x軸の移動
+            let oldRealWidth = (Math.abs(defaultWidth * Math.cos(radian)) + Math.abs(defaultHeight * Math.sin(radian))) * oldMapStatus.value.zoom
+            let mapLeft = mapStatus.value.position.left - realWidth / 2
+            let oldMapLeft = oldMapStatus.value.position.left - oldRealWidth / 2
+            let mapLeftDiff = mapLeft - oldMapLeft
+            let mapLeftDiffFromCenter = mapLeftDiff * (((MapMove.moveCenter.x - oldMapStatus.value.position.left)) / (realWidth / 2))
+            mapStatus.value.position.left += mapLeftDiffFromCenter
+        }
     }
 
+    // isResetのリセット
+    mapStatus.value.isReset = false
     // oldMapStatusの更新
     oldMapStatus.value = JSON.parse(JSON.stringify(mapStatus.value))
 }, { deep: true })
@@ -425,10 +431,15 @@ let MapMove = new class {
             mapDefaultWidth.value = Setup.windowSize.width
         }
         // リセット
-        mapStatus.value.position.left = Setup.windowSize.width / 2
-        mapStatus.value.position.top = Setup.windowSize.height / 2
-        mapStatus.value.zoom = 1
-        mapStatus.value.rotate = 0
+        mapStatus.value = {
+            position: {
+                left: Setup.windowSize.width / 2,
+                top: Setup.windowSize.height / 2,
+            },
+            zoom: 1,
+            rotate: 0,
+            isReset: true
+        }
     }
 }
 
