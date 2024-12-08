@@ -368,5 +368,6 @@ p {
 
 #desc a {
     cursor: pointer;
+    text-decoration: underline;
 }
 </style>
