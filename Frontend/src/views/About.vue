@@ -51,6 +51,10 @@
     padding: 5px;
     opacity: 0;
 }
+
+a {
+    text-decoration: underline;
+}
 </style>
 <script setup>
 const sysVersion = import.meta.env.VITE_SYS_VERSION;

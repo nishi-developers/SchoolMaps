@@ -1,5 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
 
+/* 配色 */
+:root {
+  /* テーマ */
+  --MainColor: #bee0ff;
+  --SubColor: #82c3ff;
+  /* 背景 */
+  --MainBaseColor: #f3f9ff;
+  --SubBaseColor: #d4ebff;
+  /* テキスト */
+  --MainBodyColor: #3d3d3d;
+  --AccentBodyColor: #9400ff;
+  --URLBodyColor: #8d4ab9;
+  /* マップ */
+  --MapBaseColor: #f3f3f3;
+  --MapEnclosureColor: #cfcfcf;
+  --MapNoneColor: #adadad;
+  --MapObjectColor: var(--SubBaseColor);
+  --MapObjectSelectColor: var(--SubColor);
+  --MapBorderColor: var(--MainBodyColor);
+}
+
+/* ダークモード */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* テーマ */
+    --MainColor: #003365;
+    --SubColor: #0057ad;
+    /* 背景 */
+    --MainBaseColor: #333333;
+    --SubBaseColor: #030c2c;
+    /* テキスト */
+    --MainBodyColor: #f3f3f3;
+    --AccentBodyColor: #9400ff;
+    --URLBodyColor: #8d4ab9;
+    /* マップ */
+    /* マップ */
+    --MapBaseColor: #1d1d1d;
+    --MapEnclosureColor: #3f3f3f;
+    --MapNoneColor: #797979;
+    --MapObjectColor: var(--SubBaseColor);
+    --MapObjectSelectColor: var(--SubColor);
+    --MapBorderColor: var(--MainBodyColor);
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -16,47 +61,8 @@
   --HeaderHeight: 80px; /* Map.vueのJSからも参照されているので注意 */
 }
 
-/* 配色 */
 :root {
-  /* テーマ */
-  --MainColor: #bee0ff;
-  --SubColor: #82c3ff;
-  /* 背景 */
-  --MainBaseColor: #f3f9ff;
-  --SubBaseColor: #d4ebff;
-  /* テキスト */
-  --MainBodyColor: #3d3d3d;
-  --AccentBodyColor: #9400ff;
-  --URLBodyColor: #935cb8;
-  /* マップ */
-  --MapBaseColor: #f3f3f3;
-  --MapEnclosureColor: #cfcfcf;
-  --MapNoneColor: #adadad;
-  --MapObjectColor: var(--SubBaseColor);
-  --MapObjectSelectColor: var(--SubColor);
-  --MapBorderColor: #242424;
   background-color: var(--MainBaseColor);
-}
-/* ダークモード */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* テーマ */
-    --MainColor: #003365;
-    --SubColor: #0057ad;
-    /* 背景 */
-    --MainBaseColor: #333333;
-    --SubBaseColor: #202020;
-    /* テキスト */
-    --MainBodyColor: #f3f3f3;
-    --AccentBodyColor: #9400ff;
-    --URLBodyColor: #935cb8;
-    /* マップ */
-    --MapBaseColor: #050505;
-    --MapNoneColor: #424242;
-    --MapObjectColor: var(--SubBaseColor);
-    --MapObjectSelectColor: var(--SubColor);
-    --MapBorderColor: #d6d6d6;
-  }
 }
 
 /* 共通 */
