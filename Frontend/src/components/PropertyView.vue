@@ -10,17 +10,18 @@
             @touchcancel="PropertyCtrl.wrapEvent('touchcancel', $event)">
         </div>
         <p id="name">{{ PlaceInfo[props.PlaceId].name }}
-            <font-awesome-icon v-if="!isCopy" id="linkCopy" @click="copyLink()" :icon="['fas', 'link']" />
-            <font-awesome-icon v-else id="linkCopy" @click="copyLink()" :icon="['fas', 'check']" />
-            <span v-if="isCopy" id="linkCopied">リンクをコピーしました</span>
+            <span @click="shareLink()" id="linkShare">
+                <font-awesome-icon :icon="['fas', 'share-from-square']" />共有
+            </span>
         </p>
         <p>
             <span v-if="FloorInfo[props.Floor].fullName != null">
                 <font-awesome-icon :icon="['fas', 'location-dot']" /> {{ FloorInfo[props.Floor].fullName }}
             </span>
         </p>
-        <p v-html="PlaceInfo[props.PlaceId].desc"> </p>
-        <div id="imageObjects" v-if="PlaceInfo[props.PlaceId].images != null">
+        <p v-html="description" id="desc"></p>
+        <div :id="`imageObjects-${props.PlaceId}`" class="imageObjects"
+            v-if="PlaceInfo[props.PlaceId].images != (null || '')">
         </div>
     </div>
 
@@ -32,7 +33,7 @@ import FloorInfo from '@/assets/FloorInfo.json'
 
 // 入出力
 const props = defineProps(["Floor", "PlaceId", "deviceMode"])
-const emit = defineEmits(["hideProperty"])
+const emit = defineEmits(["hideProperty", "jump"])
 const BASE_URL = import.meta.env.BASE_URL
 // ウィンドウサイズ
 const windowWidth = window.innerWidth
@@ -161,20 +162,66 @@ let PropertyCtrl = new class {
 
 }
 
-// リンクコピー
-const isCopy = ref(false)
-function copyLink() {
-    const url = `${location.protocol}//${location.host}${BASE_URL}${props.Floor}/${props.PlaceId}`
-    if (!navigator.clipboard) {
-        alert("リンクのコピーに対応していません");
-        return;
+// リンク共有
+function shareLink() {
+    try {
+        navigator.share({ title: `西高マップ @${PlaceInfo[props.PlaceId].name}`, url: location.href })
+    } catch (e) {
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(location.href)
+            alert("リンクをコピーしました")
+        } else {
+            alert("リンクのコピー及び共有に対応していません")
+        }
     }
-    navigator.clipboard.writeText(url)
-    isCopy.value = true
-    setTimeout(() => {
-        isCopy.value = false
-    }, 2000)
 }
+
+// Description
+
+// jump
+// [校庭](grand)というように囲まれた部分をリンクとして扱う
+// bold
+// **bold**というように囲まれた部分を太字として扱う
+// new line
+// /nという文字列を改行として扱う
+
+const description = ref("")
+let descArray = PlaceInfo[props.PlaceId].desc.split(/(\[.+?\]\(.+?\)|\/n|\*\*.+?\*\*)/);
+let jumpLinks = []; // リンクのイベントを登録するための配列
+descArray = descArray.map((item) => {
+    if (item.match(/(\*\*.+?\*\*)/)) {
+        return `<b>${item.slice(2, -2)}</b>`;
+    } else if (item.match(/\/n/)) {
+        return "<br>";
+    } else if (item.match(/\[.+?\]\(.+?\)/)) {
+        // jump機能
+        let textMatch = item.match(/\[.+?\]/);
+        let placeidMatch = item.match(/\(.+?\)/);
+        if (textMatch && placeidMatch) {
+            let text = textMatch[0].slice(1, -1);
+            let placeid = placeidMatch[0].slice(1, -1);
+            // 紐づけに、配列の順番などではなくuuidを用いるのは、同じjumpがjump先にもある場合に、(DOMの更新のラグ?のせいか)aタグのidが重複してバグるのを防ぐため
+            let uuid = Math.random().toString(32).substring(2); // 簡易的にユニークなIDを生成
+            jumpLinks.push({
+                id: uuid,
+                placeid: placeid
+            });
+            return `<a disabled="disabled" id='jumplink-${uuid}'>${text}</a>`;
+        } else {
+            return item;
+        }
+    }
+    return item;
+});
+description.value = descArray.join("");
+onMounted(() => {
+    // リンクのクリックイベントを登録
+    for (let i = 0; i < jumpLinks.length; i++) {
+        document.getElementById(`jumplink-${jumpLinks[i].id}`).addEventListener("click", () => {
+            emit("jump", PlaceInfo[jumpLinks[i].placeid].floor, jumpLinks[i].placeid)
+        });
+    }
+});
 
 // 画像
 const imageIsReady = ref({
@@ -205,12 +252,12 @@ let ImageCtrl = new class {
         for (let i = 0; i < this.#imageObjects.length; i++) {
             this.#imageObjects[i].style.minWidth = `${this.#imagesWidth[i]}px`
             this.#imageObjects[i].classList.add("image")
-            document.getElementById("imageObjects").appendChild(this.#imageObjects[i])
+            // `imageObjects-${props.PlaceId}`にしているのは、新しいPropertyViewではなく、閉じかけのPropertyViewの方に画像が表示されるのを防ぐため
+            document.getElementById(`imageObjects-${props.PlaceId}`).appendChild(this.#imageObjects[i])
         }
     }
 }
 onMounted(() => {
-    // DOMがマウントされたら
     imageIsReady.value.dom_onmount = true
 })
 watch(imageIsReady, (newVal) => {
@@ -287,18 +334,18 @@ p {
     margin-bottom: 10px;
 }
 
-#linkCopy {
+#linkShare {
     cursor: pointer;
     margin-left: 10px;
+    font-size: 1rem;
+}
+
+#desc {
+    margin-top: 20px;
     font-size: 1.2rem;
 }
 
-#linkCopied {
-    font-size: 0.8rem;
-    margin-left: 5px;
-}
-
-#imageObjects {
+.imageObjects {
     display: flex;
     overflow: scroll;
     height: v-bind(imageHeight + "px");
@@ -306,11 +353,20 @@ p {
 }
 </style>
 <style>
-#imageObjects img {
+.imageObjects img {
     height: 100%;
     border-radius: 20px;
     margin: 0 10px;
     border: 2px solid var(--SubColor);
     box-sizing: border-box;
+}
+
+#desc b {
+    font-weight: 1000;
+}
+
+#desc a {
+    cursor: pointer;
+    text-decoration: underline;
 }
 </style>

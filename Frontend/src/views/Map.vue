@@ -11,6 +11,7 @@ const currentPlaceId = ref("")
 const currentFloor = ref()
 const mapDefaultWidth = ref(0)
 const deviceMode = ref("")
+const labelOpacity = ref(1)
 
 // hook
 onMounted(() => {
@@ -48,6 +49,12 @@ let Setup = new class {
                 element.classList.add("place")
                 // "-"以下はid重複防止用なので削除
                 element.setAttribute("placeid", element.id.split("-")[0])
+                // ラベルをSVGに追加
+                let pathElement = element.getBBox();
+                let centerX = pathElement.x + pathElement.width / 2;
+                let centerY = pathElement.y + pathElement.height / 2;
+                // mapSvg.insertAdjacentHTML('beforeend', `<circle cx="${centerX}" cy="${centerY}" r="5" fill="red" />`);
+                mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" class="label added">${PlaceInfo[element.id].name}<text/>`);
             }
         })
         Setup.resolveMapPlaceClass() //thisは使えない
@@ -68,7 +75,7 @@ let Setup = new class {
         else {
             history.pushState(history.state, '', `${import.meta.env.BASE_URL}${floor}`);
         }
-        this.resolveUrl()
+        Setup.resolveUrl() // PropertyViewからの呼び出しのため、thisを使わない
     }
     resolveUrl() {
         // onMount以降に実行しなければならない
@@ -94,9 +101,9 @@ let Setup = new class {
         if (floor != currentFloor.value) {
             if ((floor != "") && !isNaN(floor)
                 && Number(floor) >= 0 && Number(floor) <= FloorInfo.length - 1) {
-                this.changeFloor(Number(floor))
+                this.#changeFloor(Number(floor))
             } else {
-                this.changeFloor(0)
+                this.#changeFloor(0)
             }
         }
         // プロパティの表示
@@ -110,7 +117,7 @@ let Setup = new class {
             Property.hide()
         }
     }
-    changeFloor(floor) {
+    #changeFloor(floor) {
         currentFloor.value = floor
         Property.hide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
         this.mapDataCurrent = defineAsyncComponent(() => import(`@/assets/floors/${floor}.vue`))
@@ -121,6 +128,9 @@ let Setup = new class {
         },
         get height() {
             return window.innerHeight - Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))// CSSのヘッダー分を引く（CSS変数と同期）
+        },
+        get headerHeight() {
+            return Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))
         }
     }
     mapSize = {
@@ -203,12 +213,22 @@ const mapStatus = ref({
     },
     zoom: 0,
     rotate: 0,
+    isReset: false
+})
+const oldMapStatus = ref({
+    position: {
+        left: 0,
+        top: 0,
+    },
+    zoom: 0,
+    rotate: 0,
+    isReset: false
 })
 const mapStatusZoomLimit = {
     min: 0.5,
     max: 10,
 }
-watch(() => mapStatus.value, () => {
+watch(mapStatus, () => {
     // 範囲制限
     // position
     let radian = mapStatus.value.rotate * Math.PI / 180
@@ -238,6 +258,31 @@ watch(() => mapStatus.value, () => {
     } else if (mapStatus.value.rotate > 180) {
         mapStatus.value.rotate -= 360
     }
+    // 中心点の移動
+    // zoom
+    if (!mapStatus.value.isReset) {
+        if (mapStatus.value.zoom !== oldMapStatus.value.zoom) {
+            // y軸の移動
+            let oldRealHeight = (Math.abs(defaultWidth * Math.sin(radian)) + Math.abs(defaultHeight * Math.cos(radian))) * oldMapStatus.value.zoom
+            let mapTop = mapStatus.value.position.top - realHeight / 2
+            let oldMapTop = oldMapStatus.value.position.top - oldRealHeight / 2
+            let mapTopDiff = mapTop - oldMapTop
+            let mapTopDiffFromCenter = mapTopDiff * (((MapMove.moveCenter.y - oldMapStatus.value.position.top)) / (realHeight / 2))
+            mapStatus.value.position.top += mapTopDiffFromCenter
+            // x軸の移動
+            let oldRealWidth = (Math.abs(defaultWidth * Math.cos(radian)) + Math.abs(defaultHeight * Math.sin(radian))) * oldMapStatus.value.zoom
+            let mapLeft = mapStatus.value.position.left - realWidth / 2
+            let oldMapLeft = oldMapStatus.value.position.left - oldRealWidth / 2
+            let mapLeftDiff = mapLeft - oldMapLeft
+            let mapLeftDiffFromCenter = mapLeftDiff * (((MapMove.moveCenter.x - oldMapStatus.value.position.left)) / (realWidth / 2))
+            mapStatus.value.position.left += mapLeftDiffFromCenter
+        }
+    }
+
+    // isResetのリセット
+    mapStatus.value.isReset = false
+    // oldMapStatusの更新
+    oldMapStatus.value = JSON.parse(JSON.stringify(mapStatus.value))
 }, { deep: true })
 let MapMove = new class {
     #slideData = {
@@ -260,6 +305,11 @@ let MapMove = new class {
     }
     constructor() {
         this.#slide_reset()
+        // 回転やズームの中心点
+        this.moveCenter = {
+            x: 0,
+            y: 0
+        }
     }
     #slide_reset(target = "") {
         // 慣性をリセット
@@ -334,7 +384,6 @@ let MapMove = new class {
     }
     move(target, x, y = 0) {
         // マップのあらゆる移動を行う関数
-        // 範囲内かのチェックは、省略 要修正
         // 慣性スクロールに関しては初速の計算のみを行う
         //スマホでは、0が多発するため、0の場合は無視
         if (x === 0 && y === 0) {
@@ -373,7 +422,6 @@ let MapMove = new class {
     }
     reset() {
         this.#slide_reset()
-        // 要修正
         // 表示範囲のサイズ(改)
         if (Setup.windowSize.width / Setup.mapSize.width > Setup.windowSize.height / Setup.mapSize.height) {
             // 縦幅に合わせる
@@ -383,10 +431,15 @@ let MapMove = new class {
             mapDefaultWidth.value = Setup.windowSize.width
         }
         // リセット
-        mapStatus.value.position.left = Setup.windowSize.width / 2
-        mapStatus.value.position.top = Setup.windowSize.height / 2
-        mapStatus.value.zoom = 1
-        mapStatus.value.rotate = 0
+        mapStatus.value = {
+            position: {
+                left: Setup.windowSize.width / 2,
+                top: Setup.windowSize.height / 2,
+            },
+            zoom: 1,
+            rotate: 0,
+            isReset: true
+        }
     }
 }
 
@@ -397,6 +450,8 @@ let MapMoveByMouse = new class {
         if (event.buttons === 1) { // 左クリックが押されている場合のみ
             MapMove.move("position", event.movementX, event.movementY)
         } else if (event.buttons === 4) { // ホイールボタンが押されている場合のみ
+            MapMove.moveCenter.x = window.innerWidth / 2
+            MapMove.moveCenter.y = window.innerHeight / 2
             if (event.movementX > 0) {
                 MapMove.move("rotate", Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5)
             } else {
@@ -413,6 +468,8 @@ let MapMoveByMouse = new class {
         } else {
             num = -unit
         }
+        MapMove.moveCenter.x = event.clientX
+        MapMove.moveCenter.y = event.clientY - Setup.windowSize.headerHeight
         MapMove.move("zoom", num)
         MapMove.slide("zoom")
     }
@@ -477,6 +534,8 @@ let MapMoveByTouch = new class {
         }
         {
             if (event.changedTouches.length === 2) { // タッチの指が2つの場合はzoomモード
+                MapMove.moveCenter.x = this.#positionAverage(event)[0]
+                MapMove.moveCenter.y = this.#positionAverage(event)[1] - Setup.windowSize.headerHeight
                 if (this.#isZoomRotate) {
                     // すでにzoomRotateモードになっている場合
                     // zoom
@@ -609,13 +668,23 @@ let Control = new class {
 
 /* テキスト */
 #map_content svg .label {
-    transform-origin: center center;
     transform-box: fill-box;
-    transform: rotate(v-bind("- mapStatus.rotate + 'deg'"));
-    font-size: 1rem;
+    transform-origin: 0 80%;
+    transform: rotate(v-bind("- mapStatus.rotate + 'deg'")) translate(-50%, +25%);
     fill: var(--MainBodyColor);
     stroke-width: 0;
     pointer-events: none;
+    font-size: 2rem;
+    opacity: v-bind("labelOpacity");
+}
+
+/* webkitのみ */
+/* webkitでは"transform-box"が適用されず、文字の逆回転が正常にできない */
+/* そのため、ラベルの回転防止(=文字の逆回転)は無効化する */
+_::-webkit-full-page-media,
+_:future,
+#map_content svg .label {
+    transform: translate(-50%, +25%);
 }
 </style>
 <style scoped>
@@ -645,7 +714,6 @@ let Control = new class {
     left: v-bind("mapStatus.position.left + 'px'");
     top: v-bind("mapStatus.position.top + 'px'");
     transform: translate(-50%, -50%) rotate(v-bind("mapStatus.rotate + 'deg'"));
-
 }
 
 #box:active {
@@ -663,26 +731,32 @@ let Control = new class {
 
 #floorMenu ul {
     list-style: none;
+    width: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 #floorMenu ul li {
     padding: 5px;
     text-align: center;
     color: var(--MainBodyColor);
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-#floorMenu ul .func {
+#floorMenu ul li.func {
     font-size: 2rem;
 }
 
-#floorMenu ul .floor {
+#floorMenu ul li.floor {
     border: 1px solid var(--MainBodyColor);
     border-radius: 20%;
     font-size: 1.5rem;
     margin: 2px 0 2px 0;
 }
-
-
 
 #floorMenu ul .selected {
     background-color: var(--SubColor);
@@ -733,13 +807,19 @@ let Control = new class {
 <template>
     <Transition :name="`property-${deviceMode}`">
         <PropertyView v-if="isShowProperty" :Floor="currentFloor" :PlaceId="currentPlaceId" :deviceMode="deviceMode"
-            @hideProperty="Setup.changeURL(currentFloor, null)" />
+            :key="currentFloor + '-' + currentPlaceId" @hideProperty="Setup.changeURL(currentFloor, null)"
+            @jump="Setup.changeURL" />
     </Transition>
     <div id="floorMenu">
         <ul>
             <li class="func"><font-awesome-icon @click="router.push('/search')" :icon="['fas', 'magnifying-glass']" />
             </li>
             <li class="func"><font-awesome-icon @click="Control.resetMove()" :icon="['fas', 'expand']" />
+            </li>
+            <li class="func" v-if="labelOpacity == 0"><font-awesome-icon @click="labelOpacity = 1"
+                    :icon="['fas', 'heading']" />
+            </li>
+            <li class="func" v-else><font-awesome-icon @click="labelOpacity = 0" :icon="['fas', 'text-slash']" />
             </li>
             <li class="floor" v-for="floor in Setup.placeInfoReverse" :key="floor.__key__"
                 @click="Setup.changeURL(floor.__key__, null)"
