@@ -40,6 +40,10 @@ export default ({ mode }) => {
               sizes: '256x256'
             },
             {
+              src: 'img/icons/icon.svg',
+              sizes: '1182x1182'
+            },
+            {
               src: 'img/icons/android-chrome-192x192.png',
               sizes: '192x192',
               type: 'image/png'
@@ -103,10 +107,6 @@ export default ({ mode }) => {
               src: 'img/icons/mstile-150x150.png',
               sizes: '150x150',
               type: 'image/png'
-            },
-            {
-              src: 'img/icons/safari-pinned-tab.svg',
-              sizes: '11x16'
             }
           ],
           name: '西高Map',
