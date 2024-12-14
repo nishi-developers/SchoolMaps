@@ -109,8 +109,8 @@ export default ({ mode }) => {
               type: 'image/png'
             }
           ],
-          name: '西高Map',
-          short_name: '西高Map',
+          name: '西高マップ',
+          short_name: '西高マップ',
           shortcuts: [
             {
               name: '使い方',
