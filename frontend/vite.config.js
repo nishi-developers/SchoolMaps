@@ -113,6 +113,10 @@ export default ({ mode }) => {
           short_name: '西高マップ',
           shortcuts: [
             {
+              name: 'マップ',
+              url: '/'
+            },
+            {
               name: '使い方',
               url: '/guide'
             },
