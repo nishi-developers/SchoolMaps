@@ -26,11 +26,13 @@
             Googleアナリティクスに関しては、<a href="https://marketingplatform.google.com/about/analytics/terms/jp/" target="_blank"
                 rel="noopener noreferrer">「Googleアナリティクス利用規約」</a>もご確認ください。
         </p>
-        <br id="version-spacer">
+        <div id="version-spacer"></div>
     </div>
     <p id="version">
-        SystemVersion: {{ sysVersion }}<br>
-        MapVersion: {{ mapVersion }}
+        <span>SystemVersion</span>
+        <span>{{ sysVersion }}</span>
+        <span>MapsVersion</span>
+        <span>{{ mapsVersion }}</span>
     </p>
 </template>
 <style scoped>
@@ -42,14 +44,16 @@
     color: var(--AccentBodyColor);
     background-color: var(--SubBaseColor);
     padding: 5px;
-    text-align: right;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-columns: auto auto;
+    gap: 5px;
 }
 
 #version-spacer {
     bottom: 0;
-    font-size: 2rem;
-    padding: 5px;
     opacity: 0;
+    height: 60px;
 }
 
 a {
@@ -58,5 +62,5 @@ a {
 </style>
 <script setup>
 const sysVersion = import.meta.env.VITE_SYS_VERSION;
-const mapVersion = import.meta.env.VITE_MAP_VERSION;
+const mapsVersion = import.meta.env.VITE_MAP_VERSION;
 </script>
