@@ -278,7 +278,7 @@
         "floor": 0,
         "name": "西高会館ゲート",
         "words": "",
-        "desc": "普段は閉門されている。",
+        "desc": "",
         "images": [
             "gate_nishi_hall_0-7BfkEqJ3.webp",
             "gate_nishi_hall_0-aCc5V363.webp"
@@ -288,7 +288,7 @@
         "floor": 0,
         "name": "西高会館ゲート",
         "words": "",
-        "desc": "普段は閉門されている。",
+        "desc": "",
         "images": [
             "gate_nishi_hall_1-7mVe6x20.webp"
         ]
