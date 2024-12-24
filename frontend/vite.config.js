@@ -32,7 +32,7 @@ export default ({ mode }) => {
           // https://developer.mozilla.org/en-US/docs/Web/Manifest
           background_color: '#f3f9ff',
           categories: ['education', 'navigation', 'utilities'],
-          description: '東京都立西高等学校の非公式マップ',
+          description: '東京都立西高等学校の校内マップです',
           display: 'standalone',
           icons: [
             {
@@ -117,20 +117,32 @@ export default ({ mode }) => {
               url: '/'
             },
             {
+              name: '検索',
+              url: '/search'
+            },
+            {
               name: '使い方',
               url: '/guide'
             },
             {
               name: 'このサイトについて',
               url: '/about'
-            },
-            {
-              name: '検索',
-              url: '/search'
             }
           ],
           start_url: './index.html',
-          theme_color: '#bee0ff'
+          theme_color: '#bee0ff',
+          screenshots: [
+            {
+              src: 'img/seo/screenshot-map.jpg',
+              sizes: '630x1200',
+              type: 'image/png'
+            },
+            {
+              src: 'img/seo/screenshot-search.jpg',
+              sizes: '630x1200',
+              type: 'image/png'
+            }
+          ]
         },
         workbox: {
           globPatterns: ['**/*.{js,css,html,ico,txt,png,svg,json}'],

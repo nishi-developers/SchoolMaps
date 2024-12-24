@@ -14,25 +14,25 @@ const router = createRouter({
       path: '/guide',
       name: 'guide',
       component: () => import('@/views/Guide.vue'),
-      meta: { title: '使い方 |西高マップ' }
+      meta: { title: '使い方 | 西高マップ' }
     },
     {
       path: '/about',
       name: 'about',
       component: () => import('@/views/About.vue'),
-      meta: { title: 'このサイトについて |西高マップ' }
+      meta: { title: 'このサイトについて | 西高マップ' }
     },
     {
       path: '/search/:searchWord?',
       name: 'search',
       component: () => import('@/views/Search.vue'),
-      meta: { title: '検索 |西高マップ' }
+      meta: { title: '検索 | 西高マップ' }
     },
     {
       path: '/:pathMatch(.*)*',
       name: '404',
       component: () => import('@/views/404.vue'),
-      meta: { title: '404 |西高マップ' }
+      meta: { title: '404 | 西高マップ' }
     }
   ]
 })
