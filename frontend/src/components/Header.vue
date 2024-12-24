@@ -51,6 +51,7 @@ function toTop() {
     font-size: 1.5rem;
     color: var(--MainBodyColor);
     vertical-align: middle;
+    /* margin-left: 300px; */
 }
 
 #title #version {
@@ -66,6 +67,7 @@ function toTop() {
     right: 0%;
     transform: translate(0%, -50%);
     color: var(--MainBodyColor);
+    /* margin-right: 300px; */
 }
 
 #menu a {

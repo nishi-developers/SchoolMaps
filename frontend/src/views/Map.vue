@@ -337,6 +337,27 @@ let MapMove = new class {
     slide(target) {
         // 慣性スクロール
         // この関数を外部から呼び出すと、慣性スクロールが開始する
+        // infinityの場合は、慣性スクロールを行わない
+        switch (target) {
+            case "position":
+                if (this.#slideData.position.speedX === Infinity || this.#slideData.position.speedY === Infinity) {
+                    this.#slide_reset("position")
+                    return
+                }
+                break;
+            case "zoom":
+                if (this.#slideData.zoom.speed === Infinity) {
+                    this.#slide_reset("zoom")
+                    return
+                }
+                break;
+            case "rotate":
+                if (this.#slideData.rotate.speed === Infinity) {
+                    this.#slide_reset("rotate")
+                    return
+                }
+                break;
+        }
         if (this.#slideData[target].isDo) {
             // 重複実行防止
             return
