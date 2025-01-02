@@ -10,6 +10,7 @@
   --SubBaseColor: #d4ebff;
   /* テキスト */
   --MainBodyColor: #3d3d3d;
+  --SubBodyColor: #111111;
   --AccentBodyColor: #9400ff;
   --URLBodyColor: #8d4ab9;
   /* マップ */
@@ -32,6 +33,7 @@
     --SubBaseColor: #030c2c;
     /* テキスト */
     --MainBodyColor: #f3f3f3;
+    --SubBodyColor: #fafafa;
     --AccentBodyColor: #9400ff;
     --URLBodyColor: #8d4ab9;
     /* マップ */
