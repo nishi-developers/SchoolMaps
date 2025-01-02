@@ -1,6 +1,7 @@
 <script setup>
 import { RouterView, useRoute } from 'vue-router'
 import Header from './components/Header.vue'
+import BottomNotify from './components/BottomNotify.vue';
 const route = useRoute()
 
 // デフォルトのピンチアウトを無効化
@@ -21,6 +22,7 @@ document.body.addEventListener('touchmove', (event) => {
       <RouterView />
     </div>
   </Transition>
+  <BottomNotify />
 </template>
 
 <style scoped>
