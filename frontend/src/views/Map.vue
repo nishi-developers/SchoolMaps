@@ -70,10 +70,10 @@ let Setup = new class {
     changeURL(floor, id) {
         // URLの変更
         if (id != null) {
-            history.pushState(history.state, '', `${import.meta.env.BASE_URL}${floor}/${id}`);
+            history.pushState(null, '', `${import.meta.env.BASE_URL}${floor}/${id}`);
         }
         else {
-            history.pushState(history.state, '', `${import.meta.env.BASE_URL}${floor}`);
+            history.pushState(null, '', `${import.meta.env.BASE_URL}${floor}`);
         }
         Setup.resolveUrl() // PropertyViewからの呼び出しのため、thisを使わない
     }
