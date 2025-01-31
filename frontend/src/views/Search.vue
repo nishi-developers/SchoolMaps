@@ -46,24 +46,26 @@ for (let key of Object.keys(PlaceInfo)) {
 // URLから検索ワードを取得
 window.addEventListener('popstate', () => {
     // ブラウザバック時にURLから検索ワードを取得
-    searchWord.value = decordUrl()
+    searchWord.value = decodeUrl()
 });
-function decordUrl() {
+function decodeUrl() {
     // URLの切り出しとデコードまで行う
     return decodeURIComponent(location.pathname.slice(8))
 }
-function encordUrl(word) {
+function encodeUrl(word) {
     // URLをエンコードして、変更まで行う
-    word = encodeURIComponent(word)
-    history.pushState(history.state, '', `${import.meta.env.BASE_URL}search/${word}`);
+    var word_encoded = encodeURIComponent(word)
+    history.pushState(null, '', `${import.meta.env.BASE_URL}search/${word_encoded}`);
 }
 
 // 検索機能
-const searchWord = ref(decordUrl())
+const searchWord = ref(decodeUrl())
 const searchResultsId = ref(new Set(Object.keys(PlaceInfoWords))) // ここでURLからの場合は検索結果を変更する
 watch(searchWord, () => {
     // URLを変更
-    encordUrl(searchWord.value)
+    if (searchWord.value != decodeUrl()) {
+        encodeUrl(searchWord.value)
+    }
     // 検索
     if (searchWord.value == '') {
         searchResultsId.value = new Set(Object.keys(PlaceInfoWords))
