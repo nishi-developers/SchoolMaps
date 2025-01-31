@@ -31,6 +31,7 @@ import PlaceInfo from '@/assets/PlaceInfo.json'
 import FloorInfo from '@/assets/FloorInfo.json'
 import { ref, watch } from 'vue'
 import router from '@/router';
+import { onBeforeRouteLeave } from 'vue-router';
 
 //idとwordsを紐付けた連想配列を作成
 // 小文字で検索するために全て小文字に変換
@@ -44,26 +45,35 @@ for (let key of Object.keys(PlaceInfo)) {
 // URLからの場合も、searchWordを変更することで検索が行われる
 
 // URLから検索ワードを取得
-window.addEventListener('popstate', () => {
+const popstateEvent = () => {
     // ブラウザバック時にURLから検索ワードを取得
-    searchWord.value = decordUrl()
-});
-function decordUrl() {
-    // URLの切り出しとデコードまで行う
-    return decodeURIComponent(location.pathname.slice(18))
+    searchWord.value = decodeUrl()
 }
-function encordUrl(word) {
+window.addEventListener('popstate', popstateEvent);
+onBeforeRouteLeave((to, from, next) => {
+    // 解除をしないと、他のページで誤作動する
+    window.removeEventListener('popstate', popstateEvent);
+    next()
+})
+function decodeUrl() {
+    // URLの切り出しとデコードまで行う
+    return decodeURIComponent(location.pathname.slice(8))
+}
+function encodeUrl(word) {
     // URLをエンコードして、変更まで行う
-    word = encodeURIComponent(word)
-    history.pushState(history.state, '', `${import.meta.env.BASE_URL}search/${word}`);
+    var word_encoded = encodeURIComponent(word)
+    // history.stateは必須(VueRouterの仕様)
+    history.pushState(history.state, '', `${import.meta.env.BASE_URL}search/${word_encoded}`);
 }
 
 // 検索機能
-const searchWord = ref(decordUrl())
+const searchWord = ref(decodeUrl())
 const searchResultsId = ref(new Set(Object.keys(PlaceInfoWords))) // ここでURLからの場合は検索結果を変更する
 watch(searchWord, () => {
     // URLを変更
-    encordUrl(searchWord.value)
+    if (searchWord.value != decodeUrl()) {
+        encodeUrl(searchWord.value)
+    }
     // 検索
     if (searchWord.value == '') {
         searchResultsId.value = new Set(Object.keys(PlaceInfoWords))
