@@ -50,7 +50,7 @@ window.addEventListener('popstate', () => {
 });
 function decordUrl() {
     // URLの切り出しとデコードまで行う
-    return decodeURIComponent(location.pathname.slice(18))
+    return decodeURIComponent(location.pathname.slice(8))
 }
 function encordUrl(word) {
     // URLをエンコードして、変更まで行う
