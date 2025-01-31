@@ -5,6 +5,7 @@ import PlaceInfo from '@/assets/PlaceInfo.json'
 import FloorInfo from '@/assets/FloorInfo.json'
 import { event } from 'vue-gtag'
 import router from '@/router';
+import { onBeforeRouteLeave } from 'vue-router';
 
 // ref
 const currentPlaceId = ref("")
@@ -18,9 +19,15 @@ onMounted(() => {
     Setup.resolveUrl()
     Control.resetMove() // 処理内容的にURL解決が先
 })
-window.addEventListener('popstate', () => {
+const popstateEvent = () => {
     Setup.resolveUrl()
-});
+}
+window.addEventListener('popstate', popstateEvent);
+onBeforeRouteLeave((to, from, next) => {
+    // 解除をしないと、他のページで誤作動する
+    window.removeEventListener('popstate', popstateEvent);
+    next()
+})
 watch(currentPlaceId, () => {
     Setup.resolveMapPlaceClass()
 })
@@ -69,11 +76,12 @@ let Setup = new class {
     }
     changeURL(floor, id) {
         // URLの変更
+        // history.stateは必須(VueRouterの仕様)
         if (id != null) {
-            history.pushState(null, '', `${import.meta.env.BASE_URL}${floor}/${id}`);
+            history.pushState(history.state, '', `${import.meta.env.BASE_URL}${floor}/${id}`);
         }
         else {
-            history.pushState(null, '', `${import.meta.env.BASE_URL}${floor}`);
+            history.pushState(history.state, '', `${import.meta.env.BASE_URL}${floor}`);
         }
         Setup.resolveUrl() // PropertyViewからの呼び出しのため、thisを使わない
     }

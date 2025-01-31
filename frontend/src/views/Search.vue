@@ -31,6 +31,7 @@ import PlaceInfo from '@/assets/PlaceInfo.json'
 import FloorInfo from '@/assets/FloorInfo.json'
 import { ref, watch } from 'vue'
 import router from '@/router';
+import { onBeforeRouteLeave } from 'vue-router';
 
 //idとwordsを紐付けた連想配列を作成
 // 小文字で検索するために全て小文字に変換
@@ -44,10 +45,16 @@ for (let key of Object.keys(PlaceInfo)) {
 // URLからの場合も、searchWordを変更することで検索が行われる
 
 // URLから検索ワードを取得
-window.addEventListener('popstate', () => {
+const popstateEvent = () => {
     // ブラウザバック時にURLから検索ワードを取得
     searchWord.value = decodeUrl()
-});
+}
+window.addEventListener('popstate', popstateEvent);
+onBeforeRouteLeave((to, from, next) => {
+    // 解除をしないと、他のページで誤作動する
+    window.removeEventListener('popstate', popstateEvent);
+    next()
+})
 function decodeUrl() {
     // URLの切り出しとデコードまで行う
     return decodeURIComponent(location.pathname.slice(8))
@@ -55,7 +62,8 @@ function decodeUrl() {
 function encodeUrl(word) {
     // URLをエンコードして、変更まで行う
     var word_encoded = encodeURIComponent(word)
-    history.pushState(null, '', `${import.meta.env.BASE_URL}search/${word_encoded}`);
+    // history.stateは必須(VueRouterの仕様)
+    history.pushState(history.state, '', `${import.meta.env.BASE_URL}search/${word_encoded}`);
 }
 
 // 検索機能
