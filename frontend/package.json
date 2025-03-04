@@ -17,19 +17,19 @@
     "@fortawesome/vue-fontawesome": "^3.0.6",
     "js-cookie": "^3.0.5",
     "register-service-worker": "^1.7.2",
-    "vite-plugin-pwa": "^0.20.5",
+    "vite-plugin-pwa": "^0.21.1",
     "vue": "^3.4.21",
     "vue-gtag": "^2.0.1",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
-    "@vitejs/plugin-vue": "^5.0.4",
+    "@vitejs/plugin-vue": "^5.2.1",
     "@vue/eslint-config-prettier": "^9.0.0",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
     "prettier": "^3.2.5",
-    "vite": "^5.4.14"
+    "vite": "^6.2.0"
   },
   "type": "module"
 }
