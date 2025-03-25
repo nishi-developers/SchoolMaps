@@ -35,9 +35,15 @@ import { onBeforeRouteLeave } from 'vue-router';
 
 //idとwordsを紐付けた連想配列を作成
 // 小文字で検索するために全て小文字に変換
-let PlaceInfoWords = {}
+let PlaceInfoWords = [{}, {}, {}, {}, {}, {}]
 for (let key of Object.keys(PlaceInfo)) {
-    PlaceInfoWords[key] = (PlaceInfo[key].words + " " + key + " " + PlaceInfo[key].name).toLowerCase()
+    // PlaceInfoWords[key] = normalize(PlaceInfo[key].words + " " + key + " " + PlaceInfo[key].name)
+    PlaceInfoWords[0][key] = normalize(PlaceInfo[key].name)
+    PlaceInfoWords[1][key] = normalize(PlaceInfo[key].words)
+    PlaceInfoWords[2][key] = normalize(key)
+    PlaceInfoWords[3][key] = normalize(PlaceInfo[key].desc)
+    PlaceInfoWords[4][key] = normalize(FloorInfo[PlaceInfo[key].floor].fullName)
+    PlaceInfoWords[5][key] = normalize(FloorInfo[PlaceInfo[key].floor].shortName)
 }
 
 // 検索機能について
@@ -68,7 +74,7 @@ function encodeUrl(word) {
 
 // 検索機能
 const searchWord = ref(decodeUrl())
-const searchResultsId = ref(new Set(Object.keys(PlaceInfoWords))) // ここでURLからの場合は検索結果を変更する
+const searchResultsId = ref(new Set(Object.keys(PlaceInfo))) // ここでURLからの場合は検索結果を変更する
 watch(searchWord, () => {
     // URLを変更
     if (searchWord.value != decodeUrl()) {
@@ -76,15 +82,20 @@ watch(searchWord, () => {
     }
     // 検索
     if (searchWord.value == '') {
-        searchResultsId.value = new Set(Object.keys(PlaceInfoWords))
+        searchResultsId.value = new Set(Object.keys(PlaceInfo))
     } else {
         searchResultsId.value = new Set()
         // 検索ワードを半角・全角スペースで分割
-        let searchWords = searchWord.value.toLowerCase().split(/( |　)/)
-        searchWords = searchWords.filter((value) => value != ' ' && value != '　' && value != '')
+        let searchWords = normalize(searchWord.value).split(" ")
+        searchWords = searchWords.filter((value) => value != ' ' && value != '')
         // 検索ワードを含むものを検索
-        for (let aSearchWords of searchWords) {
-            Object.keys(PlaceInfoWords).filter((key) => PlaceInfoWords[key].includes(aSearchWords)).forEach((key) => searchResultsId.value.add(key))
+        for (let aPlaceInfoWords of PlaceInfoWords) {
+            // PlaceInfoWordsの各要素に対して検索を行う
+            for (let aSearchWords of searchWords) {
+                // 検索ワードごとに検索を行い、検索結果を追加
+                Object.keys(aPlaceInfoWords).filter((key) => aPlaceInfoWords[key].includes(aSearchWords))
+                    .forEach((key) => searchResultsId.value.add(key))
+            }
         }
     }
 }, { immediate: true })
@@ -116,6 +127,25 @@ function shareLink() {
             alert("リンクのコピー及び共有に対応していません")
         }
     }
+}
+
+// カタカナ->ひらがな変換
+function kataToHira(str) {
+    return str.replace(/[\u30a1-\u30f6]/g, function (s) {
+        return String.fromCharCode(s.charCodeAt(0) - 0x60);
+    });
+}
+
+// 全角->半角変換
+function zenToHan(str) {
+    return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
+        return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+    });
+}
+
+// 正規化(大文字->小文字、全角->半角、カタカナ->ひらがな、全角スペース->半角スペース)
+function normalize(str) {
+    return zenToHan(kataToHira(str)).toLowerCase().replace(/　/g, ' ');
 }
 </script>
 <style scoped>
