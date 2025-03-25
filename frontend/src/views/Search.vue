@@ -35,9 +35,15 @@ import { onBeforeRouteLeave } from 'vue-router';
 
 //idとwordsを紐付けた連想配列を作成
 // 小文字で検索するために全て小文字に変換
-let PlaceInfoWords = {}
+let PlaceInfoWords = [{}, {}, {}, {}, {}, {}]
 for (let key of Object.keys(PlaceInfo)) {
-    PlaceInfoWords[key] = normalize(PlaceInfo[key].words + " " + key + " " + PlaceInfo[key].name)
+    // PlaceInfoWords[key] = normalize(PlaceInfo[key].words + " " + key + " " + PlaceInfo[key].name)
+    PlaceInfoWords[0][key] = normalize(PlaceInfo[key].name)
+    PlaceInfoWords[1][key] = normalize(PlaceInfo[key].words)
+    PlaceInfoWords[2][key] = normalize(key)
+    PlaceInfoWords[3][key] = normalize(PlaceInfo[key].desc)
+    PlaceInfoWords[4][key] = normalize(FloorInfo[PlaceInfo[key].floor].fullName)
+    PlaceInfoWords[5][key] = normalize(FloorInfo[PlaceInfo[key].floor].shortName)
 }
 
 // 検索機能について
@@ -83,8 +89,13 @@ watch(searchWord, () => {
         let searchWords = normalize(searchWord.value).split(" ")
         searchWords = searchWords.filter((value) => value != ' ' && value != '')
         // 検索ワードを含むものを検索
-        for (let aSearchWords of searchWords) {
-            Object.keys(PlaceInfoWords).filter((key) => PlaceInfoWords[key].includes(aSearchWords)).forEach((key) => searchResultsId.value.add(key))
+        for (let aPlaceInfoWords of PlaceInfoWords) {
+            // PlaceInfoWordsの各要素に対して検索を行う
+            for (let aSearchWords of searchWords) {
+                // 検索ワードごとに検索を行い、検索結果を追加
+                Object.keys(aPlaceInfoWords).filter((key) => aPlaceInfoWords[key].includes(aSearchWords))
+                    .forEach((key) => searchResultsId.value.add(key))
+            }
         }
     }
 }, { immediate: true })
