@@ -74,7 +74,7 @@ function encodeUrl(word) {
 
 // 検索機能
 const searchWord = ref(decodeUrl())
-const searchResultsId = ref(new Set(Object.keys(PlaceInfoWords))) // ここでURLからの場合は検索結果を変更する
+const searchResultsId = ref(new Set(Object.keys(PlaceInfo))) // ここでURLからの場合は検索結果を変更する
 watch(searchWord, () => {
     // URLを変更
     if (searchWord.value != decodeUrl()) {
@@ -82,7 +82,7 @@ watch(searchWord, () => {
     }
     // 検索
     if (searchWord.value == '') {
-        searchResultsId.value = new Set(Object.keys(PlaceInfoWords))
+        searchResultsId.value = new Set(Object.keys(PlaceInfo))
     } else {
         searchResultsId.value = new Set()
         // 検索ワードを半角・全角スペースで分割
