@@ -131,17 +131,21 @@ function shareLink() {
 
 // カタカナ->ひらがな変換
 function kataToHira(str) {
-    return str.replace(/[\u30a1-\u30f6]/g, function (match) {
-        var chr = match.charCodeAt(0) - 0x60;
-        return String.fromCharCode(chr);
+    return str.replace(/[\u30a1-\u30f6]/g, function (s) {
+        return String.fromCharCode(s.charCodeAt(0) - 0x60);
+    });
+}
+
+// 全角->半角変換
+function zenToHan(str) {
+    return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
+        return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
     });
 }
 
 // 正規化(大文字->小文字、全角->半角、カタカナ->ひらがな、全角スペース->半角スペース)
 function normalize(str) {
-    return kataToHira(str).toLowerCase().replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
-        return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
-    }).replace(/　/g, ' ');
+    return zenToHan(kataToHira(str)).toLowerCase().replace(/　/g, ' ');
 }
 </script>
 <style scoped>
