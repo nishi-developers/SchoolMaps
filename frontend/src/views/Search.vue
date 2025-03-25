@@ -37,7 +37,7 @@ import { onBeforeRouteLeave } from 'vue-router';
 // 小文字で検索するために全て小文字に変換
 let PlaceInfoWords = {}
 for (let key of Object.keys(PlaceInfo)) {
-    PlaceInfoWords[key] = (PlaceInfo[key].words + " " + key + " " + PlaceInfo[key].name).toLowerCase()
+    PlaceInfoWords[key] = normalize(PlaceInfo[key].words + " " + key + " " + PlaceInfo[key].name)
 }
 
 // 検索機能について
@@ -80,8 +80,8 @@ watch(searchWord, () => {
     } else {
         searchResultsId.value = new Set()
         // 検索ワードを半角・全角スペースで分割
-        let searchWords = searchWord.value.toLowerCase().split(/( |　)/)
-        searchWords = searchWords.filter((value) => value != ' ' && value != '　' && value != '')
+        let searchWords = normalize(searchWord.value).split(" ")
+        searchWords = searchWords.filter((value) => value != ' ' && value != '')
         // 検索ワードを含むものを検索
         for (let aSearchWords of searchWords) {
             Object.keys(PlaceInfoWords).filter((key) => PlaceInfoWords[key].includes(aSearchWords)).forEach((key) => searchResultsId.value.add(key))
@@ -116,6 +116,21 @@ function shareLink() {
             alert("リンクのコピー及び共有に対応していません")
         }
     }
+}
+
+// カタカナ->ひらがな変換
+function kataToHira(str) {
+    return str.replace(/[\u30a1-\u30f6]/g, function (match) {
+        var chr = match.charCodeAt(0) - 0x60;
+        return String.fromCharCode(chr);
+    });
+}
+
+// 正規化(大文字->小文字、全角->半角、カタカナ->ひらがな、全角スペース->半角スペース)
+function normalize(str) {
+    return kataToHira(str).toLowerCase().replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
+        return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+    }).replace(/　/g, ' ');
 }
 </script>
 <style scoped>
