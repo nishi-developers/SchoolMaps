@@ -4,27 +4,37 @@
         "fullName": "1階",
         "mapWidth": 1991.3156,
         "mapHeight": 4493.0317,
-        "data": [
+        "layer": [
             {
                 "prefix": "sinkan79",
                 "touchable": true,
                 "switchable": true,
-                "switchablePrefix": "79th新歓"
+                "switchablePrefix": "79th新歓",
+                "islabel": true
             },
             {
                 "prefix": "main",
                 "touchable": true,
-                "switchable": false
+                "switchable": false,
+                "islabel": true
             },
             {
                 "prefix": "none",
                 "touchable": false,
-                "switchable": false
+                "switchable": false,
+                "islabel": false
             },
             {
                 "prefix": "enclosure",
                 "touchable": false,
-                "switchable": false
+                "switchable": false,
+                "islabel": false
+            },
+            {
+                "prefix": "base",
+                "touchable": false,
+                "switchable": false,
+                "islabel": false
             }
         ]
     },
@@ -33,7 +43,7 @@
         "fullName": "2階",
         "mapWidth": 1991.3156,
         "mapHeight": 4493.0317,
-        "data": [
+        "layer": [
             {
                 "prefix": "sinkan79",
                 "touchable": true,
@@ -54,6 +64,12 @@
                 "prefix": "enclosure",
                 "touchable": false,
                 "switchable": false
+            },
+            {
+                "prefix": "base",
+                "touchable": false,
+                "switchable": false,
+                "islabel": false
             }
         ]
     },
@@ -62,7 +78,7 @@
         "fullName": "3階",
         "mapWidth": 1991.3156,
         "mapHeight": 4493.0317,
-        "data": [
+        "layer": [
             {
                 "prefix": "sinkan79",
                 "touchable": true,
@@ -83,6 +99,12 @@
                 "prefix": "enclosure",
                 "touchable": false,
                 "switchable": false
+            },
+            {
+                "prefix": "base",
+                "touchable": false,
+                "switchable": false,
+                "islabel": false
             }
         ]
     }
