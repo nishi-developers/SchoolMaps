@@ -44,25 +44,41 @@ let Setup = new class {
         // マップデータの取得
         const mapSvg = document.querySelector("#map_content svg")
         mapSvg.querySelectorAll("path").forEach((element) => {
-            if (element.id.includes("none")) {
-                element.classList.add("none")
-            } else if (element.id.includes("enclosure")) {
-                element.classList.add("enclosure")
-            } else if (element.id.includes("base")) {
-                element.classList.add("base")
-            } else if (element.id.includes("label")) {
-                element.classList.add("label")
-            } else {
-                element.classList.add("place")
-                // "-"以下はid重複防止用なので削除
-                element.setAttribute("placeid", element.id.split("-")[0])
-                // ラベルをSVGに追加
-                let pathElement = element.getBBox();
-                let centerX = pathElement.x + pathElement.width / 2;
-                let centerY = pathElement.y + pathElement.height / 2;
-                // mapSvg.insertAdjacentHTML('beforeend', `<circle cx="${centerX}" cy="${centerY}" r="5" fill="red" />`);
-                mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" class="label added">${PlaceInfo[element.id].name}<text/>`);
-            }
+            // if (element.id.includes("none")) {
+            //     element.classList.add("none")
+            // } else if (element.id.includes("enclosure")) {
+            //     element.classList.add("enclosure")
+            // } else if (element.id.includes("base")) {
+            //     element.classList.add("base")
+            // } else if (element.id.includes("label")) {
+            //     element.classList.add("label")
+            // } else {
+            //     element.classList.add("place")
+            //     // "-"以下はid重複防止用なので削除
+            //     element.setAttribute("placeid", element.id.split("-")[0])
+            //     // ラベルをSVGに追加
+            //     let pathElement = element.getBBox();
+            //     let centerX = pathElement.x + pathElement.width / 2;
+            //     let centerY = pathElement.y + pathElement.height / 2;
+            //     // mapSvg.insertAdjacentHTML('beforeend', `<circle cx="${centerX}" cy="${centerY}" r="5" fill="red" />`);
+            //     mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" class="label added">${PlaceInfo[element.id].name}<text/>`);
+            // }
+            FloorInfo[currentFloor.value].layer.forEach((layer) => {
+                // SVGデータは、main-に切り替える!
+                if (element.id.includes(layer.prefix) || (layer.prefix === "main" && !element.id.includes("-") && !element.id.includes("base") && !element.id.includes("none"))) {
+                    element.classList.add(layer.prefix)
+                    // "-"以下はid重複防止用なので削除
+                    element.setAttribute("placeid", element.id.split("-")[0])
+                    if (layer.islabel) {
+                        // ラベルをSVGに追加
+                        let pathElement = element.getBBox();
+                        let centerX = pathElement.x + pathElement.width / 2;
+                        let centerY = pathElement.y + pathElement.height / 2;
+                        // mapSvg.insertAdjacentHTML('beforeend', `<circle cx="${centerX}" cy="${centerY}" r="5" fill="red" />`);
+                        mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" class="label added">${PlaceInfo[element.id].name}<text/>`);
+                    }
+                }
+            })
         })
         Setup.resolveMapPlaceClass() //thisは使えない
     }
@@ -157,7 +173,7 @@ let Setup = new class {
         }
     }
     resolveMapPlaceClass() {
-        document.querySelectorAll(`.place.selected`).forEach((element) => {
+        document.querySelectorAll(`.main.selected`).forEach((element) => {
             element.classList.remove("selected")
         })
         if (currentPlaceId.value != "") {
@@ -672,13 +688,13 @@ let Control = new class {
 /* #map_content svg .svg-object {} */
 
 /* 選択された */
-#map_content svg .place.selected {
+#map_content svg .main.selected {
     fill: var(--MapObjectSelectColor);
 
 }
 
 /* 選択されていない */
-#map_content svg .place:not(.selected) {
+#map_content svg .main:not(.selected) {
     fill: var(--MapObjectColor);
 }
 
