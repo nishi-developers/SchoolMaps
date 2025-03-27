@@ -428,6 +428,13 @@
         "desc": "",
         "images": []
     },
+    "2b": {
+        "floor": 1,
+        "name": "2B",
+        "words": "普通教室 クラス 2年 B組",
+        "desc": "",
+        "images": []
+    },
     "2c": {
         "floor": 1,
         "name": "2C",
