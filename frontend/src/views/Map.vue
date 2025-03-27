@@ -47,7 +47,7 @@ let Setup = new class {
             FloorInfo[currentFloor.value].layer.forEach((layer) => {
                 if (layer.prefix == element.id.split("-")[0]) {
                     element.classList.add(layer.prefix)
-                    if (layer.islabel) {
+                    if (layer.touchable) { // touchable=ラベルあり
                         // "-"以下はid重複防止用なので削除 -> "-"以下をplaceidとして取得
                         element.setAttribute("placeid", element.id.split("-")[1])
                         // ラベルをSVGに追加
