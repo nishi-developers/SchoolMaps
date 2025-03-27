@@ -64,18 +64,17 @@ let Setup = new class {
             //     mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" class="label added">${PlaceInfo[element.id].name}<text/>`);
             // }
             FloorInfo[currentFloor.value].layer.forEach((layer) => {
-                // SVGデータは、main-に切り替える!
                 if (element.id.includes(layer.prefix) || (layer.prefix === "main" && !element.id.includes("-") && !element.id.includes("base") && !element.id.includes("none"))) {
                     element.classList.add(layer.prefix)
-                    // "-"以下はid重複防止用なので削除
-                    element.setAttribute("placeid", element.id.split("-")[0])
                     if (layer.islabel) {
+                        // "-"以下はid重複防止用なので削除 -> "-"以下をplaceidとして取得
+                        element.setAttribute("placeid", element.id.split("-")[1])
                         // ラベルをSVGに追加
                         let pathElement = element.getBBox();
                         let centerX = pathElement.x + pathElement.width / 2;
                         let centerY = pathElement.y + pathElement.height / 2;
                         // mapSvg.insertAdjacentHTML('beforeend', `<circle cx="${centerX}" cy="${centerY}" r="5" fill="red" />`);
-                        mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" class="label added">${PlaceInfo[element.id].name}<text/>`);
+                        mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" class="label added">${PlaceInfo[element.id.split("-")[1]].name}<text/>`);
                     }
                 }
             })
