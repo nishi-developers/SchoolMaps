@@ -9,32 +9,27 @@
                 "prefix": "sinkan79",
                 "touchable": true,
                 "switchable": true,
-                "switchablePrefix": "79th新歓",
-                "islabel": true
+                "switchablePrefix": "79th新歓"
             },
             {
                 "prefix": "main",
                 "touchable": true,
-                "switchable": false,
-                "islabel": true
+                "switchable": false
             },
             {
                 "prefix": "none",
                 "touchable": false,
-                "switchable": false,
-                "islabel": false
+                "switchable": false
             },
             {
                 "prefix": "enclosure",
                 "touchable": false,
-                "switchable": false,
-                "islabel": false
+                "switchable": false
             },
             {
                 "prefix": "base",
                 "touchable": false,
-                "switchable": false,
-                "islabel": false
+                "switchable": false
             }
         ]
     },
