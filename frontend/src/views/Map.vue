@@ -44,27 +44,8 @@ let Setup = new class {
         // マップデータの取得
         const mapSvg = document.querySelector("#map_content svg")
         mapSvg.querySelectorAll("path").forEach((element) => {
-            // if (element.id.includes("none")) {
-            //     element.classList.add("none")
-            // } else if (element.id.includes("enclosure")) {
-            //     element.classList.add("enclosure")
-            // } else if (element.id.includes("base")) {
-            //     element.classList.add("base")
-            // } else if (element.id.includes("label")) {
-            //     element.classList.add("label")
-            // } else {
-            //     element.classList.add("place")
-            //     // "-"以下はid重複防止用なので削除
-            //     element.setAttribute("placeid", element.id.split("-")[0])
-            //     // ラベルをSVGに追加
-            //     let pathElement = element.getBBox();
-            //     let centerX = pathElement.x + pathElement.width / 2;
-            //     let centerY = pathElement.y + pathElement.height / 2;
-            //     // mapSvg.insertAdjacentHTML('beforeend', `<circle cx="${centerX}" cy="${centerY}" r="5" fill="red" />`);
-            //     mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" class="label added">${PlaceInfo[element.id].name}<text/>`);
-            // }
             FloorInfo[currentFloor.value].layer.forEach((layer) => {
-                if (element.id.includes(layer.prefix) || (layer.prefix === "main" && !element.id.includes("-") && !element.id.includes("base") && !element.id.includes("none"))) {
+                if (layer.prefix == element.id.split("-")[0]) {
                     element.classList.add(layer.prefix)
                     if (layer.islabel) {
                         // "-"以下はid重複防止用なので削除 -> "-"以下をplaceidとして取得
@@ -74,7 +55,7 @@ let Setup = new class {
                         let centerX = pathElement.x + pathElement.width / 2;
                         let centerY = pathElement.y + pathElement.height / 2;
                         // mapSvg.insertAdjacentHTML('beforeend', `<circle cx="${centerX}" cy="${centerY}" r="5" fill="red" />`);
-                        mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" class="label added">${PlaceInfo[element.id.split("-")[1]].name}<text/>`);
+                        mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" class="label added">${PlaceInfo[element.getAttribute("placeid")].name}<text/>`);
                     }
                 }
             })
