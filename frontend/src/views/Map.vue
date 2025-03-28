@@ -3,6 +3,7 @@ import { onMounted, ref, defineAsyncComponent, watch } from 'vue'
 import PropertyView from '@/components/PropertyView.vue';
 import PlaceInfo from '@/assets/PlaceInfo.json'
 import FloorInfo from '@/assets/FloorInfo.json'
+import Layers from '@/assets/Layers.json'
 import { event } from 'vue-gtag'
 import router from '@/router';
 import { onBeforeRouteLeave } from 'vue-router';
@@ -37,6 +38,11 @@ let Setup = new class {
     constructor() {
         this.placeInfoReverse = this.#createPlaceInfo()
         this.mapDataCurrent = null
+        this.showLayer = ref(null)
+        watch(this.showLayer, () => {
+            // レイヤーの変更
+            console.log(this.showLayer.value);
+        })
     }
     // URL解決:いかなる場合も、変更があった場合は、URLを変更する
     setMapData() {
@@ -44,7 +50,7 @@ let Setup = new class {
         // マップデータの取得
         const mapSvg = document.querySelector("#map_content svg")
         mapSvg.querySelectorAll("path").forEach((element) => {
-            FloorInfo[currentFloor.value].layer.forEach((layer) => {
+            Layers.forEach((layer) => {
                 if (layer.prefix == element.id.split("-")[0]) {
                     element.classList.add(layer.prefix)
                     if (layer.touchable) { // touchable=ラベルあり
@@ -851,6 +857,13 @@ _:future,
                 :class="floor.__key__ === currentFloor ? 'selected' : 'notselected'">
                 {{ floor.shortName }}</li>
         </ul>
+        <!-- layer -->
+        <div v-for="layer in Layers.filter(layer => layer.switchable)" :key="layer">
+            <div style="background-color: aqua;"
+                @click="((Setup.showLayer.value == layer.prefix) ? Setup.showLayer.value = null : Setup.showLayer.value = layer.prefix)">
+                {{ layer.name }} {{ (Setup.showLayer.value == layer.prefix) ? 'ON' : 'OFF' }}
+            </div>
+        </div>
     </div>
     <div v-if="isShowWrapper" id="wrapperBox" @click="Control.wrapEvent('click', $event)"
         @mousemove="Control.wrapEvent('mousemove', $event)" @mousedown="Control.wrapEvent('mousedown', $event)"
