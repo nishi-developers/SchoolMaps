@@ -39,9 +39,21 @@ let Setup = new class {
         this.placeInfoReverse = this.#createPlaceInfo()
         this.mapDataCurrent = null
         this.showLayer = ref(null)
+
+
+        // 簡易的な実装!
+        // しっかり作り直す
         watch(this.showLayer, () => {
             // レイヤーの変更
             console.log(this.showLayer.value);
+            document.querySelectorAll(`.switchable.${this.showLayer.value}`).forEach((element) => {
+                element.style.display = "block"
+                console.log(element);
+
+            })
+            document.querySelectorAll(`.switchable:not(.${this.showLayer.value})`).forEach((element) => {
+                element.style.display = "none"
+            })
         })
     }
     // URL解決:いかなる場合も、変更があった場合は、URLを変更する
@@ -54,15 +66,27 @@ let Setup = new class {
                 if (layer.prefix == element.id.split("-")[0]) {
                     element.classList.add(layer.prefix)
                     if (layer.touchable) { // touchable=ラベルあり
-                        // "-"以下はid重複防止用なので削除 -> "-"以下をplaceidとして取得
+                        // placeidを設定
                         element.setAttribute("placeid", element.id.split("-")[1])
+                        element.classList.add("touchable")
+                        element.classList.add(layer.prefix)
                         // ラベルをSVGに追加
+
+                        // クラスに情報を乗せるのはきれいではないのでは?
+                        // Layersの情報を取得して処理するべきでは
+
                         let pathElement = element.getBBox();
                         let centerX = pathElement.x + pathElement.width / 2;
                         let centerY = pathElement.y + pathElement.height / 2;
+                        let switchable = ""
+                        if (layer.switchable) {
+                            element.classList.add("switchable")
+                            switchable = " switchable"
+                        }
                         // mapSvg.insertAdjacentHTML('beforeend', `<circle cx="${centerX}" cy="${centerY}" r="5" fill="red" />`);
-                        mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" class="label added">${PlaceInfo[element.getAttribute("placeid")].name}<text/>`);
+                        mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" class="label ${layer.prefix}${switchable}">${PlaceInfo[element.getAttribute("placeid")].name}<text/>`);
                     }
+
                 }
             })
         })
@@ -159,7 +183,7 @@ let Setup = new class {
         }
     }
     resolveMapPlaceClass() {
-        document.querySelectorAll(`.main.selected`).forEach((element) => {
+        document.querySelectorAll(`.touchable.selected`).forEach((element) => {
             element.classList.remove("selected")
         })
         if (currentPlaceId.value != "") {
@@ -674,14 +698,21 @@ let Control = new class {
 /* #map_content svg .svg-object {} */
 
 /* 選択された */
-#map_content svg .main.selected {
+#map_content svg .main.selected:not(.label) {
     fill: var(--MapObjectSelectColor);
+}
 
+#map_content svg .sinkan80.selected:not(.label) {
+    fill: #ff60ea;
 }
 
 /* 選択されていない */
-#map_content svg .main:not(.selected) {
+#map_content svg .main:not(.selected):not(.label) {
     fill: var(--MapObjectColor);
+}
+
+#map_content svg .sinkan80:not(.selected):not(.label) {
+    fill: #f59ee9;
 }
 
 /* 他の場所 */
