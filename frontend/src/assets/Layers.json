@@ -1,28 +1,28 @@
 [
     {
         "prefix": "sinkan80",
-        "touchable": true,
+        "place": true,
         "switchable": true,
         "name": "80th新歓"
     },
     {
         "prefix": "main",
-        "touchable": true,
+        "place": true,
         "switchable": false
     },
     {
         "prefix": "none",
-        "touchable": false,
+        "place": false,
         "switchable": false
     },
     {
         "prefix": "enclosure",
-        "touchable": false,
+        "place": false,
         "switchable": false
     },
     {
         "prefix": "base",
-        "touchable": false,
+        "place": false,
         "switchable": false,
         "islabel": false
     }

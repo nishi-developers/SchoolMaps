@@ -39,22 +39,10 @@ let Setup = new class {
         this.placeInfoReverse = this.#createPlaceInfo()
         this.mapDataCurrent = null
         this.showLayer = ref(null)
-
-
-        // 簡易的な実装!
-        // しっかり作り直す
-        watch(this.showLayer, () => {
-            // レイヤーの変更
-            console.log(this.showLayer.value);
-            document.querySelectorAll(`.switchable.${this.showLayer.value}`).forEach((element) => {
-                element.style.display = "block"
-                console.log(element);
-
-            })
-            document.querySelectorAll(`.switchable:not(.${this.showLayer.value})`).forEach((element) => {
-                element.style.display = "none"
-            })
-        })
+    }
+    changeLayer(layer) {
+        // レイヤーの変更
+        this.changeURL(currentFloor.value, currentPlaceId.value, layer)
     }
     // URL解決:いかなる場合も、変更があった場合は、URLを変更する
     setMapData() {
@@ -65,11 +53,11 @@ let Setup = new class {
             Layers.forEach((layer) => {
                 if (layer.prefix == element.id.split("-")[0]) {
                     element.classList.add(layer.prefix)
-                    if (layer.touchable) { // touchable=ラベルあり
+                    if (layer.place) { // place=ラベルあり
                         // placeidを設定
                         element.setAttribute("placeid", element.id.split("-")[1])
-                        element.classList.add("touchable")
-                        element.classList.add(layer.prefix)
+                        element.classList.add("place")
+                        // element.classList.add(layer.prefix)
                         // ラベルをSVGに追加
 
                         // クラスに情報を乗せるのはきれいではないのでは?
@@ -78,19 +66,15 @@ let Setup = new class {
                         let pathElement = element.getBBox();
                         let centerX = pathElement.x + pathElement.width / 2;
                         let centerY = pathElement.y + pathElement.height / 2;
-                        let switchable = ""
-                        if (layer.switchable) {
-                            element.classList.add("switchable")
-                            switchable = " switchable"
-                        }
                         // mapSvg.insertAdjacentHTML('beforeend', `<circle cx="${centerX}" cy="${centerY}" r="5" fill="red" />`);
-                        mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" class="label ${layer.prefix}${switchable}">${PlaceInfo[element.getAttribute("placeid")].name}<text/>`);
+                        mapSvg.insertAdjacentHTML('beforeend', `<text placeid="${element.id.split("-")[1]}" x="${centerX}" y="${centerY}" class="label">${PlaceInfo[element.getAttribute("placeid")].name}<text/>`);
                     }
 
                 }
             })
         })
         Setup.resolveMapPlaceClass() //thisは使えない
+        Setup.resolveLayer() //thisは使えない
     }
     #createPlaceInfo() {
         // フロア情報の逆順を作成
@@ -100,15 +84,17 @@ let Setup = new class {
         }
         return result
     }
-    changeURL(floor, id) {
+    changeURL(floor, id, layer) {
         // URLの変更
         // history.stateは必須(VueRouterの仕様)
-        if (id != null) {
-            history.pushState(history.state, '', `${import.meta.env.BASE_URL}${floor}/${id}`);
+        let url = `${import.meta.env.BASE_URL}${floor}`
+        if (id != "" && id != null) {
+            url += `/${id}`
         }
-        else {
-            history.pushState(history.state, '', `${import.meta.env.BASE_URL}${floor}`);
+        if (layer != "" && layer != null) {
+            url += `?${layer}`
         }
+        history.pushState(history.state, '', url);
         Setup.resolveUrl() // PropertyViewからの呼び出しのため、thisを使わない
     }
     resolveUrl() {
@@ -116,6 +102,7 @@ let Setup = new class {
         // URLの解決
         let floor
         let id
+        let layer
         if (import.meta.env.BASE_URL != "/") {
             // ベースURLがある場合
             floor = location.pathname.split("/")[2]
@@ -125,11 +112,15 @@ let Setup = new class {
             floor = location.pathname.split("/")[1]
             id = location.pathname.split("/")[2]
         }
+        layer = location.search.split("?")[1]
         if (floor == null) {
             floor = ""
         }
         if (id == null) {
             id = ""
+        }
+        if (layer == null) {
+            layer = ""
         }
         // フロアの変更
         if (floor != currentFloor.value) {
@@ -145,16 +136,42 @@ let Setup = new class {
             if (Property.isPlaceExist(id)) {
                 Property.show(id)
             } else {
-                this.changeURL(currentFloor.value, null)
+                this.changeURL(currentFloor.value, null, this.showLayer.value)
             }
         } else {
             Property.hide()
         }
+        // レイヤーの変更
+        this.showLayer.value = layer
+        this.resolveLayer() // 初回時はsetMapData()から呼び出されるので注意
     }
     #changeFloor(floor) {
         currentFloor.value = floor
         Property.hide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
         this.mapDataCurrent = defineAsyncComponent(() => import(`@/assets/floors/${floor}.vue`))
+    }
+    resolveLayer() {
+        document.querySelectorAll(`.place`).forEach((element) => {
+            // switchableなレイヤーの判別
+            if (Layers.filter((layer => layer.prefix == PlaceInfo[element.getAttribute("placeid")].layer))[0].switchable) {
+                element.style.display = "none"
+                if (this.showLayer.value == PlaceInfo[element.getAttribute("placeid")].layer) {
+                    element.style.display = "block"
+                }
+            }
+        })
+        document.querySelectorAll(`.label`).forEach((element) => {
+            // switchableなレイヤーの判別
+            element.style.display = "none"
+            if (this.showLayer.value == "" || this.showLayer.value == null) {
+                if (Layers.filter((layer => layer.prefix == PlaceInfo[element.getAttribute("placeid")].layer))[0].switchable == false) {
+                    element.style.display = "block"
+                }
+            }
+            if (this.showLayer.value == PlaceInfo[element.getAttribute("placeid")].layer) {
+                element.style.display = "block"
+            }
+        })
     }
     windowSize = {
         get width() {
@@ -183,7 +200,7 @@ let Setup = new class {
         }
     }
     resolveMapPlaceClass() {
-        document.querySelectorAll(`.touchable.selected`).forEach((element) => {
+        document.querySelectorAll(`.place.selected`).forEach((element) => {
             element.classList.remove("selected")
         })
         if (currentPlaceId.value != "") {
@@ -230,7 +247,7 @@ let Property = new class {
             }
             const id = clickedObject.getAttribute('placeid')
             isShowWrapper.value = true
-            Setup.changeURL(currentFloor.value, id)
+            Setup.changeURL(currentFloor.value, id, Setup.showLayer.value)
         }, 0);
     }
     hide() {
@@ -869,8 +886,8 @@ _:future,
 <template>
     <Transition :name="`property-${deviceMode}`">
         <PropertyView v-if="isShowProperty" :Floor="currentFloor" :PlaceId="currentPlaceId" :deviceMode="deviceMode"
-            :key="currentFloor + '-' + currentPlaceId" @hideProperty="Setup.changeURL(currentFloor, null)"
-            @jump="Setup.changeURL" />
+            :key="currentFloor + '-' + currentPlaceId"
+            @hideProperty="Setup.changeURL(currentFloor, null, Setup.showLayer.value)" @jump="Setup.changeURL" />
     </Transition>
     <div id="floorMenu">
         <ul>
@@ -884,14 +901,14 @@ _:future,
             <li class="func" v-else><font-awesome-icon @click="labelOpacity = 0" :icon="['fas', 'text-slash']" />
             </li>
             <li class="floor" v-for="floor in Setup.placeInfoReverse" :key="floor.__key__"
-                @click="Setup.changeURL(floor.__key__, null)"
+                @click="Setup.changeURL(floor.__key__, null, Setup.showLayer.value)"
                 :class="floor.__key__ === currentFloor ? 'selected' : 'notselected'">
                 {{ floor.shortName }}</li>
         </ul>
         <!-- layer -->
         <div v-for="layer in Layers.filter(layer => layer.switchable)" :key="layer">
             <div style="background-color: aqua;"
-                @click="((Setup.showLayer.value == layer.prefix) ? Setup.showLayer.value = null : Setup.showLayer.value = layer.prefix)">
+                @click="((Setup.showLayer.value == layer.prefix) ? Setup.changeLayer(null) : Setup.changeLayer(layer.prefix))">
                 {{ layer.name }} {{ (Setup.showLayer.value == layer.prefix) ? 'ON' : 'OFF' }}
             </div>
         </div>
