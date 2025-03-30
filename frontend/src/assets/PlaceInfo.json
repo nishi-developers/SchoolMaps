@@ -989,7 +989,7 @@
         "images": []
     },
     "2a_front": {
-        "floor": 2,
+        "floor": 1,
         "layer": "sinkan80",
         "name": "剣道部",
         "words": "",
@@ -997,7 +997,7 @@
         "images": []
     },
     "2a_back": {
-        "floor": 2,
+        "floor": 1,
         "layer": "sinkan80",
         "name": "シブ楽隊",
         "words": "",
@@ -1005,7 +1005,7 @@
         "images": []
     },
     "2b_front": {
-        "floor": 2,
+        "floor": 1,
         "layer": "sinkan80",
         "name": "CR東日本",
         "words": "",
@@ -1013,7 +1013,7 @@
         "images": []
     },
     "2b_back": {
-        "floor": 2,
+        "floor": 1,
         "layer": "sinkan80",
         "name": "歴史研究部",
         "words": "",

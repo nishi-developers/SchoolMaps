@@ -16,7 +16,7 @@
             </label>
         </div>
         <div class="results">
-            <div v-for="id, key in searchResultsId" :key="key" @click="move(PlaceInfo[id].floor, id)" class="place">
+            <div v-for="id, key in searchResultsId" :key="key" @click="move(id)" class="place">
                 <span class="name">{{ PlaceInfo[id].name }}</span>
                 <span class="position">
                     <font-awesome-icon :icon="['fas', 'location-dot']" />
@@ -29,6 +29,7 @@
 <script setup>
 import PlaceInfo from '@/assets/PlaceInfo.json'
 import FloorInfo from '@/assets/FloorInfo.json'
+import Layers from '@/assets/Layers.json'
 import { ref, watch } from 'vue'
 import router from '@/router';
 import { onBeforeRouteLeave } from 'vue-router';
@@ -101,8 +102,14 @@ watch(searchWord, () => {
 }, { immediate: true })
 
 // ページ遷移
-function move(floor, id) {
-    router.push(`/${floor}/${id}`)
+function move(id) {
+    let floor = PlaceInfo[id].floor
+    let layer = PlaceInfo[id].layer
+    let url = `/${floor}/${id}`
+    if (Layers.filter(alayer => alayer.prefix == layer)[0].switchable) {
+        url += `?${layer}`
+    }
+    router.push(url)
 }
 
 // xマーク
