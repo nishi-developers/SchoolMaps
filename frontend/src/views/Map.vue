@@ -30,7 +30,15 @@ onBeforeRouteLeave((to, from, next) => {
     next()
 })
 watch(currentPlaceId, () => {
-    Setup.resolveMapPlaceClass()
+    Setup.resolvePlaceColor()
+})
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+    // ダークモードの変更を検知
+    document.querySelector("#map_content svg").querySelectorAll("path").forEach((element) => {
+        const layer = Layers.filter((layer) => layer.prefix == element.id.split("-")[0])[0]
+        Setup.setLayerColor(element, "default", layer)
+        Setup.resolvePlaceColor()
+    })
 })
 
 // SetupClass
@@ -53,27 +61,21 @@ let Setup = new class {
             Layers.forEach((layer) => {
                 if (layer.prefix == element.id.split("-")[0]) {
                     element.classList.add(layer.prefix)
+                    Setup.setLayerColor(element, "default", layer)
                     if (layer.place) { // place=ラベルあり
                         // placeidを設定
                         element.setAttribute("placeid", element.id.split("-")[1])
                         element.classList.add("place")
-                        // element.classList.add(layer.prefix)
-                        // ラベルをSVGに追加
-
-                        // クラスに情報を乗せるのはきれいではないのでは?
-                        // Layersの情報を取得して処理するべきでは
-
                         let pathElement = element.getBBox();
                         let centerX = pathElement.x + pathElement.width / 2;
                         let centerY = pathElement.y + pathElement.height / 2;
                         // mapSvg.insertAdjacentHTML('beforeend', `<circle cx="${centerX}" cy="${centerY}" r="5" fill="red" />`);
                         mapSvg.insertAdjacentHTML('beforeend', `<text placeid="${element.id.split("-")[1]}" x="${centerX}" y="${centerY}" class="label">${PlaceInfo[element.getAttribute("placeid")].name}<text/>`);
                     }
-
                 }
             })
         })
-        Setup.resolveMapPlaceClass() //thisは使えない
+        Setup.resolvePlaceColor() //thisは使えない
         Setup.resolveLayer() //thisは使えない
     }
     #createPlaceInfo() {
@@ -199,14 +201,33 @@ let Setup = new class {
             deviceMode.value = "pc"
         }
     }
-    resolveMapPlaceClass() {
+    resolvePlaceColor() {
         document.querySelectorAll(`.place.selected`).forEach((element) => {
             element.classList.remove("selected")
+            this.setLayerColor(element, "default")
         })
         if (currentPlaceId.value != "") {
-            document.querySelectorAll(`[placeid="${currentPlaceId.value}"]`).forEach((element) => {
+            document.querySelectorAll(`.place[placeid="${currentPlaceId.value}"]`).forEach((element) => {
                 element.classList.add("selected")
+                this.setLayerColor(element, "select")
             })
+        }
+    }
+    setLayerColor(element, mode, layer_) {
+        let layer
+        if (layer_) {
+            // レイヤーが指定されている場合は、それを優先する
+            layer = layer_
+        } else {
+            layer = Layers.filter((layer => layer.prefix == PlaceInfo[element.getAttribute("placeid")].layer))[0]
+        }
+        const color = layer.color[mode]
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // ダークモード
+            element.style.fill = color.dark  // 色を設定
+        } else {
+            // ライトモード
+            element.style.fill = color.light // 色を設定
         }
     }
 }
@@ -701,7 +722,6 @@ let Control = new class {
 /* マップのルート */
 #map_content svg {
     /* 要検討 */
-    fill: var(--MapBaseColor);
     stroke: var(--MapBorderColor);
     stroke-width: 1;
 }
@@ -709,40 +729,6 @@ let Control = new class {
 /* ルート以下の子要素に対して */
 #map_content svg>* {
     stroke-width: 2.0;
-}
-
-/* オブジェクト(部屋) */
-/* #map_content svg .svg-object {} */
-
-/* 選択された */
-#map_content svg .main.selected:not(.label) {
-    fill: var(--MapObjectSelectColor);
-}
-
-#map_content svg .sinkan80.selected:not(.label) {
-    fill: #ff60ea;
-}
-
-/* 選択されていない */
-#map_content svg .main:not(.selected):not(.label) {
-    fill: var(--MapObjectColor);
-}
-
-#map_content svg .sinkan80:not(.selected):not(.label) {
-    fill: #f59ee9;
-}
-
-/* 他の場所 */
-#map_content svg .none {
-    fill: var(--MapNoneColor);
-}
-
-#map_content svg .enclosure {
-    fill: var(--MapEnclosureColor);
-}
-
-#map_content svg .base {
-    fill: var(--MapBaseColor);
 }
 
 /* テキスト */
