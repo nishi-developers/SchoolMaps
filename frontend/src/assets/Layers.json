@@ -3,27 +3,65 @@
         "prefix": "sinkan80",
         "place": true,
         "switchable": true,
-        "name": "80th新歓"
+        "name": "80th新歓",
+        "color": {
+            "default": {
+                "light": "#f59ee9",
+                "dark": "#f59ee9"
+            },
+            "select": {
+                "light": "#ff60ea",
+                "dark": "#ff60ea"
+            }
+        }
     },
     {
         "prefix": "main",
         "place": true,
-        "switchable": false
+        "switchable": false,
+        "color": {
+            "default": {
+                "light": "var(--SubBaseColor)",
+                "dark": "var(--SubBaseColor)"
+            },
+            "select": {
+                "light": "var(--SubColor)",
+                "dark": "var(--SubColor)"
+            }
+        }
     },
     {
         "prefix": "none",
         "place": false,
-        "switchable": false
+        "switchable": false,
+        "color": {
+            "default": {
+                "light": "#adadad",
+                "dark": "#797979"
+            }
+        }
     },
     {
         "prefix": "enclosure",
         "place": false,
-        "switchable": false
+        "switchable": false,
+        "color": {
+            "default": {
+                "light": "#cfcfcf",
+                "dark": "#3f3f3f"
+            }
+        }
     },
     {
         "prefix": "base",
         "place": false,
         "switchable": false,
-        "islabel": false
+        "islabel": false,
+        "color": {
+            "default": {
+                "light": "#f3f3f3",
+                "dark": "#1d1d1d"
+            }
+        }
     }
 ]
