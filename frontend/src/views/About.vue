@@ -3,9 +3,14 @@
         <p class="textTitle">このサイトについて</p>
         <p class="textH">西高マップとは</p>
         <p class="textP">
-            <b><a href="https://www.metro.ed.jp/nishi-h/">東京都立西高等学校</a></b>の校内マップです。<br>
-            <!-- プログラミングサークル<b>504</b>によって作成、運営されています。<br> -->
+            <b><a href="https://www.metro.ed.jp/nishi-h/" target="_blank"
+                    rel="noopener noreferrer">東京都立西高等学校</a></b>の校内マップです。<br>
             本サイトに関して、高校へのお問い合わせは行わないでください。
+        </p>
+        <p class="textH">開発･運営</p>
+        <p class="textP">
+            <a href="https://github.com/M-Haruki" target="_blank" rel="noopener noreferrer"><b>M_Haruki</b></a>
+            (<a href="https://github.com/nishi-developers" target="_blank" rel="noopener noreferrer"><b>504</b></a>)
         </p>
         <p class="textH">アクセス解析ツールについて</p>
         <p class="textP">
