@@ -1,17 +1,17 @@
 [
     {
-        "prefix": "sinkan80",
+        "prefix": "shinkan80",
         "place": true,
         "switchable": true,
         "name": "80th新歓",
         "color": {
             "default": {
-                "light": "#f59ee9",
-                "dark": "#f59ee9"
+                "light": "#87ff8d",
+                "dark": "#87ff8d"
             },
             "select": {
-                "light": "#ff60ea",
-                "dark": "#ff60ea"
+                "light": "#3ab322",
+                "dark": "#3ab322"
             }
         }
     },

@@ -1,11 +1,12 @@
 <template>
     <svg xmlns="http://www.w3.org/2000/svg" width="1991.3156" height="4493.0317" viewBox="0 0 1991.3156 4493.0317"
         version="1.1" xml:space="preserve"
-        style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" id="svg80">
-        <defs id="defs80" />
+        style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" id="svg82">
+        <defs id="defs82" />
         <path
             d="m 1822.4979,407.8607 h 168.8176 v 4085.171 H 0 V 1131.161 H 271.41196 V 937.3392 H 842.21111 V 0 h 980.28679 z"
             id="base" />
+
         <path id="enclosure-classroom_building"
             d="m 315.32101,1697.878 h -147.071 v 284.95 H 1372.661 v -107.62 h 112.78 v -117.08 l -112.78,0.35 v -60.25 l -147.07,-0.35 v 121.2 H 807.86101 v -148.81 h -492.54 z" />
         <path id="enclosure-management_building2"
@@ -60,17 +61,17 @@
         <path id="main-home_economics_preparation_room" d="m 1780.0676,837.67664 h 141.911 v 173.21606 h -141.911 z" />
         <path id="main-food_room" d="m 1780.0676,554.08429 h 141.911 v 283.59204 h -141.911 z" />
         <path id="main-straight_course" d="m 89.85673,3185.2886 h 66.48628 V 4401.7388 H 89.85673 Z" />
-        <path id="main-bicycle_parking_1st_1" d="m 42.89601,2090.068 v -373.57 h 25.984 v 373.57 z" />
-        <path id="main-bicycle_parking_1st_0" d="m 120.61301,1896.828 v -180.33 h 25.984 v 180.33 z" />
-        <path id="main-bicycle_parking_2nd_0" d="m 130.35901,1546.778 v -155.17 h 25.984 v 155.17 z" />
+        <path id="main-bicycle_parking_1st_1" d="m 42.8956,2090.0674 v -373.5673 h 25.98432 v 373.5673 z" />
+        <path id="main-bicycle_parking_1st_0" d="m 120.61252,1896.8309 v -180.3356 h 25.98432 v 180.3356 z" />
+        <path id="main-bicycle_parking_2nd_0" d="m 130.35862,1546.7742 v -155.1687 h 25.98432 v 155.1687 z" />
         <path id="main-bicycle_parking_2nd_2" d="m 377.6948,1153.0557 h 360.67061 v 51.7328 H 377.6948 Z" />
         <path id="main-bicycle_parking_3nd_1" d="m 377.6948,999.2295 h 360.67061 v 51.7328 H 377.6948 Z" />
         <path id="main-bicycle_parking_3nd_0" d="m 377.6948,1076.4106 h 360.67061 v 51.7329 H 377.6948 Z" />
         <path d="m 1895.761,3210.8174 v 484.5157 h -143.51 v 144.6239 h -291.15 v -629.1396 z"
             id="main-martial_arts_field_1f" />
         <path id="main-gym_1f" d="m 1451.348,2373.1672 h 444.409 v 752.8682 h -444.409 z" />
-        <path id="main-bicycle_parking_teachers" d="m 705.37101,1249.608 h -252.065 v -25.99 h 252.065 z" />
-        <path id="main-bicycle_parking_1st_2" d="m 469.15101,2116.048 h -138.887 v -25.99 h 138.887 z" />
+        <path id="main-bicycle_parking_teachers" d="M 705.37071,1249.6056 H 453.30626 v -25.9843 h 252.06445 z" />
+        <path id="main-bicycle_parking_1st_2" d="M 469.15061,2116.0457 H 330.26406 v -25.9844 h 138.88655 z" />
         <path id="main-bicycle_parking_2nd_1" d="m 160.21042,1280.0826 h 284.29413 v 51.7329 H 160.21042 Z" />
         <path id="main-handball_court" d="m 186.517,3891.4482 h 670.97591 v 536.7337 H 186.517 Z" />
         <path id="main-clubrooms" d="m 1839.4687,1652.6199 h 85.9365 v 673.5039 h -85.9365 z" />
@@ -79,7 +80,7 @@
         <path id="main-clubroom_building_1" d="m 14.81601,2737.3679 h 100.30301 v 273.126 H 14.81601 Z" />
         <path id="main-fountain"
             d="m 1064.6228,1061.134 a 43.502323,43.502323 0 0 1 -43.5024,43.5024 43.502323,43.502323 0 0 1 -43.50229,-43.5024 43.502323,43.502323 0 0 1 43.50229,-43.5023 43.502323,43.502323 0 0 1 43.5024,43.5023 z" />
-        <path id="main-gate_north_0" d="M 943.42101,112.029 V 96.333 H 1043.721 v 15.696 z" />
+        <path id="main-gate_north_0" d="m 943.42061,112.02899 v -15.696 h 100.30309 v 15.696 z" />
         <path id="main-nishi_hall_1f" d="m 1559.2221,31.97476 h 251.8807 v 312.55841 h -251.8807 z" />
         <path id="main-audiovisual_hall_1f"
             d="M 1496.741,68.417 V 489.22 h -73.24 l 0.1,43.395 h -132.59 l -43.62,-43.395 h -57.59 V 68.417 Z" />
@@ -96,10 +97,10 @@
         <path id="main-students_entrance" d="m 315.32096,1670.2756 h 405.13545 v 148.8161 H 315.32096 Z" />
         <path d="m 349.60003,1379.7706 h 100.08602 v 138.8601 H 168.24837 v -179.8062 h 181.35166 z"
             id="main-the_student_council_room" />
-        <path id="main-gate_east_0" d="m 1973.561,1600.248 h -15.7 v -50.31 h 15.7 z" />
-        <path id="main-gate_nishi_hall_0" d="M 1525.811,29.072 V 13.376 h 31.2 v 15.696 z" />
-        <path id="main-gate_nishi_hall_1" d="M 1675.661,29.072 V 13.376 h 19 v 15.696 z" />
-        <path id="main-gate_west_2" d="m 25.71401,3137.108 h -15.696 v -50.31 h 15.696 z" />
+        <path id="main-gate_east_0" d="m 1973.5581,1600.246 h -15.696 v -50.3052 h 15.696 z" />
+        <path id="main-gate_nishi_hall_0" d="m 1525.8147,29.07201 v -15.696 h 31.1914 v 15.696 z" />
+        <path id="main-gate_nishi_hall_1" d="m 1675.6633,29.07201 v -15.696 h 18.9936 v 15.696 z" />
+        <path id="main-gate_west_2" d="m 25.71403,3137.106 h -15.696 v -50.3052 h 15.696 z" />
         <path id="main-gate_west_0" d="m 27.198,1525.6751 h 15.696 v 157.7005 H 27.198 Z" />
         <path id="main-gate_west_1" d="m 27.198,1204.781 h 15.696 v 78.3301 H 27.198 Z" />
         <path id="main-corporate_planning_office" d="M 948.24021,1304.6554 H 1223.4605 V 1444.775 H 948.24021 Z" />
@@ -109,6 +110,8 @@
         <path id="main-health_consultation_room" d="m 1698.1906,1304.6581 h 81.8898 v 140.1198 h -81.8898 z" />
         <path id="main-tennis_court" d="M 878.89001,3891.448 H 1909.9929 v 536.733 H 878.89001 Z" />
         <path id="main-grand" d="m 186.5167,2151.2666 h 1181.1438 v 1718.463 H 186.5167 Z" />
+        <path id="shinkan80-s80_audiovisual"
+            d="m 1362.9582,123.87023 a 19.685301,19.685349 0 0 1 -19.6853,19.68534 19.685301,19.685349 0 0 1 -19.6853,-19.68534 19.685301,19.685349 0 0 1 19.6853,-19.68535 19.685301,19.685349 0 0 1 19.6853,19.68535 z" />
     </svg>
 </template>
 <script setup>
