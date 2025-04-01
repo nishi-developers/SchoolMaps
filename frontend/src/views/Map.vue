@@ -94,7 +94,7 @@ let Setup = new class {
             url += `/${id}`
         }
         if (layer != "" && layer != null) {
-            url += `?${layer}`
+            url += `?layer=${layer}`
         }
         history.pushState(history.state, '', url);
         Setup.resolveUrl() // PropertyViewからの呼び出しのため、thisを使わない
@@ -114,7 +114,8 @@ let Setup = new class {
             floor = location.pathname.split("/")[1]
             id = location.pathname.split("/")[2]
         }
-        layer = location.search.split("?")[1]
+        let params = new URLSearchParams(document.location.search);
+        layer = params.get("layer")
         if (floor == null) {
             floor = ""
         }
