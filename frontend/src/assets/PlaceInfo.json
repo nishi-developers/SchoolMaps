@@ -988,34 +988,394 @@
         "desc": "",
         "images": []
     },
-    "2a_front": {
+    "s80_2a_front": {
         "floor": 1,
-        "layer": "sinkan80",
+        "layer": "shinkan80",
         "name": "剣道部",
         "words": "",
         "desc": "",
         "images": []
     },
-    "2a_back": {
+    "s80_2a_back": {
         "floor": 1,
-        "layer": "sinkan80",
+        "layer": "shinkan80",
         "name": "シブ楽隊",
         "words": "",
         "desc": "",
         "images": []
     },
-    "2b_front": {
+    "s80_2b_front": {
         "floor": 1,
-        "layer": "sinkan80",
+        "layer": "shinkan80",
         "name": "CR東日本",
         "words": "",
         "desc": "",
         "images": []
     },
-    "2b_back": {
+    "s80_2b_back": {
         "floor": 1,
-        "layer": "sinkan80",
+        "layer": "shinkan80",
         "name": "歴史研究部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_2c_front": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "男子硬式テニス部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_2c_back": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "Nishi Flyer",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_2d_front": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "水泳部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_2d_back": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "卓球部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_2e": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "備品貸し出し",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_2f_front": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "女子硬式テニス部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_2f_back": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "茶道部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_2g_front": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "男子ハンドボール部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_2g_back": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "演劇部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_2h_front": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "男子バスケットボール部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_2h_back": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "文芸部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_3a_front": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "ツョッカー。特撮研究会",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_3a_back": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "西論会",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_3b_front": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "ソフトテニス部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_3b_back": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "ディベート部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_3c_front": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "ダンス部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_3c_back": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "陸上競技部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_3d_front": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "女子バレーボール部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_3d_back": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "男子バレーボール部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_3e_front": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "504",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_3e_back": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "かるた部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_3f": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "アメリカンフットボール部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_3g_front": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "女子バスケットボール部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_3g_back": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "数学研究同好会",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_3h_front": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "サッカー部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_3h_back": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "バドミントン部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_social1_front": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "ポケモン研究サークル",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_social1_back": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "女子ハンドボール部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_social2": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "体操部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_special1": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "吹奏楽部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_special2": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "ケルト音楽研究サークル",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_career": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "つるばみ同好会",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_audiovisual": {
+        "floor": 0,
+        "layer": "shinkan80",
+        "name": "軽音楽同好会",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_music": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "管弦学部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_biology": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "生物部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_physics": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "物理部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_chemistry_le": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "クイズ研究サークル",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_chemistry_ex": {
+        "floor": 2,
+        "layer": "shinkan80",
+        "name": "化学部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_meeting": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "野球部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_broadcast": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "放送部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_art": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "イラスト研究部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_hallway1": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "ESS",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_hallway2": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "新聞部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_hallway3": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "園芸部",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "s80_hallway4": {
+        "floor": 1,
+        "layer": "shinkan80",
+        "name": "ボカロサークル",
         "words": "",
         "desc": "",
         "images": []

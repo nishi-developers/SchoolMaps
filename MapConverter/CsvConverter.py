@@ -1,7 +1,7 @@
 import json, csv
 
-InputFilePath = "in-out/input.csv"
-OutputFilePath = "in-out/output.json"
+InputFilePath = "MapData/PlaceInfo.csv"
+OutputFilePath = "frontend/src/assets/PlaceInfo.json"
 
 # CSVファイルを読み込み
 PlaceInfo = []
