@@ -30,15 +30,18 @@ onBeforeRouteLeave((to, from, next) => {
     next()
 })
 watch(currentPlaceId, () => {
-    Setup.resolvePlaceColor()
+    Setup.resolveMapColor()
 })
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
     // ダークモードの変更を検知
-    document.querySelector("#map_content svg").querySelectorAll("path").forEach((element) => {
-        const layer = Layers.filter((layer) => layer.prefix == element.id.split("-")[0])[0]
-        Setup.setLayerColor(element, "default", layer)
-        Setup.resolvePlaceColor()
-    })
+    Setup.resolveAllMapColor()
+    // document.querySelector("#map_content svg").querySelectorAll("path").forEach((element) => {
+    //     const layer = Layers.filter((layer) => layer.prefix == element.id.split("-")[0])[0]
+    //     Setup.setLayerColor(element, "default", layer)
+    // })
+    // document.querySelector("#map_content svg").querySelectorAll(".label").forEach((element) => {
+    //     Setup.setLayerLabelColor(element)
+    // })
 })
 
 // SetupClass
@@ -61,7 +64,7 @@ let Setup = new class {
             Layers.forEach((layer) => {
                 if (layer.prefix == element.id.split("-")[0]) {
                     element.classList.add(layer.prefix)
-                    Setup.setLayerColor(element, "default", layer)
+                    // Setup.setLayerColor(element, "default", layer)
                     if (layer.place) { // place=ラベルあり
                         // placeidを設定
                         element.setAttribute("placeid", element.id.split("-")[1])
@@ -75,7 +78,7 @@ let Setup = new class {
                 }
             })
         })
-        Setup.resolvePlaceColor() //thisは使えない
+        Setup.resolveAllMapColor() //thisは使えない
         Setup.resolveLayer() //thisは使えない
     }
     #createPlaceInfo() {
@@ -202,33 +205,68 @@ let Setup = new class {
             deviceMode.value = "pc"
         }
     }
-    resolvePlaceColor() {
+    resolveMapColor() {
+        // 選択されている場所の色を変更する
         document.querySelectorAll(`.place.selected`).forEach((element) => {
             element.classList.remove("selected")
-            this.setLayerColor(element, "default")
+            this.#setLayerColor(element, "default")
         })
         if (currentPlaceId.value != "") {
             document.querySelectorAll(`.place[placeid="${currentPlaceId.value}"]`).forEach((element) => {
                 element.classList.add("selected")
-                this.setLayerColor(element, "select")
+                this.#setLayerColor(element, "select")
             })
         }
     }
-    setLayerColor(element, mode, layer_) {
-        let layer
-        if (layer_) {
+    resolveAllMapColor() {
+        // 全てのマップの色を変更する
+        document.querySelector("#map_content svg").querySelectorAll("path").forEach((element) => {
+            const layer = Layers.filter((layer) => layer.prefix == element.id.split("-")[0])[0]
+            this.#setLayerColor(element, "default", layer)
+            this.resolveMapColor() // 選択されている場所の色を変更する
+        })
+        document.querySelector("#map_content svg").querySelectorAll(".label").forEach((element) => {
+            this.#setLayerLabelColor(element)
+        })
+    }
+    #setLayerColor(element, mode, layer) {
+        let style
+        if (layer) {
             // レイヤーが指定されている場合は、それを優先する
-            layer = layer_
+            style = layer.style
         } else {
-            layer = Layers.filter((layer => layer.prefix == PlaceInfo[element.getAttribute("placeid")].layer))[0]
+            style = Layers.filter((layer => layer.prefix == PlaceInfo[element.getAttribute("placeid")].layer))[0].style
         }
-        const color = layer.color[mode]
+        // 共通
+        element.style.strokeWidth = style.main.strokeWidth
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             // ダークモード
-            element.style.fill = color.dark  // 色を設定
+            element.style.stroke = style.main.stroke.dark
+            if (mode == "select") {
+                element.style.fill = style.main.fill_select.dark
+            } else {
+                element.style.fill = style.main.fill_default.dark
+            }
         } else {
             // ライトモード
-            element.style.fill = color.light // 色を設定
+            element.style.stroke = style.main.stroke.light
+            if (mode == "select") {
+                element.style.fill = style.main.fill_select.light
+            } else {
+                element.style.fill = style.main.fill_default.light
+            }
+        }
+    }
+    #setLayerLabelColor(element) {
+        let style = Layers.filter((layer => layer.prefix == PlaceInfo[element.getAttribute("placeid")].layer))[0].style
+        // 共通
+        element.style.fontSize = style.label.fontSize
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // ダークモード
+            element.style.fill = style.label.fill.dark
+        } else {
+            // ライトモード
+            element.style.fill = style.label.fill.light
         }
     }
 }
@@ -719,28 +757,13 @@ let Control = new class {
 
 <style>
 /* マップのスタイル */
-
-/* マップのルート */
-#map_content svg {
-    /* 要検討 */
-    stroke: var(--MapBorderColor);
-    stroke-width: 1;
-}
-
-/* ルート以下の子要素に対して */
-#map_content svg>* {
-    stroke-width: 2.0;
-}
-
 /* テキスト */
 #map_content svg .label {
     transform-box: fill-box;
     transform-origin: 0 80%;
     transform: rotate(v-bind("- mapStatus.rotate + 'deg'")) translate(-50%, +25%);
-    fill: var(--MainBodyColor);
     stroke-width: 0;
     pointer-events: none;
-    font-size: 2rem;
     opacity: v-bind("labelOpacity");
 }
 
