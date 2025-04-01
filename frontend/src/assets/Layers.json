@@ -7,11 +7,35 @@
         "color": {
             "default": {
                 "light": "#87ff8d",
-                "dark": "#87ff8d"
+                "dark": "#f7ff8d"
             },
             "select": {
                 "light": "#3ab322",
-                "dark": "#3ab322"
+                "dark": "#fab322"
+            }
+        },
+        "style": {
+            "main": {
+                "fill_default": {
+                    "light": "#87ff8d",
+                    "dark": "#87ff8d"
+                },
+                "fill_select": {
+                    "light": "#3ab322",
+                    "dark": "#3ab322"
+                },
+                "stroke": {
+                    "light": "var(--MapBorderColor)",
+                    "dark": "var(--MapBorderColor)"
+                },
+                "strokeWidth": 0.1
+            },
+            "label": {
+                "fill": {
+                    "light": "var(--MainBodyColor)",
+                    "dark": "var(--MainBodyColor)"
+                },
+                "fontSize": "2rem"
             }
         }
     },
@@ -28,6 +52,30 @@
                 "light": "var(--SubColor)",
                 "dark": "var(--SubColor)"
             }
+        },
+        "style": {
+            "main": {
+                "fill_default": {
+                    "light": "var(--SubBaseColor)",
+                    "dark": "var(--SubBaseColor)"
+                },
+                "fill_select": {
+                    "light": "var(--SubColor)",
+                    "dark": "var(--SubColor)"
+                },
+                "stroke": {
+                    "light": "var(--MapBorderColor)",
+                    "dark": "var(--MapBorderColor)"
+                },
+                "strokeWidth": 2.0
+            },
+            "label": {
+                "fill": {
+                    "light": "var(--MainBodyColor)",
+                    "dark": "var(--MainBodyColor)"
+                },
+                "fontSize": "2rem"
+            }
         }
     },
     {
@@ -38,6 +86,19 @@
             "default": {
                 "light": "#adadad",
                 "dark": "#797979"
+            }
+        },
+        "style": {
+            "main": {
+                "fill_default": {
+                    "light": "#adadad",
+                    "dark": "#797979"
+                },
+                "stroke": {
+                    "light": "var(--MapBorderColor)",
+                    "dark": "var(--MapBorderColor)"
+                },
+                "strokeWidth": 2.0
             }
         }
     },
@@ -50,6 +111,19 @@
                 "light": "#cfcfcf",
                 "dark": "#3f3f3f"
             }
+        },
+        "style": {
+            "main": {
+                "fill_default": {
+                    "light": "#cfcfcf",
+                    "dark": "#3f3f3f"
+                },
+                "stroke": {
+                    "light": "var(--MapBorderColor)",
+                    "dark": "var(--MapBorderColor)"
+                },
+                "strokeWidth": 2.0
+            }
         }
     },
     {
@@ -61,6 +135,19 @@
             "default": {
                 "light": "#f3f3f3",
                 "dark": "#1d1d1d"
+            }
+        },
+        "style": {
+            "main": {
+                "fill_default": {
+                    "light": "#f3f3f3",
+                    "dark": "#1d1d1d"
+                },
+                "stroke": {
+                    "light": "var(--MapBorderColor)",
+                    "dark": "var(--MapBorderColor)"
+                },
+                "strokeWidth": 2.0
             }
         }
     }
