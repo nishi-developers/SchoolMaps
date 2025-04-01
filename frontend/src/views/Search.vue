@@ -107,7 +107,7 @@ function move(id) {
     let layer = PlaceInfo[id].layer
     let url = `/${floor}/${id}`
     if (Layers.filter(alayer => alayer.prefix == layer)[0].switchable) {
-        url += `?${layer}`
+        url += `?layer=${layer}`
     }
     router.push(url)
 }
