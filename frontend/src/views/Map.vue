@@ -6,7 +6,6 @@ import FloorInfo from '@/assets/FloorInfo.json'
 import Layers from '@/assets/Layers.json'
 import { event } from 'vue-gtag'
 import router from '@/router';
-import { onBeforeRouteLeave } from 'vue-router';
 
 // ref
 const currentPlaceId = ref("")
@@ -20,28 +19,17 @@ onMounted(() => {
     Setup.resolveUrl()
     Control.resetMove() // 処理内容的にURL解決が先
 })
-const popstateEvent = () => {
-    Setup.resolveUrl()
-}
-window.addEventListener('popstate', popstateEvent);
-onBeforeRouteLeave((to, from, next) => {
-    // 解除をしないと、他のページで誤作動する
-    window.removeEventListener('popstate', popstateEvent);
-    next()
-})
 watch(currentPlaceId, () => {
     Setup.resolveMapColor()
 })
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
     // ダークモードの変更を検知
     Setup.resolveAllMapColor()
-    // document.querySelector("#map_content svg").querySelectorAll("path").forEach((element) => {
-    //     const layer = Layers.filter((layer) => layer.prefix == element.id.split("-")[0])[0]
-    //     Setup.setLayerColor(element, "default", layer)
-    // })
-    // document.querySelector("#map_content svg").querySelectorAll(".label").forEach((element) => {
-    //     Setup.setLayerLabelColor(element)
-    // })
+})
+router.afterEach((to, from) => {
+    if (to.name == "map") {
+        Setup.resolveUrl()
+    }
 })
 
 // SetupClass
@@ -99,9 +87,9 @@ let Setup = new class {
         if (layer != "" && layer != null) {
             url += `?layer=${layer}`
         }
-        history.pushState(history.state, '', url);
-        Setup.resolveUrl() // PropertyViewからの呼び出しのため、thisを使わない
+        router.push(url)
     }
+
     resolveUrl() {
         // onMount以降に実行しなければならない
         // URLの解決
