@@ -4,6 +4,7 @@
         "place": true,
         "switchable": true,
         "name": "80th新歓",
+        "icon": "shinkan80.webp",
         "color": {
             "default": {
                 "light": "#87ff8d",
