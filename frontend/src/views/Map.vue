@@ -6,6 +6,7 @@ import FloorInfo from '@/assets/FloorInfo.json'
 import Layers from '@/assets/Layers.json'
 import { event } from 'vue-gtag'
 import router from '@/router';
+const BASE_URL = import.meta.env.BASE_URL
 
 // ref
 const currentPlaceId = ref("")
@@ -904,11 +905,13 @@ _:future,
                 {{ floor.shortName }}</li>
         </ul>
         <!-- layer -->
-        <div v-for="layer in Layers.filter(layer => layer.switchable)" :key="layer">
-            <div style="background-color: aqua;"
-                @click="((Setup.showLayer.value == layer.prefix) ? Setup.changeLayer(null) : Setup.changeLayer(layer.prefix))">
-                {{ layer.name }} {{ (Setup.showLayer.value == layer.prefix) ? 'ON' : 'OFF' }}
+        <div v-for="layer in Layers.filter(layer => layer.switchable)" :key="layer"
+            @click="((Setup.showLayer.value == layer.prefix) ? Setup.changeLayer(null) : Setup.changeLayer(layer.prefix))">
+            <div>
+                {{ layer.name }}
+                <!-- {{ (Setup.showLayer.value == layer.prefix) ? 'ON' : 'OFF' }} -->
             </div>
+            <img :src="`${BASE_URL}img/layers/${layer.icon}`">
         </div>
     </div>
     <div v-if="isShowWrapper" id="wrapperBox" @click="Control.wrapEvent('click', $event)"
