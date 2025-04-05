@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="1991.3156" height="4493.0317" viewBox="0 0 1991.3156 4493.0317" version="1.1" xml:space="preserve" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" id="svg95"
+<svg width="1991.3156" height="4493.0317" viewBox="0 0 1991.3156 4493.0317" version="1.1" xml:space="preserve" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" id="svg99"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-   <defs id="defs95" />
+   <defs id="defs99" />
    <path d="m 1822.4979,407.8607 h 168.8176 v 4085.171 H 0 V 1131.161 H 271.41196 V 937.3392 H 842.21111 V 0 h 980.28679 z" style="fill:#ffffff;fill-opacity:0.53;stroke-width:2.30821" id="base" />
    <path id="enclosure-classroom_building" d="M 1739.131,692.241 V 554.085 h 182.86 v 890.693 h -436.55 v 430.43 h -112.78 v 107.62 H 168.25001 v -284.95 h 147.071 v 121.2 h 408.47 v -300.44 h -555.541 v -179.81 h 281.438 v -84.93 h 288.683 v 9.82 H 1223.461 V 554.085 h 159.2 v -21.47 h 40.94 v 159.626 z m 0,145.378 -315.53,0.457 v 353.562 h 315.53 z m -315.53,607.159 H 807.86101 v 374.3 H 1225.591 v -121.2 h 198.01 z" style="fill:#fd0000;fill-opacity:0.5" />
    <path id="enclosure-nishi_hall" style="fill:#fd0000;fill-opacity:0.5;stroke-width:1.0195" d="m 1559.2221,31.97536 h 251.8807 v 331.66366 h -251.8807 z" />
@@ -102,4 +102,8 @@
    <path id="shinkan80-s80_broadcast" style="fill:#fb00ff;fill-opacity:0.5;stroke-width:0.66033" d="m 1422.8172,1379.7716 a 19.685301,19.685349 0 0 1 -19.6853,19.6854 19.685301,19.685349 0 0 1 -19.6853,-19.6854 19.685301,19.685349 0 0 1 19.6853,-19.6853 19.685301,19.685349 0 0 1 19.6853,19.6853 z" />
    <path id="shinkan80-s80_art" style="fill:#fb00ff;fill-opacity:0.5;stroke-width:0.66033" d="m 1870.7172,1101.2672 a 19.685301,19.685349 0 0 1 -19.6853,19.6854 19.685301,19.685349 0 0 1 -19.6853,-19.6854 19.685301,19.685349 0 0 1 19.6853,-19.6853 19.685301,19.685349 0 0 1 19.6853,19.6853 z" />
    <path id="shinkan80-s80_special2" style="fill:#fb00ff;fill-opacity:0.5;stroke-width:0.66033" d="m 1870.7172,1374.72 a 19.685301,19.685349 0 0 1 -19.6853,19.6853 19.685301,19.685349 0 0 1 -19.6853,-19.6853 19.685301,19.685349 0 0 1 19.6853,-19.6854 19.685301,19.685349 0 0 1 19.6853,19.6854 z" />
+   <path id="shinkan80-s80_hallway4" style="fill:#fb00ff;fill-opacity:0.5;stroke-width:0.66033" d="m 765.16621,1727.9802 a 19.685301,19.685349 0 0 1 -19.6853,19.6854 19.685301,19.685349 0 0 1 -19.6853,-19.6854 19.685301,19.685349 0 0 1 19.6853,-19.6853 19.685301,19.685349 0 0 1 19.6853,19.6853 z" />
+   <path id="shinkan80-s80_hallway3" style="fill:#fb00ff;fill-opacity:0.5;stroke-width:0.66033" d="m 765.16621,1480.7362 a 19.685301,19.685349 0 0 1 -19.6853,19.6854 19.685301,19.685349 0 0 1 -19.6853,-19.6854 19.685301,19.685349 0 0 1 19.6853,-19.6853 19.685301,19.685349 0 0 1 19.6853,19.6853 z" />
+   <path id="shinkan80-s80_hallway2" style="fill:#fb00ff;fill-opacity:0.5;stroke-width:0.66033" d="m 805.86521,1783.0983 a 19.685301,19.685349 0 0 1 -19.6853,19.6853 19.685301,19.685349 0 0 1 -19.6853,-19.6853 19.685301,19.685349 0 0 1 19.6853,-19.6854 19.685301,19.685349 0 0 1 19.6853,19.6854 z" />
+   <path id="shinkan80-s80_hallway1" style="fill:#fb00ff;fill-opacity:0.5;stroke-width:0.66033" d="m 805.86521,1535.8543 a 19.685301,19.685349 0 0 1 -19.6853,19.6853 19.685301,19.685349 0 0 1 -19.6853,-19.6853 19.685301,19.685349 0 0 1 19.6853,-19.6854 19.685301,19.685349 0 0 1 19.6853,19.6854 z" />
 </svg>
