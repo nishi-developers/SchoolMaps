@@ -805,6 +805,7 @@ _:future,
     margin: 10px;
     z-index: 10;
     cursor: pointer;
+    user-select: none;
 }
 
 #floorMenu ul {
@@ -830,18 +831,14 @@ _:future,
 }
 
 #floorMenu ul li.floor {
-    border: 1px solid var(--MainBodyColor);
     border-radius: 20%;
     font-size: 1.5rem;
     margin: 2px 0 2px 0;
+    background-color: var(--SubBaseColor);
 }
 
 #floorMenu ul li.floor.selected {
     background-color: var(--SubColor);
-}
-
-#floorMenu ul li.floor.notselected {
-    background-color: var(--MainBaseColor);
 }
 
 .layersMenu {
@@ -851,6 +848,7 @@ _:future,
     margin: 10px;
     z-index: 10;
     cursor: pointer;
+    user-select: none;
 }
 
 .layersMenu .layer {
@@ -862,8 +860,7 @@ _:future,
     height: 75px;
     margin: 2px 0 2px 0;
     border-radius: 20%;
-    border: 1px solid var(--MainBodyColor);
-    background-color: var(--MainBaseColor);
+    background-color: var(--SubBaseColor);
 }
 
 .layersMenu .layer.selected {
