@@ -6,7 +6,6 @@ import FloorInfo from '@/assets/FloorInfo.json'
 import Layers from '@/assets/Layers.json'
 import { event } from 'vue-gtag'
 import router from '@/router';
-const BASE_URL = import.meta.env.BASE_URL
 
 // ref
 const currentPlaceId = ref("")
