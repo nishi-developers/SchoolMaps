@@ -1,7 +1,7 @@
 import json, csv
 
-InputFilePath = "in-out/input.csv"
-OutputFilePath = "in-out/output.json"
+InputFilePath = "MapData/PlaceInfo.csv"
+OutputFilePath = "frontend/src/assets/PlaceInfo.json"
 
 # CSVファイルを読み込み
 PlaceInfo = []
@@ -15,14 +15,15 @@ Converted = {}
 # 最初の行を削除
 for i in range(1, len(PlaceInfo)):
     images = []
-    for j in range(len(PlaceInfo[i]) - 5):
-        if PlaceInfo[i][5 + j] != "":
-            images.append(PlaceInfo[i][5 + j])
+    for j in range(len(PlaceInfo[i]) - 6):
+        if PlaceInfo[i][6 + j] != "":
+            images.append(PlaceInfo[i][6 + j])
     Converted[PlaceInfo[i][0]] = {
         "floor": int(PlaceInfo[i][1]),
-        "name": PlaceInfo[i][2],
-        "words": PlaceInfo[i][3],
-        "desc": PlaceInfo[i][4],
+        "layer": PlaceInfo[i][2],
+        "name": PlaceInfo[i][3],
+        "words": PlaceInfo[i][4],
+        "desc": PlaceInfo[i][5],
         "images": images,
     }
 
