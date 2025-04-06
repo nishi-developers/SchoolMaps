@@ -5,6 +5,7 @@
   /* テーマ */
   --MainColor: #bee0ff;
   --SubColor: #82c3ff;
+  --SubColor2: #0057ad;
   /* 背景 */
   --MainBaseColor: #f3f9ff;
   --SubBaseColor: #d4ebff;
@@ -23,6 +24,7 @@
     /* テーマ */
     --MainColor: #003365;
     --SubColor: #0057ad;
+    --SubColor2: #bee0ff;
     /* 背景 */
     --MainBaseColor: #333333;
     --SubBaseColor: #030c2c;
