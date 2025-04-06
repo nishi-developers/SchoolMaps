@@ -3,9 +3,10 @@ import { onMounted, ref, defineAsyncComponent, watch } from 'vue'
 import PropertyView from '@/components/PropertyView.vue';
 import PlaceInfo from '@/assets/PlaceInfo.json'
 import FloorInfo from '@/assets/FloorInfo.json'
+import Layers from '@/assets/Layers.json'
 import { event } from 'vue-gtag'
 import router from '@/router';
-import { onBeforeRouteLeave } from 'vue-router';
+const BASE_URL = import.meta.env.BASE_URL
 
 // ref
 const currentPlaceId = ref("")
@@ -19,17 +20,17 @@ onMounted(() => {
     Setup.resolveUrl()
     Control.resetMove() // 処理内容的にURL解決が先
 })
-const popstateEvent = () => {
-    Setup.resolveUrl()
-}
-window.addEventListener('popstate', popstateEvent);
-onBeforeRouteLeave((to, from, next) => {
-    // 解除をしないと、他のページで誤作動する
-    window.removeEventListener('popstate', popstateEvent);
-    next()
-})
 watch(currentPlaceId, () => {
-    Setup.resolveMapPlaceClass()
+    Setup.resolveMapColor()
+})
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+    // ダークモードの変更を検知
+    Setup.resolveAllMapColor()
+})
+router.afterEach((to, from) => {
+    if (to.name == "map") {
+        Setup.resolveUrl()
+    }
 })
 
 // SetupClass
@@ -37,6 +38,11 @@ let Setup = new class {
     constructor() {
         this.placeInfoReverse = this.#createPlaceInfo()
         this.mapDataCurrent = null
+        this.showLayer = ref(null)
+    }
+    changeLayer(layer) {
+        // レイヤーの変更
+        this.changeURL(currentFloor.value, currentPlaceId.value, layer)
     }
     // URL解決:いかなる場合も、変更があった場合は、URLを変更する
     setMapData() {
@@ -44,27 +50,25 @@ let Setup = new class {
         // マップデータの取得
         const mapSvg = document.querySelector("#map_content svg")
         mapSvg.querySelectorAll("path").forEach((element) => {
-            if (element.id.includes("none")) {
-                element.classList.add("none")
-            } else if (element.id.includes("enclosure")) {
-                element.classList.add("enclosure")
-            } else if (element.id.includes("base")) {
-                element.classList.add("base")
-            } else if (element.id.includes("label")) {
-                element.classList.add("label")
-            } else {
-                element.classList.add("place")
-                // "-"以下はid重複防止用なので削除
-                element.setAttribute("placeid", element.id.split("-")[0])
-                // ラベルをSVGに追加
-                let pathElement = element.getBBox();
-                let centerX = pathElement.x + pathElement.width / 2;
-                let centerY = pathElement.y + pathElement.height / 2;
-                // mapSvg.insertAdjacentHTML('beforeend', `<circle cx="${centerX}" cy="${centerY}" r="5" fill="red" />`);
-                mapSvg.insertAdjacentHTML('beforeend', `<text x="${centerX}" y="${centerY}" class="label added">${PlaceInfo[element.id].name}<text/>`);
-            }
+            Layers.forEach((layer) => {
+                if (layer.prefix == element.id.split("-")[0]) {
+                    element.classList.add(layer.prefix)
+                    // Setup.setLayerColor(element, "default", layer)
+                    if (layer.place) { // place=ラベルあり
+                        // placeidを設定
+                        element.setAttribute("placeid", element.id.split("-")[1])
+                        element.classList.add("place")
+                        let pathElement = element.getBBox();
+                        let centerX = pathElement.x + pathElement.width / 2;
+                        let centerY = pathElement.y + pathElement.height / 2;
+                        // mapSvg.insertAdjacentHTML('beforeend', `<circle cx="${centerX}" cy="${centerY}" r="5" fill="red" />`);
+                        mapSvg.insertAdjacentHTML('beforeend', `<text placeid="${element.id.split("-")[1]}" x="${centerX}" y="${centerY}" class="label">${PlaceInfo[element.getAttribute("placeid")].name}<text/>`);
+                    }
+                }
+            })
         })
-        Setup.resolveMapPlaceClass() //thisは使えない
+        Setup.resolveAllMapColor() //thisは使えない
+        Setup.resolveLayer() //thisは使えない
     }
     #createPlaceInfo() {
         // フロア情報の逆順を作成
@@ -74,22 +78,25 @@ let Setup = new class {
         }
         return result
     }
-    changeURL(floor, id) {
+    changeURL(floor, id, layer) {
         // URLの変更
         // history.stateは必須(VueRouterの仕様)
-        if (id != null) {
-            history.pushState(history.state, '', `${import.meta.env.BASE_URL}${floor}/${id}`);
+        let url = `${import.meta.env.BASE_URL}${floor}`
+        if (id != "" && id != null) {
+            url += `/${id}`
         }
-        else {
-            history.pushState(history.state, '', `${import.meta.env.BASE_URL}${floor}`);
+        if (layer != "" && layer != null) {
+            url += `?layer=${layer}`
         }
-        Setup.resolveUrl() // PropertyViewからの呼び出しのため、thisを使わない
+        router.push(url)
     }
+
     resolveUrl() {
         // onMount以降に実行しなければならない
         // URLの解決
         let floor
         let id
+        let layer
         if (import.meta.env.BASE_URL != "/") {
             // ベースURLがある場合
             floor = location.pathname.split("/")[2]
@@ -99,11 +106,16 @@ let Setup = new class {
             floor = location.pathname.split("/")[1]
             id = location.pathname.split("/")[2]
         }
+        let params = new URLSearchParams(document.location.search);
+        layer = params.get("layer")
         if (floor == null) {
             floor = ""
         }
         if (id == null) {
             id = ""
+        }
+        if (layer == null) {
+            layer = ""
         }
         // フロアの変更
         if (floor != currentFloor.value) {
@@ -119,16 +131,42 @@ let Setup = new class {
             if (Property.isPlaceExist(id)) {
                 Property.show(id)
             } else {
-                this.changeURL(currentFloor.value, null)
+                this.changeURL(currentFloor.value, null, this.showLayer.value)
             }
         } else {
             Property.hide()
         }
+        // レイヤーの変更
+        this.showLayer.value = layer
+        this.resolveLayer() // 初回時はsetMapData()から呼び出されるので注意
     }
     #changeFloor(floor) {
         currentFloor.value = floor
         Property.hide() //これがないと、フロアが変わったときに、プロパティが表示できずエラーになる
         this.mapDataCurrent = defineAsyncComponent(() => import(`@/assets/floors/${floor}.vue`))
+    }
+    resolveLayer() {
+        document.querySelectorAll(`.place`).forEach((element) => {
+            // switchableなレイヤーの判別
+            if (Layers.filter((layer => layer.prefix == PlaceInfo[element.getAttribute("placeid")].layer))[0].switchable) {
+                element.style.display = "none"
+                if (this.showLayer.value == PlaceInfo[element.getAttribute("placeid")].layer) {
+                    element.style.display = "block"
+                }
+            }
+        })
+        document.querySelectorAll(`.label`).forEach((element) => {
+            // switchableなレイヤーの判別
+            element.style.display = "none"
+            if (this.showLayer.value == "" || this.showLayer.value == null) {
+                if (Layers.filter((layer => layer.prefix == PlaceInfo[element.getAttribute("placeid")].layer))[0].switchable == false) {
+                    element.style.display = "block"
+                }
+            }
+            if (this.showLayer.value == PlaceInfo[element.getAttribute("placeid")].layer) {
+                element.style.display = "block"
+            }
+        })
     }
     windowSize = {
         get width() {
@@ -156,14 +194,68 @@ let Setup = new class {
             deviceMode.value = "pc"
         }
     }
-    resolveMapPlaceClass() {
+    resolveMapColor() {
+        // 選択されている場所の色を変更する
         document.querySelectorAll(`.place.selected`).forEach((element) => {
             element.classList.remove("selected")
+            this.#setLayerColor(element, "default")
         })
         if (currentPlaceId.value != "") {
-            document.querySelectorAll(`[placeid="${currentPlaceId.value}"]`).forEach((element) => {
+            document.querySelectorAll(`.place[placeid="${currentPlaceId.value}"]`).forEach((element) => {
                 element.classList.add("selected")
+                this.#setLayerColor(element, "select")
             })
+        }
+    }
+    resolveAllMapColor() {
+        // 全てのマップの色を変更する
+        document.querySelector("#map_content svg").querySelectorAll("path").forEach((element) => {
+            const layer = Layers.filter((layer) => layer.prefix == element.id.split("-")[0])[0]
+            this.#setLayerColor(element, "default", layer)
+            this.resolveMapColor() // 選択されている場所の色を変更する
+        })
+        document.querySelector("#map_content svg").querySelectorAll(".label").forEach((element) => {
+            this.#setLayerLabelColor(element)
+        })
+    }
+    #setLayerColor(element, mode, layer) {
+        let style
+        if (layer) {
+            // レイヤーが指定されている場合は、それを優先する
+            style = layer.style
+        } else {
+            style = Layers.filter((layer => layer.prefix == PlaceInfo[element.getAttribute("placeid")].layer))[0].style
+        }
+        // 共通
+        element.style.strokeWidth = style.main.strokeWidth
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // ダークモード
+            element.style.stroke = style.main.stroke.dark
+            if (mode == "select") {
+                element.style.fill = style.main.fill_select.dark
+            } else {
+                element.style.fill = style.main.fill_default.dark
+            }
+        } else {
+            // ライトモード
+            element.style.stroke = style.main.stroke.light
+            if (mode == "select") {
+                element.style.fill = style.main.fill_select.light
+            } else {
+                element.style.fill = style.main.fill_default.light
+            }
+        }
+    }
+    #setLayerLabelColor(element) {
+        let style = Layers.filter((layer => layer.prefix == PlaceInfo[element.getAttribute("placeid")].layer))[0].style
+        // 共通
+        element.style.fontSize = style.label.fontSize
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // ダークモード
+            element.style.fill = style.label.fill.dark
+        } else {
+            // ライトモード
+            element.style.fill = style.label.fill.light
         }
     }
 }
@@ -204,7 +296,7 @@ let Property = new class {
             }
             const id = clickedObject.getAttribute('placeid')
             isShowWrapper.value = true
-            Setup.changeURL(currentFloor.value, id)
+            Setup.changeURL(currentFloor.value, id, Setup.showLayer.value)
         }, 0);
     }
     hide() {
@@ -654,56 +746,13 @@ let Control = new class {
 
 <style>
 /* マップのスタイル */
-
-/* マップのルート */
-#map_content svg {
-    /* 要検討 */
-    fill: var(--MapBaseColor);
-    stroke: var(--MapBorderColor);
-    stroke-width: 1;
-}
-
-/* ルート以下の子要素に対して */
-#map_content svg>* {
-    stroke-width: 2.0;
-}
-
-/* オブジェクト(部屋) */
-/* #map_content svg .svg-object {} */
-
-/* 選択された */
-#map_content svg .place.selected {
-    fill: var(--MapObjectSelectColor);
-
-}
-
-/* 選択されていない */
-#map_content svg .place:not(.selected) {
-    fill: var(--MapObjectColor);
-}
-
-/* 他の場所 */
-#map_content svg .none {
-    fill: var(--MapNoneColor);
-}
-
-#map_content svg .enclosure {
-    fill: var(--MapEnclosureColor);
-}
-
-#map_content svg .base {
-    fill: var(--MapBaseColor);
-}
-
 /* テキスト */
 #map_content svg .label {
     transform-box: fill-box;
     transform-origin: 0 80%;
     transform: rotate(v-bind("- mapStatus.rotate + 'deg'")) translate(-50%, +25%);
-    fill: var(--MainBodyColor);
     stroke-width: 0;
     pointer-events: none;
-    font-size: 2rem;
     opacity: v-bind("labelOpacity");
 }
 
@@ -756,6 +805,7 @@ _:future,
     margin: 10px;
     z-index: 10;
     cursor: pointer;
+    user-select: none;
 }
 
 #floorMenu ul {
@@ -781,18 +831,55 @@ _:future,
 }
 
 #floorMenu ul li.floor {
-    border: 1px solid var(--MainBodyColor);
     border-radius: 20%;
     font-size: 1.5rem;
     margin: 2px 0 2px 0;
+    background-color: var(--SubBaseColor);
 }
 
-#floorMenu ul .selected {
+#floorMenu ul li.floor.selected {
     background-color: var(--SubColor);
 }
 
-#floorMenu ul .notselected {
-    background-color: var(--MainBaseColor);
+.layersMenu {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
+
+.layersMenu .layer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 75px;
+    margin: 2px 0 2px 0;
+    border-radius: 20%;
+    background-color: var(--SubBaseColor);
+}
+
+.layersMenu .layer.selected {
+    background-color: var(--SubColor);
+}
+
+.layersMenu .layer span {
+    font-size: 0.8rem;
+    color: var(--MainBodyColor);
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.layersMenu .layer img {
+    width: 85%;
+    height: auto;
+    margin: 0 auto;
 }
 
 /* Transition */
@@ -836,8 +923,8 @@ _:future,
 <template>
     <Transition :name="`property-${deviceMode}`">
         <PropertyView v-if="isShowProperty" :Floor="currentFloor" :PlaceId="currentPlaceId" :deviceMode="deviceMode"
-            :key="currentFloor + '-' + currentPlaceId" @hideProperty="Setup.changeURL(currentFloor, null)"
-            @jump="Setup.changeURL" />
+            :key="currentFloor + '-' + currentPlaceId"
+            @hideProperty="Setup.changeURL(currentFloor, null, Setup.showLayer.value)" @jump="Setup.changeURL" />
     </Transition>
     <div id="floorMenu">
         <ul>
@@ -851,10 +938,18 @@ _:future,
             <li class="func" v-else><font-awesome-icon @click="labelOpacity = 0" :icon="['fas', 'text-slash']" />
             </li>
             <li class="floor" v-for="floor in Setup.placeInfoReverse" :key="floor.__key__"
-                @click="Setup.changeURL(floor.__key__, null)"
+                @click="Setup.changeURL(floor.__key__, null, Setup.showLayer.value)"
                 :class="floor.__key__ === currentFloor ? 'selected' : 'notselected'">
                 {{ floor.shortName }}</li>
         </ul>
+    </div>
+    <div class="layersMenu">
+        <div class="layer" v-for="layer in Layers.filter(layer => layer.switchable)" :key="layer"
+            @click="((Setup.showLayer.value == layer.prefix) ? Setup.changeLayer(null) : Setup.changeLayer(layer.prefix))"
+            :class="(Setup.showLayer.value == layer.prefix) ? 'selected' : ''">
+            <span>{{ layer.name }}</span>
+            <img :src="`${BASE_URL}img/layers/${layer.icon}`">
+        </div>
     </div>
     <div v-if="isShowWrapper" id="wrapperBox" @click="Control.wrapEvent('click', $event)"
         @mousemove="Control.wrapEvent('mousemove', $event)" @mousedown="Control.wrapEvent('mousedown', $event)"

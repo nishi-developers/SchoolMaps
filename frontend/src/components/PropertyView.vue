@@ -14,7 +14,11 @@
                 <font-awesome-icon :icon="['fas', 'share-from-square']" />共有
             </span>
         </p>
-        <p>
+        <p id="info">
+            <span v-if="Layers.filter(layer => layer.prefix == PlaceInfo[props.PlaceId].layer)[0].switchable">
+                <font-awesome-icon :icon="['fas', 'hashtag']" /> {{Layers.filter(layer => layer.prefix ==
+                    PlaceInfo[props.PlaceId].layer)[0].name}}
+            </span>
             <span v-if="FloorInfo[props.Floor].fullName != null">
                 <font-awesome-icon :icon="['fas', 'location-dot']" /> {{ FloorInfo[props.Floor].fullName }}
             </span>
@@ -30,6 +34,7 @@
 import { onMounted, ref, watch } from 'vue'
 import PlaceInfo from '@/assets/PlaceInfo.json'
 import FloorInfo from '@/assets/FloorInfo.json'
+import Layers from '@/assets/Layers.json'
 
 // 入出力
 const props = defineProps(["Floor", "PlaceId", "deviceMode"])
@@ -338,6 +343,15 @@ p {
     cursor: pointer;
     margin-left: 10px;
     font-size: 1rem;
+}
+
+#info {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+#info span {
+    margin-right: 15px;
 }
 
 #desc {

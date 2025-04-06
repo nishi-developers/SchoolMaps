@@ -5,8 +5,9 @@ Affinity Designerで作成したSVGファイルを利用するためのスクリ
 
 import xml.etree.ElementTree as ET
 
-InputFilePath = "in-out/input.svg"
-OutputFilePath = "in-out/output.svg"
+Num = 0
+InputFilePath = f"MapData/{Num}.svg"
+OutputFilePath = f"MapData/{Num}.svg"
 
 tree = ET.parse(InputFilePath)
 root = tree.getroot()

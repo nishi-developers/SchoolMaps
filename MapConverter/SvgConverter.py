@@ -8,9 +8,10 @@ PlaceInfoLabels = []
 
 # ファイルのパスを取得
 
-InputFilePath = "in-out/input.svg"
-OutputFilePath = "in-out/output.vue"
-TemplateFilePath = "template.vue"
+Num = 0
+InputFilePath = f"MapData/{Num}.svg"
+OutputFilePath = f"frontend/src/assets/floors/{Num}.vue"
+TemplateFilePath = "MapConverter/template.vue"
 
 # SVGファイルを読み込み
 
@@ -30,7 +31,7 @@ for child in root:
 file = ET.tostring(root, encoding="utf-8", xml_declaration=False).decode("utf-8")
 
 # テンプレートファイルを読み出し
-with open("template.vue", encoding="utf-8") as f:
+with open(TemplateFilePath, encoding="utf-8") as f:
     TEMPLATE = f.read()
 
 # ファイルに書き出し

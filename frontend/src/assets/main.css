@@ -14,11 +14,6 @@
   --AccentBodyColor: #9400ff;
   --URLBodyColor: #8d4ab9;
   /* マップ */
-  --MapBaseColor: #f3f3f3;
-  --MapEnclosureColor: #cfcfcf;
-  --MapNoneColor: #adadad;
-  --MapObjectColor: var(--SubBaseColor);
-  --MapObjectSelectColor: var(--SubColor);
   --MapBorderColor: var(--MainBodyColor);
 }
 
@@ -37,12 +32,6 @@
     --AccentBodyColor: #9400ff;
     --URLBodyColor: #8d4ab9;
     /* マップ */
-    /* マップ */
-    --MapBaseColor: #1d1d1d;
-    --MapEnclosureColor: #3f3f3f;
-    --MapNoneColor: #797979;
-    --MapObjectColor: var(--SubBaseColor);
-    --MapObjectSelectColor: var(--SubColor);
     --MapBorderColor: var(--MainBodyColor);
   }
 }
@@ -60,7 +49,7 @@
   /* フォント */
   font-family: 'Noto Sans JP', serif;
   /* ヘッダーの高さ */
-  --HeaderHeight: 80px; /* Map.vueのJSからも参照されているので注意 */
+  --HeaderHeight: 50px; /* Map.vueのJSからも参照されているので注意 */
 }
 
 :root {
