@@ -34,12 +34,11 @@ document.body.addEventListener('touchmove', (event) => {
 /* transition */
 .router-enter-active,
 .router-leave-active {
-  transition: opacity .25s ease, transform .25s ease;
+  transition: opacity .15s ease
 }
 
 .router-enter-from,
 .router-leave-to {
   opacity: 0;
-  transform: translateX(-2%);
 }
 </style>
