@@ -836,12 +836,53 @@ _:future,
     margin: 2px 0 2px 0;
 }
 
-#floorMenu ul .selected {
+#floorMenu ul li.floor.selected {
     background-color: var(--SubColor);
 }
 
-#floorMenu ul .notselected {
+#floorMenu ul li.floor.notselected {
     background-color: var(--MainBaseColor);
+}
+
+.layersMenu {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.layersMenu .layer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 75px;
+    margin: 2px 0 2px 0;
+    border-radius: 20%;
+    border: 1px solid var(--MainBodyColor);
+    background-color: var(--MainBaseColor);
+}
+
+.layersMenu .layer.selected {
+    background-color: var(--SubColor);
+}
+
+.layersMenu .layer span {
+    font-size: 0.8rem;
+    color: var(--MainBodyColor);
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.layersMenu .layer img {
+    width: 85%;
+    height: auto;
+    margin: 0 auto;
 }
 
 /* Transition */
@@ -904,13 +945,12 @@ _:future,
                 :class="floor.__key__ === currentFloor ? 'selected' : 'notselected'">
                 {{ floor.shortName }}</li>
         </ul>
-        <!-- layer -->
-        <div v-for="layer in Layers.filter(layer => layer.switchable)" :key="layer"
-            @click="((Setup.showLayer.value == layer.prefix) ? Setup.changeLayer(null) : Setup.changeLayer(layer.prefix))">
-            <div>
-                {{ layer.name }}
-                <!-- {{ (Setup.showLayer.value == layer.prefix) ? 'ON' : 'OFF' }} -->
-            </div>
+    </div>
+    <div class="layersMenu">
+        <div class="layer" v-for="layer in Layers.filter(layer => layer.switchable)" :key="layer"
+            @click="((Setup.showLayer.value == layer.prefix) ? Setup.changeLayer(null) : Setup.changeLayer(layer.prefix))"
+            :class="(Setup.showLayer.value == layer.prefix) ? 'selected' : ''">
+            <span>{{ layer.name }}</span>
             <img :src="`${BASE_URL}img/layers/${layer.icon}`">
         </div>
     </div>
