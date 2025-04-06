@@ -7,10 +7,20 @@
                     rel="noopener noreferrer">東京都立西高等学校</a></b>の校内マップです。<br>
             本サイトに関して、高校へのお問い合わせは行わないでください。
         </p>
-        <p class="textH">開発･運営</p>
+        <p class="textH">開発･運営情報</p>
         <p class="textP">
-            <a href="https://github.com/M-Haruki" target="_blank" rel="noopener noreferrer"><b>M_Haruki</b></a>
-            (<a href="https://github.com/nishi-developers" target="_blank" rel="noopener noreferrer"><b>504</b></a>)
+            開発者 : <a href="https://github.com/M-Haruki" target="_blank" rel="noopener noreferrer">M_Haruki</a><br>
+            運営団体 : <a href="https://github.com/nishi-developers" target="_blank" rel="noopener noreferrer">504</a><br>
+            ソースコードは
+            <a href="https://github.com/nishi-developers/SchoolMaps" target="_blank" rel="noopener noreferrer">
+                GitHub
+            </a>
+            にて
+            <a href="https://github.com/nishi-developers/SchoolMaps/blob/main/LICENSE" target="_blank"
+                rel="noopener noreferrer">
+                MITライセンス
+            </a>
+            のもと公開しています。
         </p>
         <p class="textH">アクセス解析ツールについて</p>
         <p class="textP">
