@@ -4,7 +4,6 @@
         "place": true,
         "switchable": true,
         "name": "新歓80th",
-        "icon": "shinkan80.webp",
         "style": {
             "main": {
                 "fill_default": {
