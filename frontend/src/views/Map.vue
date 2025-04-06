@@ -853,14 +853,15 @@ _:future,
 
 .layersMenu .layer {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 75px;
+    box-sizing: border-box;
+    width: 135px;
     margin: 2px 0 2px 0;
-    border-radius: 20%;
+    padding: 8px 12px;
+    border-radius: 10px;
     background-color: var(--SubBaseColor);
+    overflow: hidden;
 }
 
 .layersMenu .layer.selected {
@@ -868,18 +869,21 @@ _:future,
 }
 
 .layersMenu .layer span {
-    font-size: 0.8rem;
-    color: var(--MainBodyColor);
     text-align: center;
-    width: 100%;
     box-sizing: border-box;
     white-space: nowrap;
 }
 
-.layersMenu .layer img {
-    width: 85%;
-    height: auto;
-    margin: 0 auto;
+.layersMenu .layer .checkbox {
+    width: 1.2rem;
+    height: 1.2rem;
+    accent-color: var(--SubColor2);
+}
+
+.layersMenu .layer .name {
+    font-size: 1.2rem;
+    color: var(--MainBodyColor);
+    margin-left: 8px;
 }
 
 /* Transition */
@@ -947,8 +951,8 @@ _:future,
         <div class="layer" v-for="layer in Layers.filter(layer => layer.switchable)" :key="layer"
             @click="((Setup.showLayer.value == layer.prefix) ? Setup.changeLayer(null) : Setup.changeLayer(layer.prefix))"
             :class="(Setup.showLayer.value == layer.prefix) ? 'selected' : ''">
-            <span>{{ layer.name }}</span>
-            <img :src="`${BASE_URL}img/layers/${layer.icon}`">
+            <input type="checkbox" class="checkbox" :checked="Setup.showLayer.value == layer.prefix">
+            <span class="name">{{ layer.name }}</span>
         </div>
     </div>
     <div v-if="isShowWrapper" id="wrapperBox" @click="Control.wrapEvent('click', $event)"
