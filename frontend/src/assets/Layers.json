@@ -5,38 +5,28 @@
         "switchable": true,
         "name": "80th新歓",
         "icon": "shinkan80.webp",
-        "color": {
-            "default": {
-                "light": "#87ff8d",
-                "dark": "#f7ff8d"
-            },
-            "select": {
-                "light": "#3ab322",
-                "dark": "#fab322"
-            }
-        },
         "style": {
             "main": {
                 "fill_default": {
-                    "light": "#87ff8d",
-                    "dark": "#87ff8d"
+                    "light": "#bdffb6",
+                    "dark": "#158909"
                 },
                 "fill_select": {
-                    "light": "#3ab322",
-                    "dark": "#3ab322"
+                    "light": "#42e24a",
+                    "dark": "#51d557"
                 },
                 "stroke": {
                     "light": "var(--MapBorderColor)",
                     "dark": "var(--MapBorderColor)"
                 },
-                "strokeWidth": 0.1
+                "strokeWidth": 0
             },
             "label": {
                 "fill": {
                     "light": "var(--MainBodyColor)",
                     "dark": "var(--MainBodyColor)"
                 },
-                "fontSize": "2rem"
+                "fontSize": "1.5rem"
             }
         }
     },
@@ -44,16 +34,6 @@
         "prefix": "main",
         "place": true,
         "switchable": false,
-        "color": {
-            "default": {
-                "light": "var(--SubBaseColor)",
-                "dark": "var(--SubBaseColor)"
-            },
-            "select": {
-                "light": "var(--SubColor)",
-                "dark": "var(--SubColor)"
-            }
-        },
         "style": {
             "main": {
                 "fill_default": {
@@ -83,12 +63,6 @@
         "prefix": "none",
         "place": false,
         "switchable": false,
-        "color": {
-            "default": {
-                "light": "#adadad",
-                "dark": "#797979"
-            }
-        },
         "style": {
             "main": {
                 "fill_default": {
@@ -107,12 +81,6 @@
         "prefix": "enclosure",
         "place": false,
         "switchable": false,
-        "color": {
-            "default": {
-                "light": "#cfcfcf",
-                "dark": "#3f3f3f"
-            }
-        },
         "style": {
             "main": {
                 "fill_default": {
@@ -132,12 +100,6 @@
         "place": false,
         "switchable": false,
         "islabel": false,
-        "color": {
-            "default": {
-                "light": "#f3f3f3",
-                "dark": "#1d1d1d"
-            }
-        },
         "style": {
             "main": {
                 "fill_default": {
