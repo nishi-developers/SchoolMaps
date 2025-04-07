@@ -35,6 +35,8 @@ import { onMounted, ref, watch } from 'vue'
 import PlaceInfo from '@/assets/PlaceInfo.json'
 import FloorInfo from '@/assets/FloorInfo.json'
 import Layers from '@/assets/Layers.json'
+import Viewer from 'viewerjs';
+import 'viewerjs/dist/viewer.css';
 
 // 入出力
 const props = defineProps(["Floor", "PlaceId", "deviceMode"])
@@ -257,9 +259,18 @@ let ImageCtrl = new class {
         for (let i = 0; i < this.#imageObjects.length; i++) {
             this.#imageObjects[i].style.minWidth = `${this.#imagesWidth[i]}px`
             this.#imageObjects[i].classList.add("image")
+            this.#imageObjects[i].setAttribute("alt", `${PlaceInfo[props.PlaceId].name}の画像${i + 1}`)
             // `imageObjects-${props.PlaceId}`にしているのは、新しいPropertyViewではなく、閉じかけのPropertyViewの方に画像が表示されるのを防ぐため
             document.getElementById(`imageObjects-${props.PlaceId}`).appendChild(this.#imageObjects[i])
         }
+        // viewerjsの初期化
+        new Viewer(
+            document.getElementById(`imageObjects-${props.PlaceId}`),
+            {
+                rotatable: false,
+                scalable: false,
+            }
+        )
     }
 }
 onMounted(() => {
