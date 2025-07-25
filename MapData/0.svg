@@ -1,439 +1,155 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 3308 4678" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g id="base" transform="matrix(1.01459,0,0,5.2512,-5.6655,-19690.1)">
-        <path d="M2244.85,3850.17L2411.24,3850.17L2411.24,4628.12L448.56,4628.12L448.56,3987.91L716.069,3987.91L716.069,3951L1278.66,3951L1278.66,3772.5L2244.85,3772.5L2244.85,3850.17Z" style="fill:white;fill-opacity:0.53;"/>
-    </g>
-    <g id="_0" serif:id="0">
-        <path id="enclosure-classroom_building" d="M764.76,1817.93L617.689,1817.93L617.689,2102.88L1822.1,2102.88L1822.1,1995.26L1934.88,1995.26L1934.88,1878.18L1822.1,1878.53L1822.1,1818.28L1675.03,1817.93L1675.03,1939.13L1257.3,1939.13L1257.3,1790.32L764.76,1790.32L764.76,1817.93Z" style="fill:rgb(253,0,0);fill-opacity:0.5;"/>
-        <path id="enclosure-management_building2" d="M1043.97,1638.69L617.689,1638.69L617.689,1458.88L899.127,1458.88L899.127,1373.95L1187.81,1373.95L1187.81,1499.82L1043.97,1499.82" style="fill:rgb(253,0,0);fill-opacity:0.5;"/>
-        <g id="enclosure-nishi_hall" transform="matrix(0.957812,0,0,1.11437,94.1118,-13.7633)">
-            <rect x="2007.35" y="148.775" width="254.501" height="315.81" style="fill:rgb(253,0,0);fill-opacity:0.5;"/>
-        </g>
-        <path id="enclosure-audiovisual_hall" d="M1946.18,448.154L1946.18,546.286L1873.04,546.286L1873.04,609.272L1712.38,609.272L1712.38,546.286L1639.24,546.286L1639.24,448.154L1946.18,448.154Z" style="fill:rgb(253,0,0);fill-opacity:0.5;"/>
-        <g id="enclosure-pool" transform="matrix(1.03771,0,0,1,-89.5431,0)">
-            <path d="M2374.3,1727.02L2374.3,2493.22L1950.85,2493.22L1950.85,1772.67L2261.9,1772.67L2261.9,1727.02L2374.3,1727.02Z" style="fill:rgb(253,0,0);fill-opacity:0.5;"/>
-        </g>
-        <g id="enclosure-martial_arts_field" transform="matrix(1,0,0,0.993023,0,27.628)">
-            <path d="M2345.2,3326.45L2345.2,3814.37L2203.46,3814.37L2203.46,3960.01L1910.54,3960.01L1910.54,3326.45L2345.2,3326.45Z" style="fill:rgb(253,0,0);fill-opacity:0.5;"/>
-        </g>
-        <g id="enclosure-gym" transform="matrix(0.960498,0,0,1.02184,84.3604,-70.9044)">
-            <rect x="1891.13" y="2509.32" width="462.686" height="736.777" style="fill:rgb(253,0,0);fill-opacity:0.5;"/>
-        </g>
-        <g id="enclosure-clubroom_building_0" transform="matrix(1.08333,0,0,1.11251,-47.0465,-255.758)">
-            <rect x="471.971" y="2273.24" width="92.587" height="513.64" style="fill:rgb(253,0,0);fill-opacity:0.5;"/>
-        </g>
-        <rect id="enclosure-clubroom_building_1" x="464.255" y="2857.42" width="100.303" height="273.126" style="fill:rgb(253,0,0);fill-opacity:0.5;"/>
-        <g id="enclosure-gym_passage" transform="matrix(1,0,0,1.30336,-6.41857e-12,-982.863)">
-            <path d="M1934.88,2630.93L1934.88,2667.03L1900.79,2667.03L1900.79,3244.67L2345.2,3244.67L2345.2,3309.71L1865.63,3309.71L1865.63,2630.93L1934.88,2630.93Z" style="fill:rgb(253,0,0);fill-opacity:0.5;"/>
-        </g>
-        <path id="enclosure-management_building1" d="M1328.33,1564.83L1328.33,1383.77L1377.81,1333.46L1584,1333.46L1584,1383.77L1672.9,1383.77L1672.9,674.137L1873.04,674.137L1873.04,812.293L2101.16,812.293L2101.16,957.671L1873.04,958.128L1873.04,1311.69L2188.57,1311.69L2188.57,674.137L2371.43,674.137L2371.43,1564.83L1328.33,1564.83Z" style="fill:rgb(253,0,0);fill-opacity:0.5;"/>
-        <g id="none-audiovisual_hall_1" transform="matrix(1,0,0,1,0,1.08695)">
-            <path d="M1946.18,545.199L1946.18,608.185L1873.04,608.185L1873.04,651.58L1756.1,651.58L1712.38,608.185L1639.24,608.185L1639.24,545.199L1712.38,545.199L1712.39,608.191L1873.04,608.185L1873.04,545.199L1946.18,545.199Z" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <rect id="none-audiovisual_hall_0" x="1639.24" y="188.469" width="306.938" height="259.685" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        <g id="none-wc" transform="matrix(1.04605,0,0,1.42433,-37.9261,-785.561)">
-            <rect x="626.753" y="1827.87" width="70.298" height="85.098" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-stairs" transform="matrix(1.04605,0,0,1.42433,35.6093,-785.561)">
-            <rect x="626.753" y="1827.87" width="70.298" height="85.098" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-wc1" serif:id="none-wc" transform="matrix(1.04605,0,0,1.42433,1019.41,-785.561)">
-            <rect x="626.753" y="1827.87" width="70.298" height="85.098" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-stairs1" serif:id="none-stairs" transform="matrix(1.04605,0,0,1.42433,1092.95,-785.561)">
-            <rect x="626.753" y="1827.87" width="70.298" height="85.098" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-wc2" serif:id="none-wc" transform="matrix(1.04605,0,0,1.22789,1298.47,-1432.13)">
-            <rect x="626.753" y="1827.87" width="70.298" height="85.098" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-stairs2" serif:id="none-stairs" transform="matrix(1.04605,0,0,1.22789,1372.01,-1432.13)">
-            <rect x="626.753" y="1827.87" width="70.298" height="85.098" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-stairs3" serif:id="none-stairs" transform="matrix(0.999399,0,0,1.11457,-3.07724,-157.409)">
-            <rect x="902.747" y="1373.95" width="144.927" height="76.197" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-wc3" serif:id="none-wc" transform="matrix(0.992483,0,0,1.11457,148.006,-157.409)">
-            <rect x="902.747" y="1373.95" width="144.927" height="76.197" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-stairs4" serif:id="none-stairs" transform="matrix(1.20417,0,0,0.982446,423.286,209.642)">
-            <rect x="622.791" y="1817.93" width="77.496" height="109.136" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-wc4" serif:id="none-wc" transform="matrix(1.01785,0,0,1.56692,-19.9312,-1043.76)">
-            <rect x="1946.18" y="1841.18" width="109.63" height="98.555" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none" transform="matrix(0.979411,0,0,1.07252,49.8638,-130.395)">
-            <rect x="1951.3" y="1774.38" width="302.917" height="63.926" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-stairs5" serif:id="none-stairs" transform="matrix(1.00001,0,0,1.11144,-0.0189084,-192.455)">
-            <rect x="2257.66" y="1727.02" width="116.64" height="41.076" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-stairs6" serif:id="none-stairs" transform="matrix(1.32403,0,0,1.09234,-615.454,-219.431)">
-            <rect x="1873.89" y="2388.72" width="36.651" height="51.543" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-stairs7" serif:id="none-stairs" transform="matrix(0.829147,0,0,0.942525,318.747,191.443)">
-            <rect x="1865.63" y="3330.87" width="29.263" height="128.07" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-stairs8" serif:id="none-stairs" transform="matrix(1.19641,0,0,0.846431,1207.3,-235.433)">
-            <rect x="626.753" y="1827.87" width="70.298" height="85.098" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-wc5" serif:id="none-wc" transform="matrix(2.0956,0,0,0.846431,727.832,-235.433)">
-            <rect x="626.753" y="1827.87" width="70.298" height="85.098" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-ev" transform="matrix(0.702592,0,0,0.423479,1467.41,573.618)">
-            <rect x="626.753" y="1827.87" width="70.298" height="85.098" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-wc6" serif:id="none-wc" transform="matrix(0.702592,0,0,0.422952,1467.41,538.589)">
-            <rect x="626.753" y="1827.87" width="70.298" height="85.098" style="fill:rgb(25,25,25);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-compass_2" transform="matrix(0.126681,-0.04486,0.0612912,0.173081,343.295,563.959)">
-            <path d="M3695.8,281.894C4342.54,281.894 4867.62,666.206 4867.62,1139.57C4867.62,1612.93 4342.54,1997.25 3695.8,1997.25C3049.05,1997.25 2523.97,1612.93 2523.97,1139.57C2523.97,666.206 3049.05,281.894 3695.8,281.894ZM3695.8,410.546C3146.06,410.546 2699.74,737.211 2699.74,1139.57C2699.74,1541.93 3146.06,1868.6 3695.8,1868.6C4245.53,1868.6 4691.85,1541.93 4691.85,1139.57C4691.85,737.211 4245.53,410.546 3695.8,410.546Z" style="fill:rgb(26,26,26);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-compass_1" transform="matrix(0.258569,-0.0915639,0.102028,0.288119,-143.531,671.896)">
-            <path d="M3501.17,1217.37C3497.16,1220.97 3491,1221.8 3485.99,1219.41C3480.97,1217.03 3478.28,1211.99 3479.35,1206.98C3503.05,1096.38 3573.37,768.257 3602.33,633.1C3603.5,627.642 3608.82,623.697 3615.01,623.697C3621.21,623.697 3626.53,627.642 3627.7,633.1C3656.66,768.257 3726.97,1096.38 3750.67,1206.98C3751.75,1211.99 3749.06,1217.03 3744.04,1219.41C3739.03,1221.8 3732.87,1220.97 3728.86,1217.37C3695.93,1187.83 3644.82,1141.95 3624.15,1123.4C3621.73,1121.23 3618.44,1120.01 3615.01,1120.01C3611.59,1120.01 3608.3,1121.23 3605.88,1123.4C3585.21,1141.95 3534.09,1187.83 3501.17,1217.37Z" style="fill:rgb(26,26,26);fill-opacity:0.5;"/>
-        </g>
-        <g id="none-compass_0" transform="matrix(0.251371,-0.0890152,0.0890152,0.251371,-39.2662,682.113)">
-            <path d="M3345.87,396.109L3387.69,459.39L3387.69,395.523C3387.69,391.372 3388.58,388.26 3390.36,386.185C3392.14,384.109 3394.55,383.072 3397.57,383.072C3400.7,383.072 3403.16,384.109 3404.97,386.185C3406.78,388.26 3407.68,391.372 3407.68,395.523L3407.68,479.971C3407.68,489.395 3403.78,494.107 3395.96,494.107C3394.01,494.107 3392.25,493.826 3390.69,493.265C3389.13,492.703 3387.66,491.812 3386.29,490.591C3384.93,489.371 3383.66,487.942 3382.49,486.307C3381.31,484.671 3380.14,482.998 3378.97,481.289L3338.17,418.741L3338.17,481.656C3338.17,485.757 3337.22,488.858 3335.32,490.957C3333.41,493.057 3330.97,494.107 3327.99,494.107C3324.92,494.107 3322.45,493.045 3320.6,490.921C3318.74,488.797 3317.81,485.708 3317.81,481.656L3317.81,398.819C3317.81,395.303 3318.2,392.544 3318.99,390.542C3319.91,388.345 3321.45,386.551 3323.6,385.159C3325.75,383.768 3328.07,383.072 3330.56,383.072C3332.51,383.072 3334.18,383.389 3335.57,384.024C3336.97,384.659 3338.19,385.513 3339.24,386.587C3340.29,387.662 3341.36,389.053 3342.46,390.762C3343.56,392.471 3344.69,394.253 3345.87,396.109Z" style="fill:rgb(26,26,26);fill-opacity:0.5;fill-rule:nonzero;"/>
-        </g>
-        <g id="main-office_warehouse" transform="matrix(1.05595,0,0,1.18591,-102.499,-245.613)">
-            <rect x="1681.34" y="1259.39" width="150.76" height="114.564" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-pc_room" transform="matrix(1.05595,0,0,1.89046,-102.499,-1349.5)">
-            <rect x="1681.34" y="1259.39" width="150.76" height="114.564" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-pc_preparation_room" transform="matrix(1.05595,0,0,0.642418,-102.499,148.674)">
-            <rect x="1681.34" y="1259.39" width="150.76" height="114.564" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-ll_room" transform="matrix(1.05595,0,0,1.89046,-102.499,-1639.67)">
-            <rect x="1681.34" y="1259.39" width="150.76" height="114.564" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-ll_preparation_room" transform="matrix(1.05595,0,0,0.584946,-102.499,-62.5368)">
-            <rect x="1681.34" y="1259.39" width="150.76" height="114.564" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <path id="main-teachers_entrance" d="M1584,1383.77L1584,1333.46L1377.81,1333.46L1328.33,1383.77L1584,1383.77Z" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        <g id="main-home_economics_room" transform="matrix(1.39532,0,0,0.72239,-937.479,401.526)">
-            <rect x="2269.72" y="1009.73" width="101.705" height="349.981" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-home_economics_preparation_room" transform="matrix(1.39532,0,0,0.49493,-937.479,457.983)">
-            <rect x="2269.72" y="1009.73" width="101.705" height="349.981" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-food_room" transform="matrix(1.39532,0,0,0.810307,-937.479,-144.055)">
-            <rect x="2269.72" y="1009.73" width="101.705" height="349.981" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-straight_course" transform="matrix(1.15735,0,0,1.23081,-84.0379,-900.854)">
-            <rect x="538.587" y="3417.42" width="57.447" height="988.333" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-bicycle_parking_1st_1" transform="matrix(6.36035e-17,-1.03872,0.48,2.93915e-17,-43.7678,3070.35)">
-            <rect x="828.164" y="1116.88" width="359.642" height="54.134" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-bicycle_parking_1st_0" transform="matrix(3.07038e-17,-0.501431,0.48,2.93915e-17,33.9491,2432.15)">
-            <rect x="828.164" y="1116.88" width="359.642" height="54.134" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-bicycle_parking_2nd_0" transform="matrix(2.64189e-17,-0.431453,0.48,2.93915e-17,43.6952,2024.14)">
-            <rect x="828.164" y="1116.88" width="359.642" height="54.134" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-bicycle_parking_2nd_2" transform="matrix(1.00286,0,0,0.955644,-3.39879,205.768)">
-            <rect x="828.164" y="1116.88" width="359.642" height="54.134" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-bicycle_parking_3nd_1" transform="matrix(1.00286,0,0,0.955644,-3.39879,51.9418)">
-            <rect x="828.164" y="1116.88" width="359.642" height="54.134" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-bicycle_parking_3nd_0" transform="matrix(1.00286,0,0,0.955644,-3.39879,129.123)">
-            <rect x="828.164" y="1116.88" width="359.642" height="54.134" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-bicycle_parking_teachers" transform="matrix(-0.700876,-8.58326e-17,5.8783e-17,-0.48,1735.25,1905.76)">
-            <rect x="828.164" y="1116.88" width="359.642" height="54.134" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-bicycle_parking_1st_2" transform="matrix(-0.38618,-4.72934e-17,5.8783e-17,-0.48,1238.41,2772.2)">
-            <rect x="828.164" y="1116.88" width="359.642" height="54.134" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-bicycle_parking_2nd_1" transform="matrix(0.790492,0,0,0.955644,-45.0076,332.795)">
-            <rect x="828.164" y="1116.88" width="359.642" height="54.134" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-garbage_dump" transform="matrix(0.395818,0,0,1.18944,883.11,-209.177)">
-            <rect x="828.164" y="1116.88" width="359.642" height="54.134" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-handball_court" transform="matrix(0.976266,0,0,0.983616,15.0938,74.5182)">
-            <rect x="635.956" y="4002.56" width="687.288" height="545.674" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-training_room" transform="matrix(1.33128,0,0,1.57352,-745.643,-1137.35)">
-            <rect x="2116.92" y="1892.94" width="139.034" height="98.141" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-fountain" transform="matrix(0.906355,0,0,0.906355,136.414,113.654)">
-            <circle cx="1471.99" cy="1177.83" r="47.997" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gate_north_0" transform="matrix(6.12323e-17,-1,0.772477,4.73006e-17,101.672,711.124)">
-            <rect x="479.043" y="1671.49" width="15.696" height="129.846" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-1h" transform="matrix(0.505998,0,0,3.69091,286.919,-5540.61)">
-            <rect x="653.697" y="2037.35" width="274.48" height="33.27" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-1g" transform="matrix(0.505998,0,0,3.69091,425.805,-5539.61)">
-            <rect x="653.697" y="2037.35" width="274.48" height="33.27" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-1f" transform="matrix(0.505998,0,0,3.69091,564.692,-5539.61)">
-            <rect x="653.697" y="2037.35" width="274.48" height="33.27" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-1e" transform="matrix(0.505998,0,0,3.69091,703.578,-5539.61)">
-            <rect x="653.697" y="2037.35" width="274.48" height="33.27" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-1d" transform="matrix(0.505998,0,0,3.69091,935.783,-5539.61)">
-            <rect x="653.697" y="2037.35" width="274.48" height="33.27" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-1c" transform="matrix(0.505998,0,0,3.69091,1074.67,-5539.61)">
-            <rect x="653.697" y="2037.35" width="274.48" height="33.27" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-1b" transform="matrix(0.505998,0,0,3.69091,1213.56,-5539.61)">
-            <rect x="653.697" y="2037.35" width="274.48" height="33.27" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-1a" transform="matrix(0.505998,0,0,3.69091,1352.44,-5539.61)">
-            <rect x="653.697" y="2037.35" width="274.48" height="33.27" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-janitorial_room" transform="matrix(1,0,0,1.16271,0,-266.631)">
-            <rect x="899.127" y="1519.26" width="144.84" height="119.43" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-pilotis" transform="matrix(0.771149,0,0,0.976641,460.189,53.6868)">
-            <rect x="1946.18" y="1988.42" width="425.246" height="509.467" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-students_entrance" transform="matrix(1.00368,0,0,1.04646,-6.03217,-83.1706)">
-            <rect x="767.966" y="1790.32" width="403.65" height="142.209" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-the_student_council_room" transform="matrix(1.69859,0,0,0.82586,-431.513,250.858)">
-            <path d="M724.455,1512.32L783.378,1512.32L783.378,1680.46L617.689,1680.46L617.689,1462.74L724.455,1462.74L724.455,1512.32Z" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gate_east_0" transform="matrix(-1,-1.22465e-16,4.74455e-17,-0.387422,2902.04,2367.87)">
-            <rect x="479.043" y="1671.49" width="15.696" height="129.846" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gate_nishi_hall_0" transform="matrix(6.12323e-17,-1,0.240219,1.47092e-17,1573.73,628.167)">
-            <rect x="479.043" y="1671.49" width="15.696" height="129.846" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gate_nishi_hall_1" transform="matrix(6.12323e-17,-1,0.146278,8.95696e-18,1880.6,628.167)">
-            <rect x="479.043" y="1671.49" width="15.696" height="129.846" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gate_west_2" transform="matrix(-1,-1.22465e-16,4.74455e-17,-0.387422,954.196,3904.73)">
-            <rect x="479.043" y="1671.49" width="15.696" height="129.846" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gate_west_0" transform="matrix(1,0,0,1.21452,-2.40601,-384.331)">
-            <rect x="479.043" y="1671.49" width="15.696" height="129.846" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gate_west_1" transform="matrix(1,0,0,0.603254,-2.40601,316.5)">
-            <rect x="479.043" y="1671.49" width="15.696" height="129.846" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-corporate_planning_office" transform="matrix(1.77263,0,0,0.9441,-1083.01,87.4747)">
-            <rect x="1399.44" y="1416.41" width="155.261" height="148.416" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-principals_office" transform="matrix(0.907042,0,0,1.48264,139.895,-710.588)">
-            <rect x="1690.12" y="1440.2" width="175.51" height="94.507" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-japanese_style_room" transform="matrix(0.808564,0,0,1.48264,862.946,-710.588)">
-            <rect x="1690.12" y="1440.2" width="175.51" height="94.507" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-health_room" transform="matrix(1.21215,0,0,1.48264,-113.79,-710.588)">
-            <rect x="1690.12" y="1440.2" width="175.51" height="94.507" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-health_consultation_room" transform="matrix(0.466582,0,0,1.48264,1359.05,-710.588)">
-            <rect x="1690.12" y="1440.2" width="175.51" height="94.507" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-tennis_court" transform="matrix(1.00256,0,0,1,-6.04822,-9.09495e-13)">
-            <rect x="1330.97" y="4011.5" width="1028.47" height="536.733" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-grand" transform="matrix(0.993568,0,0,0.981704,12.8564,47.4449)">
-            <rect x="627.133" y="2265.32" width="1188.79" height="1750.49" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="shinkan80-s80_audiovisual" transform="matrix(0.752808,0,0,0.834066,501.955,-1493.6)">
-            <ellipse cx="1714.59" cy="2087.91" rx="31.379" ry="28.322" style="fill:rgb(251,0,255);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-martial_arts_field_1f_1" transform="matrix(1.23935,0,0,1.10196,-515.145,-423.511)">
-            <rect x="1957.22" y="3648.44" width="213.089" height="329.505" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-martial_arts_field_1f_warehouse" transform="matrix(0.347198,0,0,1.63032,1420.91,-2508.11)">
-            <rect x="2170.88" y="3837.09" width="83.028" height="130.313" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-martial_arts_field_1f_stairs" transform="matrix(1.23862,0,0,0.878528,-485.231,426.448)">
-            <rect x="2216.5" y="3426.01" width="68.657" height="96.798" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-martial_arts_field_1f_wc_man" transform="matrix(1.14438,0,0,0.741083,-326.805,941.938)">
-            <rect x="2211.05" y="3785.86" width="61.926" height="91.507" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-martial_arts_field_1f_wc_woman" transform="matrix(1.14438,0,0,0.741083,-255.939,941.938)">
-            <rect x="2211.05" y="3785.86" width="61.926" height="91.507" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-martial_arts_field_1f_0" transform="matrix(1.15884,0,0,1.13358,-340.417,-488.833)">
-            <rect x="1942.42" y="3369.62" width="227.893" height="234.69" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gym_1f_warehouse" transform="matrix(1.21868,0,0,1.1779,-445.765,-565.681)">
-            <rect x="1925.49" y="3095.88" width="121.469" height="140.222" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gym_1f" transform="matrix(3.65488,0,0,3.48371,-5136.18,-8192.68)">
-            <rect x="1925.49" y="3095.88" width="121.469" height="140.222" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gym_1f_stage" transform="matrix(2.43245,0,0,0.707542,-2708.39,302.771)">
-            <rect x="1925.49" y="3095.88" width="121.469" height="140.222" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gym_1f_wc_woman" transform="matrix(0.453764,0,0,0.707542,1416.36,956.429)">
-            <rect x="1925.49" y="3095.88" width="121.469" height="140.222" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gym_1f_wc_man" transform="matrix(0.453764,0,0,0.707542,1361.24,956.429)">
-            <rect x="1925.49" y="3095.88" width="121.469" height="140.222" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gym_1f_stairs" transform="matrix(0.60934,0,0,0.707542,875.543,956.429)">
-            <rect x="1925.49" y="3095.88" width="121.469" height="140.222" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gym_1f_stage_stairs_1" transform="matrix(9.32782e-18,0.152335,-0.531094,3.25201e-17,3619.46,2199.91)">
-            <rect x="1925.49" y="3095.88" width="121.469" height="140.222" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gym_1f_stage_side_1" transform="matrix(4.06852e-17,0.66444,-0.531094,3.25201e-17,3619.46,1232.37)">
-            <rect x="1925.49" y="3095.88" width="121.469" height="140.222" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gym_1f_stage_side_0" transform="matrix(4.06852e-17,0.66444,-0.531094,3.25201e-17,3989.4,1232.37)">
-            <rect x="1925.49" y="3095.88" width="121.469" height="140.222" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-gym_1f_stage_stairs_0" transform="matrix(9.32782e-18,0.152335,-0.531094,3.25201e-17,3989.4,2199.91)">
-            <rect x="1925.49" y="3095.88" width="121.469" height="140.222" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_17" transform="matrix(0.963219,0,0,0.519271,-44.9662,1504.15)">
-            <rect x="2423" y="1772.67" width="88.653" height="54.589" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_16" transform="matrix(0.963219,0,0,0.519271,-44.9662,1475.8)">
-            <rect x="2423" y="1772.67" width="88.653" height="54.589" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_15" transform="matrix(0.963219,0,0,0.519271,-44.9662,1447.46)">
-            <rect x="2423" y="1772.67" width="88.653" height="54.589" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_14" transform="matrix(0.963219,0,0,0.519271,-44.9662,1419.11)">
-            <rect x="2423" y="1772.67" width="88.653" height="54.589" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_13" transform="matrix(0.963219,0,0,0.519271,-44.9662,1390.76)">
-            <rect x="2423" y="1772.67" width="88.653" height="54.589" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_12" transform="matrix(0.963219,0,0,0.519271,-44.9662,1362.42)">
-            <rect x="2423" y="1772.67" width="88.653" height="54.589" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_11" transform="matrix(0.963219,0,0,0.519271,-44.9662,1305.72)">
-            <rect x="2423" y="1772.67" width="88.653" height="109.178" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_10" transform="matrix(0.963219,0,0,0.519271,-44.9662,1277.38)">
-            <rect x="2423" y="1772.67" width="88.653" height="54.589" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_9" transform="matrix(0.963219,0,0,0.519271,-44.9662,1249.03)">
-            <rect x="2423" y="1772.67" width="88.653" height="54.589" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_8" transform="matrix(0.963219,0,0,0.519271,-44.9662,1220.69)">
-            <rect x="2423" y="1772.67" width="88.653" height="54.589" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_7" transform="matrix(0.963219,0,0,0.519271,-44.9662,1192.34)">
-            <rect x="2423" y="1772.67" width="88.653" height="54.589" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_6" transform="matrix(0.963219,0,0,0.519271,-44.9662,1135.65)">
-            <rect x="2423" y="1772.67" width="88.653" height="109.178" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_5" transform="matrix(0.963219,0,0,0.519271,-44.9662,1078.95)">
-            <rect x="2423" y="1772.67" width="88.653" height="109.178" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_4" transform="matrix(0.963219,0,0,0.519271,-44.9662,1022.26)">
-            <rect x="2423" y="1772.67" width="88.653" height="109.178" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_3" transform="matrix(0.963219,0,0,0.519271,-44.9662,965.567)">
-            <rect x="2423" y="1772.67" width="88.653" height="109.178" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_2" transform="matrix(0.963219,0,0,0.519271,-44.9662,908.874)">
-            <rect x="2423" y="1772.67" width="88.653" height="109.178" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_1" transform="matrix(0.963219,0,0,0.519271,-44.9662,880.528)">
-            <rect x="2423" y="1772.67" width="88.653" height="54.589" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_0" transform="matrix(0.963219,0,0,0.519271,-44.9662,852.181)">
-            <rect x="2423" y="1772.67" width="88.653" height="54.589" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_0_1f_room_0" transform="matrix(0.638871,0,0,1.42945,186.125,-1128.88)">
-            <rect x="435.346" y="2396.7" width="128.179" height="34.684" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_0_1f_room_5" transform="matrix(0.638871,0,0,1.42945,186.125,-880.983)">
-            <rect x="435.346" y="2396.7" width="128.179" height="34.684" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_0_1f_room_1" transform="matrix(0.638871,0,0,1.42945,186.125,-1079.3)">
-            <rect x="435.346" y="2396.7" width="128.179" height="34.684" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_0_1f_room_6" transform="matrix(0.638871,0,0,1.42945,186.125,-831.404)">
-            <rect x="435.346" y="2396.7" width="128.179" height="34.684" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_0_1f_room_2" transform="matrix(0.638871,0,0,1.42945,186.125,-1029.72)">
-            <rect x="435.346" y="2396.7" width="128.179" height="34.684" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_0_1f_room_7" transform="matrix(0.638871,0,0,1.42945,186.125,-781.825)">
-            <rect x="435.346" y="2396.7" width="128.179" height="34.684" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_0_1f_room_3" transform="matrix(0.638871,0,0,1.42945,186.125,-980.14)">
-            <rect x="435.346" y="2396.7" width="128.179" height="34.684" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_0_1f_room_8" transform="matrix(0.638871,0,0,1.42945,186.125,-732.247)">
-            <rect x="435.346" y="2396.7" width="128.179" height="69.368" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_0_1f_room_4" transform="matrix(0.638871,0,0,1.42945,186.125,-930.562)">
-            <rect x="435.346" y="2396.7" width="128.179" height="34.684" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_0_1f_stairs_0" transform="matrix(1.03136,0,0,1.1541,-16.6364,-351.376)">
-            <rect x="466.272" y="2274.18" width="97.254" height="20.656" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_1_warehouse_0" transform="matrix(1.09453,0,0,7.20658,-52.2354,-17718.6)">
-            <rect x="471.885" y="2855.17" width="91.64" height="8.304" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_1_warehouse_1" transform="matrix(1.09453,0,0,7.20658,-52.2354,-17505.3)">
-            <rect x="471.885" y="2855.17" width="91.64" height="8.304" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_1_wc_man" transform="matrix(1.09453,0,0,6.0687,-52.2354,-14409.9)">
-            <rect x="471.885" y="2855.17" width="91.64" height="8.304" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_1_wc_woman" transform="matrix(1.09453,0,0,6.0687,-52.2354,-14306.9)">
-            <rect x="471.885" y="2855.17" width="91.64" height="8.304" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_1_shower_0" transform="matrix(1.09453,0,0,3.17042,-52.2354,-6084.44)">
-            <rect x="471.885" y="2855.17" width="91.64" height="8.304" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_1_shower_1" transform="matrix(1.09453,0,0,3.17042,-52.2354,-6058.12)">
-            <rect x="471.885" y="2855.17" width="91.64" height="8.304" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-clubroom_building_0_1f_stairs_1" transform="matrix(1.05862,0,0,1.36807,-32.0022,-1043.96)">
-            <rect x="468.777" y="2804.55" width="94.749" height="37.865" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-nishi_hall_1f_outdoor_stairs" transform="matrix(0.788724,0,0,0.890633,493.155,45.7963)">
-            <rect x="2136.99" y="470.214" width="103.826" height="44.205" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-nishi_hall_1f_office" transform="matrix(0.812701,0,0,1.77199,280.042,-681.189)">
-            <rect x="2136.99" y="470.214" width="103.826" height="44.205" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-nishi_hall_1f_wc" transform="matrix(0.458572,0,0,0.890633,1036.81,-132.214)">
-            <rect x="2136.99" y="470.214" width="103.826" height="44.205" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-nishi_hall_1f_printing" transform="matrix(0.35413,0,0,0.890633,1307.62,-132.214)">
-            <rect x="2136.99" y="470.214" width="103.826" height="44.205" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-nishi_hall_1f_kitchen" transform="matrix(1.06174,0,0,3.36651,-118.633,-1430.95)">
-            <rect x="2136.99" y="470.214" width="103.826" height="44.205" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-nishi_hall_1f_cafeteria" transform="matrix(1.53512,0,0,3.7042,-1179.39,-1440.93)">
-            <path d="M2240.82,470.214L2240.82,514.419L2082.03,514.419L2082.03,476.963L2136.99,476.963L2136.99,470.214L2240.82,470.214Z" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-nishi_hall_1f_stairs" transform="matrix(0.47338,0,0,1.77199,1089.55,-681.189)">
-            <rect x="2136.99" y="470.214" width="103.826" height="44.205" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-audiovisual_hall_1f_stairs_0" transform="matrix(0.224576,0,0,0.256645,1449.35,355.036)">
-            <rect x="1708.1" y="504.35" width="276.324" height="141.13" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-audiovisual_hall_1f_stairs_1" transform="matrix(0.224576,0,0,0.256645,1306.9,355.036)">
-            <rect x="1707.76" y="504.35" width="276.657" height="141.13" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-audiovisual_hall_1f_wc_man" transform="matrix(0.224576,0,0,0.256645,1369.03,355.036)">
-            <rect x="1431.11" y="362.831" width="455.471" height="141.519" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-audiovisual_hall_1f_wc_woman" transform="matrix(0.224576,0,0,0.256645,1471.36,355.036)">
-            <rect x="1430.94" y="362.831" width="455.471" height="141.519" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-audiovisual_hall_1f_passage_0" transform="matrix(0.124226,0,0,0.513998,1700.76,204.158)">
-            <rect x="1769.62" y="474.704" width="206" height="108.561" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-        <g id="main-audiovisual_hall_1f_passage_1" transform="matrix(0.124226,0,0,0.513998,1419.41,204.158)">
-            <rect x="1769.62" y="474.704" width="206" height="108.561" style="fill:rgb(0,21,254);fill-opacity:0.5;"/>
-        </g>
-    </g>
+<svg width="1991.3156" height="4493.0317" viewBox="0 0 1991.3156 4493.0317" version="1.1" xml:space="preserve" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" id="svg142"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:svg="http://www.w3.org/2000/svg">
+    <defs id="defs142" />
+    <path d="m 1822.4979,407.8607 h 168.8176 v 4085.171 H 0 V 1131.161 H 271.41196 V 937.3392 H 842.21111 V 0 h 980.28679 z" style="fill:#ffffff;fill-opacity:0.53;stroke-width:2.30821" id="base" />
+    <path id="enclosure-classroom_building" d="m 315.32101,1697.878 h -147.071 v 284.95 H 1372.661 v -107.62 h 112.78 v -117.08 l -112.78,0.35 v -60.25 l -147.07,-0.35 v 121.2 H 807.86101 v -148.81 h -492.54 z" style="fill:#fd0000;fill-opacity:0.5" />
+    <path id="enclosure-management_building2" d="m 594.53101,1518.638 h -426.281 v -179.81 h 281.438 v -84.93 h 288.683 v 125.87 h -143.84" style="fill:#fd0000;fill-opacity:0.5" />
+    <path id="enclosure-nishi_hall" style="fill:#fd0000;fill-opacity:0.5;stroke-width:1.03313" d="m 1567.3366,31.97508 h 243.7641 v 351.9292 h -243.7641 z" />
+    <path id="enclosure-audiovisual_hall" d="m 1496.741,328.102 v 98.132 h -73.14 v 62.986 h -160.66 v -62.986 h -73.14 v -98.132 z" style="fill:#fd0000;fill-opacity:0.5" />
+    <path d="m 1924.8528,1606.968 v 766.2 h -439.4183 v -720.55 h 322.7796 v -45.65 z" style="fill:#fd0000;fill-opacity:0.5;stroke-width:1.01868" id="enclosure-pool" />
+    <path d="m 1895.761,3210.8174 v 484.5157 h -141.74 v 144.6239 h -292.92 v -629.1396 z" style="fill:#fd0000;fill-opacity:0.5;stroke-width:0.996505" id="enclosure-martial_arts_field" />
+    <path id="enclosure-gym" style="fill:#fd0000;fill-opacity:0.5;stroke-width:0.990694" d="m 1451.348,2373.1672 h 444.409 v 752.8682 h -444.409 z" />
+    <path id="enclosure-clubroom_building_0" style="fill:#fd0000;fill-opacity:0.5;stroke-width:1.09782" d="m 14.81486,2153.1921 h 100.30226 v 571.4297 H 14.81486 Z" />
+    <path id="enclosure-clubroom_building_1" style="fill:#fd0000;fill-opacity:0.5" d="m 14.81601,2737.3679 h 100.30301 v 273.126 H 14.81601 Z" />
+    <path d="m 1485.441,2326.1339 v 47.0513 h -34.09 v 752.8729 h 444.41 v 84.7705 h -479.57 v -884.6947 z" style="fill:#fd0000;fill-opacity:0.5;stroke-width:1.14165" id="enclosure-gym_passage" />
+    <path id="enclosure-management_building1" d="m 878.89101,1444.778 v -181.06 l 49.48,-50.31 H 1134.561 v 50.31 h 88.9 V 554.085 h 200.14 v 138.156 h 228.12 v 145.378 l -228.12,0.457 v 353.562 h 315.53 V 554.085 h 182.86 v 890.693 z" style="fill:#fd0000;fill-opacity:0.5" />
+    <path d="m 1496.741,426.23395 v 62.986 h -73.14 v 43.395 h -116.94 l -43.72,-43.395 h -73.14 v -62.986 h 73.14 l 0.01,62.992 160.65,-0.006 v -62.986 z" style="fill:#191919;fill-opacity:0.5" id="none-audiovisual_hall_1" />
+    <path id="none-audiovisual_hall_0" style="fill:#191919;fill-opacity:0.5" d="m 1189.801,68.41699 h 306.938 v 259.685 h -306.938 z" />
+    <path id="none-wc" style="fill:#191919;fill-opacity:0.5;stroke-width:1.22062" d="m 168.24985,1697.8771 h 73.53522 v 121.2076 h -73.53522 z" />
+    <path id="none-stairs" style="fill:#191919;fill-opacity:0.5;stroke-width:1.22062" d="m 241.78525,1697.8771 h 73.53522 v 121.2076 h -73.53522 z" />
+    <path id="none-wc1" style="fill:#191919;fill-opacity:0.5;stroke-width:1.22062" d="m 1225.586,1697.8771 h 73.5352 v 121.2076 h -73.5352 z" />
+    <path id="none-stairs1" style="fill:#191919;fill-opacity:0.5;stroke-width:1.22062" d="m 1299.1259,1697.8771 h 73.5353 v 121.2076 h -73.5353 z" />
+    <path id="none-wc2" style="fill:#191919;fill-opacity:0.5;stroke-width:1.13333" d="m 1504.646,692.24127 h 73.5352 v 104.49099 h -73.5352 z" />
+    <path id="none-stairs2" style="fill:#191919;fill-opacity:0.5;stroke-width:1.13333" d="m 1578.186,692.24127 h 73.5352 v 104.49099 h -73.5352 z" />
+    <path id="none-stairs3" style="fill:#191919;fill-opacity:0.5;stroke-width:1.05541" d="m 449.68821,1253.9023 h 144.8399 v 84.9269 h -144.8399 z" />
+    <path id="none-wc3" style="fill:#191919;fill-opacity:0.5;stroke-width:1.05176" d="m 594.52801,1253.9023 h 143.8376 v 84.9269 h -143.8376 z" />
+    <path id="none-stairs4" style="fill:#191919;fill-opacity:0.5;stroke-width:1.08767" d="m 723.79331,1875.6082 h 93.3184 v 107.2202 h -93.3184 z" />
+    <path id="none-wc4" style="fill:#191919;fill-opacity:0.5;stroke-width:1.26289" d="m 1511.5492,1721.1698 h 111.5869 v 154.4278 h -111.5869 z" />
+    <path id="none" style="fill:#191919;fill-opacity:0.5;stroke-width:1.02491" d="m 1511.5495,1652.6111 h 296.6803 v 68.5619 h -296.6803 z" />
+    <path id="none-stairs5" style="fill:#191919;fill-opacity:0.5;stroke-width:1.05425" d="m 1808.2246,1606.9722 h 116.6411 v 45.6535 h -116.6411 z" />
+    <path id="none-stairs6" style="fill:#191919;fill-opacity:0.5;stroke-width:1.20262" d="m 1416.1936,2269.8113 h 48.527 v 56.3025 h -48.527 z" />
+    <path id="none-stairs7" style="fill:#191919;fill-opacity:0.5;stroke-width:0.88402" d="m 1416.1895,3210.8193 h 24.2634 v 120.7092 h -24.2634 z" />
+    <path id="none-stairs8" style="fill:#191919;fill-opacity:0.5;stroke-width:1.00632" d="m 1507.7146,1191.6808 h 84.1052 v 72.0296 h -84.1052 z" />
+    <path id="none-wc5" style="fill:#191919;fill-opacity:0.5;stroke-width:1.33183" d="m 1591.8166,1191.6808 h 147.3165 v 72.0296 h -147.3165 z" />
+    <path id="none-ev" style="fill:#191919;fill-opacity:0.5;stroke-width:0.545466" d="m 1458.3226,1227.6306 h 49.3908 v 36.0372 h -49.3908 z" />
+    <path id="none-wc6" style="fill:#191919;fill-opacity:0.5;stroke-width:0.545126" d="m 1458.3226,1191.6383 h 49.3908 v 35.9924 h -49.3908 z" />
+    <path d="m 379.32127,326.90391 c 81.92967,-29.01276 172.00224,13.94926 201.01534,95.87957 29.0128,81.92962 -13.9494,172.0032 -95.87911,201.01596 -81.93094,29.0132 -172.00403,-13.9502 -201.01683,-95.87982 -29.01305,-81.93031 13.94966,-172.00251 95.8806,-201.01571 z m 7.88524,22.26721 c -69.64162,24.66134 -106.16019,101.22276 -81.49912,170.86346 24.66112,69.64087 101.22338,106.15932 170.865,81.49799 69.64034,-24.66089 106.15862,-101.22317 81.49752,-170.86405 -24.6611,-69.64069 -101.22306,-106.15828 -170.8634,-81.4974 z" style="fill:#1a1a1a;fill-opacity:0.5;stroke-width:0.157085" id="none-compass_2" />
+    <path d="m 436.52986,582.01065 c -0.66956,1.4044 -2.17766,2.20757 -3.71694,1.9777 -1.54084,-0.22607 -2.75061,-1.43189 -2.9851,-2.97333 -5.15622,-34.03603 -20.45138,-135.01327 -26.75302,-176.60626 -0.25434,-1.67969 0.71875,-3.30344 2.31929,-3.87022 1.60313,-0.56769 3.38121,0.0818 4.24061,1.54724 21.27795,36.28961 72.93567,124.39022 90.34806,154.08612 0.79041,1.34458 0.60908,3.04301 -0.44611,4.18839 -1.05158,1.14734 -2.72905,1.47223 -4.13321,0.80217 -11.52859,-5.49583 -29.42509,-14.0349 -36.66233,-17.48688 -0.84714,-0.40364 -1.82231,-0.4539 -2.7092,-0.13983 -0.88431,0.31315 -1.61052,0.9659 -2.01486,1.8127 -3.452,7.23723 -11.989,25.13688 -17.48719,36.6622 z" style="fill:#1a1a1a;fill-opacity:0.5;stroke-width:0.289553" id="none-compass_1" />
+    <path d="m 387.60922,363.79803 16.14531,12.18439 -5.68514,-16.05431 c -0.3695,-1.04344 -0.4228,-1.90493 -0.16006,-2.58497 0.26264,-0.6803 0.77614,-1.1555 1.53528,-1.42432 0.78679,-0.27862 1.49747,-0.23692 2.13725,0.1238 0.63969,0.36048 1.14294,1.06263 1.51244,2.10608 l 7.51715,21.22777 c 0.83888,2.36892 0.27798,3.90054 -1.68775,4.59664 -0.49017,0.17358 -0.9576,0.25961 -1.39967,0.25746 -0.44217,-0.002 -0.89099,-0.0955 -1.34406,-0.2805 -0.45046,-0.18561 -0.89691,-0.43177 -1.33655,-0.73862 -0.44225,-0.3062 -0.88527,-0.6226 -1.33151,-0.94804 l -15.82366,-12.09094 5.6004,15.81501 c 0.36505,1.03087 0.40228,1.89494 0.11152,2.5917 -0.29319,0.69789 -0.81307,1.17903 -1.56215,1.4443 -0.77171,0.27327 -1.48713,0.22618 -2.14124,-0.14305 -0.65661,-0.36834 -1.16536,-1.06205 -1.52605,-2.0806 l -7.37375,-20.82282 c -0.31298,-0.88382 -0.46054,-1.61207 -0.44016,-2.18564 0.0357,-0.63415 0.26311,-1.22219 0.67965,-1.76349 0.41663,-0.54104 0.93785,-0.9225 1.56377,-1.14415 0.49017,-0.17358 0.93818,-0.24255 1.34411,-0.20666 0.40844,0.035 0.79114,0.14107 1.15068,0.31757 0.35963,0.17676 0.75242,0.43117 1.18105,0.76285 0.42864,0.33168 0.87131,0.67903 1.33314,1.04054 z" style="fill:#1a1a1a;fill-opacity:0.5;fill-rule:nonzero;stroke-width:0.266667" id="none-compass_0" />
+    <path id="main-office_warehouse" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.11905" d="m 1223.473,1127.8582 h 159.195 v 135.8626 h -159.195 z" />
+    <path id="main-pc_room" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.41288" d="m 1223.473,911.2744 h 159.195 v 216.5787 h -159.195 z" />
+    <path id="main-pc_preparation_room" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.823627" d="m 1223.473,837.67682 h 159.195 v 73.59798 h -159.195 z" />
+    <path id="main-ll_room" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.41288" d="m 1223.473,621.10443 h 159.195 v 216.57866 h -159.195 z" />
+    <path id="main-ll_preparation_room" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.785922" d="m 1223.473,554.08637 h 159.195 v 67.01375 h -159.195 z" />
+    <path id="main-teachers_entrance" d="m 1134.561,1263.718 v -50.31 H 928.37101 l -49.48,50.31 z" style="fill:#0015fe;fill-opacity:0.5" />
+    <path id="main-home_economics_room" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.00397" d="m 1780.0676,1010.8928 h 141.911 v 252.8228 h -141.911 z" />
+    <path id="main-home_economics_preparation_room" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.831015" d="m 1780.0676,837.67664 h 141.911 v 173.21606 h -141.911 z" />
+    <path id="main-food_room" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.06331" d="m 1780.0676,554.08429 h 141.911 v 283.59204 h -141.911 z" />
+    <path id="main-straight_course" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.19351" d="m 89.85673,3185.2886 h 66.48628 V 4401.7388 H 89.85673 Z" />
+    <path id="main-bicycle_parking_1st_1" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.706106" d="m 42.8956,2090.0674 v -373.5673 h 25.98432 v 373.5673 z" />
+    <path id="main-bicycle_parking_1st_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.490598" d="m 120.61252,1896.8309 v -180.3356 h 25.98432 v 180.3356 z" />
+    <path id="main-bicycle_parking_2nd_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.45508" d="m 130.35862,1546.7742 v -155.1687 h 25.98432 v 155.1687 z" />
+    <path id="main-bicycle_parking_2nd_2" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.978967" d="m 377.6948,1153.0557 h 360.67061 v 51.7328 H 377.6948 Z" />
+    <path id="main-bicycle_parking_3nd_1" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.978967" d="m 377.6948,999.2295 h 360.67061 v 51.7328 H 377.6948 Z" />
+    <path id="main-bicycle_parking_3nd_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.978967" d="m 377.6948,1076.4106 h 360.67061 v 51.7329 H 377.6948 Z" />
+    <path id="main-bicycle_parking_teachers" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.580018" d="M 705.37071,1249.6056 H 453.30626 v -25.9843 h 252.06445 z" />
+    <path id="main-bicycle_parking_1st_2" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.430542" d="M 469.15061,2116.0457 H 330.26406 v -25.9844 h 138.88655 z" />
+    <path id="main-bicycle_parking_2nd_1" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.869154" d="m 160.21042,1280.0826 h 284.29413 v 51.7329 H 160.21042 Z" />
+    <path id="main-garbage_dump" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.68615" d="m 761.47321,999.2328 h 142.3528 v 64.3891 h -142.3528 z" />
+    <path id="main-handball_court" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.979934" d="m 186.517,3891.4482 h 670.97591 v 536.7337 H 186.517 Z" />
+    <path id="main-training_room" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.44734" d="m 1623.1311,1721.1769 h 185.0932 v 154.4268 h -185.0932 z" />
+    <path id="main-fountain" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.906355" d="m 1064.6228,1061.134 a 43.502323,43.502323 0 0 1 -43.5024,43.5024 43.502323,43.502323 0 0 1 -43.50229,-43.5024 43.502323,43.502323 0 0 1 43.50229,-43.5023 43.502323,43.502323 0 0 1 43.5024,43.5023 z" />
+    <path id="main-gate_north_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.878907" d="m 943.42061,112.02899 v -15.696 h 100.30309 v 15.696 z" />
+    <path id="main-1h" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.3666" d="M 168.24943,1859.0134 H 307.13576 V 1981.81 H 168.24943 Z" />
+    <path id="main-1g" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.3666" d="M 307.13541,1860.0134 H 446.02175 V 1982.81 H 307.13541 Z" />
+    <path id="main-1f" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.3666" d="M 446.02237,1860.0134 H 584.90871 V 1982.81 H 446.02237 Z" />
+    <path id="main-1e" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.3666" d="m 584.90841,1860.0134 h 138.8863 V 1982.81 h -138.8863 z" />
+    <path id="main-1d" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.3666" d="m 817.11341,1860.0134 h 138.8863 V 1982.81 h -138.8863 z" />
+    <path id="main-1c" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.3666" d="M 956.00031,1860.0134 H 1094.8867 V 1982.81 H 956.00031 Z" />
+    <path id="main-1b" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.3666" d="m 1094.8903,1860.0134 h 138.8864 V 1982.81 h -138.8864 z" />
+    <path id="main-1a" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.3666" d="m 1233.7704,1860.0134 h 138.8863 V 1982.81 h -138.8863 z" />
+    <path id="main-janitorial_room" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.07829" d="m 449.68802,1379.7758 h 144.83999 v 138.8624 H 449.68802 Z" />
+    <path id="main-pilotis" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.867834" d="m 1511.5448,1875.6073 h 327.928 v 497.5664 h -327.928 z" />
+    <path id="main-students_entrance" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.02485" d="m 315.32096,1670.2756 h 405.13545 v 148.8161 H 315.32096 Z" />
+    <path d="m 349.60003,1379.7706 h 100.08602 v 138.8601 H 168.24837 v -179.8062 h 181.35166 z" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.1844" id="main-the_student_council_room" />
+    <path id="main-gate_east_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.622432" d="m 1973.5581,1600.246 h -15.696 v -50.3052 h 15.696 z" />
+    <path id="main-gate_nishi_hall_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.490121" d="m 1525.8147,29.07201 v -15.696 h 31.1914 v 15.696 z" />
+    <path id="main-gate_nishi_hall_1" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.382463" d="m 1675.6633,29.07201 v -15.696 h 18.9936 v 15.696 z" />
+    <path id="main-gate_west_2" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.622432" d="m 25.71403,3137.106 h -15.696 v -50.3052 h 15.696 z" />
+    <path id="main-gate_west_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.10205" d="m 27.198,1525.6751 h 15.696 v 157.7005 H 27.198 Z" />
+    <path id="main-gate_west_1" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.776694" d="m 27.198,1204.781 h 15.696 v 78.3301 H 27.198 Z" />
+    <path id="main-corporate_planning_office" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.29365" d="M 948.24021,1304.6554 H 1223.4605 V 1444.775 H 948.24021 Z" />
+    <path id="main-principals_office" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.15966" d="m 1223.4658,1304.6581 h 159.1949 v 140.1198 h -159.1949 z" />
+    <path id="main-japanese_style_room" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.0949" d="m 1780.0771,1304.6581 h 141.9111 v 140.1198 h -141.9111 z" />
+    <path id="main-health_room" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.34059" d="m 1485.4499,1304.6581 h 212.7445 v 140.1198 h -212.7445 z" />
+    <path id="main-health_consultation_room" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.831729" d="m 1698.1906,1304.6581 h 81.8898 v 140.1198 h -81.8898 z" />
+    <path id="main-tennis_court" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.00128" d="M 878.89001,3891.448 H 1909.9929 v 536.733 H 878.89001 Z" />
+    <path id="main-grand" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.987618" d="m 186.5167,2151.2666 h 1181.1438 v 1718.463 H 186.5167 Z" />
+    <path id="shinkan80-s80_audiovisual" style="fill:#fb00ff;fill-opacity:0.5;stroke-width:0.792396" d="m 1366.8954,127.80268 a 23.622362,23.622417 0 0 1 -23.6224,23.62241 23.622362,23.622417 0 0 1 -23.6223,-23.62241 23.622362,23.622417 0 0 1 23.6223,-23.62242 23.622362,23.622417 0 0 1 23.6224,23.62242 z" />
+    <path id="main-martial_arts_field_1f_1" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.16864" d="m 1461.0965,3476.8718 h 264.0919 v 363.1014 h -264.0919 z" />
+    <path id="main-martial_arts_field_1f_warehouse" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.752359" d="m 1725.1963,3627.5227 h 28.8271 v 212.4519 h -28.8271 z" />
+    <path id="main-martial_arts_field_1f_stairs" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.04315" d="m 1810.7312,3316.2417 h 85.0399 v 85.0398 h -85.0399 z" />
+    <path id="main-martial_arts_field_1f_wc_man" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.920913" d="m 1754.0376,3627.5225 h 70.8668 v 67.8142 h -70.8668 z" />
+    <path id="main-martial_arts_field_1f_wc_woman" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.920913" d="m 1824.9035,3627.5225 h 70.8669 v 67.8142 h -70.8669 z" />
+    <path id="main-martial_arts_field_1f_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.14614" d="m 1461.098,3210.8489 h 264.0915 v 266.0399 H 1461.098 Z" />
+    <path id="main-gym_1f_warehouse" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.19812" d="m 1451.3521,2960.9038 h 148.0319 v 165.1675 h -148.0319 z" />
+    <path id="main-gym_1f" style="fill:#0015fe;fill-opacity:0.5;stroke-width:3.56827" d="m 1451.8159,2472.4158 h 443.9546 v 488.4928 h -443.9546 z" />
+    <path id="main-gym_1f_stage" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.31189" d="m 1525.8291,2373.1841 h 295.4673 v 99.2129 h -295.4673 z" />
+    <path id="main-gym_1f_wc_woman" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.566619" d="m 1840.6391,3026.842 h 55.1183 v 99.213 h -55.1183 z" />
+    <path id="main-gym_1f_wc_man" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.566619" d="m 1785.519,3026.842 h 55.1183 v 99.213 h -55.1183 z" />
+    <path id="main-gym_1f_stairs" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.656608" d="m 1599.382,3026.842 h 74.016 v 99.213 h -74.016 z" />
+    <path id="main-gym_1f_stage_stairs_1" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.284437" d="m 1525.8177,2373.1775 v 18.504 h -74.471 v -18.504 z" />
+    <path id="main-gym_1f_stage_side_1" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.594037" d="m 1525.8177,2391.6907 v 80.7088 h -74.471 v -80.7088 z" />
+    <path id="main-gym_1f_stage_side_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.594037" d="m 1895.7578,2391.6907 v 80.7088 h -74.4711 v -80.7088 z" />
+    <path id="main-gym_1f_stage_stairs_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.284437" d="m 1895.7578,2373.1775 v 18.504 h -74.4711 v -18.504 z" />
+    <path id="main-clubroom_17" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,2304.5942 h 85.3923 v 28.3465 h -85.3923 z" />
+    <path id="main-clubroom_16" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,2276.2441 h 85.3923 v 28.3465 h -85.3923 z" />
+    <path id="main-clubroom_15" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,2247.9041 h 85.3923 v 28.3464 h -85.3923 z" />
+    <path id="main-clubroom_14" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,2219.5542 h 85.3923 v 28.3465 h -85.3923 z" />
+    <path id="main-clubroom_13" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,2191.2041 h 85.3923 v 28.3465 h -85.3923 z" />
+    <path id="main-clubroom_12" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,2162.8643 h 85.3923 v 28.3464 h -85.3923 z" />
+    <path id="main-clubroom_11" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,2106.1641 h 85.3923 v 56.6929 h -85.3923 z" />
+    <path id="main-clubroom_10" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,2077.8242 h 85.3923 v 28.3465 h -85.3923 z" />
+    <path id="main-clubroom_9" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,2049.4741 h 85.3923 v 28.3465 h -85.3923 z" />
+    <path id="main-clubroom_8" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,2021.134 h 85.3923 v 28.3465 h -85.3923 z" />
+    <path id="main-clubroom_7" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,1992.7842 h 85.3923 v 28.3465 h -85.3923 z" />
+    <path id="main-clubroom_6" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,1936.0942 h 85.3923 v 56.693 h -85.3923 z" />
+    <path id="main-clubroom_5" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,1879.3942 h 85.3923 v 56.6929 h -85.3923 z" />
+    <path id="main-clubroom_4" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,1822.7041 h 85.3923 v 56.693 h -85.3923 z" />
+    <path id="main-clubroom_3" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,1766.0111 h 85.3923 v 56.693 h -85.3923 z" />
+    <path id="main-clubroom_2" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,1709.3181 h 85.3923 v 56.693 h -85.3923 z" />
+    <path id="main-clubroom_1" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,1680.9722 h 85.3923 v 28.3465 h -85.3923 z" />
+    <path id="main-clubroom_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.707228" d="m 1839.4743,1652.6251 h 85.3923 v 28.3465 h -85.3923 z" />
+    <path id="main-clubroom_building_0_1f_room_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.955633" d="M 14.81595,2177.0308 H 96.7058 v 49.579 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_1f_room_5" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.955633" d="M 14.81595,2424.9277 H 96.7058 v 49.5791 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_1f_room_1" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.955633" d="M 14.81595,2226.6108 H 96.7058 v 49.5791 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_1f_room_6" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.955633" d="M 14.81595,2474.5068 H 96.7058 v 49.5791 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_1f_room_2" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.955633" d="M 14.81595,2276.1907 H 96.7058 v 49.579 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_1f_room_7" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.955633" d="M 14.81595,2524.0857 H 96.7058 v 49.579 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_1f_room_3" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.955633" d="M 14.81595,2325.7708 H 96.7058 v 49.579 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_1f_room_8" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.955633" d="M 14.81595,2573.6638 H 96.7058 v 99.1581 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_1f_room_4" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.955633" d="M 14.81595,2375.3486 H 96.7058 v 49.5791 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_1f_stairs_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.09101" d="M 14.81891,2153.2031 H 115.1228 v 23.8391 H 14.81891 Z" />
+    <path id="main-clubroom_building_1_warehouse_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:2.80853" d="m 14.81791,2737.3584 h 100.30272 v 59.8434 H 14.81791 Z" />
+    <path id="main-clubroom_building_1_warehouse_1" style="fill:#0015fe;fill-opacity:0.5;stroke-width:2.80853" d="m 14.81791,2950.6584 h 100.30272 v 59.8435 H 14.81791 Z" />
+    <path id="main-clubroom_building_1_wc_man" style="fill:#0015fe;fill-opacity:0.5;stroke-width:2.57728" d="m 14.81791,2797.2178 h 100.30272 v 50.3945 H 14.81791 Z" />
+    <path id="main-clubroom_building_1_wc_woman" style="fill:#0015fe;fill-opacity:0.5;stroke-width:2.57728" d="m 14.81791,2900.2178 h 100.30272 v 50.3945 H 14.81791 Z" />
+    <path id="main-clubroom_building_1_shower_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.86283" d="m 14.81791,2847.5957 h 100.30272 v 26.3272 H 14.81791 Z" />
+    <path id="main-clubroom_building_1_shower_1" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.86283" d="m 14.81791,2873.9158 h 100.30272 v 26.3271 H 14.81791 Z" />
+    <path id="main-clubroom_building_0_1f_stairs_1" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.20344" d="M 14.81553,2672.8088 H 115.1187 v 51.802 H 14.81553 Z" />
+    <path id="main-nishi_hall_1f_outdoor_stairs" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.838131" d="m 1729.2114,344.53238 h 81.89 v 39.37043 h -81.89 z" />
+    <path id="main-nishi_hall_1f_office" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.20004" d="m 1567.3369,31.97348 h 84.3795 v 78.33082 h -84.3795 z" />
+    <path id="main-nishi_hall_1f_wc" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.639077" d="m 1567.3348,166.5221 h 47.6117 v 39.37043 h -47.6117 z" />
+    <path id="main-nishi_hall_1f_printing" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.561605" d="m 1614.9533,166.5221 h 36.7679 v 39.37043 h -36.7679 z" />
+    <path id="main-nishi_hall_1f_kitchen" style="fill:#0015fe;fill-opacity:0.5;stroke-width:1.8906" d="m 1700.8557,31.97809 h 110.2362 v 148.81657 h -110.2362 z" />
+    <path d="M 1811.0986,180.7847 V 344.52886 H 1567.3369 V 205.78434 h 84.3702 V 180.7847 Z" style="fill:#0015fe;fill-opacity:0.5;stroke-width:2.38462" id="main-nishi_hall_1f_cafeteria" />
+    <path id="main-nishi_hall_1f_stairs" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.915874" d="m 1651.7192,31.97348 h 49.1492 v 78.33082 h -49.1492 z" />
+    <path id="main-audiovisual_hall_1f_stairs_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.240076" d="m 1383.5092,364.42291 h 62.0558 v 36.22031 h -62.0558 z" />
+    <path id="main-audiovisual_hall_1f_stairs_1" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.240076" d="m 1240.9829,364.42291 h 62.1305 v 36.22031 h -62.1305 z" />
+    <path id="main-audiovisual_hall_1f_wc_man" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.240076" d="m 1240.984,328.10275 h 102.2878 V 364.4229 H 1240.984 Z" />
+    <path id="main-audiovisual_hall_1f_wc_woman" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.240076" d="m 1343.2757,328.10275 h 102.2879 v 36.32015 h -102.2879 z" />
+    <path id="main-audiovisual_hall_1f_passage_0" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.252689" d="m 1471.1538,328.10291 h 25.5905 v 55.80013 h -25.5905 z" />
+    <path id="main-audiovisual_hall_1f_passage_1" style="fill:#0015fe;fill-opacity:0.5;stroke-width:0.252689" d="m 1189.8038,328.10291 h 25.5906 v 55.80013 h -25.5906 z" />
 </svg>
