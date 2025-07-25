@@ -47,6 +47,10 @@
 9. 手動で不要なタグを削除(`<svg></svg>`外のタグなど)
 10. [SvgConverter.py](MapConverter\SvgConverter.py)を利用して、styleを削除し、vueファイルに加工
 
+> 基本方針  
+通路はenclosure  
+床なしはnone
+
 ### Inkscapeの拡張機能を利用したtransformの削除
 
 通常ではオブジェクトの位置をtransformによって記録しているが、それではcssで加工する上で不都合なため、transformタグを削除する。
