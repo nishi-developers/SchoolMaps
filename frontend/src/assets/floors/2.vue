@@ -10,19 +10,19 @@
     <path id="none-audiovisual_hall" d="M 1496.741,68.417 V 489.22 h -73.14 v 43.395 h -116.94 l -43.72,-43.395 h -73.14 V 68.417 Z m -73.24,346.3 h -120.39 v 37.008 h 120.39 z" />
     <path d="m 1895.761,3210.8174 v 484.5157 h -180.08 v 144.6239 h -254.58 v -629.1396 z" id="none-martial_arts_field" />
     <path id="none-enclosure-gym" d="m 1451.348,2373.1672 h 444.409 v 752.8682 h -444.409 z" />
-    <path id="none-wc" d="m 168.24985,1697.8771 h 73.53522 v 121.2076 h -73.53522 z" />
-    <path id="none-stairs" d="m 241.78525,1697.8771 h 73.53522 v 121.2076 h -73.53522 z" />
-    <path id="none-wc1" d="m 1225.586,1697.8771 h 73.5352 v 121.2076 h -73.5352 z" />
-    <path id="none-stairs1" d="m 1299.1259,1697.8771 h 73.5353 v 121.2076 h -73.5353 z" />
-    <path id="none-wc2" d="m 1504.646,692.24127 h 73.5352 v 104.49099 h -73.5352 z" />
-    <path id="none-stairs2" d="m 1578.186,692.24127 h 73.5352 v 104.49099 h -73.5352 z" />
-    <path id="none-stairs3" d="m 449.68821,1253.9023 h 144.8399 v 84.9269 h -144.8399 z" />
-    <path id="none-wc3" d="m 594.52801,1253.9023 h 143.8376 v 84.9269 h -143.8376 z" />
-    <path id="none-stairs4" d="m 723.79331,1875.6082 h 93.3184 v 107.2202 h -93.3184 z" />
-    <path id="none-wc4" d="m 1507.7146,1191.6824 h 84.1052 v 71.9848 h -84.1052 z" />
-    <path id="none-wc5" d="m 1458.3226,1191.6383 h 49.3908 v 35.9924 h -49.3908 z" />
-    <path id="none-ev" d="m 1458.3226,1227.6303 h 49.3908 v 35.9923 h -49.3908 z" />
-    <path id="none-stairs5" d="m 1591.8166,1191.6808 h 147.3165 v 72.0296 h -147.3165 z" />
+    <path id="main-wc_class_west_3f" d="m 168.24985,1697.8771 h 73.53522 v 121.2076 h -73.53522 z" />
+    <path id="main-stairs_class_west_3f" d="m 241.78525,1697.8771 h 73.53522 v 121.2076 h -73.53522 z" />
+    <path id="main-wc_class_east_3f" d="m 1225.586,1697.8771 h 73.5352 v 121.2076 h -73.5352 z" />
+    <path id="main-stairs_class_east_3f" d="m 1299.1259,1697.8771 h 73.5353 v 121.2076 h -73.5353 z" />
+    <path id="main-wc_management_north_3f" d="m 1504.646,692.24127 h 73.5352 v 104.49099 h -73.5352 z" />
+    <path id="main-stairs_management_north_3f" d="m 1578.186,692.24127 h 73.5352 v 104.49099 h -73.5352 z" />
+    <path id="main-stairs_management_west_3f" d="m 449.68821,1253.9023 h 144.8399 v 84.9269 h -144.8399 z" />
+    <path id="none-wc" d="m 594.52801,1253.9023 h 143.8376 v 84.9269 h -143.8376 z" />
+    <path id="main-stairs_class_center_3f" d="m 723.79331,1875.6082 h 93.3184 v 107.2202 h -93.3184 z" />
+    <path id="main-stairs_management_center_3f" d="m 1507.7146,1191.6824 h 84.1052 v 71.9848 h -84.1052 z" />
+    <path id="main-wc_management_center_accessible_3f" d="m 1458.3226,1191.6383 h 49.3908 v 35.9924 h -49.3908 z" />
+    <path id="main-ev_3f" d="m 1458.3226,1227.6303 h 49.3908 v 35.9923 h -49.3908 z" />
+    <path id="main-wc_management_center_3f" d="m 1591.8166,1191.6808 h 147.3165 v 72.0296 h -147.3165 z" />
     <path id="none-grand" d="m 186.5167,2151.2666 h 1181.1438 v 1718.463 H 186.5167 Z" />
     <path id="none-gate_west_0" d="m 27.198,1525.6751 h 15.696 v 157.7005 H 27.198 Z" />
     <path id="none-gate_west_1" d="m 27.198,1204.781 h 15.696 v 78.3301 H 27.198 Z" />
