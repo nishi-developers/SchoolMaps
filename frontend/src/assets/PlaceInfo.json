@@ -937,6 +937,374 @@
         "desc": "",
         "images": []
     },
+    "stairs_gym_passage_1f_0": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(体育館脇通路)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_gym_passage_1f_1": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(体育館脇通路)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_gym_passage_2f_0": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(体育館脇通路)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_gym_passage_2f_1": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(体育館脇通路)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_pool_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(プール脇)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_pool_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(プール脇)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_center_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(教室棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_center_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(教室棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_center_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "階段(教室棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_east_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(教室棟東)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_east_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(教室棟東)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_east_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "階段(教室棟東)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_west_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(教室棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_west_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(教室棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_west_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "階段(教室棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_west_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(管理棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_west_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(管理棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_west_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "階段(管理棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_center_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(管理棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_center_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(管理棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_center_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "階段(管理棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_north_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_north_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_north_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "階段(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_pilotis": {
+        "floor": 0,
+        "layer": "main",
+        "name": "トイレ(ピロティ)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_class_east_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "トイレ(教室棟東)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_class_east_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "トイレ(教室棟東)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_class_east_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "トイレ(教室棟東)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_class_west_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "トイレ(教室棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_class_west_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "トイレ(教室棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_class_west_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "トイレ(教室棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_west_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "トイレ(管理棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_west_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "トイレ(管理棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_west_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "トイレ(管理棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_center_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "トイレ(管理棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_center_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "トイレ(管理棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_center_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "トイレ(管理棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_north_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "トイレ(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_north_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "トイレ(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_north_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "トイレ(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_center_accessible_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "バリアフリートイレ(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_center_accessible_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "バリアフリートイレ(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_center_accessible_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "バリアフリートイレ(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "ev_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "エレベーター",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "ev_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "エレベーター",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "ev_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "エレベーター",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
     "2a": {
         "floor": 1,
         "layer": "main",

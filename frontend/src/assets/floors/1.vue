@@ -14,24 +14,24 @@
     <path d="m 1725.201,3210.8174 v 484.5157 h -9.52 v 144.6239 h -254.58 v -629.1396 z" id="none-martial_arts_field" />
     <path id="none-gym" d="m 1877.251,2472.388 v 469.98 h -407.4 v -469.98 h 80.19 v -80.71 h -24.22 v -18.51 h 295.46 v 18.51 h -24.21 v 80.71 z" />
     <path id="none-clubroom_building_1" d="m 14.81601,2737.3679 h 100.30301 v 273.126 H 14.81601 Z" />
-    <path id="none-wc" d="m 168.24985,1697.8771 h 73.53522 v 121.2076 h -73.53522 z" />
+    <path id="main-wc_class_west_2f" d="m 168.24985,1697.8771 h 73.53522 v 121.2076 h -73.53522 z" />
     <path id="none-nishi_hall" d="m 1567.3366,344.55292 h 161.8738 v 39.37016 h -161.8738 z" />
-    <path id="none-wc1" d="m 1225.586,1697.8771 h 73.5352 v 121.2076 h -73.5352 z" />
-    <path id="none-stairs" d="m 241.78525,1697.8771 h 73.53522 v 121.2076 h -73.53522 z" />
-    <path id="none-stairs1" d="m 1299.1259,1697.8771 h 73.5353 v 121.2076 h -73.5353 z" />
-    <path id="none-wc2" d="m 1504.646,692.24127 h 73.5352 v 104.49099 h -73.5352 z" />
-    <path id="none-stairs2" d="m 1578.186,692.24127 h 73.5352 v 104.49099 h -73.5352 z" />
-    <path id="none-stairs3" d="m 449.68821,1253.9023 h 144.8399 v 84.9269 h -144.8399 z" />
-    <path id="none-wc3" d="m 594.52801,1253.9023 h 143.8376 v 84.9269 h -143.8376 z" />
-    <path id="none-stairs4" d="m 723.79331,1875.6082 h 93.3184 v 107.2202 h -93.3184 z" />
-    <path id="none-stairs5" d="m 1808.2246,1606.9722 h 116.6411 v 45.6535 h -116.6411 z" />
-    <path id="none-stairs6" d="m 1416.1936,2269.8113 h 48.527 v 56.3025 h -48.527 z" />
+    <path id="main-wc_class_east_2f" d="m 1225.586,1697.8771 h 73.5352 v 121.2076 h -73.5352 z" />
+    <path id="main-stairs_class_west_2f" d="m 241.78525,1697.8771 h 73.53522 v 121.2076 h -73.53522 z" />
+    <path id="main-stairs_class_east_2f" d="m 1299.1259,1697.8771 h 73.5353 v 121.2076 h -73.5353 z" />
+    <path id="main-wc_management_north_2f" d="m 1504.646,692.24127 h 73.5352 v 104.49099 h -73.5352 z" />
+    <path id="main-stairs_management_north_2f" d="m 1578.186,692.24127 h 73.5352 v 104.49099 h -73.5352 z" />
+    <path id="main-stairs_management_west_2f" d="m 449.68821,1253.9023 h 144.8399 v 84.9269 h -144.8399 z" />
+    <path id="main-wc_management_west_2f" d="m 594.52801,1253.9023 h 143.8376 v 84.9269 h -143.8376 z" />
+    <path id="main-stairs_class_center_2f" d="m 723.79331,1875.6082 h 93.3184 v 107.2202 h -93.3184 z" />
+    <path id="main-stairs_pool_2f" d="m 1808.2246,1606.9722 h 116.6411 v 45.6535 h -116.6411 z" />
+    <path id="main-stairs_gym_passage_2f_0" d="m 1416.1936,2269.8113 h 48.527 v 56.3025 h -48.527 z" />
     <path id="none-gym_passage" d="m 1416.1936,2373.1687 h 35.1596 v 752.868 h -35.1596 z" />
-    <path id="none-stairs7" d="m 1416.1895,3210.8193 h 24.2634 v 120.7092 h -24.2634 z" />
-    <path id="none-wc4" d="m 1507.7146,1191.6824 h 84.1052 v 71.9848 h -84.1052 z" />
-    <path id="none-ev" d="m 1458.3226,1227.6306 h 49.3908 v 36.0372 h -49.3908 z" />
-    <path id="none-wc5" d="m 1458.3226,1191.6383 h 49.3908 v 35.9924 h -49.3908 z" />
-    <path id="none-stairs8" d="m 1591.8166,1191.6808 h 147.3165 v 72.0296 h -147.3165 z" />
+    <path id="main-stairs_gym_passage_2f_1" d="m 1416.1895,3210.8193 h 24.2634 v 120.7092 h -24.2634 z" />
+    <path id="main-stairs_management_center_2f" d="m 1507.7146,1191.6824 h 84.1052 v 71.9848 h -84.1052 z" />
+    <path id="main-ev_2f" d="m 1458.3226,1227.6306 h 49.3908 v 36.0372 h -49.3908 z" />
+    <path id="main-wc_management_center_accessible_2f" d="m 1458.3226,1191.6383 h 49.3908 v 35.9924 h -49.3908 z" />
+    <path id="main-wc_management_center_2f" d="m 1591.8166,1191.6808 h 147.3165 v 72.0296 h -147.3165 z" />
     <path id="none-grand" d="m 186.5167,2151.2666 h 1181.1438 v 1718.463 H 186.5167 Z" />
     <path id="none-tennis_court" d="m 186.517,3891.4482 h 670.97591 v 536.7337 H 186.517 Z" />
     <path id="none-handball_court" d="M 878.89001,3891.448 H 1909.9929 v 536.733 H 878.89001 Z" />
