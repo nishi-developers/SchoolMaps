@@ -94,20 +94,108 @@
             "handball_court-7mVe6x20.webp"
         ]
     },
-    "audiovisual_hall_1f": {
+    "audiovisual_hall_1f_wc_man": {
         "floor": 0,
         "layer": "main",
-        "name": "視聴覚ホール",
+        "name": "男子トイレ[視聴覚ホール]",
         "words": "",
-        "desc": "[2階](audiovisual_hall_2f)",
+        "desc": "",
         "images": []
     },
-    "nishi_hall_1f": {
+    "audiovisual_hall_1f_wc_woman": {
         "floor": 0,
         "layer": "main",
-        "name": "西高会館",
+        "name": "女子トイレ[視聴覚ホール]",
         "words": "",
-        "desc": "[2階](nishi_hall_2f)/n[3階](nishi_hall_3f)",
+        "desc": "",
+        "images": []
+    },
+    "audiovisual_hall_1f_stairs_0": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段[視聴覚ホール]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "audiovisual_hall_1f_stairs_1": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段[視聴覚ホール]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "audiovisual_hall_1f_passage_0": {
+        "floor": 0,
+        "layer": "main",
+        "name": "通路[視聴覚ホール]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "audiovisual_hall_1f_passage_1": {
+        "floor": 0,
+        "layer": "main",
+        "name": "通路[視聴覚ホール]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_1f_office": {
+        "floor": 0,
+        "layer": "main",
+        "name": "事務室[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_1f_wc": {
+        "floor": 0,
+        "layer": "main",
+        "name": "誰でもトイレ[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_1f_printing": {
+        "floor": 0,
+        "layer": "main",
+        "name": "印刷室[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_1f_cafeteria": {
+        "floor": 0,
+        "layer": "main",
+        "name": "食堂[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_1f_kitchen": {
+        "floor": 0,
+        "layer": "main",
+        "name": "厨房[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_1f_stairs": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_1f_outdoor_stairs": {
+        "floor": 0,
+        "layer": "main",
+        "name": "外階段[西高会館]",
+        "words": "",
+        "desc": "",
         "images": []
     },
     "gym_1f": {
@@ -115,15 +203,127 @@
         "layer": "main",
         "name": "体育館",
         "words": "",
-        "desc": "[2階](gym_2f)",
+        "desc": "",
         "images": []
     },
-    "martial_arts_field_1f": {
+    "gym_1f_stairs": {
         "floor": 0,
         "layer": "main",
-        "name": "武道場",
+        "name": "階段[体育館]",
         "words": "",
-        "desc": "[2階](martial_arts_field_2f)",
+        "desc": "",
+        "images": []
+    },
+    "gym_1f_warehouse": {
+        "floor": 0,
+        "layer": "main",
+        "name": "体育倉庫[体育館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "gym_1f_wc_man": {
+        "floor": 0,
+        "layer": "main",
+        "name": "男子トイレ[体育館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "gym_1f_wc_woman": {
+        "floor": 0,
+        "layer": "main",
+        "name": "女子トイレ[体育館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "gym_1f_stage": {
+        "floor": 0,
+        "layer": "main",
+        "name": "ステージ[体育館]",
+        "words": "舞台",
+        "desc": "",
+        "images": []
+    },
+    "gym_1f_stage_stairs_0": {
+        "floor": 0,
+        "layer": "main",
+        "name": "ステージ脇階段[体育館]",
+        "words": "舞台",
+        "desc": "",
+        "images": []
+    },
+    "gym_1f_stage_stairs_1": {
+        "floor": 0,
+        "layer": "main",
+        "name": "ステージ脇階段[体育館]",
+        "words": "舞台",
+        "desc": "",
+        "images": []
+    },
+    "gym_1f_stage_side_0": {
+        "floor": 0,
+        "layer": "main",
+        "name": "ステージ脇[体育館]",
+        "words": "舞台",
+        "desc": "",
+        "images": []
+    },
+    "gym_1f_stage_side_1": {
+        "floor": 0,
+        "layer": "main",
+        "name": "ステージ脇[体育館]",
+        "words": "舞台",
+        "desc": "",
+        "images": []
+    },
+    "martial_arts_field_1f_0": {
+        "floor": 0,
+        "layer": "main",
+        "name": "格技室(1)[武道場]",
+        "words": "格技棟",
+        "desc": "",
+        "images": []
+    },
+    "martial_arts_field_1f_1": {
+        "floor": 0,
+        "layer": "main",
+        "name": "格技室(2)[武道場]",
+        "words": "格技棟",
+        "desc": "",
+        "images": []
+    },
+    "martial_arts_field_1f_wc_man": {
+        "floor": 0,
+        "layer": "main",
+        "name": "男子トイレ[武道場]",
+        "words": "格技棟",
+        "desc": "",
+        "images": []
+    },
+    "martial_arts_field_1f_wc_woman": {
+        "floor": 0,
+        "layer": "main",
+        "name": "女子トイレ[武道場]",
+        "words": "格技棟",
+        "desc": "",
+        "images": []
+    },
+    "martial_arts_field_1f_warehouse": {
+        "floor": 0,
+        "layer": "main",
+        "name": "器具庫[武道場]",
+        "words": "格技棟",
+        "desc": "",
+        "images": []
+    },
+    "martial_arts_field_1f_stairs": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段[武道場]",
+        "words": "格技棟",
+        "desc": "",
         "images": []
     },
     "fountain": {
@@ -135,6 +335,14 @@
         "images": [
             "fountain-87KPE1Vq.webp"
         ]
+    },
+    "garbage_dump": {
+        "floor": 0,
+        "layer": "main",
+        "name": "ゴミ置き場",
+        "words": "ゴミ捨て場",
+        "desc": "",
+        "images": []
     },
     "bicycle_parking_1st_0": {
         "floor": 0,
@@ -208,33 +416,287 @@
         "desc": "",
         "images": []
     },
-    "clubrooms": {
+    "clubroom_0": {
         "floor": 0,
         "layer": "main",
-        "name": "部室",
+        "name": "シブ楽隊[部室]",
         "words": "",
         "desc": "",
         "images": []
     },
-    "clubroom_building_0_1f": {
+    "clubroom_1": {
         "floor": 0,
         "layer": "main",
-        "name": "部室棟",
+        "name": "歴史研究部[部室]",
         "words": "",
-        "desc": "[2階](clubroom_building_0_2f)",
-        "images": [
-            "clubroom_building_0_1f-qAB23K19.webp"
-        ]
+        "desc": "",
+        "images": []
     },
-    "clubroom_building_1": {
+    "clubroom_2": {
         "floor": 0,
         "layer": "main",
-        "name": "部室棟",
+        "name": "演劇部[部室]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_3": {
+        "floor": 0,
+        "layer": "main",
+        "name": "体操部[部室]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_4": {
+        "floor": 0,
+        "layer": "main",
+        "name": "吹奏楽部[部室]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_5": {
+        "floor": 0,
+        "layer": "main",
+        "name": "男子バスケットボール部[部室]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_6": {
+        "floor": 0,
+        "layer": "main",
+        "name": "剣道部[部室]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_7": {
+        "floor": 0,
+        "layer": "main",
+        "name": "化学部[部室]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_8": {
+        "floor": 0,
+        "layer": "main",
+        "name": "園芸部[部室]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_9": {
+        "floor": 0,
+        "layer": "main",
+        "name": "軽音楽同好会[部室]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_10": {
+        "floor": 0,
+        "layer": "main",
+        "name": "つるばみ同好会[部室]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_11": {
+        "floor": 0,
+        "layer": "main",
+        "name": "男子バレーボール部[部室]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_12": {
+        "floor": 0,
+        "layer": "main",
+        "name": "卓球部[部室]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_13": {
+        "floor": 0,
+        "layer": "main",
+        "name": "水泳部[部室]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_14": {
+        "floor": 0,
+        "layer": "main",
+        "name": "女子バレーボール部[部室]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_15": {
+        "floor": 0,
+        "layer": "main",
+        "name": "女子バスケットボール部[部室]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_16": {
+        "floor": 0,
+        "layer": "main",
+        "name": "バドミントン部[部室]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_17": {
+        "floor": 0,
+        "layer": "main",
+        "name": "ダンス部[部室]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_1f_stairs_0": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_1f_stairs_1": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_1f_room_0": {
+        "floor": 0,
+        "layer": "main",
+        "name": "写真部[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_1f_room_1": {
+        "floor": 0,
+        "layer": "main",
+        "name": "生徒会倉庫[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_1f_room_2": {
+        "floor": 0,
+        "layer": "main",
+        "name": "女子ハンドボール部[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_1f_room_3": {
+        "floor": 0,
+        "layer": "main",
+        "name": "男子ハンドボール部[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_1f_room_4": {
+        "floor": 0,
+        "layer": "main",
+        "name": "男子硬式テニス部[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_1f_room_5": {
+        "floor": 0,
+        "layer": "main",
+        "name": "硬式野球部[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_1f_room_6": {
+        "floor": 0,
+        "layer": "main",
+        "name": "陸上競技部[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_1f_room_7": {
+        "floor": 0,
+        "layer": "main",
+        "name": "サッカー部[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_1f_room_8": {
+        "floor": 0,
+        "layer": "main",
+        "name": "アメリカンフットボール部[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_1_warehouse_0": {
+        "floor": 0,
+        "layer": "main",
+        "name": "倉庫[部室棟]",
         "words": "",
         "desc": "",
         "images": [
             "clubroom_building_1-39A51R8u.webp"
         ]
+    },
+    "clubroom_building_1_warehouse_1": {
+        "floor": 0,
+        "layer": "main",
+        "name": "倉庫[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_1_wc_man": {
+        "floor": 0,
+        "layer": "main",
+        "name": "男子トイレ[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_1_wc_woman": {
+        "floor": 0,
+        "layer": "main",
+        "name": "女子トイレ[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_1_shower_0": {
+        "floor": 0,
+        "layer": "main",
+        "name": "シャワー室[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_1_shower_1": {
+        "floor": 0,
+        "layer": "main",
+        "name": "シャワー室[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
     },
     "pilotis": {
         "floor": 0,
@@ -475,6 +937,374 @@
         "desc": "",
         "images": []
     },
+    "stairs_gym_passage_1f_0": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(体育館脇通路)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_gym_passage_1f_1": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(体育館脇通路)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_gym_passage_2f_0": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(体育館脇通路)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_gym_passage_2f_1": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(体育館脇通路)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_pool_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(プール脇)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_pool_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(プール脇)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_center_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(教室棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_center_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(教室棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_center_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "階段(教室棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_east_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(教室棟東)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_east_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(教室棟東)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_east_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "階段(教室棟東)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_west_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(教室棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_west_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(教室棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_class_west_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "階段(教室棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_west_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(管理棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_west_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(管理棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_west_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "階段(管理棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_center_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(管理棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_center_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(管理棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_center_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "階段(管理棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_north_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "階段(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_north_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "stairs_management_north_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "階段(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_pilotis": {
+        "floor": 0,
+        "layer": "main",
+        "name": "トイレ(ピロティ)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_class_east_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "トイレ(教室棟東)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_class_east_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "トイレ(教室棟東)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_class_east_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "トイレ(教室棟東)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_class_west_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "トイレ(教室棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_class_west_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "トイレ(教室棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_class_west_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "トイレ(教室棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_west_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "トイレ(管理棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_west_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "トイレ(管理棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_west_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "トイレ(管理棟西)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_center_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "トイレ(管理棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_center_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "トイレ(管理棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_center_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "トイレ(管理棟中央)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_north_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "トイレ(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_north_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "トイレ(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_north_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "トイレ(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_center_accessible_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "バリアフリートイレ(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_center_accessible_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "バリアフリートイレ(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "wc_management_center_accessible_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "バリアフリートイレ(管理棟北)",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "ev_1f": {
+        "floor": 0,
+        "layer": "main",
+        "name": "エレベーター",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "ev_2f": {
+        "floor": 1,
+        "layer": "main",
+        "name": "エレベーター",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "ev_3f": {
+        "floor": 2,
+        "layer": "main",
+        "name": "エレベーター",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
     "2a": {
         "floor": 1,
         "layer": "main",
@@ -539,12 +1369,140 @@
         "desc": "",
         "images": []
     },
-    "clubroom_building_0_2f": {
+    "clubroom_building_0_2f_stairs_0": {
         "floor": 1,
         "layer": "main",
-        "name": "部室棟",
+        "name": "階段[部室棟]",
         "words": "",
-        "desc": "[1階](clubroom_building_0_1f)",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_2f_stairs_1": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_2f_room_0": {
+        "floor": 1,
+        "layer": "main",
+        "name": "イラスト研究部[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_2f_room_1": {
+        "floor": 1,
+        "layer": "main",
+        "name": "新聞部[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_2f_room_2": {
+        "floor": 1,
+        "layer": "main",
+        "name": "文芸部[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_2f_room_3": {
+        "floor": 1,
+        "layer": "main",
+        "name": "管弦楽部[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_2f_room_4": {
+        "floor": 1,
+        "layer": "main",
+        "name": "CR東日本[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_2f_room_5": {
+        "floor": 1,
+        "layer": "main",
+        "name": "宇宙研究部[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_2f_room_6": {
+        "floor": 1,
+        "layer": "main",
+        "name": "ワンダーフォーゲル部[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_2f_room_7": {
+        "floor": 1,
+        "layer": "main",
+        "name": "囲碁将棋部[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_2f_room_8": {
+        "floor": 1,
+        "layer": "main",
+        "name": "女子硬式テニス部[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "clubroom_building_0_2f_room_9": {
+        "floor": 1,
+        "layer": "main",
+        "name": "ソフトテニス部(女子)[部室棟]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "audiovisual_hall_2f_monitor_room": {
+        "floor": 1,
+        "layer": "main",
+        "name": "モニタールーム",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "audiovisual_hall_2f_stairs_0": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段[視聴覚ホール]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "audiovisual_hall_2f_stairs_1": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段[視聴覚ホール]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "audiovisual_hall_2f_ramp_0": {
+        "floor": 1,
+        "layer": "main",
+        "name": "スロープ[視聴覚ホール]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "audiovisual_hall_2f_ramp_1": {
+        "floor": 1,
+        "layer": "main",
+        "name": "スロープ[視聴覚ホール]",
+        "words": "",
+        "desc": "",
         "images": []
     },
     "audiovisual_hall_2f": {
@@ -552,37 +1510,245 @@
         "layer": "main",
         "name": "視聴覚ホール",
         "words": "",
-        "desc": "[1階](audiovisual_hall_1f)",
+        "desc": "",
         "images": []
     },
-    "nishi_hall_2f": {
+    "audiovisual_hall_2f_stage": {
         "floor": 1,
         "layer": "main",
-        "name": "西高会館",
-        "words": "",
-        "desc": "[1階](nishi_hall_1f)/n[3階](nishi_hall_3f)",
+        "name": "ステージ[視聴覚ホール]",
+        "words": "舞台",
+        "desc": "",
         "images": []
     },
-    "gym_2f": {
+    "audiovisual_hall_2f_stage_side_0": {
         "floor": 1,
         "layer": "main",
-        "name": "体育館",
-        "words": "",
-        "desc": "[1階](gym_1f)",
+        "name": "ステージ脇[視聴覚ホール]",
+        "words": "舞台",
+        "desc": "",
         "images": []
     },
-    "martial_arts_field_2f": {
+    "audiovisual_hall_2f_stage_side_1": {
         "floor": 1,
         "layer": "main",
-        "name": "武道場",
+        "name": "ステージ脇[視聴覚ホール]",
+        "words": "舞台",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_2f_stairs": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段[西高会館]",
         "words": "",
-        "desc": "[1階](martial_arts_field_1f)",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_2f_outdoor_stairs": {
+        "floor": 1,
+        "layer": "main",
+        "name": "外階段[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_2f_office": {
+        "floor": 1,
+        "layer": "main",
+        "name": "西高会・同窓会事務室[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_2f_wc_man_0": {
+        "floor": 1,
+        "layer": "main",
+        "name": "男子トイレ1[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_2f_wc_man_1": {
+        "floor": 1,
+        "layer": "main",
+        "name": "男子トイレ2[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_2f_changing_room_man": {
+        "floor": 1,
+        "layer": "main",
+        "name": "男子更衣室[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_2f_shower_man": {
+        "floor": 1,
+        "layer": "main",
+        "name": "男子シャワー[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_2f_meeting_room_0": {
+        "floor": 1,
+        "layer": "main",
+        "name": "会議室1[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_2f_meeting_room_1": {
+        "floor": 1,
+        "layer": "main",
+        "name": "会議室2[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "gym_2f_teachers": {
+        "floor": 1,
+        "layer": "main",
+        "name": "体育教官室[体育館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "gym_2f_stairs": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段[体育館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "gym_2f_changing_room_man": {
+        "floor": 1,
+        "layer": "main",
+        "name": "男子更衣室[体育館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "gym_2f_changing_room_woman": {
+        "floor": 1,
+        "layer": "main",
+        "name": "女子更衣室[体育館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "gym_2f_catwalk": {
+        "floor": 1,
+        "layer": "main",
+        "name": "キャットウォーク[体育館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "gym_2f_passage_0": {
+        "floor": 1,
+        "layer": "main",
+        "name": "通路[体育館]",
+        "words": "舞台",
+        "desc": "",
+        "images": []
+    },
+    "gym_2f_passage_1": {
+        "floor": 1,
+        "layer": "main",
+        "name": "通路[体育館]",
+        "words": "舞台",
+        "desc": "",
+        "images": []
+    },
+    "gym_2f_stage_broadcast_room": {
+        "floor": 1,
+        "layer": "main",
+        "name": "放送室[体育館]",
+        "words": "舞台",
+        "desc": "",
+        "images": []
+    },
+    "gym_2f_stage_waiting_room": {
+        "floor": 1,
+        "layer": "main",
+        "name": "控え室[体育館]",
+        "words": "舞台",
+        "desc": "",
+        "images": []
+    },
+    "gym_2f_stage_stairs_0": {
+        "floor": 1,
+        "layer": "main",
+        "name": "ステージ脇階段[体育館]",
+        "words": "舞台",
+        "desc": "",
+        "images": []
+    },
+    "gym_2f_stage_stairs_1": {
+        "floor": 1,
+        "layer": "main",
+        "name": "ステージ脇階段[体育館]",
+        "words": "舞台",
+        "desc": "",
+        "images": []
+    },
+    "martial_arts_field_2f_stairs": {
+        "floor": 1,
+        "layer": "main",
+        "name": "階段[武道場]",
+        "words": "格技棟",
+        "desc": "",
+        "images": []
+    },
+    "martial_arts_field_2f_teachers": {
+        "floor": 1,
+        "layer": "main",
+        "name": "体育教官室[武道場]",
+        "words": "格技棟",
+        "desc": "",
+        "images": []
+    },
+    "martial_arts_field_2f_changing_man": {
+        "floor": 1,
+        "layer": "main",
+        "name": "男子更衣室[武道場]",
+        "words": "格技棟",
+        "desc": "",
+        "images": []
+    },
+    "martial_arts_field_2f_changing_woman": {
+        "floor": 1,
+        "layer": "main",
+        "name": "女子更衣室[武道場]",
+        "words": "格技棟",
+        "desc": "",
         "images": []
     },
     "pool": {
         "floor": 1,
         "layer": "main",
         "name": "プール",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "pool_changing_room_man": {
+        "floor": 1,
+        "layer": "main",
+        "name": "男子更衣室[プール]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "pool_changing_room_woman": {
+        "floor": 1,
+        "layer": "main",
+        "name": "女子更衣室[プール]",
         "words": "",
         "desc": "",
         "images": []
@@ -835,12 +2001,76 @@
         "desc": "",
         "images": []
     },
-    "nishi_hall_3f": {
+    "nishi_hall_3f_stairs": {
         "floor": 2,
         "layer": "main",
-        "name": "西高会館",
+        "name": "階段[西高会館]",
         "words": "",
-        "desc": "[1階](nishi_hall_1f)/n[2階](nishi_hall_2f)",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_3f_outdoor_stairs": {
+        "floor": 2,
+        "layer": "main",
+        "name": "外階段[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_3f_wc_woman": {
+        "floor": 2,
+        "layer": "main",
+        "name": "女子トイレ[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_3f_changing_room_woman": {
+        "floor": 2,
+        "layer": "main",
+        "name": "女子更衣室[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_3f_shower_woman": {
+        "floor": 2,
+        "layer": "main",
+        "name": "女子シャワー[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_3f_reference_room": {
+        "floor": 2,
+        "layer": "main",
+        "name": "資料室[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_3f_japanese_style_room_0": {
+        "floor": 2,
+        "layer": "main",
+        "name": "和室1[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_3f_japanese_style_room_1": {
+        "floor": 2,
+        "layer": "main",
+        "name": "和室2[西高会館]",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "nishi_hall_3f_japanese_style_room_2": {
+        "floor": 2,
+        "layer": "main",
+        "name": "和室3[西高会館]",
+        "words": "",
+        "desc": "",
         "images": []
     },
     "physics_experiment_room": {
@@ -983,6 +2213,22 @@
         "floor": 2,
         "layer": "main",
         "name": "ラピュタ",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "audiovisual_hall_3f_pinspot": {
+        "floor": 2,
+        "layer": "main",
+        "name": "ピンスポット",
+        "words": "",
+        "desc": "",
+        "images": []
+    },
+    "audiovisual_hall_3f_stairs": {
+        "floor": 2,
+        "layer": "main",
+        "name": "階段[視聴覚ホール]",
         "words": "",
         "desc": "",
         "images": []
