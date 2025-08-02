@@ -1,31 +1,37 @@
 <template>
-<svg xmlns="http://www.w3.org/2000/svg" width="1991.3156" height="4493.0317" viewBox="0 0 1991.3156 4493.0317" version="1.1" xml:space="preserve" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" id="svg100"><defs id="defs100" />
+<svg xmlns="http://www.w3.org/2000/svg" width="1991.3156" height="4493.0317" viewBox="0 0 1991.3156 4493.0317" version="1.1" xml:space="preserve" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" id="svg145">
+    <defs id="defs145" />
     <path d="m 1822.4979,407.8607 h 168.8176 v 4085.171 H 0 V 1131.161 H 271.41196 V 937.3392 H 842.21111 V 0 h 980.28679 z" id="base" />
     <path id="enclosure-classroom_building" d="M 1739.131,692.241 V 554.085 h 182.86 v 890.693 h -436.55 v 430.43 h -112.78 v 107.62 H 168.25001 v -284.95 h 147.071 v 121.2 h 408.47 v -300.44 h -555.541 v -179.81 h 281.438 v -84.93 h 288.683 v 9.82 H 1223.461 V 554.085 h 159.2 v -21.47 h 40.94 v 159.626 z m 0,145.378 -315.53,0.457 v 353.562 h 315.53 z m -315.53,607.159 H 807.86101 v 374.3 H 1225.591 v -121.2 h 198.01 z" />
-    <path id="enclosure-nishi_hall" d="m 1559.2221,31.97536 h 251.8807 v 331.66366 h -251.8807 z" />
-    <path id="enclosure-audiovisual_hall" d="M 1496.741,68.417 V 489.22 h -73.24 l 0.1,43.395 h -132.59 l -43.62,-43.395 h -57.59 V 68.417 Z" />
-    <path d="m 1924.8528,1606.968 v 766.2 h -439.4183 v -720.55 h 322.7796 v -45.65 z" id="enclosure-pool" />
-    <path d="m 1895.761,3210.8174 v 484.5157 h -180.08 v 144.6239 h -254.58 v -629.1396 z" id="enclosure-martial_arts_field" />
-    <path id="enclosure-gym" d="m 1451.348,2373.1672 h 444.409 v 752.8682 h -444.409 z" />
+    <path d="m 1811.0999,31.9751 v 351.92919 h -81.8834 V 344.55588 H 1567.3367 V 31.9751 Z" id="enclosure-nishi_hall" />
+    <path id="enclosure-audiovisual_hall" d="M 1496.741,68.417 V 489.22 h -73.14 v 43.395 h -116.94 l -43.72,-43.395 h -73.14 V 68.417 Z" />
+    <path d="m 1924.8528,1606.968 v 719.15 h -29.1078 v 47.05 h -410.3105 v -720.55 h 322.7796 v -45.65 z" id="enclosure-pool" />
+    <path id="enclosure-martial_arts_field" d="m 1725.2009,3210.8174 h 170.559 v 484.5118 h -170.559 z" />
+    <path d="m 1821.2838,2373.1671 h 74.477 v 752.8611 H 1451.348 v -752.8611 h 74.4674 v 18.5056 h 24.2238 v 80.7049 h -80.1824 v 469.9851 h 407.3952 v -469.9851 h -80.1824 v -80.7049 h 24.2142 z" id="enclosure-gym" />
     <path id="enclosure-clubroom_building_0" d="m 14.81486,2153.1921 h 100.30226 v 571.4297 H 14.81486 Z" />
-    <path d="m 1485.441,1875.2235 v 497.9617 h -34.09 v 752.8729 h 444.41 v 84.7705 h -479.57 v -884.6947 h 48.52 v -404.6933 h -92.05 v -46.2171 z" id="enclosure-gym_passage" />
+    <path id="enclosure-gym_passage_1" d="m 1416.191,3126.0581 h 479.567 v 84.7797 h -479.567 z" />
+    <path d="m 1485.441,1875.2235 v 497.9617 h -69.25 v -47.0513 h 48.52 v -404.6933 h -92.05 v -46.2171 z" id="enclosure-gym_passage_0" />
+    <path d="m 1725.201,3210.8174 v 484.5157 h -9.52 v 144.6239 h -254.58 v -629.1396 z" id="none-martial_arts_field" />
+    <path id="none-gym" d="m 1877.251,2472.388 v 469.98 h -407.4 v -469.98 h 80.19 v -80.71 h -24.22 v -18.51 h 295.46 v 18.51 h -24.21 v 80.71 z" />
     <path id="none-clubroom_building_1" d="m 14.81601,2737.3679 h 100.30301 v 273.126 H 14.81601 Z" />
-    <path id="none-wc" d="m 168.24985,1697.8771 h 73.53522 v 121.2076 h -73.53522 z" />
-    <path id="none-wc1" d="m 1225.586,1697.8771 h 73.5352 v 121.2076 h -73.5352 z" />
-    <path id="none-stairs" d="m 241.78525,1697.8771 h 73.53522 v 121.2076 h -73.53522 z" />
-    <path id="none-stairs1" d="m 1299.1259,1697.8771 h 73.5353 v 121.2076 h -73.5353 z" />
-    <path id="none-wc2" d="m 1504.646,692.24127 h 73.5352 v 104.49099 h -73.5352 z" />
-    <path id="none-stairs2" d="m 1578.186,692.24127 h 73.5352 v 104.49099 h -73.5352 z" />
-    <path id="none-stairs3" d="m 449.68821,1253.9023 h 144.8399 v 84.9269 h -144.8399 z" />
-    <path id="none-wc3" d="m 594.52801,1253.9023 h 143.8376 v 84.9269 h -143.8376 z" />
-    <path id="none-stairs4" d="m 723.79331,1875.6082 h 93.3184 v 107.2202 h -93.3184 z" />
-    <path id="none-stairs5" d="m 1808.2246,1606.9722 h 116.6411 v 45.6535 h -116.6411 z" />
-    <path id="none-stairs6" d="m 1416.1936,2269.8113 h 48.527 v 56.3025 h -48.527 z" />
-    <path id="none-stairs7" d="m 1416.1895,3210.8193 h 24.2634 v 120.7092 h -24.2634 z" />
-    <path id="none-wc4" d="m 1507.7146,1191.6824 h 84.1052 v 71.9848 h -84.1052 z" />
-    <path id="none-ev" d="m 1458.3226,1227.6306 h 49.3908 v 36.0372 h -49.3908 z" />
-    <path id="none-wc5" d="m 1458.3226,1191.6383 h 49.3908 v 35.9924 h -49.3908 z" />
-    <path id="none-stairs8" d="m 1591.8166,1191.6808 h 147.3165 v 72.0296 h -147.3165 z" />
+    <path id="main-wc_class_west_2f" d="m 168.24985,1697.8771 h 73.53522 v 121.2076 h -73.53522 z" />
+    <path id="none-nishi_hall" d="m 1567.3366,344.55292 h 161.8738 v 39.37016 h -161.8738 z" />
+    <path id="main-wc_class_east_2f" d="m 1225.586,1697.8771 h 73.5352 v 121.2076 h -73.5352 z" />
+    <path id="main-stairs_class_west_2f" d="m 241.78525,1697.8771 h 73.53522 v 121.2076 h -73.53522 z" />
+    <path id="main-stairs_class_east_2f" d="m 1299.1259,1697.8771 h 73.5353 v 121.2076 h -73.5353 z" />
+    <path id="main-wc_management_north_2f" d="m 1504.646,692.24127 h 73.5352 v 104.49099 h -73.5352 z" />
+    <path id="main-stairs_management_north_2f" d="m 1578.186,692.24127 h 73.5352 v 104.49099 h -73.5352 z" />
+    <path id="main-stairs_management_west_2f" d="m 449.68821,1253.9023 h 144.8399 v 84.9269 h -144.8399 z" />
+    <path id="main-wc_management_west_2f" d="m 594.52801,1253.9023 h 143.8376 v 84.9269 h -143.8376 z" />
+    <path id="main-stairs_class_center_2f" d="m 723.79331,1875.6082 h 93.3184 v 107.2202 h -93.3184 z" />
+    <path id="main-stairs_pool_2f" d="m 1808.2246,1606.9722 h 116.6411 v 45.6535 h -116.6411 z" />
+    <path id="main-stairs_gym_passage_2f_0" d="m 1416.1936,2269.8113 h 48.527 v 56.3025 h -48.527 z" />
+    <path id="none-gym_passage" d="m 1416.1936,2373.1687 h 35.1596 v 752.868 h -35.1596 z" />
+    <path id="main-stairs_gym_passage_2f_1" d="m 1416.1895,3210.8193 h 24.2634 v 120.7092 h -24.2634 z" />
+    <path id="main-stairs_management_center_2f" d="m 1507.7146,1191.6824 h 84.1052 v 71.9848 h -84.1052 z" />
+    <path id="main-ev_2f" d="m 1458.3226,1227.6306 h 49.3908 v 36.0372 h -49.3908 z" />
+    <path id="main-wc_management_center_accessible_2f" d="m 1458.3226,1191.6383 h 49.3908 v 35.9924 h -49.3908 z" />
+    <path id="main-wc_management_center_2f" d="m 1591.8166,1191.6808 h 147.3165 v 72.0296 h -147.3165 z" />
     <path id="none-grand" d="m 186.5167,2151.2666 h 1181.1438 v 1718.463 H 186.5167 Z" />
     <path id="none-tennis_court" d="m 186.517,3891.4482 h 670.97591 v 536.7337 H 186.517 Z" />
     <path id="none-handball_court" d="M 878.89001,3891.448 H 1909.9929 v 536.733 H 878.89001 Z" />
@@ -44,11 +50,9 @@
     <path id="main-changing_room_3" d="m 1303.0631,1191.6415 h 79.5972 v 72.0745 h -79.5972 z" />
     <path id="main-changing_room_1" d="m 1223.473,1127.853 h 159.195 v 63.7878 h -159.195 z" />
     <path id="main-broadcast_room" d="m 1382.6605,1304.6613 h 40.9446 v 140.2293 h -40.9446 z" />
-    <path id="main-pool" d="m 1485.445,1652.6267 h 439.4234 v 673.5052 H 1485.445 Z" />
+    <path id="main-pool" d="m 1485.445,1652.6129 h 439.4234 v 555.3887 H 1485.445 Z" />
     <path id="main-meeting_room" d="m 1223.473,761.3252 h 159.195 v 366.5338 h -159.195 z" />
     <path id="main-art_preparation_room" d="m 1780.0676,924.2848 h 141.911 v 86.608 h -141.911 z" />
-    <path id="main-nishi_hall_2f" d="m 1559.2221,31.97476 h 251.8807 v 312.55841 h -251.8807 z" />
-    <path id="main-audiovisual_hall_2f" d="M 1496.741,68.417 V 489.22 h -73.24 l 0.1,43.395 h -132.59 l -43.62,-43.395 h -57.59 V 68.417 Z" />
     <path id="main-2h" d="M 168.24943,1860.0134 H 307.13576 V 1982.81 H 168.24943 Z" />
     <path id="main-2g" d="M 307.13541,1860.0134 H 446.02175 V 1982.81 H 307.13541 Z" />
     <path id="main-2f" d="M 446.02237,1860.0134 H 584.90871 V 1982.81 H 446.02237 Z" />
@@ -66,7 +70,7 @@
     <path id="main-social_studies_preparation_room" d="m 377.6995,1379.769 h 180.62311 v 138.8632 H 377.6995 Z" />
     <path id="main-social_studies_room_1st" d="m 168.25413,1379.769 h 209.44624 v 138.8632 H 168.25413 Z" />
     <path id="main-printing_room" d="m 807.86541,1304.6539 h 96.5544 v 140.1191 h -96.5544 z" />
-    <path id="main-career_room" d="m 1485.4345,1304.6567 h 106.3716 v 140.1201 h -106.3716 z" />
+    <path id="main-career_room" d="m 1485.4345,1306.6567 h 106.3716 v 140.1201 h -106.3716 z" />
     <path id="main-consultation_room_1st" d="m 1591.8059,1304.6567 h 94.1304 v 140.1201 h -94.1304 z" />
     <path id="main-consultation_room_2nd" d="m 1685.9367,1304.6567 h 94.1305 v 140.1201 h -94.1305 z" />
     <path id="main-art_material_room" d="m 1780.0676,1191.6398 h 141.911 v 72.0744 h -141.911 z" />
@@ -74,9 +78,6 @@
     <path id="main-art_room" d="m 1780.0676,1010.8921 h 141.911 v 180.748 h -141.911 z" />
     <path id="main-craft_room" d="m 1780.0676,623.16278 h 141.911 v 214.51384 h -141.911 z" />
     <path id="main-craft_warehouse" d="m 1780.0676,554.08447 h 141.911 v 69.0782 h -141.911 z" />
-    <path d="m 1895.761,3210.8174 v 484.5157 h -180.08 v 144.6239 h -254.58 v -629.1396 z" id="main-martial_arts_field_2f" />
-    <path id="main-gym_2f" d="m 1451.348,2373.1672 h 444.409 v 752.8682 h -444.409 z" />
-    <path id="main-clubroom_building_0_2f" d="m 14.81486,2153.1921 h 100.30226 v 571.4297 H 14.81486 Z" />
     <path id="shinkan80-s80_2a_back" d="m 1372.6094,1952.3897 a 23.622362,23.622417 0 0 1 -23.6224,23.6224 23.622362,23.622417 0 0 1 -23.6223,-23.6224 23.622362,23.622417 0 0 1 23.6223,-23.6225 23.622362,23.622417 0 0 1 23.6224,23.6225 z" />
     <path id="shinkan80-s80_2a_front" d="m 1289.1444,1897.2716 a 23.622362,23.622417 0 0 1 -23.6223,23.6224 23.622362,23.622417 0 0 1 -23.6224,-23.6224 23.622362,23.622417 0 0 1 23.6224,-23.6224 23.622362,23.622417 0 0 1 23.6223,23.6224 z" />
     <path id="shinkan80-s80_2b_back" d="m 1225.0784,1950.8147 a 23.622362,23.622417 0 0 1 -23.6224,23.6224 23.622362,23.622417 0 0 1 -23.6223,-23.6224 23.622362,23.622417 0 0 1 23.6223,-23.6224 23.622362,23.622417 0 0 1 23.6224,23.6224 z" />
@@ -103,7 +104,53 @@
     <path id="shinkan80-s80_hallway3" d="m 773.04021,1476.7987 a 23.622362,23.622417 0 0 1 -23.6224,23.6224 23.622362,23.622417 0 0 1 -23.6224,-23.6224 23.622362,23.622417 0 0 1 23.6224,-23.6224 23.622362,23.622417 0 0 1 23.6224,23.6224 z" />
     <path id="shinkan80-s80_hallway2" d="m 805.86511,1785.4607 a 23.622362,23.622417 0 0 1 -23.6223,23.6224 23.622362,23.622417 0 0 1 -23.6224,-23.6224 23.622362,23.622417 0 0 1 23.6224,-23.6224 23.622362,23.622417 0 0 1 23.6223,23.6224 z" />
     <path id="shinkan80-s80_hallway1" d="m 805.86511,1531.9171 a 23.622362,23.622417 0 0 1 -23.6223,23.6224 23.622362,23.622417 0 0 1 -23.6224,-23.6224 23.622362,23.622417 0 0 1 23.6224,-23.6224 23.622362,23.622417 0 0 1 23.6223,23.6224 z" />
-    
+    <path id="main-pool_changing_room_man" d="m 1485.4466,2207.9985 h 219.6852 v 118.114 h -219.6852 z" />
+    <path id="main-pool_changing_room_woman" d="m 1705.1267,2207.9985 h 219.6851 v 118.114 h -219.6851 z" />
+    <path id="main-gym_2f_teachers" d="m 1451.3521,2960.896 h 148.0319 v 165.1675 h -148.0319 z" />
+    <path id="main-gym_2f_changing_room_man" d="m 1747.729,3026.833 h 74.0159 v 99.213 h -74.0159 z" />
+    <path id="main-gym_2f_changing_room_woman" d="m 1821.739,3026.833 h 74.0159 v 99.213 h -74.0159 z" />
+    <path id="main-gym_2f_stage_broadcast_room" d="m 1469.8536,2391.6794 h 80.1839 v 80.709 h -80.1839 z" />
+    <path id="main-gym_2f_stage_waiting_room" d="m 1797.0705,2391.6794 h 80.1839 v 80.709 h -80.1839 z" />
+    <path id="main-gym_2f_stairs" d="m 1599.382,3026.833 h 74.016 v 99.213 h -74.016 z" />
+    <path d="m 1895.7589,2960.8919 h -444.4084 v -488.4858 h 18.5042 v 469.9525 h 407.4001 v -469.9525 h 18.5041 z" id="main-gym_2f_catwalk" />
+    <path id="main-gym_2f_stage_stairs_1" d="m 1525.8177,2373.1675 v 18.504 h -74.471 v -18.504 z" />
+    <path id="main-gym_2f_passage_1" d="m 1469.8525,2391.6807 v 80.7088 h -18.504 v -80.7088 z" />
+    <path id="main-gym_2f_passage_0" d="m 1895.7524,2391.6807 v 80.7088 h -18.504 v -80.7088 z" />
+    <path id="main-gym_2f_stage_stairs_0" d="m 1895.7578,2373.1675 v 18.504 h -74.4711 v -18.504 z" />
+    <path id="main-clubroom_building_0_2f_room_0" d="M 14.81595,2177.0308 H 96.7058 v 49.579 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_2f_room_5" d="M 14.81595,2424.9197 H 96.7058 v 49.579 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_2f_room_1" d="M 14.81595,2226.6008 H 96.7058 v 49.5791 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_2f_room_6" d="M 14.81595,2474.4978 H 96.7058 v 49.579 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_2f_room_2" d="M 14.81595,2276.1807 H 96.7058 v 49.579 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_2f_room_7" d="M 14.81595,2524.0767 H 96.7058 v 49.579 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_2f_room_3" d="M 14.81595,2325.7617 H 96.7058 v 49.5791 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_2f_room_8" d="M 14.81595,2573.6558 H 96.7058 v 49.579 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_2f_room_4" d="M 14.81595,2375.3408 H 96.7058 v 49.5791 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_2f_room_9" d="M 14.81595,2623.2336 H 96.7058 v 49.5791 H 14.81595 Z" />
+    <path id="main-clubroom_building_0_2f_stairs_0" d="M 14.81891,2153.1951 H 115.1228 v 23.8391 H 14.81891 Z" />
+    <path id="main-clubroom_building_0_2f_stairs_1" d="M 14.81553,2672.7988 H 115.1187 v 51.802 H 14.81553 Z" />
+    <path id="main-martial_arts_field_2f_stairs" d="m 1810.4902,3316.2327 h 85.0399 v 85.0397 h -85.0399 z" />
+    <path id="main-martial_arts_field_2f_changing_man" d="m 1725.2089,3476.877 h 85.2803 v 218.474 h -85.2803 z" />
+    <path id="main-martial_arts_field_2f_changing_woman" d="m 1810.488,3476.877 h 85.2802 v 218.474 h -85.2802 z" />
+    <path d="m 1895.7392,3210.8284 v 105.3985 h -85.0352 v 85.0349 h -85.5072 v -190.4334 z" id="main-martial_arts_field_2f_teachers" />
+    <path id="main-nishi_hall_2f_meeting_room_1" d="m 1567.3369,166.51563 h 84.3795 v 178.01222 h -84.3795 z" />
+    <path id="main-nishi_hall_2f_office" d="m 1567.3369,31.97246 h 84.3795 v 106.43945 h -84.3795 z" />
+    <path d="m 1732.6601,138.41193 h -31.8828 V 31.97248 h 63.7595 v 58.95645 h -31.8767 z" id="main-nishi_hall_2f_wc_man_0" />
+    <path id="main-nishi_hall_2f_wc_man_1" d="m 1732.6582,90.92966 h 31.8785 v 47.48236 h -31.8785 z" />
+    <path id="main-nishi_hall_2f_shower_man" d="m 1764.5395,31.97441 h 46.5678 v 66.5829 h -46.5678 z" />
+    <path id="main-nishi_hall_2f_changing_room_man" d="m 1764.5395,98.55644 h 46.5678 v 39.85669 h -46.5678 z" />
+    <path id="main-nishi_hall_2f_meeting_room_0" d="m 1651.707,166.51563 h 159.3854 V 344.52785 H 1651.707 Z" />
+    <path id="main-nishi_hall_2f_stairs" d="m 1651.7192,31.97348 h 49.1492 v 78.33082 h -49.1492 z" />
+    <path id="main-nishi_hall_2f_outdoor_stairs" d="m 1729.2114,344.55411 h 81.89 v 39.37043 h -81.89 z" />
+    <path id="main-audiovisual_hall_2f_stage" d="m 1240.908,68.41637 h 204.7243 v 86.61402 H 1240.908 Z" />
+    <path d="m 1496.741,241.48751 h -25.59 v 86.61574 h 25.59 v 86.61159 h -306.94 v -86.61159 h 25.59 v -86.61574 h -25.59 l 51.11,-86.45785 h 204.72 z" id="main-audiovisual_hall_2f" />
+    <path id="main-audiovisual_hall_2f_stairs_0" d="m 1423.4967,414.71698 h 73.2433 v 37.00786 h -73.2433 z" />
+    <path id="main-audiovisual_hall_2f_stairs_1" d="m 1189.8067,414.71698 h 73.2433 v 37.00786 h -73.2433 z" />
+    <path id="main-audiovisual_hall_2f_monitor_room" d="m 1303.2044,414.71698 h 80.3903 v 37.008 h -80.3903 z" />
+    <path id="main-audiovisual_hall_2f_ramp_0" d="m 1471.1494,241.48828 h 25.5904 v 86.61454 h -25.5904 z" />
+    <path id="main-audiovisual_hall_2f_ramp_1" d="m 1189.8044,241.48828 h 25.5905 v 86.61454 h -25.5905 z" />
+    <path id="main-audiovisual_hall_2f_stage_side_1" d="m 1240.911,68.417 v 86.615 l -51.11,86.456 V 68.417 Z" />
+    <path d="m 1445.631,68.417 v 86.615 l 51.11,86.456 V 68.417 Z" id="main-audiovisual_hall_2f_stage_side_0" />
 </svg>
 </template>
 <script setup>
