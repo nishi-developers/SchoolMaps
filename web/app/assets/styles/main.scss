@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+*:focus {
+  outline: none;
+}
+:root {
+  /* フォント */
+  font-family: "Noto Sans JP", serif;
+  /* ヘッダーの高さ */
+  --HeaderHeight: 50px; /* Map.vueのJSからも参照されているので注意 */
+}
+
+:root {
+  background-color: var(--MainBaseColor);
+}
+
+/* 共通 */
+html,
+body,
+#app {
+  height: 100%;
+  width: 100%;
+}
+a {
+  color: var(--URLBodyColor);
+  text-decoration: none;
+}
+.background {
+  box-sizing: border-box;
+  background-color: var(--MainBaseColor);
+  width: 100%;
+  height: calc(100% - var(--HeaderHeight));
+  padding: 15px;
+}
+
+.background.widthLimit {
+  max-width: 800px;
+  margin: 0 auto;
+}
+/* テキスト共通 */
+.text {
+  overflow: scroll;
+}
+.textTitle {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--MainBodyColor);
+  margin-bottom: 1rem;
+}
+.textH {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--MainBodyColor);
+  margin-top: 1rem;
+}
+.textH2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--MainBodyColor);
+  margin-top: 0.5rem;
+}
+.textP {
+  font-size: 1rem;
+  color: var(--MainBodyColor);
+}
