@@ -10,7 +10,15 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
   css: ["@/assets/styles/main.scss"],
-  modules: ["@nuxt/eslint", "@nuxt/fonts", "@nuxt/icon", "@nuxt/scripts", "@nuxt/image", "@nuxt/test-utils"],
+  modules: [
+    "@nuxt/eslint",
+    "@nuxt/fonts",
+    "@nuxt/icon",
+    "@nuxt/scripts",
+    "@nuxt/image",
+    "@nuxt/test-utils",
+    "@vite-pwa/nuxt",
+  ],
   runtimeConfig: {
     public: {
       systemVersion: packageJson.version || "unknown",
@@ -65,6 +73,165 @@ export default defineNuxtConfig({
         {
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap",
+        },
+      ],
+    },
+  },
+  pwa: {
+    version: packageJson.version,
+    registerType: "autoUpdate",
+    devOptions: {
+      enabled: true,
+    },
+    manifest: {
+      // https://developer.mozilla.org/en-US/docs/Web/Manifest
+      background_color: "#f3f9ff",
+      categories: ["education", "navigation", "utilities"],
+      description: "東京都立西高等学校の校内マップです",
+      display: "standalone",
+      icons: [
+        {
+          src: "favicon.ico",
+          sizes: "256x256",
+        },
+        {
+          src: "img/icons/icon.svg",
+          sizes: "1182x1182",
+        },
+        {
+          src: "img/icons/android-chrome-192x192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "img/icons/android-chrome-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+        {
+          src: "img/icons/android-chrome-maskable-192x192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "img/icons/android-chrome-maskable-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+        {
+          src: "img/icons/apple-touch-icon-60x60.png",
+          sizes: "60x60",
+          type: "image/png",
+        },
+        {
+          src: "img/icons/apple-touch-icon-76x76.png",
+          sizes: "76x76",
+          type: "image/png",
+        },
+        {
+          src: "img/icons/apple-touch-icon-120x120.png",
+          sizes: "120x120",
+          type: "image/png",
+        },
+        {
+          src: "img/icons/apple-touch-icon-180x180.png",
+          sizes: "180x180",
+          type: "image/png",
+        },
+        {
+          src: "img/icons/apple-touch-icon.png",
+          sizes: "180x180",
+          type: "image/png",
+        },
+        {
+          src: "img/icons/favicon-16x16.png",
+          sizes: "16x16",
+          type: "image/png",
+        },
+        {
+          src: "img/icons/favicon-32x32.png",
+          sizes: "32x32",
+          type: "image/png",
+        },
+        {
+          src: "img/icons/msapplication-icon-144x144.png",
+          sizes: "144x144",
+          type: "image/png",
+        },
+        {
+          src: "img/icons/mstile-150x150.png",
+          sizes: "150x150",
+          type: "image/png",
+        },
+      ],
+      name: "西高マップ",
+      short_name: "西高マップ",
+      shortcuts: [
+        {
+          name: "マップ",
+          url: "/",
+        },
+        {
+          name: "検索",
+          url: "/search",
+        },
+        {
+          name: "使い方",
+          url: "/guide",
+        },
+        {
+          name: "このサイトについて",
+          url: "/about",
+        },
+      ],
+      start_url: "./index.html",
+      theme_color: "#bee0ff",
+      screenshots: [
+        {
+          src: "img/seo/screenshot-map.jpg",
+          sizes: "630x1200",
+          type: "image/png",
+        },
+        {
+          src: "img/seo/screenshot-search.jpg",
+          sizes: "630x1200",
+          type: "image/png",
+        },
+      ],
+    },
+    workbox: {
+      globPatterns: ["**/*.{js,css,html,ico,txt,png,svg,json}"],
+      runtimeCaching: [
+        // フォントのキャッシュはランタイムキャッシュで設定
+        // キャッシュの種類:https://kawadev.net/vue-pwa-cache/
+        // https://vite-pwa-org.netlify.app/workbox/generate-sw.html#background-sync
+        {
+          urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "google-fonts-cache",
+            expiration: {
+              maxEntries: 10,
+              maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
+        {
+          urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "gstatic-fonts-cache",
+            expiration: {
+              maxEntries: 10,
+              maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
         },
       ],
     },
