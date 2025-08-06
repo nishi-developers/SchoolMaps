@@ -18,6 +18,13 @@ export default defineNuxtConfig({
       buildDate: new Date().toISOString(),
     },
   },
+  scripts: {
+    registry: {
+      googleAnalytics: {
+        id: "G-T8T5WHTM3B",
+      },
+    },
+  },
   vite: {
     css: {
       preprocessorOptions: {
