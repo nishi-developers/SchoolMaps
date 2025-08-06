@@ -10,8 +10,6 @@
     </Transition>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
-
 const isShowInstallPrompt = useCookie('isShowInstallPrompt', {
     default: () => 'true', // デフォルトは表示する
     maxAge: 60 * 60 * 24 * 30, // 30日間有効

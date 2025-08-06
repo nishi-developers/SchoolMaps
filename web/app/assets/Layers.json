@@ -1,0 +1,116 @@
+[
+    {
+        "prefix": "shinkan80",
+        "place": true,
+        "switchable": true,
+        "name": "新歓80th",
+        "style": {
+            "main": {
+                "fill_default": {
+                    "light": "#bdffb6",
+                    "dark": "#158909"
+                },
+                "fill_select": {
+                    "light": "#42e24a",
+                    "dark": "#51d557"
+                },
+                "stroke": {
+                    "light": "var(--MapBorderColor)",
+                    "dark": "var(--MapBorderColor)"
+                },
+                "strokeWidth": 0
+            },
+            "label": {
+                "fill": {
+                    "light": "var(--MainBodyColor)",
+                    "dark": "var(--MainBodyColor)"
+                },
+                "fontSize": "1.5rem"
+            }
+        }
+    },
+    {
+        "prefix": "main",
+        "place": true,
+        "switchable": false,
+        "style": {
+            "main": {
+                "fill_default": {
+                    "light": "var(--SubBaseColor)",
+                    "dark": "var(--SubBaseColor)"
+                },
+                "fill_select": {
+                    "light": "var(--SubColor)",
+                    "dark": "var(--SubColor)"
+                },
+                "stroke": {
+                    "light": "var(--MapBorderColor)",
+                    "dark": "var(--MapBorderColor)"
+                },
+                "strokeWidth": 2.0
+            },
+            "label": {
+                "fill": {
+                    "light": "var(--MainBodyColor)",
+                    "dark": "var(--MainBodyColor)"
+                },
+                "fontSize": "2rem"
+            }
+        }
+    },
+    {
+        "prefix": "none",
+        "place": false,
+        "switchable": false,
+        "style": {
+            "main": {
+                "fill_default": {
+                    "light": "#adadad",
+                    "dark": "#797979"
+                },
+                "stroke": {
+                    "light": "var(--MapBorderColor)",
+                    "dark": "var(--MapBorderColor)"
+                },
+                "strokeWidth": 2.0
+            }
+        }
+    },
+    {
+        "prefix": "enclosure",
+        "place": false,
+        "switchable": false,
+        "style": {
+            "main": {
+                "fill_default": {
+                    "light": "#cfcfcf",
+                    "dark": "#3f3f3f"
+                },
+                "stroke": {
+                    "light": "var(--MapBorderColor)",
+                    "dark": "var(--MapBorderColor)"
+                },
+                "strokeWidth": 2.0
+            }
+        }
+    },
+    {
+        "prefix": "base",
+        "place": false,
+        "switchable": false,
+        "islabel": false,
+        "style": {
+            "main": {
+                "fill_default": {
+                    "light": "#f3f3f3",
+                    "dark": "#1d1d1d"
+                },
+                "stroke": {
+                    "light": "var(--MapBorderColor)",
+                    "dark": "var(--MapBorderColor)"
+                },
+                "strokeWidth": 2.0
+            }
+        }
+    }
+]
