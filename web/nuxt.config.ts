@@ -45,7 +45,7 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: "page", mode: "out-in" },
     head: {
-      title: "西高マップ",
+      titleTemplate: "西高マップ - %s",
       meta: [
         { charset: "utf-8" },
         {
@@ -78,7 +78,7 @@ export default defineNuxtConfig({
     },
   },
   pwa: {
-    version: packageJson.version,
+    // version: packageJson.version,
     registerType: "autoUpdate",
     devOptions: {
       enabled: true,

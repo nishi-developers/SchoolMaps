@@ -4,6 +4,8 @@ import FloorInfo from '@/assets/FloorInfo.json'
 import Layers from '@/assets/Layers.json'
 const router = useRouter()
 
+useHead({ title: 'マップ' })
+
 // ref
 const currentPlaceId = ref("")
 const currentFloor = ref()
