@@ -1,5 +1,5 @@
 <template>
-  <div class="background text widthLimit" id="search">
+  <div id="search" class="background text widthLimit">
     <p class="textTitle">マップ検索</p>
     <div class="searchBox">
       <label for="searchInput" class="searchIcon">
@@ -39,8 +39,12 @@ import FloorInfo from '@/assets/FloorInfo.json'
 import Layers from '@/assets/Layers.json'
 
 const router = useRouter()
+const route = useRoute()
 
 useHead({ title: '検索' })
+
+
+new SearchUtils()
 
 //idとwordsを紐付けた連想配列を作成
 // 小文字で検索するために全て小文字に変換
@@ -73,15 +77,19 @@ onBeforeRouteLeave((to, from, next) => {
 
 function decodeUrl() {
   // URLの切り出しとデコードまで行う
-  const params = new URLSearchParams(document.location.search);
-  let layer = params.get("layer") ? params.get("layer") : null
-  return [decodeURIComponent(location.pathname.slice(8)), layer]
+  return [
+    decodeURIComponent(route.query.q as string || '') || null,
+    route.query.layer as string || null
+  ]
 }
-function encodeUrl(word, layer) {
-  // URLをエンコードして、変更まで行う
-  let word_encoded = encodeURIComponent(word)
-  let layer_encoded = layer ? `?layer=${layer}` : ''
-  router.push(`${useRuntimeConfig().app.baseURL}search/${word_encoded}${layer_encoded}`)
+function encodeUrl(word: string | null, layer: string | null) {
+  navigateTo({
+    name: 'search',
+    query: {
+      q: encodeURIComponent(word ? word : '') || null,
+      layer: layer ? layer : ''
+    }
+  })
 }
 
 // 検索機能
@@ -136,7 +144,7 @@ function move(id) {
   if (Layers.filter(alayer => alayer.prefix == layer)[0].switchable) {
     url += `?layer=${layer}`
   }
-  router.push(url)
+  navigateTo(url)
 }
 
 // xマーク
@@ -163,8 +171,12 @@ function shareLink() {
   }
 }
 
+
+
+
 // カタカナ->ひらがな変換
 function kataToHira(str) {
+  if (!str) return str;
   return str.replace(/[\u30a1-\u30f6]/g, function (s) {
     return String.fromCharCode(s.charCodeAt(0) - 0x60);
   });
