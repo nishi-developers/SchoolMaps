@@ -44,6 +44,9 @@
         </ul>
     </div>
 </template>
+<script setup lang="ts">
+useHead({ title: '使い方' })
+</script>
 <style scoped lang="scss">
 ul {
     list-style: disc;

@@ -47,6 +47,9 @@
     </p>
   </div>
 </template>
+<script setup lang="ts">
+useHead({ title: 'このサイトについて' })
+</script>
 <style scoped lang="scss">
 #version {
   position: fixed;

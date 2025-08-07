@@ -40,6 +40,8 @@ import Layers from '@/assets/Layers.json'
 
 const router = useRouter()
 
+useHead({ title: '検索' })
+
 //idとwordsを紐付けた連想配列を作成
 // 小文字で検索するために全て小文字に変換
 let PlaceInfoWords = [{}, {}, {}, {}, {}, {}]

@@ -22,4 +22,6 @@
 
 <script setup lang="ts">
 const error = useError()
+
+useHead({ title: error.value.statusCode })
 </script>
