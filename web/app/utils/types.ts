@@ -1,7 +1,12 @@
 export type SearchIndex = [
   {
     id: string;
-    contents: Array<string>;
+    name: string;
+    words: string;
+    desc: string;
+    floorFullName: string;
+    floorShortName: string;
+    layer: string;
   }
 ];
 export type FloorInfo = [

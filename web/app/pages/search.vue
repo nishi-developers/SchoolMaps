@@ -5,9 +5,8 @@
       <label for="searchInput" class="searchIcon">
         <Icon name="material-symbols:search-rounded" />
       </label>
-      <input id="searchInput" type="text" class="searchInput" placeholder="検索ワードを入力" v-model="searchWord" required>
-      <label for="searchInput" class="searchFunc" :class="[searchXmarkIsActive ? 'active' : '']"
-        @mousedown="resetSearch()" @touchstart="resetSearch()">
+      <input id="searchInput" v-model="query" type="text" class="searchInput" placeholder="検索ワードを入力" required>
+      <label for="searchInput" class="searchFunc" :class="[searchXmarkIsActive ? 'active' : '']" @click="resetSearch()">
         <Icon name="material-symbols:cancel-outline-rounded" />
       </label>
       <label class="searchFunc" @click="shareLink()">
@@ -15,143 +14,96 @@
       </label>
     </div>
     <div class="layerSelect">
-      <div class="layer" v-for="layer in Layers.filter(l => l.place).reverse()" :key="layer.prefix"
+      <!-- <div class="layer" v-for="layer in Layers.filter(l => l.place).reverse()" :key="layer.prefix"
         @click="searchLayer != layer.prefix ? searchLayer = layer.prefix : searchLayer = null;"
         :class="[searchLayer == layer.prefix ? 'selected' : '']">
         <span v-if="layer.switchable">{{ layer.name }}</span>
-        <span v-else>基本マップ</span>
+        <span v-el se>基本マップ</span>
+      </div> -->
+      <div class="layer">
+        <span>layer:shinkan80</span>
+      </div>
+      <div class="layer">
+        <span>未実装</span>
       </div>
     </div>
     <div class="results">
-      <div v-for="id, key in searchResultsId" :key="key" @click="move(id)" class="place">
-        <span class="name">{{ PlaceInfo[id].name }}</span>
-        <span class="position">
+      <div v-for="id, key in results" :key="key" class="place" @click="move(id)">
+        <span v-if="search.PlaceInfo[id]" class="name">{{ search.PlaceInfo[id].name }}</span>
+        <span v-if="search.PlaceInfo[id] && search.FloorInfo[search.PlaceInfo[id].floor]" class="position">
           <Icon name="material-symbols:location-on-rounded" />
-          {{ FloorInfo[PlaceInfo[id].floor].fullName }}
+          {{ search.FloorInfo[search.PlaceInfo[id].floor]?.fullName }}
         </span>
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import PlaceInfo from '@/assets/PlaceInfo.json'
-import FloorInfo from '@/assets/FloorInfo.json'
-import Layers from '@/assets/Layers.json'
-
-const router = useRouter()
 const route = useRoute()
-
 useHead({ title: '検索' })
 
-
-new SearchUtils()
-
-//idとwordsを紐付けた連想配列を作成
-// 小文字で検索するために全て小文字に変換
-let PlaceInfoWords = [{}, {}, {}, {}, {}, {}]
-for (let key of Object.keys(PlaceInfo)) {
-  // PlaceInfoWords[key] = normalize(PlaceInfo[key].words + " " + key + " " + PlaceInfo[key].name)
-  PlaceInfoWords[0][key] = normalize(PlaceInfo[key].name)
-  PlaceInfoWords[1][key] = normalize(PlaceInfo[key].words)
-  PlaceInfoWords[2][key] = normalize(key)
-  PlaceInfoWords[3][key] = normalize(PlaceInfo[key].desc)
-  PlaceInfoWords[4][key] = normalize(FloorInfo[PlaceInfo[key].floor].fullName)
-  PlaceInfoWords[5][key] = normalize(FloorInfo[PlaceInfo[key].floor].shortName)
-}
-// 検索機能について
-// 基本的にsearchWordを変更すると検索が行われる
-// URLからの場合も、searchWordを変更することで検索が行われる
-
-// ブラウザバックへの対応
-const popstateEvent = () => {
-  // ブラウザバック時にURLから検索ワードを取得
-  searchWord.value = decodeUrl()[0]
-  searchLayer.value = decodeUrl()[1]
-}
-window.addEventListener('popstate', popstateEvent);
-onBeforeRouteLeave((to, from, next) => {
-  // 解除をしないと、他のページで誤作動する
-  window.removeEventListener('popstate', popstateEvent);
-  next()
-})
+const search = new Search()
+await search.initialize()
 
 function decodeUrl() {
   // URLの切り出しとデコードまで行う
-  return [
-    decodeURIComponent(route.query.q as string || '') || null,
-    route.query.layer as string || null
-  ]
+  let isAndSearch = false
+  if (route.query.and == "true") {
+    isAndSearch = true
+  }
+  return {
+    query: decodeURIComponent(route.query.q as string || '') || null,
+    isAndSearch: isAndSearch,
+  }
 }
-function encodeUrl(word: string | null, layer: string | null) {
-  navigateTo({
-    name: 'search',
-    query: {
-      q: encodeURIComponent(word ? word : '') || null,
-      layer: layer ? layer : ''
-    }
-  })
+
+function encodeUrl(query: string | null, isAndSearch: boolean) {
+  // URLをエンコードして変更する
+  let isAnd: string
+  if (query == null) {
+    query = ''
+  }
+  if (isAndSearch) {
+    isAnd = "true"
+  } else {
+    isAnd = "false"
+  }
+  window.history.replaceState({}, '', `/search?q=${encodeURIComponent(query)}&and=${isAnd}`)
 }
 
 // 検索機能
-const searchWord = ref(decodeUrl()[0])
-const searchLayer = ref(decodeUrl()[1])
-const searchResultsId = ref(new Set(Object.keys(PlaceInfo))) // ここでURLからの場合は検索結果を変更する
-watch([searchWord, searchLayer], () => {
+const query = ref(decodeUrl().query)
+const isAndSearch = ref(decodeUrl().isAndSearch)
+const results = ref([] as Array<string>)
+encodeUrl(query.value, isAndSearch.value) // 初期用
+
+watch([query, isAndSearch], () => {
   // URLを変更
-  if ([searchWord.value, searchLayer.value] != decodeUrl()) {
-    encodeUrl(searchWord.value, searchLayer.value)
+  if (query.value != decodeUrl().query || isAndSearch.value != decodeUrl().isAndSearch) {
+    encodeUrl(query.value, isAndSearch.value)
   }
   // 検索
-  if (searchWord.value == '' && searchLayer.value == null) {
-    searchResultsId.value = new Set(Object.keys(PlaceInfo))
-  } else {
-    searchResultsId.value = new Set()
-    // 検索ワードを半角・全角スペースで分割
-    let searchWords = normalize(searchWord.value).split(" ")
-    // 検索ワードを含むものを検索
-    for (let aPlaceInfoWords of PlaceInfoWords) {
-      // PlaceInfoWordsの各要素に対して検索を行う
-      for (let aSearchWords of searchWords) {
-        // 検索ワードごとに検索を行い、検索結果を追加
-        Object.keys(aPlaceInfoWords)
-          .filter((key) => {
-            if (aSearchWords) {
-              return aPlaceInfoWords[key].includes(aSearchWords)
-            } else {
-              return true
-            }
-          })
-          .filter((key) => {
-            // レイヤーが指定されている場合は、レイヤーを確認する
-            if (searchLayer.value) {
-              return PlaceInfo[key].layer == searchLayer.value
-            } else {
-              return true
-            }
-          })
-          .forEach((key) => searchResultsId.value.add(key))
-      }
-    }
-  }
+  results.value = search.search(query.value, isAndSearch.value)
 }, { immediate: true })
 
 
 // ページ遷移
 function move(id) {
-  let floor = PlaceInfo[id].floor
-  let layer = PlaceInfo[id].layer
-  let url = `/${floor}/${id}`
-  if (Layers.filter(alayer => alayer.prefix == layer)[0].switchable) {
-    url += `?layer=${layer}`
-  }
-  navigateTo(url)
+  // let floor = PlaceInfo[id].floor
+  // let layer = PlaceInfo[id].layer
+  // let url = `/${floor}/${id}`
+  // if (Layers.filter(alayer => alayer.prefix == layer)[0].switchable) {
+  //   url += `?layer=${layer}`
+  // }
+  // navigateTo(url)
+  alert(`ID: ${id} の場所に移動します (実装未完了)`)
 }
 
 // xマーク
 const searchXmarkIsActive = ref(false)
 function resetSearch() {
   searchXmarkIsActive.value = true
-  searchWord.value = ''
+  query.value = ''
   setTimeout(() => {
     searchXmarkIsActive.value = false
   }, 150);
@@ -160,8 +112,8 @@ function resetSearch() {
 // リンク共有
 function shareLink() {
   try {
-    navigator.share({ title: `西高マップ-検索「${searchWord.value}」`, url: location.href })
-  } catch (e) {
+    navigator.share({ title: `西高マップ-検索「${query.value}」`, url: location.href })
+  } catch {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(location.href)
       alert("リンクをコピーしました")
@@ -169,29 +121,6 @@ function shareLink() {
       alert("リンクのコピー及び共有に対応していません")
     }
   }
-}
-
-
-
-
-// カタカナ->ひらがな変換
-function kataToHira(str) {
-  if (!str) return str;
-  return str.replace(/[\u30a1-\u30f6]/g, function (s) {
-    return String.fromCharCode(s.charCodeAt(0) - 0x60);
-  });
-}
-
-// 全角->半角変換
-function zenToHan(str) {
-  return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
-    return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
-  });
-}
-
-// 正規化(大文字->小文字、全角->半角、カタカナ->ひらがな、全角スペース->半角スペース)
-function normalize(str) {
-  return zenToHan(kataToHira(str)).toLowerCase().replace(/　/g, ' ');
 }
 </script>
 <style scoped lang="scss">

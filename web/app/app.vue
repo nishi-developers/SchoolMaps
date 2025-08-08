@@ -3,7 +3,7 @@
     <VitePwaManifest />
     <NuxtRouteAnnouncer />
     <AppHeader />
-    <NuxtPage />
+    <NuxtPage id="page" />
     <BottomNotify />
   </div>
 </template>
@@ -19,9 +19,12 @@ document.body.addEventListener('touchmove', (event) => {
 </script>
 
 <style scoped lang="scss">
-#view {
-  width: 100%;
-  height: 100%;
+#page {
+  position: relative;
+  top: var(--HeaderHeight);
+  height: calc(100vh - var(--HeaderHeight));
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* transition */
