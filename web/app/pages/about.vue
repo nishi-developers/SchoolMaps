@@ -39,7 +39,7 @@
       </p>
       <div id="version-spacer" />
     </div>
-    <p id="version">
+    <p id="version" @click="handleClick">
       <span>SystemVersion</span>
       <span>{{ $config.public.systemVersion }}</span>
       <span>MapsVersion</span>
@@ -49,6 +49,17 @@
 </template>
 <script setup lang="ts">
 useHead({ title: 'このサイトについて' })
+const router = useRouter();
+
+// クリックカウント
+let clickCount = 0;
+function handleClick() {
+  clickCount++;
+  if (clickCount >= 5) {
+    router.push('/auth');
+    clickCount = 0;
+  }
+}
 </script>
 <style scoped lang="scss">
 #version {
@@ -63,6 +74,7 @@ useHead({ title: 'このサイトについて' })
   grid-template-columns: auto auto;
   grid-template-columns: auto auto;
   gap: 5px;
+  cursor: pointer;
 }
 
 #version-spacer {
