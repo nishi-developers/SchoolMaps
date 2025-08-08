@@ -16,7 +16,7 @@
     background-color: var(--MainColor);
     width: 100%;
     height: var(--HeaderHeight);
-    position: relative;
+    position: fixed;
     font-weight: bold;
     box-sizing: border-box;
 }
