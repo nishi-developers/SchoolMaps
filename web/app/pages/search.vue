@@ -20,6 +20,8 @@
         <span v-if="layer.switchable">{{ layer.name }}</span>
         <span v-el se>基本マップ</span>
       </div> -->
+      <input type="checkbox" id="isAndCheck" v-model="isAndSearch" />
+      <label for="isAndChecl">AND検索</label>
       <div class="layer">
         <span>layer:shinkan80</span>
       </div>
