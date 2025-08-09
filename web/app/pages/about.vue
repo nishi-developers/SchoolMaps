@@ -6,7 +6,7 @@
       <p class="textP">
         <b><a href="https://www.metro.ed.jp/nishi-h/" target="_blank"
             rel="noopener noreferrer">東京都立西高等学校</a></b>の校内マップです。<br>
-        本サイトに関して、高校へのお問い合わせは行わないでください。
+        本サイトは下記団体が運営しており、高校へお問い合わせいただいてもお答えできません。
       </p>
       <p class="textH">開発･運営情報</p>
       <p class="textP">
