@@ -49,14 +49,13 @@
 </template>
 <script setup lang="ts">
 useHead({ title: 'このサイトについて' })
-const router = useRouter();
 
 // クリックカウント
 let clickCount = 0;
 function handleClick() {
   clickCount++;
   if (clickCount >= 5) {
-    router.push('/auth');
+    navigateTo('/auth');
     clickCount = 0;
   }
 }

@@ -10,10 +10,10 @@
     <div v-else>
       <h2 class="status">{{ error?.statusCode }}</h2>
       <h3>{{ error?.message }}</h3>
-      <p class="link" @click="$router.go(-1);">
+      <p class="link" @click="$router.back();">
         Back to Previous Page
       </p>
-      <p class="link" @click="$router.push('/');">
+      <p class="link" @click="navigateTo('/');">
         Go to Home Page
       </p>
     </div>
