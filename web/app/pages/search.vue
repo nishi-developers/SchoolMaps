@@ -20,7 +20,7 @@
         <span v-if="layer.switchable">{{ layer.name }}</span>
         <span v-el se>基本マップ</span>
       </div> -->
-      <input type="checkbox" id="isAndCheck" v-model="isAndSearch" />
+      <input id="isAndCheck" v-model="isAndSearch" type="checkbox">
       <label for="isAndChecl">AND検索</label>
       <div class="layer">
         <span>layer:shinkan80</span>
@@ -90,7 +90,7 @@ watch([query, isAndSearch], () => {
 
 
 // ページ遷移
-function move(id) {
+function move(id: string) {
   // let floor = PlaceInfo[id].floor
   // let layer = PlaceInfo[id].layer
   // let url = `/${floor}/${id}`
