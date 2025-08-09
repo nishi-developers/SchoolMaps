@@ -2,7 +2,8 @@ import { existsSync } from "fs";
 import { readFile, writeFile } from "fs/promises";
 import { resolve } from "path";
 
-import { XMLParser, XMLBuilder } from "fast-xml-parser";
+import { createSVGWindow } from "svgdom";
+import { SVG, registerWindow } from "@svgdotjs/svg.js";
 
 // ファイルを非同期で読み込む関数
 async function readTextFile(filePath: string): Promise<string | void> {
@@ -53,18 +54,45 @@ async function main(): Promise<void> {
   }
 
   // XMLパーサーの設定
-  const xmlOptions = {
-    ignoreDeclaration: true,
-    ignoreAttributes: false,
-  };
-  const xmlParser = new XMLParser(xmlOptions);
-  const xmlBuilder = new XMLBuilder(xmlOptions);
+  const window = createSVGWindow();
+  const document = window.document;
+  registerWindow(window, document);
 
-  const jsonObj = xmlParser.parse(file);
+  const svg = SVG(file);
+
+  // SVGの内容を編集
+  // idが_で始まる要素を削除
+  svg.find("[id^='_']").forEach((element) => {
+    element.remove();
+  });
+
+  // affinity用:gの下にg以外が存在する場合、gのidを子要素に移す
+  svg.find("g").forEach((gElement) => {
+    const children = gElement.children();
+    if (children.length == 1 && children[0].type != "g") {
+      const child = children[0]; // 対象の子要素
+      const id = gElement.attr("id"); // g要素のidを取得
+      gElement.attr("id", undefined); // id重複防止の為、g要素のidを削除
+      child.attr("id", id); // gのidを子要素に設定
+      gElement.parent()!.add(child); // gの親にgの子要素を追加
+      gElement.remove(); // g要素を削除
+    }
+  });
+
+  // transform属性を変換して削除
+  svg.find("[transform]").forEach((element) => {
+    const transform = element.attr("transform");
+    if (transform) {
+      // transform属性の値を解析して、必要な変換を行う
+      element.attr("transform", undefined);
+    }
+  });
+
+  // 現在のファイルはidの重複(gのidとpathのid)があるため、治す!
 
   // const xmlOutput = xmlBuilder.build(cleanedJson);
-  // const outputFilePath = "./output.xml";
-  // await saveTextFile(outputFilePath, xmlOutput);
+  const outputFilePath = "./output.xml";
+  await saveTextFile(outputFilePath, svg.svg());
 }
 
 // スクリプトが直接実行された場合のみmainを呼び出し
