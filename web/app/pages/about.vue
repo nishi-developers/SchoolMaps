@@ -11,7 +11,7 @@
       <p class="textH">開発･運営情報</p>
       <p class="textP">
         開発者 : <a href="https://github.com/M-Haruki" target="_blank" rel="noopener noreferrer">M_Haruki</a><br>
-        運営団体 : <a href="https://github.com/nishi-developers" target="_blank" rel="noopener noreferrer">504</a><br>
+        運営団体 : <a href="https://504hp.vercel.app/" target="_blank" rel="noopener noreferrer">504</a><br>
         ソースコードは
         <a href="https://github.com/nishi-developers/SchoolMaps" target="_blank" rel="noopener noreferrer">
           GitHub
