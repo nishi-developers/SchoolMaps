@@ -134,11 +134,6 @@ export default defineNuxtConfig({
           type: "image/png",
         },
         {
-          src: "img/icons/apple-touch-icon-180x180.png",
-          sizes: "180x180",
-          type: "image/png",
-        },
-        {
           src: "img/icons/apple-touch-icon.png",
           sizes: "180x180",
           type: "image/png",
@@ -184,7 +179,7 @@ export default defineNuxtConfig({
           url: "/about",
         },
       ],
-      start_url: "./index.html",
+      start_url: "/",
       theme_color: "#bee0ff",
       screenshots: [
         {
@@ -201,18 +196,19 @@ export default defineNuxtConfig({
     },
     workbox: {
       globPatterns: ["**/*.{js,css,html,ico,txt,png,svg,json}"],
+      globIgnores: ["**/node_modules/**", "**/dist/**", "**/.nuxt/**", "**/coverage/**", "**/test/**"],
       runtimeCaching: [
         // フォントのキャッシュはランタイムキャッシュで設定
         // キャッシュの種類:https://kawadev.net/vue-pwa-cache/
         // https://vite-pwa-org.netlify.app/workbox/generate-sw.html#background-sync
         {
           urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-          handler: "CacheFirst",
+          handler: "StaleWhileRevalidate",
           options: {
-            cacheName: "google-fonts-cache",
+            cacheName: "google-fonts-stylesheets",
             expiration: {
-              maxEntries: 10,
-              maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
+              maxEntries: 30,
+              maxAgeSeconds: 60 * 60 * 24 * 30, // <== 30 days
             },
             cacheableResponse: {
               statuses: [0, 200],
@@ -223,9 +219,9 @@ export default defineNuxtConfig({
           urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
           handler: "CacheFirst",
           options: {
-            cacheName: "gstatic-fonts-cache",
+            cacheName: "google-fonts-webfonts",
             expiration: {
-              maxEntries: 10,
+              maxEntries: 50,
               maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
             },
             cacheableResponse: {
