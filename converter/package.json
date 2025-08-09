@@ -7,11 +7,13 @@
     "dev": "tsc && node dist/convert.js",
     "test": "tsc && node dist/convert.js ../README.md"
   },
-  "dependencies": {
-    "fast-xml-parser": "^5.2.5"
-  },
   "devDependencies": {
     "@types/node": "^24.2.1",
     "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@svgdotjs/svg.js": "^3.2.4",
+    "@types/svgdom": "^0.1.2",
+    "svgdom": "^0.1.22"
   }
 }
