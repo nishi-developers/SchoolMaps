@@ -26,6 +26,16 @@ export default defineNuxtConfig({
       buildDate: new Date().toISOString(),
     },
   },
+  fonts: {
+    families: [
+      {
+        name: "Noto Sans JP",
+        provider: "google",
+        weights: ["400", "700"],
+        styles: ["normal"],
+      },
+    ],
+  },
   scripts: {
     registry: {
       googleAnalytics: {
@@ -68,12 +78,6 @@ export default defineNuxtConfig({
         { rel: "icon", type: "image/png", href: "/favicon.ico" },
         { rel: "icon", type: "image/svg+xml", sizes: "any", href: "/img/icons/icon.svg" },
         { rel: "apple-touch-icon", sizes: "180x180", href: "/img/icons/apple-touch-icon.png" },
-        { rel: "preconnect", href: "https://fonts.googleapis.com" },
-        { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap",
-        },
       ],
     },
   },
@@ -198,37 +202,38 @@ export default defineNuxtConfig({
       globPatterns: ["**/*.{js,css,html,ico,txt,png,svg,json}"],
       globIgnores: ["**/node_modules/**", "**/dist/**", "**/.nuxt/**", "**/coverage/**", "**/test/**"],
       runtimeCaching: [
-        // フォントのキャッシュはランタイムキャッシュで設定
-        // キャッシュの種類:https://kawadev.net/vue-pwa-cache/
-        // https://vite-pwa-org.netlify.app/workbox/generate-sw.html#background-sync
-        {
-          urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-          handler: "StaleWhileRevalidate",
-          options: {
-            cacheName: "google-fonts-stylesheets",
-            expiration: {
-              maxEntries: 30,
-              maxAgeSeconds: 60 * 60 * 24 * 30, // <== 30 days
-            },
-            cacheableResponse: {
-              statuses: [0, 200],
-            },
-          },
-        },
-        {
-          urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-          handler: "CacheFirst",
-          options: {
-            cacheName: "google-fonts-webfonts",
-            expiration: {
-              maxEntries: 50,
-              maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
-            },
-            cacheableResponse: {
-              statuses: [0, 200],
-            },
-          },
-        },
+        // フォントはNuxtのFontモジュールでキャッシュされるため、ここでは設定しない
+        // // フォントのキャッシュはランタイムキャッシュで設定
+        // // キャッシュの種類:https://kawadev.net/vue-pwa-cache/
+        // // https://vite-pwa-org.netlify.app/workbox/generate-sw.html#background-sync
+        // {
+        //   urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+        //   handler: "StaleWhileRevalidate",
+        //   options: {
+        //     cacheName: "google-fonts-stylesheets",
+        //     expiration: {
+        //       maxEntries: 30,
+        //       maxAgeSeconds: 60 * 60 * 24 * 30, // <== 30 days
+        //     },
+        //     cacheableResponse: {
+        //       statuses: [0, 200],
+        //     },
+        //   },
+        // },
+        // {
+        //   urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+        //   handler: "CacheFirst",
+        //   options: {
+        //     cacheName: "google-fonts-webfonts",
+        //     expiration: {
+        //       maxEntries: 50,
+        //       maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
+        //     },
+        //     cacheableResponse: {
+        //       statuses: [0, 200],
+        //     },
+        //   },
+        // },
       ],
     },
   },
