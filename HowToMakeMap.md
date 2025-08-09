@@ -61,26 +61,39 @@
 全オブジェクトをパス化してから拡張機能を使う(Extensions -> Modify Path -> Apply Transform)。
 一旦セーブしてから拡張機能を使わないとエラーになることがある。
 
-## PlaceInfo.json
+## PlacesData.json
 
 - Placeの情報を並列的に並べる
 - wordsはnameに加えて検索時に含める単語、検索に利用するだけで表示はしない
   - そのため、単語は半角スペースで区切る
-- placeIdはその場所のキーとしてJSONでは用い、全フロアを通してunique
+- placeIdは全フロアを通してunique
 
-```json:PlaceInfo.json(一部例)
-{
-    "grand": {
-        "name": "校庭",
-        "words": "グランド トラック",
-        "desc": "広いひろーい校庭/n**運動会**や**体育祭**などが行われる場所/n[体育館](gym_1f)もある",
-        "floor": 0,
-        "images": [
-            "grand.png",
-            "grandsub.png"
-        ]
-    },
-}
+```json:PlacesData.json(一部例)
+[
+  {
+    "id": "grand",
+    "name": "校庭",
+    "words": "グランド トラック",
+    "desc": "広いひろーい校庭/n**運動会**や**体育祭**などが行われる場所/n[体育館](gym_1f)もある",
+    "mode": "main",
+    "floor": "1f",
+    "behavior": "place",
+    "images": [
+      "./img/grand.png",
+      "./img/grandsub.png"
+    ]
+  },
+    {
+    "id": "w3efde4s",
+    "name": "",
+    "words": "",
+    "desc": "",
+    "mode": "main",
+    "floor": "1f",
+    "behavior": "none",
+    "images": []
+  }
+]
 ```
 
 ### desc
@@ -103,37 +116,89 @@ _1a,0,1A,普通教室 クラス 1年 A組,,,
 _1b,0,1B,普通教室 クラス 1年 B組,,,
 ```
 
-## FloorInfo.json
+## ModesData.json
 
-- フロアごとのデータを書き込むファイル
-- `FloorInfo.json`の`mapWidth`と`mapHeight`に、svgの`width`と`height`の値(単位は外す)を書き込む
-- その他は見ての通り
-
-```json:FloorInfo.json(例)
+```json:ModesData.json(一部例)
 [
-    {
-        "shortName": "1F",
-        "fullName": "1階",
-        "mapWidth": 1000,
-        "mapHeight": 1000
-    },
-    {
-        "shortName": "2F",
-        "fullName": "2階",
-        "mapWidth":1000,
-        "mapHeight": 1000
-    },
-    {
-        "shortName": "3F",
-        "fullName": "3階",
-        "mapWidth": 1000,
-        "mapHeight": 1000
-    },
-    {
-        "shortName": "R",
-        "fullName": "屋上",
-        "mapWidth": 1000,
-        "mapHeight": 1000
-    }
+  {
+    "id": "main",
+    "name": "メイン",
+    "isMain": true,
+    "image": "./img/main.png"
+  },
+  {
+    "id": "shinkan80",
+    "name": "新歓80th",
+    "isMain": false,
+    "image": "./img/shinkan.png"
+  }
 ]
 ```
+
+## FloorsData.json
+
+```json:FloorData.json(例)
+[
+  {
+    "id": "1f",
+    "name": "1階",
+  },
+  {
+    "id": "2f",
+    "name": "2階",
+  },
+  {
+    "id": "3f",
+    "name": "3階",
+  }
+]
+```
+
+## BehaviorData.json
+
+```json:BehaviorData.json(一部例)
+[
+  {
+    "id": "none",
+    "isPlace": false,
+    "style": null
+  },
+  {
+    "id": "place",
+    "isPlace": true,
+    "style": {
+      "body": {
+        "fill_default": {
+          "light": "#dfdfdf",
+          "dark": "#252525"
+        },
+        "fill_select": {
+          "light": "var(--SubColor)",
+          "dark": "var(--SubColor)"
+        },
+        "stroke": {
+          "light": "var(--MapBorderColor)",
+          "dark": "var(--MapBorderColor)"
+        },
+        "strokeWidth": 2.0
+      },
+      "label": {
+        "fill": {
+          "light": "var(--MainBodyColor)",
+          "dark": "var(--MainBodyColor)"
+        },
+        "fontSize": "2rem"
+      }
+    }
+  }
+]
+```
+
+<!-- ## DetailsData.json
+
+```json:DetailsData.json(一部例)
+{
+  "isDatabaseIntegrated": true,
+  "mapVersion": "1.0.0",
+}
+``` -->
