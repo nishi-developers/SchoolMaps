@@ -83,7 +83,7 @@
       "./img/grandsub.png"
     ]
   },
-    {
+  {
     "id": "w3efde4s",
     "name": "",
     "words": "",
@@ -123,13 +123,13 @@ _1b,0,1B,普通教室 クラス 1年 B組,,,
   {
     "id": "main",
     "name": "メイン",
-    "isMain": true,
+    "always": true,
     "image": "./img/main.png"
   },
   {
     "id": "shinkan80",
     "name": "新歓80th",
-    "isMain": false,
+    "always": false,
     "image": "./img/shinkan.png"
   }
 ]
@@ -137,19 +137,29 @@ _1b,0,1B,普通教室 クラス 1年 B組,,,
 
 ## FloorsData.json
 
+数字始まりのidはSVGで認められないため、`f1`, `f2`のようにする。
+
 ```json:FloorData.json(例)
 [
   {
-    "id": "1f",
+    "id": "base",
+    "name": "base",
+    "always": true,
+  },
+  {
+    "id": "f1",
     "name": "1階",
+    "always": false,
   },
   {
-    "id": "2f",
+    "id": "f2",
     "name": "2階",
+    "always": false,
   },
   {
-    "id": "3f",
+    "id": "f3",
     "name": "3階",
+    "always": false,
   }
 ]
 ```
@@ -194,11 +204,13 @@ _1b,0,1B,普通教室 クラス 1年 B組,,,
 ]
 ```
 
-<!-- ## DetailsData.json
+## DetailsData.json
 
 ```json:DetailsData.json(一部例)
 {
   "isDatabaseIntegrated": true,
   "mapVersion": "1.0.0",
+  "width": 1920,
+  "height": 1080,
 }
-``` -->
+```
