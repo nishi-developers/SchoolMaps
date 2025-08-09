@@ -141,7 +141,7 @@ p {
 
 .searchIcon {
   height: 100%;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   width: var(--SearchBoxHeight);
   background-color: var(--SubBaseColor);
   display: flex;
@@ -171,9 +171,9 @@ p {
   background-color: var(--MainColor);
 }
 
-.searchFunc svg {
-  height: calc(var(--SearchBoxHeight)*.5);
-  width: calc(var(--SearchBoxHeight)*.5);
+.searchFunc .iconify {
+  height: calc(var(--SearchBoxHeight)*.6);
+  width: calc(var(--SearchBoxHeight)*.6);
   position: relative;
   top: 50%;
   left: 50%;
@@ -239,5 +239,12 @@ p {
 
 .results {
   margin-top: 10px;
+}
+
+.results .position .iconify {
+  height: 1.2rem;
+  width: 1.2rem;
+  position: relative;
+  top: 4px;
 }
 </style>

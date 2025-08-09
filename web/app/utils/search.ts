@@ -6,9 +6,14 @@ export class Search {
   targets = ["id", "name", "words", "desc", "floorFullName", "floorShortName", "layer"] as const;
 
   async initialize() {
-    this.PlaceInfo = (await import("@/assets/PlaceInfo.json")).default as PlaceInfo;
-    this.FloorInfo = (await import("@/assets/FloorInfo.json")).default as FloorInfo;
-    this.Layers = (await import("@/assets/Layers.json")).default as Layers;
+    const [placeInfo, floorInfo, layers] = await Promise.all([
+      import("@/assets/PlaceInfo.json"),
+      import("@/assets/FloorInfo.json"),
+      import("@/assets/Layers.json"),
+    ]);
+    this.PlaceInfo = placeInfo.default as PlaceInfo;
+    this.FloorInfo = floorInfo.default as FloorInfo;
+    this.Layers = layers.default as Layers;
     for (const key of Object.keys(this.PlaceInfo)) {
       const floor = this.PlaceInfo[key]?.floor;
       const normalizeContent = (content: string | null | undefined) => {
