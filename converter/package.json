@@ -1,0 +1,17 @@
+{
+  "name": "converter",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/convert.js",
+    "dev": "tsc && node dist/convert.js",
+    "test": "tsc && node dist/convert.js ../README.md"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.1",
+    "typescript": "^5.9.2"
+  }
+}
