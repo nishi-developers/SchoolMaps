@@ -131,3 +131,11 @@ async function main(): Promise<void> {
 }
 
 main();
+
+// コンバーターの前にやること
+
+// inkscapeで開く
+// 全選択して、Path->Object to Path
+// Extensions->Modify Path->Apply Transform
+// File->DocumentProperties->Resize to content
+// Export->PlaneSVG->Export
