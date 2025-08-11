@@ -72,12 +72,12 @@
 [
   {
     "id": "grand",
-    "name": "校庭",
-    "words": "グランド トラック",
-    "desc": "広いひろーい校庭/n**運動会**や**体育祭**などが行われる場所/n[体育館](gym_1f)もある",
     "mode": "main",
     "floor": "1f",
     "behavior": "place",
+    "name": "校庭",
+    "words": "グランド トラック",
+    "desc": "広いひろーい校庭/n**運動会**や**体育祭**などが行われる場所/n[体育館](gym_1f)もある",
     "images": [
       "./img/grand.png",
       "./img/grandsub.png"
@@ -85,12 +85,12 @@
   },
   {
     "id": "w3efde4s",
-    "name": "",
-    "words": "",
-    "desc": "",
     "mode": "main",
     "floor": "1f",
     "behavior": "none",
+    "name": "",
+    "words": "",
+    "desc": "",
     "images": []
   }
 ]
