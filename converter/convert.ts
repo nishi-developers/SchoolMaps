@@ -47,6 +47,14 @@ function deleteDecotypeTag(file: string): string {
   return file;
 }
 
+function replaceInkscapeLabel(file: string): string {
+  // Inkscapeのラベルがエラーになる場合があるので、ラベルをリネーム
+  file = file.replace("inkscape:label=", "inkscape-label=");
+  // 他のinkscape属性は削除
+  file = file.replace(/inkscape:[a-zA-Z-]+="[^"]*"/g, "");
+  return file;
+}
+
 // idが_で始まる要素を削除
 function deleteIdUnderBar(file: string): string {
   const svg = SVG(file);
@@ -98,9 +106,9 @@ function setAttributePlaceWithInkscape(file: string): string {
   const svg = SVG(file);
   svg.find("*:not(g)").forEach((element: Element) => {
     let place;
-    if (element.attr("inkscape:label")) {
-      place = element.attr("inkscape:label");
-      element.attr("inkscape:label", null); // ラベルを削除
+    if (element.attr("inkscape-label")) {
+      place = element.attr("inkscape-label");
+      element.attr("inkscape-label", null); // ラベルを削除
     } else {
       place = element.attr("id");
     }
@@ -153,6 +161,7 @@ async function main(): Promise<void> {
   // SVGの内容を編集
   file = deleteXmlTag(file);
   file = deleteDecotypeTag(file);
+  file = replaceInkscapeLabel(file);
   file = deleteIdUnderBar(file);
   file = deleteGForAffinity(file);
   file = setAttributeAndRemoveG(file);
