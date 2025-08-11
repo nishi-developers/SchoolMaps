@@ -25,7 +25,6 @@ async function saveTextFile(filePath: string, content: string): Promise<void> {
   try {
     // ファイルを非同期で書き込み
     await writeFile(filePath, content, "utf-8");
-    console.log(`ファイルが保存されました: ${filePath}`);
   } catch (error) {
     console.error(`ファイル保存エラー: ${error}`);
   }
@@ -35,6 +34,14 @@ async function saveTextFile(filePath: string, content: string): Promise<void> {
 function deleteXmlTag(file: string): string {
   if (file.startsWith("<?xml ")) {
     const endOfXml = file.indexOf("?>") + 2;
+    return file.slice(endOfXml).trim();
+  }
+  return file;
+}
+
+function deleteDecotypeTag(file: string): string {
+  if (file.startsWith("<!DOCTYPE ")) {
+    const endOfXml = file.indexOf(">") + 1;
     return file.slice(endOfXml).trim();
   }
   return file;
@@ -87,6 +94,21 @@ function setAttributeAndRemoveG(file: string): string {
   return svg.svg();
 }
 
+function setAttributePlaceWithInkscape(file: string): string {
+  const svg = SVG(file);
+  svg.find("*:not(g)").forEach((element: Element) => {
+    let place;
+    if (element.attr("inkscape:label")) {
+      place = element.attr("inkscape:label");
+      element.attr("inkscape:label", null); // ラベルを削除
+    } else {
+      place = element.attr("id");
+    }
+    element.attr("id", null); // idを削除
+    element.attr("place", place);
+  });
+  return svg.svg();
+}
 // style属性を削除
 function deleteStyle(file: string): string {
   const svg = SVG(file);
@@ -104,8 +126,18 @@ function deleteNewLine(file: string): string {
 
 // メイン実行部分
 async function main(): Promise<void> {
-  const inputFilePath = "../maps/map-edited.svg";
-  const outputFilePath = "../maps/map.svg";
+  // 入力ファイルパスと出力ファイルパスの設定
+  let inputFilePath = "../maps/map-raw.svg";
+  if (process.argv.length > 2) {
+    inputFilePath = process.argv[2];
+  }
+  const outputPaths = {
+    map: "../maps/map.svg",
+    placesData: "../maps/places.json",
+    modesData: "../maps/modes.json",
+    floorsData: "../maps/floors.json",
+    behaviorsData: "../maps/behaviors.json",
+  };
 
   // ファイルを読み込む
   let file = await readTextFile(inputFilePath);
@@ -120,14 +152,16 @@ async function main(): Promise<void> {
 
   // SVGの内容を編集
   file = deleteXmlTag(file);
+  file = deleteDecotypeTag(file);
   file = deleteIdUnderBar(file);
   file = deleteGForAffinity(file);
   file = setAttributeAndRemoveG(file);
+  file = setAttributePlaceWithInkscape(file);
   file = deleteStyle(file); // スタイル属性を削除
   file = deleteNewLine(file);
 
   // エクスポート
-  await saveTextFile(outputFilePath, file);
+  await saveTextFile(outputPaths.map, file);
 }
 
 main();
