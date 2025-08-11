@@ -25,6 +25,7 @@ async function saveTextFile(filePath: string, content: string): Promise<void> {
   try {
     // ファイルを非同期で書き込み
     await writeFile(filePath, content, "utf-8");
+    console.log(`ファイルが保存されました: ${filePath}`);
   } catch (error) {
     console.error(`ファイル保存エラー: ${error}`);
   }
@@ -55,11 +56,34 @@ function replaceInkscapeLabel(file: string): string {
   return file;
 }
 
+function deleteDefs(file: string): string {
+  // <defs>タグを削除
+  const defsStart = file.indexOf("<defs>");
+  const defsEnd = file.indexOf("</defs>") + 7; // </defs>の長さを加える
+  if (defsStart !== -1 && defsEnd !== -1) {
+    return file.slice(0, defsStart) + file.slice(defsEnd);
+  }
+  return file;
+}
+
 // idが_で始まる要素を削除
 function deleteIdUnderBar(file: string): string {
   const svg = SVG(file);
   svg.find("[id^='_']").forEach((element: Element) => {
     element.remove();
+  });
+  return svg.svg();
+}
+
+function deleteIdAfterUnderBar(file: string): string {
+  // idの後ろに_がある場合、_以降を削除
+  const svg = SVG(file);
+  svg.find("[id]").forEach((element: Element) => {
+    const id = element.attr("id");
+    if (id && id.includes("_")) {
+      const newId = id.split("_")[0]; // _以降を削除
+      element.attr("id", newId);
+    }
   });
   return svg.svg();
 }
@@ -132,6 +156,157 @@ function deleteNewLine(file: string): string {
   return file;
 }
 
+function createPlacesData(file: string): string {
+  const svg = SVG(file);
+  const places: Array<{
+    id: string;
+    name: string;
+    words: string;
+    desc: string;
+    mode: string;
+    floor: string;
+    behavior: string;
+    images: Array<string>;
+  }> = [];
+  svg.find("*[place]").forEach((element: Element) => {
+    const id = element.attr("place");
+    const mode = element.attr("mode") || "";
+    const floor = element.attr("floor") || "";
+    const behavior = element.attr("behavior") || "";
+    places.push({
+      id: id,
+      mode: mode,
+      floor: floor,
+      behavior: behavior,
+      name: "",
+      words: "",
+      desc: "",
+      images: [],
+    });
+  });
+  return JSON.stringify(places, null, 2);
+}
+
+function createModesData(file: string): string {
+  const svg = SVG(file);
+  const modesSet = new Set<string>();
+  svg.find("*[mode]").forEach((element: Element) => {
+    const id = element.attr("mode");
+    if (id) {
+      modesSet.add(id);
+    }
+  });
+  const modes: Array<{
+    id: string;
+    name: string;
+    always: boolean;
+    image: string;
+  }> = [];
+  modesSet.forEach((id) => {
+    modes.push({
+      id: id,
+      name: "",
+      always: false,
+      image: "",
+    });
+  });
+  return JSON.stringify(modes, null, 2);
+}
+
+function createFloorsData(file: string): string {
+  const svg = SVG(file);
+  const floorsSet = new Set<string>();
+  svg.find("*[floor]").forEach((element: Element) => {
+    const id = element.attr("floor");
+    if (id) {
+      floorsSet.add(id);
+    }
+  });
+  const floors: Array<{
+    id: string;
+    name: string;
+    always: boolean;
+  }> = [];
+  floorsSet.forEach((id) => {
+    floors.push({
+      id: id,
+      name: "",
+      always: false,
+    });
+  });
+  return JSON.stringify(floors, null, 2);
+}
+
+function createBehaviorsData(file: string): string {
+  const svg = SVG(file);
+  const behaviorsSet = new Set<string>();
+  svg.find("*[behavior]").forEach((element: Element) => {
+    const id = element.attr("behavior");
+    if (id) {
+      behaviorsSet.add(id);
+    }
+  });
+  const behaviors: Array<{
+    id: string;
+    isPlace: boolean;
+    style: {
+      body: {
+        fill_default: {
+          light: string;
+          dark: string;
+        };
+        fill_select: {
+          light: string;
+          dark: string;
+        };
+        stroke: {
+          light: string;
+          dark: string;
+        };
+        strokeWidth: number;
+      };
+      label: {
+        fill: {
+          light: string;
+          dark: string;
+        };
+        fontSize: string;
+      };
+    };
+  }> = [];
+  behaviorsSet.forEach((id) => {
+    behaviors.push({
+      id: id,
+      isPlace: false,
+      style: {
+        body: {
+          fill_default: {
+            light: "",
+            dark: "",
+          },
+          fill_select: {
+            light: "",
+            dark: "",
+          },
+          stroke: {
+            light: "",
+            dark: "",
+          },
+          strokeWidth: 2.0,
+        },
+        label: {
+          fill: {
+            light: "",
+            dark: "",
+          },
+          fontSize: "2rem",
+        },
+      },
+    });
+  });
+  return JSON.stringify(behaviors, null, 2);
+}
+
 // メイン実行部分
 async function main(): Promise<void> {
   // 入力ファイルパスと出力ファイルパスの設定
@@ -162,7 +337,9 @@ async function main(): Promise<void> {
   file = deleteXmlTag(file);
   file = deleteDecotypeTag(file);
   file = replaceInkscapeLabel(file);
+  file = deleteDefs(file);
   file = deleteIdUnderBar(file);
+  file = deleteIdAfterUnderBar(file);
   file = deleteGForAffinity(file);
   file = setAttributeAndRemoveG(file);
   file = setAttributePlaceWithInkscape(file);
@@ -171,6 +348,10 @@ async function main(): Promise<void> {
 
   // エクスポート
   await saveTextFile(outputPaths.map, file);
+  await saveTextFile(outputPaths.placesData, createPlacesData(file));
+  await saveTextFile(outputPaths.modesData, createModesData(file));
+  await saveTextFile(outputPaths.floorsData, createFloorsData(file));
+  await saveTextFile(outputPaths.behaviorsData, createBehaviorsData(file));
 }
 
 main();
