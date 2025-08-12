@@ -56,6 +56,12 @@ function replaceInkscapeLabel(file: string): string {
   return file;
 }
 
+function deleteAffinityAttribute(file: string): string {
+  // affinity用の属性を削除
+  file = file.replace(/serif:[a-zA-Z-]+="[^"]*"/g, "");
+  return file;
+}
+
 function deleteDefs(file: string): string {
   // <defs>タグを削除
   const defsStart = file.indexOf("<defs>");
@@ -64,6 +70,18 @@ function deleteDefs(file: string): string {
     return file.slice(0, defsStart) + file.slice(defsEnd);
   }
   return file;
+}
+
+function inkscapeLabelToId(file: string): string {
+  const svg = SVG(file);
+  svg.find("*[inkscape-label]").forEach((element: Element) => {
+    const label = element.attr("inkscape-label");
+    if (label) {
+      element.attr("id", label); // inkscape-labelをidに設定
+      element.attr("inkscape-label", null); // inkscape-labelを削除
+    }
+  });
+  return svg.svg();
 }
 
 // idが_で始まる要素を削除
@@ -130,12 +148,7 @@ function setAttributePlaceWithInkscape(file: string): string {
   const svg = SVG(file);
   svg.find("*:not(g)").forEach((element: Element) => {
     let place;
-    if (element.attr("inkscape-label")) {
-      place = element.attr("inkscape-label");
-      element.attr("inkscape-label", null); // ラベルを削除
-    } else {
-      place = element.attr("id");
-    }
+    place = element.attr("id");
     element.attr("id", null); // idを削除
     element.attr("place", place);
   });
@@ -348,7 +361,9 @@ async function main(): Promise<void> {
   file = deleteXmlTag(file);
   file = deleteDecotypeTag(file);
   file = replaceInkscapeLabel(file);
+  file = deleteAffinityAttribute(file);
   file = deleteDefs(file);
+  file = inkscapeLabelToId(file);
   file = deleteIdUnderBar(file);
   file = deleteIdAfterUnderBar(file);
   file = deleteGForAffinity(file);
