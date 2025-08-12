@@ -1,6 +1,6 @@
 import { existsSync } from "fs";
 import { readFile, writeFile } from "fs/promises";
-
+import * as readline from "readline";
 import { createSVGWindow } from "svgdom";
 import { SVG, registerWindow, Element } from "@svgdotjs/svg.js";
 
@@ -23,7 +23,21 @@ async function readTextFile(filePath: string): Promise<string | void> {
 // ファイルを保存する関数
 async function saveTextFile(filePath: string, content: string): Promise<void> {
   try {
-    // ファイルを非同期で書き込み
+    // ファイルが存在する場合は上書き確認
+    if (existsSync(filePath)) {
+      const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+      });
+      const answer: string = await new Promise((resolve) => {
+        rl.question(`ファイル ${filePath} は既に存在します。上書きしますか？ (y/N): `, resolve);
+      });
+      rl.close();
+      if (answer.toLowerCase() !== "y") {
+        console.log("保存をキャンセルしました。");
+        return;
+      }
+    }
     await writeFile(filePath, content, "utf-8");
     console.log(`ファイルが保存されました: ${filePath}`);
   } catch (error) {
