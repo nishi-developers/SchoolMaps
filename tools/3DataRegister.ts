@@ -11,13 +11,16 @@ async function main(): Promise<void> {
 
     // 中間ファイルの読み込み
     console.log("中間ファイルを読み込んでいます...");
-    const [mapContent, placesContent, modesContent, floorsContent, behaviorsContent] = await Promise.all([
-      readTextFile(PROJECT_PATHS.intermediate.map),
-      readTextFile(PROJECT_PATHS.intermediate.placesData),
-      readTextFile(PROJECT_PATHS.intermediate.modesData),
-      readTextFile(PROJECT_PATHS.intermediate.floorsData),
-      readTextFile(PROJECT_PATHS.intermediate.behaviorsData),
-    ]);
+    const [mapContent, placesContent, modesContent, floorsContent, behaviorsContent, detailContent] = await Promise.all(
+      [
+        readTextFile(PROJECT_PATHS.intermediate.map),
+        readTextFile(PROJECT_PATHS.intermediate.placesData),
+        readTextFile(PROJECT_PATHS.intermediate.modesData),
+        readTextFile(PROJECT_PATHS.intermediate.floorsData),
+        readTextFile(PROJECT_PATHS.intermediate.behaviorsData),
+        readTextFile(PROJECT_PATHS.intermediate.detailData),
+      ]
+    );
 
     // プレイスデータをCSVからJSONに変換
     console.log("プレイスデータを変換しています...");
@@ -30,6 +33,7 @@ async function main(): Promise<void> {
     await saveTextFile(PROJECT_PATHS.output.modesData, modesContent, true);
     await saveTextFile(PROJECT_PATHS.output.floorsData, floorsContent, true);
     await saveTextFile(PROJECT_PATHS.output.behaviorsData, behaviorsContent, true);
+    await saveTextFile(PROJECT_PATHS.output.detailData, detailContent, true);
 
     console.log("データ登録が正常に完了しました。");
   } catch (error) {

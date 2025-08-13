@@ -1,5 +1,5 @@
 import { SVG, Element } from "@svgdotjs/svg.js";
-import { Mode, Floor, Behavior, Place } from "./types";
+import { Mode, Floor, Behavior, Place, Detail } from "./types";
 import { DEFAULT_BEHAVIOR_STYLE } from "./config";
 import { extractUniqueAttributeValues } from "./svg-utils";
 import { escapeCsvField, parseCsvLine } from "./lib";
@@ -12,6 +12,7 @@ export function createModesData(svgContent: string): Mode[] {
 
   return Array.from(modeIds).map((id) => ({
     id,
+    enable: true,
     name: "",
     always: false,
     image: "",
@@ -42,6 +43,21 @@ export function createBehaviorsData(svgContent: string): Behavior[] {
     isPlace: false,
     style: { ...DEFAULT_BEHAVIOR_STYLE },
   }));
+}
+
+/**
+ * SVGから詳細データを生成
+ */
+export function createDetailData(svgContent: string): Detail {
+  const svg = SVG(svgContent);
+  const width = Number(parseFloat(svg.attr("width") || "0"));
+  const height = Number(parseFloat(svg.attr("height") || "0"));
+
+  return {
+    mapVersion: "0.0.0",
+    width: width,
+    height: height,
+  };
 }
 
 /**
