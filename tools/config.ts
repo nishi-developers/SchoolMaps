@@ -11,6 +11,7 @@ export const PROJECT_PATHS: ProjectPaths = {
     modesData: "/maps/modes.json",
     floorsData: "/maps/floors.json",
     behaviorsData: "/maps/behaviors.json",
+    detailData: "/maps/detail.json",
   },
   output: {
     map: "/web/server/assets/map.svg",
@@ -18,6 +19,7 @@ export const PROJECT_PATHS: ProjectPaths = {
     modesData: "/web/server/assets/modes.json",
     floorsData: "/web/server/assets/floors.json",
     behaviorsData: "/web/server/assets/behaviors.json",
+    detailData: "/web/server/assets/detail.json",
   },
 } as const;
 

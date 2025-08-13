@@ -2,6 +2,7 @@
 
 export interface Mode {
   id: string;
+  enable: boolean;
   name: string;
   always: boolean;
   image: string;
@@ -41,7 +42,13 @@ export interface BehaviorStyle {
 export interface Behavior {
   id: string;
   isPlace: boolean;
-  style: BehaviorStyle;
+  style: BehaviorStyle | null;
+}
+
+export interface Detail {
+  mapVersion: string;
+  width: number;
+  height: number;
 }
 
 export interface Place {
@@ -65,6 +72,7 @@ export interface ProjectPaths {
     readonly modesData: string;
     readonly floorsData: string;
     readonly behaviorsData: string;
+    readonly detailData: string;
   };
   readonly output: {
     readonly map: string;
@@ -72,5 +80,6 @@ export interface ProjectPaths {
     readonly modesData: string;
     readonly floorsData: string;
     readonly behaviorsData: string;
+    readonly detailData: string;
   };
 }

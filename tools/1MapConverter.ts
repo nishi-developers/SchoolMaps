@@ -2,7 +2,7 @@ import { readTextFile, saveTextFile, FileOperationError } from "./lib";
 import { PROJECT_PATHS } from "./config";
 import { initializeSvgEnvironment, cleanupSvgString } from "./svg-utils";
 import { SvgTransformer } from "./svg-transformer";
-import { createModesData, createFloorsData, createBehaviorsData } from "./data-generators";
+import { createModesData, createFloorsData, createBehaviorsData, createDetailData } from "./data-generators";
 
 /**
  * メイン実行関数
@@ -34,6 +34,7 @@ async function main(): Promise<void> {
     const modesData = createModesData(processedContent);
     const floorsData = createFloorsData(processedContent);
     const behaviorsData = createBehaviorsData(processedContent);
+    const detailData = createDetailData(processedContent);
 
     // ファイル保存
     console.log("ファイルを保存しています...");
@@ -41,6 +42,7 @@ async function main(): Promise<void> {
     await saveTextFile(PROJECT_PATHS.intermediate.modesData, JSON.stringify(modesData, null, 2));
     await saveTextFile(PROJECT_PATHS.intermediate.floorsData, JSON.stringify(floorsData, null, 2));
     await saveTextFile(PROJECT_PATHS.intermediate.behaviorsData, JSON.stringify(behaviorsData, null, 2));
+    await saveTextFile(PROJECT_PATHS.intermediate.detailData, JSON.stringify(detailData, null, 2));
 
     console.log("マップコンバーターが正常に完了しました。");
   } catch (error) {
@@ -61,10 +63,3 @@ if (require.main === module) {
 }
 
 export { main };
-
-// コンバーターの前にやること:
-// 1. Inkscapeで開く
-// 2. 全選択して、Path->Object to Path
-// 3. Extensions->Modify Path->Apply Transform
-// 4. File->DocumentProperties->Resize to content
-// 5. Export->PlaneSVG->Export
