@@ -52,29 +52,6 @@ npm run clean      # ビルドファイル削除
 npm run type-check # 型チェックのみ実行
 ```
 
-<!-- ## ワークフロー
-
-1. **準備**: SVGエディターでマップを作成
-   - Affinity DesignerまたはInkscapeでSVGファイルを開く
-   - 全選択してPath → Object to Path（Inkscapeの場合）
-   - Document Properties → Resize to content（Inkscapeの場合）
-   - Plain SVGとしてエクスポート
-
-2. **準備**: Affinity DesignerまたはInkscapeでSVGマップを作成
-   - InkscapeでSVGファイルを開く
-   - 全選択してPath → Object to Path
-   - Extensions → Modify Path → Apply Transform（Inkscapeの場合）
-   - Document Properties → Resize to content
-   - Plain SVGとしてエクスポート
-
-3. **変換**: `npm run 1` でSVGを変換
-
-4. **データ作成**: `npm run 2` でプレイスデータのCSVテンプレートを生成
-
-5. **手動編集**: 生成されたCSVファイルを編集して場所の詳細情報を追加
-
-6. **登録**: `npm run 3` で最終データをWebアプリに配置 -->
-
 ## 設定
 
 パス設定やデフォルト値は `config.ts` で管理されています。プロジェクト構造が変更された場合は、このファイルを更新してください。
