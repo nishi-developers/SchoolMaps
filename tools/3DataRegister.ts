@@ -25,13 +25,11 @@ async function main(): Promise<void> {
 
     // 出力ファイルに保存
     console.log("最終ファイルを保存しています...");
-    await Promise.all([
-      saveTextFile(PROJECT_PATHS.output.map, mapContent, true),
-      saveTextFile(PROJECT_PATHS.output.placesData, JSON.stringify(placesData, null, 2), true),
-      saveTextFile(PROJECT_PATHS.output.modesData, modesContent, true),
-      saveTextFile(PROJECT_PATHS.output.floorsData, floorsContent, true),
-      saveTextFile(PROJECT_PATHS.output.behaviorsData, behaviorsContent, true),
-    ]);
+    await saveTextFile(PROJECT_PATHS.output.map, mapContent, true);
+    await saveTextFile(PROJECT_PATHS.output.placesData, JSON.stringify(placesData, null, 2), true);
+    await saveTextFile(PROJECT_PATHS.output.modesData, modesContent, true);
+    await saveTextFile(PROJECT_PATHS.output.floorsData, floorsContent, true);
+    await saveTextFile(PROJECT_PATHS.output.behaviorsData, behaviorsContent, true);
 
     console.log("データ登録が正常に完了しました。");
   } catch (error) {
