@@ -1,75 +1,54 @@
-import { readTextFile, saveTextFile, middlePaths } from "./lib";
+import { readTextFile, saveTextFile, FileOperationError } from "./lib";
+import { PROJECT_PATHS } from "./config";
+import { convertCsvToPlaces } from "./data-generators";
 
-function convertPlaces(file: string): string {
-  // csvを1行ずつ読み込む
-  const lines = file.split("\n");
-  // 最初の行を削除
-  lines.shift();
-  const places: Array<{
-    id: string;
-    mode: string;
-    floor: string;
-    behavior: string;
-    name: string;
-    words: string;
-    desc: string;
-    images: Array<string>;
-  }> = [];
-  for (const line of lines) {
-    // 各行をカンマで分割
-    // 正規表現を使用して、カンマで囲まれた文字列を正しく分割できるように
-    const columns = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-    // 必要な変換を行う（例: 文字列のトリミング）
-    for (let i = 0; i < columns.length; i++) {
-      columns[i] = columns[i].trim();
-      // クォーテーションの囲みを削除
-      if (columns[i].startsWith('"') && columns[i].endsWith('"')) {
-        columns[i] = columns[i].slice(1, -1);
-      }
-    }
-    // 変換後の行を再構築
-    const place = {
-      id: columns[0],
-      mode: columns[1],
-      floor: columns[2],
-      behavior: columns[3],
-      name: columns[4],
-      words: columns[5],
-      desc: columns[6],
-      images: columns.slice(7).filter((img) => img !== ""),
-    };
-    places.push(place);
-  }
-  return JSON.stringify(places, null, 2);
-}
-
+/**
+ * メイン実行関数
+ */
 async function main(): Promise<void> {
-  const exportPaths = {
-    map: "/web/server/assets/map.svg",
-    placesData: "/web/server/assets/places.json",
-    modesData: "/web/server/assets/modes.json",
-    floorsData: "/web/server/assets/floors.json",
-    behaviorsData: "/web/server/assets/behaviors.json",
-  };
+  try {
+    console.log("データ登録ツールを開始します...");
 
-  const map = await readTextFile(middlePaths.map);
-  const places = await readTextFile(middlePaths.placesData);
-  const modes = await readTextFile(middlePaths.modesData);
-  const floors = await readTextFile(middlePaths.floorsData);
-  const behaviors = await readTextFile(middlePaths.behaviorsData);
+    // 中間ファイルの読み込み
+    console.log("中間ファイルを読み込んでいます...");
+    const [mapContent, placesContent, modesContent, floorsContent, behaviorsContent] = await Promise.all([
+      readTextFile(PROJECT_PATHS.intermediate.map),
+      readTextFile(PROJECT_PATHS.intermediate.placesData),
+      readTextFile(PROJECT_PATHS.intermediate.modesData),
+      readTextFile(PROJECT_PATHS.intermediate.floorsData),
+      readTextFile(PROJECT_PATHS.intermediate.behaviorsData),
+    ]);
 
-  if (!map || !places || !modes || !floors || !behaviors) {
-    console.error("必要なファイルが読み込めませんでした。");
-    return;
+    // プレイスデータをCSVからJSONに変換
+    console.log("プレイスデータを変換しています...");
+    const placesData = convertCsvToPlaces(placesContent);
+
+    // 出力ファイルに保存
+    console.log("最終ファイルを保存しています...");
+    await Promise.all([
+      saveTextFile(PROJECT_PATHS.output.map, mapContent, true),
+      saveTextFile(PROJECT_PATHS.output.placesData, JSON.stringify(placesData, null, 2), true),
+      saveTextFile(PROJECT_PATHS.output.modesData, modesContent, true),
+      saveTextFile(PROJECT_PATHS.output.floorsData, floorsContent, true),
+      saveTextFile(PROJECT_PATHS.output.behaviorsData, behaviorsContent, true),
+    ]);
+
+    console.log("データ登録が正常に完了しました。");
+  } catch (error) {
+    if (error instanceof FileOperationError) {
+      console.error(`ファイル操作エラー: ${error.message}`);
+      console.error(`ファイルパス: ${error.filePath}`);
+      console.error(`操作: ${error.operation}`);
+    } else {
+      console.error(`予期しないエラーが発生しました: ${error}`);
+    }
+    process.exit(1);
   }
-
-  const convertedPlaces = convertPlaces(places);
-
-  await saveTextFile(exportPaths.map, map);
-  await saveTextFile(exportPaths.placesData, convertedPlaces);
-  await saveTextFile(exportPaths.modesData, modes);
-  await saveTextFile(exportPaths.floorsData, floors);
-  await saveTextFile(exportPaths.behaviorsData, behaviors);
 }
 
-main();
+// プログラム実行
+if (require.main === module) {
+  main();
+}
+
+export { main };
