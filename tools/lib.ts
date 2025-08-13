@@ -1,9 +1,11 @@
 import { existsSync } from "fs";
 import { readFile, writeFile } from "fs/promises";
 import * as readline from "readline";
+import { join } from "path";
 
 // ファイルを非同期で読み込む関数
 export async function readTextFile(filePath: string): Promise<string | void> {
+  filePath = concvertPath(filePath);
   try {
     // ファイルが存在するかチェック
     if (!existsSync(filePath)) {
@@ -20,6 +22,7 @@ export async function readTextFile(filePath: string): Promise<string | void> {
 
 // ファイルを保存する関数
 export async function saveTextFile(filePath: string, content: string): Promise<void> {
+  filePath = concvertPath(filePath);
   try {
     // ファイルが存在する場合は上書き確認
     if (existsSync(filePath)) {
@@ -44,9 +47,15 @@ export async function saveTextFile(filePath: string, content: string): Promise<v
 }
 
 export const middlePaths = {
-  map: "../maps/map.svg",
-  placesData: "../maps/places.csv",
-  modesData: "../maps/modes.json",
-  floorsData: "../maps/floors.json",
-  behaviorsData: "../maps/behaviors.json",
+  map: "/maps/map.svg",
+  placesData: "/maps/places.csv",
+  modesData: "/maps/modes.json",
+  floorsData: "/maps/floors.json",
+  behaviorsData: "/maps/behaviors.json",
 };
+
+function concvertPath(path: string): string {
+  // プロジェクトルートからの相対パスを絶対パスに変換
+  // ex "/maps/map.svg" -> "/SchoolMaps/maps/map.svg"
+  return join(__dirname, "../..", path);
+}
