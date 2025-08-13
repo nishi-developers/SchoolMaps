@@ -305,7 +305,7 @@ function createBehaviorsData(file: string): string {
 // メイン実行部分
 async function main(): Promise<void> {
   // 入力ファイルパスと出力ファイルパスの設定
-  let inputFilePath = "../maps/map-raw.svg";
+  let inputFilePath = "/maps/map-raw.svg";
   // if (process.argv.length > 2) {
   //   inputFilePath = process.argv[2];
   // }

@@ -45,11 +45,11 @@ function convertPlaces(file: string): string {
 
 async function main(): Promise<void> {
   const exportPaths = {
-    map: "../web/server/assets/map.svg",
-    placesData: "../web/server/assets/places.json",
-    modesData: "../web/server/assets/modes.json",
-    floorsData: "../web/server/assets/floors.json",
-    behaviorsData: "../web/server/assets/behaviors.json",
+    map: "/web/server/assets/map.svg",
+    placesData: "/web/server/assets/places.json",
+    modesData: "/web/server/assets/modes.json",
+    floorsData: "/web/server/assets/floors.json",
+    behaviorsData: "/web/server/assets/behaviors.json",
   };
 
   const map = await readTextFile(middlePaths.map);
