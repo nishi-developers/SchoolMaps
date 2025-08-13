@@ -39,12 +39,11 @@ export class SvgTransformer {
    * defsタグの削除
    */
   deleteDefs(): this {
-    const defsStart = this.svgContent.indexOf("<defs>");
-    const defsEnd = this.svgContent.indexOf("</defs>") + 7;
+    // 自己終了タグと通常のタグの両方に対応
+    // 複数のdefsタグが存在する場合も対応
+    this.svgContent = this.svgContent.replace(/<defs[^>]*\/>/g, ""); // 自己終了タグ
+    this.svgContent = this.svgContent.replace(/<defs[^>]*>[\s\S]*?<\/defs>/g, ""); // 通常のタグ
 
-    if (defsStart !== -1 && defsEnd !== -1) {
-      this.svgContent = this.svgContent.slice(0, defsStart) + this.svgContent.slice(defsEnd);
-    }
     return this;
   }
 

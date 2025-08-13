@@ -1,0 +1,16 @@
+[
+  {
+    "id": "main",
+    "enable": true,
+    "name": "",
+    "always": false,
+    "image": ""
+  },
+  {
+    "id": "shinkan80",
+    "enable": true,
+    "name": "",
+    "always": false,
+    "image": ""
+  }
+]
