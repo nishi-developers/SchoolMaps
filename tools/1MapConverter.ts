@@ -140,48 +140,6 @@ function deleteNewLine(file: string): string {
   return file;
 }
 
-function createPlacesData(file: string): string {
-  const svg = SVG(file);
-  const places: Array<{
-    id: string;
-    name: string;
-    words: string;
-    desc: string;
-    mode: string;
-    floor: string;
-    behavior: string;
-    images: Array<string>;
-  }> = [];
-  svg.find("*[place]").forEach((element: Element) => {
-    const id = element.attr("place");
-    const mode = element.attr("mode") || "";
-    const floor = element.attr("floor") || "";
-    const behavior = element.attr("behavior") || "";
-    places.push({
-      id: id,
-      mode: mode,
-      floor: floor,
-      behavior: behavior,
-      name: "",
-      words: "",
-      desc: "",
-      images: [],
-    });
-  });
-  let csv = '"id","mode","floor","behavior","name","words","desc","images1","images2","images3"\n';
-  const escapeCsvField = (field: string): string => {
-    return `"${field.replace(/"/g, '""')}"`;
-  };
-  for (const place of places) {
-    const id = escapeCsvField(place.id);
-    const mode = escapeCsvField(place.mode);
-    const floor = escapeCsvField(place.floor);
-    const behavior = escapeCsvField(place.behavior);
-    csv += `${id},${mode},${floor},${behavior},"","","","","",""\n`;
-  }
-  return csv;
-}
-
 function createModesData(file: string): string {
   const svg = SVG(file);
   const modesSet = new Set<string>();
@@ -313,6 +271,7 @@ async function main(): Promise<void> {
   // ファイルを読み込む
   let file = await readTextFile(inputFilePath);
   if (!file) {
+    console.error("必要なファイルが読み込めませんでした。");
     return;
   }
 
@@ -338,7 +297,6 @@ async function main(): Promise<void> {
 
   // エクスポート
   await saveTextFile(middlePaths.map, file);
-  await saveTextFile(middlePaths.placesData, createPlacesData(file));
   await saveTextFile(middlePaths.modesData, createModesData(file));
   await saveTextFile(middlePaths.floorsData, createFloorsData(file));
   await saveTextFile(middlePaths.behaviorsData, createBehaviorsData(file));
