@@ -37,12 +37,10 @@ async function main(): Promise<void> {
 
     // ファイル保存
     console.log("ファイルを保存しています...");
-    await Promise.all([
-      saveTextFile(PROJECT_PATHS.intermediate.map, processedContent),
-      saveTextFile(PROJECT_PATHS.intermediate.modesData, JSON.stringify(modesData, null, 2)),
-      saveTextFile(PROJECT_PATHS.intermediate.floorsData, JSON.stringify(floorsData, null, 2)),
-      saveTextFile(PROJECT_PATHS.intermediate.behaviorsData, JSON.stringify(behaviorsData, null, 2)),
-    ]);
+    await saveTextFile(PROJECT_PATHS.intermediate.map, processedContent);
+    await saveTextFile(PROJECT_PATHS.intermediate.modesData, JSON.stringify(modesData, null, 2));
+    await saveTextFile(PROJECT_PATHS.intermediate.floorsData, JSON.stringify(floorsData, null, 2));
+    await saveTextFile(PROJECT_PATHS.intermediate.behaviorsData, JSON.stringify(behaviorsData, null, 2));
 
     console.log("マップコンバーターが正常に完了しました。");
   } catch (error) {
