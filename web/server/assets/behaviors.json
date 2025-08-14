@@ -1,0 +1,170 @@
+[
+  {
+    "id": "base",
+    "isPlace": false,
+    "style": {
+      "body": {
+        "fill_default": {
+          "light": "",
+          "dark": ""
+        },
+        "fill_select": {
+          "light": "",
+          "dark": ""
+        },
+        "stroke": {
+          "light": "",
+          "dark": ""
+        },
+        "strokeWidth": 2
+      },
+      "label": {
+        "fill": {
+          "light": "",
+          "dark": ""
+        },
+        "fontSize": "2rem"
+      }
+    }
+  },
+  {
+    "id": "compass",
+    "isPlace": false,
+    "style": {
+      "body": {
+        "fill_default": {
+          "light": "",
+          "dark": ""
+        },
+        "fill_select": {
+          "light": "",
+          "dark": ""
+        },
+        "stroke": {
+          "light": "",
+          "dark": ""
+        },
+        "strokeWidth": 2
+      },
+      "label": {
+        "fill": {
+          "light": "",
+          "dark": ""
+        },
+        "fontSize": "2rem"
+      }
+    }
+  },
+  {
+    "id": "enclosure",
+    "isPlace": false,
+    "style": {
+      "body": {
+        "fill_default": {
+          "light": "",
+          "dark": ""
+        },
+        "fill_select": {
+          "light": "",
+          "dark": ""
+        },
+        "stroke": {
+          "light": "",
+          "dark": ""
+        },
+        "strokeWidth": 2
+      },
+      "label": {
+        "fill": {
+          "light": "",
+          "dark": ""
+        },
+        "fontSize": "2rem"
+      }
+    }
+  },
+  {
+    "id": "none",
+    "isPlace": false,
+    "style": {
+      "body": {
+        "fill_default": {
+          "light": "",
+          "dark": ""
+        },
+        "fill_select": {
+          "light": "",
+          "dark": ""
+        },
+        "stroke": {
+          "light": "",
+          "dark": ""
+        },
+        "strokeWidth": 2
+      },
+      "label": {
+        "fill": {
+          "light": "",
+          "dark": ""
+        },
+        "fontSize": "2rem"
+      }
+    }
+  },
+  {
+    "id": "place",
+    "isPlace": true,
+    "style": {
+      "body": {
+        "fill_default": {
+          "light": "",
+          "dark": ""
+        },
+        "fill_select": {
+          "light": "",
+          "dark": ""
+        },
+        "stroke": {
+          "light": "",
+          "dark": ""
+        },
+        "strokeWidth": 2
+      },
+      "label": {
+        "fill": {
+          "light": "",
+          "dark": ""
+        },
+        "fontSize": "2rem"
+      }
+    }
+  },
+  {
+    "id": "shinkan80",
+    "isPlace": true,
+    "style": {
+      "body": {
+        "fill_default": {
+          "light": "",
+          "dark": ""
+        },
+        "fill_select": {
+          "light": "",
+          "dark": ""
+        },
+        "stroke": {
+          "light": "",
+          "dark": ""
+        },
+        "strokeWidth": 2
+      },
+      "label": {
+        "fill": {
+          "light": "",
+          "dark": ""
+        },
+        "fontSize": "2rem"
+      }
+    }
+  }
+]
