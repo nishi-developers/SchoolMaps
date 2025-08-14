@@ -1,9 +1,9 @@
 <template>
-  <div class="background text widthLimit">
+  <div class="page">
     <div v-if="error?.statusCode === 404">
-      <p class="textTitle">404 Not Found</p>
-      <p class="textH">お探しのページは見つかりませんでした。</p>
-      <p class="textP">
+      <h1>404 Not Found</h1>
+      <h2>お探しのページは見つかりませんでした。</h2>
+      <p>
         お探しのページは削除されたか、URLが変更された可能性があります。
       </p>
     </div>
@@ -23,5 +23,5 @@
 <script setup lang="ts">
 const error = useError()
 
-useHead({ title: error.value.statusCode })
+useHead({ title: error.value?.statusCode })
 </script>
