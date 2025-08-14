@@ -43,7 +43,7 @@
       <span>SystemVersion</span>
       <span>{{ $config.public.systemVersion }}</span>
       <span>MapsVersion</span>
-      <span>{{ $config.public.mapVersion }}</span>
+      <!-- <span>{{ $config.public.mapVersion }}</span> -->
     </p>
   </div>
 </template>
