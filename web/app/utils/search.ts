@@ -1,33 +1,40 @@
-export class Search {
-  PlaceInfo: PlaceInfo = {};
-  FloorInfo: FloorInfo = [] as unknown as FloorInfo;
-  Layers: Layers = [] as unknown as Layers;
-  SearchIndex: SearchIndex = [] as unknown as SearchIndex;
-  targets = ["id", "name", "words", "desc", "floorFullName", "floorShortName", "layer"] as const;
+type SearchIndex = [
+  {
+    id: string;
+    name: string;
+    words: string;
+    desc: string;
+    mode: string;
+    floor: string;
+    behavior: string;
+    modeName: string;
+    floorName: string;
+  }
+];
 
-  async initialize() {
-    const [placeInfo, floorInfo, layers] = await Promise.all([
-      import("@/assets/PlaceInfo.json"),
-      import("@/assets/FloorInfo.json"),
-      import("@/assets/Layers.json"),
-    ]);
-    this.PlaceInfo = placeInfo.default as PlaceInfo;
-    this.FloorInfo = floorInfo.default as FloorInfo;
-    this.Layers = layers.default as Layers;
-    for (const key of Object.keys(this.PlaceInfo)) {
-      const floor = this.PlaceInfo[key]?.floor;
+export class Search {
+  #searchIndex: SearchIndex = [] as unknown as SearchIndex;
+  #targets = ["id", "name", "words", "desc", "mode", "floor", "behavior", "modeName", "floorName"] as const;
+
+  constructor() {
+    const { $modes, $floors, $places } = useNuxtApp();
+    for (const place of $places.value) {
       const normalizeContent = (content: string | null | undefined) => {
         if (typeof content !== "string") return "";
         return this.#normalize(content);
       };
-      this.SearchIndex.push({
-        id: key,
-        name: normalizeContent(this.PlaceInfo[key]?.name),
-        words: normalizeContent(this.PlaceInfo[key]?.words),
-        desc: normalizeContent(this.PlaceInfo[key]?.desc),
-        floorFullName: normalizeContent(floor ? this.FloorInfo[floor]?.fullName : ""),
-        floorShortName: normalizeContent(floor ? this.FloorInfo[floor]?.shortName : ""),
-        layer: normalizeContent(floor ? this.PlaceInfo[key]?.layer : ""),
+      // modesのenableがtrueのものだけを対象にする
+      if ($modes.value.find((mode) => mode.id === place.mode)?.enable !== true) continue;
+      this.#searchIndex.push({
+        id: normalizeContent(place.id),
+        name: normalizeContent(place.name),
+        words: normalizeContent(place.words),
+        desc: normalizeContent(place.desc),
+        mode: normalizeContent(place.mode),
+        floor: normalizeContent(place.floor),
+        behavior: normalizeContent(place.behavior),
+        modeName: normalizeContent($modes.value.find((mode) => mode.id === place.mode)?.name),
+        floorName: normalizeContent($floors.value.find((floor) => floor.id === place.floor)?.name),
       });
     }
   }
@@ -67,11 +74,11 @@ export class Search {
     const { prefix, parsedQuery } = this.#parseQuery(query);
     if (parsedQuery === "") {
       // クエリが空の場合は全てのIDを返す
-      return this.SearchIndex.map((index) => index.id);
+      return this.#searchIndex.map((index) => index.id);
     }
-    for (const target of this.targets) {
+    for (const target of this.#targets) {
       if (prefix === null || prefix === target) {
-        this.SearchIndex.forEach((index) => {
+        this.#searchIndex.forEach((index) => {
           if (index[target].includes(parsedQuery)) {
             results.push(index.id);
           }
@@ -82,7 +89,7 @@ export class Search {
   }
 
   #parseQuery(query: string): { prefix: string | null; parsedQuery: string } {
-    for (const target of this.targets) {
+    for (const target of this.#targets) {
       if (query.startsWith(`${target}:`)) {
         return {
           prefix: target,
