@@ -2,7 +2,7 @@
   {
     "id": "classroom-1a",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "1A",
     "words": "普通教室 クラス 1年 A組",
@@ -12,7 +12,7 @@
   {
     "id": "classroom-1b",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "1B",
     "words": "普通教室 クラス 1年 B組",
@@ -22,7 +22,7 @@
   {
     "id": "classroom-1c",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "1C",
     "words": "普通教室 クラス 1年 C組",
@@ -32,7 +32,7 @@
   {
     "id": "classroom-1d",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "1D",
     "words": "普通教室 クラス 1年 D組",
@@ -42,7 +42,7 @@
   {
     "id": "classroom-1e",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "1E",
     "words": "普通教室 クラス 1年 E組",
@@ -52,7 +52,7 @@
   {
     "id": "classroom-1f",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "1F",
     "words": "普通教室 クラス 1年 F組",
@@ -62,7 +62,7 @@
   {
     "id": "classroom-1g",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "1G",
     "words": "普通教室 クラス 1年 G組",
@@ -72,7 +72,7 @@
   {
     "id": "classroom-1h",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "1H",
     "words": "普通教室 クラス 1年 H組",
@@ -82,7 +82,7 @@
   {
     "id": "grand",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "校庭",
     "words": "グランド グラウンド トラック",
@@ -94,7 +94,7 @@
   {
     "id": "tennis-court",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "テニスコート",
     "words": "",
@@ -107,7 +107,7 @@
   {
     "id": "handball-court",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "ハンドボールコート",
     "words": "",
@@ -119,7 +119,7 @@
   {
     "id": "audiovisual-hall-1f-wc-man",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "男子トイレ[視聴覚ホール]",
     "words": "",
@@ -129,7 +129,7 @@
   {
     "id": "audiovisual-hall-1f-wc-woman",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "女子トイレ[視聴覚ホール]",
     "words": "",
@@ -139,7 +139,7 @@
   {
     "id": "audiovisual-hall-1f-stairs-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "階段[視聴覚ホール]",
     "words": "",
@@ -149,7 +149,7 @@
   {
     "id": "audiovisual-hall-1f-stairs-1",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "階段[視聴覚ホール]",
     "words": "",
@@ -159,7 +159,7 @@
   {
     "id": "audiovisual-hall-1f-passage-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "通路[視聴覚ホール]",
     "words": "",
@@ -169,7 +169,7 @@
   {
     "id": "audiovisual-hall-1f-passage-1",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "通路[視聴覚ホール]",
     "words": "",
@@ -179,7 +179,7 @@
   {
     "id": "nishi-hall-1f-office",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "事務室[西高会館]",
     "words": "",
@@ -189,7 +189,7 @@
   {
     "id": "nishi-hall-1f-wc",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "誰でもトイレ[西高会館]",
     "words": "",
@@ -199,7 +199,7 @@
   {
     "id": "nishi-hall-1f-printing",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "印刷室[西高会館]",
     "words": "",
@@ -209,7 +209,7 @@
   {
     "id": "nishi-hall-1f-cafeteria",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "食堂[西高会館]",
     "words": "",
@@ -219,7 +219,7 @@
   {
     "id": "nishi-hall-1f-kitchen",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "厨房[西高会館]",
     "words": "",
@@ -229,7 +229,7 @@
   {
     "id": "nishi-hall-1f-stairs",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "階段[西高会館]",
     "words": "",
@@ -239,7 +239,7 @@
   {
     "id": "nishi-hall-1f-outdoor-stairs",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "外階段[西高会館]",
     "words": "",
@@ -249,7 +249,7 @@
   {
     "id": "gym-1f",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "体育館",
     "words": "",
@@ -259,7 +259,7 @@
   {
     "id": "gym-1f-stairs",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "階段[体育館]",
     "words": "",
@@ -269,7 +269,7 @@
   {
     "id": "gym-1f-warehouse",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "体育倉庫[体育館]",
     "words": "",
@@ -279,7 +279,7 @@
   {
     "id": "gym-1f-wc-man",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "男子トイレ[体育館]",
     "words": "",
@@ -289,7 +289,7 @@
   {
     "id": "gym-1f-wc-woman",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "女子トイレ[体育館]",
     "words": "",
@@ -299,7 +299,7 @@
   {
     "id": "gym-1f-stage",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "ステージ[体育館]",
     "words": "舞台",
@@ -309,7 +309,7 @@
   {
     "id": "gym-1f-stage-stairs-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "ステージ脇階段[体育館]",
     "words": "舞台",
@@ -319,7 +319,7 @@
   {
     "id": "gym-1f-stage-stairs-1",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "ステージ脇階段[体育館]",
     "words": "舞台",
@@ -329,7 +329,7 @@
   {
     "id": "gym-1f-stage-side-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "ステージ脇[体育館]",
     "words": "舞台",
@@ -339,7 +339,7 @@
   {
     "id": "gym-1f-stage-side-1",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "ステージ脇[体育館]",
     "words": "舞台",
@@ -349,7 +349,7 @@
   {
     "id": "martial-arts-field-1f-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "格技室(1)[武道場]",
     "words": "格技棟",
@@ -359,7 +359,7 @@
   {
     "id": "martial-arts-field-1f-1",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "格技室(2)[武道場]",
     "words": "格技棟",
@@ -369,7 +369,7 @@
   {
     "id": "martial-arts-field-1f-wc-man",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "男子トイレ[武道場]",
     "words": "格技棟",
@@ -379,7 +379,7 @@
   {
     "id": "martial-arts-field-1f-wc-woman",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "女子トイレ[武道場]",
     "words": "格技棟",
@@ -389,7 +389,7 @@
   {
     "id": "martial-arts-field-1f-warehouse",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "器具庫[武道場]",
     "words": "格技棟",
@@ -399,7 +399,7 @@
   {
     "id": "martial-arts-field-1f-stairs",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "階段[武道場]",
     "words": "格技棟",
@@ -409,7 +409,7 @@
   {
     "id": "fountain",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "愛の泉",
     "words": "",
@@ -421,7 +421,7 @@
   {
     "id": "garbage-dump",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "ゴミ置き場",
     "words": "ゴミ捨て場",
@@ -431,7 +431,7 @@
   {
     "id": "bicycle-parking-1st-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "自転車置き場(1年)",
     "words": "",
@@ -441,7 +441,7 @@
   {
     "id": "bicycle-parking-1st-1",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "自転車置き場(1年)",
     "words": "",
@@ -451,7 +451,7 @@
   {
     "id": "bicycle-parking-1st-2",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "自転車置き場(1年)",
     "words": "",
@@ -461,7 +461,7 @@
   {
     "id": "bicycle-parking-2nd-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "自転車置き場(2年)",
     "words": "",
@@ -471,7 +471,7 @@
   {
     "id": "bicycle-parking-2nd-1",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "自転車置き場(2年)",
     "words": "",
@@ -481,7 +481,7 @@
   {
     "id": "bicycle-parking-2nd-2",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "自転車置き場(2年)",
     "words": "",
@@ -491,7 +491,7 @@
   {
     "id": "bicycle-parking-3nd-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "自転車置き場(3年)",
     "words": "",
@@ -501,7 +501,7 @@
   {
     "id": "bicycle-parking-3nd-1",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "自転車置き場(3年)",
     "words": "",
@@ -511,7 +511,7 @@
   {
     "id": "bicycle-parking-teachers",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "自転車置き場(先生)",
     "words": "",
@@ -521,7 +521,7 @@
   {
     "id": "clubroom-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "シブ楽隊[部室]",
     "words": "",
@@ -531,7 +531,7 @@
   {
     "id": "clubroom-1",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "歴史研究部[部室]",
     "words": "",
@@ -541,7 +541,7 @@
   {
     "id": "clubroom-2",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "演劇部[部室]",
     "words": "",
@@ -551,7 +551,7 @@
   {
     "id": "clubroom-3",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "体操部[部室]",
     "words": "",
@@ -561,7 +561,7 @@
   {
     "id": "clubroom-4",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "吹奏楽部[部室]",
     "words": "",
@@ -571,7 +571,7 @@
   {
     "id": "clubroom-5",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "男子バスケットボール部[部室]",
     "words": "",
@@ -581,7 +581,7 @@
   {
     "id": "clubroom-6",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "剣道部[部室]",
     "words": "",
@@ -591,7 +591,7 @@
   {
     "id": "clubroom-7",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "化学部[部室]",
     "words": "",
@@ -601,7 +601,7 @@
   {
     "id": "clubroom-8",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "園芸部[部室]",
     "words": "",
@@ -611,7 +611,7 @@
   {
     "id": "clubroom-9",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "軽音楽同好会[部室]",
     "words": "",
@@ -621,7 +621,7 @@
   {
     "id": "clubroom-10",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "つるばみ同好会[部室]",
     "words": "",
@@ -631,7 +631,7 @@
   {
     "id": "clubroom-11",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "男子バレーボール部[部室]",
     "words": "",
@@ -641,7 +641,7 @@
   {
     "id": "clubroom-12",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "卓球部[部室]",
     "words": "",
@@ -651,7 +651,7 @@
   {
     "id": "clubroom-13",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "水泳部[部室]",
     "words": "",
@@ -661,7 +661,7 @@
   {
     "id": "clubroom-14",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "女子バレーボール部[部室]",
     "words": "",
@@ -671,7 +671,7 @@
   {
     "id": "clubroom-15",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "女子バスケットボール部[部室]",
     "words": "",
@@ -681,7 +681,7 @@
   {
     "id": "clubroom-16",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "バドミントン部[部室]",
     "words": "",
@@ -691,7 +691,7 @@
   {
     "id": "clubroom-17",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "ダンス部[部室]",
     "words": "",
@@ -701,7 +701,7 @@
   {
     "id": "clubroom-building-0-1f-stairs-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "階段[部室棟]",
     "words": "",
@@ -711,7 +711,7 @@
   {
     "id": "clubroom-building-0-1f-stairs-1",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "階段[部室棟]",
     "words": "",
@@ -721,7 +721,7 @@
   {
     "id": "clubroom-building-0-1f-room-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "写真部[部室棟]",
     "words": "",
@@ -731,7 +731,7 @@
   {
     "id": "clubroom-building-0-1f-room-1",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "生徒会倉庫[部室棟]",
     "words": "",
@@ -741,7 +741,7 @@
   {
     "id": "clubroom-building-0-1f-room-2",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "女子ハンドボール部[部室棟]",
     "words": "",
@@ -751,7 +751,7 @@
   {
     "id": "clubroom-building-0-1f-room-3",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "男子ハンドボール部[部室棟]",
     "words": "",
@@ -761,7 +761,7 @@
   {
     "id": "clubroom-building-0-1f-room-4",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "男子硬式テニス部[部室棟]",
     "words": "",
@@ -771,7 +771,7 @@
   {
     "id": "clubroom-building-0-1f-room-5",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "硬式野球部[部室棟]",
     "words": "",
@@ -781,7 +781,7 @@
   {
     "id": "clubroom-building-0-1f-room-6",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "陸上競技部[部室棟]",
     "words": "",
@@ -791,7 +791,7 @@
   {
     "id": "clubroom-building-0-1f-room-7",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "サッカー部[部室棟]",
     "words": "",
@@ -801,7 +801,7 @@
   {
     "id": "clubroom-building-0-1f-room-8",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "アメリカンフットボール部[部室棟]",
     "words": "",
@@ -811,7 +811,7 @@
   {
     "id": "clubroom-building-1-warehouse-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "倉庫[部室棟]",
     "words": "",
@@ -823,7 +823,7 @@
   {
     "id": "clubroom-building-1-warehouse-1",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "倉庫[部室棟]",
     "words": "",
@@ -833,7 +833,7 @@
   {
     "id": "clubroom-building-1-wc-man",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "男子トイレ[部室棟]",
     "words": "",
@@ -843,7 +843,7 @@
   {
     "id": "clubroom-building-1-wc-woman",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "女子トイレ[部室棟]",
     "words": "",
@@ -853,7 +853,7 @@
   {
     "id": "clubroom-building-1-shower-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "シャワー室[部室棟]",
     "words": "",
@@ -863,7 +863,7 @@
   {
     "id": "clubroom-building-1-shower-1",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "シャワー室[部室棟]",
     "words": "",
@@ -873,7 +873,7 @@
   {
     "id": "pilotis",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "プール下ピロティ",
     "words": "",
@@ -885,7 +885,7 @@
   {
     "id": "training-room",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "トレーニングルーム",
     "words": "トレ室",
@@ -895,7 +895,7 @@
   {
     "id": "gate-west-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "西門",
     "words": "",
@@ -908,7 +908,7 @@
   {
     "id": "gate-west-1",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "西門",
     "words": "",
@@ -920,7 +920,7 @@
   {
     "id": "gate-west-2",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "西門(校庭)",
     "words": "",
@@ -933,7 +933,7 @@
   {
     "id": "gate-north-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "正門",
     "words": "",
@@ -946,7 +946,7 @@
   {
     "id": "gate-east-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "東門",
     "words": "",
@@ -959,7 +959,7 @@
   {
     "id": "gate-nishi-hall-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "西高会館ゲート",
     "words": "",
@@ -972,7 +972,7 @@
   {
     "id": "gate-nishi-hall-1",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "西高会館ゲート",
     "words": "",
@@ -984,7 +984,7 @@
   {
     "id": "straight-course",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "直線トラック",
     "words": "",
@@ -996,7 +996,7 @@
   {
     "id": "students-entrance",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "生徒昇降口",
     "words": "",
@@ -1006,7 +1006,7 @@
   {
     "id": "teachers-entrance",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "職員昇降口",
     "words": "",
@@ -1016,7 +1016,7 @@
   {
     "id": "the-student-council-room",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "生徒会室",
     "words": "",
@@ -1026,7 +1026,7 @@
   {
     "id": "janitorial-room",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "用務室",
     "words": "",
@@ -1036,7 +1036,7 @@
   {
     "id": "corporate-planning-office",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "経営企画室",
     "words": "",
@@ -1046,7 +1046,7 @@
   {
     "id": "principals-office",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "校長室",
     "words": "",
@@ -1056,7 +1056,7 @@
   {
     "id": "health-room",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "保健室",
     "words": "",
@@ -1066,7 +1066,7 @@
   {
     "id": "health-consultation-room",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "保健相談室",
     "words": "",
@@ -1076,7 +1076,7 @@
   {
     "id": "japanese-style-room",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "和室",
     "words": "",
@@ -1086,7 +1086,7 @@
   {
     "id": "home-economics-room",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "家庭科教室",
     "words": "",
@@ -1096,7 +1096,7 @@
   {
     "id": "home-economics-preparation-room",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "家庭科準備室",
     "words": "",
@@ -1106,7 +1106,7 @@
   {
     "id": "food-room",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "食物教室",
     "words": "",
@@ -1116,7 +1116,7 @@
   {
     "id": "pc-room",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "PC室",
     "words": "",
@@ -1126,7 +1126,7 @@
   {
     "id": "pc-preparation-room",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "PC準備室",
     "words": "",
@@ -1136,7 +1136,7 @@
   {
     "id": "ll-room",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "LL室",
     "words": "",
@@ -1146,7 +1146,7 @@
   {
     "id": "ll-preparation-room",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "LL準備室",
     "words": "",
@@ -1156,7 +1156,7 @@
   {
     "id": "office-warehouse",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "事務倉庫",
     "words": "",
@@ -1166,7 +1166,7 @@
   {
     "id": "stairs-gym-passage-1f-0",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "階段(体育館脇通路)",
     "words": "",
@@ -1176,7 +1176,7 @@
   {
     "id": "stairs-gym-passage-1f-1",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "階段(体育館脇通路)",
     "words": "",
@@ -1186,7 +1186,7 @@
   {
     "id": "stairs-gym-passage-2f-0",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "階段(体育館脇通路)",
     "words": "",
@@ -1196,7 +1196,7 @@
   {
     "id": "stairs-gym-passage-2f-1",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "階段(体育館脇通路)",
     "words": "",
@@ -1206,7 +1206,7 @@
   {
     "id": "stairs-pool-1f",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "階段(プール脇)",
     "words": "",
@@ -1216,7 +1216,7 @@
   {
     "id": "stairs-pool-2f",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "階段(プール脇)",
     "words": "",
@@ -1226,7 +1226,7 @@
   {
     "id": "stairs-class-center-1f",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "階段(教室棟中央)",
     "words": "",
@@ -1236,7 +1236,7 @@
   {
     "id": "stairs-class-center-2f",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "階段(教室棟中央)",
     "words": "",
@@ -1246,7 +1246,7 @@
   {
     "id": "stairs-class-center-3f",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "階段(教室棟中央)",
     "words": "",
@@ -1256,7 +1256,7 @@
   {
     "id": "stairs-class-east-1f",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "階段(教室棟東)",
     "words": "",
@@ -1266,7 +1266,7 @@
   {
     "id": "stairs-class-east-2f",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "階段(教室棟東)",
     "words": "",
@@ -1276,7 +1276,7 @@
   {
     "id": "stairs-class-east-3f",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "階段(教室棟東)",
     "words": "",
@@ -1286,7 +1286,7 @@
   {
     "id": "stairs-class-west-1f",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "階段(教室棟西)",
     "words": "",
@@ -1296,7 +1296,7 @@
   {
     "id": "stairs-class-west-2f",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "階段(教室棟西)",
     "words": "",
@@ -1306,7 +1306,7 @@
   {
     "id": "stairs-class-west-3f",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "階段(教室棟西)",
     "words": "",
@@ -1316,7 +1316,7 @@
   {
     "id": "stairs-management-west-1f",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "階段(管理棟西)",
     "words": "",
@@ -1326,7 +1326,7 @@
   {
     "id": "stairs-management-west-2f",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "階段(管理棟西)",
     "words": "",
@@ -1336,7 +1336,7 @@
   {
     "id": "stairs-management-west-3f",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "階段(管理棟西)",
     "words": "",
@@ -1346,7 +1346,7 @@
   {
     "id": "stairs-management-center-1f",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "階段(管理棟中央)",
     "words": "",
@@ -1356,7 +1356,7 @@
   {
     "id": "stairs-management-center-2f",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "階段(管理棟中央)",
     "words": "",
@@ -1366,7 +1366,7 @@
   {
     "id": "stairs-management-center-3f",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "階段(管理棟中央)",
     "words": "",
@@ -1376,7 +1376,7 @@
   {
     "id": "stairs-management-north-1f",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "階段(管理棟北)",
     "words": "",
@@ -1386,7 +1386,7 @@
   {
     "id": "stairs-management-north-2f",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "階段(管理棟北)",
     "words": "",
@@ -1396,7 +1396,7 @@
   {
     "id": "stairs-management-north-3f",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "階段(管理棟北)",
     "words": "",
@@ -1406,7 +1406,7 @@
   {
     "id": "wc-pilotis",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "トイレ(ピロティ)",
     "words": "",
@@ -1416,7 +1416,7 @@
   {
     "id": "wc-class-east-1f",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "トイレ(教室棟東)",
     "words": "",
@@ -1426,7 +1426,7 @@
   {
     "id": "wc-class-east-2f",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "トイレ(教室棟東)",
     "words": "",
@@ -1436,7 +1436,7 @@
   {
     "id": "wc-class-east-3f",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "トイレ(教室棟東)",
     "words": "",
@@ -1446,7 +1446,7 @@
   {
     "id": "wc-class-west-1f",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "トイレ(教室棟西)",
     "words": "",
@@ -1456,7 +1456,7 @@
   {
     "id": "wc-class-west-2f",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "トイレ(教室棟西)",
     "words": "",
@@ -1466,7 +1466,7 @@
   {
     "id": "wc-class-west-3f",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "トイレ(教室棟西)",
     "words": "",
@@ -1476,7 +1476,7 @@
   {
     "id": "wc-management-west-1f",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "トイレ(管理棟西)",
     "words": "",
@@ -1486,7 +1486,7 @@
   {
     "id": "wc-management-west-2f",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "トイレ(管理棟西)",
     "words": "",
@@ -1496,7 +1496,7 @@
   {
     "id": "wc-management-west-3f",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "トイレ(管理棟西)",
     "words": "",
@@ -1506,7 +1506,7 @@
   {
     "id": "wc-management-center-1f",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "トイレ(管理棟中央)",
     "words": "",
@@ -1516,7 +1516,7 @@
   {
     "id": "wc-management-center-2f",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "トイレ(管理棟中央)",
     "words": "",
@@ -1526,7 +1526,7 @@
   {
     "id": "wc-management-center-3f",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "トイレ(管理棟中央)",
     "words": "",
@@ -1536,7 +1536,7 @@
   {
     "id": "wc-management-north-1f",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "トイレ(管理棟北)",
     "words": "",
@@ -1546,7 +1546,7 @@
   {
     "id": "wc-management-north-2f",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "トイレ(管理棟北)",
     "words": "",
@@ -1556,7 +1556,7 @@
   {
     "id": "wc-management-north-3f",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "トイレ(管理棟北)",
     "words": "",
@@ -1566,7 +1566,7 @@
   {
     "id": "wc-management-center-accessible-1f",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "バリアフリートイレ(管理棟北)",
     "words": "",
@@ -1576,7 +1576,7 @@
   {
     "id": "wc-management-center-accessible-2f",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "バリアフリートイレ(管理棟北)",
     "words": "",
@@ -1586,7 +1586,7 @@
   {
     "id": "wc-management-center-accessible-3f",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "バリアフリートイレ(管理棟北)",
     "words": "",
@@ -1596,7 +1596,7 @@
   {
     "id": "ev-1f",
     "mode": "main",
-    "floor": "1f",
+    "floor": "f1",
     "behavior": "place",
     "name": "エレベーター",
     "words": "",
@@ -1606,7 +1606,7 @@
   {
     "id": "ev-2f",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "エレベーター",
     "words": "",
@@ -1616,7 +1616,7 @@
   {
     "id": "ev-3f",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "エレベーター",
     "words": "",
@@ -1626,7 +1626,7 @@
   {
     "id": "classroom-2a",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "2A",
     "words": "普通教室 クラス 2年 A組",
@@ -1636,7 +1636,7 @@
   {
     "id": "classroom-2b",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "2B",
     "words": "普通教室 クラス 2年 B組",
@@ -1646,7 +1646,7 @@
   {
     "id": "classroom-2c",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "2C",
     "words": "普通教室 クラス 2年 C組",
@@ -1656,7 +1656,7 @@
   {
     "id": "classroom-2d",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "2D",
     "words": "普通教室 クラス 2年 D組",
@@ -1666,7 +1666,7 @@
   {
     "id": "classroom-2e",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "2E",
     "words": "普通教室 クラス 2年 E組",
@@ -1676,7 +1676,7 @@
   {
     "id": "classroom-2f",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "2F",
     "words": "普通教室 クラス 2年 F組",
@@ -1686,7 +1686,7 @@
   {
     "id": "classroom-2g",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "2G",
     "words": "普通教室 クラス 2年 G組",
@@ -1696,7 +1696,7 @@
   {
     "id": "classroom-2h",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "2H",
     "words": "普通教室 クラス 2年 H組",
@@ -1706,7 +1706,7 @@
   {
     "id": "clubroom-building-0-2f-stairs-0",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "階段[部室棟]",
     "words": "",
@@ -1716,7 +1716,7 @@
   {
     "id": "clubroom-building-0-2f-stairs-1",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "階段[部室棟]",
     "words": "",
@@ -1726,7 +1726,7 @@
   {
     "id": "clubroom-building-0-2f-room-0",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "イラスト研究部[部室棟]",
     "words": "",
@@ -1736,7 +1736,7 @@
   {
     "id": "clubroom-building-0-2f-room-1",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "新聞部[部室棟]",
     "words": "",
@@ -1746,7 +1746,7 @@
   {
     "id": "clubroom-building-0-2f-room-2",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "文芸部[部室棟]",
     "words": "",
@@ -1756,7 +1756,7 @@
   {
     "id": "clubroom-building-0-2f-room-3",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "管弦楽部[部室棟]",
     "words": "",
@@ -1766,7 +1766,7 @@
   {
     "id": "clubroom-building-0-2f-room-4",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "CR東日本[部室棟]",
     "words": "",
@@ -1776,7 +1776,7 @@
   {
     "id": "clubroom-building-0-2f-room-5",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "宇宙研究部[部室棟]",
     "words": "",
@@ -1786,7 +1786,7 @@
   {
     "id": "clubroom-building-0-2f-room-6",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "ワンダーフォーゲル部[部室棟]",
     "words": "",
@@ -1796,7 +1796,7 @@
   {
     "id": "clubroom-building-0-2f-room-7",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "囲碁将棋部[部室棟]",
     "words": "",
@@ -1806,7 +1806,7 @@
   {
     "id": "clubroom-building-0-2f-room-8",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "女子硬式テニス部[部室棟]",
     "words": "",
@@ -1816,7 +1816,7 @@
   {
     "id": "clubroom-building-0-2f-room-9",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "ソフトテニス部(女子)[部室棟]",
     "words": "",
@@ -1826,7 +1826,7 @@
   {
     "id": "audiovisual-hall-2f-monitor-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "モニタールーム",
     "words": "",
@@ -1836,7 +1836,7 @@
   {
     "id": "audiovisual-hall-2f-stairs-0",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "階段[視聴覚ホール]",
     "words": "",
@@ -1846,7 +1846,7 @@
   {
     "id": "audiovisual-hall-2f-stairs-1",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "階段[視聴覚ホール]",
     "words": "",
@@ -1856,7 +1856,7 @@
   {
     "id": "audiovisual-hall-2f-ramp-0",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "スロープ[視聴覚ホール]",
     "words": "",
@@ -1866,7 +1866,7 @@
   {
     "id": "audiovisual-hall-2f-ramp-1",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "スロープ[視聴覚ホール]",
     "words": "",
@@ -1876,7 +1876,7 @@
   {
     "id": "audiovisual-hall-2f",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "視聴覚ホール",
     "words": "",
@@ -1886,7 +1886,7 @@
   {
     "id": "audiovisual-hall-2f-stage",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "ステージ[視聴覚ホール]",
     "words": "舞台",
@@ -1896,7 +1896,7 @@
   {
     "id": "audiovisual-hall-2f-stage-side-0",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "ステージ脇[視聴覚ホール]",
     "words": "舞台",
@@ -1906,7 +1906,7 @@
   {
     "id": "audiovisual-hall-2f-stage-side-1",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "ステージ脇[視聴覚ホール]",
     "words": "舞台",
@@ -1916,7 +1916,7 @@
   {
     "id": "nishi-hall-2f-stairs",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "階段[西高会館]",
     "words": "",
@@ -1926,7 +1926,7 @@
   {
     "id": "nishi-hall-2f-outdoor-stairs",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "外階段[西高会館]",
     "words": "",
@@ -1936,7 +1936,7 @@
   {
     "id": "nishi-hall-2f-office",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "西高会・同窓会事務室[西高会館]",
     "words": "",
@@ -1946,7 +1946,7 @@
   {
     "id": "nishi-hall-2f-wc-man-0",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "男子トイレ1[西高会館]",
     "words": "",
@@ -1956,7 +1956,7 @@
   {
     "id": "nishi-hall-2f-wc-man-1",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "男子トイレ2[西高会館]",
     "words": "",
@@ -1966,7 +1966,7 @@
   {
     "id": "nishi-hall-2f-changing-room-man",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "男子更衣室[西高会館]",
     "words": "",
@@ -1976,7 +1976,7 @@
   {
     "id": "nishi-hall-2f-shower-man",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "男子シャワー[西高会館]",
     "words": "",
@@ -1986,7 +1986,7 @@
   {
     "id": "nishi-hall-2f-meeting-room-0",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "会議室1[西高会館]",
     "words": "",
@@ -1996,7 +1996,7 @@
   {
     "id": "nishi-hall-2f-meeting-room-1",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "会議室2[西高会館]",
     "words": "",
@@ -2006,7 +2006,7 @@
   {
     "id": "gym-2f-teachers",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "体育教官室[体育館]",
     "words": "",
@@ -2016,7 +2016,7 @@
   {
     "id": "gym-2f-stairs",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "階段[体育館]",
     "words": "",
@@ -2026,7 +2026,7 @@
   {
     "id": "gym-2f-changing-room-man",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "男子更衣室[体育館]",
     "words": "",
@@ -2036,7 +2036,7 @@
   {
     "id": "gym-2f-changing-room-woman",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "女子更衣室[体育館]",
     "words": "",
@@ -2046,7 +2046,7 @@
   {
     "id": "gym-2f-catwalk",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "キャットウォーク[体育館]",
     "words": "",
@@ -2056,7 +2056,7 @@
   {
     "id": "gym-2f-passage-0",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "通路[体育館]",
     "words": "舞台",
@@ -2066,7 +2066,7 @@
   {
     "id": "gym-2f-passage-1",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "通路[体育館]",
     "words": "舞台",
@@ -2076,7 +2076,7 @@
   {
     "id": "gym-2f-stage-broadcast-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "放送室[体育館]",
     "words": "舞台",
@@ -2086,7 +2086,7 @@
   {
     "id": "gym-2f-stage-waiting-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "控え室[体育館]",
     "words": "舞台",
@@ -2096,7 +2096,7 @@
   {
     "id": "gym-2f-stage-stairs-0",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "ステージ脇階段[体育館]",
     "words": "舞台",
@@ -2106,7 +2106,7 @@
   {
     "id": "gym-2f-stage-stairs-1",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "ステージ脇階段[体育館]",
     "words": "舞台",
@@ -2116,7 +2116,7 @@
   {
     "id": "martial-arts-field-2f-stairs",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "階段[武道場]",
     "words": "格技棟",
@@ -2126,7 +2126,7 @@
   {
     "id": "martial-arts-field-2f-teachers",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "体育教官室[武道場]",
     "words": "格技棟",
@@ -2136,7 +2136,7 @@
   {
     "id": "martial-arts-field-2f-changing-man",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "男子更衣室[武道場]",
     "words": "格技棟",
@@ -2146,7 +2146,7 @@
   {
     "id": "martial-arts-field-2f-changing-woman",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "女子更衣室[武道場]",
     "words": "格技棟",
@@ -2156,7 +2156,7 @@
   {
     "id": "pool",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "プール",
     "words": "",
@@ -2166,7 +2166,7 @@
   {
     "id": "pool-changing-room-man",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "男子更衣室[プール]",
     "words": "",
@@ -2176,7 +2176,7 @@
   {
     "id": "pool-changing-room-woman",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "女子更衣室[プール]",
     "words": "",
@@ -2186,7 +2186,7 @@
   {
     "id": "social-studies-room-2nd",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "第二社会科教室",
     "words": "第2社会科教室 第二社教 第2社教",
@@ -2196,7 +2196,7 @@
   {
     "id": "social-studies-preparation-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "社会科準備室",
     "words": "",
@@ -2206,7 +2206,7 @@
   {
     "id": "social-studies-room-1st",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "第一社会科教室",
     "words": "第1社会科教室 第一社教 第1社教",
@@ -2216,7 +2216,7 @@
   {
     "id": "printing-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "印刷室",
     "words": "",
@@ -2226,7 +2226,7 @@
   {
     "id": "teachers-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "職員室",
     "words": "",
@@ -2236,7 +2236,7 @@
   {
     "id": "broadcast-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "放送室",
     "words": "",
@@ -2246,7 +2246,7 @@
   {
     "id": "career-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "進路室",
     "words": "",
@@ -2256,7 +2256,7 @@
   {
     "id": "consultation-room-1st",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "第一生徒相談室",
     "words": "第1生徒相談室 第一生相 第1生相",
@@ -2266,7 +2266,7 @@
   {
     "id": "consultation-room-2nd",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "第二生徒相談室",
     "words": "第2生徒相談室 第二生相 第2生相",
@@ -2276,7 +2276,7 @@
   {
     "id": "special-room-2nd",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "第二特別教室",
     "words": "第2特別教室 第二特教 第2特教",
@@ -2286,7 +2286,7 @@
   {
     "id": "art-material-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "美術資料室",
     "words": "",
@@ -2296,7 +2296,7 @@
   {
     "id": "art-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "美術教室",
     "words": "",
@@ -2306,7 +2306,7 @@
   {
     "id": "art-preparation-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "美術準備室",
     "words": "",
@@ -2316,7 +2316,7 @@
   {
     "id": "craft-preparation-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "工芸準備室",
     "words": "",
@@ -2326,7 +2326,7 @@
   {
     "id": "craft-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "工芸教室",
     "words": "",
@@ -2336,7 +2336,7 @@
   {
     "id": "craft-warehouse",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "工芸倉庫",
     "words": "",
@@ -2346,7 +2346,7 @@
   {
     "id": "changing-room-1",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "更衣室1",
     "words": "",
@@ -2356,7 +2356,7 @@
   {
     "id": "changing-room-3",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "更衣室3",
     "words": "",
@@ -2366,7 +2366,7 @@
   {
     "id": "document-preparation-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "資料準備室",
     "words": "",
@@ -2376,7 +2376,7 @@
   {
     "id": "meeting-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "会議室",
     "words": "",
@@ -2386,7 +2386,7 @@
   {
     "id": "english-preparation-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "英語科準備室",
     "words": "",
@@ -2396,7 +2396,7 @@
   {
     "id": "japanese-preparation-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "国語科準備室",
     "words": "",
@@ -2406,7 +2406,7 @@
   {
     "id": "mathematics-preparation-room",
     "mode": "main",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "place",
     "name": "数学科準備室",
     "words": "",
@@ -2416,7 +2416,7 @@
   {
     "id": "classroom-3a",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "3A",
     "words": "普通教室 クラス 3年 A組",
@@ -2426,7 +2426,7 @@
   {
     "id": "classroom-3b",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "3B",
     "words": "普通教室 クラス 3年 B組",
@@ -2436,7 +2436,7 @@
   {
     "id": "classroom-3c",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "3C",
     "words": "普通教室 クラス 3年 C組",
@@ -2446,7 +2446,7 @@
   {
     "id": "classroom-3d",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "3D",
     "words": "普通教室 クラス 3年 D組",
@@ -2456,7 +2456,7 @@
   {
     "id": "classroom-3e",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "3E",
     "words": "普通教室 クラス 3年 E組",
@@ -2466,7 +2466,7 @@
   {
     "id": "classroom-3f",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "3F",
     "words": "普通教室 クラス 3年 F組",
@@ -2476,7 +2476,7 @@
   {
     "id": "classroom-3g",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "3G",
     "words": "普通教室 クラス 3年 G組",
@@ -2486,7 +2486,7 @@
   {
     "id": "classroom-3h",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "3H",
     "words": "普通教室 クラス 3年 H組",
@@ -2496,7 +2496,7 @@
   {
     "id": "nishi-hall-3f-stairs",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "階段[西高会館]",
     "words": "",
@@ -2506,7 +2506,7 @@
   {
     "id": "nishi-hall-3f-outdoor-stairs",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "外階段[西高会館]",
     "words": "",
@@ -2516,7 +2516,7 @@
   {
     "id": "nishi-hall-3f-wc-woman",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "女子トイレ[西高会館]",
     "words": "",
@@ -2526,7 +2526,7 @@
   {
     "id": "nishi-hall-3f-changing-room-woman",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "女子更衣室[西高会館]",
     "words": "",
@@ -2536,7 +2536,7 @@
   {
     "id": "nishi-hall-3f-shower-woman",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "女子シャワー[西高会館]",
     "words": "",
@@ -2546,7 +2546,7 @@
   {
     "id": "nishi-hall-3f-reference-room",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "資料室[西高会館]",
     "words": "",
@@ -2556,7 +2556,7 @@
   {
     "id": "nishi-hall-3f-japanese-style-room-0",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "和室1[西高会館]",
     "words": "",
@@ -2566,7 +2566,7 @@
   {
     "id": "nishi-hall-3f-japanese-style-room-1",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "和室2[西高会館]",
     "words": "",
@@ -2576,7 +2576,7 @@
   {
     "id": "nishi-hall-3f-japanese-style-room-2",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "和室3[西高会館]",
     "words": "",
@@ -2586,7 +2586,7 @@
   {
     "id": "physics-experiment-room",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "物理実験室",
     "words": "",
@@ -2596,7 +2596,7 @@
   {
     "id": "physics-preparation-room",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "物理準備室",
     "words": "",
@@ -2606,7 +2606,7 @@
   {
     "id": "physics-lecture-room",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "物理講義室",
     "words": "",
@@ -2616,7 +2616,7 @@
   {
     "id": "chemistry-lecture-room",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "化学講義室",
     "words": "",
@@ -2626,7 +2626,7 @@
   {
     "id": "chemistry-preparation-room",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "化学準備室",
     "words": "",
@@ -2636,7 +2636,7 @@
   {
     "id": "chemistry-experiment-preparation-room",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "化学実験準備室",
     "words": "",
@@ -2646,7 +2646,7 @@
   {
     "id": "chemistry-experiment-room",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "化学実験室",
     "words": "",
@@ -2656,7 +2656,7 @@
   {
     "id": "practice-room",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "練習室",
     "words": "",
@@ -2666,7 +2666,7 @@
   {
     "id": "musical-instrument-storage",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "楽器庫",
     "words": "",
@@ -2676,7 +2676,7 @@
   {
     "id": "music-room",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "音楽教室",
     "words": "",
@@ -2686,7 +2686,7 @@
   {
     "id": "music-preparation-room",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "音楽準備室",
     "words": "",
@@ -2696,7 +2696,7 @@
   {
     "id": "special-room-1st",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "第一特別教室",
     "words": "第1特別教室 第一特教 第1特教",
@@ -2706,7 +2706,7 @@
   {
     "id": "biology-preparation-room",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "生物準備室",
     "words": "",
@@ -2716,7 +2716,7 @@
   {
     "id": "biology-room",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "生物室",
     "words": "",
@@ -2726,7 +2726,7 @@
   {
     "id": "library",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "図書館",
     "words": "",
@@ -2736,7 +2736,7 @@
   {
     "id": "book-vault",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "書庫",
     "words": "",
@@ -2746,7 +2746,7 @@
   {
     "id": "pta-printing-room",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "PTA印刷室",
     "words": "第一講義準備室",
@@ -2756,7 +2756,7 @@
   {
     "id": "laputa",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "ラピュタ",
     "words": "",
@@ -2766,7 +2766,7 @@
   {
     "id": "audiovisual-hall-3f-pinspot",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "ピンスポット",
     "words": "",
@@ -2776,7 +2776,7 @@
   {
     "id": "audiovisual-hall-3f-stairs",
     "mode": "main",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "place",
     "name": "階段[視聴覚ホール]",
     "words": "",
@@ -2786,7 +2786,7 @@
   {
     "id": "s80-2a-front",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "剣道部",
     "words": "",
@@ -2798,7 +2798,7 @@
   {
     "id": "s80-2a-back",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "シブ楽隊",
     "words": "",
@@ -2810,7 +2810,7 @@
   {
     "id": "s80-2b-front",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "CR東日本",
     "words": "",
@@ -2820,7 +2820,7 @@
   {
     "id": "s80-2b-back",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "歴史研究部",
     "words": "",
@@ -2830,7 +2830,7 @@
   {
     "id": "s80-2c-front",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "男子硬式テニス部",
     "words": "",
@@ -2842,7 +2842,7 @@
   {
     "id": "s80-2c-back",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "Nishi Flyer",
     "words": "",
@@ -2852,7 +2852,7 @@
   {
     "id": "s80-2d-front",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "水泳部",
     "words": "",
@@ -2864,7 +2864,7 @@
   {
     "id": "s80-2d-back",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "卓球部",
     "words": "",
@@ -2876,7 +2876,7 @@
   {
     "id": "s80-2e",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "備品貸し出し",
     "words": "",
@@ -2886,7 +2886,7 @@
   {
     "id": "s80-2f-front",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "女子硬式テニス部",
     "words": "",
@@ -2896,7 +2896,7 @@
   {
     "id": "s80-2f-back",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "茶道部",
     "words": "",
@@ -2908,7 +2908,7 @@
   {
     "id": "s80-2g-front",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "男子ハンドボール部",
     "words": "",
@@ -2920,7 +2920,7 @@
   {
     "id": "s80-2g-back",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "演劇部",
     "words": "",
@@ -2930,7 +2930,7 @@
   {
     "id": "s80-2h-front",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "男子バスケットボール部",
     "words": "",
@@ -2942,7 +2942,7 @@
   {
     "id": "s80-2h-back",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "文芸部",
     "words": "",
@@ -2954,7 +2954,7 @@
   {
     "id": "s80-3a-front",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "ツョッカー。特撮研究会",
     "words": "",
@@ -2966,7 +2966,7 @@
   {
     "id": "s80-3a-back",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "西論会",
     "words": "",
@@ -2978,7 +2978,7 @@
   {
     "id": "s80-3b-front",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "ソフトテニス部",
     "words": "",
@@ -2990,7 +2990,7 @@
   {
     "id": "s80-3b-back",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "ディベート部",
     "words": "",
@@ -3002,7 +3002,7 @@
   {
     "id": "s80-3c-front",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "ダンス部",
     "words": "",
@@ -3012,7 +3012,7 @@
   {
     "id": "s80-3c-back",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "陸上競技部",
     "words": "",
@@ -3024,7 +3024,7 @@
   {
     "id": "s80-3d-front",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "女子バレーボール部",
     "words": "",
@@ -3036,7 +3036,7 @@
   {
     "id": "s80-3d-back",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "男子バレーボール部",
     "words": "",
@@ -3046,7 +3046,7 @@
   {
     "id": "s80-3e-front",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "504",
     "words": "",
@@ -3058,7 +3058,7 @@
   {
     "id": "s80-3e-back",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "かるた部",
     "words": "",
@@ -3070,7 +3070,7 @@
   {
     "id": "s80-3f",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "アメリカンフットボール部",
     "words": "",
@@ -3082,7 +3082,7 @@
   {
     "id": "s80-3g-front",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "女子バスケットボール部",
     "words": "",
@@ -3094,7 +3094,7 @@
   {
     "id": "s80-3g-back",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "数学研究同好会",
     "words": "",
@@ -3106,7 +3106,7 @@
   {
     "id": "s80-3h-front",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "サッカー部",
     "words": "",
@@ -3118,7 +3118,7 @@
   {
     "id": "s80-3h-back",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "バドミントン部",
     "words": "",
@@ -3130,7 +3130,7 @@
   {
     "id": "s80-social1-front",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "ポケモン研究サークル",
     "words": "",
@@ -3140,7 +3140,7 @@
   {
     "id": "s80-social1-back",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "女子ハンドボール部",
     "words": "",
@@ -3150,7 +3150,7 @@
   {
     "id": "s80-social2",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "体操部",
     "words": "",
@@ -3162,7 +3162,7 @@
   {
     "id": "s80-special1",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "吹奏楽部",
     "words": "",
@@ -3174,7 +3174,7 @@
   {
     "id": "s80-special2",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "ケルト音楽研究サークル",
     "words": "",
@@ -3186,7 +3186,7 @@
   {
     "id": "s80-career",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "つるばみ同好会",
     "words": "",
@@ -3198,7 +3198,7 @@
   {
     "id": "s80-audiovisual",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "軽音楽同好会",
     "words": "",
@@ -3210,7 +3210,7 @@
   {
     "id": "s80-music",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "管弦学部",
     "words": "",
@@ -3220,7 +3220,7 @@
   {
     "id": "s80-biology",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "生物部",
     "words": "",
@@ -3232,7 +3232,7 @@
   {
     "id": "s80-physics",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "物理部",
     "words": "",
@@ -3244,7 +3244,7 @@
   {
     "id": "s80-chemistry-le",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "クイズ研究サークル",
     "words": "",
@@ -3254,7 +3254,7 @@
   {
     "id": "s80-chemistry-ex",
     "mode": "shinkan80",
-    "floor": "3f",
+    "floor": "f3",
     "behavior": "shinkan80",
     "name": "化学部",
     "words": "",
@@ -3266,7 +3266,7 @@
   {
     "id": "s80-meeting",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "野球部",
     "words": "",
@@ -3278,7 +3278,7 @@
   {
     "id": "s80-broadcast",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "放送部",
     "words": "",
@@ -3288,7 +3288,7 @@
   {
     "id": "s80-art",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "イラスト研究部",
     "words": "",
@@ -3300,7 +3300,7 @@
   {
     "id": "s80-hallway-1",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "ESS",
     "words": "",
@@ -3310,7 +3310,7 @@
   {
     "id": "s80-hallway-2",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "新聞部",
     "words": "",
@@ -3322,7 +3322,7 @@
   {
     "id": "s80-hallway-3",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "園芸部",
     "words": "",
@@ -3334,7 +3334,7 @@
   {
     "id": "s80-hallway-4",
     "mode": "shinkan80",
-    "floor": "2f",
+    "floor": "f2",
     "behavior": "shinkan80",
     "name": "ボカロサークル",
     "words": "",
