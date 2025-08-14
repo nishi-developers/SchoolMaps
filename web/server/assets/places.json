@@ -88,7 +88,7 @@
     "words": "グランド グラウンド トラック",
     "desc": "",
     "images": [
-      "grand-kZRaRnHs.webp"
+      "/images/main/grand-kZRaRnHs.webp"
     ]
   },
   {
@@ -100,8 +100,8 @@
     "words": "",
     "desc": "",
     "images": [
-      "tennis_court-r9zge5qb.webp",
-      "tennis_court-AHGmB7D0.webp"
+      "/images/main/tennis_court-r9zge5qb.webp",
+      "/images/main/tennis_court-AHGmB7D0.webp"
     ]
   },
   {
@@ -113,7 +113,7 @@
     "words": "",
     "desc": "",
     "images": [
-      "handball_court-7mVe6x20.webp"
+      "/images/main/handball_court-7mVe6x20.webp"
     ]
   },
   {
@@ -415,7 +415,7 @@
     "words": "",
     "desc": "西高のシンボルともいえる**愛の泉**。/n西高には愛の泉に関する様々な噂がある。",
     "images": [
-      "fountain-87KPE1Vq.webp"
+      "/images/main/fountain-87KPE1Vq.webp"
     ]
   },
   {
@@ -817,7 +817,7 @@
     "words": "",
     "desc": "",
     "images": [
-      "clubroom_building_1-39A51R8u.webp"
+      "/images/main/clubroom_building_1-39A51R8u.webp"
     ]
   },
   {
@@ -879,7 +879,7 @@
     "words": "",
     "desc": "",
     "images": [
-      "pilotis-kZRaRnHs.webp"
+      "/images/main/pilotis-kZRaRnHs.webp"
     ]
   },
   {
@@ -901,8 +901,8 @@
     "words": "",
     "desc": "",
     "images": [
-      "gate_west_0-7BfkEqJ3.webp",
-      "gate_west_0-aCc5V363.webp"
+      "/images/main/gate_west_0-7BfkEqJ3.webp",
+      "/images/main/gate_west_0-aCc5V363.webp"
     ]
   },
   {
@@ -914,7 +914,7 @@
     "words": "",
     "desc": "[こちらの西門](gate_west_0)の方が多く利用されている。",
     "images": [
-      "gate_west_1-6G2EaBq6.webp"
+      "/images/main/gate_west_1-6G2EaBq6.webp"
     ]
   },
   {
@@ -926,8 +926,8 @@
     "words": "",
     "desc": "普段は閉門されている。",
     "images": [
-      "gate_west_2-39A51R8u.webp",
-      "gate_west_2-NHvb5xm3.webp"
+      "/images/main/gate_west_2-39A51R8u.webp",
+      "/images/main/gate_west_2-NHvb5xm3.webp"
     ]
   },
   {
@@ -939,8 +939,8 @@
     "words": "",
     "desc": "",
     "images": [
-      "gate_north_0-1ZftrcP4.webp",
-      "gate_north_0-AHGmB7D0.webp"
+      "/images/main/gate_north_0-1ZftrcP4.webp",
+      "/images/main/gate_north_0-AHGmB7D0.webp"
     ]
   },
   {
@@ -952,8 +952,8 @@
     "words": "",
     "desc": "普段は閉門されている。",
     "images": [
-      "gate_east_0-qAB23K19.webp",
-      "gate_east_0-JqRhs34H.webp"
+      "/images/main/gate_east_0-qAB23K19.webp",
+      "/images/main/gate_east_0-JqRhs34H.webp"
     ]
   },
   {
@@ -965,8 +965,8 @@
     "words": "",
     "desc": "",
     "images": [
-      "gate_nishi_hall_0-7BfkEqJ3.webp",
-      "gate_nishi_hall_0-aCc5V363.webp"
+      "/images/main/gate_nishi_hall_0-7BfkEqJ3.webp",
+      "/images/main/gate_nishi_hall_0-aCc5V363.webp"
     ]
   },
   {
@@ -978,7 +978,7 @@
     "words": "",
     "desc": "",
     "images": [
-      "gate_nishi_hall_1-7mVe6x20.webp"
+      "/images/main/gate_nishi_hall_1-7mVe6x20.webp"
     ]
   },
   {
@@ -990,7 +990,7 @@
     "words": "",
     "desc": "",
     "images": [
-      "straight_course-k0DNpn6R.webp"
+      "/images/main/straight_course-k0DNpn6R.webp"
     ]
   },
   {
@@ -2792,7 +2792,7 @@
     "words": "",
     "desc": "･素振り体験⚔️⚔️/n剣道部のアイドルの國吉ジェイソンを叩けます🤩🤩/n･人生劇場(映像)🔥🔥/n昨年記念祭3位を受賞した人生劇場｢陽炎｣が見れます！/n先輩への質問大歓迎‼️是非来てください！",
     "images": [
-      "s80_kendou.webp"
+      "/images/shinkan80/s80_kendou.webp"
     ]
   },
   {
@@ -2804,7 +2804,7 @@
     "words": "",
     "desc": "「電気を使わない音楽」を特徴とする音楽同好会♪/nおしゃべりとかギター弾くとかしてます！",
     "images": [
-      "s80_sibugaku.webp"
+      "/images/shinkan80/s80_sibugaku.webp"
     ]
   },
   {
@@ -2836,7 +2836,7 @@
     "words": "",
     "desc": "3年生7人、2年生9人で、週5日活動しています！初心者〜上級者まで本気でテニスしたい方！来ようぜBro！",
     "images": [
-      "s80_dannsikousikitenisu.webp"
+      "/images/shinkan80/s80_dannsikousikitenisu.webp"
     ]
   },
   {
@@ -2858,7 +2858,7 @@
     "words": "",
     "desc": "夏は水泳、冬は陸トレ！経験者未経験者どちらも大歓迎(*⁰▿⁰*)【2D】で待ってます♪",
     "images": [
-      "s80_suiei.webp"
+      "/images/shinkan80/s80_suiei.webp"
     ]
   },
   {
@@ -2870,7 +2870,7 @@
     "words": "",
     "desc": "強い人、沢山います。火・水・木・土の週4活動、男女問わず大歓迎！卓球は素晴らしいスポーツです。",
     "images": [
-      "s80_takkyuu.webp"
+      "/images/shinkan80/s80_takkyuu.webp"
     ]
   },
   {
@@ -2902,7 +2902,7 @@
     "words": "",
     "desc": "ご入学おめでとうございます(⁠◍⁠•⁠ᴗ⁠•⁠◍⁠)/n茶道部は毎週金曜日に和室で楽しく活動しています。気軽に遊びに来てください！",
     "images": [
-      "s80_sadou.webp"
+      "/images/shinkan80/s80_sadou.webp"
     ]
   },
   {
@@ -2914,7 +2914,7 @@
     "words": "",
     "desc": "ハンドボール部や競技の魅力を映像を交えて紹介します！ハンドボールをやったことがある人もやったことがない人もぜひ見にきてください！",
     "images": [
-      "s80_dannsihandoboru.webp"
+      "/images/shinkan80/s80_dannsihandoboru.webp"
     ]
   },
   {
@@ -2936,7 +2936,7 @@
     "words": "",
     "desc": "",
     "images": [
-      "s80_dannsibasukettoboru.webp"
+      "/images/shinkan80/s80_dannsibasukettoboru.webp"
     ]
   },
   {
@@ -2948,7 +2948,7 @@
     "words": "",
     "desc": "文芸部です！普段は部室などで様小説や詩を書いており、時には外部に依頼し、本格的な部誌を出版しています。団体発表は2Hにて！",
     "images": [
-      "s80_bunngei.webp"
+      "/images/shinkan80/s80_bunngei.webp"
     ]
   },
   {
@@ -2960,7 +2960,7 @@
     "words": "",
     "desc": "映像・アクションショー・部誌。特撮好きをはじめ、芝居やアクション、脚本や動画編集が好きな方もお待ちしています。",
     "images": [
-      "s80_tokusatu.webp"
+      "/images/shinkan80/s80_tokusatu.webp"
     ]
   },
   {
@@ -2972,7 +2972,7 @@
     "words": "",
     "desc": "主に文系よりのお話しと西高のお話しをしています",
     "images": [
-      "s80_seironn.webp"
+      "/images/shinkan80/s80_seironn.webp"
     ]
   },
   {
@@ -2984,7 +2984,7 @@
     "words": "",
     "desc": "団体発表では、ソフテニ部特有の魅力を熱く語ります！質問も待ってます！/nソフテニの虜になっちゃえ〜〜！",
     "images": [
-      "s80_sohutotenisu.webp"
+      "/images/shinkan80/s80_sohutotenisu.webp"
     ]
   },
   {
@@ -2996,7 +2996,7 @@
     "words": "",
     "desc": "競技ディベートは皆さんの想像とは一味違うかも。ぜひ遊びに来てください",
     "images": [
-      "s80_deibeto.webp"
+      "/images/shinkan80/s80_deibeto.webp"
     ]
   },
   {
@@ -3018,7 +3018,7 @@
     "words": "",
     "desc": "人はなぜ陸上をするのか。この世の真理は何か…選手として、真理の探究者として今日も陸上部は走る。",
     "images": [
-      "s80_rikujoukyougi.webp"
+      "/images/shinkan80/s80_rikujoukyougi.webp"
     ]
   },
   {
@@ -3030,7 +3030,7 @@
     "words": "",
     "desc": "女子バレーボール部です！週に4日ほど仲良く活動をしています。初心者でも経験者でもお待ちしています！",
     "images": [
-      "s80_josibareboru.webp"
+      "/images/shinkan80/s80_josibareboru.webp"
     ]
   },
   {
@@ -3052,7 +3052,7 @@
     "words": "",
     "desc": "プログラミングサークルです。少しでも興味をもった方は、ご気軽にどうぞ。",
     "images": [
-      "s80_504.webp"
+      "/images/shinkan80/s80_504.webp"
     ]
   },
   {
@@ -3064,7 +3064,7 @@
     "words": "",
     "desc": "団体発表は3E後方！札を好きなだけ払ってストレス発散＆ゲーム体験♪普段は保健室の奥、和室で活動中！",
     "images": [
-      "s80_karuta.webp"
+      "/images/shinkan80/s80_karuta.webp"
     ]
   },
   {
@@ -3076,7 +3076,7 @@
     "words": "",
     "desc": "アメフトは、いろんな人たちの「個性」が活きるスポーツです！あなたの個性をアメフトで輝かせてみませんか？",
     "images": [
-      "s80_amerikannhuttoboru.webp"
+      "/images/shinkan80/s80_amerikannhuttoboru.webp"
     ]
   },
   {
@@ -3088,7 +3088,7 @@
     "words": "",
     "desc": "入るしかないっ！！/n女バスで西春しよー！/n誰でも大歓迎🏀/nマネもきてね！/n待ってます！",
     "images": [
-      "s80_josibasukettoboru.webp"
+      "/images/shinkan80/s80_josibasukettoboru.webp"
     ]
   },
   {
@@ -3100,7 +3100,7 @@
     "words": "",
     "desc": "数学ゲームや生徒同士で行う授業、数学の問題を使ったイベントなど、数学に関わるさまざまな活動を行っている団体です。",
     "images": [
-      "s80_suukenn.webp"
+      "/images/shinkan80/s80_suukenn.webp"
     ]
   },
   {
@@ -3112,7 +3112,7 @@
     "words": "",
     "desc": "サッカー部/nセンパイが優しすぎる部活/n部活の雰囲気や練習内容などを紹介します。一緒にサッカー楽しもう！！",
     "images": [
-      "s80_sakka.webp"
+      "/images/shinkan80/s80_sakka.webp"
     ]
   },
   {
@@ -3124,7 +3124,7 @@
     "words": "",
     "desc": "団体発表では普段の活動の紹介、仮入部の説明、質問コーナーなどを行います。/nインスタグラムでは質問箱で質問受付中！オープンチャットでも仮入部の情報を流してます。",
     "images": [
-      "s80_badominton.webp"
+      "/images/shinkan80/s80_badominton.webp"
     ]
   },
   {
@@ -3156,7 +3156,7 @@
     "words": "",
     "desc": "週に４回各自のペースで楽しく目標に向かってアットホームで暖かい雰囲気の中活動しています！",
     "images": [
-      "s80_taisou.webp"
+      "/images/shinkan80/s80_taisou.webp"
     ]
   },
   {
@@ -3168,7 +3168,7 @@
     "words": "",
     "desc": "14:20、14:35、14:50、15:05からの4回、1曲演奏します♩途中参加ok！質問も常時受付中！待ってます〜",
     "images": [
-      "s80_suisougaku.webp"
+      "/images/shinkan80/s80_suisougaku.webp"
     ]
   },
   {
@@ -3180,7 +3180,7 @@
     "words": "",
     "desc": "紹介動画、昨年のクリスマスコンサートの録音を流します！運が良ければ79期の人たちの演奏が聴けちゃうかも！？",
     "images": [
-      "s80_kerutoongaku.webp"
+      "/images/shinkan80/s80_kerutoongaku.webp"
     ]
   },
   {
@@ -3192,7 +3192,7 @@
     "words": "",
     "desc": "いっしょにつるんでばんどみゅーじっく！",
     "images": [
-      "s80_turubami.webp"
+      "/images/shinkan80/s80_turubami.webp"
     ]
   },
   {
@@ -3204,7 +3204,7 @@
     "words": "",
     "desc": "軽音楽同好会/nWelcome Live開催中❗️/n14:25〜、14:35〜、/n14:45〜、14:55〜、全4回/nWelcome！",
     "images": [
-      "s80_keionn.webp"
+      "/images/shinkan80/s80_keionn.webp"
     ]
   },
   {
@@ -3226,7 +3226,7 @@
     "words": "",
     "desc": "気軽にお越しください",
     "images": [
-      "s80_seibutu.webp"
+      "/images/shinkan80/s80_seibutu.webp"
     ]
   },
   {
@@ -3238,7 +3238,7 @@
     "words": "",
     "desc": "実験や研究、生徒同士で行う授業など物理に関わるさまざまなことを楽しくワイワイしながらやる団体です。",
     "images": [
-      "s80_buturi.webp"
+      "/images/shinkan80/s80_buturi.webp"
     ]
   },
   {
@@ -3260,7 +3260,7 @@
     "words": "",
     "desc": "4/10 14:10-15:20に色んな実験の演示を行います！/n化学に興味がある人も無い人もぜび覗いてみてください！",
     "images": [
-      "s80_kagaku.webp"
+      "/images/shinkan80/s80_kagaku.webp"
     ]
   },
   {
@@ -3272,7 +3272,7 @@
     "words": "",
     "desc": "野球部は会議室にて1年の流れや普段の活動について説明します。体験活動も用意しているので奮ってご参加ください！",
     "images": [
-      "s80_yakyuu.webp"
+      "/images/shinkan80/s80_yakyuu.webp"
     ]
   },
   {
@@ -3294,7 +3294,7 @@
     "words": "",
     "desc": "･フリースペースにて先輩と雑談しながらイラストが描けます！/n･新歓号その他過去の部誌の展示･配布を行ってます！",
     "images": [
-      "s80_irasuto.webp"
+      "/images/shinkan80/s80_irasuto.webp"
     ]
   },
   {
@@ -3316,7 +3316,7 @@
     "words": "",
     "desc": "渡り廊下で簡単な説明と学校新聞「學苑」の発行をしています！君もぶんぶに入って好きなように書こう！",
     "images": [
-      "s80_sinnbunn.webp"
+      "/images/shinkan80/s80_sinnbunn.webp"
     ]
   },
   {
@@ -3328,7 +3328,7 @@
     "words": "",
     "desc": "お花や野菜を育ててます。兼部も可能です。ぜひ来てください。",
     "images": [
-      "s80_enngei.webp"
+      "/images/shinkan80/s80_enngei.webp"
     ]
   },
   {
@@ -3340,7 +3340,7 @@
     "words": "",
     "desc": "クイズイベントを開催したり、おでかけしたり、雑談したりなどボカロに関わるさまざまなことをゆるーくやる団体です。",
     "images": [
-      "s80_bokaro.webp"
+      "/images/shinkan80/s80_bokaro.webp"
     ]
   }
 ]
