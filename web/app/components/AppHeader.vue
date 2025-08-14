@@ -18,7 +18,6 @@
     height: var(--HeaderHeight);
     position: fixed;
     font-weight: bold;
-    box-sizing: border-box;
 }
 
 #title {

@@ -822,7 +822,6 @@ _:future,
   color: var(--MainBodyColor);
   cursor: pointer;
   width: 100%;
-  box-sizing: border-box;
 }
 
 #floorMenu ul li.func {
@@ -854,7 +853,6 @@ _:future,
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
   width: 135px;
   margin: 2px 0 2px 0;
   padding: 8px 12px;
@@ -869,7 +867,6 @@ _:future,
 
 .layersMenu .layer span {
   text-align: center;
-  box-sizing: border-box;
   white-space: nowrap;
 }
 
