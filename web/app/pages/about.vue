@@ -1,15 +1,15 @@
 <template>
   <div>
-    <div class="background text widthLimit">
-      <p class="textTitle">このサイトについて</p>
-      <p class="textH">西高マップとは</p>
-      <p class="textP">
+    <div class="page">
+      <h1>このサイトについて</h1>
+      <h2>西高マップとは</h2>
+      <p>
         <b><a href="https://www.metro.ed.jp/nishi-h/" target="_blank"
             rel="noopener noreferrer">東京都立西高等学校</a></b>の校内マップです。<br>
         本サイトは下記団体が運営しており、高校へお問い合わせいただいてもお答えできません。
       </p>
-      <p class="textH">開発･運営情報</p>
-      <p class="textP">
+      <h2>開発･運営情報</h2>
+      <p>
         開発者 : <a href="https://github.com/M-Haruki" target="_blank" rel="noopener noreferrer">M_Haruki</a><br>
         運営団体 : <a href="https://504hp.vercel.app/" target="_blank" rel="noopener noreferrer">504</a><br>
         ソースコードは
@@ -23,8 +23,8 @@
         </a>
         のもと公開しています。
       </p>
-      <p class="textH">アクセス解析ツールについて</p>
-      <p class="textP">
+      <h2>アクセス解析ツールについて</h2>
+      <p>
         　当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス(Google Analytics)」を使用しています。
         このGoogleアナリティクスではトラフィックデータ収集のため、Cookie、広告識別子などの識別情報、データの収集に使われる類似の技術を使用しています。
         これらにより収集されたデータは匿名のものであり、個人を特定するものではありません。

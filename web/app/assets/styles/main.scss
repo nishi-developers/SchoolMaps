@@ -8,13 +8,8 @@
   outline: none;
 }
 :root {
-  /* フォント */
   font-family: "Noto Sans JP", "sans-serif", "serif";
-  /* ヘッダーの高さ */
   --HeaderHeight: 50px; /* Map.vueのJSからも参照されているので注意 */
-}
-
-:root {
   background-color: var(--MainBaseColor);
   overflow: hidden;
 }
@@ -31,44 +26,35 @@ a {
   text-decoration: none;
 }
 .page {
-  width: 100%;
-  height: 100%;
-}
-.background {
   background-color: var(--MainBaseColor);
   width: 100%;
   height: 100%;
   padding: 15px;
   overflow: scroll;
-}
-
-.background.widthLimit {
   max-width: 800px;
   margin: 0 auto;
 }
 /* テキスト共通 */
-.text {
-  overflow: scroll;
-}
-.textTitle {
+h1 {
   font-size: 1.8rem;
   font-weight: bold;
   color: var(--MainBodyColor);
   margin-bottom: 1rem;
 }
-.textH {
+h2 {
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--MainBodyColor);
   margin-top: 1rem;
 }
-.textH2 {
+h3 {
   font-size: 1.2rem;
   font-weight: bold;
   color: var(--MainBodyColor);
   margin-top: 0.5rem;
 }
-.textP {
+p,
+li {
   font-size: 1rem;
   color: var(--MainBodyColor);
 }

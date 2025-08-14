@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div id="search" class="background text widthLimit">
-      <p class="textTitle">マップ検索</p>
+    <div id="search" class="page">
+      <h1>マップ検索</h1>
       <div class="searchBox">
         <label for="searchInput" class="searchIcon">
           <Icon name="material-symbols:search-rounded" />
