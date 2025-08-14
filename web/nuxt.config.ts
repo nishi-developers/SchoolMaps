@@ -22,7 +22,6 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       systemVersion: packageJson.version || "unknown",
-      mapVersion: "0.4.0",
       buildDate: new Date().toISOString(),
     },
   },
