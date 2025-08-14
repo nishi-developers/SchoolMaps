@@ -8,8 +8,8 @@
       </p>
     </div>
     <div v-else>
-      <h2 class="status">{{ error?.statusCode }}</h2>
-      <h3>{{ error?.message }}</h3>
+      <h1 class="status">{{ error?.statusCode }}</h1>
+      <h2>{{ error?.message }}</h2>
       <p class="link" @click="$router.back();">
         Back to Previous Page
       </p>

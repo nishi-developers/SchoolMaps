@@ -33,10 +33,10 @@
       </div>
       <div class="results">
         <div v-for="id, key in results" :key="key" class="place" @click="move(id)">
-          <span v-if="search.PlaceInfo[id]" class="name">{{ search.PlaceInfo[id].name }}</span>
-          <span v-if="search.PlaceInfo[id] && search.FloorInfo[search.PlaceInfo[id].floor]" class="position">
+          <span class="name">{{$places.filter((place) => place.id === id)[0]!.name}}</span>
+          <span class="position">
             <Icon name="material-symbols:location-on-rounded" />
-            {{ search.FloorInfo[search.PlaceInfo[id].floor]?.fullName }}
+            {{$floors.filter((floor) => floor.id === $places.filter((place) => place.id === id)[0]!.floor)[0]!.name}}
           </span>
         </div>
       </div>
@@ -46,9 +46,9 @@
 <script setup lang="ts">
 const route = useRoute()
 useHead({ title: '検索' })
+const { $floors, $places } = useNuxtApp();
 
 const search = new Search()
-await search.initialize()
 
 function decodeUrl() {
   // URLの切り出しとデコードまで行う
