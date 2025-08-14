@@ -73,7 +73,6 @@ function hide() {
     align-items: center;
     padding: 10px;
     gap: 5px;
-    box-sizing: border-box;
     color: var(--SubBodyColor);
 }
 

@@ -318,7 +318,6 @@ watch(imageIsReady, (newVal) => {
     background-color: var(--SubBaseColor);
     position: absolute;
     z-index: 20;
-    box-sizing: border-box;
     overflow: scroll;
 }
 
@@ -383,7 +382,6 @@ p {
     border-radius: 20px;
     margin: 0 10px;
     border: 2px solid var(--SubColor);
-    box-sizing: border-box;
 }
 
 #desc b {

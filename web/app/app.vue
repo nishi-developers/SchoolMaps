@@ -1,21 +1,20 @@
 <template>
-  <div>
-    <VitePwaManifest />
-    <NuxtRouteAnnouncer />
-    <AppHeader />
-    <NuxtPage id="page" />
-    <BottomNotify />
-  </div>
+  <VitePwaManifest />
+  <NuxtRouteAnnouncer />
+  <AppHeader />
+  <!-- NuxtPageは各Vueファイルの一番外側のdivタグに置き換えられる -->
+  <NuxtPage id="page" />
+  <BottomNotify />
 </template>
 <script setup lang="ts">
 // デフォルトのピンチアウトを無効化
 // 1本をブロックすると、プロパティでのスクロールが無効化されるため、2本以上をブロックする
 // <参考> https://moewe-net.com/js/disable-zoom
-document.body.addEventListener('touchmove', (event) => {
-  if (event.touches.length > 1) {
-    event.preventDefault();
-  }
-}, { passive: false });
+// document.body.addEventListener('touchmove', (event) => {
+//   if (event.touches.length > 1) {
+//     event.preventDefault();
+//   }
+// }, { passive: false });
 </script>
 
 <style scoped lang="scss">
@@ -23,8 +22,7 @@ document.body.addEventListener('touchmove', (event) => {
   position: relative;
   top: var(--HeaderHeight);
   height: calc(100vh - var(--HeaderHeight));
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* transition */

@@ -1,41 +1,44 @@
 <template>
-  <div id="search" class="background text widthLimit">
-    <p class="textTitle">マップ検索</p>
-    <div class="searchBox">
-      <label for="searchInput" class="searchIcon">
-        <Icon name="material-symbols:search-rounded" />
-      </label>
-      <input id="searchInput" v-model="query" type="text" class="searchInput" placeholder="検索ワードを入力" required>
-      <label for="searchInput" class="searchFunc" :class="[searchXmarkIsActive ? 'active' : '']" @click="resetSearch()">
-        <Icon name="material-symbols:cancel-outline-rounded" />
-      </label>
-      <label class="searchFunc" @click="shareLink()">
-        <Icon name="material-symbols:ios-share-rounded" />
-      </label>
-    </div>
-    <div class="layerSelect">
-      <!-- <div class="layer" v-for="layer in Layers.filter(l => l.place).reverse()" :key="layer.prefix"
+  <div>
+    <div id="search" class="background text widthLimit">
+      <p class="textTitle">マップ検索</p>
+      <div class="searchBox">
+        <label for="searchInput" class="searchIcon">
+          <Icon name="material-symbols:search-rounded" />
+        </label>
+        <input id="searchInput" v-model="query" type="text" class="searchInput" placeholder="検索ワードを入力" required>
+        <label for="searchInput" class="searchFunc" :class="[searchXmarkIsActive ? 'active' : '']"
+          @click="resetSearch()">
+          <Icon name="material-symbols:cancel-outline-rounded" />
+        </label>
+        <label class="searchFunc" @click="shareLink()">
+          <Icon name="material-symbols:ios-share-rounded" />
+        </label>
+      </div>
+      <div class="layerSelect">
+        <!-- <div class="layer" v-for="layer in Layers.filter(l => l.place).reverse()" :key="layer.prefix"
         @click="searchLayer != layer.prefix ? searchLayer = layer.prefix : searchLayer = null;"
         :class="[searchLayer == layer.prefix ? 'selected' : '']">
         <span v-if="layer.switchable">{{ layer.name }}</span>
         <span v-el se>基本マップ</span>
       </div> -->
-      <input id="isAndCheck" v-model="isAndSearch" type="checkbox">
-      <label for="isAndChecl">AND検索</label>
-      <div class="layer">
-        <span>layer:shinkan80</span>
+        <input id="isAndCheck" v-model="isAndSearch" type="checkbox">
+        <label for="isAndChecl">AND検索</label>
+        <div class="layer">
+          <span>layer:shinkan80</span>
+        </div>
+        <div class="layer">
+          <span>未実装</span>
+        </div>
       </div>
-      <div class="layer">
-        <span>未実装</span>
-      </div>
-    </div>
-    <div class="results">
-      <div v-for="id, key in results" :key="key" class="place" @click="move(id)">
-        <span v-if="search.PlaceInfo[id]" class="name">{{ search.PlaceInfo[id].name }}</span>
-        <span v-if="search.PlaceInfo[id] && search.FloorInfo[search.PlaceInfo[id].floor]" class="position">
-          <Icon name="material-symbols:location-on-rounded" />
-          {{ search.FloorInfo[search.PlaceInfo[id].floor]?.fullName }}
-        </span>
+      <div class="results">
+        <div v-for="id, key in results" :key="key" class="place" @click="move(id)">
+          <span v-if="search.PlaceInfo[id]" class="name">{{ search.PlaceInfo[id].name }}</span>
+          <span v-if="search.PlaceInfo[id] && search.FloorInfo[search.PlaceInfo[id].floor]" class="position">
+            <Icon name="material-symbols:location-on-rounded" />
+            {{ search.FloorInfo[search.PlaceInfo[id].floor]?.fullName }}
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -136,7 +139,6 @@ p {
   height: var(--SearchBoxHeight);
   width: 100%;
   display: flex;
-  box-sizing: border-box;
 }
 
 .searchIcon {
