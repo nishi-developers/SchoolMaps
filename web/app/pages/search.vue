@@ -62,7 +62,7 @@ function decodeUrl() {
   }
 }
 
-function encodeUrl(query: string | null, isAndSearch: boolean) {
+async function encodeUrl(query: string | null, isAndSearch: boolean) {
   // URLをエンコードして変更する
   let isAnd: string
   if (query == null) {
@@ -73,7 +73,14 @@ function encodeUrl(query: string | null, isAndSearch: boolean) {
   } else {
     isAnd = "false"
   }
-  window.history.replaceState({}, '', `/search?q=${encodeURIComponent(query)}&and=${isAnd}`)
+  await navigateTo({
+    name: 'search',
+    query: {
+      q: encodeURIComponent(query),
+      and: isAnd,
+    },
+    replace: true,
+  })
 }
 
 // 検索機能
@@ -93,14 +100,14 @@ watch([query, isAndSearch], () => {
 
 
 // ページ遷移
-function move(id: string) {
+async function move(id: string) {
   // let floor = PlaceInfo[id].floor
   // let layer = PlaceInfo[id].layer
   // let url = `/${floor}/${id}`
   // if (Layers.filter(alayer => alayer.prefix == layer)[0].switchable) {
   //   url += `?layer=${layer}`
   // }
-  // navigateTo(url)
+  // await navigateTo(url)
   alert(`ID: ${id} の場所に移動します (実装未完了)`)
 }
 
