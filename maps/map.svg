@@ -1,4 +1,4 @@
-<svg width="1991.311" height="4493.0488" viewBox="0 0 1991.311 4493.0488" version="1.1" xml:space="preserve" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" id="svg375"
+<svg width="1991.311" height="4493.0488" viewBox="0 0 1991.311 4493.0488" version="1.1" xml:space="preserve" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" id="svg350"
   xmlns="http://www.w3.org/2000/svg"
   xmlns:svg="http://www.w3.org/2000/svg"
   xmlns:serif="http://www.serif.com/">
@@ -108,6 +108,14 @@
   <path d="m 1623.13,1721.14 h 185.09 v 154.42 h -185.09 z" mode="main" floor="f1" behavior="place" place="training-room"></path>
   <path d="m 1064.62,1061.09 c 0,24.03 -19.47,43.51 -43.5,43.51 -24.025,0 -43.502,-19.48 -43.502,-43.51 0,-24.02 19.477,-43.5 43.502,-43.5 24.03,0 43.5,19.48 43.5,43.5 z" mode="main" floor="f1" behavior="place" place="fountain"></path>
   <path d="M 943.421,111.989 V 96.293 h 100.299 v 15.696 z" mode="main" floor="f1" behavior="place" place="gate-north-0"></path>
+  <path d="m 168.249,1858.97 h 138.887 v 122.8 H 168.249 Z" mode="main" floor="f1" behavior="place" place="classroom-1h"></path>
+  <path d="m 307.135,1859.97 h 138.887 v 122.8 H 307.135 Z" mode="main" floor="f1" behavior="place" place="classroom-1g"></path>
+  <path d="m 446.022,1859.97 h 138.887 v 122.8 H 446.022 Z" mode="main" floor="f1" behavior="place" place="classroom-1f"></path>
+  <path d="m 584.908,1859.97 h 138.887 v 122.8 H 584.908 Z" mode="main" floor="f1" behavior="place" place="classroom-1e"></path>
+  <path d="M 817.113,1859.97 H 956 v 122.8 H 817.113 Z" mode="main" floor="f1" behavior="place" place="classroom-1d"></path>
+  <path d="m 956,1859.97 h 138.89 v 122.8 H 956 Z" mode="main" floor="f1" behavior="place" place="classroom-1c"></path>
+  <path d="m 1094.89,1859.97 h 138.89 v 122.8 h -138.89 z" mode="main" floor="f1" behavior="place" place="classroom-1b"></path>
+  <path d="m 1233.77,1859.97 h 138.89 v 122.8 h -138.89 z" mode="main" floor="f1" behavior="place" place="classroom-1a"></path>
   <path d="m 449.688,1379.74 h 144.84 v 138.86 h -144.84 z" mode="main" floor="f1" behavior="place" place="janitorial-room"></path>
   <path d="m 1511.54,1875.57 h 327.93 v 497.56 h -327.93 z" mode="main" floor="f1" behavior="place" place="pilotis"></path>
   <path d="m 315.321,1670.24 h 405.135 v 148.81 H 315.321 Z" mode="main" floor="f1" behavior="place" place="students-entrance"></path>
@@ -221,6 +229,14 @@
   <path d="m 1485.45,1652.57 h 439.42 v 555.39 h -439.42 z" mode="main" floor="f2" behavior="place" place="pool"></path>
   <path d="m 1223.47,761.285 h 159.2 v 366.535 h -159.2 z" mode="main" floor="f2" behavior="place" place="meeting-room"></path>
   <path d="m 1780.07,924.241 h 141.91 v 86.609 h -141.91 z" mode="main" floor="f2" behavior="place" place="art-preparation-room"></path>
+  <path d="m 168.249,1859.97 h 138.887 v 122.8 H 168.249 Z" mode="main" floor="f2" behavior="place" place="classroom-2h"></path>
+  <path d="m 307.135,1859.97 h 138.887 v 122.8 H 307.135 Z" mode="main" floor="f2" behavior="place" place="classroom-2g"></path>
+  <path d="m 446.022,1859.97 h 138.887 v 122.8 H 446.022 Z" mode="main" floor="f2" behavior="place" place="classroom-2f"></path>
+  <path d="m 584.908,1859.97 h 138.887 v 122.8 H 584.908 Z" mode="main" floor="f2" behavior="place" place="classroom-2e"></path>
+  <path d="M 817.113,1859.97 H 956 v 122.8 H 817.113 Z" mode="main" floor="f2" behavior="place" place="classroom-2d"></path>
+  <path d="m 956,1859.97 h 138.89 v 122.8 H 956 Z" mode="main" floor="f2" behavior="place" place="classroom-2c"></path>
+  <path d="m 1094.89,1859.97 h 138.89 v 122.8 h -138.89 z" mode="main" floor="f2" behavior="place" place="classroom-2b"></path>
+  <path d="m 1233.77,1859.97 h 138.89 v 122.8 h -138.89 z" mode="main" floor="f2" behavior="place" place="classroom-2a"></path>
   <path d="m 904.428,1304.62 h 478.242 v 140.12 H 904.428 Z" mode="main" floor="f2" behavior="place" place="teachers-room"></path>
   <path d="m 1780.08,1304.62 h 141.91 v 140.12 h -141.91 z" mode="main" floor="f2" behavior="place" place="special-room-2nd"></path>
   <path d="m 1223.46,554.045 h 159.19 v 69.078 h -159.19 z" mode="main" floor="f2" behavior="place" place="mathematics-preparation-room"></path>
@@ -295,6 +311,14 @@
   <path d="m 1780.07,693.201 h 141.91 v 232.044 h -141.91 z" mode="main" floor="f3" behavior="place" place="biology-room"></path>
   <path d="m 1780.07,1011.85 h 141.91 v 180.75 h -141.91 z" mode="main" floor="f3" behavior="place" place="special-room-1st"></path>
   <path d="m 1739.13,555.045 h 182.86 v 138.156 h -182.86 z" mode="main" floor="f3" behavior="place" place="laputa"></path>
+  <path d="m 168.249,1860.97 h 138.887 v 122.8 H 168.249 Z" mode="main" floor="f3" behavior="place" place="classroom-3h"></path>
+  <path d="m 307.135,1860.97 h 138.887 v 122.8 H 307.135 Z" mode="main" floor="f3" behavior="place" place="classroom-3g"></path>
+  <path d="m 446.022,1860.97 h 138.887 v 122.8 H 446.022 Z" mode="main" floor="f3" behavior="place" place="classroom-3f"></path>
+  <path d="m 584.908,1860.97 h 138.887 v 122.8 H 584.908 Z" mode="main" floor="f3" behavior="place" place="classroom-3e"></path>
+  <path d="M 817.113,1860.97 H 956 v 122.8 H 817.113 Z" mode="main" floor="f3" behavior="place" place="classroom-3d"></path>
+  <path d="m 956,1860.97 h 138.89 v 122.8 H 956 Z" mode="main" floor="f3" behavior="place" place="classroom-3c"></path>
+  <path d="m 1094.89,1860.97 h 138.89 v 122.8 h -138.89 z" mode="main" floor="f3" behavior="place" place="classroom-3b"></path>
+  <path d="m 1233.77,1860.97 h 138.89 v 122.8 h -138.89 z" mode="main" floor="f3" behavior="place" place="classroom-3a"></path>
   <path d="m 1021.12,1305.62 h 150.48 v 140.12 h -150.48 z" mode="main" floor="f3" behavior="place" place="chemistry-preparation-room"></path>
   <path d="m 1780.08,1305.62 h 141.91 v 140.12 h -141.91 z" mode="main" floor="f3" behavior="place" place="music-preparation-room"></path>
   <path d="m 558.317,1380.73 h 165.476 v 138.86 H 558.317 Z" mode="main" floor="f3" behavior="place" place="physics-experiment-room"></path>
