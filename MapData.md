@@ -200,17 +200,17 @@ SVGファイルのひとつひとつの要素を`オブジェクト`と呼ぶ。
 
 ```json:detail.json
 {
-  "isDatabaseIntegrated": true,
   "mapVersion": "1.0.0",
   "width": 1920,
   "height": 1080,
+  "isDatabaseIntegrated": true,
 }
 ```
 
-- `isDatabaseIntegrated`は、データベース統合の有無を示すフラグ
-  - この値はバックエンドで自動的に設定される
 - `mapVersion`は、マップのバージョンを示す文字列
 - `width`と`height`は、マップの幅と高さをピクセル単位で指定する
+- `isDatabaseIntegrated`は、データベース統合の有無を示すフラグ
+  - この値はバックエンドで自動的に設定される
 
 ## 作成方法
 
