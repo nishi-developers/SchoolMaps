@@ -52,10 +52,10 @@ useHead({ title: 'このサイトについて' })
 
 // クリックカウント
 let clickCount = 0;
-function handleClick() {
+async function handleClick() {
   clickCount++;
   if (clickCount >= 5) {
-    navigateTo('/auth');
+    await navigateTo('/auth');
     clickCount = 0;
   }
 }
