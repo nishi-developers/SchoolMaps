@@ -1,3 +1,51 @@
+<template>
+  <Transition :name="`property-${deviceMode}`">
+    <PropertyView v-if="isShowProperty" :Floor="currentFloor" :PlaceId="currentPlaceId" :deviceMode="deviceMode"
+      :key="currentFloor + '-' + currentPlaceId"
+      @hideProperty="Setup.changeURL(currentFloor, null, Setup.showLayer.value)" @jump="Setup.changeURL" />
+  </Transition>
+  <div id="floorMenu">
+    <ul>
+      <li class="func">
+        <Icon @click="router.push('/search')" name="material-symbols:search-rounded" />
+      </li>
+      <li class="func">
+        <Icon @click="Control.resetMove()" name="material-symbols:reset-focus-outline-rounded" />
+      </li>
+      <li class="func" v-if="labelOpacity == 0">
+        <Icon @click="labelOpacity = 1" name="material-symbols:label-outline-rounded" />
+      </li>
+      <li class="func" v-else>
+        <Icon @click="labelOpacity = 0" name="material-symbols:label-off-outline-rounded" />
+      </li>
+      <li class="floor" v-for="floor in Setup.placeInfoReverse" :key="floor.__key__"
+        @click="Setup.changeURL(floor.__key__, null, Setup.showLayer.value)"
+        :class="floor.__key__ === currentFloor ? 'selected' : 'notselected'">
+        {{ floor.shortName }}</li>
+    </ul>
+  </div>
+  <div class="layersMenu">
+    <div class="layer" v-for="layer in Layers.filter(layer => layer.switchable)" :key="layer"
+      @click="((Setup.showLayer.value == layer.prefix) ? Setup.changeLayer(null) : Setup.changeLayer(layer.prefix))"
+      :class="(Setup.showLayer.value == layer.prefix) ? 'selected' : ''">
+      <input type="checkbox" class="checkbox" :checked="Setup.showLayer.value == layer.prefix">
+      <span class="name">{{ layer.name }}</span>
+    </div>
+  </div>
+  <div v-if="isShowWrapper" id="wrapperBox" @click="Control.wrapEvent('click', $event)"
+    @mousemove="Control.wrapEvent('mousemove', $event)" @mousedown="Control.wrapEvent('mousedown', $event)"
+    @mouseup="Control.wrapEvent('mouseup', $event)" @touchmove="Control.wrapEvent('touchmove', $event)"
+    @touchstart="Control.wrapEvent('touchstart', $event)" @touchend="Control.wrapEvent('touchend', $event)"
+    @touchcancel="Control.wrapEvent('touchcancel', $event)" @wheel="Control.wrapEvent('wheel', $event)"></div>
+  <div id="box">
+    <div id="map_content" draggable="false" :key="currentFloor">
+      <Transition name="map" mode="out-in">
+        <component :is="Setup.mapDataCurrent" @mounted="Setup.setMapData" />
+      </Transition>
+    </div>
+  </div>
+</template>
+
 <script setup>
 import PlaceInfo from '@/assets/PlaceInfo.json'
 import FloorInfo from '@/assets/FloorInfo.json'
@@ -920,50 +968,3 @@ _:future,
 
 }
 </style>
-<template>
-  <Transition :name="`property-${deviceMode}`">
-    <PropertyView v-if="isShowProperty" :Floor="currentFloor" :PlaceId="currentPlaceId" :deviceMode="deviceMode"
-      :key="currentFloor + '-' + currentPlaceId"
-      @hideProperty="Setup.changeURL(currentFloor, null, Setup.showLayer.value)" @jump="Setup.changeURL" />
-  </Transition>
-  <div id="floorMenu">
-    <ul>
-      <li class="func">
-        <Icon @click="router.push('/search')" name="material-symbols:search-rounded" />
-      </li>
-      <li class="func">
-        <Icon @click="Control.resetMove()" name="material-symbols:reset-focus-outline-rounded" />
-      </li>
-      <li class="func" v-if="labelOpacity == 0">
-        <Icon @click="labelOpacity = 1" name="material-symbols:label-outline-rounded" />
-      </li>
-      <li class="func" v-else>
-        <Icon @click="labelOpacity = 0" name="material-symbols:label-off-outline-rounded" />
-      </li>
-      <li class="floor" v-for="floor in Setup.placeInfoReverse" :key="floor.__key__"
-        @click="Setup.changeURL(floor.__key__, null, Setup.showLayer.value)"
-        :class="floor.__key__ === currentFloor ? 'selected' : 'notselected'">
-        {{ floor.shortName }}</li>
-    </ul>
-  </div>
-  <div class="layersMenu">
-    <div class="layer" v-for="layer in Layers.filter(layer => layer.switchable)" :key="layer"
-      @click="((Setup.showLayer.value == layer.prefix) ? Setup.changeLayer(null) : Setup.changeLayer(layer.prefix))"
-      :class="(Setup.showLayer.value == layer.prefix) ? 'selected' : ''">
-      <input type="checkbox" class="checkbox" :checked="Setup.showLayer.value == layer.prefix">
-      <span class="name">{{ layer.name }}</span>
-    </div>
-  </div>
-  <div v-if="isShowWrapper" id="wrapperBox" @click="Control.wrapEvent('click', $event)"
-    @mousemove="Control.wrapEvent('mousemove', $event)" @mousedown="Control.wrapEvent('mousedown', $event)"
-    @mouseup="Control.wrapEvent('mouseup', $event)" @touchmove="Control.wrapEvent('touchmove', $event)"
-    @touchstart="Control.wrapEvent('touchstart', $event)" @touchend="Control.wrapEvent('touchend', $event)"
-    @touchcancel="Control.wrapEvent('touchcancel', $event)" @wheel="Control.wrapEvent('wheel', $event)"></div>
-  <div id="box">
-    <div id="map_content" draggable="false" :key="currentFloor">
-      <Transition name="map" mode="out-in">
-        <component :is="Setup.mapDataCurrent" @mounted="Setup.setMapData" />
-      </Transition>
-    </div>
-  </div>
-</template>
