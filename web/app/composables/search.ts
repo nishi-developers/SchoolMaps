@@ -1,31 +1,32 @@
-type SearchIndex = [
-  {
-    id: string;
-    name: string;
-    words: string;
-    desc: string;
-    mode: string;
-    floor: string;
-    behavior: string;
-    modeName: string;
-    floorName: string;
-  }
-];
+type SearchIndexItem = {
+  id: string;
+  name: string;
+  words: string;
+  desc: string;
+  mode: string;
+  floor: string;
+  behavior: string;
+  modeName: string;
+  floorName: string;
+};
 
-export class Search {
-  #searchIndex: SearchIndex = [] as unknown as SearchIndex;
-  #targets = ["id", "name", "words", "desc", "mode", "floor", "behavior", "modeName", "floorName"] as const;
+export const useSearch = () => {
+  const targets = ["id", "name", "words", "desc", "mode", "floor", "behavior", "modeName", "floorName"] as const;
+  const { $modes, $floors, $places } = useNuxtApp();
 
-  constructor() {
-    const { $modes, $floors, $places } = useNuxtApp();
+  // const searchIndex: SearchIndex = [] as unknown as SearchIndex;
+  const searchIndex = computed<SearchIndexItem[]>(() => {
+    const index: SearchIndexItem[] = [];
     for (const place of $places.value) {
       const normalizeContent = (content: string | null | undefined) => {
         if (typeof content !== "string") return "";
-        return this.#normalize(content);
+        return normalize(content);
       };
+
       // modesのenableがtrueのものだけを対象にする
       if ($modes.value.find((mode) => mode.id === place.mode)?.enable !== true) continue;
-      this.#searchIndex.push({
+
+      index.push({
         id: normalizeContent(place.id),
         name: normalizeContent(place.name),
         words: normalizeContent(place.words),
@@ -37,16 +38,17 @@ export class Search {
         floorName: normalizeContent($floors.value.find((floor) => floor.id === place.floor)?.name),
       });
     }
-  }
+    return index;
+  });
 
-  search(rawQuery: string | null, isAndSearch: boolean = false): Array<string> {
+  const search = (rawQuery: string | null, isAndSearch: boolean = false): Array<string> => {
     if (!rawQuery) {
       rawQuery = ""; // 空文字列やnullの場合は全ての結果を返す
     }
-    const querys = this.#normalize(rawQuery).split(" ");
+    const querys = normalize(rawQuery).split(" ");
     const results: Array<string> = [];
     for (const query of querys) {
-      const ids = this.#searchByOneQuery(query);
+      const ids = searchByOneQuery(query);
       if (!isAndSearch) {
         // OR検索
         ids.forEach((id) => {
@@ -67,18 +69,18 @@ export class Search {
       }
     }
     return results;
-  }
+  };
 
-  #searchByOneQuery(query: string): Array<string> {
+  const searchByOneQuery = (query: string): Array<string> => {
     const results: Array<string> = [];
-    const { prefix, parsedQuery } = this.#parseQuery(query);
+    const { prefix, parsedQuery } = parseQuery(query);
     if (parsedQuery === "") {
       // クエリが空の場合は全てのIDを返す
-      return this.#searchIndex.map((index) => index.id);
+      return searchIndex.value.map((index) => index.id);
     }
-    for (const target of this.#targets) {
+    for (const target of targets) {
       if (prefix === null || prefix === target) {
-        this.#searchIndex.forEach((index) => {
+        searchIndex.value.forEach((index) => {
           if (index[target].includes(parsedQuery)) {
             results.push(index.id);
           }
@@ -86,10 +88,10 @@ export class Search {
       }
     }
     return results;
-  }
+  };
 
-  #parseQuery(query: string): { prefix: string | null; parsedQuery: string } {
-    for (const target of this.#targets) {
+  const parseQuery = (query: string): { prefix: string | null; parsedQuery: string } => {
+    for (const target of targets) {
       if (query.startsWith(`${target}:`)) {
         return {
           prefix: target,
@@ -102,10 +104,10 @@ export class Search {
       prefix: null,
       parsedQuery: query,
     };
-  }
+  };
 
   // 正規化(大文字->小文字、全角->半角、カタカナ->ひらがな、全角スペース->半角スペース)
-  #normalize(str: string): string {
+  const normalize = (str: string): string => {
     // カタカナ->ひらがな変換
     const kataToHira = (str: string) => {
       return str.replace(/[\u30a1-\u30f6]/g, function (s) {
@@ -119,5 +121,7 @@ export class Search {
       });
     };
     return zenToHan(kataToHira(str))?.toLowerCase().replace(/　/g, " ");
-  }
-}
+  };
+
+  return { search };
+};
