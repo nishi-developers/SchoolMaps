@@ -14,7 +14,6 @@ export const useSearch = () => {
   const targets = ["id", "name", "words", "desc", "mode", "floor", "behavior", "modeName", "floorName"] as const;
   const { $modes, $floors, $places } = useNuxtApp();
 
-  // const searchIndex: SearchIndex = [] as unknown as SearchIndex;
   const searchIndex = computed<SearchIndexItem[]>(() => {
     const index: SearchIndexItem[] = [];
     for (const place of $places.value) {
