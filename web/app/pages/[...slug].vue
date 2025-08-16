@@ -487,19 +487,19 @@ let MapMove = new class {
     // infinityの場合は、慣性スクロールを行わない
     switch (target) {
       case "position":
-        if (this.#slideData.position.speedX === Infinity || this.#slideData.position.speedY === Infinity) {
+        if (this.#slideData.position.speedX === Infinity || this.#slideData.position.speedY === Infinity || this.#slideData.position.speedX === -Infinity || this.#slideData.position.speedY === -Infinity) {
           this.#slide_reset("position")
           return
         }
         break;
       case "zoom":
-        if (this.#slideData.zoom.speed === Infinity) {
+        if (this.#slideData.zoom.speed === Infinity || this.#slideData.zoom.speed === -Infinity) {
           this.#slide_reset("zoom")
           return
         }
         break;
       case "rotate":
-        if (this.#slideData.rotate.speed === Infinity) {
+        if (this.#slideData.rotate.speed === Infinity || this.#slideData.rotate.speed === -Infinity) {
           this.#slide_reset("rotate")
           return
         }

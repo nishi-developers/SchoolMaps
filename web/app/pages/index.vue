@@ -6,12 +6,32 @@
 </template>
 <script setup lang="ts">
 const { $modes, $floors, $behaviors, $places, $detail, $map } = useNuxtApp();
+useHead({ title: 'マップ' })
+
+const mapMove = useMapMove();
+
+watch(
+  () => mapMove.status.value.position,
+  (newPosition) => {
+    // マップの位置を更新
+    const mapElement = document.getElementById("map");
+    if (mapElement) {
+      mapElement.style.top = `${newPosition.y}px`;
+      mapElement.style.left = `${newPosition.x}px`;
+    }
+  },
+  { immediate: true, deep: true }
+);
 
 onMounted(() => {
   // マップのSVG要素を取得して表示
   const map = $map;
   map.value.setAttribute("id", "map");
   document.getElementById("map-wrapper")?.appendChild(map.value);
+
+  mapMove.reset(); // 初期化
+  mapMove.movePosition(100, 100); // 初期位置を設定
+  mapMove.doSlide("position"); // スライド開始
 });
 
 const eventListener = {
@@ -47,3 +67,15 @@ const eventListener = {
 //   }
 // }
 </script>
+
+<style>
+#map{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* これは試験用 */
+  /* 実際にはこうやって書かない */
+  /* top: v-bind(mapMove.status.value.position.y + 'px');
+  left: v-bind(mapMove.status.value.position.x + 'px'); */
+}
+</style>
