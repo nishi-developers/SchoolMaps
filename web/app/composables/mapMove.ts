@@ -183,12 +183,11 @@ export const useMapMove = (
     }
   };
 
-  const reset = () => {
-    console.log("この関数は要改善");
+  const reset = (width: number, height: number) => {
     slideReset();
-    setPosition(0, 0);
     setZoom(1);
     setRotate(0);
+    setPosition(width / 2, height / 2);
   };
 
   return {
