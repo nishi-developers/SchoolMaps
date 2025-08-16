@@ -48,7 +48,7 @@ const route = useRoute()
 useHead({ title: '検索' })
 const { $floors, $places } = useNuxtApp();
 
-const search = new Search()
+const search = useSearch()
 
 function decodeUrl() {
   // URLの切り出しとデコードまで行う
