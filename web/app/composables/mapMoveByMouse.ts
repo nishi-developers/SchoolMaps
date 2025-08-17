@@ -36,3 +36,7 @@ export const useMapMoveByMouse = (mapMove) => {
 
   return { move, wheel };
 };
+
+// memo
+// スライド中に動かしてもスライドが継続してしまう
+// 停止フラグで動かしたら停止するようにしたが、それでは再起で呼ばれたslideか、通常のslideか判断できず、。。
