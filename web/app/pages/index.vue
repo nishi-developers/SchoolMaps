@@ -9,6 +9,7 @@ const { $modes, $floors, $behaviors, $places, $detail, $map } = useNuxtApp();
 useHead({ title: 'マップ' })
 
 const mapMove = useMapMove();
+const mapMoveByMouse = useMapMoveByMouse(mapMove);
 
 watch(
   () => mapMove.status.value.position,
@@ -23,22 +24,68 @@ watch(
   { immediate: true, deep: true }
 );
 
+
 onMounted(() => {
   // マップのSVG要素を取得して表示
   const map = $map;
   map.value.setAttribute("id", "map");
   document.getElementById("map-wrapper")?.appendChild(map.value);
 
-  mapMove.reset(); // 初期化
-  mapMove.movePosition(100, 100); // 初期位置を設定
-  mapMove.doSlide("position"); // スライド開始
+  // // mapMove.reset(); // 初期化
+  // setTimeout(() => {
+  //   mapMove.movePosition(100, 100); // 初期位置を設定
+  // }, 500); // 少し待ってから初期位置を設定
+  // setTimeout(() => {
+  //   mapMove.movePosition(110, 110); // 初期位置を設定
+  // }, 505); // 少し待ってから初期位置を設定
+  // setTimeout(() => {
+  //   mapMove.doSlide("position"); // スライド開始
+  // }, 700); // 少し待ってからスライド開始
 });
 
+let isAlreadyMoved = false; // マウス使用時のみ、移動したかどうか
 const eventListener = {
-  click: (e: MouseEvent) => {
-    console.log("Map clicked", e);
+  click: (event: MouseEvent) => {
+    // if (!isAlreadyMoved) {
+    //   Property.showByUser(event)
+    // }
+  },
+  mousemove: (event: MouseEvent) => {
+    mapMoveByMouse.move(event)
+    if (event.buttons != 0) {
+      isAlreadyMoved = true
+    }
+  },
+  mousedown: () => {
+    isAlreadyMoved = false
+  },
+  mouseup: () => {
+    mapMove.doSlide("position")
+    mapMove.doSlide("rotate")
+  },
+  touchmove: (event: TouchEvent) => {
+    // MapMoveByTouch.do(event)
+  },
+  touchstart: (event: TouchEvent) => {
+    // MapMoveByTouch.start(event)
+  },
+  touchend: () => {
+    mapMove.doSlide("position")
+    mapMove.doSlide("zoom")
+    mapMove.doSlide("rotate")
+  },
+  touchcancel: () => {
+    mapMove.doSlide("position")
+    mapMove.doSlide("zoom")
+    mapMove.doSlide("rotate")
+  },
+  wheel: (event: WheelEvent) => {
+    console.log(event);
+    
+    mapMoveByMouse.wheel(event)
   },
 };
+
 
 // 方針
 // クラス内で別クラスの関数を呼び出さない
