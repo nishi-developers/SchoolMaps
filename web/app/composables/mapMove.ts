@@ -31,18 +31,21 @@ export const useMapMove = (
       lastMovedTime: null as number | null,
       isSlideing: false as boolean,
       lastSlideTime: null as number | null,
+      stopFlag: false as boolean,
     },
     zoom: {
       speed: 0 as number,
       lastMovedTime: null as number | null,
       isSlideing: false as boolean,
       lastSlideTime: null as number | null,
+      stopFlag: false as boolean,
     },
     rotate: {
       speed: 0,
       lastMovedTime: null as number | null,
       isSlideing: false as boolean,
       lastSlideTime: null as number | null,
+      stopFlag: false as boolean,
     },
   };
   // setters
@@ -56,7 +59,6 @@ export const useMapMove = (
   const setRotate = (rotate: number) => {
     status.value.rotate = rotate;
   };
-
   // 速度計算の共通関数
   const updateSpeed = (type: MapMoveType, diff: number | { x: number; y: number }) => {
     const now = performance.now();
@@ -81,16 +83,19 @@ export const useMapMove = (
   // 個別の移動関数
   const movePosition = (diffX: number, diffY: number): void => {
     if (diffX === 0 && diffY === 0) return;
+    slideData.position.stopFlag = true;
     setPosition(status.value.position.x + diffX, status.value.position.y + diffY);
     updateSpeed("position", { x: diffX, y: diffY });
   };
   const moveZoom = (diffZoom: number): void => {
     if (diffZoom === 0) return;
+    slideData.position.stopFlag = true;
     setZoom(status.value.zoom + diffZoom);
     updateSpeed("zoom", diffZoom);
   };
   const moveRotate = (diffRotate: number): void => {
     if (diffRotate === 0) return;
+    slideData.position.stopFlag = true;
     setRotate(status.value.rotate + diffRotate);
     updateSpeed("rotate", diffRotate);
   };
@@ -153,6 +158,7 @@ export const useMapMove = (
       slideData[t].lastMovedTime = null;
       slideData[t].isSlideing = false;
       slideData[t].lastSlideTime = null;
+      slideData[t].stopFlag = true;
     });
   };
 
@@ -162,8 +168,18 @@ export const useMapMove = (
       slideReset(type);
       return;
     }
+    slideData.position.stopFlag = false;
+    slide(type);
+  };
+
+  const slide = (type: MapMoveType) => {
     // 重複実行防止
     if (slideData[type].isSlideing) return;
+    // フラグを確認
+    if (slideData[type].stopFlag) {
+      slideReset(type);
+      return;
+    }
     slideData[type].isSlideing = true;
     // 最小速度以上の場合は継続
     if (hasMinimumSpeed(type)) {
@@ -174,7 +190,7 @@ export const useMapMove = (
       // requestAnimationFrameで次のフレームに実行
       requestAnimationFrame(() => {
         slideData[type].isSlideing = false;
-        doSlide(type);
+        slide(type);
       });
     } else {
       // 速度が小さくなったらリセット
