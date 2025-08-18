@@ -47,6 +47,10 @@ export const useMapMove = (
       lastSlideTime: null as number | null,
       stopFlag: false as boolean,
     },
+    center: {
+      x: 0 as number,
+      y: 0 as number,
+    },
   };
   // setters
   const setPosition = (x: number, y: number) => {
@@ -79,6 +83,10 @@ export const useMapMove = (
     }
     slideInfo.lastMovedTime = now;
   };
+  const updateCenter = (x: number, y: number) => {
+    slideData.center.x = x;
+    slideData.center.y = y;
+  };
 
   // 個別の移動関数
   const movePosition = (diffX: number, diffY: number): void => {
@@ -87,17 +95,19 @@ export const useMapMove = (
     setPosition(status.value.position.x + diffX, status.value.position.y + diffY);
     updateSpeed("position", { x: diffX, y: diffY });
   };
-  const moveZoom = (diffZoom: number): void => {
+  const moveZoom = (diffZoom: number, center: { x: number; y: number }): void => {
     if (diffZoom === 0) return;
     slideData.position.stopFlag = true;
     setZoom(status.value.zoom + diffZoom);
     updateSpeed("zoom", diffZoom);
+    updateCenter(center.x, center.y);
   };
-  const moveRotate = (diffRotate: number): void => {
+  const moveRotate = (diffRotate: number, center: { x: number; y: number }): void => {
     if (diffRotate === 0) return;
     slideData.position.stopFlag = true;
     setRotate(status.value.rotate + diffRotate);
     updateSpeed("rotate", diffRotate);
+    updateCenter(center.x, center.y);
   };
 
   // ヘルパー関数群
@@ -168,7 +178,7 @@ export const useMapMove = (
       slideReset(type);
       return;
     }
-    slideData.position.stopFlag = false;
+    slideData[type].stopFlag = false;
     slide(type);
   };
 

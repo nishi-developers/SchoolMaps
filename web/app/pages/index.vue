@@ -9,16 +9,18 @@ const { $modes, $floors, $behaviors, $places, $detail, $map } = useNuxtApp();
 useHead({ title: 'マップ' })
 
 const mapMove = useMapMove();
-const mapMoveByMouse = useMapMoveByMouse(mapMove);
+const mapMoveByMouse = useMapMoveByMouse(mapMove, 0);
 
 watch(
-  () => mapMove.status.value.position,
-  (newPosition) => {
+  () => mapMove.status,
+  (newVal) => {
     // マップの位置を更新
     const mapElement = document.getElementById("map");
     if (mapElement) {
-      mapElement.style.top = `${newPosition.y}px`;
-      mapElement.style.left = `${newPosition.x}px`;
+      mapElement.style.top = `${newVal.value.position.y}px`;
+      mapElement.style.left = `${newVal.value.position.x}px`;
+      mapElement.style.transform = `rotate(${newVal.value.rotate}deg)`;
+      mapElement.style.transform += ` scale(${newVal.value.zoom})`;
     }
   },
   { immediate: true, deep: true }
@@ -31,16 +33,6 @@ onMounted(() => {
   map.value.setAttribute("id", "map");
   document.getElementById("map-wrapper")?.appendChild(map.value);
 
-  // // mapMove.reset(); // 初期化
-  // setTimeout(() => {
-  //   mapMove.movePosition(100, 100); // 初期位置を設定
-  // }, 500); // 少し待ってから初期位置を設定
-  // setTimeout(() => {
-  //   mapMove.movePosition(110, 110); // 初期位置を設定
-  // }, 505); // 少し待ってから初期位置を設定
-  // setTimeout(() => {
-  //   mapMove.doSlide("position"); // スライド開始
-  // }, 700); // 少し待ってからスライド開始
 });
 
 let isAlreadyMoved = false; // マウス使用時のみ、移動したかどうか
@@ -51,7 +43,7 @@ const eventListener = {
     // }
   },
   mousemove: (event: MouseEvent) => {
-    mapMoveByMouse.move(event)
+    mapMoveByMouse.moveMouse(event)
     if (event.buttons != 0) {
       isAlreadyMoved = true
     }
@@ -80,12 +72,12 @@ const eventListener = {
     mapMove.doSlide("rotate")
   },
   wheel: (event: WheelEvent) => {
-    console.log(event);
-    
-    mapMoveByMouse.wheel(event)
+    mapMoveByMouse.moveWheel(event)
   },
 };
 
+
+// mapMoveの範囲外検知とcenterは未実装
 
 // 方針
 // クラス内で別クラスの関数を呼び出さない
