@@ -5,11 +5,11 @@
   </div>
 </template>
 <script setup lang="ts">
-const { $modes, $floors, $behaviors, $places, $detail, $map } = useNuxtApp();
+const { $map } = useNuxtApp();
 useHead({ title: 'マップ' })
 
 const mapMove = useMapMove();
-const mapMoveByMouse = useMapMoveByMouse(mapMove, 0);
+const mapMoveByMouse = useMapMoveByMouse(mapMove, 0); // ヘッダーの高さは0と仮定
 
 watch(
   () => mapMove.status,
