@@ -1,19 +1,22 @@
 type MapMoveType = "position" | "zoom" | "rotate";
-type FrictionConfig = {
-  position: number;
-  zoom: number;
-  rotate: number;
-  min: number;
+type Config = {
+  friction: {
+    position: number;
+    zoom: number;
+    rotate: number;
+    min: number;
+  };
 };
-
-export const useMapMove = (
-  frictionConfig: FrictionConfig = {
+const defaultConfig: Config = {
+  friction: {
     position: 0.97,
     zoom: 0.97,
     rotate: 0.97,
     min: 0.001,
-  } as const
-) => {
+  },
+};
+
+export const useMapMove = (config: Config = defaultConfig) => {
   const status = ref({
     position: {
       x: 0,
@@ -122,6 +125,7 @@ export const useMapMove = (
     }
   };
   const hasMinimumSpeed = (type: MapMoveType): boolean => {
+    const frictionConfig = config.friction;
     switch (type) {
       case "position":
         return (
@@ -135,6 +139,7 @@ export const useMapMove = (
     }
   };
   const applySlideMovement = (type: MapMoveType, deltaTime: number) => {
+    const frictionConfig = config.friction;
     switch (type) {
       case "position":
         setPosition(
