@@ -1,7 +1,10 @@
+type Config = { wheel: { unit: number } };
+const defaultConfig: Config = { wheel: { unit: 0.1 } };
+
 export const useMapMoveByMouse = (
   mapMove: ReturnType<typeof useMapMove>,
   headerHeight: number,
-  config: { wheel: { unit: number } } = { wheel: { unit: 0.1 } }
+  config: Config = defaultConfig
 ) => {
   const moveMouse = (event: MouseEvent) => {
     // マウスの移動による操作
