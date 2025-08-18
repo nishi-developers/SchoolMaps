@@ -3,8 +3,6 @@ export const useMapMoveByMouse = (mapMove) => {
     // マウスの移動による操作
     if (event.buttons === 1) {
       // 左クリックが押されている場合のみ
-      console.log("called movePosition");
-
       mapMove.movePosition(event.movementX, event.movementY);
     } else if (event.buttons === 4) {
       // ホイールボタンが押されている場合のみ
@@ -36,7 +34,3 @@ export const useMapMoveByMouse = (mapMove) => {
 
   return { move, wheel };
 };
-
-// memo
-// スライド中に動かしてもスライドが継続してしまう
-// 停止フラグで動かしたら停止するようにしたが、それでは再起で呼ばれたslideか、通常のslideか判断できず、。。
