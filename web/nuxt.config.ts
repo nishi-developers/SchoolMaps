@@ -57,10 +57,6 @@ export default defineNuxtConfig({
       titleTemplate: "西高マップ - %s",
       meta: [
         { charset: "utf-8" },
-        {
-          name: "viewport",
-          content: "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no",
-        },
         { name: "robots", content: "noindex,nofollow,noarchive" },
         { name: "theme-color", content: "#bee0ff" },
         { name: "description", content: "東京都立西高等学校の校内マップです。" },
