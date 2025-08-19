@@ -12,6 +12,7 @@ const mapWrapper = ref<HTMLElement | null>(null);
 
 const mapMove = useMapMove();
 const mapMoveByMouse = useMapMoveByMouse(mapMove, 0); // ヘッダーの高さは0と仮定
+const mapMoveByTouch = useMapMoveByTouch(mapMove, 0); // ヘッダーの高さは0と仮定
 
 watch(
   () => mapMove.status,
@@ -34,6 +35,12 @@ onMounted(() => {
   const map = $map;
   map.value.setAttribute("id", "map");
   mapWrapper.value?.appendChild(map.value);
+
+  document.body.addEventListener('touchmove', (event) => {
+    if (event.touches.length > 1) {
+      event.preventDefault();
+    }
+  }, { passive: false });
 });
 
 let isAlreadyMoved = false; // マウス使用時のみ、移動したかどうか
@@ -57,10 +64,10 @@ const eventListener = {
     mapMove.doSlide("rotate")
   },
   touchmove: (event: TouchEvent) => {
-    // MapMoveByTouch.do(event)
+    mapMoveByTouch.move(event)
   },
   touchstart: (event: TouchEvent) => {
-    // MapMoveByTouch.start(event)
+    mapMoveByTouch.init(event)
   },
   touchend: () => {
     mapMove.doSlide("position")
@@ -85,31 +92,10 @@ const eventListener = {
 // 純粋関数っぽく、全部メインスレッドに戻り値を返す
 // クラス内で変数を持つのだけは許可
 // Composablesを使って、状態とロジックを分離
-
-// search.tsも同様に、クラスではなくComposableとして実装する
-
-// AIの例
-// composables/useCounter.ts
-// export const useCounter = () => {
-//   const count = ref(0)
-  
-//   const increment = () => count.value++
-//   const decrement = () => count.value--
-//   const reset = () => count.value = 0
-  
-//   return {
-//     // 状態
-//     count: readonly(count),
-//     // アクション
-//     increment,
-//     decrement,
-//     reset
-//   }
-// }
 </script>
 
 <style>
-#map{
+#map {
   width: 100%;
   height: 100%;
   position: relative;

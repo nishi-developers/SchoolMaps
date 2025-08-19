@@ -13,7 +13,7 @@
     "postinstall": "nuxt prepare",
     "test": "vitest"
   },
-  "author": "M_Haruki",
+  "author": "M_Haruki@504",
   "license": "MIT",
   "dependencies": {
     "@nuxt/eslint": "^1.7.1",
