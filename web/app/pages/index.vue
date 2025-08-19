@@ -1,12 +1,14 @@
 <template>
   <div>
-    <div id="map-wrapper" v-on="eventListener"></div>
+    <div id="map-wrapper" ref="mapWrapper" v-on="eventListener"></div>
     <p>hello world</p>
   </div>
 </template>
 <script setup lang="ts">
 const { $map } = useNuxtApp();
 useHead({ title: 'マップ' })
+
+const mapWrapper = ref<HTMLElement | null>(null);
 
 const mapMove = useMapMove();
 const mapMoveByMouse = useMapMoveByMouse(mapMove, 0); // ヘッダーの高さは0と仮定
@@ -31,8 +33,7 @@ onMounted(() => {
   // マップのSVG要素を取得して表示
   const map = $map;
   map.value.setAttribute("id", "map");
-  document.getElementById("map-wrapper")?.appendChild(map.value);
-
+  mapWrapper.value?.appendChild(map.value);
 });
 
 let isAlreadyMoved = false; // マウス使用時のみ、移動したかどうか
