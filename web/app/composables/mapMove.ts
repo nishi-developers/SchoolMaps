@@ -9,10 +9,10 @@ type Config = {
 };
 const defaultConfig: Config = {
   friction: {
-    position: 0.97,
-    zoom: 0.97,
-    rotate: 0.97,
-    min: 0.001,
+    position: 0.9,
+    zoom: 0.9,
+    rotate: 0.9,
+    min: 0.01,
   },
 };
 
