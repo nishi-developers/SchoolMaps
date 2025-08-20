@@ -58,3 +58,11 @@ li {
   font-size: 1rem;
   color: var(--MainBodyColor);
 }
+ul {
+  list-style: disc;
+  padding-left: 25px;
+}
+li {
+  display: list-item;
+  overflow: visible;
+}
