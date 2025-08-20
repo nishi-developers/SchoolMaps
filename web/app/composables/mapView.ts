@@ -32,7 +32,10 @@ export const useMapView = (moveStatus: Ref<MoveStatus>, config: Config = default
 
   const applyMove = () => {
     if (mapElement) {
+      // 初期用(要移動)
       mapElement.style.position = "absolute";
+      mapElement.style.overflow = "visible";
+      //
       mapElement.style.top = `${moveStatus.value.position.y}px`;
       mapElement.style.left = `${moveStatus.value.position.x}px`;
       mapElement.style.transform = `rotate(${moveStatus.value.rotate}deg)`;
