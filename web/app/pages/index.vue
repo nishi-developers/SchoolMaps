@@ -5,37 +5,24 @@
   </div>
 </template>
 <script setup lang="ts">
-const { $map } = useNuxtApp();
 useHead({ title: 'マップ' })
 
-const mapWrapper = ref<HTMLElement | null>(null);
+const mapWrapper = ref<HTMLElement>()
 
 const mapMove = useMapMove();
 const mapMoveByMouse = useMapMoveByMouse(mapMove, 0); // ヘッダーの高さは0と仮定
 const mapMoveByTouch = useMapMoveByTouch(mapMove, 0); // ヘッダーの高さは0と仮定
-
-watch(
-  () => mapMove.status,
-  (newVal) => {
-    // マップの位置を更新
-    const mapElement = document.getElementById("map");
-    if (mapElement) {
-      mapElement.style.top = `${newVal.value.position.y}px`;
-      mapElement.style.left = `${newVal.value.position.x}px`;
-      mapElement.style.transform = `rotate(${newVal.value.rotate}deg)`;
-      mapElement.style.transform += ` scale(${newVal.value.zoom})`;
-    }
-  },
-  { immediate: true, deep: true }
-);
+const mapView = useMapView(mapMove.status);
 
 
 onMounted(() => {
-  // マップのSVG要素を取得して表示
-  const map = $map;
-  map.value.setAttribute("id", "map");
-  mapWrapper.value?.appendChild(map.value);
+  if (!mapWrapper.value) {
+    console.error("mapWrapper is not defined");
+    return;
+  }
+  mapView.init(mapWrapper.value);
 
+  // マウスホイールのイベントをキャッチするために、passive: falseを設定
   document.body.addEventListener('touchmove', (event) => {
     if (event.touches.length > 1) {
       event.preventDefault();
@@ -95,13 +82,20 @@ const eventListener = {
 </script>
 
 <style>
-#map {
+/* #map {
   width: 100%;
   height: 100%;
   position: relative;
   /* これは試験用 */
-  /* 実際にはこうやって書かない */
-  /* top: v-bind(mapMove.status.value.position.y + 'px');
+/* 実際にはこうやって書かない */
+/* top: v-bind(mapMove.status.value.position.y + 'px');
   left: v-bind(mapMove.status.value.position.x + 'px'); */
+/* } */
+
+#map-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 </style>
