@@ -23,6 +23,12 @@
         </a>
         のもと公開しています。
       </p>
+      <h3>情報提供団体</h3>
+      <ul>
+        <li v-for="provider in $detail.infoProviders" :key="provider">
+          {{ provider }}
+        </li>
+      </ul>
       <h2>アクセス解析ツールについて</h2>
       <p>
         　当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス(Google Analytics)」を使用しています。
@@ -43,18 +49,23 @@
       <span>SystemVersion</span>
       <span>{{ $config.public.systemVersion }}</span>
       <span>MapsVersion</span>
-      <!-- <span>{{ $config.public.mapVersion }}</span> -->
+      <span>{{ $detail.mapVersion }}</span>
+      <span>DB Integrate</span>
+      <span v-if="$detail?.isDatabaseIntegrated">Enabled</span>
+      <span v-else>Disabled</span>
     </p>
   </div>
 </template>
 <script setup lang="ts">
 useHead({ title: 'このサイトについて' })
 
+const { $detail } = useNuxtApp();
+
 // クリックカウント
 let clickCount = 0;
 async function handleClick() {
   clickCount++;
-  if (clickCount >= 5) {
+  if (clickCount >= 7) {
     await navigateTo('/auth');
     clickCount = 0;
   }

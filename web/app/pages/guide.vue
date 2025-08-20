@@ -49,14 +49,3 @@
 <script setup lang="ts">
 useHead({ title: '使い方' })
 </script>
-<style scoped lang="scss">
-ul {
-  list-style: disc;
-  padding-left: 25px;
-}
-
-li {
-  display: list-item;
-  overflow: visible;
-}
-</style>
