@@ -49,6 +49,7 @@ export interface Detail {
   mapVersion: string;
   width: number;
   height: number;
+  infoProviders: string[];
 }
 
 export interface Place {

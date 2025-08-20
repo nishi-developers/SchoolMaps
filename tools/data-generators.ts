@@ -57,6 +57,7 @@ export function createDetailData(svgContent: string): Detail {
     mapVersion: "0.0.0",
     width: width,
     height: height,
+    infoProviders: [],
   };
 }
 

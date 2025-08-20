@@ -47,6 +47,7 @@ export interface Detail {
   mapVersion: string;
   width: number;
   height: number;
+  infoProviders: string[];
   isDatabaseIntegrated?: boolean;
 }
 
