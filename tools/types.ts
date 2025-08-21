@@ -16,14 +16,14 @@ export interface Floor {
 
 export interface BehaviorStyle {
   body: {
-    fill_default: {
+    fillDefault: {
       light: string;
       dark: string;
     };
-    fill_select: {
+    fillSelect: {
       light: string;
       dark: string;
-    };
+    } | null;
     stroke: {
       light: string;
       dark: string;
@@ -35,8 +35,8 @@ export interface BehaviorStyle {
       light: string;
       dark: string;
     };
-    fontSize: string;
-  };
+    fontMaxSize: string;
+  } | null;
 }
 
 export interface Behavior {

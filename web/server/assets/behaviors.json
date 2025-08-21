@@ -4,26 +4,15 @@
     "isPlace": false,
     "style": {
       "body": {
-        "fill_default": {
-          "light": "",
-          "dark": ""
-        },
-        "fill_select": {
-          "light": "",
-          "dark": ""
+        "fillDefault": {
+          "light": "#f3f3f3",
+          "dark": "#1d1d1d"
         },
         "stroke": {
-          "light": "",
-          "dark": ""
+          "light": "var(--MapBorderColor)",
+          "dark": "var(--MapBorderColor)"
         },
-        "strokeWidth": 2
-      },
-      "label": {
-        "fill": {
-          "light": "",
-          "dark": ""
-        },
-        "fontSize": "2rem"
+        "strokeWidth": 2.0
       }
     }
   },
@@ -32,26 +21,15 @@
     "isPlace": false,
     "style": {
       "body": {
-        "fill_default": {
-          "light": "",
-          "dark": ""
-        },
-        "fill_select": {
-          "light": "",
-          "dark": ""
+        "fillDefault": {
+          "light": "#adadad",
+          "dark": "#797979"
         },
         "stroke": {
-          "light": "",
-          "dark": ""
+          "light": "var(--MapBorderColor)",
+          "dark": "var(--MapBorderColor)"
         },
-        "strokeWidth": 2
-      },
-      "label": {
-        "fill": {
-          "light": "",
-          "dark": ""
-        },
-        "fontSize": "2rem"
+        "strokeWidth": 2.0
       }
     }
   },
@@ -60,26 +38,15 @@
     "isPlace": false,
     "style": {
       "body": {
-        "fill_default": {
-          "light": "",
-          "dark": ""
-        },
-        "fill_select": {
-          "light": "",
-          "dark": ""
+        "fillDefault": {
+          "light": "#cfcfcf",
+          "dark": "#3f3f3f"
         },
         "stroke": {
-          "light": "",
-          "dark": ""
+          "light": "var(--MapBorderColor)",
+          "dark": "var(--MapBorderColor)"
         },
-        "strokeWidth": 2
-      },
-      "label": {
-        "fill": {
-          "light": "",
-          "dark": ""
-        },
-        "fontSize": "2rem"
+        "strokeWidth": 2.0
       }
     }
   },
@@ -88,26 +55,15 @@
     "isPlace": false,
     "style": {
       "body": {
-        "fill_default": {
-          "light": "",
-          "dark": ""
-        },
-        "fill_select": {
-          "light": "",
-          "dark": ""
+        "fillDefault": {
+          "light": "#adadad",
+          "dark": "#797979"
         },
         "stroke": {
-          "light": "",
-          "dark": ""
+          "light": "var(--MapBorderColor)",
+          "dark": "var(--MapBorderColor)"
         },
-        "strokeWidth": 2
-      },
-      "label": {
-        "fill": {
-          "light": "",
-          "dark": ""
-        },
-        "fontSize": "2rem"
+        "strokeWidth": 2.0
       }
     }
   },
@@ -116,26 +72,26 @@
     "isPlace": true,
     "style": {
       "body": {
-        "fill_default": {
-          "light": "",
-          "dark": ""
+        "fillDefault": {
+          "light": "var(--SubBaseColor)",
+          "dark": "var(--SubBaseColor)"
         },
-        "fill_select": {
-          "light": "",
-          "dark": ""
+        "fillSelect": {
+          "light": "var(--SubColor)",
+          "dark": "var(--SubColor)"
         },
         "stroke": {
-          "light": "",
-          "dark": ""
+          "light": "var(--MapBorderColor)",
+          "dark": "var(--MapBorderColor)"
         },
-        "strokeWidth": 2
+        "strokeWidth": 2.0
       },
       "label": {
         "fill": {
-          "light": "",
-          "dark": ""
+          "light": "var(--MainBodyColor)",
+          "dark": "var(--MainBodyColor)"
         },
-        "fontSize": "2rem"
+        "fontMaxSize": "2rem"
       }
     }
   },
@@ -144,26 +100,26 @@
     "isPlace": true,
     "style": {
       "body": {
-        "fill_default": {
-          "light": "",
-          "dark": ""
+        "fillDefault": {
+          "light": "#bdffb6",
+          "dark": "#158909"
         },
-        "fill_select": {
-          "light": "",
-          "dark": ""
+        "fillSelect": {
+          "light": "#42e24a",
+          "dark": "#51d557"
         },
         "stroke": {
-          "light": "",
-          "dark": ""
+          "light": "var(--MapBorderColor)",
+          "dark": "var(--MapBorderColor)"
         },
-        "strokeWidth": 2
+        "strokeWidth": 0
       },
       "label": {
         "fill": {
-          "light": "",
-          "dark": ""
+          "light": "var(--MainBodyColor)",
+          "dark": "var(--MainBodyColor)"
         },
-        "fontSize": "2rem"
+        "fontMaxSize": "1.5rem"
       }
     }
   }
