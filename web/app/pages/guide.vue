@@ -2,7 +2,7 @@
   <div>
     <div class="page">
       <h1>使い方</h1>
-      <h2>マップ</h2>
+      <h2><nuxt-link to="/">マップ</nuxt-link></h2>
       <ul>
         <li>
           <Icon name="material-symbols:search-rounded" />で検索画面を開きます。
@@ -34,7 +34,9 @@
         <li>場所をタップしたら出てくる詳細画面では、場所の情報や画像を見ることができます。</li>
         <li>バーをスワイプまたはタップすることで、詳細画面を拡大・縮小・開閉が可能です。</li>
       </ul>
-      <h2>検索</h2>
+      <h2>
+        <RouterLink to="search">検索</RouterLink>
+      </h2>
       <ul>
         <li>検索ワードを入力することで、場所を検索できます。</li>
         <li>半角/全角スペースで区切ることでOR検索になります。</li>
