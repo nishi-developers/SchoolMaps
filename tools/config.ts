@@ -26,11 +26,11 @@ export const PROJECT_PATHS: ProjectPaths = {
 // デフォルトのスタイル設定
 export const DEFAULT_BEHAVIOR_STYLE = {
   body: {
-    fill_default: {
+    fillDefault: {
       light: "",
       dark: "",
     },
-    fill_select: {
+    fillSelect: {
       light: "",
       dark: "",
     },
@@ -45,6 +45,6 @@ export const DEFAULT_BEHAVIOR_STYLE = {
       light: "",
       dark: "",
     },
-    fontSize: "2rem",
+    fontMaxSize: "2rem",
   },
 } as const;
