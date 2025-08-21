@@ -4,8 +4,7 @@
       <h1>このサイトについて</h1>
       <h2>西高マップとは</h2>
       <p>
-        <b><a href="https://www.metro.ed.jp/nishi-h/" target="_blank"
-            rel="noopener noreferrer">東京都立西高等学校</a></b>の校内マップです。<br>
+        <a href="https://www.metro.ed.jp/nishi-h/" target="_blank" rel="noopener noreferrer">東京都立西高等学校</a>の校内マップです。<br>
         本サイトは下記団体が運営しており、高校へお問い合わせいただいてもお答えできません。
       </p>
       <h2>開発･運営情報</h2>
@@ -29,6 +28,11 @@
           {{ provider }}
         </li>
       </ul>
+      <h2>マップデータの利用ついて(西高生のみ)</h2>
+      <p>
+        西高生に限り、本サイトのスクリーンショットを含むマップデータを、クレジット不要でご利用いただけます。
+        改変等も可能ですので、良識の範囲内でご自由にご活用ください。
+      </p>
       <h2>アクセス解析ツールについて</h2>
       <p>
         　当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス(Google Analytics)」を使用しています。
@@ -84,7 +88,7 @@ async function handleClick() {
   grid-template-columns: auto auto;
   grid-template-columns: auto auto;
   gap: 5px;
-  cursor: pointer;
+  cursor: default;
 }
 
 #version-spacer {
