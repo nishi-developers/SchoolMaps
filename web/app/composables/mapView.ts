@@ -92,7 +92,6 @@ export const useMapView = (moveStatus: Ref<MoveStatus>, config: Config = default
         textElement.style.transformOrigin = "center center";
         textElement.style.pointerEvents = "none";
         textElement.style.strokeWidth = "0";
-        // textElement.style.translate = "-50% +25%";
         mapElement.appendChild(textElement);
       });
     }
