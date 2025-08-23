@@ -33,7 +33,7 @@ export interface BehaviorStyle {
       light: string;
       dark: string;
     };
-    fontMaxSize: string;
+    fontSize: string;
   } | null;
 }
 
