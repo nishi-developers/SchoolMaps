@@ -45,6 +45,6 @@ export const DEFAULT_BEHAVIOR_STYLE = {
       light: "",
       dark: "",
     },
-    fontMaxSize: "2rem",
+    fontSize: "2rem",
   },
 } as const;

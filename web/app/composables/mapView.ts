@@ -51,6 +51,7 @@ export const useMapView = (moveStatus: Ref<MoveStatus>, config: Config = default
     //
     mapElement.querySelectorAll("[label]").forEach((element: Element) => {
       (element as HTMLElement).style.rotate = `${-moveStatus.value.rotate}deg`;
+      (element as HTMLElement).style.scale = `${1 / moveStatus.value.zoom}`;
     });
   };
 
@@ -124,7 +125,7 @@ export const useMapView = (moveStatus: Ref<MoveStatus>, config: Config = default
           return;
         }
         const labelStyle = behavior.style.label;
-        (element as HTMLElement).style.fontSize = labelStyle.fontMaxSize;
+        (element as HTMLElement).style.fontSize = labelStyle.fontSize;
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
           // ダークモード
           (element as HTMLElement).style.fill = labelStyle.fill.dark;
