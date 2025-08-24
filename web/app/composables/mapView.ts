@@ -1,3 +1,5 @@
+import RBush from "rbush";
+
 type MoveStatus = {
   position: {
     x: number;
@@ -36,10 +38,16 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
     watch(
       mapStatus,
       () => {
-        applyMapStatusMode();
-        applyMapStatusFloor();
+        applyMapStatusModeAndFloor();
         applyMapStatusPlaces();
-        fixLabelFontSize();
+      },
+      { immediate: true, deep: true }
+    );
+    // fixLabelFontSize用のwatch(負荷軽減のために無駄な実行を避ける)
+    watch(
+      () => [moveStatus.value.rotate, moveStatus.value.zoom, mapStatus.value.mode, mapStatus.value.floor],
+      () => {
+        setTimeout(() => fixLabelFontSize(), 100);
       },
       { immediate: true, deep: true }
     );
@@ -69,57 +77,40 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
     });
   };
 
-  const applyMapStatusMode = () => {
+  const applyMapStatusModeAndFloor = () => {
+    // mode,floorの両方で表示されるものだけを表示する
+
     // 論理計算
-    const alwaysModeIds: Array<string> = $modes.value
-      .filter((mode) => mode.always && mode.enable)
-      .map((mode) => mode.id);
-    const changeableModeIds: Array<string> = $modes.value
-      .filter((mode) => !mode.always && mode.enable)
-      .map((mode) => mode.id);
-    const visibleModeId: string | null = mapStatus.value.mode;
-    const unvisibleModeIds: Array<string> = changeableModeIds.filter((id) => id !== visibleModeId);
-    // 実行
-    if (visibleModeId) {
-      mapElement?.querySelectorAll(`[mode="${visibleModeId}"]`).forEach((el: Element) => {
-        (el as HTMLElement).style.display = "";
-      });
-      // modeを指定している場合は、alwaysのlabelを非表示
-      alwaysModeIds.forEach((modeId) => {
-        mapElement?.querySelectorAll(`[mode="${modeId}"][label]`).forEach((el: Element) => {
-          (el as HTMLElement).style.display = "none";
-        });
-      });
-    } else {
-      // modeを指定していない場合は、alwaysのlabelを表示
-      alwaysModeIds.forEach((modeId) => {
-        mapElement?.querySelectorAll(`[mode="${modeId}"]`).forEach((el: Element) => {
-          (el as HTMLElement).style.display = "";
-        });
-      });
+    const alwaysModeIds = $modes.value.filter((mode) => mode.always && mode.enable).map((mode) => mode.id); // alwaysなmode
+    const visibleModeIds = new Set<string>(
+      $modes.value.filter((mode) => mode.always && mode.enable).map((mode) => mode.id) // alwaysなmode
+    );
+    if (mapStatus.value.mode) {
+      visibleModeIds.add(mapStatus.value.mode); // 選択されているmode
     }
-    unvisibleModeIds.forEach((modeId) => {
-      mapElement?.querySelectorAll(`[mode="${modeId}"]`).forEach((el: Element) => {
+    const visibleFloorId = new Set<string>(
+      $floors.value.filter((floor) => floor.always).map((floor) => floor.id) // alwaysなfloor
+    );
+    visibleFloorId.add(mapStatus.value.floor); // 選択されているfloor
+
+    // 実行(ラベルも含む)
+    const allObjects = Array.from(mapElement?.querySelectorAll("[mode][floor]") || []);
+    allObjects.forEach((el) => {
+      const elMode = el.getAttribute("mode");
+      const elFloor = el.getAttribute("floor");
+      if (elMode && elFloor && visibleModeIds.has(elMode) && visibleFloorId.has(elFloor)) {
+        if (el.hasAttribute("label") && alwaysModeIds.includes(elMode) && mapStatus.value.mode) {
+          // labelにおいて、alwaysなmodeで、modeが別に指定されている場合は非表示
+          (el as HTMLElement).style.display = "none";
+        } else {
+          (el as HTMLElement).style.display = "";
+        }
+      } else {
         (el as HTMLElement).style.display = "none";
-      });
+      }
     });
   };
-  const applyMapStatusFloor = () => {
-    // 論理計算
-    // const alwaysFloorIds: Array<string> = $floors.value.filter((floor) => floor.always).map((floor) => floor.id);
-    const changeableFloorIds: Array<string> = $floors.value.filter((floor) => !floor.always).map((floor) => floor.id);
-    const visibleFloorId: string = mapStatus.value.floor;
-    const unvisibleFloorIds: Array<string> = changeableFloorIds.filter((id) => id !== visibleFloorId);
-    // 実行
-    mapElement?.querySelectorAll(`[floor="${visibleFloorId}"]`).forEach((el: Element) => {
-      (el as HTMLElement).style.display = "";
-    });
-    unvisibleFloorIds.forEach((floorId) => {
-      mapElement?.querySelectorAll(`[floor="${floorId}"]`).forEach((el: Element) => {
-        (el as HTMLElement).style.display = "none";
-      });
-    });
-  };
+
   const applyMapStatusPlaces = () => {
     // 論理計算
     const changeablePlaces = $places.value.filter((place) =>
@@ -243,40 +234,49 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
     }
   };
 
-  // チェック時に、表示されているものに限って計算したいため、
-  // 一旦今は保留
   const fixLabelFontSize = () => {
-    const labelElements = Array.from(mapElement?.querySelectorAll("[label]") || []);
-    const overlappingElementsIds = new Set<string>();
+    requestAnimationFrame(() => {
+      const visibleLabelElements = mapElement?.querySelectorAll("[label]:not([style*='display: none'])") || [];
 
-    labelElements.forEach((element, index) => {
-      const elementPlaceId = element.getAttribute("place");
-      if (!elementPlaceId || overlappingElementsIds.has(elementPlaceId)) {
-        return;
-      }
-      const rect = element.getBoundingClientRect();
-      // 残りの要素のみをチェック
-      labelElements.slice(index + 1).forEach((el) => {
-        const elPlaceId = el.getAttribute("place");
-        if (!elPlaceId) return;
-        const elRect = el.getBoundingClientRect();
-        // 衝突判定
-        if (
-          rect.left < elRect.right &&
-          rect.right > elRect.left &&
-          rect.top < elRect.bottom &&
-          rect.bottom > elRect.top
-        ) {
-          overlappingElementsIds.add(elementPlaceId);
-          overlappingElementsIds.add(elPlaceId);
-        }
+      const tree = new RBush();
+      type Item = {
+        minX: number;
+        minY: number;
+        maxX: number;
+        maxY: number;
+        element: Element;
+        placeId: string;
+      };
+      const items: Array<Item> = [];
+
+      // 要素をR-treeに追加
+      visibleLabelElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const placeId = el.getAttribute("place");
+        if (!placeId || rect.width === 0 || rect.height === 0) return;
+        const item = {
+          minX: rect.left,
+          minY: rect.top,
+          maxX: rect.right,
+          maxY: rect.bottom,
+          element: el,
+          placeId: placeId,
+        };
+        items.push(item);
       });
-    });
-    overlappingElementsIds.forEach((placeId) => {
-      const elements = mapElement?.querySelectorAll(`[place="${placeId}"][label]`);
-      elements?.forEach((element: Element) => {
-        const nowFontSize = parseFloat((element as HTMLElement).style.fontSize);
-        (element as HTMLElement).style.fontSize = `${nowFontSize * 0.8}rem`; // フォントサイズを80%に縮小
+
+      // 一括でツリーに挿入
+      tree.load(items);
+
+      // 各要素について衝突検知
+      items.forEach((item) => {
+        const collisions = tree.search(item);
+        // 自分自身を除外して、2つ以上の要素があれば衝突
+        if (collisions.length > 1) {
+          (item.element as HTMLElement).style.opacity = "0";
+        } else {
+          (item.element as HTMLElement).style.opacity = "1";
+        }
       });
     });
   };
