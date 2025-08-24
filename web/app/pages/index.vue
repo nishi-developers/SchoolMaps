@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="map-wrapper" ref="mapWrapper" v-on="eventListener"></div>
+    <div id="map-wrapper" ref="mapWrapper" v-on="eventListener" />
     <p>hello world</p>
   </div>
 </template>
