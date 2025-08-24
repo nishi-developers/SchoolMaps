@@ -1,15 +1,12 @@
 import type { LocationQueryValue } from "vue-router";
 
-type Config = {};
-const defaultConfig: Config = {};
-
 type Status = {
   mode: string | null;
   floor: string;
   places: Array<string>;
 };
 
-export const useMapStatus = (config: Config = defaultConfig) => {
+export const useMapStatus = () => {
   const { $modes, $floors, $places } = useNuxtApp();
   const route = useRoute();
 

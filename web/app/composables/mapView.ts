@@ -1,6 +1,3 @@
-type Config = {};
-const defaultConfig: Config = {};
-
 type MoveStatus = {
   position: {
     x: number;
@@ -15,7 +12,7 @@ type MapStatus = {
   places: Array<string>;
 };
 
-export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus>, config: Config = defaultConfig) => {
+export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus>) => {
   const { $map, $modes, $floors, $behaviors, $places } = useNuxtApp();
   let mapElement: HTMLElement | null = null;
 
