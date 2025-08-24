@@ -16,7 +16,7 @@ type MapStatus = {
 };
 
 export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus>, config: Config = defaultConfig) => {
-  const { $map, $modes, $behaviors, $places } = useNuxtApp();
+  const { $map, $modes, $floors, $behaviors, $places } = useNuxtApp();
   let mapElement: HTMLElement | null = null;
 
   const init = (mapWrapper: HTMLElement) => {
@@ -39,8 +39,9 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
     watch(
       mapStatus,
       () => {
-        // ラベルのフォントサイズを調整
         applyMapStatusMode();
+        applyMapStatusFloor();
+        applyMapStatusPlaces();
         fixLabelFontSize();
       },
       { immediate: true, deep: true }
@@ -48,6 +49,7 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
     // ダークモードの変更を検知
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
       applyDefaultStyle();
+      applyMapStatusPlaces();
     });
   };
 
@@ -71,9 +73,6 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
   };
 
   const applyMapStatusMode = () => {
-    if (!mapElement) {
-      return;
-    }
     // 論理計算
     const alwaysModeIds: Array<string> = $modes.value
       .filter((mode) => mode.always && mode.enable)
@@ -85,7 +84,7 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
     const unvisibleModeIds: Array<string> = changeableModeIds.filter((id) => id !== visibleModeId);
     // 実行
     if (visibleModeId) {
-      mapElement.querySelectorAll(`[mode="${visibleModeId}"]`).forEach((el: Element) => {
+      mapElement?.querySelectorAll(`[mode="${visibleModeId}"]`).forEach((el: Element) => {
         (el as HTMLElement).style.display = "";
       });
       // modeを指定している場合は、alwaysのlabelを非表示
@@ -108,8 +107,63 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
       });
     });
   };
-  const applyMapStatusFloor = () => {};
-  const applyMapStatusPlaces = () => {};
+  const applyMapStatusFloor = () => {
+    // 論理計算
+    // const alwaysFloorIds: Array<string> = $floors.value.filter((floor) => floor.always).map((floor) => floor.id);
+    const changeableFloorIds: Array<string> = $floors.value.filter((floor) => !floor.always).map((floor) => floor.id);
+    const visibleFloorId: string = mapStatus.value.floor;
+    const unvisibleFloorIds: Array<string> = changeableFloorIds.filter((id) => id !== visibleFloorId);
+    // 実行
+    mapElement?.querySelectorAll(`[floor="${visibleFloorId}"]`).forEach((el: Element) => {
+      (el as HTMLElement).style.display = "";
+    });
+    unvisibleFloorIds.forEach((floorId) => {
+      mapElement?.querySelectorAll(`[floor="${floorId}"]`).forEach((el: Element) => {
+        (el as HTMLElement).style.display = "none";
+      });
+    });
+  };
+  const applyMapStatusPlaces = () => {
+    // 論理計算
+    const changeablePlaces = $places.value.filter((place) =>
+      $modes.value.some((mode) => mode.id === place.mode && mode.enable)
+    );
+    const selectedPlaces = changeablePlaces.filter((place) => mapStatus.value.places.includes(place.id));
+    const unselectedPlaces = changeablePlaces.filter((place) => !mapStatus.value.places.includes(place.id));
+    // 実行
+    selectedPlaces.forEach((place) => {
+      const selectedStyle = $behaviors.value.find((behavior: Behavior) => behavior.id === place.behavior)?.style?.body
+        .fillSelect;
+      if (!selectedStyle) {
+        return;
+      }
+      mapElement?.querySelectorAll(`[place="${place.id}"]:not([label])`).forEach((el: Element) => {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          // ダークモード
+          (el as HTMLElement).style.fill = selectedStyle.dark;
+        } else {
+          // ライトモード
+          (el as HTMLElement).style.fill = selectedStyle.light;
+        }
+      });
+    });
+    unselectedPlaces.forEach((place) => {
+      const defaultStyle = $behaviors.value.find((behavior: Behavior) => behavior.id === place.behavior)?.style?.body
+        .fillDefault;
+      if (!defaultStyle) {
+        return;
+      }
+      mapElement?.querySelectorAll(`[place="${place.id}"]:not([label])`).forEach((el: Element) => {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          // ダークモード
+          (el as HTMLElement).style.fill = defaultStyle.dark;
+        } else {
+          // ライトモード
+          (el as HTMLElement).style.fill = defaultStyle.light;
+        }
+      });
+    });
+  };
 
   const deleteDisabledModeObj = () => {
     $modes.value.forEach((mode: Mode) => {

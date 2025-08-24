@@ -21,6 +21,10 @@ export const useMapStatus = (config: Config = defaultConfig) => {
     return $floors.value.filter((floor) => !floor.always);
   });
 
+  const changeablePlaces = computed(() => {
+    // enabledなmodeに属するplaceのみ
+    return $places.value.filter((place) => $modes.value.some((mode) => mode.id === place.mode && mode.enable));
+  });
   const status = ref<Status>({
     mode: null,
     floor: changeableFloors.value[0]?.id as string,
@@ -46,7 +50,7 @@ export const useMapStatus = (config: Config = defaultConfig) => {
   };
   const setPlaces = (placeIds: Array<string> | null) => {
     if (placeIds) {
-      const validPlaceIds = placeIds.filter((placeId) => $places.value.some((p) => p.id === placeId));
+      const validPlaceIds = placeIds.filter((placeId) => changeablePlaces.value.some((p) => p.id === placeId));
       status.value.places = validPlaceIds;
     } else {
       status.value.places = [];
@@ -77,7 +81,7 @@ export const useMapStatus = (config: Config = defaultConfig) => {
     if (url.places.length === 1) {
       // placesが1つのときは、そのplaceのmodeとfloorにする
       setPlaces(url.places);
-      const place = $places.value.find((p) => p.id === status.value.places[0]);
+      const place = changeablePlaces.value.find((p) => p.id === status.value.places[0]);
       if (place) {
         setMode(place.mode);
         setFloor(place.floor);
@@ -87,7 +91,7 @@ export const useMapStatus = (config: Config = defaultConfig) => {
     } else if (url.places.length > 1) {
       // placesが複数のときは、そのままplacesに入れる。ただし、modeとfloorはplacesの最初の要素に合わせる
       setPlaces(url.places);
-      const firstPlace = $places.value.find((p) => p.id === status.value.places[0]);
+      const firstPlace = changeablePlaces.value.find((p) => p.id === status.value.places[0]);
       if (firstPlace) {
         setMode(firstPlace.mode);
         setFloor(firstPlace.floor);
