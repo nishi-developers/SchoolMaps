@@ -17,7 +17,9 @@ type MapStatus = {
 export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus>) => {
   const { $map, $modes, $floors, $behaviors, $places } = useNuxtApp();
   let mapElement: HTMLElement | null = null;
-
+  const isWebKit = () => {
+    return /webkit/i.test(navigator.userAgent) && !/chrome/i.test(navigator.userAgent);
+  };
   const init = (mapWrapper: HTMLElement) => {
     mapWrapper.appendChild($map.value);
     mapElement = mapWrapper.children[0] as HTMLElement;
@@ -72,8 +74,11 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
     mapElement.style.scale = `${moveStatus.value.zoom}`;
     //
     mapElement.querySelectorAll("[label]").forEach((element: Element) => {
-      (element as HTMLElement).style.rotate = `${-moveStatus.value.rotate}deg`;
-      (element as HTMLElement).style.scale = `${1 / moveStatus.value.zoom}`;
+      // safari(webkit)では、transformOriginが効かないバグがあるため、無効化
+      if (!isWebKit()) {
+        (element as HTMLElement).style.rotate = `${-moveStatus.value.rotate}deg`;
+        (element as HTMLElement).style.scale = `${1 / moveStatus.value.zoom}`;
+      }
     });
   };
 
