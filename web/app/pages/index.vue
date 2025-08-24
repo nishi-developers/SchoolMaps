@@ -13,7 +13,9 @@ const mapMove = useMapMove();
 const mapMoveByMouse = useMapMoveByMouse(mapMove, 0); // ヘッダーの高さは0と仮定
 const mapMoveByTouch = useMapMoveByTouch(mapMove, 0); // ヘッダーの高さは0と仮定
 const mapView = useMapView(mapMove.status);
+const mapStatus = useMapStatus();
 
+mapStatus.url2status(); // URLから状態を復元
 
 onMounted(() => {
   if (!mapWrapper.value) {
