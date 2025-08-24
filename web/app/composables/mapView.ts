@@ -9,8 +9,13 @@ type MoveStatus = {
   zoom: number;
   rotate: number;
 };
+type MapStatus = {
+  mode: string | null;
+  floor: string;
+  places: Array<string>;
+};
 
-export const useMapView = (moveStatus: Ref<MoveStatus>, config: Config = defaultConfig) => {
+export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus>, config: Config = defaultConfig) => {
   const { $map, $modes, $behaviors, $places } = useNuxtApp();
   let mapElement: HTMLElement | null = null;
 
@@ -27,6 +32,16 @@ export const useMapView = (moveStatus: Ref<MoveStatus>, config: Config = default
       () => {
         // マップの位置を更新
         applyMove();
+      },
+      { immediate: true, deep: true }
+    );
+    // mapStatusの監視を開始
+    watch(
+      mapStatus,
+      () => {
+        // ラベルのフォントサイズを調整
+        applyMapStatusMode();
+        fixLabelFontSize();
       },
       { immediate: true, deep: true }
     );
@@ -54,6 +69,47 @@ export const useMapView = (moveStatus: Ref<MoveStatus>, config: Config = default
       (element as HTMLElement).style.scale = `${1 / moveStatus.value.zoom}`;
     });
   };
+
+  const applyMapStatusMode = () => {
+    if (!mapElement) {
+      return;
+    }
+    // 論理計算
+    const alwaysModeIds: Array<string> = $modes.value
+      .filter((mode) => mode.always && mode.enable)
+      .map((mode) => mode.id);
+    const changeableModeIds: Array<string> = $modes.value
+      .filter((mode) => !mode.always && mode.enable)
+      .map((mode) => mode.id);
+    const visibleModeId: string | null = mapStatus.value.mode;
+    const unvisibleModeIds: Array<string> = changeableModeIds.filter((id) => id !== visibleModeId);
+    // 実行
+    if (visibleModeId) {
+      mapElement.querySelectorAll(`[mode="${visibleModeId}"]`).forEach((el: Element) => {
+        (el as HTMLElement).style.display = "";
+      });
+      // modeを指定している場合は、alwaysのlabelを非表示
+      alwaysModeIds.forEach((modeId) => {
+        mapElement?.querySelectorAll(`[mode="${modeId}"][label]`).forEach((el: Element) => {
+          (el as HTMLElement).style.display = "none";
+        });
+      });
+    } else {
+      // modeを指定していない場合は、alwaysのlabelを表示
+      alwaysModeIds.forEach((modeId) => {
+        mapElement?.querySelectorAll(`[mode="${modeId}"]`).forEach((el: Element) => {
+          (el as HTMLElement).style.display = "";
+        });
+      });
+    }
+    unvisibleModeIds.forEach((modeId) => {
+      mapElement?.querySelectorAll(`[mode="${modeId}"]`).forEach((el: Element) => {
+        (el as HTMLElement).style.display = "none";
+      });
+    });
+  };
+  const applyMapStatusFloor = () => {};
+  const applyMapStatusPlaces = () => {};
 
   const deleteDisabledModeObj = () => {
     $modes.value.forEach((mode: Mode) => {
