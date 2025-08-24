@@ -109,17 +109,20 @@ export const useSearch = () => {
   const normalize = (str: string): string => {
     // カタカナ->ひらがな変換
     const kataToHira = (str: string) => {
-      return str.replace(/[\u30a1-\u30f6]/g, function (s) {
+      return str.replace(/[\u30a1-\u30f6]/g, (s) => {
         return String.fromCharCode(s.charCodeAt(0) - 0x60);
       });
     };
     // 全角->半角変換
     const zenToHan = (str: string) => {
-      return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
+      return str.replace(/[\uff21-\uff3a\uff41-\uff5a\uff10-\uff19]/g, (s) => {
+        // /[Ａ-Ｚａ-ｚ０-９]/g
         return String.fromCharCode(s.charCodeAt(0) - 0xfee0);
       });
     };
-    return zenToHan(kataToHira(str))?.toLowerCase().replace(/　/g, " ");
+    return zenToHan(kataToHira(str))
+      ?.toLowerCase()
+      .replace(/\u3000/g, " "); // \u3000=全角スペース
   };
 
   return { search };
