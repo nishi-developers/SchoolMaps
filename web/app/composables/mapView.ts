@@ -9,7 +9,7 @@ type MoveStatus = {
 type MapStatus = {
   mode: string | null;
   floor: string;
-  places: Array<string>;
+  places: readonly string[];
 };
 
 export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus>) => {
