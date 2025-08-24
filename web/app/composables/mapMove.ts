@@ -114,7 +114,7 @@ export const useMapMove = (config: Config = defaultConfig) => {
   };
 
   // ヘルパー関数群
-  const isSpeedValid = (type: MapMoveType): boolean => {
+  const helper_isSpeedValid = (type: MapMoveType): boolean => {
     switch (type) {
       case "position":
         return isFinite(slideData.position.speed.x) && isFinite(slideData.position.speed.y);
@@ -124,7 +124,7 @@ export const useMapMove = (config: Config = defaultConfig) => {
         return isFinite(slideData.rotate.speed);
     }
   };
-  const hasMinimumSpeed = (type: MapMoveType): boolean => {
+  const helper_hasMinimumSpeed = (type: MapMoveType): boolean => {
     const frictionConfig = config.friction;
     switch (type) {
       case "position":
@@ -138,7 +138,7 @@ export const useMapMove = (config: Config = defaultConfig) => {
         return Math.abs(slideData.rotate.speed) > frictionConfig.min;
     }
   };
-  const applySlideMovement = (type: MapMoveType, deltaTime: number) => {
+  const helper_applySlideMovement = (type: MapMoveType, deltaTime: number) => {
     const frictionConfig = config.friction;
     switch (type) {
       case "position":
@@ -179,7 +179,7 @@ export const useMapMove = (config: Config = defaultConfig) => {
 
   const doSlide = (type: MapMoveType) => {
     // 速度が無効な場合はリセット
-    if (!isSpeedValid(type)) {
+    if (!helper_isSpeedValid(type)) {
       slideReset(type);
       return;
     }
@@ -197,11 +197,11 @@ export const useMapMove = (config: Config = defaultConfig) => {
     }
     slideData[type].isSlideing = true;
     // 最小速度以上の場合は継続
-    if (hasMinimumSpeed(type)) {
+    if (helper_hasMinimumSpeed(type)) {
       const now = performance.now();
       const deltaTime = slideData[type].lastSlideTime ? now - slideData[type].lastSlideTime : 16.67; // 初回は60FPSを仮定
       slideData[type].lastSlideTime = now;
-      applySlideMovement(type, deltaTime);
+      helper_applySlideMovement(type, deltaTime);
       // requestAnimationFrameで次のフレームに実行
       requestAnimationFrame(() => {
         slideData[type].isSlideing = false;
