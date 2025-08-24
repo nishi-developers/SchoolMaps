@@ -26,11 +26,13 @@
     "@vite-pwa/nuxt": "^1.0.4",
     "eslint": "^9.32.0",
     "nuxt": "^4.0.1",
+    "rbush": "^4.0.1",
     "viewerjs": "^1.11.7",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "@types/rbush": "^4.0.0",
     "@vue/test-utils": "^2.4.6",
     "happy-dom": "^18.0.1",
     "sass": "^1.90.0",
