@@ -13,23 +13,23 @@ export const useMapStatus = (config: Config = defaultConfig) => {
   const { $modes, $floors, $places } = useNuxtApp();
   const route = useRoute();
 
-  const validModes = computed(() => {
+  const changeableModes = computed(() => {
     return $modes.value.filter((mode) => !mode.always && mode.enable);
   });
 
-  const validFloors = computed(() => {
+  const changeableFloors = computed(() => {
     return $floors.value.filter((floor) => !floor.always);
   });
 
   const status = ref<Status>({
     mode: null,
-    floor: validFloors.value[0]?.id as string,
+    floor: changeableFloors.value[0]?.id as string,
     places: [],
   });
 
   // セッター(バリデーション付き)
   const setMode = (modeId: string | null) => {
-    if (modeId && validModes.value.some((mode) => mode.id === modeId)) {
+    if (modeId && changeableModes.value.some((mode) => mode.id === modeId)) {
       status.value.mode = modeId;
     } else {
       status.value.mode = null;
@@ -37,10 +37,10 @@ export const useMapStatus = (config: Config = defaultConfig) => {
     status2url();
   };
   const setFloor = (floorId: string | null) => {
-    if (floorId && validFloors.value.some((floor) => floor.id === floorId)) {
+    if (floorId && changeableFloors.value.some((floor) => floor.id === floorId)) {
       status.value.floor = floorId;
     } else {
-      status.value.floor = validFloors.value[0]?.id as string;
+      status.value.floor = changeableFloors.value[0]?.id as string;
     }
     status2url();
   };
@@ -124,6 +124,8 @@ export const useMapStatus = (config: Config = defaultConfig) => {
   return {
     status: readonly(status),
     url2status,
+    changeableModes,
+    changeableFloors,
   };
 };
 
