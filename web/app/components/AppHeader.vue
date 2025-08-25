@@ -1,9 +1,12 @@
 <template>
     <div id="header">
         <div id="title">
-            <nuxt-link to="/">
+            <nuxt-link v-if="route.name !== 'index'" to="/">
                 <span id="mainTitle">西高マップ</span>
             </nuxt-link>
+            <a v-else href="/" @click.prevent>
+                <span id="mainTitle">西高マップ</span>
+            </a>
         </div>
         <div id="menu">
             <nuxt-link to="/guide">使い方</nuxt-link>
@@ -11,6 +14,9 @@
         </div>
     </div>
 </template>
+<script setup lang="ts">
+const route = useRoute();
+</script>
 <style scoped lang="scss">
 #header {
     background-color: var(--MainColor);
