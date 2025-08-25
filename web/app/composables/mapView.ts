@@ -49,7 +49,7 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
     watch(
       () => [moveStatus.value.rotate, moveStatus.value.zoom, mapStatus.value.mode, mapStatus.value.floor],
       () => {
-        setTimeout(() => fixLabelFontSize(), 100);
+        fixLabelFontSize();
       },
       { immediate: true, deep: true }
     );
@@ -256,14 +256,27 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
 
       // 要素をR-treeに追加
       visibleLabelElements.forEach((el) => {
-        const rect = el.getBoundingClientRect();
         const placeId = el.getAttribute("place");
-        if (!placeId || rect.width === 0 || rect.height === 0) return;
-        const item = {
-          minX: rect.left,
-          minY: rect.top,
-          maxX: rect.right,
-          maxY: rect.bottom,
+        if (!placeId || !el) return;
+        // ラベルの位置は、getBBoxとgetBoundingClientRectを組み合わせて算出する
+        // getBoundingClientRectだけでは、回転時にサイズが大きくなってしまう
+        // getBBoxはtransformの影響を受けないが、フォントサイズの影響を受けるため都合が良い
+        const size = {
+          width: (el as SVGGraphicsElement).getBBox().width,
+          height: (el as SVGGraphicsElement).getBBox().height,
+        };
+        const center = {
+          x: el.getBoundingClientRect().x + (el.getBoundingClientRect().width || 0) / 2,
+          y: el.getBoundingClientRect().y + (el.getBoundingClientRect().height || 0) / 2,
+        };
+        const fixedLocate = {
+          minX: center.x - size.width / 2,
+          minY: center.y - size.height / 2,
+          maxX: center.x + size.width / 2,
+          maxY: center.y + size.height / 2,
+        };
+        const item: Item = {
+          ...fixedLocate,
           element: el,
           placeId: placeId,
         };
