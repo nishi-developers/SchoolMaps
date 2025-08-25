@@ -45,9 +45,11 @@ export const useMapStatus = () => {
     }
     status2url();
   };
-  const setPlaces = (placeIds: Array<string> | null) => {
+  const setPlaces = (placeIds: Array<string | null> | null) => {
     if (placeIds) {
-      const validPlaceIds = placeIds.filter((placeId) => changeablePlaces.value.some((p) => p.id === placeId));
+      const validPlaceIds = placeIds
+        .filter((placeId) => placeId !== null)
+        .filter((placeId) => changeablePlaces.value.some((p) => p.id === placeId));
       status.value.places = validPlaceIds;
     } else {
       status.value.places = [];
@@ -125,8 +127,9 @@ export const useMapStatus = () => {
   return {
     status: readonly(status),
     url2status,
-    changeableModes,
-    changeableFloors,
+    setMode,
+    setFloor,
+    setPlaces,
   };
 };
 

@@ -1,7 +1,9 @@
 <template>
   <div>
     <div id="map-wrapper" ref="mapWrapper" v-on="eventListener" />
-    <p>hello world</p>
+    <div>
+      <div>1</div>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -14,6 +16,7 @@ const mapMoveByMouse = useMapMoveByMouse(mapMove, 0); // ヘッダーの高さ�
 const mapMoveByTouch = useMapMoveByTouch(mapMove, 0); // ヘッダーの高さは0と仮定
 const mapStatus = useMapStatus();
 const mapView = useMapView(mapStatus.status, mapMove.status);
+const mapEvent = useMapEvent(mapStatus.status, mapStatus.setPlaces);
 
 mapStatus.url2status(); // URLから状態を復元
 
@@ -35,9 +38,9 @@ onMounted(() => {
 let isAlreadyMoved = false; // マウス使用時のみ、移動したかどうか
 const eventListener = {
   click: (event: MouseEvent) => {
-    // if (!isAlreadyMoved) {
-    //   Property.showByUser(event)
-    // }
+    if (!isAlreadyMoved) {
+      mapEvent.clickPlace(event);
+    }
   },
   mousemove: (event: MouseEvent) => {
     mapMoveByMouse.moveMouse(event)
