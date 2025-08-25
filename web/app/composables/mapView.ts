@@ -23,7 +23,7 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
   const init = (mapWrapper: HTMLElement) => {
     mapWrapper.appendChild($map.value);
     mapElement = mapWrapper.children[0] as HTMLElement;
-    //
+    applyInitStyle();
     deleteDisabledModeObj();
     addLabels();
     applyDefaultStyle();
@@ -62,13 +62,17 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
     });
   };
 
+  const applyInitStyle = () => {
+    if (!mapElement) {
+      return;
+    }
+    mapElement.style.position = "absolute";
+    mapElement.style.overflow = "visible";
+  };
   const applyMove = () => {
     if (!mapElement) {
       return;
     }
-    // 初期用(要移動)
-    mapElement.style.position = "absolute";
-    mapElement.style.overflow = "visible";
     //
     mapElement.style.top = `${moveStatus.value.position.y}px`;
     mapElement.style.left = `${moveStatus.value.position.x}px`;
