@@ -49,9 +49,7 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
     watch(
       () => [moveStatus.value.rotate, moveStatus.value.zoom, mapStatus.value.mode, mapStatus.value.floor],
       () => {
-        if (!isWebKit()) {
-          fixLabelFontSize();
-        }
+        fixLabelFontSize();
       },
       { immediate: true, deep: true }
     );
@@ -68,7 +66,9 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
     }
     mapElement.style.position = "absolute";
     mapElement.style.overflow = "visible";
+    mapElement.style.transformBox = "fill-box";
   };
+
   const applyMove = () => {
     if (!mapElement) {
       return;
@@ -79,13 +79,45 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
     mapElement.style.rotate = `${moveStatus.value.rotate}deg`;
     mapElement.style.scale = `${moveStatus.value.zoom}`;
     //
-    mapElement.querySelectorAll("[label]").forEach((element: Element) => {
-      // safari(webkit)では、transformOriginが効かないバグがあるため、無効化
+    mapElement.querySelectorAll("[label]:not([style*='display: none'])").forEach((element: Element) => {
       if (!isWebKit()) {
         (element as HTMLElement).style.rotate = `${-moveStatus.value.rotate}deg`;
         (element as HTMLElement).style.scale = `${1 / moveStatus.value.zoom}`;
+      } else {
+        helper_applyWebkitRotateAndZoom(element);
       }
     });
+  };
+
+  const helper_applyWebkitRotateAndZoom = (element: Element) => {
+    // safari(webkit)では、transformOriginが効かないバグがある
+    // そのため、g要素でラベルを囲み、g要素に対してSVGネイティブのtransform属性を使う
+    // 要素そのものをtransformすると、要素の位置がずれるためg要素で囲む必要がある
+    const bbox = (element as SVGGraphicsElement).getBBox();
+    const center = {
+      x: bbox.x + bbox.width / 2,
+      y: bbox.y + bbox.height / 2,
+    };
+    // ラベル要素を囲むg要素を取得または作成
+    let g = element.parentElement as SVGGElement | null;
+    if (!g || g.tagName !== "g" || !g.hasAttribute("label-transform-wrapper")) {
+      // g要素がなければ作成
+      g = document.createElementNS("http://www.w3.org/2000/svg", "g") as SVGGElement;
+      if (element) {
+        element.replaceWith(g);
+        g.setAttribute("label-transform-wrapper", ""); // 識別用
+        g.appendChild(element);
+      }
+    }
+    // g要素に対してtransform属性を設定
+    // 一度translateして中心位置に移動し、回転・拡大縮小を行い、元の位置に戻す
+    g.setAttribute(
+      "transform",
+      `translate(${center.x}, ${center.y}) ` +
+        `rotate(${-moveStatus.value.rotate}) ` +
+        `scale(${1 / moveStatus.value.zoom}) ` +
+        `translate(${-center.x}, ${-center.y})`
+    );
   };
 
   const applyMapStatusModeAndFloor = () => {
