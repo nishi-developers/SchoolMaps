@@ -91,7 +91,7 @@
           "light": "var(--MainBodyColor)",
           "dark": "var(--MainBodyColor)"
         },
-        "fontSize": "2rem"
+        "fontSize": "1.5rem"
       }
     }
   },
@@ -119,7 +119,7 @@
           "light": "var(--MainBodyColor)",
           "dark": "var(--MainBodyColor)"
         },
-        "fontSize": "1.5rem"
+        "fontSize": "1.3rem"
       }
     }
   }
