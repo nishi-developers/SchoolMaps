@@ -49,7 +49,9 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
     watch(
       () => [moveStatus.value.rotate, moveStatus.value.zoom, mapStatus.value.mode, mapStatus.value.floor],
       () => {
-        fixLabelFontSize();
+        if (!isWebKit()) {
+          fixLabelFontSize();
+        }
       },
       { immediate: true, deep: true }
     );
