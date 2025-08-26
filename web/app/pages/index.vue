@@ -1,8 +1,34 @@
 <template>
   <div>
     <div id="map-wrapper" ref="mapWrapper" v-on="eventListener" />
-    <div>
-      <div>1</div>
+    <div id="map-ui">
+      <div id="controls">
+        <div>
+          <Icon name="material-symbols:search-rounded" @click="async () => {
+            await navigateTo({
+              name: 'search',
+            })
+          }" />
+        </div>
+        <div>
+          <Icon name="material-symbols:reset-focus-outline-rounded" @click="mapMove.reset()" />
+        </div>
+        <div v-if="labelOpacity == 0">
+          <Icon name="material-symbols:label-outline-rounded" @click="labelOpacity = 1" />
+        </div>
+        <div v-else>
+          <Icon name="material-symbols:label-off-outline-rounded" @click="labelOpacity = 0" />
+        </div>
+      </div>
+      <div id="floors">
+        <div>1階</div>
+        <div>2階</div>
+        <div>3階</div>
+      </div>
+      <div id="modes">
+        <div>通常</div>
+        <div>文化祭</div>
+      </div>
     </div>
   </div>
 </template>
@@ -86,7 +112,7 @@ const eventListener = {
 // Composablesを使って、状態とロジックを分離
 </script>
 
-<style>
+<style scoped lang="scss">
 /* #map {
   width: 100%;
   height: 100%;
@@ -102,5 +128,50 @@ const eventListener = {
   height: 100%;
   position: relative;
   overflow: hidden;
+}
+
+#map-ui {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  #controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: auto;
+
+    div {
+      background-color: var(--SubBaseColor);
+      border-radius: 5px;
+      padding: 5px;
+      cursor: pointer;
+      font-size: 1.75rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 45px;
+      height: 45px;
+
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: var(--SubColor);
+      }
+
+      &:active {
+        background-color: var(--SubColor);
+      }
+    }
+  }
 }
 </style>
