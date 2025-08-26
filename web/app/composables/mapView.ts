@@ -99,10 +99,10 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
       y: bbox.y + bbox.height / 2,
     };
     // ラベル要素を囲むg要素を取得または作成
-    let g = element.parentElement as SVGGElement | null;
+    let g = element.parentElement as SVGElement | null;
     if (!g || g.tagName !== "g" || !g.hasAttribute("label-transform-wrapper")) {
       // g要素がなければ作成
-      g = document.createElementNS("http://www.w3.org/2000/svg", "g") as SVGGElement;
+      g = document.createElementNS("http://www.w3.org/2000/svg", "g") as SVGElement;
       if (element) {
         element.replaceWith(g);
         g.setAttribute("label-transform-wrapper", ""); // 識別用
