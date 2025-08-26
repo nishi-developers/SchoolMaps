@@ -53,8 +53,6 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveSta
     mapElement.style.position = "absolute";
     mapElement.style.overflow = "visible";
     mapElement.style.transformBox = "fill-box";
-    mapElement.style.width = "100%";
-    mapElement.style.height = "100%";
   };
 
   const applyMove = () => {
