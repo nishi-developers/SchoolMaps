@@ -1,20 +1,6 @@
 import RBush from "rbush";
 
-type MoveStatus = {
-  position: {
-    x: number;
-    y: number;
-  };
-  zoom: number;
-  rotate: number;
-};
-type MapStatus = {
-  mode: string | null;
-  floor: string;
-  places: readonly string[];
-};
-
-export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus>) => {
+export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveStatus>) => {
   const { $map, $modes, $floors, $behaviors, $places } = useNuxtApp();
   let mapElement: HTMLElement | null = null;
   const isWebKit = () => {
