@@ -17,6 +17,7 @@ const defaultConfig: Config = {
 };
 
 export const useMapMove = (config: Config = defaultConfig) => {
+  const { $detail } = useNuxtApp();
   const status = ref({
     position: {
       x: 0,
@@ -216,9 +217,12 @@ export const useMapMove = (config: Config = defaultConfig) => {
 
   const reset = () => {
     slideReset();
-    setZoom(1);
     setRotate(0);
-    setPosition(0, 0);
+    // setPositionで指定する位置は、zoom適用前の位置のため、このように計算
+    setPosition((window.innerWidth - $detail.value.width) / 2, (window.innerHeight - $detail.value.height) / 2);
+    const zoomWidth = window.innerWidth / $detail.value.width;
+    const zoomHeight = window.innerHeight / $detail.value.height;
+    setZoom(Math.min(zoomWidth, zoomHeight));
   };
 
   return {

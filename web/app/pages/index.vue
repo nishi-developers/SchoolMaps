@@ -52,6 +52,7 @@ onMounted(() => {
     return;
   }
   mapView.init(mapWrapper.value);
+  mapMove.reset();
 
   // マウスホイールのイベントをキャッチするために、passive: falseを設定
   document.body.addEventListener('touchmove', (event) => {
