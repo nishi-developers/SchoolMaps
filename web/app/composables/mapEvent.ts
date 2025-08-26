@@ -8,10 +8,7 @@ export const useMapEvent = (
     const targetPlaceId = (event.target as HTMLElement).getAttribute("place");
     setPlaces([targetPlaceId]); // 存在しないID(nullとか)が来た場合はsetPlacesで弾かれる
   };
-  const isShowLabel = ref(true);
-  const setIsShowLabel = (value: boolean) => {
-    isShowLabel.value = value;
-  };
+
   const floorsButtonData = $floors.value
     .filter((floor) => !floor.always)
     .map((floor) => ({
@@ -33,19 +30,17 @@ export const useMapEvent = (
     mapStatus.setFloor(floorId);
   };
   const setMode = (modeId: string | null) => {
-    mapStatus.setPlaces(null);
     if (mapStatus.status.value.mode === modeId) {
       // 同じモードが選択されたらモード解除
       mapStatus.setMode(null);
     } else {
       mapStatus.setMode(modeId);
     }
+    mapStatus.setPlaces(null);
   };
 
   return {
     clickPlace,
-    isShowLabel: readonly(isShowLabel),
-    setIsShowLabel,
     floorsButtonData,
     modesButtonData,
     setFloor,

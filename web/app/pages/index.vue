@@ -14,10 +14,10 @@
           <div>
             <Icon name="material-symbols:reset-focus-outline-rounded" @click="mapMove.reset()" />
           </div>
-          <div v-if="mapEvent.isShowLabel.value" @click="mapEvent.setIsShowLabel(false)">
+          <div v-if="mapStatus.isShowLabel.value" @click="mapStatus.setIsShowLabel(false)">
             <Icon name="material-symbols:label-off-outline-rounded" />
           </div>
-          <div v-else @click="mapEvent.setIsShowLabel(true)">
+          <div v-else @click="mapStatus.setIsShowLabel(true)">
             <Icon name="material-symbols:label-outline-rounded" />
           </div>
         </div>
@@ -48,8 +48,8 @@ const mapMove = useMapMove();
 const mapMoveByMouse = useMapMoveByMouse(mapMove, 0); // ヘッダーの高さは0と仮定
 const mapMoveByTouch = useMapMoveByTouch(mapMove, 0); // ヘッダーの高さは0と仮定
 const mapStatus = useMapStatus();
+const mapView = useMapView(mapStatus.status, mapMove.status, mapStatus.isShowLabel);
 const mapEvent = useMapEvent(mapStatus, mapStatus.setPlaces);
-const mapView = useMapView(mapStatus.status, mapMove.status, mapEvent.isShowLabel);
 
 mapStatus.url2status(); // URLから状態を復元
 
