@@ -2,32 +2,39 @@
   <div>
     <div id="map-wrapper" ref="mapWrapper" v-on="eventListener" />
     <div id="map-ui">
-      <div id="controls">
-        <div>
-          <Icon name="material-symbols:search-rounded" @click="async () => {
-            await navigateTo({
-              name: 'search',
-            })
-          }" />
+      <div id="side-top">
+        <div id="controls">
+          <div>
+            <Icon name="material-symbols:search-rounded" @click="async () => {
+              await navigateTo({
+                name: 'search',
+              })
+            }" />
+          </div>
+          <div>
+            <Icon name="material-symbols:reset-focus-outline-rounded" @click="mapMove.reset()" />
+          </div>
+          <div v-if="mapEvent.isShowLabel.value" @click="mapEvent.setIsShowLabel(false)">
+            <Icon name="material-symbols:label-off-outline-rounded" />
+          </div>
+          <div v-else @click="mapEvent.setIsShowLabel(true)">
+            <Icon name="material-symbols:label-outline-rounded" />
+          </div>
         </div>
-        <div>
-          <Icon name="material-symbols:reset-focus-outline-rounded" @click="mapMove.reset()" />
-        </div>
-        <div v-if="mapEvent.isShowLabel.value" @click="mapEvent.setIsShowLabel(false)">
-          <Icon name="material-symbols:label-off-outline-rounded" />
-        </div>
-        <div v-else @click="mapEvent.setIsShowLabel(true)">
-          <Icon name="material-symbols:label-outline-rounded" />
+        <div id="floors">
+          <div v-for="{ id, name } in mapEvent.floorsButtonData" :key="`${id}`"
+            :class="{ active: mapStatus.status.value.floor === id }" @click="mapEvent.setFloor(id)">
+            {{ name }}
+          </div>
         </div>
       </div>
-      <div id="floors">
-        <div>1階</div>
-        <div>2階</div>
-        <div>3階</div>
-      </div>
-      <div id="modes">
-        <div>通常</div>
-        <div>文化祭</div>
+      <div id="side-bottom">
+        <div id="modes">
+          <div v-for="{ id, name } in mapEvent.modesButtonData" :key="`${id}`"
+            :class="{ active: mapStatus.status.value.mode === id }" @click="mapEvent.setMode(id)">
+            {{ name }}
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -41,7 +48,7 @@ const mapMove = useMapMove();
 const mapMoveByMouse = useMapMoveByMouse(mapMove, 0); // ヘッダーの高さは0と仮定
 const mapMoveByTouch = useMapMoveByTouch(mapMove, 0); // ヘッダーの高さは0と仮定
 const mapStatus = useMapStatus();
-const mapEvent = useMapEvent(mapStatus.status, mapStatus.setPlaces);
+const mapEvent = useMapEvent(mapStatus, mapStatus.setPlaces);
 const mapView = useMapView(mapStatus.status, mapMove.status, mapEvent.isShowLabel);
 
 mapStatus.url2status(); // URLから状態を復元
@@ -139,37 +146,100 @@ const eventListener = {
   height: 100%;
   pointer-events: none;
 
-  #controls {
+  #side-top {
     position: absolute;
     top: 10px;
     right: 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    pointer-events: auto;
+    gap: 30px;
 
-    div {
-      background-color: var(--SubBaseColor);
-      border-radius: 5px;
-      padding: 5px;
-      cursor: pointer;
+    #controls div {
       font-size: 1.75rem;
+    }
 
+    #floors div {
+      font-size: 1.25rem;
+    }
+
+    #floors div.active {
+      background-color: var(--SubColor);
+    }
+
+    #controls,
+    #floors {
+      flex-direction: column;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      gap: 10px;
 
-      width: 45px;
-      height: 45px;
+      div {
+        background-color: var(--SubBaseColor);
+        border-radius: 5px;
+        padding: 5px;
+        cursor: pointer;
+        pointer-events: auto;
 
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      transition: background-color 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-      &:hover {
-        background-color: var(--SubColor);
+        width: 45px;
+        height: 45px;
+
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s;
+
+        @media (hover: hover) {
+          &:hover {
+            background-color: var(--SubColor);
+          }
+        }
+
+        &:active {
+          background-color: var(--SubColor);
+        }
+      }
+    }
+  }
+
+  #side-bottom {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+
+    #modes {
+      display: flex;
+      gap: 10px;
+
+      div {
+        background-color: var(--SubBaseColor);
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        pointer-events: auto;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 1.25rem;
+        height: 35px;
+
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s;
+
+        @media (hover: hover) {
+          &:hover {
+            background-color: var(--SubColor);
+          }
+        }
+
+        &:active {
+          background-color: var(--SubColor);
+        }
       }
 
-      &:active {
+      div.active {
         background-color: var(--SubColor);
       }
     }
