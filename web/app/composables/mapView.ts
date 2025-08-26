@@ -339,5 +339,7 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveSta
       });
     });
   };
-  return { init };
+  return {
+    init,
+  };
 };

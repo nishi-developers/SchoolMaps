@@ -124,12 +124,20 @@ export const useMapStatus = () => {
     });
   };
 
+  // ラベル表示非表示
+  const isShowLabel = ref(true);
+  const setIsShowLabel = (value: boolean) => {
+    isShowLabel.value = value;
+  };
+
   return {
     status: readonly(status),
     url2status,
     setMode,
     setFloor,
     setPlaces,
+    isShowLabel: readonly(isShowLabel),
+    setIsShowLabel,
   };
 };
 
