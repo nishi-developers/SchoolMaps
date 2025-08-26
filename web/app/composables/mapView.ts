@@ -1,6 +1,6 @@
 import RBush from "rbush";
 
-export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveStatus>) => {
+export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveStatus>, isShowLabel: Ref<boolean>) => {
   const { $map, $modes, $floors, $behaviors, $places } = useNuxtApp();
   let mapElement: HTMLElement | null = null;
   const isWebKit = () => {
@@ -31,11 +31,11 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveSta
       },
       { immediate: true, deep: true }
     );
-    // fixLabelFontSize用のwatch(負荷軽減のために無駄な実行を避ける)
+    // label用のwathch(負荷軽減のために無駄な実行を避ける)
     watch(
-      () => [moveStatus.value.rotate, moveStatus.value.zoom, mapStatus.value.mode, mapStatus.value.floor],
+      () => [isShowLabel, moveStatus.value.rotate, moveStatus.value.zoom, mapStatus.value.mode, mapStatus.value.floor],
       () => {
-        fixLabelFontSize();
+        applyLabelVisibility();
       },
       { immediate: true, deep: true }
     );
@@ -266,7 +266,21 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveSta
     }
   };
 
-  const fixLabelFontSize = () => {
+  const applyLabelVisibility = () => {
+    if (isShowLabel.value) {
+      hideOverlappedLabel();
+    } else {
+      hideAllLabels();
+    }
+  };
+
+  const hideAllLabels = () => {
+    mapElement?.querySelectorAll("[label]:not([style*='display: none'])").forEach((element: Element) => {
+      (element as HTMLElement).style.opacity = "0";
+    });
+  };
+
+  const hideOverlappedLabel = () => {
     requestAnimationFrame(() => {
       const visibleLabelElements = mapElement?.querySelectorAll("[label]:not([style*='display: none'])") || [];
 

@@ -13,11 +13,11 @@
         <div>
           <Icon name="material-symbols:reset-focus-outline-rounded" @click="mapMove.reset()" />
         </div>
-        <div v-if="labelOpacity == 0">
-          <Icon name="material-symbols:label-outline-rounded" @click="labelOpacity = 1" />
+        <div v-if="mapEvent.isShowLabel.value" @click="mapEvent.setIsShowLabel(false)">
+          <Icon name="material-symbols:label-off-outline-rounded" />
         </div>
-        <div v-else>
-          <Icon name="material-symbols:label-off-outline-rounded" @click="labelOpacity = 0" />
+        <div v-else @click="mapEvent.setIsShowLabel(true)">
+          <Icon name="material-symbols:label-outline-rounded" />
         </div>
       </div>
       <div id="floors">
@@ -41,8 +41,8 @@ const mapMove = useMapMove();
 const mapMoveByMouse = useMapMoveByMouse(mapMove, 0); // ヘッダーの高さは0と仮定
 const mapMoveByTouch = useMapMoveByTouch(mapMove, 0); // ヘッダーの高さは0と仮定
 const mapStatus = useMapStatus();
-const mapView = useMapView(mapStatus.status, mapMove.status);
 const mapEvent = useMapEvent(mapStatus.status, mapStatus.setPlaces);
+const mapView = useMapView(mapStatus.status, mapMove.status, mapEvent.isShowLabel);
 
 mapStatus.url2status(); // URLから状態を復元
 
