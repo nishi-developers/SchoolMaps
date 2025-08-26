@@ -214,11 +214,11 @@ export const useMapMove = (config: Config = defaultConfig) => {
     }
   };
 
-  const reset = (width: number, height: number) => {
+  const reset = () => {
     slideReset();
     setZoom(1);
     setRotate(0);
-    setPosition(width / 2, height / 2);
+    setPosition(0, 0);
   };
 
   return {
