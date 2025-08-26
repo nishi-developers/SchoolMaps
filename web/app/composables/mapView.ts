@@ -113,9 +113,12 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MoveStatus
     // 一度translateして中心位置に移動し、回転・拡大縮小を行い、元の位置に戻す
     g.setAttribute(
       "transform",
-      `translate(${center.x}, ${center.y}) ` +
-        `rotate(${-moveStatus.value.rotate}) ` +
-        `scale(${1 / moveStatus.value.zoom}) ` +
+      `translate(${center.x}, ${center.y})` +
+        " " +
+        `rotate(${-moveStatus.value.rotate})` +
+        " " +
+        `scale(${1 / moveStatus.value.zoom})` +
+        " " +
         `translate(${-center.x}, ${-center.y})`
     );
   };
