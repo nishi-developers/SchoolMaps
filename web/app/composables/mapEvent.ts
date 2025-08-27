@@ -1,5 +1,5 @@
 export const useMapEvent = (
-  mapStatus: ReturnType<typeof useMapStatus>,
+  mapState: ReturnType<typeof useMapState>,
   setPlaces: (places: Array<string | null> | null) => void
 ) => {
   const { $modes, $floors } = useNuxtApp();
@@ -22,21 +22,21 @@ export const useMapEvent = (
       name: mode.name,
     }));
   const setFloor = (floorId: string | null) => {
-    if (floorId === null || mapStatus.status.value.floor === floorId) {
+    if (floorId === null || mapState.status.value.floor === floorId) {
       // 同じ階が選択されても何もしない
       return;
     }
-    mapStatus.setPlaces(null);
-    mapStatus.setFloor(floorId);
+    mapState.setPlaces(null);
+    mapState.setFloor(floorId);
   };
   const setMode = (modeId: string | null) => {
-    if (mapStatus.status.value.mode === modeId) {
+    if (mapState.status.value.mode === modeId) {
       // 同じモードが選択されたらモード解除
-      mapStatus.setMode(null);
+      mapState.setMode(null);
     } else {
-      mapStatus.setMode(modeId);
+      mapState.setMode(modeId);
     }
-    mapStatus.setPlaces(null);
+    mapState.setPlaces(null);
   };
 
   return {

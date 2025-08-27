@@ -6,7 +6,7 @@ type Status = {
   places: Array<string>;
 };
 
-export const useMapStatus = () => {
+export const useMapState = () => {
   const { $modes, $floors, $places } = useNuxtApp();
   const route = useRoute();
 

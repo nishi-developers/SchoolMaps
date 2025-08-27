@@ -14,16 +14,16 @@
           <div>
             <Icon name="material-symbols:reset-focus-outline-rounded" @click="mapMove.reset()" />
           </div>
-          <div v-if="mapStatus.isShowLabel.value" @click="mapStatus.isShowLabel.value = false">
+          <div v-if="mapState.isShowLabel.value" @click="mapState.isShowLabel.value = false">
             <Icon name="material-symbols:label-off-outline-rounded" />
           </div>
-          <div v-else @click="mapStatus.isShowLabel.value = true">
+          <div v-else @click="mapState.isShowLabel.value = true">
             <Icon name="material-symbols:label-outline-rounded" />
           </div>
         </div>
         <div id="floors">
           <div v-for="{ id, name } in mapEvent.floorsButtonData" :key="`${id}`"
-            :class="{ active: mapStatus.status.value.floor === id }" @click="mapEvent.setFloor(id)">
+            :class="{ active: mapState.status.value.floor === id }" @click="mapEvent.setFloor(id)">
             {{ name }}
           </div>
         </div>
@@ -31,7 +31,7 @@
       <div id="side-bottom">
         <div id="modes">
           <div v-for="{ id, name } in mapEvent.modesButtonData" :key="`${id}`"
-            :class="{ active: mapStatus.status.value.mode === id }" @click="mapEvent.setMode(id)">
+            :class="{ active: mapState.status.value.mode === id }" @click="mapEvent.setMode(id)">
             {{ name }}
           </div>
         </div>
@@ -47,11 +47,11 @@ const mapWrapper = ref<HTMLElement>()
 const mapMove = useMapMove();
 const mapMoveByMouse = useMapMoveByMouse(mapMove, 0); // ヘッダーの高さは0と仮定
 const mapMoveByTouch = useMapMoveByTouch(mapMove, 0); // ヘッダーの高さは0と仮定
-const mapStatus = useMapStatus();
-const mapView = useMapView(mapStatus.status, mapMove.status, mapStatus.isShowLabel);
-const mapEvent = useMapEvent(mapStatus, mapStatus.setPlaces);
+const mapState = useMapState();
+const mapView = useMapView(mapState.status, mapMove.status, mapState.isShowLabel);
+const mapEvent = useMapEvent(mapState, mapState.setPlaces);
 
-mapStatus.url2status(); // URLから状態を復元
+mapState.url2status(); // URLから状態を復元
 
 onMounted(() => {
   if (!mapWrapper.value) {
