@@ -28,6 +28,7 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveSta
       () => {
         applyMapStatusModeAndFloor();
         applyMapStatusPlaces();
+        applyMove(); // applyMapStatusModeAndFloorの後に実行する必要がある(ラベルの表示状態が変わるため)
       },
       { immediate: true, deep: true }
     );
