@@ -15,6 +15,11 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveSta
     deleteDisabledModeObj();
     addLabels();
     applyDefaultStyle();
+    // watcherでやっている設定の初期化用
+    applyMapStatusModeAndFloor();
+    applyMapStatusPlaces();
+    applyMove();
+    applyLabelVisibility();
     // moveStatusの監視を開始
     watch(
       moveStatus,
@@ -22,7 +27,7 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveSta
         // マップの位置を更新
         applyMove();
       },
-      { immediate: true, deep: true }
+      { deep: true }
     );
     // mapStatusの監視を開始
     watch(
@@ -32,7 +37,7 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveSta
         applyMapStatusPlaces();
         applyMove(); // applyMapStatusModeAndFloorの後に実行する必要がある(ラベルの表示状態が変わるため)
       },
-      { immediate: true, deep: true }
+      { deep: true }
     );
     // label用のwathch(負荷軽減のために無駄な実行を避ける)
     watch(
@@ -40,7 +45,7 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveSta
       () => {
         applyLabelVisibility();
       },
-      { immediate: true, deep: true }
+      { deep: true }
     );
     // ダークモードの変更を検知
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
