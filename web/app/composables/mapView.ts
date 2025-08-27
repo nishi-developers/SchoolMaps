@@ -7,7 +7,9 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveSta
     return /webkit/i.test(navigator.userAgent) && !/chrome/i.test(navigator.userAgent);
   };
   const init = (mapWrapper: HTMLElement) => {
-    mapWrapper.appendChild($map.value);
+    // $map.valueを汚染しないように複製してから使用
+    const clonedMap = $map.value.cloneNode(true) as HTMLElement;
+    mapWrapper.appendChild(clonedMap);
     mapElement = mapWrapper.children[0] as HTMLElement;
     applyInitStyle();
     deleteDisabledModeObj();
