@@ -14,6 +14,10 @@
         <label class="searchFunc" @click="shareLink()">
           <Icon name="material-symbols:ios-share-rounded" />
         </label>
+        <label class="searchFunc"
+          @click="async () => { await navigateTo({ path: '/jump/map-search', query: { q: query, and: isAndSearch.toString() }, replace: false }) }">
+          <Icon name="material-symbols:map-search-outline-rounded" />
+        </label>
       </div>
       <div class="layerSelect">
         <!-- <div class="layer" v-for="layer in Layers.filter(l => l.place).reverse()" :key="layer.prefix"
@@ -23,7 +27,7 @@
         <span v-el se>基本マップ</span>
       </div> -->
         <input id="isAndCheck" v-model="isAndSearch" type="checkbox">
-        <label for="isAndChecl">AND検索</label>
+        <label for="isAndCheck">AND検索</label>
         <div class="layer">
           <span>layer:shinkan80</span>
         </div>
