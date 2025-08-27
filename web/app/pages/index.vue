@@ -14,10 +14,10 @@
           <div>
             <Icon name="material-symbols:reset-focus-outline-rounded" @click="mapMove.reset()" />
           </div>
-          <div v-if="mapStatus.isShowLabel.value" @click="mapStatus.setIsShowLabel(false)">
+          <div v-if="mapStatus.isShowLabel.value" @click="mapStatus.isShowLabel.value = false">
             <Icon name="material-symbols:label-off-outline-rounded" />
           </div>
-          <div v-else @click="mapStatus.setIsShowLabel(true)">
+          <div v-else @click="mapStatus.isShowLabel.value = true">
             <Icon name="material-symbols:label-outline-rounded" />
           </div>
         </div>
