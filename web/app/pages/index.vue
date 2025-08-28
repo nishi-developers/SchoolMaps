@@ -4,13 +4,11 @@
     <div id="map-ui">
       <div id="side-top">
         <div id="controls">
-          <div>
-            <Icon name="material-symbols:search-rounded" @click="async () => {
-              await navigateTo({
-                name: 'search',
-              })
-            }" />
-          </div>
+          <NuxtLink :to="{ name: 'search' }">
+            <div>
+              <Icon name="material-symbols:search-rounded" />
+            </div>
+          </NuxtLink>
           <div>
             <Icon name="material-symbols:reset-focus-outline-rounded" @click="mapMove.reset()" />
           </div>
@@ -153,6 +151,11 @@ const eventListener = {
     display: flex;
     flex-direction: column;
     gap: 30px;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
     #controls div {
       font-size: 1.75rem;
