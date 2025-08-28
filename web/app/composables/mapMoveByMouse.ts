@@ -1,5 +1,5 @@
 type Config = { wheel: { unit: number } };
-const defaultConfig: Config = { wheel: { unit: 0.1 } };
+const defaultConfig: Config = { wheel: { unit: 0.05 } };
 
 export const useMapMoveByMouse = (
   mapMove: ReturnType<typeof useMapMove>,
