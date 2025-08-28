@@ -66,6 +66,7 @@ export const useMapMove = (config: Config = defaultConfig) => {
     status.value.position.y = y;
   };
   const setZoom = (zoom: number, moveCenter: Center | null = null) => {
+    // moveCenterはヘッダーを除いた画面上の座標
     // ズームに伴う位置調整
     if (moveCenter) {
       const zoomRatio = zoom / status.value.zoom;
@@ -84,7 +85,31 @@ export const useMapMove = (config: Config = defaultConfig) => {
     // zoomの更新
     status.value.zoom = zoom;
   };
-  const setRotate = (rotate: number) => {
+  const setRotate = (rotate: number, moveCenter: Center | null = null) => {
+    // moveCenterはヘッダーを除いた画面上の座標
+    // 回転に伴う位置調整
+    if (moveCenter) {
+      // mapCenterを中心にした回転角度
+      const oldRadian = (status.value.rotate * Math.PI) / 180;
+      const newRadian = (rotate * Math.PI) / 180;
+      const deltaRadian = newRadian - oldRadian;
+      // status.value.positionは、zoom倍率が一切適用されていない、左上を基準とした位置
+      // そのため、画面中央を基準としたマップの位置(mapCenter)を計算する
+      const mapCenter = {
+        x: status.value.position.x + $detail.value.width / 2,
+        y: status.value.position.y + $detail.value.height / 2,
+      };
+      // moveCenterを中心とした、mapCenterの角度
+      const oldRadianFromCenter = Math.atan2(moveCenter.y - mapCenter.y, moveCenter.x - mapCenter.x);
+      const newRadianFromCenter = oldRadianFromCenter + deltaRadian;
+      // moveCenterとmapCenterの距離
+      const radius = Math.hypot(moveCenter.x - mapCenter.x, moveCenter.y - mapCenter.y);
+      // 位置の変化量を計算
+      const deltaX = radius * (Math.cos(newRadianFromCenter) - Math.cos(oldRadianFromCenter));
+      const deltaY = radius * (Math.sin(newRadianFromCenter) - Math.sin(oldRadianFromCenter));
+      // 位置を更新
+      setPosition(status.value.position.x - deltaX, status.value.position.y - deltaY);
+    }
     status.value.rotate = rotate;
   };
   // 速度計算の共通関数
@@ -129,7 +154,7 @@ export const useMapMove = (config: Config = defaultConfig) => {
   const moveRotate = (diffRotate: number, center: Center): void => {
     if (diffRotate === 0) return;
     slideData.position.stopFlag = true;
-    setRotate(status.value.rotate + diffRotate);
+    setRotate(status.value.rotate + diffRotate, center);
     updateSpeed("rotate", diffRotate);
     updateCenter(center.x, center.y);
   };
@@ -175,7 +200,7 @@ export const useMapMove = (config: Config = defaultConfig) => {
         slideData.zoom.speed *= frictionConfig.zoom;
         break;
       case "rotate":
-        setRotate(status.value.rotate + slideData.rotate.speed * deltaTime);
+        setRotate(status.value.rotate + slideData.rotate.speed * deltaTime, center);
         slideData.rotate.speed *= frictionConfig.rotate;
         break;
     }

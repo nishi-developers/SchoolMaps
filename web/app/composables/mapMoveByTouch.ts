@@ -11,7 +11,7 @@ const defaultConfig: Config = {
   zoomUnit: 0.004, // ズームの単位
   restriction: {
     zoom: 5000, // ズームをブロックする移動量
-    rotate: 75, // 回転を許可する移動量
+    rotate: 25, // 回転を許可する移動量
   },
 };
 
