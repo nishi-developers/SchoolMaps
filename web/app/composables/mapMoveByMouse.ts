@@ -6,6 +6,9 @@ export const useMapMoveByMouse = (
   headerHeight: number,
   config: Config = defaultConfig
 ) => {
+  // マウスの回転中心は、ホイールボタンを押し始めたときの位置に固定する
+  let rotateBeginningCenter = null as { x: number; y: number } | null;
+
   const moveMouse = (event: MouseEvent) => {
     // マウスの移動による操作
     if (event.buttons === 1) {
@@ -13,16 +16,16 @@ export const useMapMoveByMouse = (
       mapMove.movePosition(event.movementX, event.movementY);
     } else if (event.buttons === 4) {
       // ホイールボタンが押されている場合のみ
+      if (rotateBeginningCenter === null) {
+        rotateBeginningCenter = {
+          x: event.clientX,
+          y: event.clientY - headerHeight,
+        };
+      }
       if (event.movementX > 0) {
-        mapMove.moveRotate(Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5, {
-          x: event.clientX,
-          y: event.clientY - headerHeight,
-        });
+        mapMove.moveRotate(Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5, rotateBeginningCenter);
       } else {
-        mapMove.moveRotate(-Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5, {
-          x: event.clientX,
-          y: event.clientY - headerHeight,
-        });
+        mapMove.moveRotate(-Math.sqrt(event.movementX ** 2 + event.movementY ** 2) / 5, rotateBeginningCenter);
       }
     }
   };
@@ -45,8 +48,13 @@ export const useMapMoveByMouse = (
     });
   };
 
+  const finishRotate = () => {
+    rotateBeginningCenter = null;
+  };
+
   return {
     moveMouse,
     moveWheel,
+    finishRotate,
   };
 };
