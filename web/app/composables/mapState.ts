@@ -88,12 +88,12 @@ export const useMapState = () => {
       }
       // placesが不正なときは、modeとfloorの設定に合流
     } else if (url.places.length > 1) {
-      // placesが複数のときは、そのままplacesに入れる。ただし、modeとfloorはplacesの最初の要素に合わせる
+      // placesが複数のときは、そのままplacesに入れる。ただし、modeとfloorは指定がなければplacesの最初の要素に合わせる
       setPlaces(url.places);
       const firstPlace = changeablePlaces.value.find((p) => p.id === status.value.places[0]);
       if (firstPlace) {
-        setMode(firstPlace.mode);
-        setFloor(firstPlace.floor);
+        setMode(url.mode ?? firstPlace.mode);
+        setFloor(url.floor ?? firstPlace.floor);
         return;
       }
       // placesが全て不正なときは、modeとfloorの設定に合流

@@ -26,7 +26,11 @@ export const useMapEvent = (
       // 同じ階が選択されても何もしない
       return;
     }
-    mapState.setPlaces(null);
+    if (mapState.status.value.places.length === 1) {
+      // placesが1つだけ選択されている場合、floor変更に伴いplacesをクリア
+      // (複数選択されている場合はfloor変更に伴いplacesをクリアしない)
+      mapState.setPlaces(null);
+    }
     mapState.setFloor(floorId);
   };
   const setMode = (modeId: string | null) => {
@@ -36,7 +40,11 @@ export const useMapEvent = (
     } else {
       mapState.setMode(modeId);
     }
-    mapState.setPlaces(null);
+    if (mapState.status.value.places.length === 1) {
+      // placesが1つだけ選択されている場合、floor変更に伴いplacesをクリア
+      // (複数選択されている場合はfloor変更に伴いplacesをクリアしない)
+      mapState.setPlaces(null);
+    }
   };
 
   return {
