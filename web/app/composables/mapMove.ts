@@ -7,6 +7,10 @@ type Config = {
     min: number;
   };
 };
+type Center = {
+  x: number;
+  y: number;
+};
 const defaultConfig: Config = {
   friction: {
     position: 0.9,
@@ -61,7 +65,23 @@ export const useMapMove = (config: Config = defaultConfig) => {
     status.value.position.x = x;
     status.value.position.y = y;
   };
-  const setZoom = (zoom: number) => {
+  const setZoom = (zoom: number, moveCenter: Center | null = null) => {
+    // ズームに伴う位置調整
+    if (moveCenter) {
+      const zoomRatio = zoom / status.value.zoom;
+      // status.value.positionは、zoom倍率が一切適用されていない、左上を基準とした位置
+      // そのため、画面中央を基準としたマップの位置(mapCenter)を計算する
+      const mapCenter = {
+        x: status.value.position.x + $detail.value.width / 2,
+        y: status.value.position.y + $detail.value.height / 2,
+      };
+      // moveCenterが、拡大によってどれだけ移動したかを計算
+      const deltaX = (moveCenter.x - mapCenter.x) * (zoomRatio - 1);
+      const deltaY = (moveCenter.y - mapCenter.y) * (zoomRatio - 1);
+      // 位置を更新(moveCenterの移動分を引く)
+      setPosition(status.value.position.x - deltaX, status.value.position.y - deltaY);
+    }
+    // zoomの更新
     status.value.zoom = zoom;
   };
   const setRotate = (rotate: number) => {
@@ -99,14 +119,14 @@ export const useMapMove = (config: Config = defaultConfig) => {
     setPosition(status.value.position.x + diffX, status.value.position.y + diffY);
     updateSpeed("position", { x: diffX, y: diffY });
   };
-  const moveZoom = (diffZoom: number, center: { x: number; y: number }): void => {
+  const moveZoom = (diffZoom: number, center: Center): void => {
     if (diffZoom === 0) return;
     slideData.position.stopFlag = true;
-    setZoom(status.value.zoom + diffZoom);
+    setZoom(status.value.zoom + diffZoom, center);
     updateSpeed("zoom", diffZoom);
     updateCenter(center.x, center.y);
   };
-  const moveRotate = (diffRotate: number, center: { x: number; y: number }): void => {
+  const moveRotate = (diffRotate: number, center: Center): void => {
     if (diffRotate === 0) return;
     slideData.position.stopFlag = true;
     setRotate(status.value.rotate + diffRotate);
@@ -139,7 +159,7 @@ export const useMapMove = (config: Config = defaultConfig) => {
         return Math.abs(slideData.rotate.speed) > frictionConfig.min;
     }
   };
-  const helper_applySlideMovement = (type: MapMoveType, deltaTime: number) => {
+  const helper_applySlideMovement = (type: MapMoveType, deltaTime: number, center: Center) => {
     const frictionConfig = config.friction;
     switch (type) {
       case "position":
@@ -151,7 +171,7 @@ export const useMapMove = (config: Config = defaultConfig) => {
         slideData.position.speed.y *= frictionConfig.position;
         break;
       case "zoom":
-        setZoom(status.value.zoom + slideData.zoom.speed * deltaTime);
+        setZoom(status.value.zoom + slideData.zoom.speed * deltaTime, center);
         slideData.zoom.speed *= frictionConfig.zoom;
         break;
       case "rotate":
@@ -202,7 +222,7 @@ export const useMapMove = (config: Config = defaultConfig) => {
       const now = performance.now();
       const deltaTime = slideData[type].lastSlideTime ? now - slideData[type].lastSlideTime : 16.67; // 初回は60FPSを仮定
       slideData[type].lastSlideTime = now;
-      helper_applySlideMovement(type, deltaTime);
+      helper_applySlideMovement(type, deltaTime, slideData.center);
       // requestAnimationFrameで次のフレームに実行
       requestAnimationFrame(() => {
         slideData[type].isSlideing = false;
@@ -227,9 +247,6 @@ export const useMapMove = (config: Config = defaultConfig) => {
 
   return {
     status: readonly(status),
-    setPosition,
-    setZoom,
-    setRotate,
     movePosition,
     moveZoom,
     moveRotate,
