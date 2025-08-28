@@ -84,6 +84,7 @@ const eventListener = {
     isAlreadyMoved = false
   },
   mouseup: () => {
+    mapMoveByMouse.finishRotate()
     mapMove.doSlide("position")
     mapMove.doSlide("rotate")
   },
