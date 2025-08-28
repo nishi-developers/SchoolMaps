@@ -14,10 +14,11 @@
         <label class="searchFunc" @click="shareLink()">
           <Icon name="material-symbols:ios-share-rounded" />
         </label>
-        <label class="searchFunc"
-          @click="async () => { await navigateTo({ path: '/jump/map-search', query: { q: query, and: isAndSearch.toString() }, replace: false }) }">
-          <Icon name="material-symbols:map-search-outline-rounded" />
-        </label>
+        <NuxtLink :to="{ name: 'jump-map-search', query: { q: query, and: isAndSearch.toString() }, replace: false }">
+          <label class="searchFunc">
+            <Icon name=" material-symbols:map-search-outline-rounded" />
+          </label>
+        </NuxtLink>
       </div>
       <div class="layerSelect">
         <!-- <div class="layer" v-for="layer in Layers.filter(l => l.place).reverse()" :key="layer.prefix"
@@ -142,6 +143,15 @@ function shareLink() {
 <style scoped lang="scss">
 p {
   color: var(--MainBodyColor);
+}
+
+
+// 検索結果表示マップへのジャンプ用の仮CSS
+a {
+  text-decoration: none;
+  color: inherit;
+  width: 20px;
+  position: relative;
 }
 
 .searchBox {
