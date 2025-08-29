@@ -116,9 +116,6 @@ const eventListener = {
     mapMoveByMouse.moveWheel(event)
   },
 };
-
-
-// mapMoveの範囲外検知は未実装
 </script>
 
 <style scoped lang="scss">
