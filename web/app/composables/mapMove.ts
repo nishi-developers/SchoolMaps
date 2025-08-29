@@ -74,6 +74,41 @@ export const useMapMove = (viewSize: Ref<ViewSize>, config: Config = defaultConf
   };
   // setters
   const setPosition = (x: number, y: number) => {
+    // positionの制限
+    const radian = (status.value.rotate * Math.PI) / 180;
+    const realMapSize = {
+      width:
+        (Math.abs($detail.value.width * Math.cos(radian)) + Math.abs($detail.value.height * Math.sin(radian))) *
+        status.value.zoom,
+      height:
+        (Math.abs($detail.value.width * Math.sin(radian)) + Math.abs($detail.value.height * Math.cos(radian))) *
+        status.value.zoom,
+    };
+    // 画面左上を基準とした、マップの中心位置の制限
+    const centerRestrict = {
+      x: {
+        max: viewSize.value.width + realMapSize.width / 2,
+        min: -realMapSize.width / 2,
+      },
+      y: {
+        max: viewSize.value.height + realMapSize.height / 2,
+        min: -realMapSize.height / 2,
+      },
+    };
+    // positionは左上を基準とした、zoom倍率が一切適用されていない位置なので、centerRestrictからマップの幅・高さの半分を引いた値で制限
+    const positionRestrict = {
+      x: {
+        max: centerRestrict.x.max - $detail.value.width / 2,
+        min: centerRestrict.x.min - $detail.value.width / 2,
+      },
+      y: {
+        max: centerRestrict.y.max - $detail.value.height / 2,
+        min: centerRestrict.y.min - $detail.value.height / 2,
+      },
+    };
+    x = Math.min(Math.max(x, positionRestrict.x.min), positionRestrict.x.max);
+    y = Math.min(Math.max(y, positionRestrict.y.min), positionRestrict.y.max);
+    // positionの更新
     status.value.position.x = x;
     status.value.position.y = y;
   };
