@@ -125,5 +125,5 @@ export const useSearch = () => {
       .replace(/\u3000/g, " "); // \u3000=全角スペース
   };
 
-  return { search };
+  return { search, normalize };
 };
