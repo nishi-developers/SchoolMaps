@@ -7,8 +7,7 @@
           <Icon name="material-symbols:search-rounded" />
         </label>
         <input id="searchInput" v-model="query" type="text" class="searchInput" placeholder="検索ワードを入力" required>
-        <label for="searchInput" class="searchFunc" :class="[searchXmarkIsActive ? 'active' : '']"
-          @click="resetSearch()">
+        <label for="searchInput" class="searchFunc" @click="query = ''">
           <Icon name="material-symbols:cancel-outline-rounded" />
         </label>
         <label class="searchFunc" @click="shareLink()">
@@ -16,24 +15,16 @@
         </label>
         <NuxtLink :to="{ name: 'jump-map-search', query: { q: query, and: isAndSearch.toString() }, replace: false }">
           <label class="searchFunc">
-            <Icon name=" material-symbols:map-search-outline-rounded" />
+            <Icon name="material-symbols:map-search-outline-rounded" />
           </label>
         </NuxtLink>
       </div>
       <div class="layerSelect">
-        <!-- <div class="layer" v-for="layer in Layers.filter(l => l.place).reverse()" :key="layer.prefix"
-        @click="searchLayer != layer.prefix ? searchLayer = layer.prefix : searchLayer = null;"
-        :class="[searchLayer == layer.prefix ? 'selected' : '']">
-        <span v-if="layer.switchable">{{ layer.name }}</span>
-        <span v-el se>基本マップ</span>
-      </div> -->
         <input id="isAndCheck" v-model="isAndSearch" type="checkbox">
         <label for="isAndCheck">AND検索</label>
-        <div class="layer">
-          <span>layer:shinkan80</span>
-        </div>
-        <div class="layer">
-          <span>未実装</span>
+        <div id="suggests">
+          <SearchSuggest v-for="suggest, i in suggests" :key="i" :name="suggest.name" :value="suggest.value"
+            :query="query" @update-query="(value) => { query = value }" />
         </div>
       </div>
       <div class="results">
@@ -54,6 +45,13 @@ useHead({ title: '検索' })
 const { $floors, $places } = useNuxtApp();
 
 const search = useSearch()
+
+const suggests = [
+  { name: '新歓80th', value: 'mode:shinkan80' },
+  { name: '1階', value: 'floor:f1' },
+  { name: '2階', value: 'floor:f2' },
+  { name: '3階', value: 'floor:f3' },
+]
 
 function decodeUrl() {
   // URLの切り出しとデコードまで行う
@@ -102,29 +100,6 @@ watch([query, isAndSearch], () => {
   // 検索
   results.value = search.search(query.value, isAndSearch.value)
 }, { immediate: true })
-
-
-// ページ遷移
-async function move(id: string) {
-  // let floor = PlaceInfo[id].floor
-  // let layer = PlaceInfo[id].layer
-  // let url = `/${floor}/${id}`
-  // if (Layers.filter(alayer => alayer.prefix == layer)[0].switchable) {
-  //   url += `?layer=${layer}`
-  // }
-  // await navigateTo(url)
-  alert(`ID: ${id} の場所に移動します (実装未完了)`)
-}
-
-// xマーク
-const searchXmarkIsActive = ref(false)
-function resetSearch() {
-  searchXmarkIsActive.value = true
-  query.value = ''
-  setTimeout(() => {
-    searchXmarkIsActive.value = false
-  }, 150);
-}
 
 // リンク共有
 function shareLink() {
@@ -190,9 +165,9 @@ a {
   background-color: var(--SubBaseColor);
 }
 
-.searchFunc.active {
-  background-color: var(--MainColor);
-}
+// .searchFunc.active {
+//   background-color: var(--MainColor);
+// }
 
 .searchFunc .iconify {
   height: calc(var(--SearchBoxHeight)*.6);
