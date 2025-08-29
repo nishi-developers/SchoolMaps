@@ -3,7 +3,11 @@
   <NuxtRouteAnnouncer />
   <AppHeader />
   <!-- NuxtPageは各Vueファイルの一番外側のdivタグに置き換えられる -->
-  <NuxtPage id="nuxt-page" />
+  <NuxtPage id="nuxt-page" :style="{
+    top: `${$config.public.headerHeightPx}px`,
+    height: `calc(100vh - ${$config.public.headerHeightPx}px)`
+  }" />
+  <!-- css内でv-bindを使えなかったため、上のように実装 -->
   <BottomNotify />
 </template>
 <script setup lang="ts">
@@ -20,8 +24,6 @@
 <style scoped lang="scss">
 #nuxt-page {
   position: relative;
-  top: var(--HeaderHeight);
-  height: calc(100vh - var(--HeaderHeight));
   overflow: hidden;
 }
 

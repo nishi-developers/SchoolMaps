@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     public: {
       systemVersion: packageJson.version || "unknown",
       buildDate: new Date().toISOString(),
+      headerHeightPx: 50,
     },
   },
   fonts: {

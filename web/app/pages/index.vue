@@ -39,12 +39,13 @@
 </template>
 <script setup lang="ts">
 useHead({ title: 'マップ' })
+const config = useRuntimeConfig();
 
 const mapWrapper = ref<HTMLElement>()
 
 const mapMove = useMapMove();
-const mapMoveByMouse = useMapMoveByMouse(mapMove, Number(getComputedStyle(document.querySelector(":root")).getPropertyValue("--HeaderHeight").slice(0, -2))); // ヘッダーの高さは0と仮定
-const mapMoveByTouch = useMapMoveByTouch(mapMove, 0); // ヘッダーの高さは0と仮定
+const mapMoveByMouse = useMapMoveByMouse(mapMove, config.public.headerHeightPx);
+const mapMoveByTouch = useMapMoveByTouch(mapMove, config.public.headerHeightPx);
 const mapState = useMapState();
 const mapView = useMapView(mapState.status, mapMove.status, mapState.isShowLabel);
 const mapEvent = useMapEvent(mapState, mapState.setPlaces);
