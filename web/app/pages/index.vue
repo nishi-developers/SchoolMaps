@@ -38,12 +38,16 @@
   </div>
 </template>
 <script setup lang="ts">
+import { useWindowSize } from '@vueuse/core';
+
 useHead({ title: 'マップ' })
 const config = useRuntimeConfig();
-const viewSize = {
-  width: window.innerWidth,
-  height: window.innerHeight - config.public.headerHeightPx,
-} as ViewSize;
+const windowSize = useWindowSize();
+const viewSize = computed(() => ({
+  width: windowSize.width.value,
+  height: windowSize.height.value - config.public.headerHeightPx,
+})) as Ref<ViewSize>;
+
 const mapWrapper = ref<HTMLElement>()
 
 const mapMove = useMapMove(viewSize);
