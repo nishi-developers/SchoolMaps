@@ -37,13 +37,13 @@
         </div>
       </div>
       <div class="results">
-        <div v-for="id, key in results" :key="key" class="place" @click="move(id)">
+        <NuxtLink v-for="id, key in results" :key="key" class="place" :to="{ name: 'index', query: { places: id } }">
           <span class="name">{{$places.filter((place) => place.id === id)[0]!.name}}</span>
           <span class="position">
             <Icon name="material-symbols:location-on-rounded" />
             {{$floors.filter((floor) => floor.id === $places.filter((place) => place.id === id)[0]!.floor)[0]!.name}}
           </span>
-        </div>
+        </NuxtLink>
       </div>
     </div>
   </div>
@@ -236,6 +236,8 @@ a {
 
 
 .place {
+  display: block;
+  width: 100%;
   border-bottom: 2px solid var(--MainColor);
   margin: 5px 0;
   padding: 5px;
