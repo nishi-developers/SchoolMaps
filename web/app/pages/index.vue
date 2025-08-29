@@ -40,10 +40,13 @@
 <script setup lang="ts">
 useHead({ title: 'マップ' })
 const config = useRuntimeConfig();
-
+const viewSize = {
+  width: window.innerWidth,
+  height: window.innerHeight - config.public.headerHeightPx,
+} as ViewSize;
 const mapWrapper = ref<HTMLElement>()
 
-const mapMove = useMapMove();
+const mapMove = useMapMove(viewSize);
 const mapMoveByMouse = useMapMoveByMouse(mapMove, config.public.headerHeightPx);
 const mapMoveByTouch = useMapMoveByTouch(mapMove, config.public.headerHeightPx);
 const mapState = useMapState();

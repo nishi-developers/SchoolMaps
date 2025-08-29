@@ -12,3 +12,8 @@ type MapStatus = {
   floor: string;
   places: readonly string[];
 };
+
+type ViewSize = {
+  width: number;
+  height: number;
+};
