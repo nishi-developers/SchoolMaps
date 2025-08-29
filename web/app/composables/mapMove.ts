@@ -6,6 +6,12 @@ type Config = {
     rotate: number;
     min: number;
   };
+  restrict: {
+    zoom: {
+      min: number;
+      max: number;
+    };
+  };
 };
 type Center = {
   x: number;
@@ -17,6 +23,12 @@ const defaultConfig: Config = {
     zoom: 0.9,
     rotate: 0.9,
     min: 0.01,
+  },
+  restrict: {
+    zoom: {
+      min: 0.1,
+      max: 5,
+    },
   },
 };
 
@@ -66,6 +78,8 @@ export const useMapMove = (viewSize: Ref<ViewSize>, config: Config = defaultConf
     status.value.position.y = y;
   };
   const setZoom = (zoom: number, moveCenter: Center | null = null) => {
+    // zoomの制限
+    zoom = Math.min(Math.max(zoom, config.restrict.zoom.min), config.restrict.zoom.max);
     // moveCenterはヘッダーを除いた画面上の座標
     // ズームに伴う位置調整
     if (moveCenter) {
@@ -86,6 +100,7 @@ export const useMapMove = (viewSize: Ref<ViewSize>, config: Config = defaultConf
     status.value.zoom = zoom;
   };
   const setRotate = (rotate: number, moveCenter: Center | null = null) => {
+    rotate = ((rotate % 360) + 360) % 360; // 0~360に正規化
     // moveCenterはヘッダーを除いた画面上の座標
     // 回転に伴う位置調整
     if (moveCenter) {
@@ -110,6 +125,7 @@ export const useMapMove = (viewSize: Ref<ViewSize>, config: Config = defaultConf
       // 位置を更新
       setPosition(status.value.position.x - deltaX, status.value.position.y - deltaY);
     }
+    // rotateの更新
     status.value.rotate = rotate;
   };
   // 速度計算の共通関数

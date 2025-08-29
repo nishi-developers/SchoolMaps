@@ -118,26 +118,10 @@ const eventListener = {
 };
 
 
-// mapMoveの範囲外検知とcenterは未実装
-
-// 方針
-// クラス内で別クラスの関数を呼び出さない
-// 純粋関数っぽく、全部メインスレッドに戻り値を返す
-// クラス内で変数を持つのだけは許可
-// Composablesを使って、状態とロジックを分離
+// mapMoveの範囲外検知は未実装
 </script>
 
 <style scoped lang="scss">
-/* #map {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  /* これは試験用 */
-/* 実際にはこうやって書かない */
-/* top: v-bind(mapMove.status.value.position.y + 'px');
-  left: v-bind(mapMove.status.value.position.x + 'px'); */
-/* } */
-
 #map-wrapper {
   width: 100%;
   height: 100%;
