@@ -21,7 +21,7 @@ const route = useRoute();
 #header {
     background-color: var(--MainColor);
     width: 100%;
-    height: var(--HeaderHeight);
+    height: v-bind("$config.public.headerHeightPx + 'px'");
     position: fixed;
     font-weight: bold;
 }
