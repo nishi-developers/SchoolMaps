@@ -10,7 +10,7 @@
         <label for="searchInput" class="searchFunc" @click="query = ''">
           <Icon name="material-symbols:cancel-outline-rounded" />
         </label>
-        <label class="searchFunc" @click="shareLink()">
+        <label class="searchFunc" @click="shareLink(`西高マップ-検索「${query}」`, requestURL.href)">
           <Icon name="material-symbols:ios-share-rounded" />
         </label>
         <NuxtLink :to="{ name: 'jump-map-search', query: { q: query, and: isAndSearch.toString() }, replace: false }">
@@ -41,6 +41,7 @@
 </template>
 <script setup lang="ts">
 const route = useRoute()
+const requestURL = useRequestURL()
 useHead({ title: '検索' })
 const { $modes, $floors, $places } = useNuxtApp();
 
@@ -90,19 +91,6 @@ watch([query, isAndSearch], () => {
   results.value = search.search(query.value, isAndSearch.value)
 }, { immediate: true })
 
-// リンク共有
-function shareLink() {
-  try {
-    navigator.share({ title: `西高マップ-検索「${query.value}」`, url: location.href })
-  } catch {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(location.href)
-      alert("リンクをコピーしました")
-    } else {
-      alert("リンクのコピー及び共有に対応していません")
-    }
-  }
-}
 </script>
 <style scoped lang="scss">
 p {
