@@ -10,16 +10,6 @@
   <!-- css内でv-bindを使えなかったため、上のように実装 -->
   <BottomNotify />
 </template>
-<script setup lang="ts">
-// デフォルトのピンチアウトを無効化
-// 1本をブロックすると、プロパティでのスクロールが無効化されるため、2本以上をブロックする
-// <参考> https://moewe-net.com/js/disable-zoom
-// document.body.addEventListener('touchmove', (event) => {
-//   if (event.touches.length > 1) {
-//     event.preventDefault();
-//   }
-// }, { passive: false });
-</script>
 
 <style scoped lang="scss">
 #nuxt-page {
