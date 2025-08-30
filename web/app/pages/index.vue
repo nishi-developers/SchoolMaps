@@ -35,6 +35,7 @@
         </div>
       </div>
     </div>
+    <MapProperty :places="mapState.status.value.places" @reset-places="mapState.setPlaces(null)" />
   </div>
 </template>
 <script setup lang="ts">
@@ -114,12 +115,13 @@ const eventListener = {
 <style scoped lang="scss">
 :global(body) {
   touch-action: none; // 画面全体でのタッチ操作を無効化
+  user-select: none; // テキスト選択を無効化
 }
 
 #map-wrapper {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
   overflow: hidden;
 }
 
@@ -130,6 +132,7 @@ const eventListener = {
   width: 100%;
   height: 100%;
   pointer-events: none;
+  z-index: 10;
 
   #side-top {
     position: absolute;
