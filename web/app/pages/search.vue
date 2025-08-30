@@ -42,45 +42,34 @@
 <script setup lang="ts">
 const route = useRoute()
 useHead({ title: '検索' })
-const { $floors, $places } = useNuxtApp();
+const { $modes, $floors, $places } = useNuxtApp();
 
 const search = useSearch()
 
-const suggests = [
-  { name: '新歓80th', value: 'mode:shinkan80' },
-  { name: '1階', value: 'floor:f1' },
-  { name: '2階', value: 'floor:f2' },
-  { name: '3階', value: 'floor:f3' },
-]
+// suggestsの自動生成
+const suggests = ref([]) as Ref<Array<{ name: string, value: string }>>
+$modes.value.filter((mode) => mode.enable).filter((mode) => !mode.always).map((mode) => {
+  suggests.value.push({ name: mode.name, value: `mode:${mode.id}` })
+})
+$floors.value.filter((floor) => !floor.always).map((floor) => {
+  suggests.value.push({ name: floor.name, value: `floor:${floor.id}` })
+})
 
 function decodeUrl() {
   // URLの切り出しとデコードまで行う
-  let isAndSearch = false
-  if (route.query.and == "true") {
-    isAndSearch = true
-  }
   return {
     query: decodeURIComponent(route.query.q as string || '') || null,
-    isAndSearch: isAndSearch,
+    isAndSearch: route.query.and === "true" || false,
   }
 }
 
 async function encodeUrl(query: string | null, isAndSearch: boolean) {
   // URLをエンコードして変更する
-  let isAnd: string
-  if (query == null) {
-    query = ''
-  }
-  if (isAndSearch) {
-    isAnd = "true"
-  } else {
-    isAnd = "false"
-  }
   await navigateTo({
     name: 'search',
     query: {
-      q: encodeURIComponent(query),
-      and: isAnd,
+      q: encodeURIComponent(query || ''),
+      and: isAndSearch ? "true" : "false",
     },
     replace: true,
   })
