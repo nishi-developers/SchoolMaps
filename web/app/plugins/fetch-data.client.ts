@@ -9,6 +9,9 @@ declare module "#app" {
     $places: Ref<Place[]>;
     $detail: Ref<Detail>;
     $map: Ref<SVGElement>;
+    $modesEnable: Ref<Mode[]>;
+    $modesChangeable: Ref<Mode[]>;
+    $floorsChangeable: Ref<Floor[]>;
   }
 }
 
@@ -21,6 +24,9 @@ declare module "vue" {
     $places: Ref<Place[]>;
     $detail: Ref<Detail>;
     $map: Ref<SVGElement>;
+    $modesEnable: Ref<Mode[]>;
+    $modesChangeable: Ref<Mode[]>;
+    $floorsChangeable: Ref<Floor[]>;
   }
 }
 
@@ -40,10 +46,25 @@ export default defineNuxtPlugin(async (nuxtApp) => {
   const map_string = await map_blob.text();
   const map_element = parser.parseFromString(map_string, "image/svg+xml").querySelector("svg");
 
+  // 常に有効なモード、変更可能なモード・フロアの算出
+  const modesEnable = computed(() => {
+    return modes.data.value?.filter((mode) => mode.enable) || [];
+  });
+  const modesChangeable = computed(() => {
+    return modesEnable.value?.filter((mode) => mode.enable && !mode.always) || [];
+  });
+  const floorsChangeable = computed(() => {
+    return floors.data.value?.filter((floor) => !floor.always) || [];
+  });
+
+  // グローバルプロパティとして提供
   nuxtApp.provide("modes", modes.data as Ref<Mode[]>);
   nuxtApp.provide("floors", floors.data as Ref<Floor[]>);
   nuxtApp.provide("behaviors", behaviors.data as Ref<Behavior[]>);
   nuxtApp.provide("places", places.data as Ref<Place[]>);
   nuxtApp.provide("detail", detail.data as Ref<Detail>);
   nuxtApp.provide("map", ref(map_element) as Ref<SVGElement>);
+  nuxtApp.provide("modesEnable", modesEnable as Ref<Mode[]>);
+  nuxtApp.provide("modesChangeable", modesChangeable as Ref<Mode[]>);
+  nuxtApp.provide("floorsChangeable", floorsChangeable as Ref<Floor[]>);
 });
