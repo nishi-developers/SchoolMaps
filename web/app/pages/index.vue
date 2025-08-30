@@ -66,13 +66,6 @@ onMounted(() => {
   }
   mapView.init(mapWrapper.value);
   mapMove.reset();
-
-  // マウスホイールのイベントをキャッチするために、passive: falseを設定
-  document.body.addEventListener('touchmove', (event) => {
-    if (event.touches.length > 1) {
-      event.preventDefault();
-    }
-  }, { passive: false });
 });
 
 let isAlreadyMoved = false; // マウス使用時のみ、移動したかどうか
@@ -119,6 +112,10 @@ const eventListener = {
 </script>
 
 <style scoped lang="scss">
+:global(body) {
+  touch-action: none; // 画面全体でのタッチ操作を無効化
+}
+
 #map-wrapper {
   width: 100%;
   height: 100%;
