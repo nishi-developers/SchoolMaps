@@ -12,6 +12,7 @@ declare module "#app" {
     $modesEnable: Ref<Mode[]>;
     $modesChangeable: Ref<Mode[]>;
     $floorsChangeable: Ref<Floor[]>;
+    $placesEnable: Ref<Place[]>;
   }
 }
 
@@ -27,6 +28,7 @@ declare module "vue" {
     $modesEnable: Ref<Mode[]>;
     $modesChangeable: Ref<Mode[]>;
     $floorsChangeable: Ref<Floor[]>;
+    $placesEnable: Ref<Place[]>;
   }
 }
 
@@ -51,10 +53,13 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     return modes.data.value?.filter((mode) => mode.enable) || [];
   });
   const modesChangeable = computed(() => {
-    return modesEnable.value?.filter((mode) => mode.enable && !mode.always) || [];
+    return modesEnable.value.filter((mode) => !mode.always) || [];
   });
   const floorsChangeable = computed(() => {
     return floors.data.value?.filter((floor) => !floor.always) || [];
+  });
+  const placesEnable = computed(() => {
+    return places.data.value?.filter((place) => modesEnable.value.some((mode) => mode.id === place.mode)) || [];
   });
 
   // グローバルプロパティとして提供
@@ -67,4 +72,5 @@ export default defineNuxtPlugin(async (nuxtApp) => {
   nuxtApp.provide("modesEnable", modesEnable as Ref<Mode[]>);
   nuxtApp.provide("modesChangeable", modesChangeable as Ref<Mode[]>);
   nuxtApp.provide("floorsChangeable", floorsChangeable as Ref<Floor[]>);
+  nuxtApp.provide("placesEnable", placesEnable as Ref<Place[]>);
 });
