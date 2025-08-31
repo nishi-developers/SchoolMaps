@@ -12,18 +12,18 @@ type SearchIndexItem = {
 
 export const useSearch = () => {
   const targets = ["id", "name", "words", "desc", "mode", "floor", "behavior", "modeName", "floorName"] as const;
-  const { $modes, $floors, $places } = useNuxtApp();
+  const { $modesEnable, $floors, $placesEnable } = useNuxtApp();
 
   const searchIndex = computed<SearchIndexItem[]>(() => {
     const index: SearchIndexItem[] = [];
-    for (const place of $places.value) {
+    for (const place of $placesEnable.value) {
       const normalizeContent = (content: string | null | undefined) => {
         if (typeof content !== "string") return "";
         return normalize(content);
       };
 
-      // modesのenableがtrueのものだけを対象にする
-      if ($modes.value.find((mode) => mode.id === place.mode)?.enable !== true) continue;
+      // enableなmodeのみを対象にする
+      if (!$modesEnable.value.some((mode) => mode.id === place.mode)) continue;
 
       index.push({
         id: normalizeContent(place.id),
@@ -33,7 +33,7 @@ export const useSearch = () => {
         mode: normalizeContent(place.mode),
         floor: normalizeContent(place.floor),
         behavior: normalizeContent(place.behavior),
-        modeName: normalizeContent($modes.value.find((mode) => mode.id === place.mode)?.name),
+        modeName: normalizeContent($modesEnable.value.find((mode) => mode.id === place.mode)?.name),
         floorName: normalizeContent($floors.value.find((floor) => floor.id === place.floor)?.name),
       });
     }
