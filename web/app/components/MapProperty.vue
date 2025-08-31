@@ -22,14 +22,19 @@
           {{$modesChangeable.filter((mode) => mode.id == place?.mode)[0]?.name}}
         </div>
       </div>
+      <div ref="imageContainer">
+        <img v-for="(img, index) in place?.images" :key="index" :src="img" :alt="`${place?.name}の画像${index + 1}`">
+      </div>
       <div id="desc">
         {{ place?.desc }}
       </div>
-      <div id="images"></div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
+import Viewer from 'viewerjs';
+import 'viewerjs/dist/viewer.css';
+
 const { $modesChangeable, $floorsChangeable, $placesEnable } = useNuxtApp();
 const requestURL = useRequestURL()
 
@@ -43,6 +48,37 @@ const emit = defineEmits<{
 const place = computed(() => {
   if (props.places.length !== 1) return null; // 1つだけ選択されている場合のみ表示
   return $placesEnable.value.filter(place => place.id == props.places[0])[0];
+});
+
+// viewer.jsの初期化処理
+const imageContainer = ref<HTMLElement>();
+let viewer: Viewer | null = null;
+const initViewer = () => {
+  if (viewer) {
+    viewer.destroy();
+    viewer = null;
+  }
+  if (!imageContainer.value) return;
+  viewer = new Viewer(
+    imageContainer.value,
+    {
+      rotatable: false,
+      scalable: false,
+    }
+  );
+};
+watch(place, () => {
+  nextTick(() => {
+    initViewer();
+  });
+}, { immediate: false });
+onMounted(() => {
+  initViewer();
+});
+onBeforeUnmount(() => {
+  if (viewer) {
+    viewer.destroy();
+  }
 });
 
 </script>
@@ -59,6 +95,12 @@ const place = computed(() => {
     user-select: text;
     overflow: scroll;
     pointer-events: auto;
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    background-color: var(--SubBaseColor);
   }
 
 }
