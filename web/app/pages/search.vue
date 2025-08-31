@@ -29,11 +29,11 @@
       </div>
       <div class="results">
         <NuxtLink v-for="id, key in results" :key="key" class="place" :to="{ name: 'index', query: { places: id } }">
-          <span class="name">{{$placesEnable.filter((place) => place.id === id)[0]!.name}}</span>
+          <span class="name">{{$placesEnable.filter((place) => place.id === id)[0]?.name}}</span>
           <span class="position">
             <Icon name="material-symbols:location-on-rounded" />
             {{$floors.filter((floor) => floor.id === $placesEnable.filter((place) => place.id ===
-              id)[0]!.floor)[0]!.name}}
+              id)[0]?.floor)[0]?.name}}
           </span>
         </NuxtLink>
       </div>
