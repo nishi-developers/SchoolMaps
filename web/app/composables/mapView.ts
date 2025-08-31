@@ -1,7 +1,7 @@
 import RBush from "rbush";
 
 export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveStatus>, isShowLabel: Ref<boolean>) => {
-  const { $map, $modes, $floors, $behaviors, $places } = useNuxtApp();
+  const { $map, $modes, $modesEnable, $floors, $behaviors, $placesEnable } = useNuxtApp();
   let mapElement: HTMLElement | null = null;
   const isWebKit = () => {
     return /webkit/i.test(navigator.userAgent) && !/chrome/i.test(navigator.userAgent);
@@ -121,9 +121,9 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveSta
     // mode,floorの両方で表示されるものだけを表示する
 
     // 論理計算
-    const alwaysModeIds = $modes.value.filter((mode) => mode.always && mode.enable).map((mode) => mode.id); // alwaysなmode
+    const alwaysModeIds = $modesEnable.value.filter((mode) => mode.always).map((mode) => mode.id); // alwaysなmode
     const visibleModeIds = new Set<string>(
-      $modes.value.filter((mode) => mode.always && mode.enable).map((mode) => mode.id) // alwaysなmode
+      $modesEnable.value.filter((mode) => mode.always).map((mode) => mode.id) // alwaysなmode
     );
     if (mapStatus.value.mode) {
       visibleModeIds.add(mapStatus.value.mode); // 選択されているmode
@@ -153,11 +153,8 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveSta
 
   const applyMapStatusPlaces = () => {
     // 論理計算
-    const changeablePlaces = $places.value.filter((place) =>
-      $modes.value.some((mode) => mode.id === place.mode && mode.enable)
-    );
-    const selectedPlaces = changeablePlaces.filter((place) => mapStatus.value.places.includes(place.id));
-    const unselectedPlaces = changeablePlaces.filter((place) => !mapStatus.value.places.includes(place.id));
+    const selectedPlaces = $placesEnable.value.filter((place) => mapStatus.value.places.includes(place.id));
+    const unselectedPlaces = $placesEnable.value.filter((place) => !mapStatus.value.places.includes(place.id));
     // 実行
     selectedPlaces.forEach((place) => {
       const selectedStyle = $behaviors.value.find((behavior: Behavior) => behavior.id === place.behavior)?.style?.body
@@ -211,7 +208,7 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveSta
         const centerX = bBox.x + bBox.width / 2;
         const centerY = bBox.y + bBox.height / 2;
         const placeId = element.getAttribute("place");
-        const name = $places.value.find((place: Place) => place.id === placeId)?.name || null;
+        const name = $placesEnable.value.find((place: Place) => place.id === placeId)?.name || null;
         if (!name || !mapElement) {
           return;
         }

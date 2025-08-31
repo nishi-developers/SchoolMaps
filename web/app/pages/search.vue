@@ -29,10 +29,11 @@
       </div>
       <div class="results">
         <NuxtLink v-for="id, key in results" :key="key" class="place" :to="{ name: 'index', query: { places: id } }">
-          <span class="name">{{$places.filter((place) => place.id === id)[0]!.name}}</span>
+          <span class="name">{{$placesEnable.filter((place) => place.id === id)[0]!.name}}</span>
           <span class="position">
             <Icon name="material-symbols:location-on-rounded" />
-            {{$floors.filter((floor) => floor.id === $places.filter((place) => place.id === id)[0]!.floor)[0]!.name}}
+            {{$floors.filter((floor) => floor.id === $placesEnable.filter((place) => place.id ===
+              id)[0]!.floor)[0]!.name}}
           </span>
         </NuxtLink>
       </div>
@@ -43,16 +44,16 @@
 const route = useRoute()
 const requestURL = useRequestURL()
 useHead({ title: '検索' })
-const { $modes, $floors, $places } = useNuxtApp();
+const { $modesChangeable, $floors, $floorsChangeable, $placesEnable } = useNuxtApp();
 
 const search = useSearch()
 
 // suggestsの自動生成
 const suggests = ref([]) as Ref<Array<{ name: string, value: string }>>
-$modes.value.filter((mode) => mode.enable).filter((mode) => !mode.always).map((mode) => {
+$modesChangeable.value.map((mode) => {
   suggests.value.push({ name: mode.name, value: `mode:${mode.id}` })
 })
-$floors.value.filter((floor) => !floor.always).map((floor) => {
+$floorsChangeable.value.map((floor) => {
   suggests.value.push({ name: floor.name, value: `floor:${floor.id}` })
 })
 

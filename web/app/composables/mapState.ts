@@ -7,30 +7,18 @@ type Status = {
 };
 
 export const useMapState = () => {
-  const { $modes, $floors, $places } = useNuxtApp();
+  const { $modesChangeable, $floorsChangeable, $placesEnable } = useNuxtApp();
   const route = useRoute();
 
-  const changeableModes = computed(() => {
-    return $modes.value.filter((mode) => !mode.always && mode.enable);
-  });
-
-  const changeableFloors = computed(() => {
-    return $floors.value.filter((floor) => !floor.always);
-  });
-
-  const changeablePlaces = computed(() => {
-    // enabledなmodeに属するplaceのみ
-    return $places.value.filter((place) => $modes.value.some((mode) => mode.id === place.mode && mode.enable));
-  });
   const status = ref<Status>({
     mode: null,
-    floor: changeableFloors.value[0]?.id as string,
+    floor: $floorsChangeable.value[0]?.id as string,
     places: [],
   });
 
   // セッター(バリデーション付き)
   const setMode = (modeId: string | null) => {
-    if (modeId && changeableModes.value.some((mode) => mode.id === modeId)) {
+    if (modeId && $modesChangeable.value.some((mode) => mode.id === modeId)) {
       status.value.mode = modeId;
     } else {
       status.value.mode = null;
@@ -38,10 +26,10 @@ export const useMapState = () => {
     status2url();
   };
   const setFloor = (floorId: string | null) => {
-    if (floorId && changeableFloors.value.some((floor) => floor.id === floorId)) {
+    if (floorId && $floorsChangeable.value.some((floor) => floor.id === floorId)) {
       status.value.floor = floorId;
     } else {
-      status.value.floor = changeableFloors.value[0]?.id as string;
+      status.value.floor = $floorsChangeable.value[0]?.id as string;
     }
     status2url();
   };
@@ -49,7 +37,7 @@ export const useMapState = () => {
     if (placeIds) {
       const validPlaceIds = placeIds
         .filter((placeId) => placeId !== null)
-        .filter((placeId) => changeablePlaces.value.some((p) => p.id === placeId));
+        .filter((placeId) => $placesEnable.value.some((p) => p.id === placeId));
       status.value.places = validPlaceIds;
     } else {
       status.value.places = [];
@@ -80,7 +68,7 @@ export const useMapState = () => {
     if (url.places.length === 1) {
       // placesが1つのときは、そのplaceのmodeとfloorにする
       setPlaces(url.places);
-      const place = changeablePlaces.value.find((p) => p.id === status.value.places[0]);
+      const place = $placesEnable.value.find((p) => p.id === status.value.places[0]);
       if (place) {
         setMode(place.mode);
         setFloor(place.floor);
@@ -90,7 +78,7 @@ export const useMapState = () => {
     } else if (url.places.length > 1) {
       // placesが複数のときは、そのままplacesに入れる。ただし、modeとfloorは指定がなければplacesの最初の要素に合わせる
       setPlaces(url.places);
-      const firstPlace = changeablePlaces.value.find((p) => p.id === status.value.places[0]);
+      const firstPlace = $placesEnable.value.find((p) => p.id === status.value.places[0]);
       if (firstPlace) {
         setMode(url.mode ?? firstPlace.mode);
         setFloor(url.floor ?? firstPlace.floor);

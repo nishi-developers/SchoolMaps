@@ -15,12 +15,11 @@
       <div id="labels">
         <div id="floor">
           <Icon name="material-symbols:stairs-2-rounded" />
-          {{$floors.filter((floor) => !floor.always).filter((floor) => floor.id == place?.floor)[0]?.name}}
+          {{$floorsChangeable.filter((floor) => floor.id == place?.floor)[0]?.name}}
         </div>
-        <div v-if="$modes.filter((mode) => mode.enable && !mode.always).some((mode) => mode.id == place?.mode)"
-          id="mode">
+        <div v-if="$modesChangeable.some((mode) => mode.id == place?.mode)" id="mode">
           <Icon name="material-symbols:tag-rounded" />
-          {{$modes.filter((mode) => mode.enable && !mode.always).filter((mode) => mode.id == place?.mode)[0]?.name}}
+          {{$modesChangeable.filter((mode) => mode.id == place?.mode)[0]?.name}}
         </div>
       </div>
       <div id="desc">
@@ -31,7 +30,7 @@
   </div>
 </template>
 <script setup lang="ts">
-const { $modes, $floors, $places } = useNuxtApp();
+const { $modesChangeable, $floorsChangeable, $placesEnable } = useNuxtApp();
 const requestURL = useRequestURL()
 
 const props = defineProps<{
@@ -43,7 +42,7 @@ const emit = defineEmits<{
 
 const place = computed(() => {
   if (props.places.length !== 1) return null; // 1つだけ選択されている場合のみ表示
-  return $places.value.filter(place => place.id == props.places[0])[0];
+  return $placesEnable.value.filter(place => place.id == props.places[0])[0];
 });
 
 </script>
