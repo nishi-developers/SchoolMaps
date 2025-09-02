@@ -248,7 +248,7 @@
   <path d="m 377.699,1379.73 h 180.624 v 138.86 H 377.699 Z" mode="main" floor="f2" behavior="place" place="social-studies-preparation-room"></path>
   <path d="M 168.254,1379.73 H 377.7 v 138.86 H 168.254 Z" mode="main" floor="f2" behavior="place" place="social-studies-room-1st"></path>
   <path d="m 807.865,1304.62 h 96.555 v 140.12 h -96.555 z" mode="main" floor="f2" behavior="place" place="printing-room"></path>
-  <path d="m 1485.43,1306.62 h 106.38 v 140.12 h -106.38 z" mode="main" floor="f2" behavior="place" place="career-room"></path>
+  <path d="m 1485.43,1304.62 h 106.38 v 140.12 h -106.38 z" mode="main" floor="f2" behavior="place" place="career-room"></path>
   <path d="m 1591.81,1304.62 h 94.13 v 140.12 h -94.13 z" mode="main" floor="f2" behavior="place" place="consultation-room-1st"></path>
   <path d="m 1685.94,1304.62 h 94.13 v 140.12 h -94.13 z" mode="main" floor="f2" behavior="place" place="consultation-room-2nd"></path>
   <path d="m 1780.07,1191.6 h 141.91 v 72.07 h -141.91 z" mode="main" floor="f2" behavior="place" place="art-material-room"></path>
@@ -330,8 +330,8 @@
   <path d="m 377.699,1380.73 h 180.624 v 138.86 H 377.699 Z" mode="main" floor="f3" behavior="place" place="physics-preparation-room"></path>
   <path d="M 168.254,1380.73 H 377.7 v 138.86 H 168.254 Z" mode="main" floor="f3" behavior="place" place="physics-lecture-room"></path>
   <path d="m 807.86,1305.61 h 213.26 v 140.12 H 807.86 Z" mode="main" floor="f3" behavior="place" place="chemistry-lecture-room"></path>
-  <path d="m 1567.12,1305.73 h 24.7 v 140.12 h -24.7 z" mode="main" floor="f3" behavior="place" place="musical-instrument-storage"></path>
-  <path d="m 1485.44,1305.73 h 81.68 v 140.12 h -81.68 z" mode="main" floor="f3" behavior="place" place="practice-room"></path>
+  <path d="m 1567.12,1305.62 h 24.7 v 140.12 h -24.7 z" mode="main" floor="f3" behavior="place" place="musical-instrument-storage"></path>
+  <path d="m 1485.44,1305.62 h 81.68 v 140.12 h -81.68 z" mode="main" floor="f3" behavior="place" place="practice-room"></path>
   <path d="m 1591.81,1305.62 h 188.26 v 140.12 h -188.26 z" mode="main" floor="f3" behavior="place" place="music-room"></path>
   <path d="m 723.793,1876.57 h 93.319 v 107.22 h -93.319 z" mode="main" floor="f3" behavior="place" place="stairs-class-center-3f"></path>
   <path d="m 1507.71,1192.64 h 84.11 v 71.99 h -84.11 z" mode="main" floor="f3" behavior="place" place="stairs-management-center-3f"></path>
