@@ -893,6 +893,26 @@
     "images": []
   },
   {
+    "id": "electrical-room",
+    "mode": "main",
+    "floor": "f1",
+    "behavior": "place",
+    "name": "プール機械室",
+    "words": "",
+    "desc": "",
+    "images": []
+  },
+  {
+    "id": "pool-mechanical-room",
+    "mode": "main",
+    "floor": "f1",
+    "behavior": "place",
+    "name": "電気室",
+    "words": "",
+    "desc": "",
+    "images": []
+  },
+  {
     "id": "gate-west-0",
     "mode": "main",
     "floor": "f1",
@@ -1259,6 +1279,16 @@
     "floor": "f1",
     "behavior": "place",
     "name": "階段(教室棟東)",
+    "words": "",
+    "desc": "",
+    "images": []
+  },
+  {
+    "id": "warehouse-1",
+    "mode": "main",
+    "floor": "f1",
+    "behavior": "place",
+    "name": "倉庫1",
     "words": "",
     "desc": "",
     "images": []
@@ -2779,6 +2809,16 @@
     "floor": "f3",
     "behavior": "place",
     "name": "階段[視聴覚ホール]",
+    "words": "",
+    "desc": "",
+    "images": []
+  },
+  {
+    "id": "pool-observation-room",
+    "mode": "main",
+    "floor": "f3",
+    "behavior": "place",
+    "name": "プール監視室",
     "words": "",
     "desc": "",
     "images": []
