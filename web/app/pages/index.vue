@@ -20,7 +20,7 @@
           </div>
         </div>
         <div id="floors">
-          <div v-for="{ id, name } in mapEvent.floorsButtonData" :key="`${id}`"
+          <div v-for="{ id, name } in mapEvent.floorsButtonData.toReversed()" :key="`${id}`"
             :class="{ active: mapState.status.value.floor === id }" @click="mapEvent.setFloor(id)">
             {{ name }}
           </div>
