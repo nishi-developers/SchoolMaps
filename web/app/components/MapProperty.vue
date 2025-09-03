@@ -2,25 +2,27 @@
   <div id="property-wrapper">
     <div v-if="place" id="property">
       <div @click='emit("reset-places")'>
-        <Icon name="material-symbols:close-rounded" />
+        <Icon name="close" />
         <!-- 閉じるボタンとバーを併用予定 -->
       </div>
       <div id="titles">
         <div id="name">{{ place?.name }}</div>
         <div @click="shareLink(`西高マップ @${place?.name}`, requestURL.href)">
-          <Icon name="material-symbols:share" />
+          <Icon name="share" />
           共有
         </div>
       </div>
       <div id="labels">
-        <div id="floor">
-          <Icon name="material-symbols:stairs-2-rounded" />
+        <NuxtLink v-if="$floorsChangeable.some((floor) => floor.id == place?.floor)" id="floor"
+          :to="{ name: 'search', query: { q: `floor:${place?.floor}` } }">
+          <Icon name="stairs" />
           {{$floorsChangeable.filter((floor) => floor.id == place?.floor)[0]?.name}}
-        </div>
-        <div v-if="$modesChangeable.some((mode) => mode.id == place?.mode)" id="mode">
-          <Icon name="material-symbols:tag-rounded" />
+        </NuxtLink>
+        <NuxtLink v-if="$modesChangeable.some((mode) => mode.id == place?.mode)" id="mode"
+          :to="{ name: 'search', query: { q: `mode:${place?.mode}` } }">
+          <Icon name="tag" />
           {{$modesChangeable.filter((mode) => mode.id == place?.mode)[0]?.name}}
-        </div>
+        </NuxtLink>
       </div>
       <div ref="imageContainer">
         <img v-for="(img, index) in place?.images" :key="index" :src="img" :alt="`${place?.name}の画像${index + 1}`"
@@ -106,14 +108,12 @@ const initViewer = () => {
   );
 };
 
-
 initDesc();
 onMounted(() => {
   if (!place.value) return;
   initViewer();
   registerJumpLinkEvents();
 });
-
 </script>
 <style scoped lang="scss">
 #property-wrapper {

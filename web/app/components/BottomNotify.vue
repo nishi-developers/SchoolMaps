@@ -5,7 +5,7 @@
                 アプリをインストールして、オフラインでもマップを使いませんか?
             </div>
             <div id="installBtn" @click="install">インストール</div>
-            <Icon id="hideBtn" name="material-symbols:cancel-outline-rounded" @click="hide" />
+            <Icon id="hideBtn" name="close" @click="hide" />
         </div>
     </Transition>
 </template>
