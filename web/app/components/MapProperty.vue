@@ -26,6 +26,7 @@
         <img v-for="(img, index) in place?.images" :key="index" :src="img" :alt="`${place?.name}の画像${index + 1}`"
           loading="lazy">
       </div>
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <div id="desc" v-html="description" />
     </div>
   </div>
