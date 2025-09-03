@@ -68,21 +68,25 @@ const initDesc = () => {
     jumpUrls.value.push(url);
     return `<a href="${url}" id="jumpUrl-${jumpUrls.value.length - 1}">${name}</a>`;
   });
-  nextTick(() => {
-    registerJumpLinks();
-  });
 };
-
-const registerJumpLinks = () => {
+const registerJumpLinkEvents = () => {
   jumpUrls.value.forEach((url, index) => {
     const el = document.getElementById(`jumpUrl-${index}`);
     if (el) {
       el.addEventListener('click', async (e) => {
         e.preventDefault();
-        // これじゃあ更新されない
-        // あと外部リンクの対応
-        await navigateTo(url);
-        emit('apply-url');
+        const urlOnj = new URL(url, requestURL.origin);
+        if (urlOnj.origin == requestURL.origin) {
+          // 内部リンク
+          await navigateTo(url);
+          if (urlOnj.pathname == "/" || urlOnj.pathname == "/index") {
+            // map(index)の場合
+            emit('apply-url');
+          }
+        } else {
+          // 外部リンク
+          window.open(url, '_blank', 'noopener');
+        }
       });
     }
   });
@@ -101,10 +105,12 @@ const initViewer = () => {
   );
 };
 
+
+initDesc();
 onMounted(() => {
   if (!place.value) return;
-  initDesc();
   initViewer();
+  registerJumpLinkEvents();
 });
 
 </script>
