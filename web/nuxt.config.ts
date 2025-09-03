@@ -44,6 +44,19 @@ export default defineNuxtConfig({
       },
     },
   },
+  icon: {
+    aliases: {
+      share: "material-symbols:share",
+      close: "material-symbols:close-rounded",
+      stairs: "material-symbols:stairs-2-rounded",
+      tag: "material-symbols:tag-rounded",
+      search: "material-symbols:search-rounded",
+      label: "material-symbols:label-outline-rounded",
+      labelOff: "material-symbols:label-off-outline-rounded",
+      resetFocus: "material-symbols:reset-focus-outline-rounded",
+      location: "material-symbols:location-on-rounded",
+    },
+  },
   vite: {
     css: {
       preprocessorOptions: {
