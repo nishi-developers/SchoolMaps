@@ -15,7 +15,7 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>
 }
 
-const isShowByCookie = useCookie('isShowPWAInstallNotify', {
+const isShowByCookie = useCookie('isShowinstallPwaNotify', {
   default: () => 'true', // デフォルトは表示する
   maxAge: 60 * 60 * 24 * 30, // 30日間有効
 });
@@ -26,9 +26,9 @@ let installPromptEvent: BeforeInstallPromptEvent | null = null;
 window.addEventListener('beforeinstallprompt', (event) => {
   // Chrome67以前で自動的にプロンプトを表示しないようにする?
   event.preventDefault();
+  installPromptEvent = event as BeforeInstallPromptEvent;
   if (isShowByCookie.value.toString() != 'false') {
     // まだインストール通知を非表示にしていない場合のみ表示
-    installPromptEvent = event as BeforeInstallPromptEvent;
     isShowNotify.value = true;
     return;
   }
@@ -47,6 +47,8 @@ function hide() {
   isShowNotify.value = false;
   isShowByCookie.value = 'false';
 }
+
+useState("installPwa", () => install)
 </script>
 <style scoped lang="scss">
 #bottomNotify {

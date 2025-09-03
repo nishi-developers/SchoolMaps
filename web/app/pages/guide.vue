@@ -2,7 +2,7 @@
   <div>
     <div class="page">
       <h1>使い方</h1>
-      <h2><nuxt-link to="/">マップ</nuxt-link></h2>
+      <h2 class="link"><nuxt-link to="/">マップ</nuxt-link></h2>
       <ul>
         <li>
           <Icon name="search" />で検索画面を開きます。
@@ -34,14 +34,14 @@
         <li>場所をタップしたら出てくる詳細画面では、場所の情報や画像を見ることができます。</li>
         <li>バーをスワイプまたはタップすることで、詳細画面を拡大・縮小・開閉が可能です。</li>
       </ul>
-      <h2>
+      <h2 class="link">
         <RouterLink to="search">検索</RouterLink>
       </h2>
       <ul>
         <li>検索ワードを入力することで、場所を検索できます。</li>
         <li>半角/全角スペースで区切ることでOR検索になります。</li>
       </ul>
-      <h2>ホーム画面に追加</h2>
+      <h2 class="link" @click="installPwa?.()">ホーム画面に追加</h2>
       <ul>
         <li>サイトをホーム画面に追加することで、オフラインでもマップを利用できます。</li>
       </ul>
@@ -50,4 +50,12 @@
 </template>
 <script setup lang="ts">
 useHead({ title: '使い方' })
+const installPwa = useState<() => void>("installPwa")
 </script>
+<style scoped lang="scss">
+.link {
+  cursor: pointer;
+  color: var(--URLBodyColor);
+  text-decoration: underline;
+}
+</style>
