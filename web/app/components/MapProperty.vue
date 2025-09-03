@@ -41,9 +41,7 @@ const requestURL = useRequestURL()
 const props = defineProps<{
   places: ReadonlyArray<string>
 }>()
-const emit = defineEmits<{
-  (e: 'reset-places'): void
-}>()
+const emit = defineEmits<(e: 'reset-places' | 'apply-url') => void>();
 
 // 場所の情報を取得
 const place = computed(() => {
@@ -66,7 +64,6 @@ const initDesc = () => {
   description.value = place.value.desc;
   description.value = description.value.replace(/\/n/g, "<br>");
   description.value = description.value.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-  // description.value = description.value.replace(/\[(.+?)\]\((.+?)\)/g, `<a href="#${"$placesEnable".value.some(place => place.id == "$2") ? "$2" : ""}" @click.prevent="emit('reset-places'); $nextTick(() => { const el = document.getElementById('$2'); if (el) el.scrollIntoView({ behavior: 'smooth' }); })">$1</a>`);
   description.value = description.value.replace(/\[(.+?)\]\((.+?)\)/g, (match, name, url) => {
     jumpUrls.value.push(url);
     return `<a href="${url}" id="jumpUrl-${jumpUrls.value.length - 1}">${name}</a>`;
@@ -85,6 +82,7 @@ const registerJumpLinks = () => {
         // これじゃあ更新されない
         // あと外部リンクの対応
         await navigateTo(url);
+        emit('apply-url');
       });
     }
   });
@@ -92,14 +90,9 @@ const registerJumpLinks = () => {
 
 // viewer.jsの初期化処理
 const imageContainer = ref<HTMLElement>();
-let viewer: Viewer | null = null;
 const initViewer = () => {
-  if (viewer) {
-    viewer.destroy();
-    viewer = null;
-  }
   if (!imageContainer.value) return;
-  viewer = new Viewer(
+  new Viewer(
     imageContainer.value,
     {
       rotatable: false,
@@ -108,24 +101,10 @@ const initViewer = () => {
   );
 };
 
-// ライフサイクル
-watch(place, () => {
-  nextTick(() => {
-    if (!place.value) return;
-    initDesc();
-    initViewer();
-  });
-}, { immediate: false });
 onMounted(() => {
   if (!place.value) return;
   initDesc();
   initViewer();
-});
-onBeforeUnmount(() => {
-  if (!place.value) return;
-  if (viewer) {
-    viewer.destroy();
-  }
 });
 
 </script>
