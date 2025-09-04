@@ -29,7 +29,7 @@
           loading="lazy">
       </div>
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <div id="desc" v-html="description" />
+      <div id="desc" v-html="desc.description.value" />
     </div>
   </div>
 </template>
@@ -52,48 +52,11 @@ const place = computed(() => {
   return $placesEnable.value.filter(place => place.id == props.places[0])[0];
 });
 
-// 説明の初期化処理
-// jump
-// [校庭](grand)というように囲まれた部分をリンクとして扱う
-// bold
-// **bold**というように囲まれた部分を太字として扱う
-// new line
-// /nという文字列を改行として扱う
-const description = ref("");
-const jumpUrls = ref<Array<string>>([]);
-const initDesc = () => {
-  jumpUrls.value = [];
-  if (!place.value) return;
-  description.value = place.value.desc;
-  description.value = description.value.replace(/\/n/g, "<br>");
-  description.value = description.value.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-  description.value = description.value.replace(/\[(.+?)\]\((.+?)\)/g, (match, name, url) => {
-    jumpUrls.value.push(url);
-    return `<a href="${url}" id="jumpUrl-${jumpUrls.value.length - 1}">${name}</a>`;
-  });
-};
-const registerJumpLinkEvents = () => {
-  jumpUrls.value.forEach((url, index) => {
-    const el = document.getElementById(`jumpUrl-${index}`);
-    if (el) {
-      el.addEventListener('click', async (e) => {
-        e.preventDefault();
-        const urlOnj = new URL(url, requestURL.origin);
-        if (urlOnj.origin == requestURL.origin) {
-          // 内部リンク
-          await navigateTo(url);
-          if (urlOnj.pathname == "/" || urlOnj.pathname == "/index") {
-            // map(index)の場合
-            emit('apply-url');
-          }
-        } else {
-          // 外部リンク
-          window.open(url, '_blank', 'noopener');
-        }
-      });
-    }
-  });
-};
+const desc = usePropertyDesc(
+  place as Ref<Place>,
+  requestURL,
+  () => emit('apply-url')
+)
 
 // viewer.jsの初期化処理
 const imageContainer = ref<HTMLElement>();
@@ -108,11 +71,11 @@ const initViewer = () => {
   );
 };
 
-initDesc();
+desc.initDesc();
 onMounted(() => {
   if (!place.value) return;
   initViewer();
-  registerJumpLinkEvents();
+  desc.registerJumpLinkEvents();
 });
 </script>
 <style scoped lang="scss">
