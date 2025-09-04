@@ -15,7 +15,7 @@
         </label>
         <NuxtLink :to="{ name: 'jump-map-search', query: { q: query, and: isAndSearch.toString() }, replace: false }">
           <label class="searchFunc">
-            <Icon name="search" />
+            <Icon name="searchOnMap" />
           </label>
         </NuxtLink>
       </div>
