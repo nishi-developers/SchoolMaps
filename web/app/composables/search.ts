@@ -57,7 +57,8 @@ export const useSearch = () => {
         });
       } else {
         // AND検索
-        if (results.length === 0) {
+        if (results.length === 0 && querys[0] === query) {
+          // 最初のクエリの場合は検索結果を全て追加
           results.push(...ids);
         } else {
           // 既存の結果と新しい結果の積集合を取る
