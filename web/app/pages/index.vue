@@ -63,12 +63,17 @@ const mapEvent = useMapEvent(mapState, mapState.setPlaces);
 mapState.url2status(); // URLから状態を復元
 
 onMounted(() => {
+  document.body.classList.add('map-page');
   if (!mapWrapper.value) {
     console.error("mapWrapper is not defined");
     return;
   }
   mapView.init(mapWrapper.value);
   mapMove.reset();
+});
+
+onUnmounted(() => {
+  document.body.classList.remove('map-page');
 });
 
 let isAlreadyMoved = false; // マウス使用時のみ、移動したかどうか
@@ -115,7 +120,7 @@ const eventListener = {
 </script>
 
 <style scoped lang="scss">
-:global(body) {
+:global(body.map-page) {
   touch-action: none; // 画面全体でのタッチ操作を無効化
   user-select: none; // テキスト選択を無効化
 }
