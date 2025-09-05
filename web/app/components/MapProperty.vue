@@ -95,24 +95,29 @@ watch(deviceMode, (mode) => {
 }, { immediate: true });
 
 let isAlreadyMoved = false; // マウス使用時のみ、移動したかどうか
+let isDragging = false; // ドラッグ中かどうか
 const eventListener = {
   click: () => {
     if (!isAlreadyMoved) {
       emit('reset-places');
     }
   },
-  mousemove: (event: MouseEvent) => {
-    if (event.buttons == 1) {
-      isAlreadyMoved = true
-      mouseMove(event);
-    }
-  },
+  // mousemove: (event: MouseEvent) => {
+  //   if (!isDragging) return;
+  //   if (event.buttons == 1) {
+  //     isAlreadyMoved = true
+  //     mouseMove(event);
+  //   }
+  // },
   mousedown: () => {
     isAlreadyMoved = false
+    isDragging = true
   },
-  mouseup: () => {
-    leave()
-  },
+  // mouseup: () => {
+  //   if (!isDragging) return;
+  //   isDragging = false
+  //   leave()
+  // },
   touchmove: (event: TouchEvent) => {
     if (event.changedTouches.length === 1) {
       touchMove(event);
@@ -130,6 +135,35 @@ const eventListener = {
     leave()
   },
 };
+// const overEventListener = {
+//   mousemove: (event: MouseEvent) => {
+//     if (!isDragging) return;
+//     if (event.buttons == 1) {
+//       isAlreadyMoved = true
+//       mouseMove(event);
+//     }
+//   },
+//   mouseup: () => {
+//     if (!isDragging) return;
+//     isDragging = false
+//     leave()
+//   },
+// };
+
+// isAlreadyMovedとisDraggingが正しく動いているか要確認
+// eventListenerの削除処理も必要
+document.addEventListener('mousemove', (event: MouseEvent) => {
+  if (!isDragging) return;
+  if (event.buttons == 1) {
+    isAlreadyMoved = true
+    mouseMove(event);
+  }
+});
+document.addEventListener('mouseup', () => {
+  if (!isDragging) return;
+  isDragging = false
+  leave()
+});
 
 function mouseMove(event: MouseEvent) {
   // マウスでドラッグ中の処理
