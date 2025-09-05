@@ -16,7 +16,6 @@
   "author": "M_Haruki@504",
   "license": "MIT",
   "dependencies": {
-    "@iconify/utils": "^3.0.1",
     "@nuxt/eslint": "^1.7.1",
     "@nuxt/fonts": "^0.11.4",
     "@nuxt/icon": "^1.15.0",
@@ -26,7 +25,6 @@
     "@unhead/vue": "^2.0.13",
     "@vite-pwa/nuxt": "^1.0.4",
     "eslint": "^9.32.0",
-    "iconify-icon": "^3.0.0",
     "nuxt": "^4.0.1",
     "rbush": "^4.0.1",
     "viewerjs": "^1.11.7",
