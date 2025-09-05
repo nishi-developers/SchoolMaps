@@ -96,13 +96,11 @@ SVGファイルのひとつひとつの要素を`オブジェクト`と呼ぶ。
     "id": "main",
     "name": "main",
     "always": true,
-    "image": "./img/main.png"
   },
   {
     "id": "shinkan80",
     "name": "新歓80th",
     "always": false,
-    "image": "./img/shinkan.png"
   }
 ]
 ```
@@ -112,8 +110,6 @@ SVGファイルのひとつひとつの要素を`オブジェクト`と呼ぶ。
 - alwaysは、常に表示するかどうかを示すフラグ
   - trueの場合、常に表示される
   - falseの場合、モード切り替えより選択することで表示される
-- imageは、マップ上に表示するアイコンのパス
-  - 外部URLも可
 
 ### `floors.json`
 

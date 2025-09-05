@@ -3,7 +3,6 @@ export interface Mode {
   enable: boolean;
   name: string;
   always: boolean;
-  image: string;
 }
 
 export interface Floor {
