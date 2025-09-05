@@ -1,5 +1,4 @@
 import RBush from "rbush";
-import { loadIcon } from "iconify-icon";
 
 export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveStatus>, isShowLabel: Ref<boolean>) => {
   const { $map, $modes, $modesEnable, $floors, $behaviors, $placesEnable } = useNuxtApp();
@@ -204,55 +203,31 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveSta
   const addLabels = () => {
     const placeBehaviors = $behaviors.value.filter((behavior: Behavior) => behavior.isPlace);
     for (const behavior of placeBehaviors) {
-      mapElement?.querySelectorAll(`[behavior="${behavior.id}"]`).forEach(async (element) => {
+      mapElement?.querySelectorAll(`[behavior="${behavior.id}"]`).forEach((element) => {
         const bBox = (element as SVGGraphicsElement).getBBox();
         const centerX = bBox.x + bBox.width / 2;
         const centerY = bBox.y + bBox.height / 2;
         const placeId = element.getAttribute("place");
-        const place = $placesEnable.value.find((place: Place) => place.id === placeId);
-        if (!place || !mapElement) {
+        const name = $placesEnable.value.find((place: Place) => place.id === placeId)?.name || null;
+        if (!name || !mapElement) {
           return;
         }
-        let labelElement;
-        if (place.icon) {
-          const iconData = await loadIcon(place.icon);
-          if (!iconData) {
-            return;
-          }
-          // labelElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-          // const iconSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-          // labelElement.setAttribute(
-          //   "viewBox",
-          //   `${iconData.left || 0} ${iconData.top || 0} ${iconData.width} ${iconData.height}`
-          // );
-          // labelElement.setAttribute("width", "24");
-          // labelElement.setAttribute("height", "24");
-          // labelElement.innerHTML = iconData.body;
-          // labelElement.setAttribute("x", `${centerX - 12}`);
-          // labelElement.setAttribute("y", `${centerY - 12}`);
-          // labelElement.appendChild(iconSvg);
-          labelElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-          labelElement.innerHTML = iconData.body;
-          labelElement.setAttribute("width", "24");
-          labelElement.setAttribute("height", "24");
-        } else {
-          labelElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
-          labelElement.textContent = place.name;
-        }
-        labelElement.setAttribute("x", `${centerX}`);
-        labelElement.setAttribute("y", `${centerY}`);
-        labelElement.setAttribute("label", "");
-        labelElement.setAttribute("mode", element.getAttribute("mode") || "");
-        labelElement.setAttribute("floor", element.getAttribute("floor") || "");
-        labelElement.setAttribute("behavior", behavior.id);
-        labelElement.setAttribute("place", placeId || "");
-        labelElement.style.textAnchor = "middle";
-        labelElement.style.dominantBaseline = "central";
-        labelElement.style.transformBox = "fill-box";
-        labelElement.style.transformOrigin = "center center";
-        labelElement.style.pointerEvents = "none";
-        labelElement.style.strokeWidth = "0";
-        mapElement.appendChild(labelElement);
+        const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        textElement.setAttribute("x", `${centerX}`);
+        textElement.setAttribute("y", `${centerY}`);
+        textElement.setAttribute("label", "");
+        textElement.setAttribute("mode", element.getAttribute("mode") || "");
+        textElement.setAttribute("floor", element.getAttribute("floor") || "");
+        textElement.setAttribute("behavior", behavior.id);
+        textElement.setAttribute("place", placeId || "");
+        textElement.textContent = name;
+        textElement.style.textAnchor = "middle";
+        textElement.style.dominantBaseline = "central";
+        textElement.style.transformBox = "fill-box";
+        textElement.style.transformOrigin = "center center";
+        textElement.style.pointerEvents = "none";
+        textElement.style.strokeWidth = "0";
+        mapElement.appendChild(textElement);
       });
     }
   };
