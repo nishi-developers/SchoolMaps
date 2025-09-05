@@ -48,6 +48,7 @@ export default defineNuxtConfig({
     aliases: {
       share: "material-symbols:share",
       close: "material-symbols:close-rounded",
+      cercleClose: "material-symbols:cancel-outline-rounded",
       stairs: "material-symbols:stairs-2-rounded",
       tag: "material-symbols:tag-rounded",
       search: "material-symbols:search-rounded",
