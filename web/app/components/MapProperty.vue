@@ -199,13 +199,11 @@ function touchMove(event: TouchEvent) {
   pointer-events: none;
 
   #property {
-    touch-action: pan-x pan-y;
-    user-select: text;
-    pointer-events: auto;
     position: absolute;
     background-color: var(--SubBaseColor);
     display: flex;
     gap: 5px;
+    pointer-events: auto;
 
     &.mobile {
       width: 100%;
@@ -263,12 +261,15 @@ function touchMove(event: TouchEvent) {
       width: 100%;
       height: 100%;
       overflow: scroll;
+      touch-action: pan-x pan-y;
+      user-select: text;
 
       #titles {
         display: flex;
         align-items: center;
         gap: 10px;
         margin-bottom: 10px;
+        white-space: nowrap;
 
         #name {
           font-size: 1.8rem;
@@ -301,6 +302,7 @@ function touchMove(event: TouchEvent) {
         gap: 10px;
         font-size: 1.2rem;
         margin-bottom: 10px;
+        white-space: nowrap;
 
         .label {
           cursor: pointer;
