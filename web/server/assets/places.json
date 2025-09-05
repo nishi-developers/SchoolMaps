@@ -6,6 +6,7 @@
     "behavior": "place",
     "name": "1A",
     "words": "普通教室 クラス 1年 A組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -16,6 +17,7 @@
     "behavior": "place",
     "name": "1B",
     "words": "普通教室 クラス 1年 B組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -26,6 +28,7 @@
     "behavior": "place",
     "name": "1C",
     "words": "普通教室 クラス 1年 C組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -36,6 +39,7 @@
     "behavior": "place",
     "name": "1D",
     "words": "普通教室 クラス 1年 D組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -46,6 +50,7 @@
     "behavior": "place",
     "name": "1E",
     "words": "普通教室 クラス 1年 E組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -56,6 +61,7 @@
     "behavior": "place",
     "name": "1F",
     "words": "普通教室 クラス 1年 F組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -66,6 +72,7 @@
     "behavior": "place",
     "name": "1G",
     "words": "普通教室 クラス 1年 G組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -76,6 +83,7 @@
     "behavior": "place",
     "name": "1H",
     "words": "普通教室 クラス 1年 H組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -86,6 +94,7 @@
     "behavior": "place",
     "name": "校庭",
     "words": "グランド グラウンド トラック",
+    "icon": "",
     "desc": "",
     "images": [
       "/images/main/grand-kZRaRnHs.webp"
@@ -98,6 +107,7 @@
     "behavior": "place",
     "name": "テニスコート",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": [
       "/images/main/tennis_court-r9zge5qb.webp",
@@ -111,6 +121,7 @@
     "behavior": "place",
     "name": "ハンドボールコート",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": [
       "/images/main/handball_court-7mVe6x20.webp"
@@ -123,6 +134,7 @@
     "behavior": "place",
     "name": "男子トイレ[視聴覚ホール]",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -133,6 +145,7 @@
     "behavior": "place",
     "name": "女子トイレ[視聴覚ホール]",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -143,6 +156,7 @@
     "behavior": "place",
     "name": "階段[視聴覚ホール]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -153,6 +167,7 @@
     "behavior": "place",
     "name": "階段[視聴覚ホール]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -163,6 +178,7 @@
     "behavior": "place",
     "name": "通路[視聴覚ホール]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -173,6 +189,7 @@
     "behavior": "place",
     "name": "通路[視聴覚ホール]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -183,6 +200,7 @@
     "behavior": "place",
     "name": "事務室[西高会館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -193,6 +211,7 @@
     "behavior": "place",
     "name": "誰でもトイレ[西高会館]",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -203,6 +222,7 @@
     "behavior": "place",
     "name": "印刷室[西高会館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -213,6 +233,7 @@
     "behavior": "place",
     "name": "食堂[西高会館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -223,6 +244,7 @@
     "behavior": "place",
     "name": "厨房[西高会館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -233,6 +255,7 @@
     "behavior": "place",
     "name": "階段[西高会館]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -243,6 +266,7 @@
     "behavior": "place",
     "name": "外階段[西高会館]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -253,6 +277,7 @@
     "behavior": "place",
     "name": "体育館",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -263,6 +288,7 @@
     "behavior": "place",
     "name": "階段[体育館]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -273,6 +299,7 @@
     "behavior": "place",
     "name": "体育倉庫[体育館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -283,6 +310,7 @@
     "behavior": "place",
     "name": "男子トイレ[体育館]",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -293,6 +321,7 @@
     "behavior": "place",
     "name": "女子トイレ[体育館]",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -303,6 +332,7 @@
     "behavior": "place",
     "name": "ステージ[体育館]",
     "words": "舞台",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -313,6 +343,7 @@
     "behavior": "place",
     "name": "ステージ脇階段[体育館]",
     "words": "舞台",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -323,6 +354,7 @@
     "behavior": "place",
     "name": "ステージ脇階段[体育館]",
     "words": "舞台",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -333,6 +365,7 @@
     "behavior": "place",
     "name": "ステージ脇[体育館]",
     "words": "舞台",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -343,6 +376,7 @@
     "behavior": "place",
     "name": "ステージ脇[体育館]",
     "words": "舞台",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -353,6 +387,7 @@
     "behavior": "place",
     "name": "格技室(1)[武道場]",
     "words": "格技棟",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -363,6 +398,7 @@
     "behavior": "place",
     "name": "格技室(2)[武道場]",
     "words": "格技棟",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -373,6 +409,7 @@
     "behavior": "place",
     "name": "男子トイレ[武道場]",
     "words": "格技棟",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -383,6 +420,7 @@
     "behavior": "place",
     "name": "女子トイレ[武道場]",
     "words": "格技棟",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -393,6 +431,7 @@
     "behavior": "place",
     "name": "器具庫[武道場]",
     "words": "格技棟",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -403,6 +442,7 @@
     "behavior": "place",
     "name": "階段[武道場]",
     "words": "格技棟",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -413,6 +453,7 @@
     "behavior": "place",
     "name": "愛の泉",
     "words": "",
+    "icon": "",
     "desc": "西高のシンボルともいえる**愛の泉**。/n西高には愛の泉に関する様々な噂がある。",
     "images": [
       "/images/main/fountain-87KPE1Vq.webp"
@@ -425,6 +466,7 @@
     "behavior": "place",
     "name": "ゴミ置き場",
     "words": "ゴミ捨て場",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -435,6 +477,7 @@
     "behavior": "place",
     "name": "自転車置き場(1年)",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -445,6 +488,7 @@
     "behavior": "place",
     "name": "自転車置き場(1年)",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -455,6 +499,7 @@
     "behavior": "place",
     "name": "自転車置き場(1年)",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -465,6 +510,7 @@
     "behavior": "place",
     "name": "自転車置き場(2年)",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -475,6 +521,7 @@
     "behavior": "place",
     "name": "自転車置き場(2年)",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -485,6 +532,7 @@
     "behavior": "place",
     "name": "自転車置き場(2年)",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -495,6 +543,7 @@
     "behavior": "place",
     "name": "自転車置き場(3年)",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -505,6 +554,7 @@
     "behavior": "place",
     "name": "自転車置き場(3年)",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -515,6 +565,7 @@
     "behavior": "place",
     "name": "自転車置き場(先生)",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -525,6 +576,7 @@
     "behavior": "place",
     "name": "シブ楽隊[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -535,6 +587,7 @@
     "behavior": "place",
     "name": "歴史研究部[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -545,6 +598,7 @@
     "behavior": "place",
     "name": "演劇部[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -555,6 +609,7 @@
     "behavior": "place",
     "name": "体操部[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -565,6 +620,7 @@
     "behavior": "place",
     "name": "吹奏楽部[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -575,6 +631,7 @@
     "behavior": "place",
     "name": "男子バスケットボール部[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -585,6 +642,7 @@
     "behavior": "place",
     "name": "剣道部[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -595,6 +653,7 @@
     "behavior": "place",
     "name": "化学部[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -605,6 +664,7 @@
     "behavior": "place",
     "name": "園芸部[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -615,6 +675,7 @@
     "behavior": "place",
     "name": "軽音楽同好会[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -625,6 +686,7 @@
     "behavior": "place",
     "name": "つるばみ同好会[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -635,6 +697,7 @@
     "behavior": "place",
     "name": "男子バレーボール部[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -645,6 +708,7 @@
     "behavior": "place",
     "name": "卓球部[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -655,6 +719,7 @@
     "behavior": "place",
     "name": "水泳部[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -665,6 +730,7 @@
     "behavior": "place",
     "name": "女子バレーボール部[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -675,6 +741,7 @@
     "behavior": "place",
     "name": "女子バスケットボール部[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -685,6 +752,7 @@
     "behavior": "place",
     "name": "バドミントン部[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -695,6 +763,7 @@
     "behavior": "place",
     "name": "ダンス部[部室]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -705,6 +774,7 @@
     "behavior": "place",
     "name": "階段[部室棟]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -715,6 +785,7 @@
     "behavior": "place",
     "name": "階段[部室棟]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -725,6 +796,7 @@
     "behavior": "place",
     "name": "写真部[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -735,6 +807,7 @@
     "behavior": "place",
     "name": "生徒会倉庫[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -745,6 +818,7 @@
     "behavior": "place",
     "name": "女子ハンドボール部[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -755,6 +829,7 @@
     "behavior": "place",
     "name": "男子ハンドボール部[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -765,6 +840,7 @@
     "behavior": "place",
     "name": "男子硬式テニス部[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -775,6 +851,7 @@
     "behavior": "place",
     "name": "硬式野球部[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -785,6 +862,7 @@
     "behavior": "place",
     "name": "陸上競技部[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -795,6 +873,7 @@
     "behavior": "place",
     "name": "サッカー部[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -805,6 +884,7 @@
     "behavior": "place",
     "name": "アメリカンフットボール部[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -815,6 +895,7 @@
     "behavior": "place",
     "name": "倉庫[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": [
       "/images/main/clubroom_building_1-39A51R8u.webp"
@@ -827,6 +908,7 @@
     "behavior": "place",
     "name": "倉庫[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -837,6 +919,7 @@
     "behavior": "place",
     "name": "男子トイレ[部室棟]",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -847,6 +930,7 @@
     "behavior": "place",
     "name": "女子トイレ[部室棟]",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -857,6 +941,7 @@
     "behavior": "place",
     "name": "シャワー室[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -867,6 +952,7 @@
     "behavior": "place",
     "name": "シャワー室[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -877,6 +963,7 @@
     "behavior": "place",
     "name": "プール下ピロティ",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": [
       "/images/main/pilotis-kZRaRnHs.webp"
@@ -889,6 +976,7 @@
     "behavior": "place",
     "name": "トレーニングルーム",
     "words": "トレ室",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -899,6 +987,7 @@
     "behavior": "place",
     "name": "プール機械室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -909,6 +998,7 @@
     "behavior": "place",
     "name": "電気室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -919,6 +1009,7 @@
     "behavior": "place",
     "name": "西門",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": [
       "/images/main/gate_west_0-7BfkEqJ3.webp",
@@ -932,6 +1023,7 @@
     "behavior": "place",
     "name": "西門",
     "words": "",
+    "icon": "",
     "desc": "[こちらの西門](gate_west_0)の方が多く利用されている。",
     "images": [
       "/images/main/gate_west_1-6G2EaBq6.webp"
@@ -944,6 +1036,7 @@
     "behavior": "place",
     "name": "西門(校庭)",
     "words": "",
+    "icon": "",
     "desc": "普段は閉門されている。",
     "images": [
       "/images/main/gate_west_2-39A51R8u.webp",
@@ -957,6 +1050,7 @@
     "behavior": "place",
     "name": "正門",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": [
       "/images/main/gate_north_0-1ZftrcP4.webp",
@@ -970,6 +1064,7 @@
     "behavior": "place",
     "name": "東門",
     "words": "",
+    "icon": "",
     "desc": "普段は閉門されている。",
     "images": [
       "/images/main/gate_east_0-qAB23K19.webp",
@@ -983,6 +1078,7 @@
     "behavior": "place",
     "name": "西高会館ゲート",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": [
       "/images/main/gate_nishi_hall_0-7BfkEqJ3.webp",
@@ -996,6 +1092,7 @@
     "behavior": "place",
     "name": "西高会館ゲート",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": [
       "/images/main/gate_nishi_hall_1-7mVe6x20.webp"
@@ -1008,6 +1105,7 @@
     "behavior": "place",
     "name": "直線トラック",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": [
       "/images/main/straight_course-k0DNpn6R.webp"
@@ -1020,6 +1118,7 @@
     "behavior": "place",
     "name": "生徒昇降口",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1030,6 +1129,7 @@
     "behavior": "place",
     "name": "職員昇降口",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1040,6 +1140,7 @@
     "behavior": "place",
     "name": "生徒会室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1050,6 +1151,7 @@
     "behavior": "place",
     "name": "用務室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1060,6 +1162,7 @@
     "behavior": "place",
     "name": "経営企画室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1070,6 +1173,7 @@
     "behavior": "place",
     "name": "校長室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1080,6 +1184,7 @@
     "behavior": "place",
     "name": "保健室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1090,6 +1195,7 @@
     "behavior": "place",
     "name": "保健相談室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1100,6 +1206,7 @@
     "behavior": "place",
     "name": "和室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1110,6 +1217,7 @@
     "behavior": "place",
     "name": "家庭科教室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1120,6 +1228,7 @@
     "behavior": "place",
     "name": "家庭科準備室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1130,6 +1239,7 @@
     "behavior": "place",
     "name": "食物教室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1140,6 +1250,7 @@
     "behavior": "place",
     "name": "PC室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1150,6 +1261,7 @@
     "behavior": "place",
     "name": "PC準備室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1160,6 +1272,7 @@
     "behavior": "place",
     "name": "LL室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1170,6 +1283,7 @@
     "behavior": "place",
     "name": "LL準備室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1180,6 +1294,7 @@
     "behavior": "place",
     "name": "事務倉庫",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1190,6 +1305,7 @@
     "behavior": "place",
     "name": "階段(体育館脇通路)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1200,6 +1316,7 @@
     "behavior": "place",
     "name": "階段(体育館脇通路)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1210,6 +1327,7 @@
     "behavior": "place",
     "name": "階段(体育館脇通路)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1220,6 +1338,7 @@
     "behavior": "place",
     "name": "階段(体育館脇通路)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1230,6 +1349,7 @@
     "behavior": "place",
     "name": "階段(プール脇)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1240,6 +1360,7 @@
     "behavior": "place",
     "name": "階段(プール脇)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1250,6 +1371,7 @@
     "behavior": "place",
     "name": "階段(教室棟中央)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1260,6 +1382,7 @@
     "behavior": "place",
     "name": "階段(教室棟中央)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1270,6 +1393,7 @@
     "behavior": "place",
     "name": "階段(教室棟中央)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1280,6 +1404,7 @@
     "behavior": "place",
     "name": "階段(教室棟東)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1290,6 +1415,7 @@
     "behavior": "place",
     "name": "倉庫1",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1300,6 +1426,7 @@
     "behavior": "place",
     "name": "階段(教室棟東)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1310,6 +1437,7 @@
     "behavior": "place",
     "name": "階段(教室棟東)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1320,6 +1448,7 @@
     "behavior": "place",
     "name": "階段(教室棟西)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1330,6 +1459,7 @@
     "behavior": "place",
     "name": "階段(教室棟西)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1340,6 +1470,7 @@
     "behavior": "place",
     "name": "階段(教室棟西)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1350,6 +1481,7 @@
     "behavior": "place",
     "name": "階段(管理棟西)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1360,6 +1492,7 @@
     "behavior": "place",
     "name": "階段(管理棟西)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1370,6 +1503,7 @@
     "behavior": "place",
     "name": "階段(管理棟西)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1380,6 +1514,7 @@
     "behavior": "place",
     "name": "階段(管理棟中央)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1390,6 +1525,7 @@
     "behavior": "place",
     "name": "階段(管理棟中央)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1400,6 +1536,7 @@
     "behavior": "place",
     "name": "階段(管理棟中央)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1410,6 +1547,7 @@
     "behavior": "place",
     "name": "階段(管理棟北)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1420,6 +1558,7 @@
     "behavior": "place",
     "name": "階段(管理棟北)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1430,6 +1569,7 @@
     "behavior": "place",
     "name": "階段(管理棟北)",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1440,6 +1580,7 @@
     "behavior": "place",
     "name": "トイレ(ピロティ)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1450,6 +1591,7 @@
     "behavior": "place",
     "name": "トイレ(教室棟東)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1460,6 +1602,7 @@
     "behavior": "place",
     "name": "トイレ(教室棟東)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1470,6 +1613,7 @@
     "behavior": "place",
     "name": "トイレ(教室棟東)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1480,6 +1624,7 @@
     "behavior": "place",
     "name": "トイレ(教室棟西)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1490,6 +1635,7 @@
     "behavior": "place",
     "name": "トイレ(教室棟西)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1500,6 +1646,7 @@
     "behavior": "place",
     "name": "トイレ(教室棟西)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1510,6 +1657,7 @@
     "behavior": "place",
     "name": "トイレ(管理棟西)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1520,6 +1668,7 @@
     "behavior": "place",
     "name": "トイレ(管理棟西)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1530,6 +1679,7 @@
     "behavior": "place",
     "name": "トイレ(管理棟西)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1540,6 +1690,7 @@
     "behavior": "place",
     "name": "トイレ(管理棟中央)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1550,6 +1701,7 @@
     "behavior": "place",
     "name": "トイレ(管理棟中央)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1560,6 +1712,7 @@
     "behavior": "place",
     "name": "トイレ(管理棟中央)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1570,6 +1723,7 @@
     "behavior": "place",
     "name": "トイレ(管理棟北)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1580,6 +1734,7 @@
     "behavior": "place",
     "name": "トイレ(管理棟北)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1590,6 +1745,7 @@
     "behavior": "place",
     "name": "トイレ(管理棟北)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1600,6 +1756,7 @@
     "behavior": "place",
     "name": "バリアフリートイレ(管理棟北)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1610,6 +1767,7 @@
     "behavior": "place",
     "name": "バリアフリートイレ(管理棟北)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1620,6 +1778,7 @@
     "behavior": "place",
     "name": "バリアフリートイレ(管理棟北)",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1630,6 +1789,7 @@
     "behavior": "place",
     "name": "エレベーター",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1640,6 +1800,7 @@
     "behavior": "place",
     "name": "エレベーター",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1650,6 +1811,7 @@
     "behavior": "place",
     "name": "エレベーター",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1660,6 +1822,7 @@
     "behavior": "place",
     "name": "2A",
     "words": "普通教室 クラス 2年 A組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1670,6 +1833,7 @@
     "behavior": "place",
     "name": "2B",
     "words": "普通教室 クラス 2年 B組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1680,6 +1844,7 @@
     "behavior": "place",
     "name": "2C",
     "words": "普通教室 クラス 2年 C組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1690,6 +1855,7 @@
     "behavior": "place",
     "name": "2D",
     "words": "普通教室 クラス 2年 D組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1700,6 +1866,7 @@
     "behavior": "place",
     "name": "2E",
     "words": "普通教室 クラス 2年 E組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1710,6 +1877,7 @@
     "behavior": "place",
     "name": "2F",
     "words": "普通教室 クラス 2年 F組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1720,6 +1888,7 @@
     "behavior": "place",
     "name": "2G",
     "words": "普通教室 クラス 2年 G組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1730,6 +1899,7 @@
     "behavior": "place",
     "name": "2H",
     "words": "普通教室 クラス 2年 H組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1740,6 +1910,7 @@
     "behavior": "place",
     "name": "階段[部室棟]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1750,6 +1921,7 @@
     "behavior": "place",
     "name": "階段[部室棟]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1760,6 +1932,7 @@
     "behavior": "place",
     "name": "イラスト研究部[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1770,6 +1943,7 @@
     "behavior": "place",
     "name": "新聞部[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1780,6 +1954,7 @@
     "behavior": "place",
     "name": "文芸部[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1790,6 +1965,7 @@
     "behavior": "place",
     "name": "管弦楽部[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1800,6 +1976,7 @@
     "behavior": "place",
     "name": "CR東日本[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1810,6 +1987,7 @@
     "behavior": "place",
     "name": "宇宙研究部[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1820,6 +1998,7 @@
     "behavior": "place",
     "name": "ワンダーフォーゲル部[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1830,6 +2009,7 @@
     "behavior": "place",
     "name": "囲碁将棋部[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1840,6 +2020,7 @@
     "behavior": "place",
     "name": "女子硬式テニス部[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1850,6 +2031,7 @@
     "behavior": "place",
     "name": "ソフトテニス部(女子)[部室棟]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1860,6 +2042,7 @@
     "behavior": "place",
     "name": "モニタールーム",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1870,6 +2053,7 @@
     "behavior": "place",
     "name": "階段[視聴覚ホール]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1880,6 +2064,7 @@
     "behavior": "place",
     "name": "階段[視聴覚ホール]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1890,6 +2075,7 @@
     "behavior": "place",
     "name": "スロープ[視聴覚ホール]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1900,6 +2086,7 @@
     "behavior": "place",
     "name": "スロープ[視聴覚ホール]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1910,6 +2097,7 @@
     "behavior": "place",
     "name": "視聴覚ホール",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1920,6 +2108,7 @@
     "behavior": "place",
     "name": "ステージ[視聴覚ホール]",
     "words": "舞台",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1930,6 +2119,7 @@
     "behavior": "place",
     "name": "ステージ脇[視聴覚ホール]",
     "words": "舞台",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1940,6 +2130,7 @@
     "behavior": "place",
     "name": "ステージ脇[視聴覚ホール]",
     "words": "舞台",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1950,6 +2141,7 @@
     "behavior": "place",
     "name": "階段[西高会館]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1960,6 +2152,7 @@
     "behavior": "place",
     "name": "外階段[西高会館]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -1970,6 +2163,7 @@
     "behavior": "place",
     "name": "西高会・同窓会事務室[西高会館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -1980,6 +2174,7 @@
     "behavior": "place",
     "name": "男子トイレ1[西高会館]",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -1990,6 +2185,7 @@
     "behavior": "place",
     "name": "男子トイレ2[西高会館]",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -2000,6 +2196,7 @@
     "behavior": "place",
     "name": "男子更衣室[西高会館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2010,6 +2207,7 @@
     "behavior": "place",
     "name": "男子シャワー[西高会館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2020,6 +2218,7 @@
     "behavior": "place",
     "name": "会議室1[西高会館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2030,6 +2229,7 @@
     "behavior": "place",
     "name": "会議室2[西高会館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2040,6 +2240,7 @@
     "behavior": "place",
     "name": "体育教官室[体育館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2050,6 +2251,7 @@
     "behavior": "place",
     "name": "階段[体育館]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -2060,6 +2262,7 @@
     "behavior": "place",
     "name": "男子更衣室[体育館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2070,6 +2273,7 @@
     "behavior": "place",
     "name": "女子更衣室[体育館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2080,6 +2284,7 @@
     "behavior": "place",
     "name": "キャットウォーク[体育館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2090,6 +2295,7 @@
     "behavior": "place",
     "name": "通路[体育館]",
     "words": "舞台",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2100,6 +2306,7 @@
     "behavior": "place",
     "name": "通路[体育館]",
     "words": "舞台",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2110,6 +2317,7 @@
     "behavior": "place",
     "name": "放送室[体育館]",
     "words": "舞台",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2120,6 +2328,7 @@
     "behavior": "place",
     "name": "控え室[体育館]",
     "words": "舞台",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2130,6 +2339,7 @@
     "behavior": "place",
     "name": "ステージ脇階段[体育館]",
     "words": "舞台",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -2140,6 +2350,7 @@
     "behavior": "place",
     "name": "ステージ脇階段[体育館]",
     "words": "舞台",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -2150,6 +2361,7 @@
     "behavior": "place",
     "name": "階段[武道場]",
     "words": "格技棟",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -2160,6 +2372,7 @@
     "behavior": "place",
     "name": "体育教官室[武道場]",
     "words": "格技棟",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2170,6 +2383,7 @@
     "behavior": "place",
     "name": "男子更衣室[武道場]",
     "words": "格技棟",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2180,6 +2394,7 @@
     "behavior": "place",
     "name": "女子更衣室[武道場]",
     "words": "格技棟",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2190,6 +2405,7 @@
     "behavior": "place",
     "name": "プール",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2200,6 +2416,7 @@
     "behavior": "place",
     "name": "男子更衣室[プール]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2210,6 +2427,7 @@
     "behavior": "place",
     "name": "女子更衣室[プール]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2220,6 +2438,7 @@
     "behavior": "place",
     "name": "第二社会科教室",
     "words": "第2社会科教室 第二社教 第2社教",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2230,6 +2449,7 @@
     "behavior": "place",
     "name": "社会科準備室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2240,6 +2460,7 @@
     "behavior": "place",
     "name": "第一社会科教室",
     "words": "第1社会科教室 第一社教 第1社教",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2250,6 +2471,7 @@
     "behavior": "place",
     "name": "印刷室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2260,6 +2482,7 @@
     "behavior": "place",
     "name": "職員室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2270,6 +2493,7 @@
     "behavior": "place",
     "name": "放送室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2280,6 +2504,7 @@
     "behavior": "place",
     "name": "進路室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2290,6 +2515,7 @@
     "behavior": "place",
     "name": "第一生徒相談室",
     "words": "第1生徒相談室 第一生相 第1生相",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2300,6 +2526,7 @@
     "behavior": "place",
     "name": "第二生徒相談室",
     "words": "第2生徒相談室 第二生相 第2生相",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2310,6 +2537,7 @@
     "behavior": "place",
     "name": "第二特別教室",
     "words": "第2特別教室 第二特教 第2特教",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2320,6 +2548,7 @@
     "behavior": "place",
     "name": "美術資料室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2330,6 +2559,7 @@
     "behavior": "place",
     "name": "美術教室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2340,6 +2570,7 @@
     "behavior": "place",
     "name": "美術準備室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2350,6 +2581,7 @@
     "behavior": "place",
     "name": "工芸準備室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2360,6 +2592,7 @@
     "behavior": "place",
     "name": "工芸教室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2370,6 +2603,7 @@
     "behavior": "place",
     "name": "工芸倉庫",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2380,6 +2614,7 @@
     "behavior": "place",
     "name": "更衣室1",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2390,6 +2625,7 @@
     "behavior": "place",
     "name": "更衣室3",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2400,6 +2636,7 @@
     "behavior": "place",
     "name": "資料準備室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2410,6 +2647,7 @@
     "behavior": "place",
     "name": "会議室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2420,6 +2658,7 @@
     "behavior": "place",
     "name": "英語科準備室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2430,6 +2669,7 @@
     "behavior": "place",
     "name": "国語科準備室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2440,6 +2680,7 @@
     "behavior": "place",
     "name": "数学科準備室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2450,6 +2691,7 @@
     "behavior": "place",
     "name": "3A",
     "words": "普通教室 クラス 3年 A組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2460,6 +2702,7 @@
     "behavior": "place",
     "name": "3B",
     "words": "普通教室 クラス 3年 B組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2470,6 +2713,7 @@
     "behavior": "place",
     "name": "3C",
     "words": "普通教室 クラス 3年 C組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2480,6 +2724,7 @@
     "behavior": "place",
     "name": "3D",
     "words": "普通教室 クラス 3年 D組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2490,6 +2735,7 @@
     "behavior": "place",
     "name": "3E",
     "words": "普通教室 クラス 3年 E組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2500,6 +2746,7 @@
     "behavior": "place",
     "name": "3F",
     "words": "普通教室 クラス 3年 F組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2510,6 +2757,7 @@
     "behavior": "place",
     "name": "3G",
     "words": "普通教室 クラス 3年 G組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2520,6 +2768,7 @@
     "behavior": "place",
     "name": "3H",
     "words": "普通教室 クラス 3年 H組",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2530,6 +2779,7 @@
     "behavior": "place",
     "name": "階段[西高会館]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -2540,6 +2790,7 @@
     "behavior": "place",
     "name": "外階段[西高会館]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -2550,6 +2801,7 @@
     "behavior": "place",
     "name": "女子トイレ[西高会館]",
     "words": "",
+    "icon": "material-symbols:wc-rounded",
     "desc": "",
     "images": []
   },
@@ -2560,6 +2812,7 @@
     "behavior": "place",
     "name": "女子更衣室[西高会館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2570,6 +2823,7 @@
     "behavior": "place",
     "name": "女子シャワー[西高会館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2580,6 +2834,7 @@
     "behavior": "place",
     "name": "資料室[西高会館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2590,6 +2845,7 @@
     "behavior": "place",
     "name": "和室1[西高会館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2600,6 +2856,7 @@
     "behavior": "place",
     "name": "和室2[西高会館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2610,6 +2867,7 @@
     "behavior": "place",
     "name": "和室3[西高会館]",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2620,6 +2878,7 @@
     "behavior": "place",
     "name": "物理実験室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2630,6 +2889,7 @@
     "behavior": "place",
     "name": "物理準備室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2640,6 +2900,7 @@
     "behavior": "place",
     "name": "物理講義室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2650,6 +2911,7 @@
     "behavior": "place",
     "name": "化学講義室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2660,6 +2922,7 @@
     "behavior": "place",
     "name": "化学準備室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2670,6 +2933,7 @@
     "behavior": "place",
     "name": "化学実験準備室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2680,6 +2944,7 @@
     "behavior": "place",
     "name": "化学実験室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2690,6 +2955,7 @@
     "behavior": "place",
     "name": "練習室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2700,6 +2966,7 @@
     "behavior": "place",
     "name": "楽器庫",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2710,6 +2977,7 @@
     "behavior": "place",
     "name": "音楽教室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2720,6 +2988,7 @@
     "behavior": "place",
     "name": "音楽準備室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2730,6 +2999,7 @@
     "behavior": "place",
     "name": "第一特別教室",
     "words": "第1特別教室 第一特教 第1特教",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2740,6 +3010,7 @@
     "behavior": "place",
     "name": "生物準備室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2750,6 +3021,7 @@
     "behavior": "place",
     "name": "生物室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2760,6 +3032,7 @@
     "behavior": "place",
     "name": "図書館",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2770,6 +3043,7 @@
     "behavior": "place",
     "name": "書庫",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2780,6 +3054,7 @@
     "behavior": "place",
     "name": "PTA印刷室",
     "words": "第一講義準備室",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2790,6 +3065,7 @@
     "behavior": "place",
     "name": "ラピュタ",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2800,6 +3076,7 @@
     "behavior": "place",
     "name": "ピンスポット",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2810,6 +3087,7 @@
     "behavior": "place",
     "name": "階段[視聴覚ホール]",
     "words": "",
+    "icon": "material-symbols:stairs-outline-rounded",
     "desc": "",
     "images": []
   },
@@ -2820,6 +3098,7 @@
     "behavior": "place",
     "name": "プール監視室",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2830,6 +3109,7 @@
     "behavior": "shinkan80",
     "name": "剣道部",
     "words": "",
+    "icon": "",
     "desc": "･素振り体験⚔️⚔️/n剣道部のアイドルの國吉ジェイソンを叩けます🤩🤩/n･人生劇場(映像)🔥🔥/n昨年記念祭3位を受賞した人生劇場｢陽炎｣が見れます！/n先輩への質問大歓迎‼️是非来てください！",
     "images": [
       "/images/shinkan80/s80_kendou.webp"
@@ -2842,6 +3122,7 @@
     "behavior": "shinkan80",
     "name": "シブ楽隊",
     "words": "",
+    "icon": "",
     "desc": "「電気を使わない音楽」を特徴とする音楽同好会♪/nおしゃべりとかギター弾くとかしてます！",
     "images": [
       "/images/shinkan80/s80_sibugaku.webp"
@@ -2854,6 +3135,7 @@
     "behavior": "shinkan80",
     "name": "CR東日本",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2864,6 +3146,7 @@
     "behavior": "shinkan80",
     "name": "歴史研究部",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2874,6 +3157,7 @@
     "behavior": "shinkan80",
     "name": "男子硬式テニス部",
     "words": "",
+    "icon": "",
     "desc": "3年生7人、2年生9人で、週5日活動しています！初心者〜上級者まで本気でテニスしたい方！来ようぜBro！",
     "images": [
       "/images/shinkan80/s80_dannsikousikitenisu.webp"
@@ -2886,6 +3170,7 @@
     "behavior": "shinkan80",
     "name": "Nishi Flyer",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2896,6 +3181,7 @@
     "behavior": "shinkan80",
     "name": "水泳部",
     "words": "",
+    "icon": "",
     "desc": "夏は水泳、冬は陸トレ！経験者未経験者どちらも大歓迎(*⁰▿⁰*)【2D】で待ってます♪",
     "images": [
       "/images/shinkan80/s80_suiei.webp"
@@ -2908,6 +3194,7 @@
     "behavior": "shinkan80",
     "name": "卓球部",
     "words": "",
+    "icon": "",
     "desc": "強い人、沢山います。火・水・木・土の週4活動、男女問わず大歓迎！卓球は素晴らしいスポーツです。",
     "images": [
       "/images/shinkan80/s80_takkyuu.webp"
@@ -2920,6 +3207,7 @@
     "behavior": "shinkan80",
     "name": "備品貸し出し",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2930,6 +3218,7 @@
     "behavior": "shinkan80",
     "name": "女子硬式テニス部",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2940,6 +3229,7 @@
     "behavior": "shinkan80",
     "name": "茶道部",
     "words": "",
+    "icon": "",
     "desc": "ご入学おめでとうございます(⁠◍⁠•⁠ᴗ⁠•⁠◍⁠)/n茶道部は毎週金曜日に和室で楽しく活動しています。気軽に遊びに来てください！",
     "images": [
       "/images/shinkan80/s80_sadou.webp"
@@ -2952,6 +3242,7 @@
     "behavior": "shinkan80",
     "name": "男子ハンドボール部",
     "words": "",
+    "icon": "",
     "desc": "ハンドボール部や競技の魅力を映像を交えて紹介します！ハンドボールをやったことがある人もやったことがない人もぜひ見にきてください！",
     "images": [
       "/images/shinkan80/s80_dannsihandoboru.webp"
@@ -2964,6 +3255,7 @@
     "behavior": "shinkan80",
     "name": "演劇部",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -2974,6 +3266,7 @@
     "behavior": "shinkan80",
     "name": "男子バスケットボール部",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": [
       "/images/shinkan80/s80_dannsibasukettoboru.webp"
@@ -2986,6 +3279,7 @@
     "behavior": "shinkan80",
     "name": "文芸部",
     "words": "",
+    "icon": "",
     "desc": "文芸部です！普段は部室などで様小説や詩を書いており、時には外部に依頼し、本格的な部誌を出版しています。団体発表は2Hにて！",
     "images": [
       "/images/shinkan80/s80_bunngei.webp"
@@ -2998,6 +3292,7 @@
     "behavior": "shinkan80",
     "name": "ツョッカー。特撮研究会",
     "words": "",
+    "icon": "",
     "desc": "映像・アクションショー・部誌。特撮好きをはじめ、芝居やアクション、脚本や動画編集が好きな方もお待ちしています。",
     "images": [
       "/images/shinkan80/s80_tokusatu.webp"
@@ -3010,6 +3305,7 @@
     "behavior": "shinkan80",
     "name": "西論会",
     "words": "",
+    "icon": "",
     "desc": "主に文系よりのお話しと西高のお話しをしています",
     "images": [
       "/images/shinkan80/s80_seironn.webp"
@@ -3022,6 +3318,7 @@
     "behavior": "shinkan80",
     "name": "ソフトテニス部",
     "words": "",
+    "icon": "",
     "desc": "団体発表では、ソフテニ部特有の魅力を熱く語ります！質問も待ってます！/nソフテニの虜になっちゃえ〜〜！",
     "images": [
       "/images/shinkan80/s80_sohutotenisu.webp"
@@ -3034,6 +3331,7 @@
     "behavior": "shinkan80",
     "name": "ディベート部",
     "words": "",
+    "icon": "",
     "desc": "競技ディベートは皆さんの想像とは一味違うかも。ぜひ遊びに来てください",
     "images": [
       "/images/shinkan80/s80_deibeto.webp"
@@ -3046,6 +3344,7 @@
     "behavior": "shinkan80",
     "name": "ダンス部",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -3056,6 +3355,7 @@
     "behavior": "shinkan80",
     "name": "陸上競技部",
     "words": "",
+    "icon": "",
     "desc": "人はなぜ陸上をするのか。この世の真理は何か…選手として、真理の探究者として今日も陸上部は走る。",
     "images": [
       "/images/shinkan80/s80_rikujoukyougi.webp"
@@ -3068,6 +3368,7 @@
     "behavior": "shinkan80",
     "name": "女子バレーボール部",
     "words": "",
+    "icon": "",
     "desc": "女子バレーボール部です！週に4日ほど仲良く活動をしています。初心者でも経験者でもお待ちしています！",
     "images": [
       "/images/shinkan80/s80_josibareboru.webp"
@@ -3080,6 +3381,7 @@
     "behavior": "shinkan80",
     "name": "男子バレーボール部",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -3090,6 +3392,7 @@
     "behavior": "shinkan80",
     "name": "504",
     "words": "",
+    "icon": "",
     "desc": "プログラミングサークルです。少しでも興味をもった方は、ご気軽にどうぞ。",
     "images": [
       "/images/shinkan80/s80_504.webp"
@@ -3102,6 +3405,7 @@
     "behavior": "shinkan80",
     "name": "かるた部",
     "words": "",
+    "icon": "",
     "desc": "団体発表は3E後方！札を好きなだけ払ってストレス発散＆ゲーム体験♪普段は保健室の奥、和室で活動中！",
     "images": [
       "/images/shinkan80/s80_karuta.webp"
@@ -3114,6 +3418,7 @@
     "behavior": "shinkan80",
     "name": "アメリカンフットボール部",
     "words": "",
+    "icon": "",
     "desc": "アメフトは、いろんな人たちの「個性」が活きるスポーツです！あなたの個性をアメフトで輝かせてみませんか？",
     "images": [
       "/images/shinkan80/s80_amerikannhuttoboru.webp"
@@ -3126,6 +3431,7 @@
     "behavior": "shinkan80",
     "name": "女子バスケットボール部",
     "words": "",
+    "icon": "",
     "desc": "入るしかないっ！！/n女バスで西春しよー！/n誰でも大歓迎🏀/nマネもきてね！/n待ってます！",
     "images": [
       "/images/shinkan80/s80_josibasukettoboru.webp"
@@ -3138,6 +3444,7 @@
     "behavior": "shinkan80",
     "name": "数学研究同好会",
     "words": "",
+    "icon": "",
     "desc": "数学ゲームや生徒同士で行う授業、数学の問題を使ったイベントなど、数学に関わるさまざまな活動を行っている団体です。",
     "images": [
       "/images/shinkan80/s80_suukenn.webp"
@@ -3150,6 +3457,7 @@
     "behavior": "shinkan80",
     "name": "サッカー部",
     "words": "",
+    "icon": "",
     "desc": "サッカー部/nセンパイが優しすぎる部活/n部活の雰囲気や練習内容などを紹介します。一緒にサッカー楽しもう！！",
     "images": [
       "/images/shinkan80/s80_sakka.webp"
@@ -3162,6 +3470,7 @@
     "behavior": "shinkan80",
     "name": "バドミントン部",
     "words": "",
+    "icon": "",
     "desc": "団体発表では普段の活動の紹介、仮入部の説明、質問コーナーなどを行います。/nインスタグラムでは質問箱で質問受付中！オープンチャットでも仮入部の情報を流してます。",
     "images": [
       "/images/shinkan80/s80_badominton.webp"
@@ -3174,6 +3483,7 @@
     "behavior": "shinkan80",
     "name": "ポケモン研究サークル",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -3184,6 +3494,7 @@
     "behavior": "shinkan80",
     "name": "女子ハンドボール部",
     "words": "",
+    "icon": "",
     "desc": "月火水金土（日）の活動です！学年関係なく仲良く、そして高みを目指して練習に励んでいます！初心者でも大歓迎です！/n西春するなら女ハンでしょ！！",
     "images": []
   },
@@ -3194,6 +3505,7 @@
     "behavior": "shinkan80",
     "name": "体操部",
     "words": "",
+    "icon": "",
     "desc": "週に４回各自のペースで楽しく目標に向かってアットホームで暖かい雰囲気の中活動しています！",
     "images": [
       "/images/shinkan80/s80_taisou.webp"
@@ -3206,6 +3518,7 @@
     "behavior": "shinkan80",
     "name": "吹奏楽部",
     "words": "",
+    "icon": "",
     "desc": "14:20、14:35、14:50、15:05からの4回、1曲演奏します♩途中参加ok！質問も常時受付中！待ってます〜",
     "images": [
       "/images/shinkan80/s80_suisougaku.webp"
@@ -3218,6 +3531,7 @@
     "behavior": "shinkan80",
     "name": "ケルト音楽研究サークル",
     "words": "",
+    "icon": "",
     "desc": "紹介動画、昨年のクリスマスコンサートの録音を流します！運が良ければ79期の人たちの演奏が聴けちゃうかも！？",
     "images": [
       "/images/shinkan80/s80_kerutoongaku.webp"
@@ -3230,6 +3544,7 @@
     "behavior": "shinkan80",
     "name": "つるばみ同好会",
     "words": "",
+    "icon": "",
     "desc": "いっしょにつるんでばんどみゅーじっく！",
     "images": [
       "/images/shinkan80/s80_turubami.webp"
@@ -3242,6 +3557,7 @@
     "behavior": "shinkan80",
     "name": "軽音楽同好会",
     "words": "",
+    "icon": "",
     "desc": "軽音楽同好会/nWelcome Live開催中❗️/n14:25〜、14:35〜、/n14:45〜、14:55〜、全4回/nWelcome！",
     "images": [
       "/images/shinkan80/s80_keionn.webp"
@@ -3254,6 +3570,7 @@
     "behavior": "shinkan80",
     "name": "管弦学部",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -3264,6 +3581,7 @@
     "behavior": "shinkan80",
     "name": "生物部",
     "words": "",
+    "icon": "",
     "desc": "気軽にお越しください",
     "images": [
       "/images/shinkan80/s80_seibutu.webp"
@@ -3276,6 +3594,7 @@
     "behavior": "shinkan80",
     "name": "物理部",
     "words": "",
+    "icon": "",
     "desc": "実験や研究、生徒同士で行う授業など物理に関わるさまざまなことを楽しくワイワイしながらやる団体です。",
     "images": [
       "/images/shinkan80/s80_buturi.webp"
@@ -3288,6 +3607,7 @@
     "behavior": "shinkan80",
     "name": "クイズ研究サークル",
     "words": "",
+    "icon": "",
     "desc": "クイズをします。奥が深いです。部員約50人。不定期で部内杯や他校と交流会を行います。冷暖房完備。",
     "images": []
   },
@@ -3298,6 +3618,7 @@
     "behavior": "shinkan80",
     "name": "化学部",
     "words": "",
+    "icon": "",
     "desc": "4/10 14:10-15:20に色んな実験の演示を行います！/n化学に興味がある人も無い人もぜび覗いてみてください！",
     "images": [
       "/images/shinkan80/s80_kagaku.webp"
@@ -3310,6 +3631,7 @@
     "behavior": "shinkan80",
     "name": "野球部",
     "words": "",
+    "icon": "",
     "desc": "野球部は会議室にて1年の流れや普段の活動について説明します。体験活動も用意しているので奮ってご参加ください！",
     "images": [
       "/images/shinkan80/s80_yakyuu.webp"
@@ -3322,6 +3644,7 @@
     "behavior": "shinkan80",
     "name": "放送部",
     "words": "",
+    "icon": "",
     "desc": "",
     "images": []
   },
@@ -3332,6 +3655,7 @@
     "behavior": "shinkan80",
     "name": "イラスト研究部",
     "words": "",
+    "icon": "",
     "desc": "･フリースペースにて先輩と雑談しながらイラストが描けます！/n･新歓号その他過去の部誌の展示･配布を行ってます！",
     "images": [
       "/images/shinkan80/s80_irasuto.webp"
@@ -3344,6 +3668,7 @@
     "behavior": "shinkan80",
     "name": "ESS",
     "words": "",
+    "icon": "",
     "desc": "ESSでは月に1回、英語を使って話したり、ミニゲームをしたり、楽しく活動しています！英語たくさん話したいっていう人も、英語苦手だなっていう人も誰でも大歓迎です🙌🏻兼部率もほぼ100パー！気軽に来れるサークルです♪",
     "images": []
   },
@@ -3354,6 +3679,7 @@
     "behavior": "shinkan80",
     "name": "新聞部",
     "words": "",
+    "icon": "",
     "desc": "渡り廊下で簡単な説明と学校新聞「學苑」の発行をしています！君もぶんぶに入って好きなように書こう！",
     "images": [
       "/images/shinkan80/s80_sinnbunn.webp"
@@ -3366,6 +3692,7 @@
     "behavior": "shinkan80",
     "name": "園芸部",
     "words": "",
+    "icon": "",
     "desc": "お花や野菜を育ててます。兼部も可能です。ぜひ来てください。",
     "images": [
       "/images/shinkan80/s80_enngei.webp"
@@ -3378,6 +3705,7 @@
     "behavior": "shinkan80",
     "name": "ボカロサークル",
     "words": "",
+    "icon": "",
     "desc": "クイズイベントを開催したり、おでかけしたり、雑談したりなどボカロに関わるさまざまなことをゆるーくやる団体です。",
     "images": [
       "/images/shinkan80/s80_bokaro.webp"
