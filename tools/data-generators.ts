@@ -86,14 +86,13 @@ export function createPlacesDataCsv(svgContent: string, placeBehaviorIds: Set<st
       behavior,
       name: "",
       words: "",
-      icon: "",
       desc: "",
       images: ["", "", ""],
     });
   });
 
   // CSVヘッダー
-  let csv = '"id","mode","floor","behavior","name","words","icon","desc","images1","images2","images3"\n';
+  let csv = '"id","mode","floor","behavior","name","words","desc","images1","images2","images3"\n';
 
   // データ行
   for (const place of places) {
@@ -104,7 +103,6 @@ export function createPlacesDataCsv(svgContent: string, placeBehaviorIds: Set<st
       place.behavior,
       place.name,
       place.words,
-      place.icon,
       place.desc,
       ...place.images,
     ].map(escapeCsvField);
@@ -134,9 +132,8 @@ export function convertCsvToPlaces(csvContent: string): Place[] {
         behavior: columns[3] || "",
         name: columns[4] || "",
         words: columns[5] || "",
-        icon: columns[6] || "",
-        desc: columns[7] || "",
-        images: columns.slice(8).filter((img) => img !== ""),
+        desc: columns[6] || "",
+        images: columns.slice(7).filter((img) => img !== ""),
       };
     });
 }

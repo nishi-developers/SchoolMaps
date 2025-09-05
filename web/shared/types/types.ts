@@ -58,7 +58,6 @@ export interface Place {
   behavior: string;
   name: string;
   words: string;
-  icon: string;
   desc: string;
   images: string[];
 }
