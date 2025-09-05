@@ -37,7 +37,7 @@
     </div>
     <!-- keyを指定することで、場所が変わったときにコンポーネントを再レンダリングする -->
     <MapProperty :key="mapState.status.value.places.toString()" :places="mapState.status.value.places"
-      @reset-places="mapState.setPlaces(null)" @apply-url="mapState.url2status();" />
+      :viewsize="viewSize" @reset-places="mapState.setPlaces(null)" @apply-url="mapState.url2status();" />
   </div>
 </template>
 <script setup lang="ts">
