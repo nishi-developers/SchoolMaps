@@ -10,7 +10,7 @@
         <label for="searchInput" class="searchFunc" @click="query = ''">
           <Icon name="close" />
         </label>
-        <label class="searchFunc" @click="shareLink(`西高マップ-検索「${query}」`, requestURL.href)">
+        <label class="searchFunc" @click="shareLink(`西高マップ-検索「${query}」`, useRequestURL().href)">
           <Icon name="share" />
         </label>
         <NuxtLink :to="{ name: 'jump-map-search', query: { q: query, and: isAndSearch.toString() }, replace: false }">
@@ -42,7 +42,6 @@
 </template>
 <script setup lang="ts">
 const route = useRoute()
-const requestURL = useRequestURL()
 useHead({ title: '検索' })
 const { $modesChangeable, $floors, $floorsChangeable, $placesEnable } = useNuxtApp();
 
