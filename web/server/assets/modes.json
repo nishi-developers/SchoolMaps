@@ -3,14 +3,12 @@
     "id": "main",
     "enable": true,
     "name": "",
-    "always": true,
-    "image": ""
+    "always": true
   },
   {
     "id": "shinkan80",
     "enable": true,
     "name": "新歓80th",
-    "always": false,
-    "image": ""
+    "always": false
   }
 ]

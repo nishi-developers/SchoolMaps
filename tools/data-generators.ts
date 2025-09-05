@@ -15,7 +15,6 @@ export function createModesData(svgContent: string): Mode[] {
     enable: true,
     name: "",
     always: false,
-    image: "",
   }));
 }
 
