@@ -25,7 +25,7 @@ SchoolMaps Toolsは、Affinity DesignerやInkscapeで作成されたSVGマップ
   - place属性を持つ要素の抽出
   - CSVフォーマットでのデータ出力
   - behavior設定に基づくフィルタリング
-  - behaviors設定ファイルの生成
+  - places設定ファイルの生成
 
 ### 3. DataRegister (`3DataRegister.ts`)
 
@@ -68,3 +68,4 @@ npm run type-check # 型チェックのみ実行
 - **@svgdotjs/svg.js**: SVG操作ライブラリ
 - **svgdom**: サーバーサイドSVG操作のためのDOM実装
 - **Node.js**: ランタイム環境
+
