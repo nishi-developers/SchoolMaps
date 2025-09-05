@@ -237,35 +237,36 @@ export const useMapView = (mapStatus: Ref<MapStatus>, moveStatus: Ref<MapMoveSta
       // エレメント
       const elements = mapElement?.querySelectorAll(`[behavior="${behavior.id}"]:not([label])`);
       elements?.forEach((element: Element) => {
-        if (!behavior.style) {
-          return;
+        if (behavior.isPlace) {
+          (element as HTMLElement).style.cursor = "pointer";
         }
-        const bodyStyle = behavior.style.body;
-        (element as HTMLElement).style.strokeWidth = `${bodyStyle.strokeWidth}px`;
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          // ダークモード
-          (element as HTMLElement).style.fill = bodyStyle.fillDefault.dark;
-          (element as HTMLElement).style.stroke = bodyStyle.stroke.dark;
-        } else {
-          // ライトモード
-          (element as HTMLElement).style.fill = bodyStyle.fillDefault.light;
-          (element as HTMLElement).style.stroke = bodyStyle.stroke.light;
+        if (behavior.style) {
+          const bodyStyle = behavior.style.body;
+          (element as HTMLElement).style.strokeWidth = `${bodyStyle.strokeWidth}px`;
+          if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            // ダークモード
+            (element as HTMLElement).style.fill = bodyStyle.fillDefault.dark;
+            (element as HTMLElement).style.stroke = bodyStyle.stroke.dark;
+          } else {
+            // ライトモード
+            (element as HTMLElement).style.fill = bodyStyle.fillDefault.light;
+            (element as HTMLElement).style.stroke = bodyStyle.stroke.light;
+          }
         }
       });
       // ラベル
       const labelElements = mapElement?.querySelectorAll(`[behavior="${behavior.id}"][label]`);
       labelElements?.forEach((element: Element) => {
-        if (!behavior.style?.label) {
-          return;
-        }
-        const labelStyle = behavior.style.label;
-        (element as HTMLElement).style.fontSize = labelStyle.fontSize;
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          // ダークモード
-          (element as HTMLElement).style.fill = labelStyle.fill.dark;
-        } else {
-          // ライトモード
-          (element as HTMLElement).style.fill = labelStyle.fill.light;
+        if (behavior.style?.label) {
+          const labelStyle = behavior.style.label;
+          (element as HTMLElement).style.fontSize = labelStyle.fontSize;
+          if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            // ダークモード
+            (element as HTMLElement).style.fill = labelStyle.fill.dark;
+          } else {
+            // ライトモード
+            (element as HTMLElement).style.fill = labelStyle.fill.light;
+          }
         }
       });
     }
