@@ -18,9 +18,7 @@ export const usePropertyDesc = (place: Ref<Place>, requestURL: URL, emitApplyUrl
     description.value = description.value.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
     description.value = description.value.replace(/\[(.+?)\]\((.+?)\)/g, (match, name, url) => {
       jumpUrls.value.push(url);
-      return `<a id="jumpUrl-${
-        jumpUrls.value.length - 1
-      }" style="text-decoration: underline;" href="${url}">${name}</a>`;
+      return `<a id="jumpUrl-${jumpUrls.value.length - 1}" href="${url}">${name}</a>`;
     });
   };
 

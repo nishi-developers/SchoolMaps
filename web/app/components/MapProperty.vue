@@ -217,6 +217,7 @@ onUnmounted(() => {
           display: flex;
           align-items: center;
           color: var(--MainBodyColor);
+          text-decoration: none;
         }
       }
 
@@ -243,6 +244,15 @@ onUnmounted(() => {
         overflow-wrap: break-word;
       }
     }
+  }
+}
+</style>
+<style lang="scss">
+// 動的に変わるDescriptionのスタイル
+#desc {
+  a {
+    text-decoration: underline;
+    color: var(--URLBodyColor);
   }
 }
 </style>
