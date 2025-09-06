@@ -1,9 +1,21 @@
+type Config = {
+  propertySizeRate: {
+    middle: number;
+    max: number;
+  };
+};
+const defaultConfig: Config = {
+  propertySizeRate: {
+    middle: 0.3,
+    max: 0.9,
+  },
+};
+
 export const usePropertySlider = (
   deviceMode: Ref<"mobile" | "pc">,
   props: { viewsize: ViewSize },
   closeProperty = () => {},
-  propertySizeMiddleRate: number = 0.3,
-  propertySizeMaxRate: number = 0.9
+  config: Config = defaultConfig
 ) => {
   const propertySize = ref(0);
 
@@ -12,9 +24,9 @@ export const usePropertySlider = (
     deviceMode,
     (mode) => {
       if (mode === "mobile") {
-        propertySize.value = props.viewsize.height * propertySizeMiddleRate;
+        propertySize.value = props.viewsize.height * config.propertySizeRate.middle;
       } else {
-        propertySize.value = props.viewsize.width * propertySizeMiddleRate;
+        propertySize.value = props.viewsize.width * config.propertySizeRate.middle;
       }
     },
     { immediate: true }
@@ -107,26 +119,27 @@ export const usePropertySlider = (
   const leave = () => {
     // マウス・タッチが離れたときの処理
     if (deviceMode.value == "mobile") {
-      if (propertySize.value < (props.viewsize.height * propertySizeMiddleRate) / 2) {
+      if (propertySize.value < (props.viewsize.height * config.propertySizeRate.middle) / 2) {
         closeProperty();
       } else if (
         propertySize.value >
-        (props.viewsize.height * propertySizeMiddleRate + props.viewsize.height * propertySizeMaxRate) / 2
+        (props.viewsize.height * config.propertySizeRate.middle + props.viewsize.height * config.propertySizeRate.max) /
+          2
       ) {
-        propertySize.value = props.viewsize.height * propertySizeMaxRate;
+        propertySize.value = props.viewsize.height * config.propertySizeRate.max;
       } else {
-        propertySize.value = props.viewsize.height * propertySizeMiddleRate;
+        propertySize.value = props.viewsize.height * config.propertySizeRate.middle;
       }
     } else {
-      if (propertySize.value < (props.viewsize.width * propertySizeMiddleRate) / 2) {
+      if (propertySize.value < (props.viewsize.width * config.propertySizeRate.middle) / 2) {
         closeProperty();
       } else if (
         propertySize.value >
-        (props.viewsize.width * propertySizeMiddleRate + props.viewsize.width * propertySizeMaxRate) / 2
+        (props.viewsize.width * config.propertySizeRate.middle + props.viewsize.width * config.propertySizeRate.max) / 2
       ) {
-        propertySize.value = props.viewsize.width * propertySizeMaxRate;
+        propertySize.value = props.viewsize.width * config.propertySizeRate.max;
       } else {
-        propertySize.value = props.viewsize.width * propertySizeMiddleRate;
+        propertySize.value = props.viewsize.width * config.propertySizeRate.middle;
       }
     }
   };
