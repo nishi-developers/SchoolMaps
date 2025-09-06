@@ -239,11 +239,14 @@ watch([query, isAndSearch], () => {
       white-space: nowrap;
       border-radius: 5px;
 
-
       @media (hover: hover) {
         &:hover {
           background-color: var(--SubBaseColor);
         }
+      }
+
+      &:active {
+        background-color: var(--SubBaseColor);
       }
 
       .name {
