@@ -1,7 +1,7 @@
 <template>
   <div id="property-wrapper">
     <div v-if="place" id="property" :class="deviceMode">
-      <div id="slider" v-on="eventListener" />
+      <div id="slider" v-on="propertySlide.eventListener" />
       <div id="property-inner">
         <div id="titles">
           <div id="name">{{ place?.name }}</div>
@@ -56,6 +56,7 @@ const place = computed(() => {
   return $placesEnable.value.filter(place => place.id == props.places[0])[0];
 });
 
+// 説明文の処理
 const desc = usePropertyDesc(
   place as Ref<Place>,
   useRequestURL(),
@@ -75,154 +76,26 @@ const initViewer = () => {
   );
 };
 
+// property sliderの処理
+const propertySlide = usePropertySlider(
+  deviceMode as Ref<'mobile' | 'pc'>,
+  props,
+  () => emit('reset-places')
+);
+// このコンポーネント内でcomputedしないと、cssのv-bindで認識されない
+const propertySize = computed(() => propertySlide.propertySize.value);
+
+// ライフサイクルフックなど
 desc.initDesc();
 onMounted(() => {
   if (!place.value) return;
   initViewer();
   desc.registerJumpLinkEvents();
+  propertySlide.addEventListeners();
 });
-
-const propertySize = ref(0);
-const propertySizeMiddleRate = 0.3; // 中間サイズの割合
-const propertySizeMaxRate = 0.9; // 最大サイズの割合
-// 初回時またはモード変更時にサイズをリセット
-watch(deviceMode, (mode) => {
-  if (mode === 'mobile') {
-    propertySize.value = props.viewsize.height * propertySizeMiddleRate;
-  } else {
-    propertySize.value = props.viewsize.width * propertySizeMiddleRate;
-  }
-}, { immediate: true });
-
-let isAlreadyMoved = false; // マウス使用時のみ、移動したかどうか
-let isDragging = false; // ドラッグ中かどうか
-const eventListener = {
-  click: () => {
-    if (!isAlreadyMoved) {
-      emit('reset-places');
-    }
-  },
-  // mousemove: (event: MouseEvent) => {
-  //   if (!isDragging) return;
-  //   if (event.buttons == 1) {
-  //     isAlreadyMoved = true
-  //     mouseMove(event);
-  //   }
-  // },
-  mousedown: () => {
-    isAlreadyMoved = false
-    isDragging = true
-  },
-  // mouseup: () => {
-  //   if (!isDragging) return;
-  //   isDragging = false
-  //   leave()
-  // },
-  touchmove: (event: TouchEvent) => {
-    if (event.changedTouches.length === 1) {
-      touchMove(event);
-    }
-  },
-  touchstart: (event: TouchEvent) => {
-    if (event.changedTouches.length === 1) {
-      touchStart(event);
-    }
-  },
-  touchend: () => {
-    leave()
-  },
-  touchcancel: () => {
-    leave()
-  },
-};
-// const overEventListener = {
-//   mousemove: (event: MouseEvent) => {
-//     if (!isDragging) return;
-//     if (event.buttons == 1) {
-//       isAlreadyMoved = true
-//       mouseMove(event);
-//     }
-//   },
-//   mouseup: () => {
-//     if (!isDragging) return;
-//     isDragging = false
-//     leave()
-//   },
-// };
-
-// isAlreadyMovedとisDraggingが正しく動いているか要確認
-// eventListenerの削除処理も必要
-document.addEventListener('mousemove', (event: MouseEvent) => {
-  if (!isDragging) return;
-  if (event.buttons == 1) {
-    isAlreadyMoved = true
-    mouseMove(event);
-  }
+onUnmounted(() => {
+  propertySlide.removeEventListeners();
 });
-document.addEventListener('mouseup', () => {
-  if (!isDragging) return;
-  isDragging = false
-  leave()
-});
-
-function mouseMove(event: MouseEvent) {
-  // マウスでドラッグ中の処理
-  if (deviceMode.value == "mobile") {
-    if (propertySize.value - event.movementY > 0 && propertySize.value - event.movementY < props.viewsize.height)
-      propertySize.value -= event.movementY;
-  } else {
-    if (propertySize.value + event.movementX > 0 && propertySize.value + event.movementX < props.viewsize.width)
-      propertySize.value += event.movementX;
-  }
-}
-
-function leave() {
-  // マウス・タッチが離れたときの処理
-  if (deviceMode.value == "mobile") {
-    if (propertySize.value < props.viewsize.height * propertySizeMiddleRate / 2) {
-      // 閉じる
-      emit('reset-places');
-    } else if (propertySize.value > (((props.viewsize.height * propertySizeMiddleRate) + (props.viewsize.height * propertySizeMaxRate)) / 2)) {
-      // 最大化
-      propertySize.value = props.viewsize.height * propertySizeMaxRate
-    } else {
-      propertySize.value = props.viewsize.height * propertySizeMiddleRate
-    }
-  } else {
-    if (propertySize.value < props.viewsize.width * propertySizeMiddleRate / 2) {
-      // 閉じる
-      emit('reset-places')
-    } else if (propertySize.value > (((props.viewsize.width * propertySizeMiddleRate) + (props.viewsize.width * propertySizeMaxRate)) / 2)) {
-      // 最大化
-      propertySize.value = props.viewsize.width * propertySizeMaxRate
-    } else {
-      propertySize.value = props.viewsize.width * propertySizeMiddleRate
-    }
-  }
-}
-let touchLast = 0;
-function touchStart(event: TouchEvent) {
-  // タッチでドラッグ開始時の処理
-  if (deviceMode.value == "mobile") {
-    touchLast = event.changedTouches[0]?.clientY || 0;
-  } else {
-    touchLast = event.changedTouches[0]?.clientX || 0;
-  }
-}
-function touchMove(event: TouchEvent) {
-  // タッチでドラッグ中の処理
-  if (deviceMode.value == "mobile") {
-    const Y = touchLast - (event.changedTouches[0]?.clientY || 0)
-    touchLast = event.changedTouches[0]?.clientY || 0
-    if (propertySize.value + Y > 0 && propertySize.value + Y < props.viewsize.height)
-      propertySize.value += Y;
-  } else {
-    const X = touchLast - (event.changedTouches[0]?.clientX || 0)
-    touchLast = event.changedTouches[0]?.clientX || 0
-    if (propertySize.value - X > 0 && propertySize.value - X < props.viewsize.width)
-      propertySize.value -= X;
-  }
-}
 </script>
 <style scoped lang="scss">
 #property-wrapper {
