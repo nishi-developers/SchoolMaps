@@ -51,7 +51,6 @@ export const usePropertySlider = (
     },
   };
 
-  // isAlreadyMovedとisDraggingが正しく動いているか要確認
   const mousemoveEvent = (event: MouseEvent) => {
     if (!isDragging) return;
     if (event.buttons == 1) {
@@ -109,26 +108,22 @@ export const usePropertySlider = (
     // マウス・タッチが離れたときの処理
     if (deviceMode.value == "mobile") {
       if (propertySize.value < (props.viewsize.height * propertySizeMiddleRate) / 2) {
-        // 閉じる
         closeProperty();
       } else if (
         propertySize.value >
         (props.viewsize.height * propertySizeMiddleRate + props.viewsize.height * propertySizeMaxRate) / 2
       ) {
-        // 最大化
         propertySize.value = props.viewsize.height * propertySizeMaxRate;
       } else {
         propertySize.value = props.viewsize.height * propertySizeMiddleRate;
       }
     } else {
       if (propertySize.value < (props.viewsize.width * propertySizeMiddleRate) / 2) {
-        // 閉じる
         closeProperty();
       } else if (
         propertySize.value >
         (props.viewsize.width * propertySizeMiddleRate + props.viewsize.width * propertySizeMaxRate) / 2
       ) {
-        // 最大化
         propertySize.value = props.viewsize.width * propertySizeMaxRate;
       } else {
         propertySize.value = props.viewsize.width * propertySizeMiddleRate;
