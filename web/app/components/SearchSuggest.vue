@@ -34,13 +34,3 @@ function click() {
   emit('update-query', newQuery)
 }
 </script>
-<style scoped lang="scss">
-.suggest {
-  cursor: pointer;
-}
-
-.suggest.active {
-  font-weight: bold;
-  text-decoration: underline;
-}
-</style>
