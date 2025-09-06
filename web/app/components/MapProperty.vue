@@ -118,6 +118,7 @@ onUnmounted(() => {
       border-radius: 20px 20px 0 0;
       bottom: 0;
       flex-direction: column;
+      box-shadow: 1px -1px 5px rgba(0, 0, 0, 0.2);
 
       #slider {
         width: 200px;

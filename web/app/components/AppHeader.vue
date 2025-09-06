@@ -2,15 +2,15 @@
   <div id="header">
     <div id="title">
       <nuxt-link v-if="route.name !== 'index'" to="/">
-        <span id="mainTitle">西高マップ</span>
+        <span class="mainTitle">西高マップ</span>
       </nuxt-link>
       <a v-else href="/" @click.prevent>
-        <span id="mainTitle">西高マップ</span>
+        <span class="mainTitle">西高マップ</span>
       </a>
     </div>
     <div id="menu">
       <nuxt-link to="/guide">使い方</nuxt-link>
-      <nuxt-link to="/about">このサイトについて</nuxt-link>
+      <nuxt-link to="/about">サイトについて</nuxt-link>
     </div>
   </div>
 </template>
@@ -23,39 +23,35 @@ const route = useRoute();
   width: 100%;
   height: v-bind("$config.public.headerHeightPx + 'px'");
   position: fixed;
+  top: 0;
+  left: 0;
   font-weight: bold;
+  box-shadow: 0 2px 3px var(--ShadowColor);
+  z-index: 10; // 影を出すために高く設定
 
   #title {
-    margin-right: 20px;
+    margin-left: 15px;
     position: absolute;
     top: 50%;
     left: 0%;
     transform: translate(0%, -50%);
-    margin: 0 10px;
 
-    #mainTitle {
+    .mainTitle {
       font-size: 1.5rem;
       color: var(--MainBodyColor);
-      vertical-align: middle;
-    }
-
-    #version {
-      font-size: 1.2rem;
-      color: var(--AccentBodyColor);
-      vertical-align: middle;
     }
   }
 
   #menu {
-    font-size: 1rem;
+    margin-right: 15px;
     position: absolute;
     top: 50%;
     right: 0%;
     transform: translate(0%, -50%);
-    color: var(--MainBodyColor);
 
     a {
-      margin: 0 10px;
+      margin-left: 15px;
+      font-size: 1rem;
       color: var(--MainBodyColor);
     }
   }
