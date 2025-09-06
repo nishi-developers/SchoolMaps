@@ -5,7 +5,7 @@
   <!-- NuxtPageは各Vueファイルの一番外側のdivタグに置き換えられる -->
   <NuxtPage id="nuxt-page" :style="{
     top: `${$config.public.headerHeightPx}px`,
-    height: `calc(100vh - ${$config.public.headerHeightPx}px)`
+    height: `calc(100svh - ${$config.public.headerHeightPx}px)`
   }" />
   <!-- css内でv-bindを使えなかったため、上のように実装 -->
   <BottomNotify />
