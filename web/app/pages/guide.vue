@@ -53,7 +53,8 @@ useHead({ title: '使い方' })
 const installPwa = useState<() => void>("installPwa")
 </script>
 <style scoped lang="scss">
-.link {
+.link,
+.link a {
   cursor: pointer;
   color: var(--URLBodyColor);
   text-decoration: underline;

@@ -36,9 +36,13 @@ const route = useRoute();
     left: 0%;
     transform: translate(0%, -50%);
 
-    .mainTitle {
-      font-size: 1.5rem;
-      color: var(--MainBodyColor);
+    a {
+      text-decoration: none;
+
+      .mainTitle {
+        font-size: 1.5rem;
+        color: var(--MainBodyColor);
+      }
     }
   }
 
@@ -53,6 +57,7 @@ const route = useRoute();
       margin-left: 15px;
       font-size: 1rem;
       color: var(--MainBodyColor);
+      text-decoration: none;
     }
   }
 }

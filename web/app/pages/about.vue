@@ -79,28 +79,25 @@ async function handleClick() {
 }
 </script>
 <style scoped lang="scss">
-#version {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  font-size: 1rem;
-  color: var(--AccentBodyColor);
-  background-color: var(--SubBaseColor);
-  padding: 5px;
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-columns: auto auto;
-  gap: 5px;
-  cursor: default;
-}
-
 #version-spacer {
   bottom: 0;
   opacity: 0;
   height: 60px;
 }
 
-a {
-  text-decoration: underline;
+#version {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  font-size: 0.8rem;
+  color: var(--AccentBodyColor);
+  background-color: var(--SubBaseColor);
+  padding: 3px;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-columns: auto auto;
+  gap: 3px;
+  cursor: default;
+  box-shadow: 0 0 5px var(--ShadowColor);
 }
 </style>
