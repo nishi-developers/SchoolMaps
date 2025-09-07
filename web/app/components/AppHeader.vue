@@ -26,7 +26,7 @@ const route = useRoute();
   top: 0;
   left: 0;
   font-weight: bold;
-  box-shadow: 0 2px 3px var(--ShadowColor);
+  box-shadow: 0 0 3px 2px var(--ShadowColor);
   z-index: 10; // 影を出すために高く設定
 
   #title {
