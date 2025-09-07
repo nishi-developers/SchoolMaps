@@ -11,10 +11,8 @@ export async function provideAssets(fileName: string): Promise<{ data: string; c
     if (!buffer) {
       throw new Error(`Failed to load SVG asset: ${fileName}`);
     }
-    console.log(buffer);
     const decoder = new TextDecoder("utf-8");
     data = decoder.decode(buffer);
-    console.log(data);
     contentType = "image/svg+xml";
   } else if (ext === "json") {
     // JSONの場合はJSONとして読み込み
