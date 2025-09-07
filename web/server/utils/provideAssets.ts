@@ -1,10 +1,13 @@
-import { readFileSync } from "fs";
-import { resolve } from "path";
-
-export function provideAssets(fileName: string) {
+export async function provideAssets(fileName: string): Promise<{ data: string; contentType: string }> {
   // jsonファイルを読み込む
-  const filePath = resolve(process.cwd(), `server/assets/${fileName}`);
-  const data = readFileSync(filePath, "utf-8");
+  let data = await useStorage("assets:server").getItem(fileName);
+  if (typeof data == "object") {
+    // オブジェクトの場合はJSON文字列に変換
+    data = JSON.stringify(data);
+  }
+  if (typeof data !== "string") {
+    throw new Error(`Failed to load asset: ${fileName}`);
+  }
 
   // 拡張子よりContent-Typeを設定
   let contentType = "application/octet-stream"; // デフォルトのContent-Type
