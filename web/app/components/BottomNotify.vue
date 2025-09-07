@@ -1,8 +1,8 @@
 <template>
   <Transition name="bottomnotify" appear>
     <div v-if="isShowNotify" id="bottomNotify">
-      <div class="desc">
-        アプリをインストールして、オフラインでもマップを使いませんか?
+      <div id="desc">
+        <span>アプリを</span><span>インストールして、</span><span>オフラインでも</span><span>マップを</span><span>使いませんか?</span>
       </div>
       <div id="installBtn" @click="install()">インストール</div>
       <Icon id="hideBtn" name="close" @click="hide()" />
@@ -59,7 +59,7 @@ useState("installPwa", () => install)
   width: calc(100% - 40px);
   max-width: 800px;
   min-height: 75px;
-  border-radius: 15px;
+  border-radius: 10px;
   z-index: 100;
   background-color: var(--SubColor);
   display: flex;
@@ -68,39 +68,53 @@ useState("installPwa", () => install)
   padding: 10px;
   gap: 5px;
   color: var(--SubBodyColor);
-}
+  box-shadow: 0 0 3px 2px var(--ShadowColor);
 
-#bottomNotify:not(.bottomnotify-enter-active):not(.bottomnotify-leave-active) {
-  opacity: 0.75;
-}
+  &:not(.bottomnotify-enter-active):not(.bottomnotify-leave-active) {
+    opacity: 1;
+  }
 
-.desc {
-  font-size: 1rem;
-}
 
-#installBtn {
-  font-size: 1.1rem;
-  cursor: pointer;
-  white-space: nowrap;
-  background-color: var(--MainBaseColor);
-  border-radius: 15px;
-  width: 110px;
-  min-width: 110px;
-  padding: 3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
+  #desc {
+    font-size: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-#hideBtn {
-  font-size: 1.5rem;
-  cursor: pointer;
-  position: absolute;
-  right: 10px;
-  top: 5px;
-}
+  #installBtn {
+    font-size: 1.1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    background-color: var(--MainBaseColor);
+    border-radius: 10px;
+    width: 110px;
+    min-width: 110px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
 
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--MainColor);
+      }
+    }
+
+    &:active {
+      background-color: var(--MainColor);
+    }
+  }
+
+  #hideBtn {
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    margin-bottom: auto;
+  }
+}
 
 /* transition */
 .bottomnotify-enter-active,

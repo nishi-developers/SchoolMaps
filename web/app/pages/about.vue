@@ -98,6 +98,6 @@ async function handleClick() {
   grid-template-columns: auto auto;
   gap: 3px;
   cursor: default;
-  box-shadow: 0 0 5px var(--ShadowColor);
+  box-shadow: 0 0 3px 2px var(--ShadowColor);
 }
 </style>
