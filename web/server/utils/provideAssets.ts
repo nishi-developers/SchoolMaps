@@ -1,21 +1,31 @@
 export async function provideAssets(fileName: string): Promise<{ data: string; contentType: string }> {
-  // jsonファイルを読み込む
-  let data = await useStorage("assets:server").getItem(fileName);
-  if (typeof data == "object") {
-    // オブジェクトの場合はJSON文字列に変換
-    data = JSON.stringify(data);
-  }
-  if (typeof data !== "string") {
-    throw new Error(`Failed to load asset: ${fileName}`);
-  }
+  let data: string;
 
   // 拡張子よりContent-Typeを設定
   let contentType = "application/octet-stream"; // デフォルトのContent-Type
   const ext = fileName.split(".").pop();
-  if (ext == "json") {
-    contentType = "application/json";
-  } else if (ext == "svg") {
+
+  if (ext === "svg") {
+    // SVGの場合はテキストとして明示的に読み込み
+    const buffer = await useStorage("assets:server").getItemRaw(fileName);
+    if (!buffer) {
+      throw new Error(`Failed to load SVG asset: ${fileName}`);
+    }
+    data = buffer.toString("utf-8");
     contentType = "image/svg+xml";
+  } else if (ext === "json") {
+    // JSONの場合はJSONとして読み込み
+    const storageData = await useStorage("assets:server").getItem(fileName);
+    if (typeof storageData === "object") {
+      data = JSON.stringify(storageData);
+    } else if (typeof storageData === "string") {
+      data = storageData;
+    } else {
+      throw new Error(`Failed to load asset: ${fileName}`);
+    }
+    contentType = "application/json";
+  } else {
+    throw new Error(`Unsupported asset type: ${fileName}`);
   }
 
   return {
