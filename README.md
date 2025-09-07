@@ -14,3 +14,9 @@
 
 [mapsディレクトリ](./maps)内を始めとする、プログラムを除くマップデータに関しては、西高生に限り自由に利用可能です。
 西高生以外のサイト観覧を制限するものではありませんが、マップデータのサイト外利用はご遠慮ください。
+
+## メモ
+
+```shell
+nohup env PORT=3002 node /var/www/temp.m-haru.net/node/SchoolMaps/web/.output/server/index.mjs &
+```
