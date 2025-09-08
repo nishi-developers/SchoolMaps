@@ -144,6 +144,7 @@ watch([query, isAndSearch], () => {
       cursor: pointer;
       font-size: 1.6rem;
       border-radius: 5px;
+      transition: var(--HoverTransition);
 
       @media (hover: hover) {
         &:hover {
@@ -238,6 +239,7 @@ watch([query, isAndSearch], () => {
       gap: 10px;
       white-space: nowrap;
       border-radius: 5px;
+      transition: var(--HoverTransition);
 
       @media (hover: hover) {
         &:hover {

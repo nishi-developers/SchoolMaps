@@ -178,16 +178,13 @@ const eventListener = {
         padding: 5px;
         cursor: pointer;
         pointer-events: auto;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         width: 45px;
         height: 45px;
-
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        transition: background-color 0.3s;
+        transition: var(--HoverTransition);
 
         @media (hover: hover) {
           &:hover {
@@ -217,16 +214,13 @@ const eventListener = {
         padding: 5px 10px;
         cursor: pointer;
         pointer-events: auto;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         font-size: 1.25rem;
         height: 35px;
-
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        transition: background-color 0.3s;
+        transition: var(--HoverTransition);
 
         @media (hover: hover) {
           &:hover {
