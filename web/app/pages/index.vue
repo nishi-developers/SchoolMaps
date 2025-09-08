@@ -160,10 +160,10 @@ const eventListener = {
 
     #floors div {
       font-size: 1.25rem;
-    }
 
-    #floors div.active {
-      background-color: var(--SubColor);
+      &.active {
+        background-color: var(--SubColor);
+      }
     }
 
     #controls,
@@ -231,10 +231,6 @@ const eventListener = {
         &:active {
           background-color: var(--SubColor);
         }
-      }
-
-      div.active {
-        background-color: var(--SubColor);
       }
     }
   }
