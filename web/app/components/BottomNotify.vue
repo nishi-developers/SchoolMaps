@@ -94,6 +94,7 @@ useState("installPwa", () => install)
     justify-content: center;
     align-items: center;
     margin-top: auto;
+    transition: var(--HoverTransition);
 
     @media (hover: hover) {
       &:hover {

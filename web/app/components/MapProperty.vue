@@ -153,6 +153,7 @@ onUnmounted(() => {
       border-radius: 15px;
       background-color: var(--MainColor);
       cursor: pointer;
+      transition: var(--HoverTransition);
 
       @media (hover: hover) {
         &:hover {
