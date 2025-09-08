@@ -60,7 +60,7 @@ useState("installPwa", () => install)
   max-width: 800px;
   min-height: 75px;
   border-radius: 10px;
-  z-index: 100;
+  z-index: 50;
   background-color: var(--SubColor);
   display: flex;
   justify-content: space-between;

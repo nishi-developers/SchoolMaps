@@ -27,7 +27,7 @@ const route = useRoute();
   left: 0;
   font-weight: bold;
   box-shadow: 0 0 3px 2px var(--ShadowColor);
-  z-index: 10; // 影を出すために高く設定
+  z-index: 100; // 影を出すために高く設定
 
   #title {
     margin-left: 15px;
