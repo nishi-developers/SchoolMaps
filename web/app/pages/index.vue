@@ -140,6 +140,7 @@ const eventListener = {
   height: 100%;
   pointer-events: none;
   z-index: 10;
+  color: var(--MainBodyColor);
 
   #side-top {
     position: absolute;

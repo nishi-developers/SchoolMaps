@@ -9,10 +9,7 @@
   /* テキスト */
   --MainBodyColor: #3d3d3d;
   --SubBodyColor: #111111;
-  --AccentBodyColor: #9400ff;
-  --URLBodyColor: #8d4ab9;
-  /* マップ */
-  --MapBorderColor: var(--MainBodyColor);
+  --AccentBodyColor: #8d4ab9;
 }
 
 /* ダークモード */
@@ -27,14 +24,13 @@
     /* テキスト */
     --MainBodyColor: #f3f3f3;
     --SubBodyColor: #fafafa;
-    --AccentBodyColor: #9400ff;
-    --URLBodyColor: #8d4ab9;
-    /* マップ */
-    --MapBorderColor: var(--MainBodyColor);
+    --AccentBodyColor: #ae7edb;
   }
 }
 
 :root {
+  --MapBorderColor: var(--MainBodyColor);
+  --URLBodyColor: var(--AccentBodyColor);
   --ShadowColor: rgba(0, 0, 0, 0.2);
   --HoverTransition: background-color 0.3s;
 }
