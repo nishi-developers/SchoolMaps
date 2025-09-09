@@ -34,73 +34,50 @@ declare module "vue" {
 
 export default defineNuxtPlugin(async (nuxtApp) => {
   // バージョンチェック（毎回取得、キャッシュなし）
-  const currentVersion = await $fetch<{ v: string }>("/api/map-version", {
-    cache: "no-store",
-    headers: {
-      "Cache-Control": "no-cache, no-store, must-revalidate",
-      Pragma: "no-cache",
-      Expires: "0",
-    },
-  });
+  const currentVersion = await $fetch<{ v: string }>("/api/map-version");
+  //   const currentVersion = await $fetch<{ v: string }>("/api/map-version", {
+  //   cache: "no-store",
+  //   headers: {
+  //     "Cache-Control": "no-cache, no-store, must-revalidate",
+  //     Pragma: "no-cache",
+  //     Expires: "0",
+  //   },
+  // });
   const cachedVersion = localStorage.getItem("mapVersion");
-  if (cachedVersion !== currentVersion.v) {
-    // バージョンが変わった場合のみキャッシュクリア
-    if ("caches" in window) {
-      await caches.delete("api-assets");
+
+  if (cachedVersion && cachedVersion !== currentVersion.v) {
+    // 更新が検出された場合、アラートを表示
+    const shouldUpdate = confirm(
+      `マップデータの更新が見つかりました。\n` +
+        `現在のバージョン: ${cachedVersion}\n` +
+        `最新バージョン: ${currentVersion.v}\n\n` +
+        `今すぐ更新しますか？`
+    );
+    if (shouldUpdate) {
+      // ユーザーが更新を選択した場合のみキャッシュクリア
+      if ("caches" in window) {
+        await caches.delete("api-assets");
+        await caches.delete("api-version");
+      }
+      localStorage.setItem("mapVersion", currentVersion.v);
+      console.log(
+        `マップバージョンが ${cachedVersion} から ${currentVersion.v} に更新されました。キャッシュをクリアしました。`
+      );
     }
+  } else if (!cachedVersion) {
+    // 初回アクセス時はバージョンを保存
     localStorage.setItem("mapVersion", currentVersion.v);
+    console.log(`初回アクセスのため、マップバージョン ${currentVersion.v} を保存しました。`);
   }
 
   // 各種データの取得
   const [modes, floors, behaviors, places, detail, map_data] = await Promise.all([
-    $fetch<Mode[]>("/api/assets/modes", {
-      cache: "no-cache",
-      headers: {
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        Pragma: "no-cache",
-        Expires: "0",
-      },
-    }),
-    $fetch<Floor[]>("/api/assets/floors", {
-      cache: "no-cache",
-      headers: {
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        Pragma: "no-cache",
-        Expires: "0",
-      },
-    }),
-    $fetch<Behavior[]>("/api/assets/behaviors", {
-      cache: "no-cache",
-      headers: {
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        Pragma: "no-cache",
-        Expires: "0",
-      },
-    }),
-    $fetch<Place[]>("/api/assets/places", {
-      cache: "no-cache",
-      headers: {
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        Pragma: "no-cache",
-        Expires: "0",
-      },
-    }),
-    $fetch<Detail>("/api/assets/detail", {
-      cache: "no-cache",
-      headers: {
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        Pragma: "no-cache",
-        Expires: "0",
-      },
-    }),
-    $fetch<Blob>("/api/assets/map", {
-      cache: "no-cache",
-      headers: {
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        Pragma: "no-cache",
-        Expires: "0",
-      },
-    }),
+    $fetch<Mode[]>("/api/assets/modes"),
+    $fetch<Floor[]>("/api/assets/floors"),
+    $fetch<Behavior[]>("/api/assets/behaviors"),
+    $fetch<Place[]>("/api/assets/places"),
+    $fetch<Detail>("/api/assets/detail"),
+    $fetch<Blob>("/api/assets/map"),
   ]);
 
   // マップデータ(SVG)のパース

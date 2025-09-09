@@ -218,8 +218,23 @@ export default defineNuxtConfig({
         // https://kawadev.net/vue-pwa-cache/
         // https://vite-pwa-org.netlify.app/workbox/generate-sw.html#background-sync
         {
+          urlPattern: /^\/api\/map-version$/,
+          handler: "NetworkFirst", // ネットワーク優先、オフライン時にキャッシュを使用
+          options: {
+            cacheName: "api-version",
+            networkTimeoutSeconds: 3, // ネットワークが3秒以内に応答しない場合はキャッシュを使用
+            expiration: {
+              maxEntries: 1,
+              maxAgeSeconds: 60 * 1, // 1分
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
+        {
           urlPattern: /^\/api\/assets\/.*/,
-          handler: "StaleWhileRevalidate", // キャッシュ優先、バックグラウンドで更新も行う
+          handler: "CacheFirst", // キャッシュ優先、オフラインでも即座に応答(更新はバージョンにより明示的に制御)
           options: {
             cacheName: "api-assets",
             expiration: {
@@ -229,7 +244,6 @@ export default defineNuxtConfig({
             cacheableResponse: {
               statuses: [0, 200],
             },
-            networkTimeoutSeconds: 10, // ネットワークが10秒以内に応答しない場合はキャッシュを使用
           },
         },
       ],
