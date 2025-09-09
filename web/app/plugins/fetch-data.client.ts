@@ -33,6 +33,25 @@ declare module "vue" {
 }
 
 export default defineNuxtPlugin(async (nuxtApp) => {
+  // バージョンチェック（毎回取得、キャッシュなし）
+  const currentVersion = await $fetch<{ v: string }>("/api/map-version", {
+    cache: "no-store",
+    headers: {
+      "Cache-Control": "no-cache, no-store, must-revalidate",
+      Pragma: "no-cache",
+      Expires: "0",
+    },
+  });
+  const cachedVersion = localStorage.getItem("mapVersion");
+  if (cachedVersion !== currentVersion.v) {
+    // バージョンが変わった場合のみキャッシュクリア
+    if ("caches" in window) {
+      await caches.delete("api-assets");
+    }
+    localStorage.setItem("mapVersion", currentVersion.v);
+  }
+
+  // 各種データの取得
   const [modes, floors, behaviors, places, detail, map_data] = await Promise.all([
     $fetch<Mode[]>("/api/assets/modes", {
       cache: "no-cache",
