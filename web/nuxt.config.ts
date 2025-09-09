@@ -190,7 +190,7 @@ export default defineNuxtConfig({
           url: "/guide",
         },
         {
-          name: "このサイトについて",
+          name: "サイトについて",
           url: "/about",
         },
       ],
@@ -210,41 +210,27 @@ export default defineNuxtConfig({
       ],
     },
     workbox: {
+      // フォントはNuxtのFontモジュールでキャッシュされるため、ここでは設定しない
       globPatterns: ["**/*.{js,css,html,ico,txt,png,svg,json}"],
-      globIgnores: ["**/node_modules/**", "**/dist/**", "**/.nuxt/**", "**/coverage/**", "**/test/**"],
+      globIgnores: ["**/api/**", "**/node_modules/**", "**/dist/**", "**/.nuxt/**", "**/tests/**"],
       runtimeCaching: [
-        // フォントはNuxtのFontモジュールでキャッシュされるため、ここでは設定しない
-        // // フォントのキャッシュはランタイムキャッシュで設定
-        // // キャッシュの種類:https://kawadev.net/vue-pwa-cache/
-        // // https://vite-pwa-org.netlify.app/workbox/generate-sw.html#background-sync
-        // {
-        //   urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-        //   handler: "StaleWhileRevalidate",
-        //   options: {
-        //     cacheName: "google-fonts-stylesheets",
-        //     expiration: {
-        //       maxEntries: 30,
-        //       maxAgeSeconds: 60 * 60 * 24 * 30, // <== 30 days
-        //     },
-        //     cacheableResponse: {
-        //       statuses: [0, 200],
-        //     },
-        //   },
-        // },
-        // {
-        //   urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-        //   handler: "CacheFirst",
-        //   options: {
-        //     cacheName: "google-fonts-webfonts",
-        //     expiration: {
-        //       maxEntries: 50,
-        //       maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
-        //     },
-        //     cacheableResponse: {
-        //       statuses: [0, 200],
-        //     },
-        //   },
-        // },
+        // キャッシュの種類
+        // https://kawadev.net/vue-pwa-cache/
+        // https://vite-pwa-org.netlify.app/workbox/generate-sw.html#background-sync
+        {
+          urlPattern: /^\/api\/assets\/.*/,
+          handler: "StaleWhileRevalidate", // キャッシュ優先、バックグラウンドで更新も行う
+          options: {
+            cacheName: "api-assets",
+            expiration: {
+              maxEntries: 50,
+              maxAgeSeconds: 60 * 60 * 24 * 180, // 180 days
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
       ],
     },
   },
