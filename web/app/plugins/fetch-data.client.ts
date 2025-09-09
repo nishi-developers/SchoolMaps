@@ -34,12 +34,54 @@ declare module "vue" {
 
 export default defineNuxtPlugin(async (nuxtApp) => {
   const [modes, floors, behaviors, places, detail, map_data] = await Promise.all([
-    $fetch<Mode[]>("/api/assets/modes"),
-    $fetch<Floor[]>("/api/assets/floors"),
-    $fetch<Behavior[]>("/api/assets/behaviors"),
-    $fetch<Place[]>("/api/assets/places"),
-    $fetch<Detail>("/api/assets/detail"),
-    $fetch<Blob>("/api/assets/map"),
+    $fetch<Mode[]>("/api/assets/modes", {
+      cache: "no-cache",
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    }),
+    $fetch<Floor[]>("/api/assets/floors", {
+      cache: "no-cache",
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    }),
+    $fetch<Behavior[]>("/api/assets/behaviors", {
+      cache: "no-cache",
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    }),
+    $fetch<Place[]>("/api/assets/places", {
+      cache: "no-cache",
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    }),
+    $fetch<Detail>("/api/assets/detail", {
+      cache: "no-cache",
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    }),
+    $fetch<Blob>("/api/assets/map", {
+      cache: "no-cache",
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    }),
   ]);
 
   // マップデータ(SVG)のパース
