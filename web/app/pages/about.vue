@@ -55,7 +55,7 @@
     <p id="version" @click="handleClick">
       <span>SystemVersion</span>
       <span>{{ $config.public.systemVersion }}</span>
-      <span>MapsVersion</span>
+      <span>MapVersion</span>
       <span>{{ $detail.mapVersion }}</span>
       <span>DB Integrate</span>
       <span v-if="$detail?.isDatabaseIntegrated">Enabled</span>

@@ -229,6 +229,7 @@ export default defineNuxtConfig({
             cacheableResponse: {
               statuses: [0, 200],
             },
+            networkTimeoutSeconds: 10, // ネットワークが10秒以内に応答しない場合はキャッシュを使用
           },
         },
       ],
