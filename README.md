@@ -20,3 +20,11 @@
 ```shell
 nohup env PORT=3002 node /var/www/temp.m-haru.net/node/SchoolMaps/web/.output/server/index.mjs &
 ```
+
+デフォルトでは、sw.jsの読み込みは、pluginsより遅い
+swは登録後、installやactgivateといった処理が必要
+
+swの登録や
+cacheの削除ロジックを分離したい
+
+run:devではうまく動かない(Service Worker registration failed: DOMException: The operation is insecure.)
