@@ -73,7 +73,8 @@ export default defineNuxtPlugin(async (nuxtApp) => {
       // ユーザーが更新を選択した場合のみキャッシュクリア
       if ("caches" in window) {
         await caches.delete("api-assets");
-        await caches.delete("api-version");
+        // versionキャッシュは削除しない（次回アクセス時に更新を検出できなくなるため）
+        // NetworkFirstなので古いキャッシュが残ってても問題ない
       }
       localStorage.setItem("mapVersion", currentVersion.v);
       console.log(
