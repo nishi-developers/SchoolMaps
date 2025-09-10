@@ -33,16 +33,32 @@ declare module "vue" {
 }
 
 export default defineNuxtPlugin(async (nuxtApp) => {
+  console.log("Fetching map data...");
+
+  // Service Workerの準備完了を待機
+  if ("serviceWorker" in navigator) {
+    try {
+      const registration = await navigator.serviceWorker.register("/sw.js", { scope: "/" });
+      if (registration.active) {
+        // 既存のService Workerがアクティブな場合は即座に進む
+        console.log("Service Worker is already active");
+      } else {
+        // 新規インストールの場合のみ待機
+        await navigator.serviceWorker.ready;
+        console.log("Service Worker is ready");
+      }
+      if (!navigator.serviceWorker.controller) {
+        // Service Workerがページをコントロールするまで待機
+        console.log("Waiting for Service Worker to control the page...");
+        await new Promise((resolve) => setTimeout(resolve, 100)); // 少し待機してからリクエストを実行
+      }
+    } catch (error) {
+      console.warn("Service Worker registration failed:", error);
+    }
+  }
+
   // バージョンチェック（毎回取得、キャッシュなし）
   const currentVersion = await $fetch<{ v: string }>("/api/map-version");
-  //   const currentVersion = await $fetch<{ v: string }>("/api/map-version", {
-  //   cache: "no-store",
-  //   headers: {
-  //     "Cache-Control": "no-cache, no-store, must-revalidate",
-  //     Pragma: "no-cache",
-  //     Expires: "0",
-  //   },
-  // });
   const cachedVersion = localStorage.getItem("mapVersion");
 
   if (cachedVersion && cachedVersion !== currentVersion.v) {
