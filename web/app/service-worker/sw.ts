@@ -1,4 +1,4 @@
-import { precacheAndRoute, cleanupOutdatedCaches } from "workbox-precaching";
+import { precacheAndRoute, cleanupOutdatedCaches, createHandlerBoundToURL } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
 import { NetworkFirst, CacheFirst } from "workbox-strategies";
 import { ExpirationPlugin } from "workbox-expiration";
@@ -15,6 +15,15 @@ clientsClaim(); // すべてのクライアントを制御
 // api以外のフロントエンドの色々
 precacheAndRoute(self.__WB_MANIFEST || []);
 cleanupOutdatedCaches();
+
+// SPA ナビゲーション用フォールバック ("/" や他のルートを precache 済み index.html へ誘導)
+// non-precached-url ("/") エラー対策。/index.html は precache 済みだが "/" は別 URL として扱われるため。
+registerRoute(
+  ({ request, url }) =>
+    request.mode === "navigate" && // 通常のページ遷移
+    !url.pathname.startsWith("/api"), // API は除外
+  createHandlerBoundToURL("/index.html")
+);
 
 // RunTime Cache
 // API version
