@@ -213,6 +213,6 @@ export default defineNuxtConfig({
     },
     strategies: "injectManifest",
     srcDir: "./service-worker/",
-    filename: "sw.js",
+    filename: "sw.ts",
   },
 });

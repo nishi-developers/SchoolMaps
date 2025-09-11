@@ -1,5 +1,3 @@
-import { ref } from "vue";
-
 // Nuxtアプリの型拡張
 declare module "#app" {
   interface NuxtApp {
@@ -34,58 +32,6 @@ declare module "vue" {
 
 export default defineNuxtPlugin(async (nuxtApp) => {
   console.log("Fetching map data...");
-
-  // Service Workerの準備完了を待機
-  if ("serviceWorker" in navigator) {
-    try {
-      const registration = await navigator.serviceWorker.register("/sw.js", { scope: "/" });
-      if (registration.active) {
-        // 既存のService Workerがアクティブな場合は即座に進む
-        console.log("Service Worker is already active");
-      } else {
-        // 新規インストールの場合のみ待機
-        await navigator.serviceWorker.ready;
-        console.log("Service Worker is ready");
-      }
-      if (!navigator.serviceWorker.controller) {
-        // Service Workerがページをコントロールするまで待機
-        console.log("Waiting for Service Worker to control the page...");
-        await new Promise((resolve) => setTimeout(resolve, 100)); // 少し待機してからリクエストを実行
-      }
-    } catch (error) {
-      console.warn("Service Worker registration failed:", error);
-    }
-  }
-
-  // バージョンチェック（毎回取得、キャッシュなし）
-  const currentVersion = await $fetch<{ v: string }>("/api/map-version");
-  const cachedVersion = localStorage.getItem("mapVersion");
-
-  if (cachedVersion && cachedVersion !== currentVersion.v) {
-    // 更新が検出された場合、アラートを表示
-    const shouldUpdate = confirm(
-      `マップデータの更新が見つかりました。\n` +
-        `現在のバージョン: ${cachedVersion}\n` +
-        `最新バージョン: ${currentVersion.v}\n\n` +
-        `今すぐ更新しますか？`
-    );
-    if (shouldUpdate) {
-      // ユーザーが更新を選択した場合のみキャッシュクリア
-      if ("caches" in window) {
-        await caches.delete("api-assets");
-        // versionキャッシュは削除しない（次回アクセス時に更新を検出できなくなるため）
-        // NetworkFirstなので古いキャッシュが残ってても問題ない
-      }
-      localStorage.setItem("mapVersion", currentVersion.v);
-      console.log(
-        `マップバージョンが ${cachedVersion} から ${currentVersion.v} に更新されました。キャッシュをクリアしました。`
-      );
-    }
-  } else if (!cachedVersion) {
-    // 初回アクセス時はバージョンを保存
-    localStorage.setItem("mapVersion", currentVersion.v);
-    console.log(`初回アクセスのため、マップバージョン ${currentVersion.v} を保存しました。`);
-  }
 
   // 各種データの取得
   const [modes, floors, behaviors, places, detail, map_data] = await Promise.all([
