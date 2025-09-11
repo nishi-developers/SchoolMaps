@@ -3,19 +3,26 @@ import { registerRoute } from "workbox-routing";
 import { NetworkFirst, CacheFirst } from "workbox-strategies";
 import { ExpirationPlugin } from "workbox-expiration";
 import { CacheableResponsePlugin } from "workbox-cacheable-response";
+import { clientsClaim } from "workbox-core";
 
-// プリキャッシュの設定
-precacheAndRoute(self.__WB_MANIFEST);
+declare let self: ServiceWorkerGlobalScope;
+
+// Service Workerのライフサイクル管理
+self.skipWaiting(); // 待機をスキップして即座にアクティベート
+clientsClaim(); // すべてのクライアントを制御
+
+// PreCache
+// api以外のフロントエンドの色々
+precacheAndRoute(self.__WB_MANIFEST || []);
 cleanupOutdatedCaches();
 
-console.log("Service Worker is running...");
-
-// API version キャッシュ
+// RunTime Cache
+// API version
 registerRoute(
   ({ url }) => url.pathname.startsWith("/api/map-version"),
   new NetworkFirst({
     cacheName: "api-version",
-    // networkTimeoutSeconds: 3,
+    networkTimeoutSeconds: 3, // ネットワークタイムアウトを3秒に設定
     plugins: [
       new ExpirationPlugin({
         maxEntries: 1,
@@ -28,7 +35,7 @@ registerRoute(
   })
 );
 
-// API assets キャッシュ
+// API assets
 registerRoute(
   ({ url }) => url.pathname.startsWith("/api/assets/"),
   new CacheFirst({
@@ -45,13 +52,10 @@ registerRoute(
   })
 );
 
-// Service Workerの即座のアクティベーション
-self.addEventListener("install", () => {
-  console.log("Service Worker installing...");
-  self.skipWaiting(); // 待機をスキップして即座にアクティベート
-});
-
-self.addEventListener("activate", (event) => {
-  console.log("Service Worker activating...");
-  event.waitUntil(self.clients.claim()); // すべてのクライアントをコントロール
+// キャッシュ削除メッセージの受信
+self.addEventListener("message", async (event) => {
+  if (event.data.action === "DELETE_API_ASSETS_CACHE") {
+    await caches.delete("api-assets");
+    event.ports[0]?.postMessage({ success: true }); // 処理完了を通知
+  }
 });
