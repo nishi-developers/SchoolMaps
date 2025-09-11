@@ -96,6 +96,7 @@ export default defineNuxtConfig({
     // version: packageJson.version,
     registerType: "autoUpdate",
     injectRegister: null,
+    includeAssets: ["index.html"],
     devOptions: {
       enabled: true,
       type: "module",
@@ -214,5 +215,8 @@ export default defineNuxtConfig({
     strategies: "injectManifest",
     srcDir: "./service-worker/",
     filename: "sw.ts",
+    workbox: {
+      globPatterns: ["**/*.{js,css,html,ico,txt,png,svg,json}"], // htmlを必ず含める
+    },
   },
 });
