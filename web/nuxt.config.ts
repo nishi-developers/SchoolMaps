@@ -56,6 +56,9 @@ export default defineNuxtConfig({
       labelOff: "material-symbols:label-off-outline-rounded",
       resetFocus: "material-symbols:reset-focus-outline-rounded",
       searchOnMap: "material-symbols:map-search-outline-rounded",
+      back: "material-symbols:undo-rounded",
+      reload: "material-symbols:refresh-rounded",
+      home: "material-symbols:home-rounded",
     },
   },
   vite: {
