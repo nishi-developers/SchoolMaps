@@ -92,4 +92,3 @@ swは登録後、installやactgivateといった処理が必要
 | `/api/map-version` 応答が更新されたか | データ更新検出可否 |
 | キャッシュパネルで `api-assets` 削除 → 直後再取得 | 破棄メッセージ動作検証 |
 | オフライン切替でマップ表示可能か | PreCache / CacheFirst 成功 |
-
