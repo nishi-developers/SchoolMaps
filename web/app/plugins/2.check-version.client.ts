@@ -1,16 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function sendMessageToSW(message: any): Promise<void> {
-  return new Promise<void>((resolve, reject) => {
-    if (!("serviceWorker" in navigator) || !navigator.serviceWorker.controller) {
-      console.log("Service Worker is not available or controlling the page.");
-      return reject();
-    }
-    const messageChannel = new MessageChannel();
-    messageChannel.port1.onmessage = () => resolve(); // 通信が返ってきたらresolve
-    navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
-  });
-}
-
 export default defineNuxtPlugin(async () => {
   // バージョンチェック（毎回取得、キャッシュなし）
   const currentVersion = await $fetch<{ v: string }>("/api/map-version");
@@ -29,7 +16,7 @@ export default defineNuxtPlugin(async () => {
       if ("serviceWorker" in navigator && navigator.serviceWorker.controller) {
         // versionキャッシュは削除しない（次回アクセス時に更新を検出できなくなるため）
         // NetworkFirstなので古いキャッシュが残ってても問題ない
-        await sendMessageToSW({ action: "DELETE_API_ASSETS_CACHE" });
+        await caches.delete("api-assets");
       }
       localStorage.setItem("mapVersion", currentVersion.v);
       console.log(
