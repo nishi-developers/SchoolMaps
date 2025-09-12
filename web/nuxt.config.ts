@@ -214,9 +214,10 @@ export default defineNuxtConfig({
     },
     strategies: "generateSW",
     workbox: {
-      skipWaiting: true,
-      clientsClaim: true,
-      cleanupOutdatedCaches: true,
+      skipWaiting: true, // 新しいService Workerがインストールされたら即座にアクティブ化
+      clientsClaim: true, // Service Workerがアクティブ化されたらすぐにページを制御
+      cleanupOutdatedCaches: true, // 古いキャッシュを自動的に削除
+      // SPA対応
       navigateFallback: "/", // プリキャッシュされていないURLにアクセスした場合に/を返す
       navigateFallbackAllowlist: [/^(?!\/(api|__nuxt)).*/], // /apiや/__nuxtへのアクセスは除外
       // PreCache
