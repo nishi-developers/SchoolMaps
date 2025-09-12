@@ -212,11 +212,51 @@ export default defineNuxtConfig({
         },
       ],
     },
-    strategies: "injectManifest",
-    srcDir: "./service-worker/",
-    filename: "sw.ts",
+    strategies: "generateSW",
     workbox: {
-      globPatterns: ["**/*.{js,css,html,ico,txt,png,svg,json}"], // htmlを必ず含める
+      skipWaiting: true,
+      clientsClaim: true,
+      cleanupOutdatedCaches: true,
+      navigateFallback: "/",
+      // PreCache
+      globPatterns: ["**/*.{js,css,html,ico,txt,png,svg,json}"],
+      additionalManifestEntries: [{ url: "/", revision: null }],
+      // RunTime Cache
+      runtimeCaching: [
+        {
+          // API version
+          urlPattern: ({ url }) => url.pathname.startsWith("/api/map-version"),
+          handler: "NetworkFirst",
+          method: "GET",
+          options: {
+            cacheName: "api-version",
+            networkTimeoutSeconds: 3,
+            expiration: {
+              maxEntries: 1,
+              maxAgeSeconds: 60 * 1, // 1分
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
+        {
+          // API assets
+          urlPattern: ({ url }) => url.pathname.startsWith("/api/assets/"),
+          handler: "CacheFirst",
+          method: "GET",
+          options: {
+            cacheName: "api-assets",
+            expiration: {
+              maxEntries: 50,
+              maxAgeSeconds: 60 * 60 * 24 * 180, // 180 days
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
+      ],
     },
   },
 });
