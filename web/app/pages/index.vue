@@ -207,6 +207,7 @@ const eventListener = {
 
     #modes {
       display: flex;
+      flex-direction: column;
       gap: 10px;
 
       div {
@@ -230,6 +231,10 @@ const eventListener = {
         }
 
         &:active {
+          background-color: var(--SubColor);
+        }
+
+        &.active {
           background-color: var(--SubColor);
         }
       }

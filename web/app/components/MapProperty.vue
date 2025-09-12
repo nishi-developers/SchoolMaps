@@ -25,7 +25,7 @@
             {{$modesChangeable.filter((mode) => mode.id == place?.mode)[0]?.name}}
           </NuxtLink>
         </div>
-        <div id="images" ref="imageContainer">
+        <div v-if="place?.images?.length" id="images" ref="imageContainer">
           <img v-for="(img, index) in place?.images" :key="index" :src="img" :alt="`${place?.name}の画像${index + 1}`"
             loading="lazy">
         </div>
