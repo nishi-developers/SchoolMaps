@@ -1,0 +1,22 @@
+[
+  {
+    "id": "base",
+    "name": "",
+    "always": true
+  },
+  {
+    "id": "f1",
+    "name": "1階",
+    "always": false
+  },
+  {
+    "id": "f2",
+    "name": "2階",
+    "always": false
+  },
+  {
+    "id": "f3",
+    "name": "3階",
+    "always": false
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "main",
+    "enable": true,
+    "name": "",
+    "always": true
+  },
+  {
+    "id": "shinkan80",
+    "enable": false,
+    "name": "新歓80th",
+    "always": false
+  },
+  {
+    "id": "kinensai79",
+    "enable": true,
+    "name": "第79回記念祭",
+    "always": false
+  }
+]
