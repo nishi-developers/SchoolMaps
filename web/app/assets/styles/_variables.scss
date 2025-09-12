@@ -1,0 +1,36 @@
+/* 配色 */
+:root {
+  /* テーマ */
+  --MainColor: #bee0ff;
+  --SubColor: #82c3ff;
+  /* 背景 */
+  --MainBaseColor: #f3f9ff;
+  --SubBaseColor: #d4ebff;
+  /* テキスト */
+  --MainBodyColor: #3d3d3d;
+  --SubBodyColor: #111111;
+  --AccentBodyColor: #8d4ab9;
+}
+
+/* ダークモード */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* テーマ */
+    --MainColor: #003365;
+    --SubColor: #0057ad;
+    /* 背景 */
+    --MainBaseColor: #333333;
+    --SubBaseColor: #030c2c;
+    /* テキスト */
+    --MainBodyColor: #f3f3f3;
+    --SubBodyColor: #fafafa;
+    --AccentBodyColor: #ae7edb;
+  }
+}
+
+:root {
+  --MapBorderColor: var(--MainBodyColor);
+  --URLBodyColor: var(--AccentBodyColor);
+  --ShadowColor: rgba(0, 0, 0, 0.2);
+  --HoverTransition: background-color 0.3s;
+}

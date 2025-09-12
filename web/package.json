@@ -1,0 +1,44 @@
+{
+  "name": "school-maps",
+  "version": "0.4.0",
+  "private": true,
+  "type": "module",
+  "description": "SchoolMaps web application",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "dev:host": "nuxt dev --host",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "test": "vitest"
+  },
+  "author": "M_Haruki@504",
+  "license": "MIT",
+  "dependencies": {
+    "@nuxt/eslint": "^1.7.1",
+    "@nuxt/fonts": "^0.11.4",
+    "@nuxt/icon": "^1.15.0",
+    "@nuxt/image": "^1.11.0",
+    "@nuxt/scripts": "^0.11.10",
+    "@nuxt/test-utils": "^3.19.2",
+    "@unhead/vue": "^2.0.13",
+    "@vite-pwa/nuxt": "^1.0.4",
+    "eslint": "^9.32.0",
+    "nuxt": "^4.0.1",
+    "rbush": "^4.0.1",
+    "viewerjs": "^1.11.7",
+    "vue": "^3.5.18",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@types/rbush": "^4.0.0",
+    "@vue/test-utils": "^2.4.6",
+    "happy-dom": "^18.0.1",
+    "sass": "^1.90.0",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

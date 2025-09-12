@@ -1,0 +1,28 @@
+{
+  "name": "tools",
+  "version": "1.0.0",
+  "description": "SchoolMaps data processing tools",
+  "scripts": {
+    "build": "tsc",
+    "1": "tsc && node dist/1MapConverter.js",
+    "2": "tsc && node dist/2PlacesCreater.js",
+    "3": "tsc && node dist/3DataRegister.js",
+    "clean": "rimraf dist",
+    "type-check": "tsc --noEmit"
+  },
+  "author": "M_Haruki",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^24.2.1",
+    "@types/svgdom": "^0.1.2",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@svgdotjs/svg.js": "^3.2.4",
+    "svgdom": "^0.1.22"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

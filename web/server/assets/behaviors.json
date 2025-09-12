@@ -1,0 +1,154 @@
+[
+  {
+    "id": "base",
+    "isPlace": false,
+    "style": {
+      "body": {
+        "fillDefault": {
+          "light": "#f3f3f3",
+          "dark": "#1d1d1d"
+        },
+        "stroke": {
+          "light": "var(--MapBorderColor)",
+          "dark": "var(--MapBorderColor)"
+        },
+        "strokeWidth": 2.0
+      }
+    }
+  },
+  {
+    "id": "compass",
+    "isPlace": false,
+    "style": {
+      "body": {
+        "fillDefault": {
+          "light": "#adadad",
+          "dark": "#797979"
+        },
+        "stroke": {
+          "light": "var(--MapBorderColor)",
+          "dark": "var(--MapBorderColor)"
+        },
+        "strokeWidth": 2.0
+      }
+    }
+  },
+  {
+    "id": "enclosure",
+    "isPlace": false,
+    "style": {
+      "body": {
+        "fillDefault": {
+          "light": "#cfcfcf",
+          "dark": "#3f3f3f"
+        },
+        "stroke": {
+          "light": "var(--MapBorderColor)",
+          "dark": "var(--MapBorderColor)"
+        },
+        "strokeWidth": 2.0
+      }
+    }
+  },
+  {
+    "id": "none",
+    "isPlace": false,
+    "style": {
+      "body": {
+        "fillDefault": {
+          "light": "#adadad",
+          "dark": "#797979"
+        },
+        "stroke": {
+          "light": "var(--MapBorderColor)",
+          "dark": "var(--MapBorderColor)"
+        },
+        "strokeWidth": 2.0
+      }
+    }
+  },
+  {
+    "id": "place",
+    "isPlace": true,
+    "style": {
+      "body": {
+        "fillDefault": {
+          "light": "var(--SubBaseColor)",
+          "dark": "var(--SubBaseColor)"
+        },
+        "fillSelect": {
+          "light": "var(--SubColor)",
+          "dark": "var(--SubColor)"
+        },
+        "stroke": {
+          "light": "var(--MapBorderColor)",
+          "dark": "var(--MapBorderColor)"
+        },
+        "strokeWidth": 2.0
+      },
+      "label": {
+        "fill": {
+          "light": "var(--MainBodyColor)",
+          "dark": "var(--MainBodyColor)"
+        },
+        "fontSize": "1.5rem"
+      }
+    }
+  },
+  {
+    "id": "shinkan80",
+    "isPlace": true,
+    "style": {
+      "body": {
+        "fillDefault": {
+          "light": "#bdffb6",
+          "dark": "#158909"
+        },
+        "fillSelect": {
+          "light": "#42e24a",
+          "dark": "#51d557"
+        },
+        "stroke": {
+          "light": "var(--MapBorderColor)",
+          "dark": "var(--MapBorderColor)"
+        },
+        "strokeWidth": 0
+      },
+      "label": {
+        "fill": {
+          "light": "var(--MainBodyColor)",
+          "dark": "var(--MainBodyColor)"
+        },
+        "fontSize": "1.3rem"
+      }
+    }
+  },
+  {
+    "id": "kinensai79",
+    "isPlace": true,
+    "style": {
+      "body": {
+        "fillDefault": {
+          "light": "#bdffb6",
+          "dark": "#158909"
+        },
+        "fillSelect": {
+          "light": "#42e24a",
+          "dark": "#51d557"
+        },
+        "stroke": {
+          "light": "var(--MapBorderColor)",
+          "dark": "var(--MapBorderColor)"
+        },
+        "strokeWidth": 0
+      },
+      "label": {
+        "fill": {
+          "light": "var(--MainBodyColor)",
+          "dark": "var(--MainBodyColor)"
+        },
+        "fontSize": "1.3rem"
+      }
+    }
+  }
+]

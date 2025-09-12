@@ -1,3 +1,0 @@
-xnconvert
-最大600x600
-webp 75%
