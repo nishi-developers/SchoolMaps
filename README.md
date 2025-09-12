@@ -24,7 +24,7 @@ nohup env PORT=3002 node /var/www/temp.m-haru.net/node/SchoolMaps/web/.output/se
 デフォルトでは、sw.jsの読み込みは、pluginsより遅い
 swは登録後、installやactgivateといった処理が必要
 
-## キャッシュ戦略
+## キャッシュ戦略(古い)
 
 本プロジェクトは PWA（@vite-pwa/nuxt, Workbox injectManifest）による「静的資産の PreCache」＋「マップ API の Runtime Cache」＋「バージョン差分による手動失効」のハイブリッド構成。
 
@@ -92,3 +92,4 @@ swは登録後、installやactgivateといった処理が必要
 | `/api/map-version` 応答が更新されたか | データ更新検出可否 |
 | キャッシュパネルで `api-assets` 削除 → 直後再取得 | 破棄メッセージ動作検証 |
 | オフライン切替でマップ表示可能か | PreCache / CacheFirst 成功 |
+
