@@ -122,5 +122,33 @@
         "fontSize": "1.3rem"
       }
     }
+  },
+  {
+    "id": "kinensai79",
+    "isPlace": true,
+    "style": {
+      "body": {
+        "fillDefault": {
+          "light": "#bdffb6",
+          "dark": "#158909"
+        },
+        "fillSelect": {
+          "light": "#42e24a",
+          "dark": "#51d557"
+        },
+        "stroke": {
+          "light": "var(--MapBorderColor)",
+          "dark": "var(--MapBorderColor)"
+        },
+        "strokeWidth": 0
+      },
+      "label": {
+        "fill": {
+          "light": "var(--MainBodyColor)",
+          "dark": "var(--MainBodyColor)"
+        },
+        "fontSize": "1.3rem"
+      }
+    }
   }
 ]
