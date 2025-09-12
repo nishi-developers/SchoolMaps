@@ -1,5 +1,6 @@
 type SearchIndexItem = {
-  id: string;
+  rawId: string; // 検索結果として返される元のPlace.id
+  id: string; // 検索用に正規化されたPlace.id
   name: string;
   words: string;
   desc: string;
@@ -26,6 +27,7 @@ export const useSearch = () => {
       if (!$modesEnable.value.some((mode) => mode.id === place.mode)) continue;
 
       index.push({
+        rawId: place.id,
         id: normalizeContent(place.id),
         name: normalizeContent(place.name),
         words: normalizeContent(place.words),
@@ -47,22 +49,22 @@ export const useSearch = () => {
     const querys = normalize(rawQuery).split(" ");
     const results: Array<string> = [];
     for (const query of querys) {
-      const ids = searchByOneQuery(query);
+      const rawIds = searchByOneQuery(query);
       if (!isAndSearch) {
         // OR検索
-        ids.forEach((id) => {
-          if (!results.includes(id)) {
-            results.push(id);
+        rawIds.forEach((rid) => {
+          if (!results.includes(rid)) {
+            results.push(rid);
           }
         });
       } else {
         // AND検索
         if (results.length === 0 && querys[0] === query) {
           // 最初のクエリの場合は検索結果を全て追加
-          results.push(...ids);
+          results.push(...rawIds);
         } else {
           // 既存の結果と新しい結果の積集合を取る
-          const newResults = results.filter((id) => ids.includes(id));
+          const newResults = results.filter((rid) => rawIds.includes(rid));
           results.length = 0; // 結果をクリア
           results.push(...newResults);
         }
@@ -76,13 +78,13 @@ export const useSearch = () => {
     const { prefix, parsedQuery } = parseQuery(query);
     if (parsedQuery === "") {
       // クエリが空の場合は全てのIDを返す
-      return searchIndex.value.map((index) => index.id);
+      return searchIndex.value.map((index) => index.rawId);
     }
     for (const target of targets) {
       if (prefix === null || prefix === target) {
         searchIndex.value.forEach((index) => {
           if (index[target].includes(parsedQuery)) {
-            results.push(index.id);
+            results.push(index.rawId);
           }
         });
       }
