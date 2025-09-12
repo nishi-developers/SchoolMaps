@@ -3388,9 +3388,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "[1A] 裏切りの街から",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n相棒と共に全てを失いスラム街に堕ちたあなた。ある日相棒がギャンブルに成功し、1人取り残されてしまった。最後の賭けは命を賭けたギャンブル。人生逆転の戦いに挑め。",
+    "name": "1A",
+    "words": "[1A]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**1A『裏切りの街から』**/n相棒と共に全てを失いスラム街に堕ちたあなた。ある日相棒がギャンブルに成功し、1人取り残されてしまった。最後の賭けは命を賭けたギャンブル。人生逆転の戦いに挑め。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/1A.png"
     ]
@@ -3400,9 +3400,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "[1B] 西高合格シミュレーション",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n1Bに来れば確実に伸びる。圧倒的で革新的な実演形式で、あなたを劇的に合格へ近づけます。西高合格シミュレーションであなたも最高の西高生に！！",
+    "name": "1B",
+    "words": "[1B]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**1B『西高合格シミュレーション』**/n1Bに来れば確実に伸びる。圧倒的で革新的な実演形式で、あなたを劇的に合格へ近づけます。西高合格シミュレーションであなたも最高の西高生に！！",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/1B.png"
     ]
@@ -3412,9 +3412,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "[1C] 西館の亡霊",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/nWEST高校で突如起こった殺人事件。現場は密室で、外部からの侵入は不可能。果たしてこれは、亡霊の仕業なのだろうか､､、西高生渾身のオリジナル劇をお楽しみあれ。",
+    "name": "1C",
+    "words": "[1C]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**1C『西館の亡霊』**/nWEST高校で突如起こった殺人事件。現場は密室で、外部からの侵入は不可能。果たしてこれは、亡霊の仕業なのだろうか､､、西高生渾身のオリジナル劇をお楽しみあれ。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/1C.png"
     ]
@@ -3424,9 +3424,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "[1D] BACK TO NISHI",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n定期テスト直前、西高生が戦国時代にタイムスリップ！信長に未来を語り、歴史が変わっちゃった??",
+    "name": "1D",
+    "words": "[1D]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**1D『BACK TO NISHI』**/n定期テスト直前、西高生が戦国時代にタイムスリップ！信長に未来を語り、歴史が変わっちゃった??",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/1D.png"
     ]
@@ -3436,9 +3436,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "[1E] 「この動画、なにかがおかしい」",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n世界には、いろんな奴\"\"がいる。そんな\"\"奴\"\"らを見て何か気づくことはないだろうか?新感覚アハ体験があなたを楽しませる。\"\"",
+    "name": "1E",
+    "words": "[1E]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**1E『「この動画、なにかがおかしい」』**/n世界には、いろんな奴\"\"がいる。そんな\"\"奴\"\"らを見て何か気づくことはないだろうか?新感覚アハ体験があなたを楽しませる。\"\"",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/1E.png"
     ]
@@ -3448,9 +3448,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "[1F] はたらく人狼",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n人狼は人間を襲うため、夜の帳が下りた村で今日もはたらく─── 村人たちは仲間を取り戻すことができるのか…。そして人狼は今日も無事に仕事を終えられるのか…。",
+    "name": "1F",
+    "words": "[1F]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**1F『はたらく人狼』**/n人狼は人間を襲うため、夜の帳が下りた村で今日もはたらく─── 村人たちは仲間を取り戻すことができるのか…。そして人狼は今日も無事に仕事を終えられるのか…。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/1F.png"
     ]
@@ -3460,9 +3460,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "[1G] 転生したらロミジュリだった件。",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n俺は露弥夫、普通の西高生。彼女の樹里といちゃついていたら、2人で愛の泉に落ちて_____ロミジュリの世界に転生！？絶対元の世界に戻って、課題を提出してみせる！！",
+    "name": "1G",
+    "words": "[1G]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**1G『転生したらロミジュリだった件。』**/n俺は露弥夫、普通の西高生。彼女の樹里といちゃついていたら、2人で愛の泉に落ちて_____ロミジュリの世界に転生！？絶対元の世界に戻って、課題を提出してみせる！！",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/1G.png"
     ]
@@ -3472,9 +3472,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "[1H] Cent千尋の金隠し",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n”トンネルのむこうは、不思議な遊技場でした。””あのキャラクター””と遊ぶのは、トランプ？ルーレット？それとも人間競馬？奪われた名前を取り返すには、ゲームで勝つしかない。－－－「ここで賭けさせてください！」”",
+    "name": "1H",
+    "words": "[1H]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**1H『Cent千尋の金隠し』**/n”トンネルのむこうは、不思議な遊技場でした。””あのキャラクター””と遊ぶのは、トランプ？ルーレット？それとも人間競馬？奪われた名前を取り返すには、ゲームで勝つしかない。－－－「ここで賭けさせてください！」”",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/1H.png"
     ]
@@ -3484,9 +3484,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "[園芸部] 中庭とかめっっっちゃ立地よくね??!!",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/nちょっと、来るの遅いよ！待ってたんだよ？…でも、来てくれたら、お花ちょっとだけ見せてあげる",
+    "name": "園芸部",
+    "words": "[園芸部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**園芸部『中庭とかめっっっちゃ立地よくね??!!』**/nちょっと、来るの遅いよ！待ってたんだよ？…でも、来てくれたら、お花ちょっとだけ見せてあげる",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/園芸部.png"
     ]
@@ -3496,9 +3496,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "[華道部] 見せばやな 一階華道部 被服室 咲きにぞ咲きし 色はかはらず",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n共同、個人作品を展示しています。華道部は月3回程度、活動をしています。草月流いけばなの講師の先生をお招きして教えていただいています。ぜひ被服室にお越しください。",
+    "name": "華道部",
+    "words": "[華道部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**華道部『見せばやな 一階華道部 被服室 咲きにぞ咲きし 色はかはらず』**/n共同、個人作品を展示しています。華道部は月3回程度、活動をしています。草月流いけばなの講師の先生をお招きして教えていただいています。ぜひ被服室にお越しください。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/華道部.png"
     ]
@@ -3508,9 +3508,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "[茶道部] お茶会日和",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n茶道部では、和菓子とお薄をお楽しみいただけるお茶席を設けています！お茶を通して「和」に触れてみませんか？※和室前での当日予約制です。お早めにお越しください。",
+    "name": "茶道部",
+    "words": "[茶道部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**茶道部『お茶会日和』**/n茶道部では、和菓子とお薄をお楽しみいただけるお茶席を設けています！お茶を通して「和」に触れてみませんか？※和室前での当日予約制です。お早めにお越しください。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/茶道部.png"
     ]
@@ -3520,9 +3520,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "[秘密結社ベトリナ] 無駄",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n無駄。",
+    "name": "秘密結社ベトリナ",
+    "words": "[秘密結社ベトリナ]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**秘密結社ベトリナ『無駄』**/n無駄。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/秘密結社ベトリナ.png"
     ]
@@ -3532,9 +3532,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "[西高PTA] 私たちは西高生を応援します!",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n初の西高グッズ【西高タオル】を製作し、完売。どうやら第2弾もあるらしい。会議だけじゃないぞ！西高、西高生の応援団、PTAの活動を見て、知って、ご参加下さい！",
+    "name": "西高PTA",
+    "words": "[西高PTA]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**西高PTA『私たちは西高生を応援します!』**/n初の西高グッズ【西高タオル】を製作し、完売。どうやら第2弾もあるらしい。会議だけじゃないぞ！西高、西高生の応援団、PTAの活動を見て、知って、ご参加下さい！",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/西高PTA.png"
     ]
@@ -3544,19 +3544,31 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "[新聞部] 記念祭特別号",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n",
+    "name": "新聞部",
+    "words": "[新聞部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**新聞部『記念祭特別号』**",
     "images": []
+  },
+  {
+    "id": "k79-3KbN",
+    "mode": "kinensai79",
+    "floor": "f1",
+    "behavior": "kinensai79",
+    "name": "Nishi Flyer",
+    "words": "[Nishi Flyer]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**Nishi Flyer『西空 2025』**/n「空を飛ぶ」これは人類の大きな夢だった。ヒコーキ好きの西高生による特別展示やペットボトルロケットの発射を予定しています。皆様のご搭乗をお待ちしております。",
+    "images": [
+      "https://kinensai79.nishi-h.net/groups_images/NISHI FLYER.png"
+    ]
   },
   {
     "id": "k79-food-1s",
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "焼きそば(晴れ) [3年有志食販]",
-    "words": "",
-    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**[3年有志食販] なんてこったパンナコッタ亭(＊パンナコッタはありません)**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
+    "name": "焼きそば(晴れ) [食販]",
+    "words": "[3年有志食販]",
+    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**3年有志食販『なんてこったパンナコッタ亭(＊パンナコッタはありません)』**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
     "images": []
   },
   {
@@ -3564,9 +3576,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "焼きそば(雨) [3年有志食販]",
-    "words": "",
-    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**[3年有志食販] なんてこったパンナコッタ亭(＊パンナコッタはありません)**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
+    "name": "焼きそば(雨) [食販]",
+    "words": "[3年有志食販]",
+    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**3年有志食販『なんてこったパンナコッタ亭(＊パンナコッタはありません)』**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
     "images": []
   },
   {
@@ -3574,9 +3586,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "チヂミ(晴れ) [3年有志食販]",
-    "words": "",
-    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**[3年有志食販] なんてこったパンナコッタ亭(＊パンナコッタはありません)**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
+    "name": "チヂミ(晴れ) [食販]",
+    "words": "[3年有志食販]",
+    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**3年有志食販『なんてこったパンナコッタ亭(＊パンナコッタはありません)』**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
     "images": []
   },
   {
@@ -3584,9 +3596,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "チヂミ(雨) [3年有志食販]",
-    "words": "",
-    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**[3年有志食販] なんてこったパンナコッタ亭(＊パンナコッタはありません)**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
+    "name": "チヂミ(雨) [食販]",
+    "words": "[3年有志食販]",
+    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**3年有志食販『なんてこったパンナコッタ亭(＊パンナコッタはありません)』**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
     "images": []
   },
   {
@@ -3594,9 +3606,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "焼き鳥(晴れ) [3年有志食販]",
-    "words": "",
-    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**[3年有志食販] なんてこったパンナコッタ亭(＊パンナコッタはありません)**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
+    "name": "焼き鳥(晴れ) [食販]",
+    "words": "[3年有志食販]",
+    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**3年有志食販『なんてこったパンナコッタ亭(＊パンナコッタはありません)』**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
     "images": []
   },
   {
@@ -3604,9 +3616,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "焼き鳥(雨) [3年有志食販]",
-    "words": "",
-    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**[3年有志食販] なんてこったパンナコッタ亭(＊パンナコッタはありません)**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
+    "name": "焼き鳥(雨) [食販]",
+    "words": "[3年有志食販]",
+    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**3年有志食販『なんてこったパンナコッタ亭(＊パンナコッタはありません)』**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
     "images": []
   },
   {
@@ -3614,9 +3626,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "アイス・チュロス(晴れ) [3年有志食販]",
-    "words": "",
-    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**[3年有志食販] なんてこったパンナコッタ亭(＊パンナコッタはありません)**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
+    "name": "アイス・チュロス(晴れ) [食販]",
+    "words": "[3年有志食販]",
+    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**3年有志食販『なんてこったパンナコッタ亭(＊パンナコッタはありません)』**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
     "images": []
   },
   {
@@ -3624,9 +3636,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "アイス・チュロス(雨) [3年有志食販]",
-    "words": "",
-    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**[3年有志食販] なんてこったパンナコッタ亭(＊パンナコッタはありません)**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
+    "name": "アイス・チュロス(雨) [食販]",
+    "words": "[3年有志食販]",
+    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**3年有志食販『なんてこったパンナコッタ亭(＊パンナコッタはありません)』**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
     "images": []
   },
   {
@@ -3634,9 +3646,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "パン・飲み物 [3年有志食販]",
-    "words": "",
-    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**[3年有志食販] なんてこったパンナコッタ亭(＊パンナコッタはありません)**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
+    "name": "パン・飲み物 [食販]",
+    "words": "[3年有志食販]",
+    "desc": "[記念祭HP 食飯](https://kinensai79.nishi-h.net/shop)/n**3年有志食販『なんてこったパンナコッタ亭(＊パンナコッタはありません)』**/n「今年のテーマは『Newest』。今までにない斬新なものを作ろう」と言われて考案した案が却下された。「前例がないからなんとも言えん」（この話はフィクションです）",
     "images": []
   },
   {
@@ -3644,9 +3656,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "体育館 [管弦楽部][NWPO][吹奏楽部][男女バスケ部]",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**[管弦楽部] NeOrchestra!!**/n西高管弦楽部、通称NPO！弦楽器の美しい響きと管楽器とのハーモニーで、あなたを一時間の音楽の旅にいざないます。白鳥の湖や仮面舞踏会などを演奏します。ぜひ聴きに来てください！/n**[NWPO] NWPO**/n吹奏楽部×管弦楽部のときめき溢れるコラボレーション団体、今年も発足！普段は聞くことのない私たちのサウンドを、全身でお楽しみあれ?/n**[吹奏楽部] Festival Brass 2025**/n今年もNWOが記念祭にやってきた！迫力満点の演奏&演出、キュートなダンス??NWOのサウンドでみんなをメロメロにしちゃうぞ?さあ体育館にLet’s go??/n**[男女バスケ部] 招待試合**/nバスケの白熱試合もダンス部によるのキレキレパフォーマンスも！都立国立高校との招待試合、ぜひ応援に来てください！！一緒に盛り上がりましょう！",
+    "name": "体育館",
+    "words": "[管弦楽部][NWPO][吹奏楽部][男女バスケ部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**管弦楽部『NeOrchestra!!』**/n西高管弦楽部、通称NPO！弦楽器の美しい響きと管楽器とのハーモニーで、あなたを一時間の音楽の旅にいざないます。白鳥の湖や仮面舞踏会などを演奏します。ぜひ聴きに来てください！/n**NWPO『NWPO』**/n吹奏楽部×管弦楽部のときめき溢れるコラボレーション団体、今年も発足！普段は聞くことのない私たちのサウンドを、全身でお楽しみあれ?/n**吹奏楽部『Festival Brass 2025』**/n今年もNWOが記念祭にやってきた！迫力満点の演奏&演出、キュートなダンス??NWOのサウンドでみんなをメロメロにしちゃうぞ?さあ体育館にLet’s go??/n**男女バスケ部『招待試合』**/nバスケの白熱試合もダンス部によるのキレキレパフォーマンスも！都立国立高校との招待試合、ぜひ応援に来てください！！一緒に盛り上がりましょう！",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/管弦楽部.png",
       "https://kinensai79.nishi-h.net/groups_images/NWPO.png",
@@ -3659,9 +3671,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "野外ステージ(晴れ) [ツョッカー。特撮研究会][吹奏楽部][ダンス部][シブ楽隊][ケルト音楽研究サークル][放送部][HANZ＊ONE][醤油マヨネーズフラペチーノ][記念祭実行委員会副委員長企画]",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**[ツョッカー。特撮研究会] 映像・展示・ヒーローショー**/n映像制作・会誌発行・ヒーローショー公演など。集え、特撮を愛する者達よ。/n**[吹奏楽部] Festival Brass 2025**/n今年もNWOが記念祭にやってきた！迫力満点の演奏&演出、キュートなダンス??NWOのサウンドでみんなをメロメロにしちゃうぞ?さあ体育館にLet’s go??/n**[ダンス部] ダンス部記念祭公演ForeverHappiness**/nダンス部79×80期体制になって初の公演です!!かわいい&かっこいい踊りで全員射止めちゃいます?お楽しみください!!ぜひ来てね?/n**[シブ楽隊] 夏シブ ’25**/n「電気を使わない音楽」をテーマとして、気ままに演奏を楽しむ同好会。弾き語りで野ステにシブい風を吹かせます!!/n**[ケルト音楽研究サークル] けるとけるける**/nケルト音楽とは、アイルランド周辺に伝わる優しくてあたたかい伝統音楽です。ケルトの調べに心を癒されてみませんか？ぜひ聴きに来てくださいね！/n**[放送部] NHC のど自慢**/n西高からの生放送。誰かのために歌いたい、想いを届けるために歌いたい。（きっと）そう思っているあなたのためのステージです。/n**[HANZ＊ONE] HANZ＊ONE**/nいつもはかっこよくシュートを決めちゃう女ハンですがハンズワンではかわいく踊ります！普段とのギャップを楽しんでください！！/n**[醤油マヨネーズフラペチーノ] へけ(Head Care)**/n美味しくなさそうなもの代表（？）。コントをやります。タイトルはHead careですが、何か落ちてくるわけではありません。オチはありますがね。（キリッ）/n**[記念祭実行委員会副委員長企画] 西コン!?あなたの魅力を見せつけろ?**/n誰もが輝ける、自由で楽しい西高校。 その中でもひときわ個性とカリスマ性を放つ生徒たちがいる。 さあ、「西コン」で、西高生の魅力をとくとご覧あれ！",
+    "name": "野外ステージ(晴れ)",
+    "words": "[ツョッカー。特撮研究会][吹奏楽部][ダンス部][シブ楽隊][ケルト音楽研究サークル][放送部][HANZ＊ONE][醤油マヨネーズフラペチーノ][記念祭実行委員会副委員長企画]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**ツョッカー。特撮研究会『映像・展示・ヒーローショー』**/n映像制作・会誌発行・ヒーローショー公演など。集え、特撮を愛する者達よ。/n**吹奏楽部『Festival Brass 2025』**/n今年もNWOが記念祭にやってきた！迫力満点の演奏&演出、キュートなダンス??NWOのサウンドでみんなをメロメロにしちゃうぞ?さあ体育館にLet’s go??/n**ダンス部『ダンス部記念祭公演ForeverHappiness』**/nダンス部79×80期体制になって初の公演です!!かわいい&かっこいい踊りで全員射止めちゃいます?お楽しみください!!ぜひ来てね?/n**シブ楽隊『夏シブ ’25』**/n「電気を使わない音楽」をテーマとして、気ままに演奏を楽しむ同好会。弾き語りで野ステにシブい風を吹かせます!!/n**ケルト音楽研究サークル『けるとけるける』**/nケルト音楽とは、アイルランド周辺に伝わる優しくてあたたかい伝統音楽です。ケルトの調べに心を癒されてみませんか？ぜひ聴きに来てくださいね！/n**放送部『NHC のど自慢』**/n西高からの生放送。誰かのために歌いたい、想いを届けるために歌いたい。（きっと）そう思っているあなたのためのステージです。/n**HANZ＊ONE『HANZ＊ONE』**/nいつもはかっこよくシュートを決めちゃう女ハンですがハンズワンではかわいく踊ります！普段とのギャップを楽しんでください！！/n**醤油マヨネーズフラペチーノ『へけ(Head Care)』**/n美味しくなさそうなもの代表（？）。コントをやります。タイトルはHead careですが、何か落ちてくるわけではありません。オチはありますがね。（キリッ）/n**記念祭実行委員会副委員長企画『西コン!?あなたの魅力を見せつけろ?』**/n誰もが輝ける、自由で楽しい西高校。 その中でもひときわ個性とカリスマ性を放つ生徒たちがいる。 さあ、「西コン」で、西高生の魅力をとくとご覧あれ！",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/ツョッカー。.png",
       "https://kinensai79.nishi-h.net/groups_images/吹奏楽部.png",
@@ -3679,9 +3691,9 @@
     "mode": "kinensai79",
     "floor": "f1",
     "behavior": "kinensai79",
-    "name": "野外ステージ(雨) [ツョッカー。特撮研究会][吹奏楽部][ダンス部][シブ楽隊][ケルト音楽研究サークル][放送部][HANZ＊ONE][醤油マヨネーズフラペチーノ][記念祭実行委員会副委員長企画]",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**[ツョッカー。特撮研究会] 映像・展示・ヒーローショー**/n映像制作・会誌発行・ヒーローショー公演など。集え、特撮を愛する者達よ。/n**[吹奏楽部] Festival Brass 2025**/n今年もNWOが記念祭にやってきた！迫力満点の演奏&演出、キュートなダンス??NWOのサウンドでみんなをメロメロにしちゃうぞ?さあ体育館にLet’s go??/n**[ダンス部] ダンス部記念祭公演ForeverHappiness**/nダンス部79×80期体制になって初の公演です!!かわいい&かっこいい踊りで全員射止めちゃいます?お楽しみください!!ぜひ来てね?/n**[シブ楽隊] 夏シブ ’25**/n「電気を使わない音楽」をテーマとして、気ままに演奏を楽しむ同好会。弾き語りで野ステにシブい風を吹かせます!!/n**[ケルト音楽研究サークル] けるとけるける**/nケルト音楽とは、アイルランド周辺に伝わる優しくてあたたかい伝統音楽です。ケルトの調べに心を癒されてみませんか？ぜひ聴きに来てくださいね！/n**[放送部] NHC のど自慢**/n西高からの生放送。誰かのために歌いたい、想いを届けるために歌いたい。（きっと）そう思っているあなたのためのステージです。/n**[HANZ＊ONE] HANZ＊ONE**/nいつもはかっこよくシュートを決めちゃう女ハンですがハンズワンではかわいく踊ります！普段とのギャップを楽しんでください！！/n**[醤油マヨネーズフラペチーノ] へけ(Head Care)**/n美味しくなさそうなもの代表（？）。コントをやります。タイトルはHead careですが、何か落ちてくるわけではありません。オチはありますがね。（キリッ）/n**[記念祭実行委員会副委員長企画] 西コン!?あなたの魅力を見せつけろ?**/n誰もが輝ける、自由で楽しい西高校。 その中でもひときわ個性とカリスマ性を放つ生徒たちがいる。 さあ、「西コン」で、西高生の魅力をとくとご覧あれ！",
+    "name": "野外ステージ(雨)",
+    "words": "[ツョッカー。特撮研究会][吹奏楽部][ダンス部][シブ楽隊][ケルト音楽研究サークル][放送部][HANZ＊ONE][醤油マヨネーズフラペチーノ][記念祭実行委員会副委員長企画]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**ツョッカー。特撮研究会『映像・展示・ヒーローショー』**/n映像制作・会誌発行・ヒーローショー公演など。集え、特撮を愛する者達よ。/n**吹奏楽部『Festival Brass 2025』**/n今年もNWOが記念祭にやってきた！迫力満点の演奏&演出、キュートなダンス??NWOのサウンドでみんなをメロメロにしちゃうぞ?さあ体育館にLet’s go??/n**ダンス部『ダンス部記念祭公演ForeverHappiness』**/nダンス部79×80期体制になって初の公演です!!かわいい&かっこいい踊りで全員射止めちゃいます?お楽しみください!!ぜひ来てね?/n**シブ楽隊『夏シブ ’25』**/n「電気を使わない音楽」をテーマとして、気ままに演奏を楽しむ同好会。弾き語りで野ステにシブい風を吹かせます!!/n**ケルト音楽研究サークル『けるとけるける』**/nケルト音楽とは、アイルランド周辺に伝わる優しくてあたたかい伝統音楽です。ケルトの調べに心を癒されてみませんか？ぜひ聴きに来てくださいね！/n**放送部『NHC のど自慢』**/n西高からの生放送。誰かのために歌いたい、想いを届けるために歌いたい。（きっと）そう思っているあなたのためのステージです。/n**HANZ＊ONE『HANZ＊ONE』**/nいつもはかっこよくシュートを決めちゃう女ハンですがハンズワンではかわいく踊ります！普段とのギャップを楽しんでください！！/n**醤油マヨネーズフラペチーノ『へけ(Head Care)』**/n美味しくなさそうなもの代表（？）。コントをやります。タイトルはHead careですが、何か落ちてくるわけではありません。オチはありますがね。（キリッ）/n**記念祭実行委員会副委員長企画『西コン!?あなたの魅力を見せつけろ?』**/n誰もが輝ける、自由で楽しい西高校。 その中でもひときわ個性とカリスマ性を放つ生徒たちがいる。 さあ、「西コン」で、西高生の魅力をとくとご覧あれ！",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/ツョッカー。.png",
       "https://kinensai79.nishi-h.net/groups_images/吹奏楽部.png",
@@ -3805,25 +3817,13 @@
     "images": []
   },
   {
-    "id": "k79-3KbN",
-    "mode": "kinensai79",
-    "floor": "f1",
-    "behavior": "kinensai79",
-    "name": "[Nishi Flyer] 西空 2025",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n「空を飛ぶ」これは人類の大きな夢だった。ヒコーキ好きの西高生による特別展示やペットボトルロケットの発射を予定しています。皆様のご搭乗をお待ちしております。",
-    "images": [
-      "https://kinensai79.nishi-h.net/groups_images/NISHI FLYER.png"
-    ]
-  },
-  {
     "id": "k79-2jQ8",
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[2A] 西COM",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n西高を知る者に膾炙する”旬化”。教室に忘れた”旬化”を取り戻すべく夜の学校に侵入するが､､､。学校に張り巡らされた”西COM”から無事逃れることはできるのか??",
+    "name": "2A",
+    "words": "[2A]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**2A『西COM』**/n西高を知る者に膾炙する”旬化”。教室に忘れた”旬化”を取り戻すべく夜の学校に侵入するが､､､。学校に張り巡らされた”西COM”から無事逃れることはできるのか??",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/2A.png"
     ]
@@ -3833,9 +3833,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[2B] りんごアレルギーの白雪姫",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n2年B組の『白雪姫』。それはこの物語の寓話性を問い、その不完全さを払拭することになるであろう。現実世界に溶け込んだこの物語の設定がもしも間違っているとしたら？",
+    "name": "2B",
+    "words": "[2B]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**2B『りんごアレルギーの白雪姫』**/n2年B組の『白雪姫』。それはこの物語の寓話性を問い、その不完全さを払拭することになるであろう。現実世界に溶け込んだこの物語の設定がもしも間違っているとしたら？",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/2B.png"
     ]
@@ -3845,9 +3845,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[2C] Mission:ImpoCble",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n世界が欲しがるのは核でも金でもない。『コバヤシノジンセイアドバイス』だった??。 敵の目を掻い潜り、奪い取る覚悟はあるか。新感覚スパイゲームに挑戦せよ！",
+    "name": "2C",
+    "words": "[2C]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**2C『Mission:ImpoCble』**/n世界が欲しがるのは核でも金でもない。『コバヤシノジンセイアドバイス』だった??。 敵の目を掻い潜り、奪い取る覚悟はあるか。新感覚スパイゲームに挑戦せよ！",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/2C.png"
     ]
@@ -3857,9 +3857,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[2D] 今日好きになりました。?西高編?",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n運命の恋と西春の日々をテーマに、個性豊かな現役高校生（？）たちを追う恋愛番組。彼らの本気の恋と西春を追いかけます。果たしてメンバーは運命の恋を見つけることができるのか？",
+    "name": "2D",
+    "words": "[2D]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**2D『今日好きになりました。?西高編?』**/n運命の恋と西春の日々をテーマに、個性豊かな現役高校生（？）たちを追う恋愛番組。彼らの本気の恋と西春を追いかけます。果たしてメンバーは運命の恋を見つけることができるのか？",
     "images": []
   },
   {
@@ -3867,9 +3867,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[2E] 西月記",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n常に成績トップを誇っていた主人公。しかし、ある挫折が彼の未来を大きく塗り替えていく…2Eが送る、名作「山月記」のパロディ劇場____",
+    "name": "2E",
+    "words": "[2E]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**2E『西月記』**/n常に成績トップを誇っていた主人公。しかし、ある挫折が彼の未来を大きく塗り替えていく…2Eが送る、名作「山月記」のパロディ劇場____",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/2E.png"
     ]
@@ -3879,9 +3879,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[2F] 長月の館",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/nイギリス・ロンドンに佇む謎めいた洋館を舞台にした体験型アトラクション。――スリルと興奮を味わえる非日常の空間へようこそ。",
+    "name": "2F",
+    "words": "[2F]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**2F『長月の館』**/nイギリス・ロンドンに佇む謎めいた洋館を舞台にした体験型アトラクション。――スリルと興奮を味わえる非日常の空間へようこそ。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/2F.png"
     ]
@@ -3891,9 +3891,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[2G] むかGばなG法廷?かぐや姫?",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/nあのかぐや姫が被告人に！？そして判決を下すのは選ばれた7人の裁判員。果たして有罪か、無罪か。 日本最古の物語をテーマに繰り広げられる、観客参加型の法廷劇！",
+    "name": "2G",
+    "words": "[2G]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**2G『むかGばなG法廷?かぐや姫?』**/nあのかぐや姫が被告人に！？そして判決を下すのは選ばれた7人の裁判員。果たして有罪か、無罪か。 日本最古の物語をテーマに繰り広げられる、観客参加型の法廷劇！",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/2G.png"
     ]
@@ -3903,9 +3903,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[2H] 赤頭筋ちゃん",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n皆は『赤ずきん』と聞くと、何を思い浮かべるだろうか？一人の少女が狼に襲われ…。あれ、勘違いしないでね。君に聞いているのは『赤頭筋』(?)のことだよ。",
+    "name": "2H",
+    "words": "[2H]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**2H『赤頭筋ちゃん』**/n皆は『赤ずきん』と聞くと、何を思い浮かべるだろうか？一人の少女が狼に襲われ…。あれ、勘違いしないでね。君に聞いているのは『赤頭筋』(?)のことだよ。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/2H.png"
     ]
@@ -3915,9 +3915,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[秘密結社ベトリナ] 無駄",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n無駄。",
+    "name": "秘密結社ベトリナ",
+    "words": "[秘密結社ベトリナ]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**秘密結社ベトリナ『無駄』**/n無駄。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/秘密結社ベトリナ.png"
     ]
@@ -3927,9 +3927,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[ディベート部] 部誌発行",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n大会で述べている意見などを記載した部誌を発行します。都立高(ほぼ)唯一のディベート部の活動を覗いてみませんか??",
+    "name": "ディベート部",
+    "words": "[ディベート部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**ディベート部『部誌発行』**/n大会で述べている意見などを記載した部誌を発行します。都立高(ほぼ)唯一のディベート部の活動を覗いてみませんか??",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/ディベート部.png"
     ]
@@ -3939,9 +3939,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[にせい] 暇を持て余した紙ゴミの遊び",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n顧問鯖。御機嫌如何。うぇ??レモン1個に含まれるビタミンCはレモン4個分うぇ??多様性を多用せい？あなかま。まアあてにすんな酷すぎ発禁お前もにせいにならないか？",
+    "name": "にせい",
+    "words": "[にせい]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**にせい『暇を持て余した紙ゴミの遊び』**/n顧問鯖。御機嫌如何。うぇ??レモン1個に含まれるビタミンCはレモン4個分うぇ??多様性を多用せい？あなかま。まアあてにすんな酷すぎ発禁お前もにせいにならないか？",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/にせい.png"
     ]
@@ -3951,9 +3951,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[ポケモン研究サークル] ポケットモンスター略して「ケンタ」",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n西高において大っぴらに学校にSwitchを持ってきて白昼堂々ポケモンを楽しめるのはポケモンサークルの特権！2階東渡り廊下にて部誌配布&お絵描き受付中！ぜひきてね",
+    "name": "ポケモン研究サークル",
+    "words": "[ポケモン研究サークル]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**ポケモン研究サークル『ポケットモンスター略して「ケンタ」』**/n西高において大っぴらに学校にSwitchを持ってきて白昼堂々ポケモンを楽しめるのはポケモンサークルの特権！2階東渡り廊下にて部誌配布&お絵描き受付中！ぜひきてね",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/ポケモン研究サークル.png"
     ]
@@ -3963,9 +3963,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[町田市民の会] 町田市民の会79×80",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n帰ってきた！町田市民の会！！地元の魅力を発信すべく作られた地域結社的謎団体。あなたも「町田市民体験」していきませんか？",
+    "name": "町田市民の会",
+    "words": "[町田市民の会]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**町田市民の会『町田市民の会79×80』**/n帰ってきた！町田市民の会！！地元の魅力を発信すべく作られた地域結社的謎団体。あなたも「町田市民体験」していきませんか？",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/町田市民の会.png"
     ]
@@ -3975,9 +3975,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[イラスト研究部] いらけん！",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/nイラスト研究部です！今年度も例年同様、部誌の頒布を行います！部員数も増え華やかになったAstanaを是非、お楽しみくださいませ！！ ",
+    "name": "イラスト研究部",
+    "words": "[イラスト研究部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**イラスト研究部『いらけん！』**/nイラスト研究部です！今年度も例年同様、部誌の頒布を行います！部員数も増え華やかになったAstanaを是非、お楽しみくださいませ！！ ",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/イラスト研究部.png"
     ]
@@ -3987,9 +3987,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[ゆにば] 愉快な西高生に執行委員メンバーを添えて",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n記念祭、楽しいけど、西高生ってよくわかんない…そんなあなた朗報！西高生と話してみませんか？個性豊か（すぎ）なメンバーが会議室でお待ちしています！",
+    "name": "ゆにば",
+    "words": "[ゆにば]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**ゆにば『愉快な西高生に執行委員メンバーを添えて』**/n記念祭、楽しいけど、西高生ってよくわかんない…そんなあなた朗報！西高生と話してみませんか？個性豊か（すぎ）なメンバーが会議室でお待ちしています！",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/ゆにば.png"
     ]
@@ -3999,9 +3999,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[映像研究サークル] 映像研究サークル 作品群 file.1～白衣～",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n我ら西暦2025年突如西方の高校に爆誕せしNEWサークル。映像を撮るのである。三つ巴的青春バトルコメディな闇鍋の如き狂乱絵巻をご覧あれ。テーマは『白衣族』。",
+    "name": "映像研究サークル",
+    "words": "[映像研究サークル]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**映像研究サークル『映像研究サークル 作品群 file.1～白衣～』**/n我ら西暦2025年突如西方の高校に爆誕せしNEWサークル。映像を撮るのである。三つ巴的青春バトルコメディな闇鍋の如き狂乱絵巻をご覧あれ。テーマは『白衣族』。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/映像研究サークル.png"
     ]
@@ -4011,9 +4011,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[美術部] 美術部",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n油絵の展示をしています。絵を見ながら涼みたい方！ぜひ美術室へ",
+    "name": "美術部",
+    "words": "[美術部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**美術部『美術部』**/n油絵の展示をしています。絵を見ながら涼みたい方！ぜひ美術室へ",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/美術部.png"
     ]
@@ -4023,9 +4023,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "[浪漫倶楽部] ロマンはここだ。",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/nロマンはここだ。",
+    "name": "浪漫倶楽部",
+    "words": "[浪漫倶楽部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**浪漫倶楽部『ロマンはここだ。』**/nロマンはここだ。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/浪漫倶楽部.png"
     ]
@@ -4035,9 +4035,9 @@
     "mode": "kinensai79",
     "floor": "f2",
     "behavior": "kinensai79",
-    "name": "視聴覚ホール [Westrio][演劇部][剣道部][78期サークル志記][ダンス部][ゴスペルフリークス部]",
-    "words": "",
-    "desc": "入口は2階です。/n[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**[Westrio] Westrio’s classical concert**/nWestrio は今年で結成2年目のピアノトリオです。楽器歴10年以上のクラシック好き３人が本気でお届けする音色を是非お楽しみください。/n**[演劇部] 演劇作成キット**/n廃部寸前の演劇部の部長が手に入れたのは……　「これが『演劇作成キット』……！　とりあえず、開封！」　それは彼女が作る『キラキラした劇』の始まりだった。/n**[剣道部] 人生劇場**/n50年の伝統を誇る「人生劇場」。剣道部員たちは竹刀を真剣に持ち代え、舞台上でその実力を発揮する。練り上げた脚本、磨き上げた剣技。一夏をかけた時代劇、ここに開演。/n**[78期サークル志記] 名前はまだない**/n18歳になる前日、見つけたのは中学生の頃の日記。あの頃飲み込んだ言葉。友達、家族、そして自分へ。忘れたはずの思いは、今もまだ心の中に残っていた。/n**[ダンス部] ダンス部記念祭公演ForeverHappiness**/nダンス部79×80期体制になって初の公演です!!かわいい&かっこいい踊りで全員射止めちゃいます?お楽しみください!!ぜひ来てね?/n**[ゴスペルフリークス部] Call us?Chorus!!**/nゴスペルフリークス部？ゴスフリ？歌い狂う…？彼らは何者なのか、視聴覚ホールで何が起きるのか。真実は、その歌を聞く人だけが知るーー。",
+    "name": "視聴覚ホール",
+    "words": "[Westrio][演劇部][剣道部][78期サークル志記][ダンス部][ゴスペルフリークス部]",
+    "desc": "入口は2階です。/n[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**Westrio『Westrio’s classical concert』**/nWestrio は今年で結成2年目のピアノトリオです。楽器歴10年以上のクラシック好き３人が本気でお届けする音色を是非お楽しみください。/n**演劇部『演劇作成キット』**/n廃部寸前の演劇部の部長が手に入れたのは……　「これが『演劇作成キット』……！　とりあえず、開封！」　それは彼女が作る『キラキラした劇』の始まりだった。/n**剣道部『人生劇場』**/n50年の伝統を誇る「人生劇場」。剣道部員たちは竹刀を真剣に持ち代え、舞台上でその実力を発揮する。練り上げた脚本、磨き上げた剣技。一夏をかけた時代劇、ここに開演。/n**78期サークル志記『名前はまだない』**/n18歳になる前日、見つけたのは中学生の頃の日記。あの頃飲み込んだ言葉。友達、家族、そして自分へ。忘れたはずの思いは、今もまだ心の中に残っていた。/n**ダンス部『ダンス部記念祭公演ForeverHappiness』**/nダンス部79×80期体制になって初の公演です!!かわいい&かっこいい踊りで全員射止めちゃいます?お楽しみください!!ぜひ来てね?/n**ゴスペルフリークス部『Call us?Chorus!!』**/nゴスペルフリークス部？ゴスフリ？歌い狂う…？彼らは何者なのか、視聴覚ホールで何が起きるのか。真実は、その歌を聞く人だけが知るーー。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/Westrio.png",
       "https://kinensai79.nishi-h.net/groups_images/演劇部.png",
@@ -4052,9 +4052,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[ツョッカー。特撮研究会] 映像・展示・ヒーローショー",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n映像制作・会誌発行・ヒーローショー公演など。集え、特撮を愛する者達よ。",
+    "name": "ツョッカー。特撮研究会",
+    "words": "[ツョッカー。特撮研究会]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**ツョッカー。特撮研究会『映像・展示・ヒーローショー』**/n映像制作・会誌発行・ヒーローショー公演など。集え、特撮を愛する者達よ。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/ツョッカー。.png"
     ]
@@ -4064,9 +4064,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[504] 技術班活動ログ2025",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n今回も記念祭HP、webシステム等の制作を担当させていただきました、504です。3Eにて記念祭に至るまでの活動ログ、部員の作品を公開中です。ご照覧あれいぃ！！！",
+    "name": "504",
+    "words": "[504]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**504『技術班活動ログ2025』**/n今回も記念祭HP、webシステム等の制作を担当させていただきました、504です。3Eにて記念祭に至るまでの活動ログ、部員の作品を公開中です。ご照覧あれいぃ！！！",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/504.png"
     ]
@@ -4076,9 +4076,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[CR東日本] あなたと　あたらしい　CRへ",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n鉄道好きも、そうじゃない人も楽しめる展示を目指して。私たちが伝えたいことはただひとつ。そう、「鉄道って、かっこいい。」",
+    "name": "CR東日本",
+    "words": "[CR東日本]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**CR東日本『あなたと　あたらしい　CRへ』**/n鉄道好きも、そうじゃない人も楽しめる展示を目指して。私たちが伝えたいことはただひとつ。そう、「鉄道って、かっこいい。」",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/CR.png"
     ]
@@ -4088,9 +4088,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[Nishi Flyer] 西空 2025",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n「空を飛ぶ」これは人類の大きな夢だった。ヒコーキ好きの西高生による特別展示やペットボトルロケットの発射を予定しています。皆様のご搭乗をお待ちしております。",
+    "name": "Nishi Flyer",
+    "words": "[Nishi Flyer]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**Nishi Flyer『西空 2025』**/n「空を飛ぶ」これは人類の大きな夢だった。ヒコーキ好きの西高生による特別展示やペットボトルロケットの発射を予定しています。皆様のご搭乗をお待ちしております。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/NISHI FLYER.png"
     ]
@@ -4100,9 +4100,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[クイズ研究同好会] Nishi plus One is Q",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n確かなQualityで豊富なQuantityのQuestions。1回約QuarterとQuite Quickでお手軽。1人でもQuintetでも皆でQuiz!",
+    "name": "クイズ研究同好会",
+    "words": "[クイズ研究同好会]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**クイズ研究同好会『Nishi plus One is Q』**/n確かなQualityで豊富なQuantityのQuestions。1回約QuarterとQuite Quickでお手軽。1人でもQuintetでも皆でQuiz!",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/クイズ研究会.png"
     ]
@@ -4112,9 +4112,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[宇宙研究部] ?プラネタリウム?",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n西高宇宙研究部特製のプラネタリウム見に行こう！！ドームは設計から部員が考えてます?すごいよ☆部誌も配布中…",
+    "name": "宇宙研究部",
+    "words": "[宇宙研究部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**宇宙研究部『✩プラネタリウム✩』**/n西高宇宙研究部特製のプラネタリウム見に行こう！！ドームは設計から部員が考えてます?すごいよ☆部誌も配布中…",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/宇宙研究会.png"
     ]
@@ -4124,9 +4124,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[数学研究同好会] クロネッカーの西春の夢",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n都立西高校の記念祭に来たならば、数学研究同好会に一度訪れるべきだという定理に関して、私は真に驚くべき証明を見つけたが、この余白はそれを書くには狭すぎる。",
+    "name": "数学研究同好会",
+    "words": "[数学研究同好会]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**数学研究同好会『クロネッカーの西春の夢』**/n都立西高校の記念祭に来たならば、数学研究同好会に一度訪れるべきだという定理に関して、私は真に驚くべき証明を見つけたが、この余白はそれを書くには狭すぎる。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/数学研究同好会.png"
     ]
@@ -4136,9 +4136,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[歴史研究部] 甍2025",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n連綿と紡がれた歴史がここに息づく。今年度の記念祭でも恒例となった部誌「甍」の配布やこれまでの活動や研究の成果を発表予定です。ぜひ、おこしくださいませ。",
+    "name": "歴史研究部",
+    "words": "[歴史研究部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**歴史研究部『甍2025』**/n連綿と紡がれた歴史がここに息づく。今年度の記念祭でも恒例となった部誌「甍」の配布やこれまでの活動や研究の成果を発表予定です。ぜひ、おこしくださいませ。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/歴史研究部.png"
     ]
@@ -4148,9 +4148,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[Origamiサークル] 折り紙美術館",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n折り鶴で作った真珠の耳飾りの少女の絵画を展示します。また、白鳥の巨大作品の展示、折り紙で作成した合格願、学業成就等のお守りの配布も行なっています。",
+    "name": "Origamiサークル",
+    "words": "[Origamiサークル]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**Origamiサークル『折り紙美術館』**/n折り鶴で作った真珠の耳飾りの少女の絵画を展示します。また、白鳥の巨大作品の展示、折り紙で作成した合格願、学業成就等のお守りの配布も行なっています。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/ORIGAMI サークル.png"
     ]
@@ -4160,9 +4160,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[ワンダーフォーゲル部] 活動記録",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n山のジオラマや普段の装備、山行の記録などを展示しています。運動部最大勢力の展示、とくとご覧あれ",
+    "name": "ワンダーフォーゲル部",
+    "words": "[ワンダーフォーゲル部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**ワンダーフォーゲル部『活動記録』**/n山のジオラマや普段の装備、山行の記録などを展示しています。運動部最大勢力の展示、とくとご覧あれ",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/ワンダーフォーゲル部.png"
     ]
@@ -4172,9 +4172,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[cod.] codologue.",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n冗談でも化学的酸素要求量でもコール◯ブデューティでもない。その正体は鱈である。",
+    "name": "cod.",
+    "words": "[cod.]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**cod.『codologue.』**/n冗談でも化学的酸素要求量でもコール◯ブデューティでもない。その正体は鱈である。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/cod.png"
     ]
@@ -4184,9 +4184,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[かるた部] めぐり逢ひて",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/nかるた部です！実際の13.５倍の札を展示しています。紫式部より清少納言派？いやいや、一字決まりの紫式部でしょ！",
+    "name": "かるた部",
+    "words": "[かるた部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**かるた部『めぐり逢ひて』**/nかるた部です！実際の13.５倍の札を展示しています。紫式部より清少納言派？いやいや、一字決まりの紫式部でしょ！",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/かるた部.png"
     ]
@@ -4196,9 +4196,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[ボカロサークル] ぬぬぬぬぬぬぬぬぬ…ぬ",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n所詮ヒトの真似事だと知ってなおも歌い続く永遠の命「vocaloid」___ ボカロを愛する者たちによる、たった1区画のコミケをとくとご覧あれ。",
+    "name": "ボカロサークル",
+    "words": "[ボカロサークル]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**ボカロサークル『ぬぬぬぬぬぬぬぬぬ…ぬ』**/n所詮ヒトの真似事だと知ってなおも歌い続く永遠の命「vocaloid」___ ボカロを愛する者たちによる、たった1区画のコミケをとくとご覧あれ。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/ボカロサークル.png"
     ]
@@ -4208,9 +4208,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[西高の出版を愛する会] 西高の出版を愛する会",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n西高の出版を愛する会……。それは西高の歴史を築きし先人たちが残した出版物に心惹かれて、古きものも新きものも全ての出版物をこよなく愛する西高生の会である。",
+    "name": "西高の出版を愛する会",
+    "words": "[西高の出版を愛する会]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**西高の出版を愛する会『西高の出版を愛する会』**/n西高の出版を愛する会……。それは西高の歴史を築きし先人たちが残した出版物に心惹かれて、古きものも新きものも全ての出版物をこよなく愛する西高生の会である。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/西高の出版を愛する会.png"
     ]
@@ -4220,9 +4220,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[西論会] 西論",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n日々新しくなる社会、自分、他者をどう見つめるか。西高生、思考の書。",
+    "name": "西論会",
+    "words": "[西論会]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**西論会『西論』**/n日々新しくなる社会、自分、他者をどう見つめるか。西高生、思考の書。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/西論.png"
     ]
@@ -4232,9 +4232,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[文芸部] 文芸部2025",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n文芸部です。日頃より部員が小説を書き、部誌として学校内に配布しています。今回は特別版、記念祭号です。年1回の校外向け小説、ぜひお楽しみあれ。",
+    "name": "文芸部",
+    "words": "[文芸部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**文芸部『文芸部2025』**/n文芸部です。日頃より部員が小説を書き、部誌として学校内に配布しています。今回は特別版、記念祭号です。年1回の校外向け小説、ぜひお楽しみあれ。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/文芸部.png"
     ]
@@ -4244,9 +4244,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[同窓会] あの頃僕らは若かった",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n　〇西高会館の紹介　〇同窓会活動紹介　〇支部会活動紹介　〇卒業アルバム　〇園芸部ＯＢ展示　〇同窓生の紹介　〇同窓生の広場　〇飛翔・蒼樹etc.",
+    "name": "同窓会",
+    "words": "[同窓会]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**同窓会『あの頃僕らは若かった』**/n　〇西高会館の紹介　〇同窓会活動紹介　〇支部会活動紹介　〇卒業アルバム　〇園芸部ＯＢ展示　〇同窓生の紹介　〇同窓生の広場　〇飛翔・蒼樹etc.",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/同窓会.png"
     ]
@@ -4256,9 +4256,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[同窓会] あの頃僕らは若かった",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n　〇西高会館の紹介　〇同窓会活動紹介　〇支部会活動紹介　〇卒業アルバム　〇園芸部ＯＢ展示　〇同窓生の紹介　〇同窓生の広場　〇飛翔・蒼樹etc.",
+    "name": "同窓会",
+    "words": "[同窓会]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**同窓会『あの頃僕らは若かった』**/n　〇西高会館の紹介　〇同窓会活動紹介　〇支部会活動紹介　〇卒業アルバム　〇園芸部ＯＢ展示　〇同窓生の紹介　〇同窓生の広場　〇飛翔・蒼樹etc.",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/同窓会.png"
     ]
@@ -4268,9 +4268,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[化学部] 化学の缶詰2025",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n化学部では液体窒素やその他の実験と部誌の配布を行っています。普段なかなか目にすることの無い化学の世界を覗いてみませんか？3階化学実験室へぜひお越しください！",
+    "name": "化学部",
+    "words": "[化学部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**化学部『化学の缶詰2025』**/n化学部では液体窒素やその他の実験と部誌の配布を行っています。普段なかなか目にすることの無い化学の世界を覗いてみませんか？3階化学実験室へぜひお越しください！",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/化学部.png"
     ]
@@ -4280,9 +4280,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[図書委員会] みんなで作る！読書の木",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n図書室では生徒が作成したポップへの投票と、おすすめの本をみなさんに記入してもらう展示を行なっています！みんなで読書の木を作りましょう！ご参加お待ちしています！",
+    "name": "図書委員会",
+    "words": "[図書委員会]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**図書委員会『みんなで作る！読書の木』**/n図書室では生徒が作成したポップへの投票と、おすすめの本をみなさんに記入してもらう展示を行なっています！みんなで読書の木を作りましょう！ご参加お待ちしています！",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/図書委員会.png"
     ]
@@ -4292,9 +4292,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[生物部] セ。－生物部の活動についてー",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n生物部では、解剖ショーやDNAストラップ作り、生き物や活動の展示、そして部誌の配布を行います。生物室までぜひお越しください！",
+    "name": "生物部",
+    "words": "[生物部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**生物部『セ。－生物部の活動についてー』**/n生物部では、解剖ショーやDNAストラップ作り、生き物や活動の展示、そして部誌の配布を行います。生物室までぜひお越しください！",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/生物部.png"
     ]
@@ -4304,9 +4304,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[地学の会] 地学なんていかが？",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n都立西高校では履修もできず、共通テストの赤本からは削除され…これは、そんな不遇な扱いを受ける地学を救おうと意気込んだ数人の西高生による企画展である___",
+    "name": "地学の会",
+    "words": "[地学の会]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**地学の会『地学なんていかが？』**/n都立西高校では履修もできず、共通テストの赤本からは削除され…これは、そんな不遇な扱いを受ける地学を救おうと意気込んだ数人の西高生による企画展である___",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/地学の会.png"
     ]
@@ -4316,9 +4316,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[物理部] ぶっつり物理ぶ",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/nリンゴが落ちた。「なぜだろう」かの有名なアイザック・ニュートンは考えた。彼が想像力を駆使してたどり着いた答え、それは…「そうだ、枝がぶっつり切れたんだ」",
+    "name": "物理部",
+    "words": "[物理部]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**物理部『ぶっつり物理ぶ』**/nリンゴが落ちた。「なぜだろう」かの有名なアイザック・ニュートンは考えた。彼が想像力を駆使してたどり着いた答え、それは…「そうだ、枝がぶっつり切れたんだ」",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/物理部.png"
     ]
@@ -4328,9 +4328,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[理系連合] Sciencean Union",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n数学、化学、物理、生物、情報(あれ、地学は…)。数千年の歴史を紡いだ人類の科学が今ここに集う。科学の繋がりが初めて見せる、未踏のフロンティアへ。",
+    "name": "理系連合",
+    "words": "[理系連合]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**理系連合『Sciencean Union』**/n数学、化学、物理、生物、情報(あれ、地学は…)。数千年の歴史を紡いだ人類の科学が今ここに集う。科学の繋がりが初めて見せる、未踏のフロンティアへ。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/理系連合.png"
     ]
@@ -4340,9 +4340,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "[インドネシア交流会2025] ナシゴレンと青春と私",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n",
+    "name": "インドネシア交流会2025",
+    "words": "[インドネシア交流会2025]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**インドネシア交流会2025『ナシゴレンと青春と私』**",
     "images": []
   },
   {
@@ -4350,9 +4350,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "音楽室 [つるばみ同好会][MADWIMPS][ずっとマヨネーズでいいのに]",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**[つるばみ同好会] ばみロック**/n今年もズックにロック！ばみロック25やるぜぇ? つるんでバンドミュージック?/n**[MADWIMPS] MAD WIMPS**/nRADWIMPSのコピーバンドです！4人で８曲演奏。ここにあるものそれで全てです。音楽室で待ってます。/n**[ずっとマヨネーズでいいのに] マヨロック2025**/n「ずっと真夜中でいいのに」のコピーバンドの「ずっとマヨネーズでいいのに」です。合計八曲やります。みんな！盛り上がるライブにするからぜひ来てくれ！",
+    "name": "音楽室",
+    "words": "[つるばみ同好会][MADWIMPS][ずっとマヨネーズでいいのに]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**つるばみ同好会『ばみロック』**/n今年もズックにロック！ばみロック25やるぜぇ? つるんでバンドミュージック?/n**MADWIMPS『MAD WIMPS』**/nRADWIMPSのコピーバンドです！4人で８曲演奏。ここにあるものそれで全てです。音楽室で待ってます。/n**ずっとマヨネーズでいいのに『マヨロック2025』**/n「ずっと真夜中でいいのに」のコピーバンドの「ずっとマヨネーズでいいのに」です。合計八曲やります。みんな！盛り上がるライブにするからぜひ来てくれ！",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/つるばみ同好会.png",
       "https://kinensai79.nishi-h.net/groups_images/MADWINPS.png",
@@ -4364,9 +4364,9 @@
     "mode": "kinensai79",
     "floor": "f3",
     "behavior": "kinensai79",
-    "name": "音楽練習室 [軽音楽同好会][教員バンド]",
-    "words": "",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**[軽音楽同好会] けいおんのらいぶ**/n軽音楽同好会です。バンド毎にライブをやってます！アゲてきましょー！！是非お越しください！！/n**[教員バンド] 教員だけじゃだめですか？**/n今日を逃したらもう見れない記念祭限りの教員バンド結成！！　教員で記念祭征服！「教員だけじゃだめですか？」",
+    "name": "音楽練習室",
+    "words": "[軽音楽同好会][教員バンド]",
+    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**軽音楽同好会『けいおんのらいぶ』**/n軽音楽同好会です。バンド毎にライブをやってます！アゲてきましょー！！是非お越しください！！/n**教員バンド『教員だけじゃだめですか？』**/n今日を逃したらもう見れない記念祭限りの教員バンド結成！！　教員で記念祭征服！「教員だけじゃだめですか？」",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/軽音楽同好会.png",
       "https://kinensai79.nishi-h.net/groups_images/教員バンド.png"
