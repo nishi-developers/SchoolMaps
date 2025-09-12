@@ -129,12 +129,12 @@
     "style": {
       "body": {
         "fillDefault": {
-          "light": "#bdffb6",
-          "dark": "#158909"
+          "light": "#fdb7ff",
+          "dark": "#a45eb5"
         },
         "fillSelect": {
-          "light": "#42e24a",
-          "dark": "#51d557"
+          "light": "#fb3cf5",
+          "dark": "#ff0ffe"
         },
         "stroke": {
           "light": "var(--MapBorderColor)",
@@ -147,7 +147,7 @@
           "light": "var(--MainBodyColor)",
           "dark": "var(--MainBodyColor)"
         },
-        "fontSize": "1.3rem"
+        "fontSize": "1.5rem"
       }
     }
   }
