@@ -7,10 +7,10 @@ type Config = {
   };
 };
 const defaultConfig: Config = {
-  positionSlipLimit: 50, // タッチの移動量がこの値を超えたら、指が離れたとみなして初期化する
+  positionSlipLimit: 100, // タッチの移動量がこの値を超えたら、指が離れたとみなして初期化する
   zoomUnit: 0.004, // ズームの単位
   restriction: {
-    zoom: 5000, // ズームをブロックする移動量
+    zoom: 5000, // 回転をブロックするズーム量
     rotate: 25, // 回転を許可する移動量
   },
 };
