@@ -3556,7 +3556,7 @@
     "behavior": "kinensai79",
     "name": "Nishi Flyer",
     "words": "[Nishi Flyer]",
-    "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**Nishi Flyer『西空 2025』**/n「空を飛ぶ」これは人類の大きな夢だった。ヒコーキ好きの西高生による特別展示やペットボトルロケットの発射を予定しています。皆様のご搭乗をお待ちしております。",
+    "desc": "**Nishi Flyerの校庭での公演は9/14、15の両日とも中止になりました。**/n[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**Nishi Flyer『西空 2025』**/n「空を飛ぶ」これは人類の大きな夢だった。ヒコーキ好きの西高生による特別展示やペットボトルロケットの発射を予定しています。皆様のご搭乗をお待ちしております。",
     "images": [
       "https://kinensai79.nishi-h.net/groups_images/NISHI FLYER.png"
     ]
@@ -3860,7 +3860,9 @@
     "name": "2D",
     "words": "[2D]",
     "desc": "[記念祭HP 団体紹介](https://kinensai79.nishi-h.net/groups)/n**2D『今日好きになりました。?西高編?』**/n運命の恋と西春の日々をテーマに、個性豊かな現役高校生（？）たちを追う恋愛番組。彼らの本気の恋と西春を追いかけます。果たしてメンバーは運命の恋を見つけることができるのか？",
-    "images": []
+    "images": [
+      "https://kinensai79.nishi-h.net/groups_images/2D.jpg"
+    ]
   },
   {
     "id": "k79-SJdO",
