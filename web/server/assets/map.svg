@@ -1,4 +1,4 @@
-<svg width="1991.311" height="4493.0488" viewBox="0 0 1991.311 4493.0488" version="1.1" xml:space="preserve" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" id="svg432"
+<svg width="1991.311" height="4493.0488" viewBox="0 0 1991.311 4493.0488" version="1.1" xml:space="preserve" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" id="svg429"
   xmlns="http://www.w3.org/2000/svg"
   xmlns:svg="http://www.w3.org/2000/svg"
   xmlns:serif="http://www.serif.com/">
@@ -23,14 +23,12 @@
   <path d="m 1461.1,3476.83 h 264.09 v 363.1 H 1461.1 Z" mode="main" floor="f1" behavior="place" place="martial-arts-field-1f-1"></path>
   <path d="m 1725.2,3627.48 h 28.82 v 212.45 h -28.82 z" mode="main" floor="f1" behavior="place" place="martial-arts-field-1f-warehouse"></path>
   <path d="m 1810.73,3316.2 h 85.04 v 85.04 h -85.04 z" mode="main" floor="f1" behavior="place" place="martial-arts-field-1f-stairs"></path>
-  <path d="m 1754.04,3627.48 h 70.86 v 67.82 h -70.86 z" mode="main" floor="f1" behavior="place" place="martial-arts-field-1f-wc-man"></path>
-  <path d="m 1824.9,3627.48 h 70.87 v 67.82 h -70.87 z" mode="main" floor="f1" behavior="place" place="martial-arts-field-1f-wc-woman"></path>
+  <path d="m 1754.03,3627.48 h 141.73 v 67.82 h -141.73 z" mode="main" floor="f1" behavior="place" place="martial-arts-field-1f-wc"></path>
   <path d="m 1461.1,3210.81 h 264.09 v 266.04 H 1461.1 Z" mode="main" floor="f1" behavior="place" place="martial-arts-field-1f-0"></path>
   <path d="m 1451.35,2960.86 h 148.03 v 165.17 h -148.03 z" mode="main" floor="f1" behavior="place" place="gym-1f-warehouse"></path>
   <path d="m 1451.82,2472.38 h 443.95 v 488.49 h -443.95 z" mode="main" floor="f1" behavior="place" place="gym-1f"></path>
   <path d="m 1525.83,2373.14 h 295.47 v 99.22 h -295.47 z" mode="main" floor="f1" behavior="place" place="gym-1f-stage"></path>
-  <path d="m 1840.64,3026.8 h 55.12 v 99.22 h -55.12 z" mode="main" floor="f1" behavior="place" place="gym-1f-wc-woman"></path>
-  <path d="m 1785.52,3026.8 h 55.12 v 99.22 h -55.12 z" mode="main" floor="f1" behavior="place" place="gym-1f-wc-man"></path>
+  <path d="m 1785.52,3026.8 h 110.24 v 99.22 h -110.24 z" mode="main" floor="f1" behavior="place" place="gym-1f-wc"></path>
   <path d="m 1599.38,3026.8 h 74.02 v 99.22 h -74.02 z" mode="main" floor="f1" behavior="place" place="gym-1f-stairs"></path>
   <path d="m 1525.82,2373.14 v 18.5 h -74.47 v -18.5 z" mode="main" floor="f1" behavior="place" place="gym-1f-stage-stairs-1"></path>
   <path d="m 1525.82,2391.65 v 80.71 h -74.47 v -80.71 z" mode="main" floor="f1" behavior="place" place="gym-1f-stage-side-1"></path>
@@ -80,8 +78,7 @@
   <path d="m 1651.72,31.9335 h 49.15 v 78.3305 h -49.15 z" mode="main" floor="f1" behavior="place" place="nishi-hall-1f-stairs"></path>
   <path d="m 1383.51,364.383 h 62.06 v 36.22 h -62.06 z" mode="main" floor="f1" behavior="place" place="audiovisual-hall-1f-stairs-0"></path>
   <path d="m 1240.98,364.383 h 62.13 v 36.22 h -62.13 z" mode="main" floor="f1" behavior="place" place="audiovisual-hall-1f-stairs-1"></path>
-  <path d="m 1240.98,328.063 h 102.29 v 36.32 h -102.29 z" mode="main" floor="f1" behavior="place" place="audiovisual-hall-1f-wc-man"></path>
-  <path d="m 1343.28,328.063 h 102.28 v 36.32 h -102.28 z" mode="main" floor="f1" behavior="place" place="audiovisual-hall-1f-wc-woman"></path>
+  <path d="m 1240.99,328.063 h 204.57 v 36.32 h -204.57 z" mode="main" floor="f1" behavior="place" place="audiovisual-hall-1f-wc"></path>
   <path d="m 1471.15,328.063 h 25.59 v 55.8 h -25.59 z" mode="main" floor="f1" behavior="place" place="audiovisual-hall-1f-passage-0"></path>
   <path d="m 1189.8,328.063 h 25.59 v 55.8 h -25.59 z" mode="main" floor="f1" behavior="place" place="audiovisual-hall-1f-passage-1"></path>
   <path d="m 1223.47,1127.82 h 159.2 v 135.86 h -159.2 z" mode="main" floor="f1" behavior="place" place="office-warehouse"></path>
