@@ -117,21 +117,11 @@
     ]
   },
   {
-    "id": "audiovisual-hall-1f-wc-man",
+    "id": "audiovisual-hall-1f-wc",
     "mode": "main",
     "floor": "f1",
     "behavior": "place",
-    "name": "男子トイレ[視聴覚ホール]",
-    "words": "",
-    "desc": "",
-    "images": []
-  },
-  {
-    "id": "audiovisual-hall-1f-wc-woman",
-    "mode": "main",
-    "floor": "f1",
-    "behavior": "place",
-    "name": "女子トイレ[視聴覚ホール]",
+    "name": "トイレ[視聴覚ホール]",
     "words": "",
     "desc": "",
     "images": []
@@ -277,21 +267,11 @@
     "images": []
   },
   {
-    "id": "gym-1f-wc-man",
+    "id": "gym-1f-wc",
     "mode": "main",
     "floor": "f1",
     "behavior": "place",
-    "name": "男子トイレ[体育館]",
-    "words": "",
-    "desc": "",
-    "images": []
-  },
-  {
-    "id": "gym-1f-wc-woman",
-    "mode": "main",
-    "floor": "f1",
-    "behavior": "place",
-    "name": "女子トイレ[体育館]",
+    "name": "トイレ[体育館]",
     "words": "",
     "desc": "",
     "images": []
@@ -367,21 +347,11 @@
     "images": []
   },
   {
-    "id": "martial-arts-field-1f-wc-man",
+    "id": "martial-arts-field-1f-wc",
     "mode": "main",
     "floor": "f1",
     "behavior": "place",
-    "name": "男子トイレ[武道場]",
-    "words": "格技棟",
-    "desc": "",
-    "images": []
-  },
-  {
-    "id": "martial-arts-field-1f-wc-woman",
-    "mode": "main",
-    "floor": "f1",
-    "behavior": "place",
-    "name": "女子トイレ[武道場]",
+    "name": "トイレ[武道場]",
     "words": "格技棟",
     "desc": "",
     "images": []
@@ -2758,7 +2728,17 @@
     "mode": "main",
     "floor": "f3",
     "behavior": "place",
-    "name": "図書館",
+    "name": "図書室",
+    "words": "",
+    "desc": "",
+    "images": []
+  },
+  {
+    "id": "library-office",
+    "mode": "main",
+    "floor": "f3",
+    "behavior": "place",
+    "name": "司書室",
     "words": "",
     "desc": "",
     "images": []
