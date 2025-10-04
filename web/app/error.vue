@@ -27,6 +27,10 @@
         <Icon name="reload" />
         <span>再読み込み</span>
       </div>
+      <div class="action" @click="clearCache">
+        <Icon name="deleteSweep" />
+        <span>キャッシュのクリア</span>
+      </div>
     </div>
   </div>
 </template>
@@ -50,6 +54,24 @@ function back() {
 
 function reload() {
   window.location.reload();
+}
+
+async function clearCache() {
+  if (!confirm("本当にキャッシュをクリアしますか?")) return;
+  try {
+    if ("serviceWorker" in navigator) {
+      const regs = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(regs.map((r) => r.unregister()));
+    }
+    if ("caches" in window) {
+      const keys = await caches.keys();
+      await Promise.all(keys.map((k) => caches.delete(k)));
+    }
+    localStorage.removeItem("mapVersion");
+    window.location.reload();
+  } catch (e) {
+    console.error("キャッシュ削除中にエラー:", e);
+  }
 }
 </script>
 <style scoped lang="scss">
