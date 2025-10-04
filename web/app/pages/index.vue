@@ -6,17 +6,17 @@
         <div id="controls">
           <NuxtLink :to="{ name: 'search' }">
             <div>
-              <Icon icon="search" />
+              <Icon icon="mdi:search" />
             </div>
           </NuxtLink>
           <div>
-            <Icon icon="resetFocus" @click="mapMove.reset()" />
+            <Icon icon="material-symbols:reset-focus" @click="mapMove.reset()" />
           </div>
           <div v-if="mapState.isShowLabel.value" @click="mapState.isShowLabel.value = false">
-            <Icon icon="label" />
+            <Icon icon="mdi:label-outline" />
           </div>
           <div v-else @click="mapState.isShowLabel.value = true">
-            <Icon icon="labelOff" />
+            <Icon icon="mdi:label-off-outline" />
           </div>
         </div>
         <div id="floors">

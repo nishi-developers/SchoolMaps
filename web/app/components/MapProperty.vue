@@ -6,22 +6,22 @@
         <div id="titles">
           <div id="name">{{ place?.name }}</div>
           <div id="share" @click="shareLink(`西高マップ @${place?.name}`, useRequestURL().href)">
-            <Icon icon="share" />
+            <Icon icon="mdi:share" />
             共有
           </div>
           <div id="closeBtn" @click='emit("reset-places")'>
-            <Icon icon="cercleClose" />
+            <Icon icon="mdi:close-circle-outline" />
           </div>
         </div>
         <div id="labels">
           <NuxtLink v-if="$floorsChangeable.some((floor) => floor.id == place?.floor)" id="floor" class="label"
             :to="{ name: 'search', query: { q: `floor:${place?.floor}` } }">
-            <Icon icon="stairs" />
+            <Icon icon="mdi:stairs" />
             {{$floorsChangeable.filter((floor) => floor.id == place?.floor)[0]?.name}}
           </NuxtLink>
           <NuxtLink v-if="$modesChangeable.some((mode) => mode.id == place?.mode)" id="mode" class="label"
             :to="{ name: 'search', query: { q: `mode:${place?.mode}` } }">
-            <Icon icon="tag" />
+            <Icon icon="mdi:hashtag" />
             {{$modesChangeable.filter((mode) => mode.id == place?.mode)[0]?.name}}
           </NuxtLink>
         </div>

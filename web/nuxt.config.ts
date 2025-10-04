@@ -254,6 +254,21 @@ export default defineNuxtConfig({
             },
           },
         },
+        {
+          urlPattern: ({ url }) => url.origin === "https://api.iconify.design",
+          handler: "CacheFirst",
+          method: "GET",
+          options: {
+            cacheName: "iconify-icons",
+            expiration: {
+              maxEntries: 200,
+              maxAgeSeconds: 60 * 60 * 24 * 180, // 180 days
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
       ],
     },
   },
