@@ -59,6 +59,7 @@ export default defineNuxtConfig({
       back: "material-symbols:undo-rounded",
       reload: "material-symbols:refresh-rounded",
       home: "material-symbols:home-rounded",
+      deleteSweep: "material-symbols:delete-sweep-rounded",
     },
   },
   vite: {
