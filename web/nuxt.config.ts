@@ -11,15 +11,7 @@ export default defineNuxtConfig({
   ssr: false,
   spaLoadingTemplate: "spa-loading-template.html",
   css: ["@/assets/styles/main.scss"],
-  modules: [
-    "@nuxt/eslint",
-    "@nuxt/fonts",
-    "@nuxt/icon",
-    "@nuxt/scripts",
-    "@nuxt/image",
-    "@nuxt/test-utils",
-    "@vite-pwa/nuxt",
-  ],
+  modules: ["@nuxt/eslint", "@nuxt/fonts", "@nuxt/scripts", "@nuxt/image", "@nuxt/test-utils", "@vite-pwa/nuxt"],
   runtimeConfig: {
     public: {
       systemVersion: packageJson.version || "unknown",
@@ -42,24 +34,6 @@ export default defineNuxtConfig({
       googleAnalytics: {
         id: "G-T8T5WHTM3B",
       },
-    },
-  },
-  icon: {
-    aliases: {
-      share: "material-symbols:share",
-      close: "material-symbols:close-rounded",
-      cercleClose: "material-symbols:cancel-outline-rounded",
-      stairs: "material-symbols:stairs-2-rounded",
-      tag: "material-symbols:tag-rounded",
-      search: "material-symbols:search-rounded",
-      label: "material-symbols:label-outline-rounded",
-      labelOff: "material-symbols:label-off-outline-rounded",
-      resetFocus: "material-symbols:reset-focus-outline-rounded",
-      searchOnMap: "material-symbols:map-search-outline-rounded",
-      back: "material-symbols:undo-rounded",
-      reload: "material-symbols:refresh-rounded",
-      home: "material-symbols:home-rounded",
-      deleteSweep: "material-symbols:delete-sweep-rounded",
     },
   },
   vite: {
