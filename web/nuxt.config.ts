@@ -255,6 +255,7 @@ export default defineNuxtConfig({
           },
         },
         {
+          // Iconify icons
           urlPattern: ({ url }) => url.origin === "https://api.iconify.design",
           handler: "CacheFirst",
           method: "GET",
