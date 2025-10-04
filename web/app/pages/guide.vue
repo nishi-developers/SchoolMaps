@@ -5,16 +5,16 @@
       <h2 class="link"><nuxt-link to="/">マップ</nuxt-link></h2>
       <ul>
         <li>
-          <Icon icon="search" />で検索画面を開きます。
+          <Icon icon="mdi:search" />で検索画面を開きます。
         </li>
         <li>
-          <Icon icon="resetFocus" />でマップの位置をリセットします。
+          <Icon icon="material-symbols:reset-focus" />でマップの位置をリセットします。
         </li>
         <li>
-          <Icon icon="label" />で場所名を表示します。
+          <Icon icon="mdi:label-outline" />で場所名を表示します。
         </li>
         <li>
-          <Icon icon="labelOff" />で場所名を非表示します。
+          <Icon icon="mdi:label-off-outline" />で場所名を非表示します。
         </li>
       </ul>
       <h3>PC・マウス</h3>

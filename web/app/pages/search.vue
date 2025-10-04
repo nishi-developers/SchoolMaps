@@ -4,18 +4,18 @@
       <h1>マップ検索</h1>
       <div id="searchBox">
         <label id="searchIcon" for="searchInput">
-          <Icon icon="search" />
+          <Icon icon="mdi:search" />
         </label>
         <input id="searchInput" v-model="query" type="text" placeholder="検索ワードを入力" required>
         <label for="searchInput" class="searchFunc" @click="query = ''">
-          <Icon icon="close" />
+          <Icon icon="mdi:close" />
         </label>
         <label class="searchFunc" @click="shareLink(`西高マップ-検索「${query}」`, useRequestURL().href)">
-          <Icon icon="share" />
+          <Icon icon="mdi:share" />
         </label>
         <NuxtLink class="searchFunc"
           :to="{ name: 'jump-map-search', query: { q: query, and: isAndSearch.toString() }, replace: false }">
-          <Icon icon="searchOnMap" />
+          <Icon icon="mdi:map-search-outline" />
         </NuxtLink>
       </div>
       <div id="modeSelect">
@@ -33,11 +33,11 @@
         <NuxtLink v-for="id, key in results" :key="key" class="place" :to="{ name: 'index', query: { places: id } }">
           <span class="name">{{ placeName(id) }}</span>
           <span v-if="modeName(id)" class="mode">
-            <Icon icon="tag" />
+            <Icon icon="mdi:hashtag" />
             {{ modeName(id) }}
           </span>
           <span v-if="floorName(id)" class="position">
-            <Icon icon="stairs" />
+            <Icon icon="mdi:stairs" />
             {{ floorName(id) }}
           </span>
         </NuxtLink>
