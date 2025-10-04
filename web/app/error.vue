@@ -17,19 +17,19 @@
     </div>
     <div class="actions">
       <div class="action" @click="back">
-        <Icon name="back" />
+        <Icon icon="back" />
         <span>元のページに戻る</span>
       </div>
       <NuxtLink class="action" to="/">
-        <Icon name="home" />
+        <Icon icon="home" />
         <span>トップに戻る</span>
       </NuxtLink>
       <div class="action" @click="reload">
-        <Icon name="reload" />
+        <Icon icon="reload" />
         <span>再読み込み</span>
       </div>
       <div class="action" @click="clearCache">
-        <Icon name="deleteSweep" />
+        <Icon icon="deleteSweep" />
         <span>キャッシュのクリア</span>
       </div>
     </div>
