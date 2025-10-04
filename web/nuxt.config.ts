@@ -256,7 +256,7 @@ export default defineNuxtConfig({
             networkTimeoutSeconds: 3,
             expiration: {
               maxEntries: 1,
-              maxAgeSeconds: 60 * 1, // 1分
+              maxAgeSeconds: 60 * 60 * 24 * 180, // 180 days(オフライン時にはapi-versionもキャッシュが必要だから)
             },
             cacheableResponse: {
               statuses: [0, 200],
