@@ -1,4 +1,5 @@
 <template>
+  <AppHeader />
   <div class="page">
     <div v-if="error?.statusCode === 404" class="info">
       <h1>404 Not Found</h1>
