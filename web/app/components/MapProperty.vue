@@ -91,10 +91,6 @@ onMounted(() => {
   if (!place.value) return;
   initViewer();
   desc.registerJumpLinkEvents();
-  propertySlide.addEventListeners();
-});
-onUnmounted(() => {
-  propertySlide.removeEventListeners();
 });
 </script>
 <style scoped lang="scss">
