@@ -37,7 +37,8 @@ export const useMapState = () => {
     if (placeIds) {
       const validPlaceIds = placeIds
         .filter((placeId) => placeId !== null)
-        .filter((placeId) => $placesEnable.value.some((p) => p.id === placeId));
+        .filter((placeId) => $placesEnable.value.some((p) => p.id === placeId))
+        .filter((placeId, index, self) => self.indexOf(placeId) === index) as string[]; // 重複排除
       status.value.places = validPlaceIds;
     } else {
       status.value.places = [];
