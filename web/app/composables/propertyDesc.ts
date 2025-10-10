@@ -14,7 +14,7 @@ export const usePropertyDesc = (place: Ref<Place>, requestURL: URL, emitApplyUrl
     jumpUrls.value = [];
     if (!place.value) return;
     description.value = place.value.desc;
-    description.value = description.value.replace(/\/n/g, "<br>");
+    description.value = description.value.replace(/<br>|\\n/g, "<br>"); // 基本は<br>を改行として扱う(このコードは予備)
     description.value = description.value.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
     description.value = description.value.replace(/\[(.+?)\]\((.+?)\)/g, (match, name, url) => {
       jumpUrls.value.push(url);
