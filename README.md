@@ -4,6 +4,9 @@
 
 [PV映像](https://youtu.be/o8RLhzpfBVg)
 
+西高マップ : <https://maps.nishi-h.net/>  
+ミラーサイト : <https://school-maps.vercel.app/>
+
 ## ライセンス
 
 ### プログラム
