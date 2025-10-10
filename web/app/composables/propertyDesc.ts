@@ -5,7 +5,7 @@ export const usePropertyDesc = (place: Ref<Place>, requestURL: URL, emitApplyUrl
   // bold
   // **bold**というように囲まれた部分を太字として扱う
   // new line
-  // /nという文字列を改行として扱う
+  // <br>という文字列を改行として扱う
 
   const description = ref("");
   const jumpUrls = ref<Array<string>>([]);
