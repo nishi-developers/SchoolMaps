@@ -68,4 +68,3 @@ npm run type-check # 型チェックのみ実行
 - **@svgdotjs/svg.js**: SVG操作ライブラリ
 - **svgdom**: サーバーサイドSVG操作のためのDOM実装
 - **Node.js**: ランタイム環境
-
