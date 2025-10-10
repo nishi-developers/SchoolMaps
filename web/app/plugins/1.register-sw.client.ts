@@ -1,3 +1,6 @@
+// デフォルトではsw.jsの読み込みはpluginsより遅いため、ここで登録する
+// swは登録後、installやactivateといった処理が必要
+
 export default defineNuxtPlugin(async () => {
   // Service Workerの準備完了を待機
   if ("serviceWorker" in navigator) {
