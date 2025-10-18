@@ -47,7 +47,7 @@
 </template>
 <script setup lang="ts">
 const route = useRoute()
-useHead({ title: '検索' })
+useHead({ title: 'マップ検索' })
 const { $modesChangeable, $modesEnable, $floors, $floorsChangeable, $placesEnable } = useNuxtApp();
 
 const search = useSearch()
