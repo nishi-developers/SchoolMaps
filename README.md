@@ -36,3 +36,12 @@
 
 - [マップデータの構造と作成方法](./MapData.md)
 - [SchoolMaps Tools(マップ作成・編集ツール)](./tools/README.md)
+
+### スクリーンショット
+
+![モバイル-マップ](./web/public/seo/screenshot-mobile-map.jpg)
+![モバイル-詳細](./web/public/seo/screenshot-mobile-property.jpg)
+![モバイル-検索](./web/public/seo/screenshot-mobile-search.jpg)
+![パソコン-マップ](./web/public/seo/screenshot-pc-map.jpg)
+![パソコン-詳細](./web/public/seo/screenshot-pc-property.jpg)
+![パソコン-検索](./web/public/seo/screenshot-pc-search.jpg)
