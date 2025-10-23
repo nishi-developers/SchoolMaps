@@ -39,9 +39,34 @@
 
 ### スクリーンショット
 
-![モバイル-マップ](./web/public/seo/screenshot-mobile-map.jpg)
-![モバイル-詳細](./web/public/seo/screenshot-mobile-property.jpg)
-![モバイル-検索](./web/public/seo/screenshot-mobile-search.jpg)
-![パソコン-マップ](./web/public/seo/screenshot-pc-map.jpg)
-![パソコン-詳細](./web/public/seo/screenshot-pc-property.jpg)
-![パソコン-検索](./web/public/seo/screenshot-pc-search.jpg)
+<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+  <figure style="width:30%;min-width:180px;margin:0">
+    <img src="./web/public/seo/screenshot-mobile-map.jpg" alt="モバイル-マップ" style="width:100%;height:auto;border-radius:6px">
+    <figcaption style="text-align:center;font-size:90%;">モバイル - マップ</figcaption>
+  </figure>
+
+  <figure style="width:30%;min-width:180px;margin:0">
+    <img src="./web/public/seo/screenshot-mobile-property.jpg" alt="モバイル-詳細" style="width:100%;height:auto;border-radius:6px">
+    <figcaption style="text-align:center;font-size:90%;">モバイル - 詳細</figcaption>
+  </figure>
+
+  <figure style="width:30%;min-width:180px;margin:0">
+    <img src="./web/public/seo/screenshot-mobile-search.jpg" alt="モバイル-検索" style="width:100%;height:auto;border-radius:6px">
+    <figcaption style="text-align:center;font-size:90%;">モバイル - 検索</figcaption>
+  </figure>
+
+  <figure style="width:30%;min-width:180px;margin-top:12px;margin:0">
+    <img src="./web/public/seo/screenshot-pc-map.jpg" alt="パソコン-マップ" style="width:100%;height:auto;border-radius:6px">
+    <figcaption style="text-align:center;font-size:90%;">パソコン - マップ</figcaption>
+  </figure>
+
+  <figure style="width:30%;min-width:180px;margin-top:12px;margin:0">
+    <img src="./web/public/seo/screenshot-pc-property.jpg" alt="パソコン-詳細" style="width:100%;height:auto;border-radius:6px">
+    <figcaption style="text-align:center;font-size:90%;">パソコン - 詳細</figcaption>
+  </figure>
+
+  <figure style="width:30%;min-width:180px;margin-top:12px;margin:0">
+    <img src="./web/public/seo/screenshot-pc-search.jpg" alt="パソコン-検索" style="width:100%;height:auto;border-radius:6px">
+    <figcaption style="text-align:center;font-size:90%;">パソコン - 検索</figcaption>
+  </figure>
+</div>
