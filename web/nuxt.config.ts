@@ -64,7 +64,7 @@ export default defineNuxtConfig({
         { property: "og:locale", content: "ja_JP" },
       ],
       link: [
-        { rel: "icon", type: "image/png", href: "/favicon.ico" },
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "icon", type: "image/svg+xml", sizes: "any", href: "/icons/icon.svg" },
         { rel: "apple-touch-icon", sizes: "180x180", href: "/icons/apple-touch-icon.png" },
       ],
@@ -197,14 +197,40 @@ export default defineNuxtConfig({
       theme_color: "#bee0ff",
       screenshots: [
         {
-          src: "seo/screenshot-map.jpg",
+          src: "seo/screenshot-mobile-map.jpg",
           sizes: "630x1200",
-          type: "image/png",
+          type: "image/jpeg",
+          form_factor: "narrow",
         },
         {
-          src: "seo/screenshot-search.jpg",
+          src: "seo/screenshot-mobile-property.jpg",
           sizes: "630x1200",
-          type: "image/png",
+          type: "image/jpeg",
+          form_factor: "narrow",
+        },
+        {
+          src: "seo/screenshot-mobile-search.jpg",
+          sizes: "630x1200",
+          type: "image/jpeg",
+          form_factor: "narrow",
+        },
+        {
+          src: "seo/screenshot-pc-map.jpg",
+          sizes: "1200x630",
+          type: "image/jpeg",
+          form_factor: "wide",
+        },
+        {
+          src: "seo/screenshot-pc-property.jpg",
+          sizes: "1200x630",
+          type: "image/jpeg",
+          form_factor: "wide",
+        },
+        {
+          src: "seo/screenshot-pc-search.jpg",
+          sizes: "1200x630",
+          type: "image/jpeg",
+          form_factor: "wide",
         },
       ],
     },

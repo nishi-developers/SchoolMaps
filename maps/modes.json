@@ -13,7 +13,7 @@
   },
   {
     "id": "shinkan80",
-    "enable": false,
+    "enable": true,
     "name": "新歓80th",
     "always": false
   },
