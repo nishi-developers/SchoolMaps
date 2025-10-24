@@ -39,9 +39,10 @@
 
 ### スクリーンショット
 
-![モバイル-マップ](./web/public/seo/screenshot-mobile-map.jpg)
-![モバイル-詳細](./web/public/seo/screenshot-mobile-property.jpg)
-![モバイル-検索](./web/public/seo/screenshot-mobile-search.jpg)
-![パソコン-マップ](./web/public/seo/screenshot-pc-map.jpg)
-![パソコン-詳細](./web/public/seo/screenshot-pc-property.jpg)
-![パソコン-検索](./web/public/seo/screenshot-pc-search.jpg)
+| モバイル - マップ | モバイル - 詳細 | モバイル - 検索 |
+|:--:|:--:|:--:|
+| ![モバイル-マップ](./web/public/seo/screenshot-mobile-map.jpg) | ![モバイル-詳細](./web/public/seo/screenshot-mobile-property.jpg) | ![モバイル-検索](./web/public/seo/screenshot-mobile-search.jpg) |
+
+| パソコン - マップ | パソコン - 詳細 | パソコン - 検索 |
+|:--:|:--:|:--:|
+| ![パソコン-マップ](./web/public/seo/screenshot-pc-map.jpg) | ![パソコン-詳細](./web/public/seo/screenshot-pc-property.jpg) | ![パソコン-検索](./web/public/seo/screenshot-pc-search.jpg) |
