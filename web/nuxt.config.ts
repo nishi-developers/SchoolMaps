@@ -241,7 +241,7 @@ export default defineNuxtConfig({
       cleanupOutdatedCaches: true, // 古いキャッシュを自動的に削除
       // SPA対応
       navigateFallback: "/", // プリキャッシュされていないURLにアクセスした場合に/を返す
-      navigateFallbackAllowlist: [/^(?!\/(api|__nuxt)).*/], // /apiや/__nuxtへのアクセスは除外
+      navigateFallbackAllowlist: [/^(?!\/(api|_nuxt|__nuxt_devtools__)).*/], // /apiや/_nuxtへのアクセスは除外
       // PreCache
       globPatterns: ["**/*.{js,css,html,ico,txt,png,svg,json}"],
       additionalManifestEntries: [{ url: "/", revision: null }], // globPatternsに含まれないファイルを明示的にPreCacheに追加
