@@ -4,9 +4,14 @@ export const useMapEvent = (
 ) => {
   const { $modesChangeable, $floorsChangeable } = useNuxtApp();
 
-  const clickPlace = (event: Event) => {
+  const clickPlace = (event: MouseEvent) => {
     const targetPlaceId = (event.target as HTMLElement).getAttribute("place");
-    setPlaces([targetPlaceId]); // 存在しないID(nullとか)が来た場合はsetPlacesで弾かれる
+    if (!event.shiftKey) {
+      setPlaces([targetPlaceId]); // 存在しないID(nullとか)が来た場合はsetPlacesで弾かれる
+    } else {
+      // Shiftキーが押されている場合は複数選択
+      setPlaces([...mapState.status.value.places, targetPlaceId]); // 重複はsetPlacesで弾かれる
+    }
   };
 
   const floorsButtonData = $floorsChangeable.value.map((floor) => ({

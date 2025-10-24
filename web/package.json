@@ -1,6 +1,6 @@
 {
   "name": "school-maps",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "private": true,
   "type": "module",
   "description": "SchoolMaps web application",
@@ -16,9 +16,10 @@
   "author": "M_Haruki@504",
   "license": "MIT",
   "dependencies": {
+    "@iconify/utils": "^3.0.2",
+    "@iconify/vue": "^5.0.0",
     "@nuxt/eslint": "^1.7.1",
     "@nuxt/fonts": "^0.11.4",
-    "@nuxt/icon": "^1.15.0",
     "@nuxt/image": "^1.11.0",
     "@nuxt/scripts": "^0.11.10",
     "@nuxt/test-utils": "^3.19.2",

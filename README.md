@@ -1,8 +1,14 @@
-# SchoolMaps
+# SchoolMaps | 西高マップ
 
-東京都立西高等学校の校内マップです。
+## 概要
 
-[PV映像](https://youtu.be/o8RLhzpfBVg)
+[東京都立西高等学校](https://www.metro.ed.jp/nishi-h/)の校内マップアプリです。
+
+## リンク
+
+- [西高マップ(https://maps.nishi-h.net/)](https://maps.nishi-h.net/)
+- [PV映像(https://youtu.be/o8RLhzpfBVg)](https://youtu.be/o8RLhzpfBVg)
+- [ミラーサイト(https://school-maps.vercel.app/)](https://school-maps.vercel.app/)
 
 ## ライセンス
 
@@ -12,14 +18,31 @@
 
 ### マップデータ
 
-[mapsディレクトリ](./maps)内を始めとする、プログラムを除くマップデータに関しては、西高生に限り自由に利用可能です。
-西高生以外のサイト観覧を制限するものではありませんが、マップデータのサイト外利用はご遠慮ください。
+[mapsディレクトリ](./maps/)内を始めとする、プログラムを除くマップデータについては、都立西高等学校の生徒に限り、自由にご利用いただけます。
+それ以外の方によるサイトの閲覧を制限するものではありませんが、マップデータをサイト外で利用することはご遠慮ください。
 
-## メモ
+## 詳細
 
-```shell
-nohup env PORT=3002 node /var/www/temp.m-haru.net/node/SchoolMaps/web/.output/server/index.mjs &
-```
+### ディレクトリ構成
 
-デフォルトでは、sw.jsの読み込みは、pluginsより遅い
-swは登録後、installやactgivateといった処理が必要
+| ディレクトリ | 説明 |
+|------------|------|
+| web        | Nuxt4を使用したWebアプリケーションのソースコード |
+| maps       | マップ及び関連データ |
+| tools      | マップ作成・編集用のツール |
+| icons      | アイコン画像 |
+
+### ドキュメント
+
+- [マップデータの構造と作成方法](./MapData.md)
+- [SchoolMaps Tools(マップ作成・編集ツール)](./tools/README.md)
+
+### スクリーンショット
+
+| モバイル - マップ | モバイル - 詳細 | モバイル - 検索 |
+|:--:|:--:|:--:|
+| ![モバイル-マップ](./web/public/seo/screenshot-mobile-map.jpg) | ![モバイル-詳細](./web/public/seo/screenshot-mobile-property.jpg) | ![モバイル-検索](./web/public/seo/screenshot-mobile-search.jpg) |
+
+| パソコン - マップ | パソコン - 詳細 | パソコン - 検索 |
+|:--:|:--:|:--:|
+| ![パソコン-マップ](./web/public/seo/screenshot-pc-map.jpg) | ![パソコン-詳細](./web/public/seo/screenshot-pc-property.jpg) | ![パソコン-検索](./web/public/seo/screenshot-pc-search.jpg) |
