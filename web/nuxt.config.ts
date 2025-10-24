@@ -83,7 +83,7 @@ export default defineNuxtConfig({
       // https://developer.mozilla.org/en-US/docs/Web/Manifest
       background_color: "#f3f9ff",
       categories: ["education", "navigation", "utilities"],
-      description: "東京都立西高等学校の校内マップです",
+      description: "東京都立西高等学校の校内マップです。",
       display: "standalone",
       icons: [
         {
