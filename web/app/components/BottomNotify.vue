@@ -5,7 +5,7 @@
         <span>アプリを</span><span>インストールして、</span><span>オフラインでも</span><span>マップを</span><span>使いませんか?</span>
       </div>
       <div id="installBtn" @click="install()">インストール</div>
-      <Icon id="hideBtn" name="close" @click="hide()" />
+      <Icon id="hideBtn" icon="mdi:close" @click="hide()" />
     </div>
   </Transition>
 </template>

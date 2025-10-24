@@ -1,4 +1,5 @@
 <template>
+  <AppHeader />
   <div class="page">
     <div v-if="error?.statusCode === 404" class="info">
       <h1>404 Not Found</h1>
@@ -16,16 +17,20 @@
     </div>
     <div class="actions">
       <div class="action" @click="back">
-        <Icon name="back" />
+        <Icon icon="mdi:undo-variant" />
         <span>元のページに戻る</span>
       </div>
       <NuxtLink class="action" to="/">
-        <Icon name="home" />
+        <Icon icon="mdi:home" />
         <span>トップに戻る</span>
       </NuxtLink>
       <div class="action" @click="reload">
-        <Icon name="reload" />
+        <Icon icon="mdi:reload" />
         <span>再読み込み</span>
+      </div>
+      <div class="action" @click="clearCache">
+        <Icon icon="mdi:delete-sweep-outline" />
+        <span>キャッシュのクリア</span>
       </div>
     </div>
   </div>
@@ -50,6 +55,24 @@ function back() {
 
 function reload() {
   window.location.reload();
+}
+
+async function clearCache() {
+  if (!confirm("本当にキャッシュをクリアしますか?")) return;
+  try {
+    if ("serviceWorker" in navigator) {
+      const regs = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(regs.map((r) => r.unregister()));
+    }
+    if ("caches" in window) {
+      const keys = await caches.keys();
+      await Promise.all(keys.map((k) => caches.delete(k)));
+    }
+    localStorage.removeItem("mapVersion");
+    window.location.reload();
+  } catch (e) {
+    console.error("キャッシュ削除中にエラー:", e);
+  }
 }
 </script>
 <style scoped lang="scss">

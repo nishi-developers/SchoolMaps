@@ -11,15 +11,7 @@ export default defineNuxtConfig({
   ssr: false,
   spaLoadingTemplate: "spa-loading-template.html",
   css: ["@/assets/styles/main.scss"],
-  modules: [
-    "@nuxt/eslint",
-    "@nuxt/fonts",
-    "@nuxt/icon",
-    "@nuxt/scripts",
-    "@nuxt/image",
-    "@nuxt/test-utils",
-    "@vite-pwa/nuxt",
-  ],
+  modules: ["@nuxt/eslint", "@nuxt/fonts", "@nuxt/scripts", "@nuxt/image", "@nuxt/test-utils", "@vite-pwa/nuxt"],
   runtimeConfig: {
     public: {
       systemVersion: packageJson.version || "unknown",
@@ -42,23 +34,6 @@ export default defineNuxtConfig({
       googleAnalytics: {
         id: "G-T8T5WHTM3B",
       },
-    },
-  },
-  icon: {
-    aliases: {
-      share: "material-symbols:share",
-      close: "material-symbols:close-rounded",
-      cercleClose: "material-symbols:cancel-outline-rounded",
-      stairs: "material-symbols:stairs-2-rounded",
-      tag: "material-symbols:tag-rounded",
-      search: "material-symbols:search-rounded",
-      label: "material-symbols:label-outline-rounded",
-      labelOff: "material-symbols:label-off-outline-rounded",
-      resetFocus: "material-symbols:reset-focus-outline-rounded",
-      searchOnMap: "material-symbols:map-search-outline-rounded",
-      back: "material-symbols:undo-rounded",
-      reload: "material-symbols:refresh-rounded",
-      home: "material-symbols:home-rounded",
     },
   },
   vite: {
@@ -89,7 +64,7 @@ export default defineNuxtConfig({
         { property: "og:locale", content: "ja_JP" },
       ],
       link: [
-        { rel: "icon", type: "image/png", href: "/favicon.ico" },
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "icon", type: "image/svg+xml", sizes: "any", href: "/icons/icon.svg" },
         { rel: "apple-touch-icon", sizes: "180x180", href: "/icons/apple-touch-icon.png" },
       ],
@@ -222,14 +197,40 @@ export default defineNuxtConfig({
       theme_color: "#bee0ff",
       screenshots: [
         {
-          src: "seo/screenshot-map.jpg",
+          src: "seo/screenshot-mobile-map.jpg",
           sizes: "630x1200",
-          type: "image/png",
+          type: "image/jpeg",
+          form_factor: "narrow",
         },
         {
-          src: "seo/screenshot-search.jpg",
+          src: "seo/screenshot-mobile-property.jpg",
           sizes: "630x1200",
-          type: "image/png",
+          type: "image/jpeg",
+          form_factor: "narrow",
+        },
+        {
+          src: "seo/screenshot-mobile-search.jpg",
+          sizes: "630x1200",
+          type: "image/jpeg",
+          form_factor: "narrow",
+        },
+        {
+          src: "seo/screenshot-pc-map.jpg",
+          sizes: "1200x630",
+          type: "image/jpeg",
+          form_factor: "wide",
+        },
+        {
+          src: "seo/screenshot-pc-property.jpg",
+          sizes: "1200x630",
+          type: "image/jpeg",
+          form_factor: "wide",
+        },
+        {
+          src: "seo/screenshot-pc-search.jpg",
+          sizes: "1200x630",
+          type: "image/jpeg",
+          form_factor: "wide",
         },
       ],
     },
@@ -240,7 +241,7 @@ export default defineNuxtConfig({
       cleanupOutdatedCaches: true, // 古いキャッシュを自動的に削除
       // SPA対応
       navigateFallback: "/", // プリキャッシュされていないURLにアクセスした場合に/を返す
-      navigateFallbackAllowlist: [/^(?!\/(api|__nuxt)).*/], // /apiや/__nuxtへのアクセスは除外
+      navigateFallbackAllowlist: [/^(?!\/(api|_nuxt|__nuxt_devtools__)).*/], // /apiや/_nuxtへのアクセスは除外
       // PreCache
       globPatterns: ["**/*.{js,css,html,ico,txt,png,svg,json}"],
       additionalManifestEntries: [{ url: "/", revision: null }], // globPatternsに含まれないファイルを明示的にPreCacheに追加
@@ -256,7 +257,7 @@ export default defineNuxtConfig({
             networkTimeoutSeconds: 3,
             expiration: {
               maxEntries: 1,
-              maxAgeSeconds: 60 * 1, // 1分
+              maxAgeSeconds: 60 * 60 * 24 * 180, // 180 days(オフライン時にはapi-versionもキャッシュが必要だから)
             },
             cacheableResponse: {
               statuses: [0, 200],
@@ -272,6 +273,22 @@ export default defineNuxtConfig({
             cacheName: "api-assets",
             expiration: {
               maxEntries: 50,
+              maxAgeSeconds: 60 * 60 * 24 * 180, // 180 days
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        },
+        {
+          // Iconify icons
+          urlPattern: ({ url }) => url.origin === "https://api.iconify.design",
+          handler: "CacheFirst",
+          method: "GET",
+          options: {
+            cacheName: "iconify-icons",
+            expiration: {
+              maxEntries: 200,
               maxAgeSeconds: 60 * 60 * 24 * 180, // 180 days
             },
             cacheableResponse: {

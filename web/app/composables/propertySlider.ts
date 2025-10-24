@@ -34,6 +34,8 @@ export const usePropertySlider = (
 
   let isAlreadyMoved = false; // マウス使用時のみ、移動したかどうか
   let isDragging = false; // ドラッグ中かどうか
+  let lastX = 0; // ポインタ位置の前回値
+  let lastY = 0;
 
   const eventListener = {
     click: () => {
@@ -41,83 +43,72 @@ export const usePropertySlider = (
         closeProperty();
       }
     },
-    mousedown: () => {
+    pointerdown: (e: PointerEvent) => {
       isAlreadyMoved = false;
       isDragging = true;
-    },
-    touchmove: (event: TouchEvent) => {
-      if (event.changedTouches.length === 1) {
-        touchMove(event);
-      }
-    },
-    touchstart: (event: TouchEvent) => {
-      if (event.changedTouches.length === 1) {
-        touchStart(event);
-      }
-    },
-    touchend: () => {
-      leave();
-    },
-    touchcancel: () => {
-      leave();
-    },
-  };
+      lastX = e.clientX;
+      lastY = e.clientY;
 
-  const mousemoveEvent = (event: MouseEvent) => {
-    if (!isDragging) return;
-    if (event.buttons == 1) {
+      (e.currentTarget as HTMLElement)?.setPointerCapture?.(e.pointerId); // スライダーがポインタを捕捉（範囲外へ出てもイベントが下層へ行かない）
+
+      e.preventDefault();
+      e.stopPropagation();
+    },
+
+    pointermove: (e: PointerEvent) => {
+      if (!isDragging) return;
       isAlreadyMoved = true;
-      mouseMove(event);
-    }
-  };
-  const mouseupEvent = () => {
-    if (!isDragging) return;
-    isDragging = false;
-    leave();
-  };
-  const addEventListeners = () => {
-    document.addEventListener("mousemove", mousemoveEvent);
-    document.addEventListener("mouseup", mouseupEvent);
-  };
-  const removeEventListeners = () => {
-    document.removeEventListener("mousemove", mousemoveEvent);
-    document.removeEventListener("mouseup", mouseupEvent);
+
+      const dx = e.clientX - lastX;
+      const dy = e.clientY - lastY;
+      lastX = e.clientX;
+      lastY = e.clientY;
+
+      if (deviceMode.value === "mobile") {
+        const next = propertySize.value - dy;
+        if (next > 0 && next < props.viewsize.height) propertySize.value = next;
+      } else {
+        const next = propertySize.value + dx;
+        if (next > 0 && next < props.viewsize.width) propertySize.value = next;
+      }
+
+      e.preventDefault();
+      e.stopPropagation();
+    },
+
+    pointerup: (e: PointerEvent) => {
+      if (!isDragging) return;
+      isDragging = false;
+
+      try {
+        (e.currentTarget as HTMLElement)?.releasePointerCapture?.(e.pointerId);
+      } catch {
+        // 何もしない
+      }
+
+      leave();
+      e.preventDefault();
+      e.stopPropagation();
+    },
+
+    pointercancel: (e: PointerEvent) => {
+      if (!isDragging) return;
+      isDragging = false;
+
+      try {
+        (e.currentTarget as HTMLElement)?.releasePointerCapture?.(e.pointerId);
+      } catch {
+        // 何もしない
+      }
+
+      leave();
+      e.preventDefault();
+      e.stopPropagation();
+    },
   };
 
-  // ヘルパー関数群
-  const mouseMove = (event: MouseEvent) => {
-    // マウスでドラッグ中の処理
-    if (deviceMode.value == "mobile") {
-      if (propertySize.value - event.movementY > 0 && propertySize.value - event.movementY < props.viewsize.height)
-        propertySize.value -= event.movementY;
-    } else {
-      if (propertySize.value + event.movementX > 0 && propertySize.value + event.movementX < props.viewsize.width)
-        propertySize.value += event.movementX;
-    }
-  };
-  let touchLast = 0;
-  const touchStart = (event: TouchEvent) => {
-    // タッチでドラッグ開始時の処理
-    if (deviceMode.value == "mobile") {
-      touchLast = event.changedTouches[0]?.clientY || 0;
-    } else {
-      touchLast = event.changedTouches[0]?.clientX || 0;
-    }
-  };
-  const touchMove = (event: TouchEvent) => {
-    // タッチでドラッグ中の処理
-    if (deviceMode.value == "mobile") {
-      const Y = touchLast - (event.changedTouches[0]?.clientY || 0);
-      touchLast = event.changedTouches[0]?.clientY || 0;
-      if (propertySize.value + Y > 0 && propertySize.value + Y < props.viewsize.height) propertySize.value += Y;
-    } else {
-      const X = touchLast - (event.changedTouches[0]?.clientX || 0);
-      touchLast = event.changedTouches[0]?.clientX || 0;
-      if (propertySize.value - X > 0 && propertySize.value - X < props.viewsize.width) propertySize.value -= X;
-    }
-  };
   const leave = () => {
-    // マウス・タッチが離れたときの処理
+    // ポインタが離れたときの処理
     if (deviceMode.value == "mobile") {
       if (propertySize.value < (props.viewsize.height * config.propertySizeRate.middle) / 2) {
         closeProperty();
@@ -146,8 +137,6 @@ export const usePropertySlider = (
 
   return {
     eventListener,
-    addEventListeners,
-    removeEventListeners,
     propertySize,
   };
 };

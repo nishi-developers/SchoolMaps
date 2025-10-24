@@ -6,8 +6,14 @@
     "always": true
   },
   {
-    "id": "shinkan80",
+    "id": "license",
     "enable": false,
+    "name": "",
+    "always": true
+  },
+  {
+    "id": "shinkan80",
+    "enable": true,
     "name": "新歓80th",
     "always": false
   },
