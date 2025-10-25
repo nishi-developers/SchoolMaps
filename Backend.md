@@ -26,7 +26,7 @@ subgraph DB["PostgreSQL (Neon)"]
   D_release[(release)]
 end
 
-subgraph Radius["Radius (Upstash)"]
+subgraph Redis["Redis (Upstash)"]
   direction TB
   R_release[(release)]
 end
