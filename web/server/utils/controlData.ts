@@ -1,6 +1,13 @@
 type data_id = "modes" | "floors" | "behaviors" | "places" | "detail" | "map";
 type table_type = "release" | "draft";
-const dataIds: data_id[] = ["modes", "floors", "behaviors", "places", "detail", "map"];
+const dataIds: data_id[] = [
+  "modes",
+  "floors",
+  "behaviors",
+  "places",
+  "detail",
+  "map",
+];
 
 async function getAsset(id: data_id): Promise<string> {
   let fileName: string;
@@ -142,12 +149,12 @@ async function draft2releaseR() {
   );
 }
 
-async function getDraftData(id: data_id): Promise<string> {
-  return await selectDb("draft", id);
-}
-
-async function updateDraftData(id: data_id, content: string) {
-  await upsertDb("draft", id, content);
-}
-
-export { asset2draft, draft2releaseD, releaseD2draft, draft2releaseR, getDraftData, updateDraftData };
+export {
+  asset2draft,
+  draft2releaseD,
+  releaseD2draft,
+  draft2releaseR,
+  getAsset,
+  selectDb,
+  selectRadis,
+};
