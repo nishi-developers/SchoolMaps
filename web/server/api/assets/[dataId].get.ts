@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
       return [res, "redis"];
     },
     async () => {
-      const res = await selectDb("draft", dataId);
+      const res = await selectDb("release", dataId);
       return [res, "database"];
     },
     async () => {
