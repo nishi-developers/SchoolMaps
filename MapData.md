@@ -199,13 +199,13 @@ SVGファイルのひとつひとつの要素を`オブジェクト`と呼ぶ。
   "mapVersion": "1.0.0",
   "width": 1920,
   "height": 1080,
-  "isDatabaseIntegrated": true,
+  "dataSource": "redis",
 }
 ```
 
 - `mapVersion`は、マップのバージョンを示す文字列
 - `width`と`height`は、マップの幅と高さをピクセル単位で指定する
-- `isDatabaseIntegrated`は、データベース統合の有無を示すフラグ
+- `dataSource`は、マップデータの取得元を指定する
   - この値はバックエンドで自動的に設定される
 
 ## 作成方法

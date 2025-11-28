@@ -47,7 +47,7 @@ export interface Detail {
   width: number;
   height: number;
   infoProviders: string[];
-  isDatabaseIntegrated?: boolean;
+  dataSource?: "assets" | "database" | "redis";
 }
 
 export interface Place {

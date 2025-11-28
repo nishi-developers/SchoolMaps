@@ -57,9 +57,8 @@
       <span>{{ $config.public.systemVersion }}</span>
       <span>MapVersion</span>
       <span>{{ $detail.mapVersion }}</span>
-      <span>DB Integrate</span>
-      <span v-if="$detail?.isDatabaseIntegrated">Enabled</span>
-      <span v-else>Disabled</span>
+      <span>DataSource</span>
+      <span>{{ $detail?.dataSource }}</span>
     </p>
   </div>
 </template>
