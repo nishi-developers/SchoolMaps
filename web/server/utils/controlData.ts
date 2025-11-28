@@ -104,9 +104,13 @@ async function upsertRadis(id: data_id, content: string) {
 }
 
 async function selectRadis(id: data_id): Promise<string> {
-  const data = (await redis.get(id)) as string | null;
+  let data = (await redis.get(id)) as string | null;
   if (!data) {
     throw new Error(`No data found in redis for ${id}`);
+  }
+  // 型がobjectの場合はstringに変換
+  if (typeof data === "object") {
+    data = JSON.stringify(data);
   }
   return data;
 }
