@@ -9,7 +9,7 @@ const dataIds: data_id[] = [
   "map",
 ];
 
-async function getAsset(id: data_id): Promise<string> {
+async function getFile(id: data_id): Promise<string> {
   let fileName: string;
   switch (id) {
     case "modes":
@@ -117,10 +117,10 @@ async function selectRadis(id: data_id): Promise<string> {
 
 // 抽象化
 
-async function asset2draft() {
+async function file2draft() {
   await Promise.all(
     dataIds.map(async (id) => {
-      const data = await getAsset(id);
+      const data = await getFile(id);
       await upsertDb("draft", id, data);
     })
   );
@@ -154,11 +154,11 @@ async function draft2releaseR() {
 }
 
 export {
-  asset2draft,
+  file2draft,
   draft2releaseD,
   releaseD2draft,
   draft2releaseR,
-  getAsset,
+  getFile,
   selectDb,
   selectRadis,
 };

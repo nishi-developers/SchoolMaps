@@ -36,8 +36,8 @@ export default defineEventHandler(async (event) => {
       return [res, "database"];
     },
     async () => {
-      const res = await getAsset(dataId);
-      return [res, "assets"];
+      const res = await getFile(dataId);
+      return [res, "file"];
     },
   ];
 

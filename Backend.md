@@ -16,7 +16,7 @@ flowchart LR
 %% セクション
 subgraph Nuxt
   direction TB
-  N_assets[(assets)]
+  N_file[(file)]
   N_provider(Provide)
 end
 
@@ -36,14 +36,14 @@ U((User))
 A((Admin))
 
 %% フロー
-N_assets --Draft作成--> D_draft
+N_file --Draft作成--> D_draft
 D_release --Draft作成--> D_draft 
 D_draft --リリース--> D_release
 D_draft --リリース--> R_release
 
 R_release --優先度1--> N_provider
 D_release --優先度2--> N_provider
-N_assets --優先度3--> N_provider
+N_file --優先度3--> N_provider
 N_provider --データ配信--> U
 
 A <--編集--> D_draft
