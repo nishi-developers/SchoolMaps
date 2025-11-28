@@ -23,12 +23,12 @@ end
 subgraph DB["PostgreSQL (Neon)"]
   direction TB
   D_draft[(draft)]
-  D_release[(release)]
+  D_release[(release-d)]
 end
 
 subgraph Redis["Redis (Upstash)"]
   direction TB
-  R_release[(release)]
+  R_release[(release-r)]
 end
 
 %% 外部
