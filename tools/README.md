@@ -34,6 +34,13 @@ SchoolMaps Toolsは、Affinity DesignerやInkscapeで作成されたSVGマップ
   - CSVからJSONへの変換
   - Webアプリケーション用ディレクトリへの配置
 
+### HashPassword (`HashPassword.ts`)
+
+- **目的**: パスワードのハッシュ化ツール
+- **処理内容**:
+  - 入力されたパスワードをbcryptjsを使用してハッシュ化
+  - ハッシュ化されたパスワードをコンソールに出力
+
 ## 使用方法
 
 ### ツールの実行
@@ -42,6 +49,7 @@ SchoolMaps Toolsは、Affinity DesignerやInkscapeで作成されたSVGマップ
 npm run 1 # マップコンバーター
 npm run 2 # プレイスデータ作成
 npm run 3 # データ登録
+npm run hashpw # パスワードハッシュ化
 ```
 
 ### 開発用コマンド

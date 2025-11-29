@@ -31,6 +31,7 @@
     "@unhead/vue": "^2.0.13",
     "@upstash/redis": "^1.35.6",
     "@vite-pwa/nuxt": "^1.0.4",
+    "bcryptjs": "^3.0.3",
     "drizzle-orm": "^0.44.7",
     "eslint": "^9.32.0",
     "nuxt": "^4.0.1",
@@ -40,6 +41,7 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^24.9.1",
     "@types/rbush": "^4.0.0",
     "@vue/test-utils": "^2.4.6",

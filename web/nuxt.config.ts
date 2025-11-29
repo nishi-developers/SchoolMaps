@@ -3,7 +3,9 @@ import { readFileSync } from "fs";
 import { resolve } from "path";
 
 // package.jsonからバージョンを動的に読み込み
-const packageJson = JSON.parse(readFileSync(resolve("./package.json"), "utf-8"));
+const packageJson = JSON.parse(
+  readFileSync(resolve("./package.json"), "utf-8")
+);
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
@@ -11,8 +13,16 @@ export default defineNuxtConfig({
   ssr: false,
   spaLoadingTemplate: "spa-loading-template.html",
   css: ["@/assets/styles/main.scss"],
-  modules: ["@nuxt/eslint", "@nuxt/fonts", "@nuxt/scripts", "@nuxt/image", "@nuxt/test-utils", "@vite-pwa/nuxt"],
+  modules: [
+    "@nuxt/eslint",
+    "@nuxt/fonts",
+    "@nuxt/scripts",
+    "@nuxt/image",
+    "@nuxt/test-utils",
+    "@vite-pwa/nuxt",
+  ],
   runtimeConfig: {
+    hashedPassword: process.env.HASHED_PASSWORD || "",
     public: {
       systemVersion: packageJson.version || "unknown",
       buildDate: new Date().toISOString(),
@@ -53,20 +63,38 @@ export default defineNuxtConfig({
         { charset: "utf-8" },
         { name: "robots", content: "noindex,nofollow,noarchive" },
         { name: "theme-color", content: "#bee0ff" },
-        { name: "description", content: "東京都立西高等学校の校内マップです。" },
+        {
+          name: "description",
+          content: "東京都立西高等学校の校内マップです。",
+        },
         { name: "twitter:card", content: "summary_large_image" },
         { property: "og:url", content: "https://maps.nishi-h.net" },
         { property: "og:title", content: "西高マップ" },
         { property: "og:type", content: "website" },
-        { property: "og:description", content: "東京都立西高等学校の校内マップです。" },
-        { property: "og:image", content: "https://maps.nishi-h.net/seo/ogp.jpg" },
+        {
+          property: "og:description",
+          content: "東京都立西高等学校の校内マップです。",
+        },
+        {
+          property: "og:image",
+          content: "https://maps.nishi-h.net/seo/ogp.jpg",
+        },
         { property: "og:site_name", content: "西高マップ" },
         { property: "og:locale", content: "ja_JP" },
       ],
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-        { rel: "icon", type: "image/svg+xml", sizes: "any", href: "/icons/icon.svg" },
-        { rel: "apple-touch-icon", sizes: "180x180", href: "/icons/apple-touch-icon.png" },
+        {
+          rel: "icon",
+          type: "image/svg+xml",
+          sizes: "any",
+          href: "/icons/icon.svg",
+        },
+        {
+          rel: "apple-touch-icon",
+          sizes: "180x180",
+          href: "/icons/apple-touch-icon.png",
+        },
       ],
     },
   },
@@ -175,22 +203,46 @@ export default defineNuxtConfig({
         {
           name: "マップ",
           url: "/",
-          icons: [{ src: "icons/android-chrome-192x192.png", sizes: "192x192", type: "image/png" }],
+          icons: [
+            {
+              src: "icons/android-chrome-192x192.png",
+              sizes: "192x192",
+              type: "image/png",
+            },
+          ],
         },
         {
           name: "検索",
           url: "/search",
-          icons: [{ src: "icons/android-chrome-192x192.png", sizes: "192x192", type: "image/png" }],
+          icons: [
+            {
+              src: "icons/android-chrome-192x192.png",
+              sizes: "192x192",
+              type: "image/png",
+            },
+          ],
         },
         {
           name: "使い方",
           url: "/guide",
-          icons: [{ src: "icons/android-chrome-192x192.png", sizes: "192x192", type: "image/png" }],
+          icons: [
+            {
+              src: "icons/android-chrome-192x192.png",
+              sizes: "192x192",
+              type: "image/png",
+            },
+          ],
         },
         {
           name: "サイトについて",
           url: "/about",
-          icons: [{ src: "icons/android-chrome-192x192.png", sizes: "192x192", type: "image/png" }],
+          icons: [
+            {
+              src: "icons/android-chrome-192x192.png",
+              sizes: "192x192",
+              type: "image/png",
+            },
+          ],
         },
       ],
       start_url: "/",

@@ -3,16 +3,18 @@
   "version": "1.0.0",
   "description": "SchoolMaps data processing tools",
   "scripts": {
-    "build": "tsc",
     "1": "tsc && node dist/1MapConverter.js",
     "2": "tsc && node dist/2PlacesCreater.js",
     "3": "tsc && node dist/3DataRegister.js",
+    "hashpw": "tsc && node dist/HashPassword.js",
+    "build": "tsc",
     "clean": "rimraf dist",
     "type-check": "tsc --noEmit"
   },
   "author": "M_Haruki",
   "license": "MIT",
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^24.2.1",
     "@types/svgdom": "^0.1.2",
     "rimraf": "^5.0.0",
@@ -20,6 +22,7 @@
   },
   "dependencies": {
     "@svgdotjs/svg.js": "^3.2.4",
+    "bcryptjs": "^3.0.3",
     "svgdom": "^0.1.22"
   },
   "engines": {
