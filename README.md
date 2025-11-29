@@ -47,3 +47,12 @@
 | パソコン - マップ | パソコン - 詳細 | パソコン - 検索 |
 |:--:|:--:|:--:|
 | ![パソコン-マップ](./web/public/seo/screenshot-pc-map.jpg) | ![パソコン-詳細](./web/public/seo/screenshot-pc-property.jpg) | ![パソコン-検索](./web/public/seo/screenshot-pc-search.jpg) |
+
+<details>
+<summary>内部向け情報</summary>
+
+### ホスティング
+
+現在、`maps.nishi-h.net`は、78期用アカウントを用いて[Vercel](https://vercel.com/)でホストされています。
+
+</details>

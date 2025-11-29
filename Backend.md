@@ -72,3 +72,12 @@ erDiagram
     MAPS_DATA_ID ||--o{ RELEASE : "id type"
     MAPS_DATA_ID ||--o{ DRAFT   : "id type"
 ```
+
+## Upstash Redis の自動停止対策
+
+Upstash Redis は、無料プランの場合、一定期間アクセスがないと自動的に停止されます。
+これを防ぐため、毎週月曜日の午前3時にRedisへアクセスするCronジョブを設定しています。
+
+Vercelでホストをする場合は、[vercel.json](web/vercel.json)の設定に基づき、`/api/cron/redis-ping`エンドポイントにリクエストを送信して、pingを行います。
+
+それ以外の場合は、[nuxt.config.ts](web/nuxt.config.ts)の設定に基づき、Nitroのスケジュールタスク機能を使用して、`redis-ping`タスクを実行します。

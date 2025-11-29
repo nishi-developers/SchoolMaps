@@ -46,6 +46,16 @@ export default defineNuxtConfig({
       },
     },
   },
+  nitro: {
+    // https://nitro.build/guide/tasks
+    experimental: {
+      tasks: true,
+    },
+    scheduledTasks: {
+      // 毎週月曜日の午前3時に実行
+      "0 3 * * 1": ["auto_delete"],
+    },
+  },
   vite: {
     css: {
       preprocessorOptions: {
