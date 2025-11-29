@@ -34,6 +34,7 @@
     "bcryptjs": "^3.0.3",
     "drizzle-orm": "^0.44.7",
     "eslint": "^9.32.0",
+    "jsonwebtoken": "^9.0.2",
     "nuxt": "^4.0.1",
     "rbush": "^4.0.1",
     "viewerjs": "^1.11.7",
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.9.1",
     "@types/rbush": "^4.0.0",
     "@vue/test-utils": "^2.4.6",
