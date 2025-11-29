@@ -28,7 +28,7 @@ export default defineEventHandler(async (event) => {
   // 試す関数のリスト（優先順位順）
   const strategies = [
     async () => {
-      const res = await selectRadis(dataId);
+      const res = await selectRedis(dataId);
       return [res, "redis"];
     },
     async () => {

@@ -98,12 +98,12 @@ async function selectDb(tableType: table_type, id: data_id): Promise<string> {
   return result[0].content;
 }
 
-async function upsertRadis(id: data_id, content: string) {
-  // radisは標準でupsert
+async function upsertRedis(id: data_id, content: string) {
+  // redisは標準でupsert
   await redis.set(id, content);
 }
 
-async function selectRadis(id: data_id): Promise<string> {
+async function selectRedis(id: data_id): Promise<string> {
   let data = (await redis.get(id)) as string | null;
   if (!data) {
     throw new Error(`No data found in redis for ${id}`);
@@ -148,7 +148,7 @@ async function draft2releaseR() {
   await Promise.all(
     dataIds.map(async (id) => {
       const data = await selectDb("draft", id);
-      await upsertRadis(id, data);
+      await upsertRedis(id, data);
     })
   );
 }
@@ -160,5 +160,5 @@ export {
   draft2releaseR,
   getFile,
   selectDb,
-  selectRadis,
+  selectRedis,
 };

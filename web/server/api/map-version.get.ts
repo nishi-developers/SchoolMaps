@@ -4,7 +4,7 @@ export default defineEventHandler(async () => {
   // データの取得
   // 試す関数のリスト（優先順位順）
   const strategies = [
-    () => selectRadis("detail"),
+    () => selectRedis("detail"),
     () => selectDb("release", "detail"),
     () => getFile("detail"),
   ];
