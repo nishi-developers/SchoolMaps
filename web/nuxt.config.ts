@@ -303,12 +303,20 @@ export default defineNuxtConfig({
       cleanupOutdatedCaches: true, // 古いキャッシュを自動的に削除
       // SPA対応
       navigateFallback: "/", // プリキャッシュされていないURLにアクセスした場合に/を返す
-      navigateFallbackAllowlist: [/^(?!\/(api|_nuxt|__nuxt_devtools__)).*/], // /apiや/_nuxtへのアクセスは除外
+      navigateFallbackAllowlist: [
+        /^(?!\/(api|admin|_nuxt|__nuxt_devtools__)).*/,
+      ], // /apiや/_nuxtへのアクセスは除外
       // PreCache
       globPatterns: ["**/*.{js,css,html,ico,txt,png,svg,json}"],
       additionalManifestEntries: [{ url: "/", revision: null }], // globPatternsに含まれないファイルを明示的にPreCacheに追加
       // RunTime Cache
       runtimeCaching: [
+        // {
+        //   // adminページは認証が必要なのでキャッシュしない
+        //   urlPattern: ({ url }) => url.pathname.startsWith("/admin"),
+        //   handler: "NetworkOnly",
+        //   method: "GET",
+        // },
         {
           // API version
           urlPattern: ({ url }) => url.pathname.startsWith("/api/map-version"),

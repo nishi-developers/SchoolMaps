@@ -81,3 +81,8 @@ Upstash Redis は、無料プランの場合、一定期間アクセスがない
 Vercelでホストをする場合は、[vercel.json](web/vercel.json)の設定に基づき、`/api/cron/redis-ping`エンドポイントにリクエストを送信して、pingを行います。
 
 それ以外の場合は、[nuxt.config.ts](web/nuxt.config.ts)の設定に基づき、Nitroのスケジュールタスク機能を使用して、`redis-ping`タスクを実行します。
+
+## 開発サーバーでのキャッシュ
+
+開発サーバーでは、キャッシュなどの都合で、未ログイン状態で`/admin`配下へアクセスができてしまう場合があります。
+現状、本番環境では発生を確認していません。
