@@ -4,6 +4,7 @@
   </div>
 </template>
 <script setup lang="ts">
+useHead({ title: '認証解除' })
 const router = useRouter()
 if (confirm('認証を解除しますか?')) {
   fetch('/api/deauth', {

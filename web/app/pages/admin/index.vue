@@ -5,3 +5,6 @@
     <nuxt-link to="/admin/deauth">認証解除</nuxt-link>
   </div>
 </template>
+<script setup lang="ts">
+useHead({ title: '管理コンソール' })
+</script>
