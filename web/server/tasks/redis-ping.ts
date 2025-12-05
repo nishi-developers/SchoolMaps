@@ -1,6 +1,6 @@
 export default defineTask({
   meta: {
-    name: "redis_ping",
+    name: "redis-ping",
     description: "Redisへアクセスして自動停止を阻止",
   },
   async run() {

@@ -53,7 +53,7 @@ export default defineNuxtConfig({
     },
     scheduledTasks: {
       // 毎週月曜日の午前3時に実行
-      "0 3 * * 1": ["redis_ping"],
+      "0 3 * * 1": ["redis-ping"],
     },
   },
   vite: {
