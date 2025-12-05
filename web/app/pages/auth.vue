@@ -3,7 +3,7 @@
     <div class="page">
       <h1>管理者認証</h1>
       <form @submit.prevent="submit">
-        <input v-model="password" type="password" placeholder="パスワードを入力してください" />
+        <input v-model="password" type="password" placeholder="パスワードを入力してください">
         <button type="submit">送信</button>
       </form>
     </div>
