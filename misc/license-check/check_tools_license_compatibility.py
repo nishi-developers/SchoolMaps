@@ -7,6 +7,9 @@ Checks MIT license compatibility for the tools project dependencies
 import json
 import sys
 
+# Package name prefix to skip (the main package itself)
+PACKAGE_PREFIX = "tools@"
+
 # MIT compatible licenses based on common understanding
 # https://en.wikipedia.org/wiki/License_compatibility
 MIT_COMPATIBLE = [
@@ -52,7 +55,7 @@ for package, info in licenses_data.items():
     license_str = info.get('licenses', 'UNKNOWN')
     
     # Skip the main package itself
-    if package.startswith("tools@"):
+    if package.startswith(PACKAGE_PREFIX):
         continue
     
     # Handle dual/multi licenses (OR operator)

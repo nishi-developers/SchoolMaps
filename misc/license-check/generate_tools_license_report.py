@@ -9,6 +9,9 @@ import sys
 from collections import defaultdict
 from datetime import datetime
 
+# Package name prefix to skip (the main package itself)
+PACKAGE_PREFIX = "tools@"
+
 # Read license data from stdin or file
 if len(sys.argv) > 1:
     with open(sys.argv[1], 'r') as f:
@@ -19,7 +22,7 @@ else:
 # Count licenses
 license_count = defaultdict(int)
 for package, info in licenses_data.items():
-    if not package.startswith("tools@"):
+    if not package.startswith(PACKAGE_PREFIX):
         license_str = info.get('licenses', 'UNKNOWN')
         license_count[license_str] += 1
 
@@ -81,7 +84,7 @@ report += """
 # List dual license packages
 dual_license_packages = []
 for package, info in licenses_data.items():
-    if not package.startswith("tools@"):
+    if not package.startswith(PACKAGE_PREFIX):
         license_str = info.get('licenses', '')
         if ' OR ' in license_str:
             dual_license_packages.append((package, license_str))
