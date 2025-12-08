@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # MITライセンス互換性チェックスクリプト
 # このスクリプトは依存パッケージのライセンスをチェックし、MITライセンスと互換性があるかを確認します
 
@@ -31,3 +31,4 @@ echo "  npx license-checker --json > licenses.json"
 echo ""
 echo "MITと互換性のないライセンスが見つかった場合は、"
 echo "そのパッケージの使用を再検討するか、代替パッケージを探してください。"
+
