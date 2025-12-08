@@ -76,3 +76,16 @@ npm run type-check # 型チェックのみ実行
 - **@svgdotjs/svg.js**: SVG操作ライブラリ
 - **svgdom**: サーバーサイドSVG操作のためのDOM実装
 - **Node.js**: ランタイム環境
+
+## ライセンス互換性
+
+このプロジェクトはMITライセンスで提供されています。すべての依存パッケージのライセンス互換性が確認されています。
+
+ライセンス互換性を確認するには：
+
+```bash
+./scripts/check-licenses.sh
+```
+
+詳細なライセンス互換性情報については、[LICENSE_COMPATIBILITY.md](./LICENSE_COMPATIBILITY.md)を参照してください。
+
