@@ -4,51 +4,29 @@
 
 ## スクリプト一覧
 
-### Web プロジェクト用
-
-- **check_web_license_compatibility.py** - Webプロジェクトの依存パッケージのライセンス互換性をチェック
-- **generate_web_license_report.py** - Webプロジェクトの詳細なライセンスレポートを生成
-
-### Tools プロジェクト用
-
-- **check_tools_license_compatibility.py** - Toolsプロジェクトの依存パッケージのライセンス互換性をチェック
-- **generate_tools_license_report.py** - Toolsプロジェクトの詳細なライセンスレポートを生成
+- `check_license_compatibility.py`: 依存パッケージのライセンス情報を解析し、MIT互換性をチェックします。
 
 ## 使用方法
 
-### Webプロジェクトのチェック
+### 簡易的なライセンスサマリーの取得
 
-```bash
-cd /path/to/SchoolMaps/web
-npm install
-npx license-checker --json > /tmp/web-licenses.json
-python3 ../misc/license-check/check_web_license_compatibility.py /tmp/web-licenses.json
+``` bash
+npx license-checker --summary
 ```
 
-### Webプロジェクトのレポート生成
+### プロジェクトのチェック
 
 ```bash
-cd /path/to/SchoolMaps/web
+cd /path/to/project
 npm install
-npx license-checker --json | python3 ../misc/license-check/generate_web_license_report.py > LICENSE_COMPATIBILITY.md
+npx license-checker --json > /tmp/licenses.json
+python3 ../misc/license-check/check_license_compatibility.py <package-prefix> /tmp/licenses.json
 ```
 
-### Toolsプロジェクトのチェック
+package-prefixは、チェック対象のプロジェクトに応じて以下のいずれかを指定します：
 
-```bash
-cd /path/to/SchoolMaps/tools
-npm install
-npx license-checker --json > /tmp/tools-licenses.json
-python3 ../misc/license-check/check_tools_license_compatibility.py /tmp/tools-licenses.json
-```
-
-### Toolsプロジェクトのレポート生成
-
-```bash
-cd /path/to/SchoolMaps/tools
-npm install
-npx license-checker --json | python3 ../misc/license-check/generate_tools_license_report.py > LICENSE_COMPATIBILITY.md
-```
+- Webプロジェクトの場合: `school-maps@`
+- Toolsプロジェクトの場合: `tools@`
 
 ## 必要な環境
 

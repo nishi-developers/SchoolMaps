@@ -73,15 +73,3 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-## License Compatibility
-
-This project is licensed under the MIT License. All dependencies have been checked for MIT license compatibility.
-
-To verify license compatibility:
-
-```bash
-./scripts/check-licenses.sh
-```
-
-For detailed license compatibility information, see [LICENSE_COMPATIBILITY.md](./LICENSE_COMPATIBILITY.md).
