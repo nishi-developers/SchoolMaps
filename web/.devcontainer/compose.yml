@@ -1,0 +1,25 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - ..:/workspace:cached
+      - repo-web-node-modules:/workspace/node_modules
+      - repo-web-nuxt:/workspace/.nuxt
+      - repo-web-output:/workspace/.output
+    ports:
+      - "3000:3000"
+    command: sleep infinity
+    # または開発サーバーを直接起動する場合:
+    # command: npm run dev
+    environment:
+      - NODE_ENV=development
+    stdin_open: true
+    tty: true
+
+volumes:
+  repo-web-node-modules:
+  repo-web-nuxt:
+  repo-web-output:

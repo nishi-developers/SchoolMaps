@@ -21,6 +21,13 @@ export default defineNuxtConfig({
     "@nuxt/test-utils",
     "@vite-pwa/nuxt",
   ],
+  typescript: {
+    strict: true,
+  },
+  devServer: {
+    host: "0.0.0.0",
+    port: 3000,
+  },
   runtimeConfig: {
     hashedPassword: process.env.HASHED_PASSWORD || "",
     public: {
