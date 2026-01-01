@@ -5,7 +5,7 @@
 {
   "name": "SchoolMaps DevContainer",
   "dockerComposeFile": "compose.yml",
-  "service": "web",
+  "service": "app",
   "workspaceFolder": "/workspace",
   "forwardPorts": [3000],
   "customizations": {

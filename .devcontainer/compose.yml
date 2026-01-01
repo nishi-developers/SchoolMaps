@@ -1,14 +1,16 @@
 services:
-  web:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
     working_dir: /workspace
     volumes:
       - ..:/workspace:cached
-      - repo-web-node-modules:/workspace/node_modules
-      - repo-web-nuxt:/workspace/.nuxt
-      - /workspace/.output
+      - repo-web-node-modules:/workspace/web/node_modules
+      - repo-web-nuxt:/workspace/web/.nuxt
+      - /workspace/web/.output
+      - repo-tools-node-modules:/workspace/tools/node_modules
+      - repo-tools-dist:/workspace/tools/dist
     ports:
       - "3000:3000"
     command: >
@@ -22,3 +24,5 @@ services:
 volumes:
   repo-web-node-modules:
   repo-web-nuxt:
+  repo-tools-node-modules:
+  repo-tools-dist:
