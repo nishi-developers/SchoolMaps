@@ -8,7 +8,7 @@ services:
       - ..:/workspace:cached
       - repo-web-node-modules:/workspace/node_modules
       - repo-web-nuxt:/workspace/.nuxt
-      - repo-web-output:/workspace/.output
+      - /workspace/.output
     ports:
       - "3000:3000"
     command: >
@@ -22,4 +22,3 @@ services:
 volumes:
   repo-web-node-modules:
   repo-web-nuxt:
-  repo-web-output:

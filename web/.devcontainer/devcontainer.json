@@ -1,3 +1,7 @@
+// メモ
+// dockerfileだけでは、@fsあたりへのアクセスがうまくいかず、
+// docker-composeを介すことで、正常に動作するようになった。
+
 {
   "name": "SchoolMaps DevContainer",
   "dockerComposeFile": "compose.yml",
