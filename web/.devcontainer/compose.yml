@@ -12,13 +12,12 @@ services:
     ports:
       - "3000:3000"
     command: >
-      sh -c "sudo chown -R node:node /workspace && 
-        sleep infinity"
+      sh -c "chown -R node:node /workspace &&
+        su node -c 'sleep infinity'"
     environment:
       - NODE_ENV=development
     stdin_open: true
     tty: true
-    user: root
 
 volumes:
   repo-web-node-modules:
