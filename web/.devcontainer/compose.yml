@@ -1,5 +1,5 @@
 services:
-  app:
+  web:
     build:
       context: .
       dockerfile: Dockerfile
@@ -11,13 +11,14 @@ services:
       - repo-web-output:/workspace/.output
     ports:
       - "3000:3000"
-    command: sleep infinity
-    # または開発サーバーを直接起動する場合:
-    # command: npm run dev
+    command: >
+      sh -c "sudo chown -R node:node /workspace && 
+        sleep infinity"
     environment:
       - NODE_ENV=development
     stdin_open: true
     tty: true
+    user: root
 
 volumes:
   repo-web-node-modules:
