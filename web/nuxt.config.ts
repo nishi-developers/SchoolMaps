@@ -307,12 +307,6 @@ export default defineNuxtConfig({
       additionalManifestEntries: [{ url: "/", revision: null }], // globPatternsに含まれないファイルを明示的にPreCacheに追加
       // RunTime Cache
       runtimeCaching: [
-        // {
-        //   // adminページは認証が必要なのでキャッシュしない
-        //   urlPattern: ({ url }) => url.pathname.startsWith("/admin"),
-        //   handler: "NetworkOnly",
-        //   method: "GET",
-        // },
         {
           // API version
           urlPattern: ({ url }) => url.pathname.startsWith("/api/map-version"),

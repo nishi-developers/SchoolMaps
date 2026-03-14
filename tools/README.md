@@ -34,7 +34,6 @@ SchoolMaps Toolsは、Affinity DesignerやInkscapeで作成されたSVGマップ
   - CSVからJSONへの変換
   - Webアプリケーション用ディレクトリへの配置
 
-
 ## 使用方法
 
 ### ツールの実行
