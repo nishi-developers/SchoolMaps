@@ -1,9 +1,6 @@
 {
-  "mapVersion": "0.4.8",
+  "mapVersion": "0.5.0",
   "width": 1991.311,
   "height": 4493.0488,
-  "infoProviders": [
-    "新入生歓迎会実行委員会(R7年度)",
-    "第79回記念祭実行委員会"
-  ]
+  "infoProviders": []
 }

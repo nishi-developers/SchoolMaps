@@ -47,7 +47,6 @@ export interface Detail {
   width: number;
   height: number;
   infoProviders: string[];
-  isDatabaseIntegrated?: boolean;
 }
 
 export interface Place {

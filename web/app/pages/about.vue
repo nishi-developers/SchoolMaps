@@ -23,8 +23,8 @@
         </a>
         のもと公開しています。
       </p>
-      <h3>情報提供団体</h3>
-      <ul>
+      <h3 v-if="$detail.infoProviders.length != 0">情報提供団体</h3>
+      <ul v-if="$detail.infoProviders.length != 0">
         <li v-for="provider in $detail.infoProviders" :key="provider">
           {{ provider }}
         </li>
@@ -52,14 +52,11 @@
       </p>
       <div id="version-spacer" />
     </div>
-    <p id="version" @click="handleClick">
+    <p id="version">
       <span>SystemVersion</span>
       <span>{{ $config.public.systemVersion }}</span>
       <span>MapVersion</span>
       <span>{{ $detail.mapVersion }}</span>
-      <span>DB Integrate</span>
-      <span v-if="$detail?.isDatabaseIntegrated">Enabled</span>
-      <span v-else>Disabled</span>
     </p>
   </div>
 </template>
@@ -67,22 +64,12 @@
 useHead({ title: 'サイトについて' })
 
 const { $detail } = useNuxtApp();
-
-// クリックカウント
-let clickCount = 0;
-async function handleClick() {
-  clickCount++;
-  if (clickCount >= 7) {
-    await navigateTo('/auth');
-    clickCount = 0;
-  }
-}
 </script>
 <style scoped lang="scss">
 #version-spacer {
   bottom: 0;
   opacity: 0;
-  height: 60px;
+  height: 40px;
 }
 
 #version {

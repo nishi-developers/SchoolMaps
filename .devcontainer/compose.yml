@@ -1,0 +1,28 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - ..:/workspace:cached
+      - repo-web-node-modules:/workspace/web/node_modules
+      - repo-web-nuxt:/workspace/web/.nuxt
+      - /workspace/web/.output
+      - repo-tools-node-modules:/workspace/tools/node_modules
+      - repo-tools-dist:/workspace/tools/dist
+    ports:
+      - 3000:3000
+    command: >
+      sh -c "chown -R node:node /workspace &&
+        su node -c 'sleep infinity'"
+    environment:
+      - NODE_ENV=development
+    stdin_open: true
+    tty: true
+
+volumes:
+  repo-web-node-modules:
+  repo-web-nuxt:
+  repo-tools-node-modules:
+  repo-tools-dist:
