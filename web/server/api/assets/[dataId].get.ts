@@ -1,76 +1,28 @@
+import { appendResponseHeader } from "h3";
+
 type data_id = "modes" | "floors" | "behaviors" | "places" | "detail" | "map";
-const dataIds: data_id[] = [
-  "modes",
-  "floors",
-  "behaviors",
-  "places",
-  "detail",
-  "map",
-];
+const assets: Record<data_id, string> = {
+  modes: "modes.json",
+  floors: "floors.json",
+  behaviors: "behaviors.json",
+  places: "places.json",
+  detail: "detail.json",
+  map: "map.svg",
+};
 
 export default defineEventHandler(async (event) => {
   // パラーメーターの検証
   if (
-    event.context.params?.dataId == null ||
-    !dataIds.includes(event.context.params.dataId as data_id)
+    event.context.params?.dataId == null || !(event.context.params.dataId in assets)
   ) {
     throw createError({
       statusCode: 404,
       message: "The asset is not found",
     });
   }
-
-  const dataId = event.context.params.dataId as data_id;
-  let dataString: string | null = null;
-  let dataSource: string | null = null;
-
-  // データの取得
-  // 試す関数のリスト（優先順位順）
-  const strategies = [
-    async () => {
-      const res = await selectRedis(dataId);
-      return [res, "redis"];
-    },
-    async () => {
-      const res = await selectDb("release", dataId);
-      return [res, "database"];
-    },
-    async () => {
-      const res = await getFile(dataId);
-      return [res, "file"];
-    },
-  ];
-
-  for (const strategy of strategies) {
-    try {
-      [dataString, dataSource] = await strategy();
-      break; // 成功したらループを抜ける
-    } catch {
-      continue; // 次の戦略を試す
-    }
-  }
-
-  // すべて失敗した場合
-  if (dataString === null || dataSource === null) {
-    throw createError({
-      statusCode: 500,
-      message: "Failed to fetch data from all sources",
-    });
-  }
-
-  // レスポンスの設定
-  if (dataId === "map") {
-    appendResponseHeader(event, "Content-Type", "image/svg+xml");
-  } else {
-    appendResponseHeader(event, "Content-Type", "application/json");
-  }
-
-  // detailに限り、データにdataSourceを追加
-  if (dataId === "detail") {
-    const detailData = JSON.parse(dataString);
-    detailData.dataSource = dataSource;
-    dataString = JSON.stringify(detailData);
-  }
-
-  return dataString;
+  
+  // アセットの提供
+  const { data, contentType } = await provideAssets(assets[event.context.params.dataId as data_id]);
+  appendResponseHeader(event, "Content-Type", contentType);
+  return data;
 });

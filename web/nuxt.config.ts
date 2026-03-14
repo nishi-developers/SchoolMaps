@@ -29,7 +29,6 @@ export default defineNuxtConfig({
     port: 3000,
   },
   runtimeConfig: {
-    hashedPassword: process.env.HASHED_PASSWORD || "",
     public: {
       systemVersion: packageJson.version || "unknown",
       buildDate: new Date().toISOString(),
@@ -51,16 +50,6 @@ export default defineNuxtConfig({
       googleAnalytics: {
         id: "G-T8T5WHTM3B",
       },
-    },
-  },
-  nitro: {
-    // https://nitro.build/guide/tasks
-    experimental: {
-      tasks: true,
-    },
-    scheduledTasks: {
-      // 毎週月曜日の午前3時に実行
-      "0 3 * * 1": ["redis-ping"],
     },
   },
   vite: {

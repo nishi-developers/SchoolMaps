@@ -57,8 +57,6 @@
       <span>{{ $config.public.systemVersion }}</span>
       <span>MapVersion</span>
       <span>{{ $detail.mapVersion }}</span>
-      <span>DataSource</span>
-      <span>{{ $detail?.dataSource }}</span>
     </p>
   </div>
 </template>
@@ -66,16 +64,6 @@
 useHead({ title: 'サイトについて' })
 
 const { $detail } = useNuxtApp();
-
-// クリックカウント
-let clickCount = 0;
-async function handleClick() {
-  clickCount++;
-  if (clickCount >= 7) {
-    await navigateTo('/auth');
-    clickCount = 0;
-  }
-}
 </script>
 <style scoped lang="scss">
 #version-spacer {
