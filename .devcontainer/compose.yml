@@ -12,7 +12,7 @@ services:
       - repo-tools-node-modules:/workspace/tools/node_modules
       - repo-tools-dist:/workspace/tools/dist
     ports:
-      - "3000:3000"
+      - 3000:3000
     command: >
       sh -c "chown -R node:node /workspace &&
         su node -c 'sleep infinity'"

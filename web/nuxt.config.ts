@@ -53,6 +53,11 @@ export default defineNuxtConfig({
     },
   },
   vite: {
+    server:{
+      watch: {
+        usePolling: true,
+      },
+    },
     css: {
       preprocessorOptions: {
         scss: {
