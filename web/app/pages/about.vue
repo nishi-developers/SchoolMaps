@@ -52,7 +52,7 @@
       </p>
       <div id="version-spacer" />
     </div>
-    <p id="version" @click="handleClick">
+    <p id="version">
       <span>SystemVersion</span>
       <span>{{ $config.public.systemVersion }}</span>
       <span>MapVersion</span>
@@ -69,7 +69,7 @@ const { $detail } = useNuxtApp();
 #version-spacer {
   bottom: 0;
   opacity: 0;
-  height: 60px;
+  height: 40px;
 }
 
 #version {
