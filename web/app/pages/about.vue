@@ -23,8 +23,8 @@
         </a>
         のもと公開しています。
       </p>
-      <h3>情報提供団体</h3>
-      <ul>
+      <h3 v-if="$detail.infoProviders.length != 0">情報提供団体</h3>
+      <ul v-if="$detail.infoProviders.length != 0">
         <li v-for="provider in $detail.infoProviders" :key="provider">
           {{ provider }}
         </li>
