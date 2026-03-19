@@ -56,4 +56,3 @@
 現在、`maps.nishi-h.net`は、78期用アカウントを用いて[Vercel](https://vercel.com/)でホストされています。
 
 </details>
-
