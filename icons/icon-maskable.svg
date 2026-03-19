@@ -2,6 +2,7 @@
 <svg width="1182" height="1182" viewBox="0 0 1182 1182" version="1.1" xml:space="preserve" style="clip-rule:evenodd;fill-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" id="svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
+   <path style="fill:#ffffff;stroke-width:1.99937;stroke-linecap:round" d="M 0,0 H 1182 V 1182 H 0 Z" />
    <path d="m 1041.0082,647.45717 c 0,185.2398 -203.13507,337.66845 -449.99524,337.66845 -246.8594,0 -449.99447,-152.42865 -449.99447,-337.66845 0,-185.2398 203.13507,-337.66921 449.99447,-337.66921 v 0 c 246.86017,0 449.99524,152.42941 449.99524,337.66921 z" style="display:inline;fill:#82c3ff;stroke-width:0.761987" />
    <path style="display:inline;fill:#82c3ff;stroke-width:0.761987" d="M 141.00858,534.54437 H 1040.9914 V 647.45559 H 141.00858 Z" />
    <path d="m 1041.0082,534.54593 c 0,185.1438 -203.13507,337.49395 -449.99524,337.49395 v 0 c -246.8594,0 -449.99447,-152.35015 -449.99447,-337.49395 v 0 c 0,-185.14455 203.13507,-337.49471 449.99447,-337.49471 v 0 c 246.86017,0 449.99524,152.35016 449.99524,337.49471 z" style="display:inline;fill:#bee0ff;stroke-width:0.761987" />
